@@ -1,0 +1,52 @@
+@import 'common.scss';
+
+.puzzle.interactive {
+  table.letters td.letter {
+    cursor: pointer;
+  }
+}
+
+table.letters {
+  td.letter {
+    border: 1px solid #80808080;
+
+    &:focus {
+      outline: 2px solid blue;
+    }
+  }
+
+  td.letter.used {
+    background-color: #A3F475;
+  }
+}
+
+table.crossword {
+  td.letter.entered,
+  td.fixed {
+    background-color: #A3F475;
+  }
+
+  td input {
+    background-color: transparent;
+    border: 0;
+    border-bottom: 1px solid black;
+    box-sizing: border-box;
+    font-size: 1em;
+    height: 24px;
+    text-align: center;
+    text-transform: uppercase;
+    width: 24px;
+
+    &:invalid {
+      color: #f00;
+      border-bottom-color: #f00;
+    }
+  }
+}
+.notice {
+  margin-bottom: 2em;
+  .instructions {
+    font-size: .9em;
+    margin-bottom: .5em;
+  }
+}

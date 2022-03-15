@@ -1,0 +1,15 @@
+table.grid td {
+  width: 25px;
+  height: 25px;
+  min-width: 25px;
+  text-align: center;
+}
+
+.brown {
+  background-color: rgb(108, 56, 17);
+  color: white;
+}
+
+.white {
+  background-color: white;
+}

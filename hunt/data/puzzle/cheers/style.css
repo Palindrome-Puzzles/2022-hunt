@@ -1,0 +1,11 @@
+.rotate {
+    transform: rotate(180deg);
+}
+
+table, tr, td {
+    page-break-inside: avoid;
+}
+
+tr td:first-child {
+    font-weight: bold;
+}

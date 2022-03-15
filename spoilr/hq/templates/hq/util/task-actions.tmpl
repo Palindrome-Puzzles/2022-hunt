@@ -1,0 +1,102 @@
+{% load humanize %}
+
+<div class="actions">
+  {% if task.status == 'done' or task.status == 'ignored' %}
+    <div class="status">This task was {% if task.status == 'done' %}done{% else %}ignored{% endif %} by {{ task.handler }}.</div>
+    {% if can_reopen %}
+    <div class="action">
+      <strong style="color: red">DANGER!</strong>
+      <label for="id_confirm_reopen_{{ task.id }}">Enter "REOPEN" to confirm</label>
+      <input type="text" name="confirm" id="id_confirm_reopen_{{ task.id }}">
+      <input id="id_reopen_submit_{{ task.id }}" type="submit" value="Reopen and claim" formaction="{% url 'spoilr.hq:task_claim' %}">
+      <input type="hidden" name="force_reopen" value="1">
+      <script>
+      // Use a script as we can't put `required` on the input.
+      $('#id_reopen_submit_{{ task.id }}').click((e) => {
+        const confirm = $('#id_confirm_reopen_{{ task.id }}');
+        if (confirm.val().toLowerCase() !== 'reopen') {
+          confirm.focus();
+          e.preventDefault();
+        }
+      });
+      // Prevent Enter from submitting the form and picking a random action.
+      $('#id_confirm_reopen_{{ task.id }}').keypress(e => {
+        if (event.key === 'Enter') {
+          e.preventDefault();
+        }
+      });
+      </script>
+    </div>
+    {% endif %}
+  {% elif task.status == 'snoozed' %}
+    <div class="status">Snoozed until <span title="{{ task.snooze_until }}">{{ task.snooze_until|naturaltime }}</span></div>
+    <div class="action">
+      <input type="submit" value="Unsnooze and claim" formaction="{% url 'spoilr.hq:task_claim' %}">
+    </div>
+  {% elif task.handler and task.handler != request.handler %}
+    <div class="status">{{ task.handler }} is handling ({{ task.claim_time|naturaltime }})</div>
+    <div class="action">
+      <input type="submit" value="Yoink" formaction="{% url 'spoilr.hq:task_claim' %}">
+      <input type="hidden" name="yoink" value="1">
+    </div>
+  {% elif task.handler %}
+    <div class="status">You've claimed this task</div>
+    <div class="action">
+      <input type="submit" value="Unclaim" formaction="{% url 'spoilr.hq:task_unclaim' %}">
+    </div>
+    <div class="action">
+      <label for="id_snooze_hours_{{ task.id }}">Snooze for</label>
+      <select name="snooze_hours" id="id_snooze_hours_{{ task.id }}">
+        <option value=".16">10 minutes</option>
+        <option value=".5">30 minutes</option>
+        <option value="1">1 hour</option>
+        <option value="2">2 hours</option>
+        <option value="4">4 hours</option>
+        <option value="8">8 hours</option>
+      </select>
+      <input type="submit" value="Snooze" formaction="{% url 'spoilr.hq:task_snooze' %}">
+    </div>
+    {% if can_dismiss %}
+    <div class="action">
+      <label for="id_confirm_ignore_{{ task.id }}">Enter "DISMISS" to confirm</label>
+      <input type="text" name="confirm" id="id_confirm_ignore_{{ task.id }}">
+      <input id="id_ignore_submit_{{ task.id }}" type="submit" value="Dismiss" formaction="{% url 'spoilr.hq:task_ignore' %}">
+      <script>
+      // Use a script as we can't put `required` on the input.
+      $('#id_ignore_submit_{{ task.id }}').click((e) => {
+        const confirm = $('#id_confirm_ignore_{{ task.id }}');
+        if (confirm.val().toLowerCase() !== 'dismiss') {
+          confirm.focus();
+          e.preventDefault();
+        }
+      });
+      // Prevent Enter from submitting the form and picking a random action.
+      $('#id_confirm_ignore_{{ task.id }}').keypress(e => {
+        if (event.key === 'Enter') {
+          e.preventDefault();
+        }
+      });
+      </script>
+    </div>
+    {% endif %}
+  {% else %}
+    <div class="action">
+      {% if anchor_id %}
+      <input type="hidden" name="anchor" value="email-form-task-id-{{ anchor_id }}">
+      {% endif %}
+      <input type="submit" value="Claim" formaction="{% url 'spoilr.hq:task_claim' %}">
+    </div>
+    <div class="action">
+      <label for="id_snooze_hours_{{ task.id }}">Snooze for</label>
+      <select name="snooze_hours" id="id_snooze_hours_{{ task.id }}">
+        <option value=".16">10 minutes</option>
+        <option value=".5">30 minutes</option>
+        <option value="1">1 hour</option>
+        <option value="2">2 hours</option>
+        <option value="4">4 hours</option>
+        <option value="8">8 hours</option>
+      </select>
+      <input type="submit" value="Snooze" formaction="{% url 'spoilr.hq:task_snooze' %}">
+    </div>
+  {% endif %}
+</div>

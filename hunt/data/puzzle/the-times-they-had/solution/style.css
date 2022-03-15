@@ -1,0 +1,16 @@
+img {
+	max-width: 100%;
+}
+
+.subtotal-row {
+	border-top: 2px dashed #888;
+}
+
+.total-row {
+	background: #eee;
+	border-bottom: 4px solid black;
+}
+
+.author-note img {
+	max-width: 600px;
+}

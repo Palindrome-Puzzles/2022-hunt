@@ -1,0 +1,32 @@
+td.underline, .underline {
+    text-decoration: underline;
+}
+
+.poem {
+    text-align: center;
+}
+.poem p {
+    line-height: 150%;
+}
+
+.prefer-2-col {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.upper {
+    text-transform: uppercase;
+}
+
+.centered {
+    text-align: center;
+}
+
+figure {
+    display: inline-block;
+}
+
+.no-grid, .no-grid td {
+    border-bottom: none !important;
+}

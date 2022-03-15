@@ -1,0 +1,98 @@
+{% load humanize %}
+<html>
+  <head>
+    <style type="text/css">
+      body, td, input {
+        font: 10pt Verdana;
+      }
+      table {
+        border-collapse: collapse;
+        padding: 0px;
+        margin: 0px;
+      }
+      td {
+        vertical-align: top;
+        padding: 2px 6px 2px 0px;
+        overflow: hidden;
+        white-space: nowrap;
+      }
+    </style>
+  </head>
+  <body>
+    <div style="text-align: right;">
+      {% if handler %}
+      Signed in as {{ handler.name }}{% if handler.hq_phone %}, using {{ handler.hq_phone }}{% endif %}
+      <form action="." method="POST" style="display: inline;">
+	{% csrf_token %}
+	<input type="hidden" name="offduty" value="true" />
+	<input type="submit" value="I'm off duty" />
+      </form>
+      {% else %}
+      <form action="." method="POST" style="display: inline;">
+	{% csrf_token %}
+	<input id="next" type="hidden" name="next" value="/hq/queue/"/><br/>
+	Observing only.  Enter your discord username:
+	<input id="email" type="text" size="30" name="email" /><br/>
+        and your phone number (to contact you in case of emergency):
+	<input id="phone" type="text" size="30" name="phone" /><br/>
+	to sign in as a handler:
+	<input id="go" type="submit" value="Go" />
+      </form>
+      {% endif %}
+      <a href="{% url 'hq' %}">Back to HQ Main</a>
+    </div>
+    <div>
+      {{ t_total }} teams hunting,
+      {{ q_teams }} in the queue,
+      {{ q_total }} submission(s) among them
+    </div>
+    {% for t in teams %}
+    <div style="padding: 3px; border-top: 1px solid black; {% if t.oldest > 600 %}background: #faa;{% elif t.oldest > 300 or t.submissions|length >= tq_max %}background: #ffa;{% endif %}">
+      <b>{{ t.team.name }}</b>
+      <div style="padding-left: 30px;">
+	{% if t.oldest > 600 %}
+	<b>Waiting for more than ten minutes!</b><br/>
+	{% elif t.oldest > 300 %}
+	<b>Waiting for more than five minutes!</b><br/>
+	{% endif %}
+	{% if t.submissions|length >= tq_max %}
+	<b>Queue is filled!</b><br/>
+	{% endif %}
+	<table>
+	  {% for s in t.submissions %}
+	  <tr><td style="width: 100px;">{{ s.timestamp|naturaltime|capfirst }}:
+	    <td style="width: 100px;">Contact HQ
+	    <td><b>{{s.thing|safe}}</b>
+	    <td><i>{{s.info}}</i>
+	  </tr>
+	  {% endfor %}
+	</table>
+      </div>
+      {% if handler or t.contact_handler %}
+      <div style="text-align: right;">
+	{% if t.contact_handler and queue_type == "contact" %}
+	  {{ t.contact_handler.name }} ({{ t.contact_handler.email }}) is on it, since {{ t.contact_handler.contact_team_timestamp|naturaltime }}.
+	{% else %}
+	<form action="." method="POST" style="display: inline;">
+	  {% csrf_token %}
+	  <input type="hidden" name="claim" value="{{t.team.username}}" />
+	  <input type="submit" value="I'm on it." />
+	</form>
+	{% endif %}
+      </div>
+      {% endif %}
+    </div>
+    {% endfor %}
+    <script type="text/javascript">
+      function r() {
+        {% if not handler %}
+        var ae = document.activeElement;
+        if (ae.nodeName == 'INPUT' || ae.nodeName == 'SELECT')
+          return;
+        {% endif %}
+        window.location.reload(true);
+      }
+      setInterval(r, 10000);
+    </script>
+  </body>
+</html>

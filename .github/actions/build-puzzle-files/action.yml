@@ -1,0 +1,14 @@
+name: Build puzzle files
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Set up Node v14
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14'
+        cache: 'npm'
+
+    - name: Build puzzle scripts and styles
+      run: npm install
+      shell: bash

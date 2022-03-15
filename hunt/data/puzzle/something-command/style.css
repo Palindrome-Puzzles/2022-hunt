@@ -1,0 +1,104 @@
+.card {
+  height: 139px;
+}
+
+.tapped-card {
+  height: 100px;
+}
+
+.equipped-card {
+  height: 166px;
+}
+
+.card-holder {
+  text-align: center;
+}
+
+.opp {
+  display: flex;
+  width: 100%;
+}
+
+.opp-sidebar {
+  writing-mode: vertical-rl;
+  text-orientation: sideways;
+  transform: rotate(180deg);
+  border-style: solid;
+  border-width: 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25px;
+}
+
+.opp-cards {
+  flex-grow: 1;
+}
+
+.opp-lands {
+  border-style: solid solid none none;
+  border-width: 2px;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.opp-other {
+  border-style: none solid solid none;
+  border-width: 2px;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.redzone {
+  border-style: none solid solid solid;
+  border-width: 2px;
+  text-align: center;
+}
+
+.you {
+  display: flex;
+  width: 100%;
+}
+
+.you-sidebar {
+  writing-mode: vertical-rl;
+  text-orientation: sideways;
+  transform: rotate(180deg);
+  border-style: solid solid none solid;
+  border-width: 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25px;
+}
+
+.you-cards {
+  flex-grow: 1;
+}
+
+.you-lands {
+  border-style: none solid solid none;
+  border-width: 2px;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.you-other {
+  border-style: none solid none none;
+  border-width: 2px;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.you-hand {
+  border-style: none solid solid none;
+  border-width: 2px;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-grow: 1;
+}

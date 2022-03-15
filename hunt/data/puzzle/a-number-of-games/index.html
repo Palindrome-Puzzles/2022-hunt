@@ -1,0 +1,209 @@
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'lib/katex/katex.min.css' %}">
+<script defer src="{% static 'lib/katex/katex.min.js' %}"></script>
+<script defer src="{% static 'lib/katex/auto-render.min.js' %}"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        renderMathInElement(document.getElementById("a-number-of-games-root"), {
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '$', right: '$', display: false},
+            ],
+            throwOnError: false
+        });
+    });
+</script>
+
+<div id="a-number-of-games-root">
+    <p class="flavor">It's playtime! Rita and her classmate Lefty have been playing a lot of games lately. So much, in
+        fact, that they are quite familiar with the Winning Ways of all the games they play.</p>
+    <div>
+        <p>Game rules:</p>
+        <p>In the games they play, there are two players who alternate making moves. The first time that a player cannot
+            make a move on their turn, that player loses.</p>
+        <p>Col: Each player, on their turn, paints one region of the map their color (b<u>L</u>ue for Lefty, or <u>R</u>ed
+            for Rita). Adjacent regions may not share a color.</p>
+        <p>Domineering: Lefty moves by placing a vertical $2 \times 1$ domino onto two empty squares of the grid. Rita
+            does the same thing with horizontal $1 \times 2$ dominos.</p>
+        <p>Hackenbush: Lefty moves by deleting any b<u>L</u>ue edge, together with any edges that are no longer
+            connected to the ground. Rita does the same thing with <u>R</u>ed edges.</p>
+        <p>Toads and Frogs: On a $1\times n$ strip of squares are Lefty's toads (facing right) and Rita's frogs (facing
+            left). On a player's turn, one of their animals will move forward one space into an empty square, or hop
+            over one opposing animal into an empty square.</p>
+    </div>
+    <hr/>
+    <div>
+        <p>From playing the games so much, they have learned a way to give values to their game positions, and to
+            compare those values against each other. Here are some of their game theories:</p>
+        <p><b>If Lefty always has a strategy that will win, no matter who goes first, then the game has a positive
+            value.</b> For example, in this Domineering game, Lefty can make one move but Rita cannot make any. It has a
+            positive value. Specifically, it has a value of $1$, which roughly represents that it gives an advantage of
+            1 move to Lefty. (Games with more complicated shapes can have non-integer values, though!)</p>
+        <div class="flex-group">
+            <div class="image-container">
+                <img src="images/number-of-games-puz-01.png" class="stretch"
+                     alt="a Domineering rectangle, with width 1 and height 2">
+            </div>
+        </div>
+        <p><b>If Rita always has a strategy that will win, no matter who goes first, then the game has a negative
+            value.</b> For example, this Domineering game, where Rita can make a single move instead of Lefty, has a
+            negative value. Specifically, it has a value of $-2$, which roughly represents a 2-move advantage for Rita.
+            Notice how if she plays it well, she can make 2 moves in this space.</p>
+        <div class="flex-group">
+            <div class="image-container">
+                <img src="images/number-of-games-puz-02.png" class="stretch"
+                     alt="a Domineering rectangle of width 4 and height 1">
+            </div>
+        </div>
+        <p><b>If it matters who goes first, then the game is neither positive nor negative:</b></p>
+        <p><b>If the second player always has a strategy to win, then the game's value is $0$.</b> For example, in this
+            Col game, whoever goes first can color one of the cells, then the second player colors the other cell, and
+            the first player is unable to move.</p>
+        <div class="flex-group">
+            <div class="image-container">
+                <img src="images/number-of-games-puz-03.png" class="stretch" alt="a Col game of two adjacent regions">
+            </div>
+        </div>
+        <p><b>If the first player always has a strategy to win, then we have a value which is not positive, negative, or
+            zero, and so cannot be represented as a traditional number.</b> An example is this Domineering game, where
+            either player can move just once:</p>
+        <div class="flex-group">
+            <div class="image-container">
+                <img src="images/number-of-games-puz-04.png" class="stretch"
+                     alt="Domineering board, a 2 by 2 rectangle with the bottom right square removed">
+            </div>
+        </div>
+        <p><b>Games can be added together, which sums their values.</b> Imagine you have two or more games next to each
+            other. Two players alternate making moves, which they can choose to do in any of those games. The player who
+            first cannot make a move in the combined game, i.e. cannot find a move to make in any of the individual
+            games, loses. For example, if we add two copies of this L-shaped Domineering game to this 1-move (and value
+            $1$) Hackenbush game, we get a game with the value $0$: it is a second-player win. (The first two moves, in
+            whichever order, will be in the corners of the two Ls, leaving one move available for each player, and
+            whoever started first will run out of moves first.) This shows that the value of that L-shaped Domineering
+            game is $-\frac{1}{2}$.</p>
+        <div class="flex-group">
+            <div class="image-container">
+                <img src="images/number-of-games-puz-05.png" class="stretch" alt="Domineering board, an L-tetromino of width 3 and height 2, then Domineering board, an L-tetromino of width 3 and height 2, then Hackenbush of a single blue branch">
+            </div>
+        </div>
+        <p><b>Reversing a game, or taking its negative (and the negative of its value), is done by taking the game in
+            which the moves available to the two players have been switched.</b> For Domineering, reversing a game can
+            be done by rotating it 90&deg;. For Col and Hackenbush, switch the colors. For Frogs and Toads, take the
+            mirror image, and ignore the art difference between frogs and toads.</p>
+        <p><b>In general, games can be compared,</b> so that we can say which one (and its value) is greater or lower.
+            Often, the individual values of two games will tell you numerically which is greater; for instance, a game
+            whose value is $2$ is greater than a game with a value of $1$. In general, $G_1> G_2$ means that $G_1+
+            (-G_2)$ is positive (that is, Lefty wins). But not all pairs of games can be successfully compared. If $G_1+
+            (-G_2)$ is a game which the first player always has a strategy to win, then we can't say that $G_1$ is
+            greater, and it's not lower either. You just have a pair of games that are not comparable. For example,
+            let's look at a comparison between this 1-move Hackenbush game and this L-shaped Domineering game:</p>
+        <div class="flex-group">
+            <div class="image-container">
+                <img src="images/number-of-games-puz-06.png" class="stretch" alt="Hackenbush of a single red branch next to Domineering board, an L-tetromino of width 3 and height 2">
+            </div>
+        </div>
+        <p>To judge this, let's play the $G_{1}+ (-G_{2})$ game: </p>
+        <div class="flex-group">
+            <div class="image-container">
+                <img src="images/number-of-games-puz-07.png" class="stretch" alt="Hackenbush of a single red branch next to Domineering board, an L-tetromino of width 2 and height 3">
+            </div>
+        </div>
+        <p>Lefty can only move in the Domineering game, and his best move is in the corner (otherwise he leaves a move
+            for Rita). If he goes first, Rita is left with a move in the Hackenbush game, which ends the game. If Rita
+            goes first, she also starts in Domineering, leaving a move for Lefty there, and she still finishes the game
+            with the Hackenbush move. Rita wins in both scenarios, and so $G_1+ (-G_2)$ is negative. $G_1+ (-G_2) < 0$ ,
+            which means that $G_1 < G_2$. And this fits with our independent knowledge of their numerical values: $G_1 =
+            -1 < -\frac{1}{2} = G_2$.</p>
+        <div class="flex-group">
+            <div class="image-container">
+                <img src="images/number-of-games-puz-08.png" class="stretch" alt="Hackenbush of a single red branch next to a Domineering board, an L-tetromino of width 3 and height 2">
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div>
+        <p>Now that you have learned so much about Lefty and Rita's games, their classmate Maz is giving you a
+            challenge. He has made a maze for you to follow. Using knowledge of the values of games, you need to
+            navigate the grid below, starting with a green pen color, moving up along the green start arrow. </p>
+        <img src="images/number-of-games-puz-09.png" class="img-l"
+             alt="a hexagonal maze, with various games corresponding to each row of the grid">
+        <p>Maze rules:</p>
+        <ol>
+            <li><p>Each cell can be identified by a pair of coordinates, one (with blue arrows) on the left and upper left
+                edges of the grid, and one (with red arrows) on the right and upper right edges of the grid. Each
+                coordinate has a game position associated with it.</p>
+            </li>
+            <li><p>If you enter a cell that has only one other exit, take that exit automatically and move towards the
+                center of the next hex. Otherwise, you will try to compare the games at the two coordinates, to see
+                which (if any) is bigger. (Except as amended by rule 5 below.)</p>
+            </li>
+            <li><p>What direction do you turn? Which game is bigger? That is, if the game at the left coordinate is
+                greater, turn left; if the game at the right coordinate is greater, turn right. If neither left nor
+                right is the answer, then do not move: stay in place -- and change to a different pen color.</p>
+            </li>
+            <li>
+                <p>Your turn should be as small as possible. That is, if you are supposed to be turning left or right,
+                    and there is an exit at a 60&deg; turn in that direction, make the 60&deg; turn. You will only make
+                    a 120&deg; turn if the 60&deg; turn is blocked by a black wall.</p>
+                <div class="flex-group">
+                    <img
+                        src="images/number-of-games-puz-10.png"
+                        alt="a diagram: make a shallow turn if possible, otherwise, make a sharp turn"
+                        class="img-l"
+                    >
+                </div>
+            </li>
+            <li><p>If you need to determine a turning direction for a cell where you've already compared the two games,
+                naturally the calculation based on the coordinates wouldn't change. To keep things fresh, if you repeat
+                a cell, take the next game from the "games shelf" below, and add it to the (original) left coordinate
+                for this comparison. (That addition is not permanent, but only for the purposes of this single
+                comparison.)</p>
+            </li>
+        </ol>
+        <p>No comparison will be between two games of exactly the same value.</p>
+    </div>
+    <hr>
+    <div>
+        <p>"Games shelf": Each time you are doing a comparison in a cell you've done before, take the next game from
+            this list, in order, and add it to the game from the (original) left coordinate. Each game will be taken
+            down from the shelf only once.</p>
+        <div class="image-container">
+            <img src="images/number-of-games-puz-11.png" class="stretch" alt="Hackenbush stack, red blue blue from the base">
+        </div>
+        <div class="image-container">
+            <img src="images/number-of-games-puz-12.png" class="stretch" alt="Col game, three regions in a line, the left one is red">
+        </div>
+        <div class="image-container">
+            <img src="images/number-of-games-puz-13.png" class="stretch"
+                 alt="Hackenbush game, blue branch at the base, and three red branches each connected to it">
+        </div>
+        <div class="image-container">
+            <img src="images/number-of-games-puz-14.png" class="stretch"
+                 alt="Toads and Frogs game, toad toad blank frog frog">
+        </div>
+        <div class="image-container">
+            <img src="images/number-of-games-puz-15.png" class="stretch" alt="Domineering U pentomino, facing upwards">
+        </div>
+        <div class="image-container">
+            <img src="images/number-of-games-puz-16.png" class="stretch"
+                 alt="Col game, a three-circle Venn diagram with two two-circle intersections colored blue">
+        </div>
+        <div class="image-container">
+            <img src="images/number-of-games-puz-17.png" class="stretch"
+                 alt="Domineering hexomino, an I tetromino with a block to the left of the second square and a block to the right of the third">
+        </div>
+        <div class="image-container">
+            <img src="images/number-of-games-puz-18.png" class="stretch"
+                 alt="Hackenbush stack, blue blue red red from the base">
+        </div>
+        <div class="image-container">
+            <img src="images/number-of-games-puz-19.png" class="stretch"
+                 alt="Domineering game, a rectangle of width 2 and height 4">
+        </div>
+        <div class="image-container">
+            <img src="images/number-of-games-puz-20.png" class="stretch"
+                 alt="Toads and Frogs game, toad blank toad frog toad frog frog">
+        </div>
+    </div>
+</div>

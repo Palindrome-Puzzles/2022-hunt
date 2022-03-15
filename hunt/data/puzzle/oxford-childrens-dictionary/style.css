@@ -1,0 +1,13 @@
+.ocd_clues { 
+margin-top: 30px;
+margin-bottom: 30px;
+border: 1pt solid black;
+}
+
+.ocd_clue { 
+font-size: 14px;
+text-align: center;
+vertical-align: middle;
+margin: 0px;
+padding: 5px;
+}

@@ -1,0 +1,38 @@
+dispatch:
+  # Note: WS URLs should be first!
+
+  # Staging URL dispatchers.
+  - url: "staging.bookspace.world/ws/*"
+    service: staging-backend
+  - url: "staging.starrats.org/ws/*"
+    service: staging-backend
+
+  - url: "staging.mitmh2022.com/*"
+    service: staging-site
+  - url: "staging.starrats.org/*"
+    service: staging-site
+  - url: "staging.bookspace.world/*"
+    service: staging-site
+
+  # Prod URL dispatchers.
+  - url: "bookspace.world/ws/*"
+    service: prod-backend
+  - url: "www.bookspace.world/ws/*"
+    service: prod-backend
+  - url: "starrats.org/ws/*"
+    service: prod-backend
+  - url: "www.starrats.org/ws/*"
+    service: prod-backend
+
+  - url: "mitmh2022.com/*"
+    service: default
+  - url: "www.mitmh2022.com/*"
+    service: default
+  - url: "starrats.org/*"
+    service: default
+  - url: "www.starrats.org/*"
+    service: default
+  - url: "bookspace.world/*"
+    service: default
+  - url: "www.bookspace.world/*"
+    service: default

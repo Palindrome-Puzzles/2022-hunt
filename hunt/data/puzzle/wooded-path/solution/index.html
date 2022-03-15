@@ -1,0 +1,28 @@
+<section>
+    <p>For each scientific plant name, use the actual traits of each plant to find it in the idiosyncratic trinary
+        search tree. With each plant is an associated rooted tree graph consisting of lines and nodes. The gray problems
+        are example problems and result in 0/null/empty graph. The non-example (green) puzzle problems are used to get
+        the answer.</p>
+    <p>Math is explained below. Complete each math problem. Each math problem results in a 6node_5line graph. This graph
+        is used as a path in the trinary search tree to locate a new scientific name of a plant. Index into this plant
+        name by the number in (). The answer is read off in order of the green problems.</p>
+    <h2>Math explanation</h2>
+    <p>Let the dark node be considered the ‘root’ and be located at the bottom of the graph.</p>
+    <p>Consider the following examples:</p>
+    <p>left_graph operator right_graph = new_graph</p>
+    <p>and</p>
+    <p>old_graph^double_dagger = new_graph</p>
+    <h2>Operators</h2>
+    <p>Addition: Like concatenation. The dark node of the right_graph overlaps the top node of the left_graph. A
+        3node_2line graph plus a 3node_2line graph results in a 5node_4line graph.</p>
+    <p>Subtraction: As addition, but in reverse. The right_graph is removed from the top of the left_graph.</p>
+    <p>Multiplication: Each instance of a node on the left_graph becomes the entirety of the right_graph. (The
+        right_graph will be repeated several times with lines of the left_graph separating each instance). Thus, a
+        3node_2line graph multiplied by a 3node_2line graph will be a 9node_8line graph.</p>
+    <p>Division: As multiplication, but in reverse. The right_graph as a whole unit is removed multiple times from the
+        left_graph. Each instance of the right_graph will be separated from the next instance of the right_graph by one
+        line. The lines that remain (with nodes in between) will be the new_graph.</p>
+    <p>Transpose (double dagger): Each line in a graph is mirrored individually. Left lines become right lines, right
+        lines become left lines, and middle/vertical lines are unchanged. Number of nodes and lines in the new_graph is
+        unchanged from the old_graph</p>
+</section>

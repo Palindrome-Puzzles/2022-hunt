@@ -1,0 +1,21 @@
+# This file specifies files that are *not* uploaded to Google Cloud
+# using gcloud. It follows the same syntax as .gitignore, with the addition of
+# "#!include" directives (which insert the entries of the given .gitignore-style
+# file at that point).
+#
+# For more information, run:
+#   $ gcloud topic gcloudignore
+#
+/.gcloudignore
+/.github
+/bin
+
+#!include:.gitignore
+
+# We serve puzzle and round content from /hunt/data, so they need to remain
+# available to at least our standard app engine instance.
+!/hunt/data/puzzle/**/index.html
+!/hunt/data/puzzle/**/index.compiled.html
+!/hunt/data/puzzle/**/style.css
+!/hunt/data/puzzle/**/style.compiled.css
+!/hunt/data/round/**

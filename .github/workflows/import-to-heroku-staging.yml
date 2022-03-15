@@ -1,0 +1,16 @@
+name: 'Staging: Import to Heroku'
+
+# Can only be run manually from the Actions tab, as this is a destructive task
+# that resets team info.
+on: workflow_dispatch
+
+concurrency:
+  group: import-to-heroku-staging
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    uses: 'Palindrome-Puzzles/2022-hunt/.github/workflows/import-to-heroku.yml@main'
+    secrets:
+      heroku_app_name: ${{ secrets.HEROKU_APP_NAME_STAGING }}
+      heroku_api_key: ${{ secrets.HEROKU_API_KEY_STAGING }}

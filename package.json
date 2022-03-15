@@ -1,0 +1,48 @@
+{
+  "name": "2022-hunt",
+  "version": "1.0.0",
+  "description": "The Django project, website, and management scripts for Palindrome's 2022 Mystery Hunt.",
+  "scripts": {
+    "postinstall": "npm run build",
+    "build": "npm run ts:bin ./bin/build-assets.ts",
+    "watch": "npm run ts:bin ./bin/build-assets.ts -- --watch",
+    "ts:bin": "cross-env TS_NODE_PROJECT=bin/tsconfig.json node -r source-map-support/register -r ts-node/register",
+    "ts:hunt": "cross-env TS_NODE_PROJECT=hunt/tsconfig.json node -r source-map-support/register -r ts-node/register -r tsconfig-paths/register"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Palindrome-Puzzles/2022-hunt.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Palindrome-Puzzles/2022-hunt/issues"
+  },
+  "homepage": "https://github.com/Palindrome-Puzzles/2022-hunt",
+  "devDependencies": {
+    "@tsconfig/recommended": "^1.0.1",
+    "@types/concurrently": "^6.3.0",
+    "@types/js-cookie": "^3.0.0",
+    "@types/lodash": "^4.14.177",
+    "@types/lodash-es": "^4.17.5",
+    "@types/node": "^16.11.6",
+    "chokidar": "^3.5.2",
+    "commander": "^8.3.0",
+    "concurrently": "^6.3.0",
+    "cross-env": "^7.0.3",
+    "esbuild": "^0.13.12",
+    "sass": "^1.43.4",
+    "source-map-support": "^0.5.20",
+    "ts-node": "^10.4.0",
+    "tsconfig-paths": "^3.11.0",
+    "typescript": "^4.4.4"
+  },
+  "dependencies": {
+    "htm": "^3.1.0",
+    "js-cookie": "^3.0.1",
+    "lodash": "^4.17.21",
+    "lodash-es": "^4.17.21",
+    "preact": "^10.5.15",
+    "robust-websocket": "^1.0.0"
+  }
+}

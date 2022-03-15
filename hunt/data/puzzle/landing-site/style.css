@@ -1,0 +1,14 @@
+.grids {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+}
+
+.grid-structure {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 166px;
+  margin-bottom: 5px;
+}

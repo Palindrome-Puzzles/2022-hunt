@@ -1,0 +1,25 @@
+.border-top-black {
+	border-top: 2px solid black;
+}
+.border-left-black {
+	border-left: 2px solid black;
+}
+.border-right-orange {
+	border-right: 2px solid orange;
+}
+.border-left-orange {
+	border-left: 2px solid orange;
+}
+.border-bottom-orange {
+	border-bottom: 2px solid orange;
+}
+
+.blanks {
+	margin-bottom: 4rem !important;
+}
+
+#pentominos img {
+	width: 8rem;
+	height: auto;
+	padding: 2rem;
+}

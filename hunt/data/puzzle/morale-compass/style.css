@@ -1,0 +1,50 @@
+table.alignment{
+  border: solid black;
+  border-collapse:collapse;
+  table-layout: fixed;
+  width: 100%;
+  max-width: 800px;
+  margin-bottom: 40px;
+  }
+td.title {
+  text-align: center;
+  font-weight: bold;
+  background-color:#ffe599;
+  color-adjust:exact;
+  -webkit-print-color-adjust:exact;
+  padding: 6px 0px 6px 0px;
+}
+td.header {
+  text-align: center;  
+  border: solid black;
+  border-top-width: medium;
+  border-bottom-width: thin;
+  border-left-width: medium;
+  border-right-width: medium;
+  background-color:#fff2cc;
+  color-adjust:exact;
+  -webkit-print-color-adjust:exact;
+}
+td.data {
+  text-align: center;
+  border: solid black;
+  border-top-width: thin;
+  border-bottom-width: medium;
+  border-left-width: medium;
+  border-right-width: medium;
+  padding: 12px 0px 12px 0px;
+}
+td.bearing {
+  text-align: right;
+  font-variant-numeric: lining-nums;
+}
+table.compass{
+  border: solid black;
+  border-collapse:collapse;
+  table-layout: fixed;
+  width: 100%;
+  max-width: 300px;
+}
+table.compass td{
+  border: 0.5px solid black;
+}

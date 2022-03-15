@@ -1,0 +1,19 @@
+{% load assets %}
+
+h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 500;
+}
+
+header:not(.large-wordmark) img {
+    height: 150px;
+}
+
+.page-background {
+    background-image: url("{% aux 'prologue' 'bg.jpg' %}");
+    background-color: #747473;
+    background-position: center;
+    background-size: cover;
+    position: fixed;
+    top: 0;
+}

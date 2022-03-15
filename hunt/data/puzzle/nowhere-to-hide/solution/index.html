@@ -1,0 +1,385 @@
+<p>The game plays like Tetris, except solvers must arrange the pieces so that valid words (according to the linked wordlist) are spelled across and down, and so that all the pieces are connected (similar to the rules of Scrabble).  If a piece violates these rules, the game ends with a message of "Illegal placement".</p>
+
+<p>Each of the six levels always consists of the same sequence of pieces.  After about six or seven pieces, a final piece appears which has symbols on it instead of letters.  Upon placing this piece, the game will either say "Illegal placement", or possibly "Level completed".</p>
+
+<p>Each symbol represents a letter, and the game interprets each symbol as though it was the associated letter in determining whether the placement of the piece is legal. Solvers will need to determine the mapping from symbols to letters by analyzing the configurations which successfully complete the level, as well as those which don't.</p>
+
+<p>For example, the following is a valid configuration for level 1:</p>
+<pre>
+      : * & #
+            O
+            N U T S
+                R
+          R     O
+          A     P
+  E V E   T     E
+      T H E S I S
+</pre>
+<p>From this, solvers can conclude that <strong>#ON</strong> is a valid word, and thus # must represent one of C, D, E, F, H, I, M, S, T, W, or Y.  Solvers can also conclude that <strong>:*&#</strong> is a valid word.  The same configuration with the top word slid one position to the right is not legal, so then solvers can conclude that <strong>&ON</strong> is not a valid word, and so <strong>&</strong> must represent A, B, G, J, K, L, N, O, P, Q, R, U, V, X, or Z.</p>
+
+<p>There are hundreds of ways to complete each level, but solvers don't need to examine them all; they just need to try as many as necessary to determine the hidden words.  As an additional aid, the mapping from symbols to letters is consistent across all six levels, so the <strong>&</strong> in level 1 represents the same letter as the <strong>&</strong> in level 2, for instance.  Also, no two symbols represent the same letter.</p>
+
+<p>The mapping is as follows:</p>
+<table>
+<tr><td>A</td><td>;</td></tr>
+<tr><td>B</td><td>?</td></tr>
+<tr><td>D</td><td>%</td></tr>
+<tr><td>F</td><td>!</td></tr>
+<tr><td>I</td><td>*</td></tr>
+<tr><td>K</td><td>-</td></tr>
+<tr><td>L</td><td>/</td></tr>
+<tr><td>M</td><td>$</td></tr>
+<tr><td>N</td><td>&</td></tr>
+<tr><td>O</td><td>@</td></tr>
+<tr><td>R</td><td>+</td></tr>
+<tr><td>S</td><td>~</td></tr>
+<tr><td>T</td><td>:</td></tr>
+<tr><td>U</td><td>=</td></tr>
+<tr><td>Y</td><td>#</td></tr>
+</table>
+<p>The final pieces in each of the levels are TINY, ION, MASON, FLOUR, KNOB, and DIM, respectively.</p>
+
+<p>For the final step, solvers must simulate playing a “meta level” using the final words from levels 1-6.  Unlike the earlier levels which could be completed in many ways, there is only one way to legally place the pieces for the meta level.  (In fact, after placing the first piece, there is only one valid placement for each of the remaining pieces.)  The final configuration is as follows (note that KNOB and DIM need to be rotated):</p>
+<pre>
+        M
+        I
+        D
+        B O N K
+F L O U R
+      M A S O N
+        I O N
+    T I N Y
+</pre>
+<p>The word reading vertically through all six pieces is the answer to the puzzle: <span class='answer'>MIDBRAIN</span>.</p>
+
+<p>Here are some examples that show how each letter can be deduced.</p>
+
+<p>Let's start with level 3.  One can make the following configurations:</p>
+<div class='prefer-2-col'><div><pre>
+$ ; ~ @ &
+        A         E
+    P I N         L
+    R             A
+    A             T
+    T         A T E
+    S W O R D S
+
+</pre<pre>
+    $ ; ~ @ &
+        A
+    T A L E
+S T A R
+W
+O
+R
+D     N I P
+S A T E
+
+</pre></div><div><pre>
+        $ ; ~ @ &
+        A
+      A T E
+S T A R
+W
+O
+R
+D       N I P
+S T A L E
+
+</pre><pre>
+      $ ; ~ @ &
+          P
+          I
+          N
+  A   A T E
+S T A R
+W
+O
+R
+D
+S T A L E
+
+</pre></div>
+</div>
+<p>For each of these, there are five different alignments at which one can try to place the unknown word.  So for each of the five symbols, we can determine whether they form valid words when placed in the blanks in the templates _AN, _AL, _AT, and _PINE.</p>
+
+<p>Here are the sets of letters which form valid words for each of the templates:</p>
+<pre>
+_AN         BC  FG     MN P R T VW
+_AL        AB D  G        P  S
+_AT         BC EFGH  KLM OPQRST VW
+_PINE                    O   S
+</pre>
+<ul class='no-bullets'>
+<li><strong>$</strong> works for templates 1 and 3 but not 2 and 4, so it must be one of C,F,M,R,T,V,W.</li>
+<li><strong>;</strong> works for template 2 only, so it must be A or D.</li>
+<li><strong>~</strong> works for templates 2, 3, and 4, so it must be S.</li>
+<li><strong>@</strong> works for templates 3 and 4, but not 1 and 2, so it must be O.</li>
+<li><strong>&</strong> works for template 1 only, so it must be N.</li>
+</ul>
+<p>Thus <strong>$;~@&</strong> must fit the pattern [CFMRTVW][AD]SON, and the only word fitting this pattern is MASON.</p>
+
+<p>Moving to level 1, here are some configurations one could make:</p>
+
+<div class='prefer-2-col'><div><pre>
+  : * & #
+  O
+  E V E
+      N U T S
+          R
+          O
+          P
+    R A T E
+T H E S I S
+
+</pre><pre>
+    : * & #
+        O
+        S T U N
+          R
+          O
+E V E     P
+    R A T E
+T H E S I S
+
+</pre><pre>
+          : * & #
+          O
+      R O P E S
+        R     T
+        A     U
+E V E   T     N
+    T H E S I S
+
+</pre></div><div><pre>
+: * & #
+      O
+      N U T S
+          R
+          O
+E V E     P
+    R A T E
+T H E S I S
+
+</pre><pre>
+    : * & #
+        O
+        N U T S
+  R O P E
+    R
+    A
+    T     E V E
+T H E S I S
+
+</pre><pre>
+          : * & #
+N           R
+U     O     A
+T R O P E   T     E V E
+S       T H E S I S
+
+</pre></div></div>
+
+
+<p>Again, the unknown word can be shifted around to test each different symbol in each template.  Here are the templates and the letters which satisfy them:</p>
+<pre>
+_OE           D F H J       R T VW
+_OS         BCD      K MN    S   W
+_OP         BC  F H  KLM  P  ST  W
+_ON          CDEF HI   M     ST  W Y
+_ONE        BCD  GH   L N P  ST     Z
+_RATE        C   G I     OP    U
+</pre>
+<ul class='no-bullets'>
+<li><strong>:</strong> works for templates 1, 3, 4, and 5, so it must be H or T.</li>
+<li><strong>*</strong> works for templates 4 and 6 only, so it must be I.</li>
+<li><strong>&</strong> works for templates 2 and 5 only, so it must be N.</li>
+<li>(We had already established that <strong>&</strong> was N from level 3, but this can be confirmed here as well.)</li>
+<li><strong>#</strong> works for template 4 only, so it must be E or Y.</li>
+</ul>
+<p>At this point, there are still two possible words, TINE and TINY.  These can be distinguished by the configuration below (or many others).  This configuration fails to be valid, so the word must be TINY.</p>
+<pre>
+              :
+              *
+              &
+              #
+  O     N U T S
+  R O P E
+    R
+    A
+    T     E V E
+T H E S I S
+</pre>
+<p>(not a winning configuration)</p>
+
+<p>For level 2, all the symbols are ones we've already deduced.  The hidden word is ION.</p>
+
+<p>For level 6, we've already determined that <strong>*</strong> is I and <strong>$</strong> is M.  The following configurations are both valid:</p>
+<div class='prefer-2-col'>
+<div><pre>
+    % * $
+    O
+    N
+A C E
+  L
+  O   P A R T
+  S         E A R
+R E L E V A N T
+
+</pre></div><div><pre>
+$ * %
+    O
+    N
+A C E
+  L
+  O   P A R T
+  S         E A R
+R E L E V A N T
+
+</pre></div></div>
+
+<p>This shows that both <strong>%*$</strong> and <strong>$*%</strong> are valid words.  So % can fill in the blanks in _ONE, _IM, and MI_.</p>
+
+<pre>
+_ONE        BCD  GH   L N P  ST     Z
+_IM        A  D   H    MN   RS  V
+MI_         B D  G    LM    RS    X
+</pre>
+
+<p>So <strong>%</strong> is either D or S.  We might rule out S on the grounds that <strong>~</strong> is already S, but another trial configuration such as the one below will confirm that D is the correct letter.</p>
+<pre>
+    %
+    *
+    $
+A C E
+  L             N
+  O   P A R T   O
+  S         E A R
+R E L E V A N T
+</pre>
+
+<p>On to level 5.  Here are some configurations:</p>
+<div class='prefer-2-col'><div>
+<pre>
+- & @ ?             C
+      A             A
+      I     M E N   R
+      L A T E   U S E
+            N O T
+
+</pre><pre>
+- & @ ?         C
+      A         A
+M     I         R
+E L A T E   U S E
+N       N O T
+
+</pre></div><div><pre>
+              - & @ ?
+              A
+    C A R     I
+U S E     M E N
+    L A T E
+          N O T
+
+</pre><pre>
+                - & @ ?
+                C
+      A         A
+M     I         R
+E L A T E   U S E
+N       N O T
+
+</pre><p>(not a winning configuration)</p></div></div>
+
+<p>This leads to the following templates:</p>
+<pre>
+_AIL        B   F H JK MN P RST VW
+_AIT        B    G               W
+_AIN         C  FG   KLM  P RST VW
+_CARE                        S
+</pre>
+<ul class='no-bullets'>
+<li><strong>-</strong> works for templates 1 and 3 only, so it must be F, K, M, P, R, T, or V.</li>
+<li><strong>&</strong> works for template 1 only, so it must be H, J, or N, but we already know that it's N.</li>
+<li><strong>@</strong> works for none of these templates, but we already know that it's O.</li>
+<li><strong>?</strong> works for templates 1 and 2 only, so it must be B.</li>
+</ul>
+<p>The word must fit the pattern [FKMPRTV]NOB, and the only option is KNOB.</p>
+
+<p>Finally we go to level 4.  Here are some configurations:</p>
+
+<div class='prefer-2-col'>
+<div><pre>
+          ! / @ = +
+          I
+          N
+      E A S T
+            R
+E N       S I
+L A P     P A
+    A R E A L
+
+</pre><pre>
+        ! / @ = +
+          E
+          N
+      E A S T
+N           R
+I         S I
+L A P     P A
+    A R E A L
+
+</pre><pre>
+        ! / @ = +
+        E
+        A
+        S         E N
+        T   L A I R
+        S P A
+    N     A
+    I     R
+    P A L E
+
+</pre></div><div><pre>
+          ! / @ = +
+          L
+          A   E N
+          P I N
+      E A S T
+L A I R
+A
+P
+S
+E R A
+
+</pre><pre>
+      ! / @ = +
+N E         N
+  L A P     I
+      E A S T
+L A I R
+A
+P
+S
+E R A
+
+</pre></div></div>
+
+
+<p>This leads to the following templates:</p>
+<pre>
+_INS       AB D FGH JKL   P RST  W YZ
+_ENS        B D FGH  KL   P   T  W Y
+_EASTS      B   F     L            Y
+_LAPS        C  F            S
+_NIT                 K       S U
+</pre>
+<ul class='no-bullets'>
+<li><strong>!</strong> works for templates 1, 2, 3, and 4, so it must be F.</li>
+<li><strong>/</strong> works for templates 1, 2, and 3 only, so it must be B, L or Y.</li>
+<li><strong>@</strong> works for none of these templates, but we already know that it's O.</li>
+<li><strong>=</strong> works for template 5 only, so it must be U.</li>
+<li><strong>+</strong> works for template 1 only, so it must be A, J, R, or Z.</li>
+</ul>
+<p>The word must fit the pattern F[BLY]OU[AJRZ], and the only possibility is FLOUR.</p>

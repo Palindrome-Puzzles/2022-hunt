@@ -1,0 +1,19 @@
+.borderBottom {
+	border-bottom: 3px solid black !important;
+}
+
+.borderLeft {
+	border-left: 3px solid black !important;
+}
+
+.borderRight {
+	border-right: 3px solid black !important;
+}
+
+.borderTop {
+	border-top: 3px solid black !important;
+}
+
+.tint {
+	background-color: #FFCCCC;
+}

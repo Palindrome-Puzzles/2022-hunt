@@ -1,0 +1,23 @@
+<html>
+  <head>
+    <!--<meta http-equiv="refresh" content="8">-->
+    <style type="text/css">
+      body, td, input {
+        font: 10pt Verdana;
+      }
+    </style>
+  </head>
+  <body>
+    No handler registered with the username <code>{{ email }}</code>. <br />
+    If you mistyped it, click <a href=".">here</a>.<br />
+    <form action="." method="POST">
+      {% csrf_token %}
+      Otherwise, please enter your name below to get started.  Please try not to obscure your identity.<br />
+      <input type="hidden" name="email" value="{{ email }}" />
+      <input type="hidden" name="phone" value="{{ phone }}" />
+      <input type="hidden" name="next" value="{{ next }}" />
+      <input type="text" size="30" name="name" />
+      <input type="submit" value="Go" />
+    </form>
+  </body>
+</html>

@@ -1,0 +1,11 @@
+<div class="interaction-desc">
+{% if interaction.interactiondata.type == 'submission' %}
+  This is a <strong>self-help puzzle</strong> - teams will email us their submissions and we need to grade them.
+{% elif interaction.interactiondata.type == 'story' %}
+  This is a <strong>story interaction</strong> - we need to contact the team to arrange a live interaction, or send them an email with the story.
+{% elif interaction.interactiondata.type == 'answer' %}
+  This is an <strong>answer interaction</strong> - we need to confirm a team's request to spend a manuscrip with the team captain.
+{% else %}
+  <em>Unknown interaction type.</em>
+{% endif %}
+</div>

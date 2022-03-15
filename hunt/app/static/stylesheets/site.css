@@ -1,0 +1,1356 @@
+/* Section: Common site elements. */
+main {
+  box-sizing: border-box;
+  flex: 1;
+  padding: 10px 0 30px;
+  min-width: 100%;
+}
+main > section,
+main .paper-edge {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+h1 {
+    color: #fff;
+}
+
+header {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: -10px 0 10px;
+  overflow: hidden;
+  text-align: center;
+  width: 100%;
+  position: relative;
+}
+header:not(.large-wordmark) {
+  padding: 24px 40px;
+}
+header.large-wordmark {
+  margin-bottom: 0;
+  padding: 0;
+  padding-top: 2%;
+}
+header > * {
+  margin: 0 auto;
+  max-width: 1000px;
+}
+
+header .subtitle {
+  color: #fff;
+  display: block;
+  font-size: 30px;
+}
+header:not(.large-wordmark) h1,
+header .subtitle:not(img) {
+  text-shadow: 0 0px 20px black, 0px 0px 20px rgb(0 0 0 / 75%), 0px 0px 50px rgb(0 0 0 / 50%);
+}
+@media print {
+  header:not(.large-wordmark) h1,
+  header .subtitle:not(img) {
+    text-shadow: none;
+    color: black;
+  }
+}
+/*
+ * Don't let text-shadows be cropped. `h1` will only be showed alone, or with
+ * a wordmark above it. The exception is a prologue which is handled separately.
+ */
+header:not(.large-wordmark) h1 {
+  padding-bottom: 50px;
+  margin-bottom: -50px;
+}
+header:not(.large-wordmark) h1:only-child {
+  padding-top: 50px;
+  margin-top: -50px;
+}
+header .subtitle:not(img) {
+  padding-top: 12px;
+  /* Don't let text-shadows be cropped. */
+  padding-bottom: 50px;
+  margin-bottom: -50px;
+}
+header.large-wordmark h1 {
+  display: contents;
+}
+header .wordmark-link {
+  order: -1;
+  overflow: hidden;
+}
+header img {
+  object-fit: scale-down;
+  height: 100%;
+  width: 100%;
+}
+header.large-wordmark img {
+  max-width: 800px;
+  width: 80%;
+}
+header:not(.large-wordmark) img {
+  max-width: 250px;
+}
+header:not(.large-wordmark) {
+  min-height: 200px;
+}
+header:not(.large-wordmark) .wordmark-link {
+  margin-bottom: 15px;
+}
+@media only screen and (max-width: 960px) {
+  header:not(.large-wordmark) h1 {
+    font-size: 5vw;
+  }
+}
+@media only screen and (max-width: 720px) {
+  header:not(.large-wordmark) h1 {
+    font-size: 36px;
+  }
+}
+
+.page-background {
+  background-image: url(../bg.jpg);
+  display: flex;
+  flex-direction: column;
+  bottom: 0;
+  position: absolute;
+  top: 64px;
+  width: 100%;
+  z-index: -1;
+}
+.page-background.pushed {
+  top: 128px;
+}
+.page-background-top {
+  background-position: bottom center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.page-background-map {
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  flex: 1 1 auto;
+}
+.page-background-top,
+.page-background-map {
+  left: 50%;
+  position: relative;
+  transform: translateX(-50%);
+}
+
+ul.top-breadcrumb {
+  margin: 1rem 1rem 3rem 0rem;
+  padding-left: 0;
+}
+ul.top-breadcrumb li {
+  font-size: 0.9rem;
+  display: inline;
+  list-style-type: none;
+  margin-left: 0;
+  padding-left: 0;
+}
+
+
+/* Section: Top menu styles. */
+.top-menu {
+  background-color: #343434;
+  box-sizing: border-box;
+  color: #fff;
+  display: flex;
+  padding: 10px 16px;
+  min-width: -moz-fit-content;
+  min-width: fit-content;
+}
+
+.top-menu nav.breadcrumbs a,
+.top-menu nav.site button,
+.top-menu .site-link,
+.top-menu .mobile-menu-heading,
+.top-menu .menu-label {
+  letter-spacing: 1.08px;
+  text-transform: uppercase;
+}
+
+
+/* Section: Common nav styles. */
+.top-menu nav.breadcrumbs ol,
+.top-menu nav.site > ul {
+  align-items: center;
+  display: flex;
+  list-style-type: none;
+  padding-left: 0;
+  margin: 0;
+  white-space: nowrap;
+}
+
+.top-menu .site-link,
+.top-menu nav.breadcrumbs a {
+  color: inherit;
+  display: inline-block;
+  line-height: 44px;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.top-menu .site-link {
+  padding: 0 .5em;
+}
+.top-menu nav.breadcrumbs a {
+  font-weight: bold;
+  padding: 0 .25em;
+}
+.top-menu .site-link:hover,
+.top-menu nav.breadcrumbs a:hover {
+  text-decoration: underline;
+}
+.top-menu .site-link:focus,
+.top-menu nav.breadcrumbs a:focus {
+  outline: 2px solid #005a9c;
+}
+
+
+/* Section: Breadcrumb styles in the top menu. */
+.top-menu nav.breadcrumbs {
+  /* Undo padding on breadcrumb buttons. */
+  margin-left: -.25em;
+}
+.top-menu nav.breadcrumbs ol {
+  white-space: nowrap;
+}
+.top-menu nav.breadcrumbs li {
+  display: inline;
+}
+.top-menu nav.breadcrumbs li + li::before {
+  content: '»';
+  line-height: 1em;
+  margin: 0 .25em;
+  vertical-align: text-top;
+}
+
+
+/*
+ * Section: Desktop version and fallback version (i.e. for screen readers) of
+ * the top menu.
+ */
+@media only screen and (min-width: 640px), not screen {
+  .top-menu .responsive-menu-container {
+    display: flex;
+    column-gap: 2em;
+    flex: 1;
+    justify-content: space-between;
+  }
+  .top-menu .responsive-menu-container nav.site,
+  .top-menu .responsive-menu-container .actions {
+    /* Undo padding on breadcrumb buttons. */
+    margin-left: -.5em;
+  }
+
+  .top-menu nav.site > ul > li {
+    margin-left: 0;
+  }
+  .top-menu nav.site > ul > li + li {
+    margin-left: .5em;
+  }
+
+  .top-menu .actions .dropdown-wrapper,
+  .top-menu .actions .site-link {
+    margin-left: .5em;
+  }
+
+  /* Sub-section: Dropdown triggers. */
+  .top-menu .dropdown-trigger {
+    /* Curve the top edge only. */
+    border-radius: 4px 4px 0 0;
+    color: #fff;
+    cursor: pointer;
+    height: 44px;
+    padding: 0 .5em;
+    white-space: nowrap;
+
+    /* Vertically center the button text and ::after pseudo-element. */
+    display: flex;
+    align-items: center;
+  }
+  .top-menu .dropdown-trigger:hover {
+    background-color: #005a9c;
+  }
+  .top-menu .dropdown-trigger:focus {
+    background-color: #005a9c;
+  }
+  .top-menu .dropdown-trigger:focus {
+    outline: none;
+  }
+
+  html.supports-js .top-menu .dropdown-trigger[aria-expanded="false"] {
+    /* Curve all edges if the dropdown isn't open. */
+    border-radius: 4px;
+  }
+
+  .top-menu .dropdown-trigger::after {
+    border-color: currentColor;
+    border-style: solid;
+    border-width: 0 2px 2px 0;
+    content: "";
+    height: 5px;
+    margin-left: 0.5em;
+    width: 5px;
+    transform: rotate(45deg);
+  }
+  .top-menu .dropdown-trigger:focus::after,
+  .top-menu .dropdown-trigger:hover::after,
+  html.supports-js .top-menu .top-menu nav.site button[aria-expanded="true"]::after {
+    border-color: #fff;
+  }
+
+  .top-menu .dropdown-trigger img {
+    height: 80%;
+  }
+
+  .top-menu .unlinked-label {
+    height: 44px;
+    line-height: 44px;
+    margin-left: 1em;
+  }
+
+  /* Sub-section: Dropdown menus. */
+  .top-menu .dropdown-menu {
+    /* Curve the bottom edge only. */
+    border-radius: 0 0 4px 4px;
+    background-color: #343434;
+    box-sizing: border-box;
+    color: #fff;
+    display: none;
+    list-style-type: none;
+    margin: 0;
+    min-width: 10em;
+    max-width: 20em;
+    padding-bottom: .5em;
+    padding-left: 0;
+    /* Align dropdown content with top menu. Use padding so CSS-based dropdowns work. */
+    padding-top: 10px;
+    position: absolute;
+    z-index: 10;
+  }
+  .top-menu .dropdown-menu.open-right {
+    right: 0;
+  }
+  .top-menu ul.dropdown-menu.open-right {
+    text-align: right;
+  }
+  .top-menu .dropdown-wrapper .ruled {
+    border-top: 1px solid #555;
+  }
+
+
+  /* Sub-section: Dropdown behavior. */
+  .top-menu .dropdown-wrapper {
+    position: relative;
+  }
+  html:not(.supports-js) .top-menu .dropdown-wrapper:hover .dropdown-menu,
+  html:not(.supports-js) .top-menu .dropdown-wrapper:focus-within .dropdown-menu,
+  html.supports-js .top-menu .dropdown-trigger[aria-expanded="true"] + .dropdown-menu {
+    display: block;
+  }
+
+  html:not(.supports-js) .top-menu .responsive-menu-container {
+    flex-wrap: wrap;
+    row-gap: 10px;
+  }
+
+  /* Sub-section: Actions. */
+  .top-menu .actions {
+    display: flex;
+    flex: 1;
+    justify-content: flex-end;
+  }
+}
+
+
+/* Section: Mobile version of the top menu. */
+@media only screen and (max-width: 639.9px) {
+  .top-menu {
+    flex-direction: column;
+  }
+
+  .top-menu .mobile-menu-heading {
+    align-items: center;
+    display: flex;
+    height: 44px;
+  }
+  .top-menu .mobile-menu-heading button {
+    background-color: #626060;
+    border-radius: 4px;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    margin-right: 1em;
+  }
+  .top-menu .mobile-menu-heading button:hover {
+    background-color: #576c7b;
+  }
+  .top-menu .mobile-menu-heading a {
+    color: inherit;
+    font-weight: bold;
+    text-decoration: none;
+  }
+  .top-menu .mobile-menu-heading a:hover {
+    text-decoration: underline;
+  }
+  .top-menu .mobile-menu-heading a:focus {
+    outline: 2px solid #005a9c;
+  }
+
+  .top-menu .responsive-menu-container {
+    background-color: #626060;
+    box-sizing: border-box;
+    box-shadow: 2px 0px 4px #888;
+    min-width: 200px;
+    overflow-y: auto;
+    padding: 0 8px;
+    z-index: 10;
+  }
+  html.supports-js .top-menu .responsive-menu-container {
+    bottom: 0;
+    left: -310px;
+    max-width: 300px;
+    position: absolute;
+    top: 64px;
+    transition: transform .2s;
+    transform: translate(0, 0);
+    width: 80%;
+  }
+  html.supports-js .top-menu .responsive-menu-container.menu-open {
+    transform: translate(310px, 0);
+  }
+  html.supports-js .top-menu .responsive-menu-container.pushed {
+    top: 128px;
+  }
+
+  .top-menu .menu-overlay {
+    display: none;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 64px;
+    z-index: 5;
+
+    background-color: #0003;
+  }
+  .top-menu .menu-overlay.pushed {
+    top: 128px;
+  }
+  html.supports-js .top-menu .responsive-menu-container.menu-open + .menu-overlay {
+    display: block;
+  }
+
+  .top-menu .responsive-menu-container,
+  .top-menu .actions {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .top-menu .dropdown-trigger {
+    display: none;
+  }
+
+  /* Sub-section: Site navigation. */
+  .top-menu nav.site > ul {
+    display: block;
+    list-style-type: none;
+    margin-top: .25em;
+    padding-left: 0;
+  }
+  .top-menu nav.site > ul > li {
+    margin-left: 0;
+  }
+
+  .top-menu .site-link {
+    display: block;
+    line-height: normal;
+    margin-left: 0;
+    padding: .5em;
+  }
+  .top-menu .site-link:hover {
+    background-color: #576c7b;
+    text-decoration: none;
+  }
+  .top-menu .site-link:focus {
+    background-color: #005a9c;
+    outline: none;
+  }
+
+  .top-menu .dropdown-menu {
+    list-style-type: none;
+    padding-left: 0;
+  }
+  .top-menu .dropdown-menu hr {
+    display: none;
+  }
+
+  .top-menu .menu-label {
+    border-bottom: 1px solid #888;
+    margin-top: 1em;
+    padding-bottom: .2em;
+  }
+}
+
+
+/* Section: Increased spacing for top menu on large screens. */
+@media only screen and (min-width: 1080px) {
+  .top-menu {
+    padding: 10px 32px;
+  }
+
+  .top-menu .dropdown-trigger {
+    padding: 0 .5em;
+  }
+}
+
+
+/* Section: Items within dropdown menus. */
+.top-menu ul.dropdown-menu li {
+  margin: 0;
+}
+
+.top-menu ul.dropdown-menu a,
+.top-menu ul.dropdown-menu button {
+  color: #fff;
+  display: block;
+  padding: 0.5em;
+  text-decoration: none;
+}
+.top-menu ul.dropdown-menu a:hover,
+.top-menu ul.dropdown-menu button:hover {
+  background-color: #576c7b;
+}
+.top-menu ul.dropdown-menu a:focus,
+.top-menu ul.dropdown-menu button:focus {
+  background-color: #005a9c;
+  outline: none;
+}
+
+.top-menu .dropdown-menu .menu-info {
+  font-size: .75em;
+  font-style: italic;
+  margin: 0.6667em;
+}
+.top-menu .dropdown-menu hr {
+  margin: .5em 0;
+}
+.top-menu .dropdown-menu [tabindex="-1"]:focus {
+  outline: 2px solid #005a9c;
+}
+.top-menu .dropdown-wrapper .indented a {
+  padding-left: 1em;
+}
+
+
+/* Section: Bookmarks menu. */
+.top-menu .bookmarks-menu .dropdown-menu {
+  min-width: 15em;
+}
+.top-menu .bookmarks-menu ul a {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  /* Stay left aligned, even if the menu opens right. */
+  text-align: left;
+}
+.top-menu .bookmarks-menu .solved-indicator {
+  background-color: #d9d7d7;
+  border-radius: 4px;
+  color: #343434;
+  display: block;
+  font-size: small;
+  padding: .3em;
+  margin-left: .5em;
+}
+
+
+/* Section: Volume actions menu. */
+.top-menu .volume-menu .dropdown-menu {
+  padding: 1em;
+  text-align: center;
+}
+.top-menu .volume-menu .dropdown-menu label {
+  font-size: smaller;
+  font-weight: bold;
+  white-space: nowrap;
+}
+.top-menu .volume-menu .dropdown-menu label span {
+  display: inline-block;
+  min-width: 40px;
+  text-align: right;
+}
+
+
+/* Section: Team name menu. */
+.top-menu .dropdown-trigger .team-name {
+  display: inline-block;
+  max-width: 30vw;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.top-menu .menu-label {
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+}
+
+
+/* Section: Common page styles. */
+.paper-edge {
+  background-image: url(../paper-edge-white.svg);
+  background-repeat: no-repeat;
+  background-size: 1080px;
+  background-position: center;
+  height: 32.8px;
+  margin: 0 auto;
+}
+.paper-edge.top {
+  margin-bottom: -12px;
+  margin-top: 24px;
+}
+.paper-edge.bottom {
+  margin-bottom: 24px;
+  margin-top: -12px;
+  transform: rotate(180deg);
+}
+@media only screen and (max-width: 639.9px) {
+  .paper-edge.top {
+    margin-top: 12px;
+  }
+  .paper-edge.bottom {
+    margin-bottom: 12px;
+  }
+}
+@media print {
+  .paper-edge {
+    display: none;
+  }
+}
+
+.not-a-puzzle-badge {
+  border-radius: 4px;
+  background-color: #343434;
+  color: #fff;
+  font-size: small;
+  padding: .5em .75em;
+}
+
+.reward-container a {
+  color: #000c;
+  font-weight: 500;
+}
+.reward-container a:hover,
+.reward-container a:focus {
+  color: #000;
+}
+.reward-wrapper {
+  padding-bottom: 24px;
+}
+.reward-wrapper:not(:last-child) {
+  border-bottom: 2px solid #000;
+  margin-bottom: 24px;
+}
+.reward-wrapper .info {
+  font-style: italic;
+}
+.reward-wrapper .caption {
+  font-size: smaller;
+  margin-top: -.5em;
+}
+.reward-wrapper .reward {
+  border: 1px solid #0008;
+  border-radius: 10px;
+  box-shadow: 4px 4px 10px #0008;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  width: 100%;
+}
+.reward-wrapper .not-a-puzzle-badge {
+  float: right;
+  margin: 0 0 1em 1em;
+}
+
+.puzzle .reward-wrapper {
+  animation: .4s ease-in-out slide-in;
+  transform-origin: top;
+}
+
+.bonus-puzzle-content {
+    animation: .5s ease-in-out slide-in;
+    transform-origin: top;
+}
+
+@keyframes slide-in {
+  0% {
+    transform: scaleY(0);
+  }
+  100% {
+    transform: scaleY(1);
+  }
+}
+
+
+/* Section: Notification styles. */
+@media print {
+  .notifications {
+    display: none;
+  }
+}
+@media only screen and (max-width: 639.9px) {
+  .notifications {
+    position: sticky;
+    top: 0;
+  }
+  .notifications .notification {
+    width: 100%;
+  }
+  .notifications .notification:not(:last-child) {
+    display: none;
+  }
+}
+@media only screen and (min-width: 640px), not screen {
+  .notifications {
+    position: fixed;
+    left: 0;
+    top: 64px;
+    width: 300px;
+    z-index: 3;
+  }
+  .notifications .notification {
+    margin: 20px;
+    transition: opacity .1s;
+  }
+  .notifications .notification:not(:hover):not(:focus-within) {
+    opacity: 0.9;
+  }
+}
+.notifications .notification {
+  box-sizing: border-box;
+  display: block;
+  position: relative;
+  transform-origin: top;
+  animation: .4s ease-in-out slide-in;
+}
+
+.notifications .notification a {
+  background-color: #ffffff;
+  color: black;
+  display: block;
+  padding: 10px 35px;
+  text-decoration: none;
+  border-radius: 10px;
+  filter: drop-shadow(0 0 0.25rem rgba(0, 0, 0, 0.1));
+  transition: opacity 0.7s linear;
+  position: relative;
+}
+
+.notification.puzzle_solved a { background-color: #71DB1F; }
+.notification.incorrect a { background-color: #F2335C; }
+.notification.round_released a { background-color: #F9D608; }
+.notification.puzzle_released a { background-color: #000000;  }
+.notification.story_beat a { background-color: #11DAEF; }
+.notification.reward a { background-color: #FFFFFF; }
+.notification.task_sent a { background-color: #7A93A5; }
+.notification.task_done a { background-color: #7A93A5; }
+.notification.announcement a { background-color: #ff03ff; }
+
+.notifications .notification a::before {
+  display: block;
+  content: "";
+  position: absolute;
+  width: 35px;
+  height: 35px;
+  top: -10px;
+  left: -10px;
+  color: white;
+  border-radius: 50%;
+  background: url('../notifications/story_beat.svg') no-repeat 0 0;
+}
+
+.notification.puzzle_solved a::before { background-image: url('../notifications/puzzle_solved.svg'); }
+.notification.incorrect a::before { background-image: url('../notifications/incorrect.svg'); }
+.notification.round_released a::before { background-image: url('../notifications/round_released.svg'); }
+.notification.puzzle_released a::before { background-image: url('../notifications/puzzle_released.svg'); }
+.notification.story_beat a::before { background-image: url('../notifications/story_beat.svg'); }
+.notification.reward a::before { background-image: url('../notifications/reward.svg'); }
+.notification.task_sent a::before { background-image: url('../notifications/task_sent.svg'); }
+.notification.task_done a::before { background-image: url('../notifications/task_done.svg'); }
+.notification.announcement a::before { background-image: url('../notifications/announcement.svg'); }
+
+.notifications .notification a em {
+  display: block;
+  text-transform: uppercase;
+  font-style: normal;
+  font-size: .9em;
+  margin-bottom: .3em;
+  font-weight: bold;
+}
+
+.notifications .notification a:hover,
+.notifications .notification a:focus {
+  opacity: 1;
+  filter: drop-shadow(0 0 0.25rem rgba(0, 0, 0, 0.5));
+}
+
+.notifications .notification button {
+  color: black;
+  cursor: pointer;
+  font-size: 25px;
+  line-height: 40px;
+  width: 40px;
+  padding: 0;
+  position: absolute;
+  right: 0;
+  text-align: center;
+  top: 0;
+}
+
+.notification.incorrect a, .notification.incorrect button,
+.notification.puzzle_released a, .notification.puzzle_released button,
+.notification.task_sent a, .notification.task_sent button,
+.notification.task_done a, .notification.task_done button,
+.notification.announcement a, .notification.announcement button
+{
+  color: white;
+}
+
+.notifications .notification button:after {
+  content: "";
+  border-radius: 50%;
+  border: 2px solid currentColor;
+  position: absolute;
+  margin: 8px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.notifications .notification button:hover,
+.notifications .notification button:focus {
+  filter: drop-shadow(0 0 0.25rem rgba(0, 0, 0, 0.5));
+}
+
+
+/* Section: Puzzle page styles. */
+.content,
+.puzzle-actions,
+.puzzle-action-embed {
+  padding: 8px 40px;
+  max-width: 1000px;
+  margin: 10px auto;
+}
+.content {
+  background-color: #fff;
+  padding-top: 24px;
+  padding-bottom: 24px;
+}
+@media only screen and (max-width: 639.9px) {
+  header:not(.large-wordmark),
+  .content,
+  .puzzle-actions,
+  .puzzle-action-embed {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+@media only screen and (max-width: 1099.9px) {
+  .content,
+  .puzzle-actions {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+
+  .bonus-puzzle-content .paper-edge,
+  .bonus-puzzle-content .content,
+  .puzzle-action-embed-wrapper .paper-edge {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+@media print {
+  .content {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+  .puzzle-actions, .puzzle-action-embed-wrapper {
+    display: none;
+  }
+}
+
+
+.puzzle {
+  min-height: 250px;
+}
+.puzzle p {
+  line-height: 1.425;
+}
+
+.puzzle-actions {
+  background-color: #fff;
+  text-align: center;
+}
+.puzzle-actions ul {
+  align-items: center;
+  display: flex;
+  justify-content: flex-end;
+  list-style-type: none;
+  padding-left: 0;
+  margin: .5em 0;
+}
+.puzzle-actions ul li + li {
+  margin-left: 1em;
+}
+.puzzle-actions iframe {
+  border: none;
+  display: block;
+  width: 100%;
+  height: 0;
+  min-height: 50px;
+  max-height: 350px;
+}
+
+.puzzle-action-embed-wrapper {
+  animation: .4s ease-in-out slide-in;
+  transform-origin: top;
+}
+.puzzle-action-embed {
+  align-items: center;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+}
+.puzzle-action-embed-wrapper.closed {
+  display: none;
+}
+.submit-iframe,
+.minipuzzle-iframe,
+.puzzle-action-embed-wrapper iframe {
+  border: none;
+  width: 100%;
+}
+.puzzle-action-embed-wrapper iframe {
+  height: 40vh;
+  min-height: 50px;
+  max-height: 400px;
+}
+.puzzle-action-embed-wrapper button {
+  background: #343434;
+  border: 1px solid #000;
+  border-radius: 8px;
+  color: #fff;
+  cursor: pointer;
+  font-size: .9em;
+  margin-top: 1em;
+}
+.puzzle-action-embed-wrapper button:hover {
+  background: #121212;
+}
+.puzzle-action-embed-wrapper button::after {
+  content: "\2715";
+  vertical-align: baseline;
+  margin-left: 5px;
+  font-size: smaller;
+}
+@media print {
+  .minipuzzle-iframe {
+    display: none;
+  }
+}
+
+.canned-hints {
+  border-collapse: separate;
+}
+
+.canned-hints th {
+  background-color: #fff;
+  position: sticky;
+  top: 0;
+}
+
+
+/* Section: Common styles for round pages. */
+.round-table-container {
+  font-size: 1.2rem;
+}
+.round-table-container table {
+  width: 100%;
+}
+.round-table-container th,
+.round-table-container td {
+  padding: 8px 24px;
+  width: 50%;
+}
+.round-table-container th:nth-of-type(1),
+.round-table-container td:nth-of-type(1) {
+  text-align: right;
+}
+.round-table-container th:nth-of-type(2),
+.round-table-container td:nth-of-type(2) {
+  text-align: left;
+}
+
+.round-table-container .meta {
+  font-weight: bold;
+}
+
+
+/* Section: Puzzle authoring styles. */
+.author-note {
+  border: 1px solid black;
+  padding: 10px;
+  margin: 20px 0px;
+  background-color: #f5f5dcf0;
+}
+
+.answer {
+  font-weight: bold;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.answer.spoiler {
+  display: inline-block;
+  min-width: 200px;
+}
+.spoiler:not(:hover) {
+  background-color: currentColor;
+}
+
+.puzzle .flavor {
+  border-bottom: 1px solid #000;
+  padding-bottom: 20px;
+  margin-bottom: 36px;
+}
+.puzzle .flavor.subsequent {
+  border-top: 1px solid #000;
+  padding-top: 20px;
+  margin-top: 36px;
+}
+.puzzle .flavor {
+  font-style: italic;
+}
+.puzzle .flavor em {
+  font-style: normal;
+}
+.puzzle .errata,
+.puzzle .notice {
+  font-style: normal;
+  margin-bottom: 0.5rem;
+  padding: 16px;
+}
+.puzzle .errata {
+  background-color: #F0CDCD;
+}
+main.public-access .puzzle .errata {
+  display: none;
+}
+.puzzle .notice {
+  background-color: #DEF4FF;
+}
+
+.bonus-puzzle-content .notice {
+  background-color: #f4e9b5;
+  margin-bottom: 0.5rem;
+  padding: 16px;
+}
+.bonus-puzzle-content .notice.complete {
+  background-color: #bae8ba;
+}
+
+.blanks {
+  font-size: 1.5em;
+  white-space: pre-wrap;
+}
+.blanks .boxed {
+  display: inline-block;
+  padding: 2px;
+  border: 1px solid black;
+}
+
+.numbered-blanks {
+  line-height: 1.2;
+}
+.numbered-blanks u {
+  border-top: 1px solid black;
+  display: inline-block;
+  height: 1em;
+  margin-top: 1em;
+  margin-right: 5px;
+  text-align: center;
+  text-decoration: none;
+  vertical-align: top;
+  width: 20px;
+}
+.numbered-blanks .word-break {
+  margin-right: 10px;
+}
+
+.numbered-blanks.emphasized {
+  /* Increase font size for any characters outside the blanks. */
+  font-size: 2em;
+  font-weight: bold;
+}
+.numbered-blanks.emphasized u {
+  /*
+   * Reduce font size for the blanks and numbers. Choose margin-top so that it
+   * is the same as height as any characters outside the blanks.
+   */
+  font-size: .5em;
+  font-weight: normal;
+  margin-top: 2em;
+}
+
+.blank-words {
+  font-size: 1.5em;
+}
+.blank-words .word-break {
+  margin-right: 10px;
+}
+.blank-word::after {
+  content: '________';
+  font-family: Open Sans;
+}
+
+table.grid {
+  break-inside: avoid-page;
+}
+table.grid td:not(.no-border) {
+  border: 1px solid black;
+}
+table.grid td.filled {
+  background-color: black;
+  color-adjust: exact;
+  -webkit-print-color-adjust: exact;
+}
+
+table.crossword td,
+table.crossword th {
+  box-sizing: border-box;
+  height: 40px;
+  min-width: 40px;
+  position: relative;
+  text-align: center;
+  width: 40px;
+}
+table.crossword .clue {
+  font-size: .7em;
+  left: 2px;
+  line-height: 1;
+  position: absolute;
+  top: 2px;
+}
+
+/*
+ * For barred grids, we need some awkward workarounds so they copy correctly.
+ * They're described in more detail in copyjack, but essentially, if we want
+ * borders with different thickness, one of the borders must be missing or it
+ * copies wrong.
+ *
+ * Our workaround is to remove the top border when copying, and inject a hidden
+ * row to fix borders. But essentially, prefer barred-right and barred-bottom to
+ * add bars. Only use a left/top bar class when in the first col/row.
+ */
+table.barred td.barred-right {
+  border-right-width: thick;
+}
+table.barred td.barred-bottom {
+  border-bottom-width: thick;
+}
+table.barred td.barred-left--first-col {
+  border-left-width: thick;
+}
+table.barred tr td.barred-top--first-row {
+  border-top-width: thick;
+}
+
+.content img.img-l {
+  height: auto;
+  max-width: 1000px;
+  min-width: 500px;
+  width: 100%;
+}
+.content img.img-m {
+  height: auto;
+  max-width: 800px;
+  min-width: 400px;
+  width: 100%;
+}
+.content img.img-s {
+  height: auto;
+  max-width: 450px;
+  min-width: 225px;
+  width: 100%;
+}
+.content img.img-xs {
+  height: auto;
+  max-width: 330px;
+  min-width: 165px;
+  width: 100%;
+}
+
+.clued-item-container {
+  display: flex;
+  flex-direction: column;
+}
+.clued-item-container > .clues {
+  order: 100;
+}
+.clues {
+  break-inside: avoid-page;
+  /* If font-boosting kicks in on mobile, make sure all clues have the same font sizes. */
+  text-size-adjust: 200%;
+}
+@media print {
+  /* Flex and `break-inside` don't play well, causing printing issues. */
+  .clued-item-container {
+    display: block;
+  }
+}
+
+ol.no-bullets,
+ul.no-bullets {
+  list-style-type: none;
+  padding: 0;
+}
+ol.no-bullets li,
+ul.no-bullets li {
+  margin: 1em 0;
+}
+
+.prefer-2-col {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  row-gap: 1em;
+}
+.prefer-2-col > * {
+  flex-basis: 45%;
+}
+@media only screen and (max-width: 639.9px) {
+  .prefer-2-col > * {
+    flex-basis: 100%;
+  }
+}
+
+.italicized {
+  font-style: italic;
+}
+
+details.long-alt > summary {
+  list-style: none;
+}
+details.long-alt::before {
+  content: "Long description available";
+  font-size: 0.9rem;
+  font-style: italic;
+}
+details.long-alt > summary::-webkit-details-marker {
+  display: none;
+}
+details.long-alt > summary img:hover {
+  cursor: pointer;
+  opacity: .65;
+}
+body:not(.user-is-tabbing) details.long-alt > summary:focus {
+  outline: none;
+}
+
+.keep-colors-in-print {
+  color-adjust: exact;
+  -webkit-print-color-adjust: exact;
+}
+
+
+/* Section: Interactive puzzle styles. */
+.disconnected.banner {
+  background-color: #a40000;
+  color: #fff;
+}
+.error.banner {
+  background-color: #ff0000;
+  color: #fff;
+}
+
+.hidden-until-interactive {
+  display: none;
+}
+.puzzle.interactive .hidden-until-interactive {
+  display: block;
+}
+.puzzle.interactive .hidden-when-interactive {
+  display: none;
+}
+
+.state-list-container {
+  padding: 8px;
+}
+.state-list button {
+  background-color: #ddd9;
+  border: 1px outset #989898;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 8px;
+}
+.state-list button:focus {
+  outline: 2px solid #24b7e3;
+}
+.state-list button:hover {
+  background-color: #dddc;
+}
+.state-list button.active {
+  background-color: #A3F47599;
+}
+.state-list button.active:hover {
+  background-color: #A3F475cc;
+}
+
+
+/* Section: Sorttable override styles. */
+table.sortable thead th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sorttable_nosort) {
+  cursor: pointer;
+}
+table.sortable thead th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sorttable_nosort)::after {
+  content: ' \21c5';
+  white-space: nowrap;
+}
+
+
+/* Section: Copy to clipboard. */
+.puzzle .copy-only {
+  display: none;
+}
+
+#clipboard-button:not(.shown) {
+  /* Hide by default, it will be shown by copyjack javascript when ready. */
+  display: none;
+}
+
+#clipboard-button {
+  border-radius: 1em;
+  bottom: 1.5em;
+  cursor: pointer;
+  font-size: 1em;
+  height: 2em;
+  padding: 0 0.8em;
+  position: fixed;
+  right: 1.5em;
+  z-index: 5;
+}
+
+@media print {
+  #clipboard-button {
+    display: none !important;
+  }
+}

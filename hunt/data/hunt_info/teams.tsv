@@ -1,0 +1,4 @@
+Username	Name	Password	Email	Phone	Size	Admin?
+admin	God Mode	some-secure-password	abc@def.com	6175555555	1	yes
+internal	Internal Test	some-secure-password	abc@def.com	6175555555	1	no
+public	Public Access		public@mitmh2022.com	5555555555	0	no

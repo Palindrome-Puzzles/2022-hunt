@@ -1,0 +1,14 @@
+{% extends 'round_files/'|add:round_info.round.url|add:'/subview.tmpl' %}
+{% load assets %}
+
+{% block extra_stylesheets %}
+{{ block.super }}
+<link href="{% puzz 'task-qr3zk20gd8/task.css' %}" rel="stylesheet">
+{% endblock extra_stylesheets %}
+
+{% block subview_title %}Make a Best Picture-Winning Movie{% endblock %}
+{% block subview_heading %}Make a Best Picture-Winning Movie{% endblock %}
+
+{% block subview_content %}
+{% include "./task-qr3zk20gd8/task.html" with image_prefix="task-qr3zk20gd8/" %}
+{% endblock %}

@@ -1,0 +1,5 @@
+{% load assets %}
+
+<a class="wordmark-link" href="{% url 'round_view' round_info.round.url %}">
+  <img src="{% rd 'images/wordmark.png' %}" alt="{{ round_info.round.name }}">
+</a>

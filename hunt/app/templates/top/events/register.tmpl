@@ -1,0 +1,147 @@
+{% extends "hunt/site_layout.tmpl" %}
+{% load humanize util %}
+
+{% block title %}Event: {{ event.name }} | {{ block.super }}{% endblock %}
+
+{% block site_stylesheets %}
+<style type="text/css">
+ul.top-breadcrumb li {font-size: 1.125rem}
+form { display: block; text-align: center; margin-top: 1em; }
+fieldset { display: inline-block; width: 300px; }
+form input[type='submit'] { display: block; margin: 1em auto; }
+main form .form-row {
+    display: flex;
+    margin: .5em 0;
+}
+main form .form-row input[type=submit] {
+    margin-left: 215px;
+}
+main fieldset {
+  border-radius: 8px;
+}
+main form .form-row label,
+main form .label {
+    margin-right: 15px;
+    text-align: right;
+    width: 200px;
+}
+.row strong {
+  display: inline-block;
+  margin: .25em 0;
+  width: 200px;
+}
+.category-value {
+  text-transform: uppercase;
+  background-color: #00a400;
+  color: #fff;
+  display: inline-block;
+  padding: .5em;
+  margin: .5em 0;
+}
+.banner {
+  background-color: #00a400;
+  color: #fff;
+  margin: 1em 0;
+}
+.banner.error {
+  background-color: #a40000;
+}
+</style>
+{% endblock site_stylesheets %}
+
+{% block site_content %}
+<main>
+  <header>
+    <h1>Event: {{ event.name }}</h1>
+  </header>
+
+  <div class="paper-edge top"></div>
+  <section id="main-content" class="content">
+    <ul class="top-breadcrumb"><li><a href="{% url 'events' %}">&laquo; See all events</a></li></ul>
+
+    <h2>Event details</h2>
+    <div class="row"><strong>When:</strong> {{ event.expected_start_time }} (<span title="{{ event.expected_start_time }}">{{ event.expected_start_time|naturaltime }}</span>)</div>
+    <div class="row"><strong>Allowed Participants:</strong> {{ event.max_participants }}</div>
+    
+    {% if event.url == 'lets-play' %}
+    <div class="row"><strong>Reward:</strong> 0.5 Manuscrip</div>
+    <div class="row"><strong>Video:</strong> <a href="https://www.youtube.com/watch?v=qLsNT0goZJk" target="_blank">The Let's Play That Goes Wrong Demo</a> </div>
+
+    <p class="event-description"><strong>Description: </strong> Please send 2 people who are good at chaotic, fast puzzle solving. Knowledge of Pathfinder is helpful but not required.</p> 
+    {% endif %}
+
+    {% if event.url == 'crisis-in-publishing' %}
+    <div class="row"><strong>Reward:</strong> 0.5 Manuscrip</div>
+    <div class="row"><strong>Video:</strong> <a href="https://www.youtube.com/watch?v=kQyJ03fj0SU" target="_blank">Crisis in Publishing Demo</a> </div>
+    <p class="event-description"><strong>Description: </strong> Please send 1 person who is good at writing collaboratively.</p>
+    {% endif %}
+
+    {% if event.url == 'cryptic-dixit' %}
+    <div class="row"><strong>Reward:</strong> 1 Manuscrip</div>
+    <div class="row"><strong>Video:</strong> <a href="https://www.youtube.com/watch?v=WqxNfZMnXeY" target="_blank">Cryptic Dixit Demo</a> </div>
+    <p class="event-description"><strong>Description: </strong> Please send 1 person who loves cryptic crosswords.</p>
+    {% endif %}
+
+      {% if event.url == 'picaboo' %}
+    <div class="row"><strong>Reward:</strong> 1 Manuscrip</div>
+    <div class="row"><strong>Video:</strong> <a href="https://www.youtube.com/watch?v=6vgAH4QIC64" target="_blank">Picaboo Demo</a> </div>
+     <p class="event-description"><strong>Description: </strong> It's Game Night! Please send 2 people who love to draw.</p>
+    {% endif %}
+
+    {% if event.status == 'closed' %}
+      <p>Registration is now closed!</p>
+    {% elif event.status == 'post' %}
+      <p>The event is over. If you participated, enter your answer phrase.</p>
+      <iframe class="submit-iframe {{ puzzle_url }}-answers" src="{% url 'puzzle_submit_embed' puzzle_url %}"></iframe>
+    {% endif %}
+
+    {% if event.status == 'open' %}
+      {% if error %}
+      <div class="banner error">{{ error }}</div>
+      {% elif message %}
+      <div class="banner">{{ message }}</div>
+      {% endif %}
+
+      <form method="post">
+        {% csrf_token %}
+        {% for i in event.max_participants|times %}
+        <fieldset>
+          <h3>Participant {{ i|add:1 }}{% if i %} (optional){% endif %}</h3>
+          <div class="form-row">
+            <label for="id_name{{ i }}">Name</label>
+            <input type="text" id="id_name{{ i }}" name="name{{ i }}" {% if i == 0 or i < participant_count %}required{% endif %} maxlength="200" value="{{ name|lookup_string:i }}">
+          </div>
+          <div class="form-row">
+            <label for="id_email{{ i }}">Email</label>
+            <input type="text" id="id_email{{ i }}" name="email{{ i }}" {% if i == 0 or i < participant_count %}required{% endif %} maxlength="200" value="{{ email|lookup_string:i }}">
+          </div>
+          <div class="form-row">
+            <label for="id_pronouns{{ i }}">Pronouns (optional)</label>
+            <input type="text" id="id_pronouns{{ i }}" name="pronouns{{ i }}" maxlength="50" value="{{ pronouns|lookup_string:i }}">
+          </div>
+
+          {% if dixit_category|lookup_string:i %}
+            <div>
+              <span class="label">Your category</span> <span class="category-value">{{ dixit_category|lookup_string:i }}</span>
+            </div>
+            <p><em>Please prepare 5 (not-too-easy, not-too-difficult) cryptic clues for this category! New to cryptic clues and crosswords? Check out <a href="https://www.puzzler.com/puzzles-a-z/cryptic-crossword" target="_blank">Puzzler's guide to cryptic crossword clues.</a> </em></p>
+          {% endif %}
+
+          {% if participant_count > i %}
+            <a href="{% url 'events_unregister' event.url %}?index={{ i }}">Unregister</a>
+          {% endif %}
+        </fieldset>
+        {% endfor %}
+        <input type="submit" value="{% if name|length %}Update{% else %}Register{% endif %}">
+      </form>
+    {% elif name|length %}
+      <ul>
+      {% for i in name|length|times %}
+        <li>{{ name|lookup_string:i }} ({{ email|lookup_string:i }})</li>
+      {% endfor %}
+      </ul>
+    {% endif %}
+  </section>
+  <div class="paper-edge bottom"></div>
+</main>
+{% endblock site_content %}

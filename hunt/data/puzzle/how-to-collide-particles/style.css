@@ -1,0 +1,48 @@
+.center-img {
+  text-align:center;
+  padding: 2em;
+
+}
+
+.comparison {
+  text-align: center;
+  border-top: 1px grey;
+  border-bottom: 1px grey;
+  padding: 2em;
+}
+
+.gtlteq {
+  font-size: 1.25em;
+}
+
+.collisions th[scope="column"], .collisions td {
+  width: 3em;
+  text-align: left;
+}
+
+input {
+  text-align: center;
+  font-size: 1.25em;
+}
+
+table {
+  margin-left: 0;
+}
+
+table, th, tr, td {
+  border: none;
+}
+
+th[scope="column"] {
+  border-bottom:  1px solid black;
+}
+
+th[scope="row"] {
+  border-right:  1px solid black;
+}
+
+th[scope="row column"] {
+  border-bottom:  1px solid black;
+  border-right:  1px solid black;
+}
+

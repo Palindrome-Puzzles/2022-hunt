@@ -1,0 +1,39 @@
+h1,
+.round-map {
+    font-family: 'Jolly Lodger', sans-serif;
+    font-weight: 400;
+    font-size: 60px;
+}
+
+.page-background {
+    background-image: none;
+    background-color: #7c5bb4;
+}
+.page-background-top {
+    background-image: url(images/bg-top.jpg);
+    max-width: 2500px;
+}
+.page-background-map {
+    background-image: url(images/bg-repeat.jpg);
+    background-repeat: repeat-y;
+    max-width: 2500px;
+}
+
+header,
+.page-background-top {
+    max-height: 500px;
+    min-width: 100%;
+}
+header.large-wordmark,
+.page-background-top {
+    aspect-ratio: 2500/849;
+
+}
+@media only screen and (min-width: 1472px) {
+    /* 500 * 2500/849 = 1472 */
+    .page-background-top {
+        aspect-ratio: auto;
+        height: 500px;
+        min-width: auto;
+    }
+}

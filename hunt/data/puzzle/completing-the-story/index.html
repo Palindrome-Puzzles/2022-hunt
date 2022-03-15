@@ -1,0 +1,21 @@
+<div class="flavor">The exciting story of your adventures through Bookspace may have spontaneously come to exist, but the pages have scattered, and been snapped up by other books. Head out into Bookspace, find these books, and examine the pages caught inside.</div>
+
+{% if is_book_discovery %}
+<div class="banner puzzle-win">
+    You found a book!
+</div>
+{% endif %}
+
+<h2 class="books-found"><span>Books Found</span></h2>
+{% if team and team.is_public %}
+<p class="notice">The books below were discovered hidden in a runaround across all round and puzzle pages.</p>
+{% endif %}
+<div class="found"></div>
+
+<h2 class="books-solved"><span>Books Named</span></h2>
+{% if team and team.is_public %}
+<p class="notice">The books below were unlocked as you solved the minipuzzles above.</p>
+{% endif %}
+<div class="solved"></div>
+
+<script src="main.js" type="module"></script>

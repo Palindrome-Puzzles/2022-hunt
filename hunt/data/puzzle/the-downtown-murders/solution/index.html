@@ -1,0 +1,78 @@
+<p>The text of the puzzle presents a noir-style narrative of detectives tracking a (very active) serial killer in downtown Noirleans.</p>
+
+<p>Let's start with geography. The story describes a region of downtown Noirleans with streets numbered 1 through 9 running east-west and avenues named after mystery writers starting with the letters A through I running north-south. (The author starting with E is never named explicitly, which suggests that you don't need to do anything in particular with the author names.) There are also occasional references to neighborhoods or districts of downtown called South Central, Central West, Mid-Downtown, Southeast, etc. Put it all together and you have a grid measuring 9 blocks by 9 blocks, divided into nine 3x3 areas by North/Central/South thirds and East/Central/West thirds, with Mid-Downtown in the center. What does that look like?</p>
+
+<img src="images/soln-blank.png" class="center-image">
+
+<p>It looks like a sudoku, which is what this puzzle is. What kind of sudoku is it? The story is themed around tracking down a serial killer, so this is a killer sudoku. The "dragnets" described in the story are killer cages; the text of the story tells you that the cages (dragnets) established in February are of size 2, and increase every month until they are size 5 in May, so the month number corresponds to the cage size. You might well surmise that the day of the month indicates the cage total, and you would be right; this is consistent with the fact that the dates in each month are within the range to be valid cage totals for a cage of that size (between 3 and 17 for February, 6 to 24 for March, at least 10 for April, at least 15 for May).</p>
+
+<p>Unlike a regular killer sudoku, you're not given the full cage layouts; instead, you have to figure them out, based on the location of one cell in each cage and the cage sizes and totals, subject to the constraints of normal sudoku rules and the fact that the cages cannot overlap. (This is sometimes called a "hidden killer sudoku", which is an apt description thematically.) The cages do not quite cover the entire grid; a count indicates that the total sizes of all the cages add up to 73, so there are 81–73 = 8 cells that are not in any cage. So you can't use inferences like "this is the only cage that can reach this cell"; nevertheless, there is a logical solution path and a unique solution:</p>
+
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/HFsLOaE1lUk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<p>Solution grid (with arbitrary colors chosen to distinguish cages):</p>
+
+<img src="images/soln-downtown.png" class="center-image">
+
+<p>What do we do with this solved grid? The final part of the story contains a ciphered message, found "on shift patrolling east along 9th street":</p>
+
+<p class="poem">KBISRNJCGKVJGPHYRZEHDLIAYMKRGJHVIMTKKBK</p>
+
+<p>We can use row 9 of the solved sudoku (975634218) as a key to decipher this message, by shifting the nth letter of the ciphertext by the nth digit of the 9-digit key (repeating as necessary). The result is:</p>
+
+<p class="poem">TINYURLDOTCOMSLASHNOIRLEANSANONYMOUSTIP</p>
+
+<p>Or, to put it into a more readable format: <a href="http://tinyurl.com/noirleansanonymoustip" target="_blank" rel="noopener nofollow noreferrer">tinyurl.com/noirleansanonymoustip</a></p>
+
+<p>That link takes you to another hidden killer sudoku puzzle, this time with only three-cell cages. (It is by design that this second sudoku is accessible well before the first one is completely solved, so that a team could parallelize the solving of the two puzzles.) There are 26 cage total clues, so the 78 cells in cages completely cover the grid other than the three given digits. Again, there is a logical solution path and a unique solution:</p>
+
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/loinN3FoC7E" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<p><img src="images/soln-tip.png" class="center-image"></p>
+
+<p>To extract the final answer, we need to compare these two solution grids and also make use of the text in the last section of the story, which refers to "three-card poker" with "aces high, no combinations". This is an ordering mechanism on the twenty-six three-cell cages in the Anonymous Tip sudoku: consider each one as a three-card poker hand (with the digit 1 treated as an ace), and rank them in poker order. This produces the following ordering:</p>
+
+<table>
+<tr><th>Rank</th><th>Cage</th><th>Sum</th><th>Letter</th><th class="no-border">&nbsp;</th><th>Rank</th><th>Cage</th><th>Sum</th><th>Letter</th></tr>
+<tr><td>1</td><td>A93</td><td>13</td><td>A</td><td class="no-border">&nbsp;&nbsp;&nbsp;</td><td>14</td><td>965</td><td>20</td><td>N</td></tr>
+<tr><td>2</td><td>A82</td><td>11</td><td>B</td><td class="no-border">&nbsp;&nbsp;&nbsp;</td><td>15</td><td>963</td><td>18</td><td>O</td></tr>
+<tr><td>3</td><td>A74</td><td>12</td><td>C</td><td class="no-border">&nbsp;&nbsp;&nbsp;</td><td>16</td><td>942</td><td>15</td><td>P</td></tr>
+<tr><td>4</td><td>A63</td><td>10</td><td>D</td><td class="no-border">&nbsp;&nbsp;&nbsp;</td><td>17</td><td>875</td><td>20</td><td>Q</td></tr>
+<tr><td>5</td><td>A52</td><td>8</td><td>E</td><td class="no-border">&nbsp;&nbsp;&nbsp;</td><td>18</td><td>874</td><td>19</td><td>R</td></tr>
+<tr><td>6</td><td>A43</td><td>8</td><td>F</td><td class="no-border">&nbsp;&nbsp;&nbsp;</td><td>19</td><td>865</td><td>19</td><td>S</td></tr>
+<tr><td>7</td><td>A42</td><td>7</td><td>G</td><td class="no-border">&nbsp;&nbsp;&nbsp;</td><td>20</td><td>863</td><td>17</td><td>T</td></tr>
+<tr><td>8</td><td>A32</td><td>6</td><td>H</td><td class="no-border">&nbsp;&nbsp;&nbsp;</td><td>21</td><td>842</td><td>14</td><td>U</td></tr>
+<tr><td>9</td><td>987</td><td>24</td><td>I</td><td class="no-border">&nbsp;&nbsp;&nbsp;</td><td>22</td><td>765</td><td>18</td><td>V</td></tr>
+<tr><td>10</td><td>986</td><td>23</td><td>J</td><td class="no-border">&nbsp;&nbsp;&nbsp;</td><td>23</td><td>653</td><td>14</td><td>W</td></tr>
+<tr><td>11</td><td>975</td><td>21</td><td>K</td><td class="no-border">&nbsp;&nbsp;&nbsp;</td><td>24</td><td>652</td><td>13</td><td>X</td></tr>
+<tr><td>12</td><td>974</td><td>20</td><td>L</td><td class="no-border">&nbsp;&nbsp;&nbsp;</td><td>25</td><td>543</td><td>12</td><td>Y</td></tr>
+<tr><td>13</td><td>972</td><td>18</td><td>M</td><td class="no-border">&nbsp;&nbsp;&nbsp;</td><td>26</td><td>432</td><td>9</td><td>Z</td></tr>
+</table>
+
+<p>The fact that there are 26 cages suggests converting 1–26 into A–Z for extraction, which is what the fourth column does. So using this ordering, the Anonymous Tip grid is a key, mapping every location in the grid (except for the three given digits) to a letter of the alphabet.</p>
+
+<p>We then return to the first sudoku grid. We noted earlier that the cages cover all but eight cells of the grid; looking at the solved grid, those eight cells happen to contain the digits 1 to 8 with no repeats. Since those are the eight blocks of the city not covered by dragnets, perhaps the killer is still hiding somewhere in there? Taking the corresponding letter from the second sudoku grid and reading them off in 1–8 order gives <span class="answer">COATROOM</span>, which is the final answer to the puzzle. (2, 6, and 7 all belong to the same 18-sum cage in the second sudoku, which is why the O is repeated in the answer.)</p>
+
+<div class="author-note">
+  <h2>Author's Note</h2>
+<p>When it became clear that one of our rounds would be Mystery, the concept of a “Killer” Sudoku seemed like a natural fit. We settled on some kind of hidden killer variant, partly because looking for a "hidden killer" worked thematically but mostly because it seemed like a variant that would be particularly difficult to tackle programmatically.</p>
+
+<p>The extraction takes advantage of the happy coincidence that 26 3-cell cages almost entirely fill a Sudoku grid. The remaining given digits are 1-8-7, the infamous California Penal Code section for homicide; the break-in was designed around the logic those digits enabled. We needed a way to order the three-cell cages and the mechanism we landed on was close enough to Poker rules that we decided to make it ace-high too, and just incorporate Poker into the narrative.</p>
+
+<p>The key grid was written first, on the thinking that writing a Sudoku that picks out eight specific cells in order might be difficult but writing a puzzle that places 3-cell cages over 8 cells with the exact right position in the order of cages seemed just about impossible. We then tried building the Downtown grid with a few different hidden killer mechanics and failed a few times. Finally the one that worked was specifying cage size and total as dates in the narrative (the suggestion came courtesy of Bram de Laat, one of our resident logic puzzle experts).</p>
+
+<p>The last piece of the puzzle was how to give solvers the key grid in a way that is unmissable but also doesn't initially give away the a-ha that the story represents a killer Sudoku. Using one row or column of the first grid as a shift key fit the bill. We went with row 9 because it could be narrowed down to a usable key early in the solution path, meaning teams would be able to parallelize solving the grids fairly early on.</p>
+
+<p>I picked author names for the avenues because I thought it would feel less repetitive than just using letters as the avenue names. I was worried solver might think they were clueful, but fortunately all of the testsolve groups eliminated the author names as a rabbit hole fairly quickly. The authors referenced are:</p>
+<ul>
+  <li>Gosho <b>A</b>oyama, known for the manga <i>Detective Conan</i></li>
+  <li>Dan <b>B</b>rown, known for <i>The Da Vici Code</i> and sequels</li>
+  <li>Agatha <b>C</b>hristie, known for the works of Agatha Christie</li>
+  <li>Arthur Conan <b>D</b>oyle, known for the adventures of Sherlock Holmes</li>
+  <li>Gillian <b>F</b>lynn, known for <i>Gone Girl</i> and others</li>
+  <li>Sue <b>G</b>rafton, known for the “alphabet series”, <i>“A” is for Alibi</i> and so on</li>
+  <li>Dashiell <b>H</b>ammett, known for <i>The Maltese Falcon</i>, <i>The Thin Man</i>, and others</li>
+  <li>Michael <b>I</b>nnes, known for the John Appleby stories</li>
+</ul>
+<p>By skipping the letter E we hoped to make it more clear that the author names weren't actually important. My personal headcanon is that the missing street name is “Edgar Allan Poe Avenue.”</p>
+</div>

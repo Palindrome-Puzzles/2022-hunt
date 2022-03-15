@@ -1,0 +1,26 @@
+.board_and_tray {
+  text-align: center;
+  border-top: 1px solid #000;
+  break-inside: avoid-page;
+  padding-top: 1rem;
+}
+
+.grid .wh {
+  background-color:#ffffff;
+}
+
+.grid .gr {
+  background-color:#c0c0c0;
+}
+
+.grid .lb {
+  background-color:#38fff8;
+}
+
+.grid .dr {
+  background-color:#fe0000;
+}
+
+.grid .lr {
+  background-color:#ffccc9;
+}

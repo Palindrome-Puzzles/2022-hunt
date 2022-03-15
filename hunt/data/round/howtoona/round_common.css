@@ -1,0 +1,55 @@
+{% load static %}
+
+h1,
+.round-map {
+    font-family: 'Jost', sans-serif;
+    font-weight: 700;
+}
+
+.page-background {
+    background: url(images/bg-repeat.jpg);
+    background-color: #fff;
+    background-size: auto auto;
+}
+.page-background-top {
+    background-image: url(images/bg-top.png);
+    max-width: 2500px;
+}
+.page-background-map {
+    background-image: url(images/bg-outside-repeat.png);
+    background-repeat: repeat-y;
+    max-width: 2500px;
+}
+
+.page-background-top {
+    aspect-ratio: 2500/1598;
+    background-size: 100%;
+}
+@media only screen and (min-width: 1877px) {
+    /* 1200 * 2500/1598 = 1877 */
+    .page-background-top {
+        aspect-ratio: auto;
+        height: 1200px;
+        width: 100%;
+    }
+}
+
+header {
+    max-height: 500px;
+    min-width: 100%;
+}
+header.large-wordmark {
+    aspect-ratio: 25/8;
+}
+
+.content,
+.puzzle-actions,
+.puzzle-action-embed {
+	  background-color: #f3f3f3;
+}
+
+.paper-edge {
+    background-image: url("{% static 'paper-edge.svg' %}");
+    /* Calculated using https://codepen.io/sosuke/pen/Pjoqqp. */
+	  filter: invert(100%) sepia(4%) saturate(532%) hue-rotate(214deg) brightness(114%) contrast(91%);
+}

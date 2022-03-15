@@ -1,0 +1,139 @@
+.minipuzzle {
+    break-inside: avoid-page;
+}
+
+.grids {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+}
+
+.trickster {
+  margin-bottom: 50px;
+}
+
+.white-text{
+  color: white;
+}
+
+.left-grid {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+  margin-right: 20px;
+  width: 450px;
+}
+
+.right-grid {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+  width: 450px;
+}
+
+.highlighted-cell {
+  background-color: #00FFFF;
+}
+
+.center-image{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.light-water {
+  background-color: #CFE2F4;
+}
+
+.dark-water {
+  background-color: #A1CBF3;
+}
+
+ol.lettered {  list-style-type:upper-alpha; 
+}
+
+ol.lettered li{
+  margin: 1em 0;
+}
+
+table.dropquote tr:first-child td {
+  border-top: 1px solid #000;
+}
+
+table.dropquote td {
+  border-left: 1px solid #000;
+  border-right: 1px solid #000;
+  box-sizing: border-box;
+  height: 40px;
+  min-width: 40px;
+  position: relative;
+  text-align: center;
+  width: 40px;
+}
+
+.shaded {
+  background-color: #D8EAD3;
+}
+
+.color1 {
+  background-color: #008080;
+  color: white;
+}
+.color2 {
+  background-color: #D4AF37;
+}
+.color3 {
+  background-color: #FF7F02;
+}
+.color4 {
+  background-color: #7B3F01;
+  color: white;
+}
+.color5 {
+  background-color: #ED7A9B;
+}
+.color6 {
+  background-color: #000080;
+  color: white;
+}
+.color7 {
+  background-color: #FFF800;
+}
+.color8 {
+  background-color: #FF2500;
+  color: white;
+}
+.color9 {
+  background-color: #CCCCCC;
+}
+.color10 {
+  background-color: #9F00C5;
+  color: white;
+}
+.color11 {
+  background-color: #4FC878;
+}
+.color12 {
+  background-color: #FFCBA5;
+}
+
+.minipuzzle-flavor {
+  font-style: italic;
+  padding-bottom: 20px;
+  margin-bottom: 36px;
+}
+
+.minipuzzle-iframe {
+  margin-bottom: 12px;
+  margin-top: 12px;
+}
+
+@media print {
+table th, table td {
+    color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+    page-break-before: always;
+    }
+}

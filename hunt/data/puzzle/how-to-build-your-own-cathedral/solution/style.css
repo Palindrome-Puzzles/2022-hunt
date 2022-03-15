@@ -1,0 +1,27 @@
+.grids {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+}
+
+.left-grid {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 50px;
+  margin-right: 20px;
+  width: 650px;
+}
+
+.right-grid {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 50px;
+  width: 300px;
+}
+
+.blank-words {
+  font-size: 1em;
+}

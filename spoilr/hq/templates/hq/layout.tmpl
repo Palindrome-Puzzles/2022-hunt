@@ -1,0 +1,166 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, user-scalable=yes">
+  <title>{% block title %}Mystery Hunt Dashboard{% endblock %}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+  <link rel="stylesheet" type="text/css" href="{% static 'hq/style.css' %}">
+  {% block stylesheets %}{% endblock %}
+  <script src="{% static 'lib/jquery.min.js' %}"></script>
+</head>
+
+<body>
+
+<nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+  <a class="navbar-item" href="/hq">
+    HQ
+  </a>
+
+  <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+    <span aria-hidden="true"></span>
+    <span aria-hidden="true"></span>
+    <span aria-hidden="true"></span>
+  </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+  <div class="navbar-start">
+    <a class="navbar-item" href="{% url 'spoilr.hints:dashboard' %}?puzzle=&team=&open=1&limit=50">🤔 Hints</a>
+    <a class="navbar-item" href="{% url 'spoilr.interaction:dashboard' %}">📨 Tasks</a>
+    <a class="navbar-item" href="{% url 'spoilr.email:dashboard' %}">📬 Emails</a>
+    <div class="navbar-item has-dropdown is-hoverable">
+      <a class="navbar-link">
+        Dashboards
+      </a>
+      <div class="navbar-dropdown">
+        <a class="navbar-item" href="{% url 'spoilr.progress:teams' %}">👩‍👩‍👧‍👦 Teams Dashboard</a>
+        <a class="navbar-item" href="{% url 'spoilr.progress:puzzles' %}">🧩 Puzzles Dashboard</a>
+        <a class="navbar-item" href="{% url 'spoilr.progress:interactions' %}">📨 Interactions Dashboard</a>
+        <hr class="navbar-divider">
+        <a class="navbar-item" href="{% url 'spoilr.email:archive' %}">📥 All Emails</a>
+      </div>
+     </div>
+    <div class="navbar-item has-dropdown is-hoverable">
+      <a class="navbar-link">
+        Logs
+      </a>
+      <div class="navbar-dropdown">
+        <a class="navbar-item" href="{% url 'hq_log' %}">System Event Log</a>
+        <a class="navbar-item" href="{% url 'hq_hintlog' 50 %}">Hint Log</a>
+        <a class="navbar-item" href="{% url 'spoilr.progress:solves' %}">Puzzle Solve Graph</a>
+      </div>
+     </div>
+    <div class="navbar-item has-dropdown is-hoverable">
+      <a class="navbar-link">
+        Other
+      </a>
+      <div class="navbar-dropdown">
+        <a class="navbar-item" href="{% url 'admin:spoilr_hqupdate_add' %}">📌 Create New Update</a>
+        <a class="navbar-item" href="{% url 'hq_updates' %}">📣 Publish Updates</a>
+        <hr class="navbar-divider">
+        <a class="navbar-item" href="{% url 'spoilr.email:send' %}">Send an email (emergency use only!)</a>
+        <hr class="navbar-divider">
+        <a class="navbar-item" href="{% url 'index' %}">📚 Hunt home</a>
+        <a class="navbar-item" href="/round/the-investigation/">📚 The Investigation</a>
+        <a class="navbar-item" href="/round/the-ministry/">📚 The Ministry</a>
+        <a class="navbar-item" href="/pen-station/">📚 Pen Station</a>
+        <a class="navbar-item" href="/round/plot-device/">📚 Plot Device</a>
+        <hr class="navbar-divider">
+        <a class="navbar-item" href="{% url 'admin:index' %}">Django Admin</a>
+      </div>
+     </div>
+  </div>
+
+  <div class="navbar-end">
+    <div class="navbar-item">
+    <label  for="auto-refresh">
+      <input type='checkbox' onchange="toggle_auto_refresh()" id="auto-refresh" name="auto-refresh"/>
+      &nbsp;Auto-refresh every 30s
+    </label>
+  </div>
+    <script type="module">
+      const auto_refresh = document.getElementById("auto-refresh")
+      import Cookies from "{% static 'lib/js-cookie.module.min.js' %}";
+      auto_refresh.checked = Cookies.get("auto-refresh") === "true"
+      function toggle_auto_refresh() {
+        Cookies.set("auto-refresh", auto_refresh.checked)
+        auto_refresh.parentElement.parentElement.style['background'] = auto_refresh.checked ? '#F99' : null;
+      }
+      toggle_auto_refresh()
+      window.toggle_auto_refresh = toggle_auto_refresh
+      function autoReload() {
+        // Reload if auto_refresh is checked AND we're not in a form
+        if (!auto_refresh.checked)
+          return
+        const insideForm = !!(document.activeElement && document.activeElement.closest('form'));
+        if (insideForm)
+          return
+        window.location.reload();
+      }
+      setInterval(autoReload, 30000);
+    </script>
+    <div class="navbar-item">
+    {% if request.handler and request.handler.sign_in_time %}
+      <a href="/hq">{{ request.handler.name }}</a>
+    {% else %}
+      <a href="/hq">⚠️ Sign in!</a>
+    {% endif %}
+    </div>
+  </div>
+  </div>
+</nav>
+
+<div class="container">
+{% block breadcrumb %}
+<nav class="breadcrumb">
+<ul>
+  <li><a href="{% url 'spoilr.hq:dashboard' %}">HQ</a></li>
+  {% block breadcrumb_items %}{% endblock %}
+</ul>
+</nav>
+{% endblock %}
+
+<div class="content">
+      <h2>{% block heading %}{% endblock %}</h2>
+
+
+
+  <main>
+    {% if request.GET.message %}
+    <div class="banner {% if request.GET.status %} {{ request.GET.status }}{% endif %}">
+      {{ request.GET.message }}
+    </div>
+    {% endif %}
+
+    <script src="{% static 'lib/sorttable.min.js' %}"></script>
+    <script src="{% static 'lib/sorttable-initial-sort.js' %}"></script>
+
+    {% block content %}{% endblock %}
+    {% block scripts %}{% endblock %}
+  </main>
+
+</div>
+</div>
+
+<script>
+$(document).ready(function() {
+
+  // Check for click events on the navbar burger icon
+  $(".navbar-burger").click(function() {
+
+      // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+      $(".navbar-burger").toggleClass("is-active");
+      $(".navbar-menu").toggleClass("is-active");
+
+  });
+});
+</script>
+</body>
+</html>

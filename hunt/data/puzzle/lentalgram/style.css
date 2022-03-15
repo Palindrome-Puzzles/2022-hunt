@@ -1,0 +1,19 @@
+.pictures {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+}
+
+.captioned {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 10px;
+  width: 500px;
+}
+
+.puzzle img {
+  margin-bottom: 10px;
+  max-width: 400px;
+}

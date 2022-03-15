@@ -1,0 +1,21 @@
+.grids {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: center;
+}
+
+.grid-structure {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 1px;
+  width: 112px;
+}
+
+.puzzle img {
+  margin-bottom: 10px;
+  max-width: 112px;
+}

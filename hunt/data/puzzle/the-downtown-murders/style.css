@@ -1,0 +1,16 @@
+.poem-container{
+  text-align: center;
+}
+.poem {
+  display: inline-block;
+  text-align: center;
+  break-inside: avoid-page;
+  border: 1px solid black;
+  background-color: lightyellow;
+  width:fit-content;
+  padding: 0px 12px;
+}
+
+.poem p {
+  line-height: 150%;
+}

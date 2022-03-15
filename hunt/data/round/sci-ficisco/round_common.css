@@ -1,0 +1,40 @@
+h1,
+.round-map {
+    font-family: 'VT323', sans-serif;
+    font-weight: 400;
+}
+
+.page-background {
+    background: url(images/bg-repeat.jpg);
+    background-color: #82668e;
+    background-size: 100% auto;
+}
+.page-background-top {
+    background-image: url(images/bg-top.jpg);
+}
+.page-background-map {
+    background-image: url(images/bg-map.jpg);
+    max-width: 2500px;
+}
+
+header,
+.page-background-top {
+    background-size: contain;
+    max-height: 635px;
+    min-width: 100%;
+}
+header.large-wordmark,
+.page-background-top {
+    aspect-ratio: 2500/635;
+}
+
+@media only screen and (max-width: 788px) {
+    /* 788 = 200 * 2500/635 */
+    header:not(.large-wordmark) {
+        aspect-ratio: unset;
+        height: 200px;
+    }
+    header h1 {
+        white-space: nowrap;
+    }
+}

@@ -1,0 +1,64 @@
+<p>This blackbox puzzle can be roughly divided into three steps.</p>
+
+<p><b>Step 1: Deciphering the letters</b></p>
+<p>After a bit of playing around, we found out that the comparison function seems to only care about the "multiset of case-insensitive letters" in the string. </br>
+Attempting to identify the "smallest" letter sets gives an inequality chain of</br>
+A < B < AA < C < AB < D < AAA < BB < AC < E < AAB < F < .....</br>
+And we can recognize them to be in the same pattern of prime factorizations of small integers.</br>
+This implies that the letters represents primes in order (A=2,B=3,C=5,...,Z=101), and these primes are meant to be multiplied together.</br>
+This is further confirmed by the flavortext of "primary particles" and "basic building blocks of natural things" (referring to the description of primes as basic building blocks of natural numbers).</p>
+
+<p><b>Step 2: Identifying the collision function</b></p>
+<p>Once the letters and strings are deciphered, we can write the given collision table in a purely numerical form:</p>
+<table class="custom">
+<tr><th scope="row column"> </th><th scope="column">2</th><th scope="column">3</th><th scope="column">5</th><th scope="column">7</th><th scope="column">11</th><th scope="column">13</th><th scope="column">17</th><th scope="column">19</th><th scope="column">23</th><th scope="column">29</th><th scope="column">31</th></tr>
+<tr><th scope="row">2</th><td> </td><td>2</td><td>9</td><td>20</td><td>54</td><td>77</td><td>135</td><td>170</td><td>252</td><td>405</td><td>464</td></tr>
+<tr><th scope="row">3</th><td> </td><td> </td><td>7</td><td>18</td><td>52</td><td>75</td><td>133</td><td>168</td><td>250</td><td>403</td><td>462</td></tr>
+<tr><th scope="row">5</th><td> </td><td> </td><td> </td><td>11</td><td>45</td><td>68</td><td>126</td><td>161</td><td>243</td><td>396</td><td>455</td></tr>
+<tr><th scope="row">7</th><td> </td><td> </td><td> </td><td> </td><td>34</td><td>57</td><td>115</td><td>150</td><td>232</td><td>385</td><td>444</td></tr>
+<tr><th scope="row">11</th><td> </td><td> </td><td> </td><td> </td><td> </td><td>23</td><td>81</td><td>116</td><td>198</td><td>351</td><td>410</td></tr>
+<tr><th scope="row">13</th><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td><td>58</td><td>93</td><td>175</td><td>328</td><td>387</td></tr>
+<tr><th scope="row">17</th><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td><td>35</td><td>117</td><td>270</td><td>329</td></tr>
+<tr><th scope="row">19</th><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td><td>82</td><td>235</td><td>294</td></tr>
+<tr><th scope="row">23</th><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td><td>153</td><td>212</td></tr>
+<tr><th scope="row">27</th><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td><td>59</td></tr>
+<tr><th scope="row">31</th><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td></tr>
+</table>
+<p>Either by noticing the constant differences between different rows or by performing a polynomial fit, one concludes that the "collision" function is given by f(p,q)=|p(p-1)/2-q(q-1)/2|.</br>
+This allows us to build a full two-letter collision table.</p>
+
+<p><b>Step 3: Solving the cycles</b></p>
+<p>Each collision in the cycle results in a set of letters, where one goes onward into the next collision and the others form the "observations".</br>
+The key to identifying the missing letters is noticing that several given observations has a very few number of possibilities.</br>
+For example, in cycle 1, there is only one possible two-letter collision that gives ?BBS as the outcome, namely D💥R=BBBS (or f(7,61)=3^3*37). Using this as a starting point we can fully determine cycle 1.</br>
+Cycles 2 and 3 are similarly solved; a common starting point is that ?AABBK can only be produced by either I💥T=AAABBK or E💥W=AABBBK, and in both cycles the next collision reveals E💥W is the only possibility, and we can work from this point.</p>
+
+<p>The completed collision cycles are shown as below (starting from top and going clockwise):</p>
+<p>Cycle 1</p>
+<table class="custom">
+	<tr><td>? Letters</td><td>F</td><td>R</td><td>O</td><td>M</td><td>T</td><td>U</td><td>R</td><td>T</td><td>W</td><td>I</td><td>G</td></tr>
+	<tr><td>Letters in the cycle</td><td>A</td><td>D</td><td>B</td><td>E</td><td>G</td><td>J</td><td>Z</td><td>C</td><td>E</td><td>K</td><td>P</td></tr>
+	<tr><td>Collision outcome</td><td><b>D</b>E</td><td><b>B</b>BBS</td><td>ADD<b>E</b></td><td>BBC<b>G</b></td><td>BBBB<b>J</b></td><td>AE<b>Z</b></td><td>AA<b>C</b>DI</td><td>BBCC<b>E</b></td><td>AABBB<b>K</b></td><td>AA<b>P</b></td><td><b>A</b>BBBI</td></tr>
+</table>
+<p></p>
+
+<p>Cycle 2</p>
+<table class="custom">
+<tr><td>? Letters</td><td>T</td><td>O</td><td>A</td><td>R</td><td>C</td><td>E</td><td>U</td><td>S</td></tr>
+<tr><td>Letters in the cycle</td><td>U</td><td>F</td><td>Q</td><td>H</td><td>V</td><td>W</td><td>B</td><td>D</td></tr>
+<tr><td>Collision outcome</td><td>E<b>F</b></td><td>G<b>Q</b></td><td>ABBC<b>H</b></td><td>BD<b>V</b></td><td>L<b>W</b></td><td>AA<b>B</b>BBK</td><td>BCCC<b>D</b></td><td>ABC<b>U</b></td></tr>
+</table>
+<p></p>
+
+<p>Cycle 3</p>
+<table class="custom">
+<tr><td>? Letters</td><td>S</td><td>I</td><td>X</td><td>T</td><td>H</td><td>R</td><td>E</td><td>E</td></tr>
+<tr><td>Letters in the cycle</td><td>A</td><td>G</td><td>F</td><td>Z</td><td>C</td><td>I</td><td>W</td><td>B</td></tr>
+<tr><td>Collision outcome</td><td>ACF<b>G</b></td><td>BB<b>F</b></td><td>AH<b>Z</b></td><td>BBB<b>C</b>H</td><td>D<b>I</b></td><td>H</td><td>AA<b>B</b>BBK</td><td><b>A</b>AF</td></tr>
+</table>
+<p></p>
+
+<p>
+	The ? letters spell the clue phrase <b>FROMTURTWIG TOARCEUS SIXTHREE</b>, or <b>FROM TURTWIG TO ARCEUS (6 3)</b>.<br>
+	Turtwig and Arceus are the beginning and end in the list of the generation IV Pokemons. This fact along with the enumeration (6 3) pinpoints the final answer of <span class="answer">FOURTH GEN</span>.
+</p>

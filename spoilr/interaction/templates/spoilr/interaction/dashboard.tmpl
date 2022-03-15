@@ -1,0 +1,44 @@
+{% extends "hq/layout.tmpl" %}
+{% load static %}
+
+{% block title %}Interactions summary | {{ block.super }}{% endblock %}
+{% block heading %}Interactions summary{% endblock %}
+
+{% block breadcrumb_items %}
+<li><a href="{% url 'spoilr.interaction:dashboard' %}">Interactions</a></li>
+{% endblock breadcrumb_items %}
+
+{% block content %}
+<section class="content">
+  <h3>Interactions</h3>
+
+  <table class="sortable">
+    <tr>
+      <th>Interaction</th>
+      <th>Type</th>
+      <th>Pending teams</th>
+      <th>Accomplished teams</th>
+    </tr>
+    {% for info in interaction_infos %}
+    <tr{% if info.available_count %} class="pending"{% endif %}>
+      <td>
+        <a href="{% url 'spoilr.interaction:interaction' info.interaction.url %}">
+          {{ info.interaction.name }}
+        </a>
+      </td>
+      <td>{{ info.interaction.interactiondata.type }}</td>
+      <td>{{ info.available_count }}</td>
+      <td>{{ info.accomplished_count }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+</section>
+{% endblock content %}
+
+{% block stylesheets %}
+<link rel="stylesheet" type="text/css" href="{% static 'spoilr/interaction/style.css' %}">
+{% endblock %}
+
+{% block scripts %}
+{% include 'hq/util/auto-reload-script.tmpl' %}
+{% endblock scripts %}

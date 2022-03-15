@@ -1,0 +1,28 @@
+{% load static %}
+
+<div class="flavor">
+    Mr. Cueball is excited to meet his new students. He wants to look them up in the database, but the school’s website is comically bad.
+</div>
+<!-- NOTE TO SOLVERS: Inspecting the code is not particularly needed to solve the puzzle, and some files may contain spoilers. -->
+<div>
+    <label>
+    Enter student first name: &nbsp;
+    <input id="studentName" type="text" />
+    </label>
+    <input id="searchButton" type="submit" value="Search"/>
+    <div id="errorMessage"></div>
+    <br/>
+    <table>
+        <thead>
+            <tr>
+                <th>Student Name</th>
+                <th>Date of Enrollment</th>
+            </tr>
+        </thead>
+        <tbody id="studentData"></tbody>
+    </table>
+</div>
+
+<script src="sql/sql-wasm.js"></script>
+<script type="module" src="school-db.js"></script>
+<script type="module" src="search.js"></script>

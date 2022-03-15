@@ -1,0 +1,19 @@
+.dance_page {
+	text-align: center;
+  margin: 20px 0px;
+  padding: 10px;
+}
+.dance_page p {
+	max-width: 700px;
+  margin: auto;
+}
+.dance_page img {
+  margin: 10px auto;
+}
+.puzzle img.img-m {
+  max-width: 600px;
+  min-width: 300px;
+}
+.image_box {
+  margin: auto;
+}

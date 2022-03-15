@@ -1,0 +1,15 @@
+{% extends "round_files/generic_puzzle.tmpl" %}
+
+{% block extra_stylesheets %}
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500&display=swap" rel="stylesheet">
+{% endblock extra_stylesheets %}
+
+{% block wordmark %}
+{% include 'round_files/prologue/wordmark.tmpl' %}
+{% endblock wordmark %}
+
+{% block puzzle_rewards %}
+{% if round_reward and puzzle_info.puzzle.is_meta %}
+{% include 'round_files/prologue/reward.tmpl' with reward=round_reward showing_all=False %}
+{% endif %}
+{% endblock puzzle_rewards %}

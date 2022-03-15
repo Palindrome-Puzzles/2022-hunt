@@ -1,0 +1,131 @@
+{% extends "hq/layout.tmpl" %}
+{% load static %}
+
+{% block title %}Solve Graph | {{ block.super }}{% endblock %}
+{% block heading %}Solve Graph{% endblock %}
+
+{% block breadcrumb_items %}
+<li><a href="{% url 'spoilr.progress:solves' %}">Solve Graph</a></li>
+{% endblock breadcrumb_items %}
+
+{% block content %}
+<section class="content solves">
+  {% if is_it_hunt %}
+  <form method="get" class="progress-form">
+    <label for="id_prologue">Progress for</label>
+    <select name="prologue" onchange="document.querySelector('.progress-form').submit()">
+      <option value="0"{% if not show_prologue %} selected{% endif %}>Hunt</option>
+      <option value="1"{% if show_prologue %} selected{% endif %}>Prologue</option>
+    </select>
+  </form>
+  {% endif %}
+  <p>Show teams with at least <input class="min-solves" type="number" min="1" value="5"></input> solves</p>
+  <div class="chart-container"></div>
+</section>
+{% endblock content %}
+
+{% block stylesheets %}
+<style type="text/css">
+  .chart-container {
+    aspect-ratio: 16/9;
+    position: relative;
+    width: 100%;
+  }
+</style>
+{% endblock %}
+
+{% block scripts %}
+{{ solve_counts_for_chartjs|json_script:"solve-counts" }}
+<script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/moment.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
+<script type="module">
+const TIME_BUFFER_MS = 60 * 60 * 1000;
+
+function refreshGraph(threshold) {
+  const solveCounts = JSON.parse(document.getElementById('solve-counts').textContent);
+
+  const numSolves = [];
+  for (let i = 0; i < solveCounts.datasets.length; i++) {
+    numSolves.push(solveCounts.datasets[i].data[solveCounts.datasets[i].data.length-1].y);
+  }
+
+  let startTimestamp, endTimestamp;
+  for (const dataset of solveCounts.datasets) {
+    for (const datum of dataset.data) {
+      if (!startTimestamp || datum.x < startTimestamp) {
+        startTimestamp = datum.x;
+      }
+      if (!endTimestamp || datum.x > endTimestamp) {
+        endTimestamp = datum.x;
+      }
+    }
+  }
+
+  if (!startTimestamp) {
+    console.log('No solve data yet!');
+    return;
+  }
+
+  solveCounts.datasets = solveCounts.datasets.filter((d, i) => numSolves[i] >= threshold);
+  solveCounts.pointLabels = solveCounts.pointLabels.filter((d, i) => numSolves[i] >= threshold);
+
+  solveCounts.datasets.forEach((o) => {
+    o.lineTension = 0;
+    o.steppedLine = true;
+  });
+
+  const canvas = $("<canvas>").attr("id", "solve-chart-canvas");
+
+  // chartjs creates a couple other elements in the container with event
+  // handlers it sets up, so we need to clear those out before we try to
+  // render the chart again inside the same container
+  $(".chart-container")
+    .empty()
+    .append(canvas);
+
+  new Chart(canvas[0], {
+    type: 'line',
+    data: solveCounts,
+    options: {
+      scales: {
+        xAxes: [{
+          type: 'time',
+          ticks: {
+            min: startTimestamp - TIME_BUFFER_MS,
+            max: endTimestamp + TIME_BUFFER_MS,
+            maxTicksLimit: 20,
+          },
+          time: {
+            unit: 'hour',
+            displayFormats: {
+              hour: 'ddd hA'
+            },
+            parser: moment,
+          },
+          position: 'bottom',
+        }],
+        yAxes: [{
+          ticks: {
+            beginAtZero: true
+          }
+        }]
+      },
+      tooltips: {
+        callbacks: {
+          label: function(tooltipItem, data) {
+            return solveCounts.pointLabels[tooltipItem.datasetIndex][tooltipItem.index];
+          }
+        }
+      }
+    }
+  });
+}
+
+// TODO(sahil): Save the most recent min solves setting in local storage.
+refreshGraph(parseInt($('.min-solves')[0].value));
+$(".min-solves").change((e) => {
+  refreshGraph(parseInt(e.target.value));
+});
+</script>
+{% include 'hq/util/auto-reload-script.tmpl' %}
+{% endblock scripts %}

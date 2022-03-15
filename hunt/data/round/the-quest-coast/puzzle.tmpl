@@ -1,0 +1,15 @@
+{% extends "round_files/generic_puzzle.tmpl" %}
+
+{% block extra_stylesheets %}
+<link href="https://fonts.googleapis.com/css2?family=Jim+Nightshade:wght@400&display=swap" rel="stylesheet">
+{% endblock extra_stylesheets %}
+
+{% block wordmark %}
+{% include 'round_files/generic_wordmark.tmpl' with round_info=round_info %}
+{% endblock wordmark %}
+
+{% block bonus_puzzle %}
+<div class="bonus-puzzle-container">
+{% include 'round_files/the-quest-coast/submissions.tmpl' with team=team puzzle=puzzle solved=puzzle_info.solved %}
+</div>
+{% endblock bonus_puzzle %}

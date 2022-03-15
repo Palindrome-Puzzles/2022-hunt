@@ -1,0 +1,80 @@
+<p>Solvers are given a field to request assistance via email, as well as links to additional information and chat support.</p>
+
+<p>The puzzle is in three parts.</p>
+
+<h2>Email</h2>
+
+<p>On entering their email and requesting support, solvers are sent an email.</p>
+
+<p>This part of the puzzle requires solvers to inspect the email headers, clued by the starts of each paragraph in the email body. Doing so reveals that there is an <code>x-message</code> header, that says: “Please request again with your email alias + ans“ and an <code>x-query</code> header containig a clue. Solvers should re-request a password reset with the answer to the clue appended to their email with the common <a href="https://en.wikipedia.org/wiki/Email_address#Local-part" target="_blank">+ syntax for aliasing</a>.</p>
+<p>Upon requesting a password reset using an email address containing the required part, solvers will receive the next clue.</p>
+<table>
+    <tr><th>Clue</th><th>Alias needed</th></tr>
+    <tr><td>I’m a logical conjunction</td><td class="answer">AND</td></tr>
+    <tr><td>Some alternative to x86/x64</td><td class="answer">ARM</td></tr>
+    <tr><td>Often what you might see on a vehicle from Anhalt-Zerbst</td><td class="answer">AZE</td></tr>
+    <tr><td>Say waist in Istanbul</td><td class="answer">BEL</td></tr>
+    <tr><td>U no I’ll return soon</td><td class="answer">BRB</td></tr>
+    <tr><td>Major airport you might fly into if you wanted to see the Geographer in person</td><td class="answer">FRA</td></tr>
+    <tr><td>She’s the chair of the ABC, down under</td><td class="answer">ITA</td></tr>
+</table>
+
+<p>The acrostic of the clues spell <span class="answer">ISO SUMS</span>. Each answer to the clues is an ISO 3166-1 alpha-3 code for a country, and this acrostic clues summing the <a href="https://en.wikipedia.org/wiki/ISO_3166-1#Current_codes" target="_blank">ISO 3166-1 numeric</a> representations of these countries and then converting back to the alpha-3 code. Requesting assistance using <code>+USA</code> as an alias will return an <code>x-message</code> that indicates that this minipuzzle is complete.</p>
+
+<h2>Web support</h2>
+<p>Web support contains the same HEADERS acrostic, with a slightly different message.</p>
+<p>Submitting a <code>GET</code> request to the webpage results in the x-elements header containing the message “You got this message! How about you post, put, head and delete some elements to get the Really Full Convention document (DOC)?”</p>
+<p>This message hints that solvers need to request information using some other methods. Submitting a request to the same page (no payload is required or processed) results in the below messages in the <code>x-elements</code> header.</p>
+
+<p>The headers of each response to the various methods also contains an <code>x-elements</code> header, which contains a string &mdash; each of these header values have different operations applied to them, which result in an extract, as below. </p>
+
+<table>
+<tr><th>Method</th><th>Operation</th><th>Message</th><th>Extract</th></tr>
+<tr><td><code>POST</code></td><td>Add a letter</td><td>FOO<strong>T</strong>ER T<strong>H</strong>EAD CENTE<strong>R</strong> BAS<strong>E</strong> H<strong>E</strong>AD</td><td class="answer">THREE</td></tr>
+<tr><td><code>HEAD</code></td><td>Add a letter to the start</td><td><strong>S</strong>VG <strong>E</strong>MBED <strong>V</strong>AR <strong>E</strong>M <strong>N</strong>AV</td><td class="answer">SEVEN</td></tr>
+<tr><td><code>PUT</code></td><td>Change a letter</td><td>FO[R]<strong>N</strong>T D[E]<strong>I</strong>V MAI[D]<strong>N</strong> M[A]<strong>E</strong>TER</td><td class="answer">NINE</td></tr>
+<tr><td><code>DELETE</code></td><td>Delete a letter</td><td>STRONG<strong>O</strong> <strong>N</strong>UL COL<strong>E</strong></td><td class="answer">ONE</td></tr>
+</table>
+
+<p>The puzzle clues <a href="https://datatracker.ietf.org/doc/html/rfc3791" target="_blank">RFC 3791</a>, which is Secure Neighbor Discovery, or <span class="answer">SEND</span>, in brief.</p>
+
+<h2>Chat support</h2>
+<p>The chat box allows solvers to talk to a bot and get replies. The replies are a lightly modified game of Mastermind (or, if you will, Wordle), using the first letters of the words submitted by users. However, it replies to and in only the ten hundred most used words.</p>
+
+<p>Fortunately, it’s not the brightest and will ignore any non-alphabetic input, and always respond. If the input includes uncommon words, then it will reply with “Sorry, I’m still learning and only know the ten hundred most used words!”</p>
+
+<p>The chatbot checks the first letter of each word and responds using the following rules:</p>
+
+<ol>
+    <li>If the letter is correct and the right position, add a 🌚 emoji to the response</li>
+    <li>If the letter is correct but in the wrong position, add a 🌝 emoji to the response</li>
+    <li>Otherwise, add a ❌ emoji to the response</li>
+</ol>
+
+<p>Finally, the chatbot will add one of the following at random to the reply:</p>
+
+<ul>
+<li>Can you try something else?</li>
+<li>Ha, not really sure about that.</li>
+<li>Ah, I don’t know the right reply</li>
+<li>That’s something that I don’t know how to reply to.</li>
+<li>A little sad but I’m not trained to reply to that thing.</li>
+<li>Please try something else - that’s something that’s out of my understanding for now.</li>
+<li>Perhaps try a different idea - my replies are very few at this time, sorry.</li>
+</ul>
+<p>Arranging them in order of word length gives a clue, CHATAPP.</p>
+
+<p>Using these rules, the desired input can be deduced to be any seven words whose initial letters spell MTPROTO. Submitting such a string will result in the message “Way to follow chat protocols! What’s the app for that, again?”</p>
+
+<p><a href="https://en.wikipedia.org/wiki/MTProto" target="_blank">MTProto</a> is the protocol used in the chat app <span class="answer">TELEGRAM</span>, the solution to this part of the puzzle, which can be confirmed in the chat box.</p>
+
+<hr>
+
+<p>The webpage and email parts of the puzzle indicate that the parts should be used in order of website, email and chat, yielding the solution, <span class="answer">SEND US A TELEGRAM</span>.</p>
+
+<div class="author-note">
+    <h2>Author’s note</h2>
+    <p>Why this puzzle? I’ve used ISO 3166-1 in my work for a while now, so while browsing answers, I saw an opportunity to use it here! The rest sort of came together around this delightful reanalysis of <strong>USA</strong>.</p>
+    <p>After deciding to use ISO 3166-1, I looked for other protocols and standards which I could add as minipuzzles here. Fortunately, I was already aware of MTProto (and hopefully not <em>too many</em> people download and try to continue this puzzle using Telegram), and discovering RFC 3791 was fortuitous.</p>
+    <p>Turns out, the chat support part of this puzzle resembles a popular word-guessing game. This is entirely coincidental &mdash; I discovered Wordle in early January, long after this puzzle’s chatbot minipuzzle was conceived.</p>
+</div>

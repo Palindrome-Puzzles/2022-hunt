@@ -1,0 +1,10 @@
+p.message, p.response
+{
+  font-family: monospace;
+  margin-left: 35px;
+  padding-left: 15px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+p.message {color: #0066CC; border-left: 5px solid #0066CC;}
+p.response {color: #CC6600; border-left: 5px solid #CC6600;}

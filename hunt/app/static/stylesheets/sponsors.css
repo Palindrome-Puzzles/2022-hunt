@@ -1,0 +1,39 @@
+.sponsors .content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.sponsors .content a {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+.sponsors .content a img {
+    margin: auto;
+}
+.sponsors .content a span {
+    margin-bottom: 0;
+    margin-top: 1em;
+}
+
+a.sponsor-link, a.sponsor-link:link, a.sponsor-link:visited {
+	background-color: #000;
+	color: #fff;
+	padding: 0.5rem 1rem;
+	border-radius: 4px;
+	text-decoration: none;
+}
+
+a.sponsor-link:hover, a.sponsor-link:active {
+	background-color: #FFF;
+	color: #000;
+	padding: 0.5rem 1rem;
+	border: 1px solid #000;
+	border-radius: 4px;
+	text-decoration: none;
+}
+
+.extra-margin-bottom {
+	margin-bottom: 2rem;
+}

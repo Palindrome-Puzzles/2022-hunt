@@ -1,0 +1,65 @@
+tr.pending {
+    background-color: #cfc;
+}
+
+th,
+td {
+    text-align: left;
+    padding: .5em;
+}
+
+
+.actions .action {
+    display: inline-block;
+    margin-right: 1em;
+}
+
+h3 {
+    margin-bottom: .5em;
+}
+
+h4 {
+    margin-bottom: .5em;
+}
+h4 + p {
+    margin-top: 0;
+}
+
+.content.interaction table tr:nth-of-type(even) {
+    background-color: #d0d0d0;
+}
+
+.resolve {
+    background-color: #cc3;
+    padding: 1em;
+    margin: 1em 0;
+}
+.resolve p {
+    margin: 0 0 .5em;
+}
+
+.details h4 {
+    margin-top: 0;
+}
+.details h4.status {
+    background-color: #c1cdcd;
+    padding: .5em;
+}
+
+.details h4 .subtitle {
+    font-weight: normal;
+}
+
+.interaction-desc {
+    background-color: #f7e8d3;
+    padding: .5em;
+
+}
+
+.email-form .form-row input {
+    width: 400px;
+}
+.email-form textarea {
+    height: 100px;
+    width: 400px;
+}

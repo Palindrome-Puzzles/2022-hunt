@@ -1,0 +1,61 @@
+{% extends "hunt/site_layout.tmpl" %}
+{% load styles %}
+
+{% block title %}{{ round_info.round.name }} | {{ block.super }}{% endblock %}
+
+{% block site_stylesheets %}
+{{ round_common_style|wrap_styles|safe }}
+{{ round_style|wrap_styles|safe }}
+{% block extra_stylesheets %}{% endblock %}
+{% endblock site_stylesheets %}
+
+{% block site_scripts %}
+{% block extra_scripts %}{% endblock %}
+{% endblock site_scripts %}
+
+{% block site_content %}
+<main>
+  <header class="large-wordmark">
+    <h1>
+      {% block wordmark %}{% endblock %}
+    </h1>
+      {% block header_notice %}{% endblock %}
+  </header>
+
+  <!-- Round map begins here -->
+  {% block round_map %}{% endblock %}
+  <!-- Round map ends here -->
+
+  <div class="paper-edge top"></div>
+  <section id="main-content" class="content">
+    <!-- Round content begins here -->
+    {% block round_content %}{% endblock %}
+    <!-- Round content ends here -->
+
+    <div class="round-table-container">
+      <table>
+        <tr><th>Puzzle</th><th>Answer</th>{% block puzzle_extra_header %}{% endblock %}</tr>
+        {% for puzzle_info in round_info.puzzles %}
+        {% block puzzle_row %}
+        <tr>
+          <td>
+            <a href="{% url 'puzzle_view' puzzle_info.puzzle.url %}" class="{% if puzzle_info.puzzle.is_meta %} meta{% endif %}{% if puzzle_info.puzzle.round.url == 'plot-device' and not puzzle_info.puzzle.is_meta %} spoiler{% endif %}" id="list-{{puzzle_info.puzzle.url}}">
+              {{puzzle_info.puzzle.name|safe}}
+            </a>
+          </td>
+          <td>
+            {% if puzzle_info.solved %}
+            <div>{{ puzzle_info.puzzle.answer|safe}}</div>
+            {% endif %}
+          </td>
+          {% block puzzle_extra %}{% endblock %}
+        </tr>
+        {% endblock %}
+        {% endfor %}
+        {% block extra_rows %}{% endblock %}
+      </table>
+    </div>
+  </section>
+  <div class="paper-edge bottom"></div>
+</main>
+{% endblock site_content %}

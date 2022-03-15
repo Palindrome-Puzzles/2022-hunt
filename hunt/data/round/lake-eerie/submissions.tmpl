@@ -1,0 +1,18 @@
+{% load assets horror static %}
+
+{% horror_submission puzzle_info.puzzle team as result %}
+{% if team and puzzle_info.solved and result.audio %}
+<section class="bonus-puzzle-content">
+  <div class="paper-edge top"></div>
+  <div class="content">
+    <p><i>Wait, what's that noise…?</i></p>
+    <audio controls style="width:100%;"><source src="{% rd "audio/"|add:result.audio %}" type="audio/mp3"></audio>
+    <br>
+    <details class="transcripts">
+      <summary>Transcript</summary>
+    <p>"{{ result.text }}"</p>
+    </details>
+  </div>
+  <div class="paper-edge bottom"></div>
+</section>
+{% endif %}

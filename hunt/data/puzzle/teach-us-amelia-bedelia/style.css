@@ -1,0 +1,69 @@
+#book-left {
+	padding: 2rem 2rem 0 3rem;
+	padding-left: 3rem;
+	box-sizing: border-box;
+	background-image: url(images/book1.png);
+	background-repeat: no-repeat;
+	display: flex; 
+	flex-wrap: wrap;
+	align-content: start;
+	row-gap: 1.3rem;
+	min-width: 500px;
+	min-height: 564px;
+}
+
+#book-right {
+	padding: 2rem 3rem 0 1rem;
+	box-sizing: border-box;
+	background-image: url(images/book2.png);
+	background-repeat: no-repeat;
+	display: flex; 
+	flex-wrap: wrap;
+	align-content: start;
+	row-gap: 1.3rem;
+	min-width: 500px;
+	min-height: 564px;
+}
+
+.col-1 {
+	font-size: 0.7rem;
+	display: flex;
+	align-items: top;
+	flex-basis: 40%;
+	justify-content: space-between;
+	margin-right: 0.5rem;
+	flex-grow: 1;
+}
+
+.col-2 {
+	font-size: 0.7rem;
+	display: flex;
+	align-items: top;
+	flex-basis: 40%;
+	justify-content: space-between;
+	flex-grow: 1;
+}
+
+.col-3 {
+	font-size: 0.7rem;
+	display: flex;
+	align-items: top;
+	flex-basis: 40%;
+	justify-content: space-between;
+	margin-right: .5rem;
+	flex-grow: 1;
+}
+
+.clue-text {
+	padding-left: .25rem;
+}
+
+.clue-text em {
+	font-weight: bold;
+	text-decoration: underline;
+} 
+
+.prefer-2-col > * {
+	flex-basis: 50%;
+	margin-top: 0.5rem;
+}

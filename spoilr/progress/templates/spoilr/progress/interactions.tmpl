@@ -1,0 +1,48 @@
+{% extends "hq/layout.tmpl" %}
+{% load static %}
+
+{% block title %}Interactions Dashboard | {{ block.super }}{% endblock %}
+{% block heading %}Interactions Dashboard{% endblock %}
+
+{% block breadcrumb_items %}
+<li><a href="{% url 'spoilr.progress:interactions' %}">Interactions Dashboard</a></li>
+{% endblock breadcrumb_items %}
+
+{% block content %}
+<section class="content puzzles interactions">
+<p>{{ t_total }} teams, {{ i_total }} interactions</p>
+<table>
+  <tr class="h">
+    <td>Interactions</td>
+    <td></td>
+    <td colspan="3">Teams Unlocked/Total</td>
+    <td colspan="2">% of teams</td>
+    <td colspan="3">Teams completed/Unlocked</td>
+    <td colspan="2">% of unlocked</td>
+  </tr>
+  {% for interaction in interactions %}
+    <tr class={% if interaction.released %}{% if interaction.solvedp != '-' %}{% if interaction.solvedp >= 20 %}p_good{% else %}p_meh{% endif %}{% else %}p_nodata{% endif %}{% else %}p_unreleased{% endif %}>
+      <td><a href="{% url 'spoilr.interaction:interaction' interaction.interaction.url %}">{{ interaction.interaction.name|truncatechars:40 }}</a></td>
+      <td class="n">{{ interaction.released }}</td>
+      <td>/</td>
+      <td class="d">{{ t_total }}</td>
+      <td class="p">{{ interaction.releasedp }}</td>
+      <td class="g">{% if interaction.releasedp != '-' %}<div class="gb" style="width: {{ interaction.releasedp }}"></div>{% endif %}</td>
+      <td class="n">{{ interaction.solved }}</td>
+      <td>/</td>
+      <td class="d">{{ interaction.released }}</td>
+      <td class="p">{{ interaction.solvedp }}</td>
+      <td class="g">{% if interaction.solvedp != '-' %}<div class="gb" style="width: {{ interaction.solvedp }}"></div>{% endif %}</td>
+    </tr>
+    {% endfor %}
+</table>
+</section>
+{% endblock content %}
+
+{% block stylesheets %}
+<link rel="stylesheet" type="text/css" href="{% static 'spoilr/progress/style.css' %}">
+{% endblock %}
+
+{% block scripts %}
+{% include 'hq/util/auto-reload-script.tmpl' %}
+{% endblock scripts %}

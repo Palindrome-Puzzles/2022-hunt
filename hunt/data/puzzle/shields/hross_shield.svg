@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with EazyDraw for Mac ( http://www.eazydraw.com/ ) -->
+
+<svg
+    version="1.1"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:svg="http://www.w3.org/2000/svg"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    xmlns="http://www.w3.org/2000/svg"
+    width="361.649933684"
+    height="304.4"
+    viewBox="0, 0, 361.649933684, 304.4"
+    preserveAspectRatio="none"
+    id="svg2">
+   <defs
+       id="defs_82779A07"/>
+   <metadata
+       id="metadata7">
+      <rdf:RDF>
+         <cc:Work
+             rdf:about="">
+            <dc:format>image/svg+xml</dc:format>
+            <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+            <dc:title></dc:title>
+         </cc:Work>
+      </rdf:RDF>
+   </metadata>
+   <g
+       id="layer_Paper"
+       style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-opacity:1;fill-rule:nonzero;stroke-linecap:square;stroke-linejoin:miter;stroke-width:5;stroke-miterlimit:10">
+      <line
+          style="fill:#FFFFFF;stroke-width:1"
+          id="16C81D3E"
+          x1="360.649933684"
+          y1="303.4"
+          x2="288.649933684"
+          y2="123.4"/>
+      <polygon
+          style="fill:#0000FF;stroke-linecap:round;stroke-linejoin:round;stroke-width:2"
+          id="7674103E"
+          points="72.6499336836,15.4 72.6499336836,303.4 360.649933684,303.4 360.649933684,15.4"/>
+      <line
+          style="fill:#FFFFFF;stroke-width:1"
+          id="43DCBB3E"
+          x1="0.64993368362"
+          y1="123.4"
+          x2="72.6499336836"
+          y2="303.4"/>
+      <polygon
+          style="fill:#FFFFFF;stroke:none"
+          id="AD734F4E"
+          points="144.649933684,231.4 288.649933684,231.4 288.649933684,87.4 144.649933684,87.4"/>
+      <polygon
+          style="fill:#B3B3B3;stroke-linecap:round;stroke-linejoin:round;stroke-width:2"
+          id="D35B298E"
+          points="72.6499336836,15.4 360.649933684,15.4 354.889933684,1 66.8899336836,1"/>
+      <line
+          style="fill:#B3B3B3;stroke-width:1"
+          id="9A1F23CE"
+          x1="0.64993368362"
+          y1="123.4"
+          x2="72.6499336836"
+          y2="123.4"/>
+      <polygon
+          style="fill:#B3B3B3;stroke-linecap:round;stroke-linejoin:round;stroke-width:2"
+          id="C9C2DDCE"
+          points="66.8899336836,1 66.8899336836,289 72.6499336836,303.4 72.6499336836,15.4"/>
+   </g>
+</svg>

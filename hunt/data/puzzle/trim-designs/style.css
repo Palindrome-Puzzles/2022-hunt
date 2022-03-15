@@ -1,0 +1,71 @@
+.shoeboxes {
+  margin-bottom: 30px;
+}
+.shoeboxes h2,
+.shoes h2 {
+  margin-bottom: 0;
+}
+
+.shoeboxes ul {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 0;
+}
+
+.shoeboxes ul li {
+  border: 1px black solid;
+  padding: 2px;
+  margin: 0;
+}
+
+.shoes-container {
+  background-color: #f4cccc;
+  padding: 20px;
+  margin-bottom: 30px;
+}
+
+.grid {
+  background-color: white;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+table.crossword td {
+  height: 24px;
+  min-width: 24px;
+  position: relative;
+  text-align: center;
+  width: 24px;
+  font-size: 16px;
+  padding: 0;
+}
+
+.blue {
+  background-color: #9fc5e8;
+  -webkit-print-color-adjust: exact;
+  color-adjust: exact;
+}
+
+.shoes-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  row-gap: 1em;
+  column-gap: 1em;
+}
+
+.shoes-container table {
+  flex-basis: 23%;
+}
+
+@media only screen and (max-width: 600px) {
+  .shoes-container table {
+    flex-basis: 40%;
+  }
+}
+
+@media print {
+  .shoes .shoes-container:first-of-type {
+    break-after: page;
+  }
+}

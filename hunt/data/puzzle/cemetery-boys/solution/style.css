@@ -1,0 +1,47 @@
+.papels .red {
+  background-color: #EE2748;
+}
+
+.papels .forest-green {
+  background-color: #016C38;
+}
+
+.papels .yellow {
+  background-color: #FBE03C;
+}
+
+.papels .orange {
+  background-color: #FF8001;
+}
+
+.papels .navy {
+  background-color: #092785;
+}
+
+.papels .purple {
+  background-color: #C200FF;
+}
+
+.papels .seafoam {
+  background-color: #00E699;
+}
+
+.papels .pink {
+  background-color: #F79FC3;
+}
+
+.papels .maroon {
+  background-color: #890035;
+}
+
+.papels .cornflower {
+  background-color: #66A3FF;
+}
+
+.red,
+.forest-green,
+.navy,
+.purple,
+.maroon {
+	color:  #FFFFFF;
+}

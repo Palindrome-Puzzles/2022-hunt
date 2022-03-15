@@ -1,0 +1,11 @@
+.light-grey { background-color: #E6E7E9;}
+.dark-grey { background-color: #A8A9AC;}
+.sky-blue { background-color: #CFE2F4; }
+
+ol.lettered { list-style-type:upper-alpha; }
+
+.center-image{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}

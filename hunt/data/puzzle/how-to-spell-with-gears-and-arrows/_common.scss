@@ -1,0 +1,98 @@
+.gears:not(.transition-disabled) .gear .gear-rotate,
+.gears:not(.transition-disabled) .gear .gear-offset {
+  transition: transform .3s ease-out;
+}
+svg.gears .gear {
+  filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, .7));
+}
+
+.controls {
+  text-align: center;
+}
+
+.tooth {
+  .stop {
+    display: none;
+  }
+  .letter-bg {
+    fill: #fff;
+    stroke: #000;
+    stroke-width: .3;
+  }
+  .text {
+    font-size: 6px;
+    font-weight: bold;
+    fill: #000;
+  }
+
+  &:focus {
+    outline: 2px stroke black;
+  }
+
+  &.stopped {
+    .stop {
+      display: block;
+    }
+    .letter-bg {
+      display: none;
+    }
+    .text {
+      display: none;
+    }
+  }
+
+  &.fixed {
+    .letter-bg {
+      display: none;
+    }
+    .text {
+      fill: #fff;
+    }
+  }
+}
+
+.gear-label {
+  font-size: 8px;
+  font-weight: bold;
+}
+
+#stop-symbol,
+#stop-symbol-unpadded,
+#stop-symbol-fixed {
+  polygon {
+    stroke: #fff;
+    stroke-width: .3;
+  }
+  text {
+    fill: #fff;
+    stroke: none;
+    font-size: 2px;
+    pointer-events: none;
+  }
+}
+#stop-symbol polygon,
+#stop-symbol-unpadded polygon {
+  fill: #000;
+}
+#stop-symbol-fixed polygon {
+  fill: #f00;
+}
+
+$gear-colors: (
+  'A': #ce9c00,
+  'B': #53863e,
+  'C': #3d85c6,
+  'D': #a61c00,
+  'E': #674ea7,
+);
+@each $gear, $color in $gear-colors {
+  .gear#{$gear} .gear-body,
+  .gear-icon#{$gear} .gear-body {
+    stroke: $color;
+    fill: $color;
+  }
+  .gear#{$gear} .peg,
+  .gear-icon#{$gear} .peg {
+    fill: $color;
+  }
+}

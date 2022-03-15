@@ -1,0 +1,63 @@
+{% load static %}
+
+{% if not create and locked %}
+<p class="form-notice">
+  Your team's registration has been finalized. If you need to make a change, please reach out to <a href="help@mitmh2022.com">help@mitmh2022.com</a>.
+</p>
+{% endif %}
+
+<form method="POST">
+  {% csrf_token %}
+
+  {% for fieldset in fieldsets %}
+  <fieldset>
+    <legend>{{ fieldset.label }}</legend>
+    <ul class="{{ fieldset.classes }}">
+      {% for field in fieldset.fields %}
+      <li>
+        <label for="{{ field.id_for_label }}">
+          {{ field.label }}{% if field.field.required %}<span class="required-marker">*</span>{% endif %}
+        </label>
+
+        {{ field }}
+        {{ field.errors }}
+
+        {% if field.help_text %}
+          <span class="help">{{ field.help_text }}</span>
+        {% endif %}
+      </li>
+      {% endfor %}
+    </ul>
+  </fieldset>
+  {% endfor %}
+
+  <ul class="multiline no-fieldset">
+    <li>
+      <label for="{{ form.other.id_for_label }}">
+          {{ form.other.label }}{% if form.other.form.other.required %}<span class="required-marker">*</span>{% endif %}
+        </label>
+      {{ form.other }}
+      {{ form.other.errors }}
+      {% if form.other.help_text %}
+        <span class="help">{{ form.other.help_text }}</span>
+      {% endif %}
+    </li>
+  </ul>
+
+  {% if not locked %}
+  {% if next %}<input id="next" type="hidden" name="next" value="{{ next }}">{% endif %}
+  <input type="submit" value="{% if create %}Register{% else %}Update{% endif %}">
+  {% endif %}
+</form>
+
+{% if not create and not locked %}
+<hr>
+<form action="{% url 'registration_lock' %}" method="POST">
+{% csrf_token %}
+{% if next %}<input id="next" type="hidden" name="next" value="{{ next }}">{% endif %}
+<p class="form-notice minor">
+  Any of your team members can make changes to your team's registration information or password. If you'd like, you can finalize your registration to prevent changes.
+  <input type="submit" value="Finalize registraion">
+</p>
+</form>
+{% endif %}

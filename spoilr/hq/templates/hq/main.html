@@ -1,0 +1,103 @@
+{% extends "hq/layout.tmpl" %}
+{% load spacelesser static %}
+
+{% block stylesheets %}
+<style>
+.content ul {
+  list-style-type: none;
+  margin: 0;
+}
+.content li {
+  border-top: 1px solid #ccc;
+  padding-top: .25em;
+}
+.content li a {
+  color: blue;
+}
+</style>
+{% endblock %}
+
+{% block breadcrumb %}{% endblock %}
+
+{% block content %}
+<div class="header">
+<div>
+  <h2>Mystery Hunt Dashboard</h2>
+</div>
+
+{% if request.handler and request.handler.sign_in_time %}
+<p>
+  Signed in as {{ request.handler }}.
+  (<a href="{% url 'spoilr.hq:handler_sign_out' %}?discord={{ request.handler.discord }}">Stop handling</a>)
+</p>
+{% else %}
+<fieldset class="request.handler">
+  <h3>Please sign in!</h3>
+  <form method="post" action="{% url 'spoilr.hq:handler_sign_in' %}">
+    {% csrf_token %}
+    <div class="form-row">
+      <label for="id_handler_name">Name</label>
+      <input type="text" name="name" id="id_handler_name" required maxlength="100"{% if request.handler %} value="{{ request.handler.name }}"{% endif %}>
+    </div>
+
+    <div class="form-row">
+      <label for="id_handler_discord">Discord</label>
+      <input type="text" name="discord" id="id_handler_discord" required maxlength="100"{% if request.handler %} value="{{ request.handler.discord }}"{% endif %}>
+    </div>
+
+    <div class="form-row">
+      <label for="id_handler_phone">Phone (optional)</label>
+      <input type="text" name="phone" id="id_handler_phone" maxlength="20"{% if request.handler %} value="{{ request.handler.phone }}"{% endif %}>
+    </div>
+
+    <div class="form-row">
+      <input type="submit" value="Start handling">
+    </div>
+  </form>
+</fieldset>
+{% endif %}
+</div>
+
+
+    <div class="columns">
+      <div class="column">
+
+      <h3>General status pages</h3>
+      <ul class="menu-list">
+        <li><a href="{% url 'spoilr.progress:teams' %}">👩‍👩‍👧‍👦 Teams Dashboard</a></li>
+        <li><a href="{% url 'spoilr.progress:puzzles' %}">🧩 Puzzles Dashboard</a></li>
+        <li><a href="{% url 'spoilr.progress:interactions' %}">📨 Interactions Dashboard</a></li>
+      </ul>
+
+      <h3>Logs</h3>
+      <ul class="menu-list">
+        <li><a href="{% url 'hq_log' %}">System Event Log</a></li>
+        <li><a href="{% url 'hq_hintlog' 50 %}">Hint Log</a></li>
+        <li><a href="{% url 'spoilr.progress:solves' %}">Puzzle Solve Graph</a></li>
+      </ul>
+
+    </div>
+    <div class="column">
+
+    <h3>Queues to monitor</h3>
+      <ul class="menu-list">
+      <li><a href="{% url 'spoilr.hints:dashboard' %}?puzzle=&team=&open=1&limit=50">🤔 Hint Queue [{{ hint_count }}]</a></li>
+      <li><a href="{% url 'spoilr.interaction:dashboard' %}">📨 Interactions Queue [{{ task_count }}]</a></li>
+      <li><a href="{% url 'spoilr.contact:dashboard' %}">📨 Contact Request Queue [{{ contact_count }}]</a></li>
+      <li><a href="{% url 'spoilr.email:dashboard' %}">📬 Unanswered Emails [{{ email_count }}]</a></li>
+      <li><a href="{% url 'spoilr.email:archive' %}">📥 Email Archive</a></li>
+    </ul>
+
+    <h3>Other</h3>
+      <ul class="menu-list">
+      <li><a href="{% url 'spoilr.email:send' %}">Send an Email (emergency use only!)</a></li>
+      <li><a href="{% url 'admin:index' %}">Django Admin</a></li>
+    </ul>
+
+    <h3>HQ Updates</h3>
+    <ul class="menu-list">
+      <li><a href="{% url 'admin:spoilr_hqupdate_add' %}">📌 Create New Update</a></li>
+      <li><a href="{% url 'hq_updates' %}">📣 Publish Updates</a></li>
+    </ul>
+</div>
+{% endblock %}

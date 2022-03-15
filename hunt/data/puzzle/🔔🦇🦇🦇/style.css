@@ -1,0 +1,12 @@
+.center-text {
+  text-align: center;
+}
+
+.crunchy {
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+
+.crunchy td { padding: 0; border: none !important; }
+.crunchy td a { display: block; }
+.crunchy td img { width: 100%; display: block; }

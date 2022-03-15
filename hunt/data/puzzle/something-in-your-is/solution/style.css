@@ -1,0 +1,12 @@
+.clue_table { cell-padding: 0pt; }
+.spacer { min-height: 15pt; max-height: 15pt; }
+.clue_container { border: 2px solid #CCCCCC; width: 900px; margin-bottom: 30px;}
+.signoff{ font-family: "Courier New", Courier, monospace; text-align: right;}
+.clue { font-family: "Courier New", Courier, monospace; text-align: center;}
+.first_priority { color: #FFFFFF; background: #000000; }
+.red_alert { background: #FF9999;}
+.yellow_alert { background: #FFFF00; }
+.green_alert { background: #00FF00; }
+.final_answer_container { margin-left: auto; margin-right: auto; width: 100px; margin-top: 30px; }
+.final_answer { font-weight: bold; border-bottom: 3pt solid black; text-align: center; float: middle; }
+.final_answer_circle { font-size: 36px; text-align: center; }

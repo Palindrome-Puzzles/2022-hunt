@@ -1,0 +1,114 @@
+
+div.wrapper {
+  display: flex;
+}
+
+
+img.s-extract {  
+    display: block;
+    margin: auto;
+    width: 500px;
+}
+
+img.garnet-tower {  
+    display: block;
+    margin: auto;
+    width: 300px;
+}
+
+img.garnet-stack1 {  
+  width: 700px;
+  margin:auto;
+} 
+
+img.garnet-stack2 {  
+  width: 253px;
+  margin:auto;
+} 
+
+table.hap_sample td {
+  width:35px;
+}
+
+
+table.hap td {
+  width:120px;
+  text-align: center;
+}
+
+
+td.show-border {
+  border: 1px solid black;
+}
+
+td.hide {
+  border:0px;
+}
+
+
+table.holdem th:nth-child(1) { width:8%; }
+table.holdem th:nth-child(2) { width:32%; }
+table.holdem th:nth-child(3) { width:15%; }
+table.holdem th:nth-child(4) { width:15%; }
+table.holdem th:nth-child(5) { width:15%; }
+table.holdem th:nth-child(6) { width:15%; }
+
+table.holdem th {
+  vertical-align: middle;
+}
+
+table.summary td {  
+  border: 1px solid black;
+  text-align: center;
+}
+
+
+table.summary th {  
+  background-color: lightgray;
+}
+
+td.hide {
+  border:none;
+}
+
+table.railroad {  
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+.railroad td,th {
+  border: 1px solid black;
+  vertical-align:top;
+  text-align:center;
+}
+
+
+.railroad th:nth-child(1) { width:30px; }
+.railroad th:nth-child(2) { width:392px; }
+.railroad th:nth-child(3) { width:456px; } 
+
+img.railroad {
+  display:block;
+  width:100%;
+}
+
+table.chess {  
+  border:none;
+  margin-left: 0px;
+  max-width: 550px;
+  min-width: 400px;
+}
+
+.chess tr,td {border:none}
+
+.chess tr > *:nth-child(1) { width:10%; }
+.chess tr > *:nth-child(2) { width:45%; }
+.chess tr > *:nth-child(3) { width:45%; } 
+
+td.deviation {  
+  color: red;
+}
+
+p.annotation {
+  margin-top: 3px;
+}

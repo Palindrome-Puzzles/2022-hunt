@@ -1,0 +1,101 @@
+{% load static %}
+
+.round-map.list .sticker .caption {
+    background-color: #22EAFF;
+    color: #000;
+}
+
+.round-map.list .sticker img {
+    filter: drop-shadow(0 0 20px #fffa);
+}
+.round-map.list .sticker:focus img {
+    filter: drop-shadow(0 0 20px #F001F1);
+}
+.round-map.list .sticker:hover img {
+    filter: drop-shadow(0 0 20px #F001F1);
+}
+
+header {
+    max-height: 700px;
+}
+
+.page-background-map {
+    max-width: 2500px;
+}
+
+/*
+ * Align the map to have the same size and location as the center of the map background.
+ */
+.round-map.fixed .map {
+    aspect-ratio: 11/10;
+    max-width: 2500px;
+}
+
+.round-map.fixed .sticker img {
+    width: 100%;
+}
+
+.round-map.list .map {
+    column-gap: 4%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    row-gap: 1em;
+    max-width: 1750px;
+    padding-top: 60px;
+    width: 70%;
+}
+.round-map.list .page {
+    aspect-ratio: 619/434;
+    background-image: url(images/bg-page.png);
+    background-size: cover;
+
+    align-items: center;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 3%;
+    width: 30%;
+    filter: drop-shadow(0 0 0px #F001F1); // this line allows the checkmark to appear
+}
+.round-map.list .page a {
+    color: #000;
+    display: contents;
+}
+.round-map.list .page img {
+    margin-bottom: 2%;
+    width: 80%;
+}
+.round-map.list .page .caption {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    line-height: 1.5;
+    min-height: 3em;
+    text-align: center;
+}
+
+/*.round-map.list .page {
+    filter: drop-shadow(0 0 20px #fffa);
+}*/
+
+.round-map.list .page:focus {
+    filter: drop-shadow(0 0 20px #F001F1);
+}
+.round-map.list .page:hover {
+    filter: drop-shadow(0 0 20px #F001F1);
+}
+
+.round-map.list .page.solved::before {
+    content: "";
+    display: block;
+    background: url('{% static "solved.svg" %}') no-repeat 0 0;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    margin-top: -15px;
+    margin-left: -14px;
+    top: 0;
+    left: 50%;
+}

@@ -1,0 +1,81 @@
+<!-- TODO(sahil): This needs to move to the document head. -->
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu+Condensed&display=swap" rel="stylesheet">
+
+<div class="browse-toggle puzzle-status banner no-copy hidden" role="status">
+    Congratulations - your team has passed the test!
+    <button type="button">Browse test</button>
+</div>
+
+<div class="disconnected banner no-copy hidden" role="alert">
+    Connection lost.
+    <button type="button">Retry</button>
+</div>
+
+<div class="error banner no-copy hidden" role="alert">
+    Something went wrong. Please contact the hunt team to fix this!
+</div>
+
+<div class="container">
+    <div class="waiting hidden">…</div>
+    <div class="intro no-copy">
+        <p>Time for the test.</p>
+        <p>
+            <span class="line">If you enter an incorrect answer,</span>
+            <span class="line">you will be taken back to the first question.</span>
+        </p>
+        <img src="images/green.png" alt="Green fingerprint">
+        <button type="button">Start</button>
+    </div>
+
+    <div class="game-area hidden">
+        <div class="question-wrapper">
+            <div class="question-number"></div>
+            <p class="question"></p>
+        </div>
+
+        <div class="question-content">
+            <ol class="options">
+                <li><button type="button" data-option="0"><span class="gem no-copy">&nbsp;</span><span class="option"></span></button></li>
+                <li><button type="button" data-option="1"><span class="gem no-copy">&nbsp;</span><span class="option"></span></button></li>
+                <li><button type="button" data-option="2"><span class="gem no-copy">&nbsp;</span><span class="option"></span></button></li>
+                <li><button type="button" data-option="3"><span class="gem no-copy">&nbsp;</span><span class="option"></span></button></li>
+                <li><button type="button" data-option="4"><span class="gem no-copy">&nbsp;</span><span class="option"></span></button></li>
+            </ol>
+
+            <img alt="Colorful fingerprint">
+        </div>
+
+        <div class="browse-buttons hidden no-copy">
+            <button type="button" class="prev">Previous</button>
+            <div>Added <span class="score-display"></span> to the pot</div>
+            <button type="button" class="next">Next</button>
+        </div>
+    </div>
+
+    <div class="correct-area hidden no-copy">
+        <p>Correct!</p>
+        <p>You added <span class="score"></span> to the pot.</p>
+        <button type="button">Continue</button>
+        <img src="images/green.png" alt="Green fingerprint">
+    </div>
+
+    <div class="incorrect-area hidden no-copy">
+        <p>Incorrect!</p>
+        <button type="button">Start again</button>
+        <img src="images/red.png" alt="Red fingerprint">
+    </div>
+
+    <div class="win-area hidden no-copy">
+        <p>Congratulations, you've completed the test!</p>
+        <button type="button">Start again</button>
+        <img src="images/green.png" alt="Green fingerprint">
+    </div>
+</div>
+
+<div class="results-area hidden" id="results-area-id">
+    <p>Congratulations, you've completed the test!</p>
+</div>
+
+<button id="clipboard-button" data-skip-inline-styles="true"></button>
+
+<script src="main.ts" type="module"></script>

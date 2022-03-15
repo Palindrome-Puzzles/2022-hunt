@@ -1,0 +1,41 @@
+.clue-list {
+  padding-bottom: 4em;
+}
+
+.highlighted-cell {
+  background-color: #00FFFF;
+}
+
+.clue-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 1em 0;
+  row-gap: 1em;
+}
+
+.clue-row table {
+  margin: .25em auto;
+}
+
+.clue-row table:nth-of-type(1) {
+  margin-left: 0;
+}
+
+.clue-row table:nth-of-type(2) {
+  margin-right: 0;
+}
+
+.last-grid {
+  padding-top: 4em;
+}
+
+@media print {
+  table.grid th, table.grid td {
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+}

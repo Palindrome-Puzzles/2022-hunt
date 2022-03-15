@@ -1,0 +1,14 @@
+.highlighted-square { background-color: #F7DC6F; 
+font-weight: bold;}
+
+.green-square {
+	background-color: #D9EAD3;
+}
+
+.grey-square {
+	background-color: #F3F3F3;
+}
+
+.typewriter {
+	font-family: monospace;
+}

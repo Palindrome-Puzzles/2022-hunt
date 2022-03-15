@@ -1,0 +1,40 @@
+.monsters {
+  width: 1000px;
+}
+
+.lefthead {
+  border-left: 1px solid black;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+}
+
+.righthead {
+  border-right: 1px solid black;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+}
+
+.middle {
+  text-align: center;
+}
+
+.monster-grid {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+}
+
+.individual-monster {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 10px;
+  width: 250px;
+}
+
+.individual-monster img {
+  margin-bottom: 10px;
+  max-height: 250px;
+  max-width: 250px;
+}

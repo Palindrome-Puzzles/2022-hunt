@@ -1,0 +1,9 @@
+{% extends "round_files/generic_puzzle_solution.tmpl" %}
+
+{% block extra_stylesheets %}
+<link href="https://fonts.googleapis.com/css2?family=Red+Hat+Mono:wght@400&display=swap" rel="stylesheet">
+{% endblock extra_stylesheets %}
+
+{% block wordmark %}
+{% include 'round_files/generic_wordmark.tmpl' with round_info=round_info %}
+{% endblock wordmark %}

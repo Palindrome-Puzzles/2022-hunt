@@ -1,0 +1,25 @@
+.grids {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+}
+
+.left-grid {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 500px;
+}
+
+.right-grid {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 500px;
+}
+
+.highlighted-square {
+  background-color: #F7DC6F;
+}

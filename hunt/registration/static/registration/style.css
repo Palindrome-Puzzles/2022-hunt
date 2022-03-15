@@ -1,0 +1,358 @@
+body {
+  font-family: aktiv-grotesk, sans-serif;
+  font-size: 24px;
+  margin: 0;
+  min-width: 100%;
+  width: 100%;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+@media only screen and (max-width: 850px) {
+  body {
+    font-size: 18px;
+  }
+}
+
+input {
+  border: 1px solid outset;
+  font-family: aktiv-grotesk, sans-serif;
+}
+
+/* Page content responsive widths. */
+header,
+.scroller {
+  margin: auto;
+  max-width: 1200px;
+  width: 100%;
+}
+main {
+  box-sizing: border-box;
+  margin: 80px auto 50px;
+  max-width: 850px;
+  padding-left: 12px;
+  padding-right: 12px;
+  width: 100%;
+}
+
+h1, h2, h3, header p {
+  line-height: .9;
+  margin: 28px auto;
+  text-transform: uppercase;
+}
+
+h1 {
+  font-size: 128px;
+}
+h1 span.row {
+  column-gap: 24px;
+  display: flex;
+  justify-content: space-between;
+}
+h2 {
+  font-size: 80px;
+}
+header p {
+  font-size: 36px;
+  font-weight: 700;
+  text-align: center;
+}
+@media only screen and (max-width: 850px) {
+  h1 {
+    font-size: 108px;
+    margin-top: 0;
+  }
+  h1 span.row {
+    flex-wrap: wrap;
+  }
+  h1 span.row span {
+    flex-basis: 100%;
+  }
+  h1 span.row span:last-child {
+    text-align: right;
+  }
+}
+@media only screen and (max-width: 500px) {
+  h1 {
+    font-size: 90px;
+  }
+  h2 {
+    font-size: 50px;
+  }
+  header p {
+    font-size: 24px;
+    margin: 16px auto;
+  }
+  h1 span.row span:last-child {
+    text-align: left;
+  }
+}
+
+a.branding {
+  color: inherit;
+  cursor: pointer;
+  display: block;
+  text-decoration: none;
+}
+a.branding:focus {
+  outline: 1px solid #000;
+}
+a:not(.branding):not(.notification):not(.special) {
+  color: inherit;
+  cursor: pointer;
+  border-bottom: 2px solid #ccc;
+  text-decoration: none;
+}
+a:not(.branding):not(.notification):hover {
+  border-bottom-color: currentColor;
+}
+
+.scroller {
+  margin: 100px auto;
+  position: relative;
+}
+.scroller .menu-links {
+  display: flex;
+  flex-wrap: wrap;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin: 0;
+  transform: translateX(-50%) translateY(-50%);
+}
+.scroller img {
+  aspect-ratio: 4/1;
+  min-height: 150px;
+  max-width: 100%;
+}
+@media only screen and (max-width: 850px) {
+  .scroller {
+    margin: 50px auto;
+  }
+}
+
+section {
+  margin: 3em 1em 1em;
+}
+
+.scroller .menu-links,
+.toc.menu-links {
+  text-align: center;
+  text-transform: uppercase;
+}
+.registration-links.menu-links {
+  margin-top: -1em;
+  margin-bottom: 2em;
+}
+.menu-links .link-spacer {
+  display: inline-block;
+  margin: 0 .5em;
+}
+.toc {
+  border-bottom: 1px solid #000;
+  border-top: 1px solid #000;
+  padding: .5em 0;
+}
+
+/* Utility classes. */
+.hover-swap {
+  cursor: help;
+  position: relative;
+}
+.hover-swap:not(:hover) :first-child {
+  transition: opacity .3s;
+}
+.hover-swap :last-child {
+  display: inline;
+  left: 0;
+  opacity: 0;
+  position: absolute;
+}
+.hover-swap:hover :first-child {
+  opacity: 0;
+  position: absolute;
+}
+.hover-swap:hover :last-child {
+  transition: opacity .3s;
+  opacity: 1;
+  position: relative;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Forms */
+form {
+  margin-bottom: 1em;
+  min-width: 300px;
+}
+form fieldset {
+  border: 3px solid black;
+  border-radius: 20px;
+  padding: .5em 1em;
+  margin: 1em 0;
+}
+form legend {
+  font-size: smaller;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+form ul {
+  list-style-type: none;
+  margin: .5em 0;
+  padding-left: 0;
+}
+form li {
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: .2em;
+}
+form li + li {
+  margin-top: 1em;
+}
+form label {
+  margin-right: 20px;
+  padding: .5em 0;
+  width: 200px;
+}
+form label .required-marker {
+  margin-left: 5px;
+}
+form input:not([type="submit"]),
+form select,
+form textarea {
+  flex: 1 1 auto;
+  font-size: .9em;
+  padding: .5em;
+}
+form textarea {
+  height: 5em;
+  line-height: 1.25em;
+  width: 100%;
+}
+form .help {
+  font-size: .7em;
+  font-style: italic;
+  margin: .5em 0;
+}
+form .errorlist {
+  color: red;
+  font-size: .7em;
+  list-style-type: disc;
+  margin: .5em 0;
+  width: 100%;
+}
+form .errorlist + .help {
+  margin-top: 0;
+}
+
+form .multiline label {
+  display: block;
+  width: 100%;
+}
+form .multiline input, select {
+  display: block;
+  width: 100%;
+}
+
+form ul.no-fieldset {
+  padding: 0 1em;
+  margin: 1em 0;
+}
+
+form input[type="submit"] {
+  background-color: #fff;
+  border: 3px solid black;
+  cursor: pointer;
+  display: block;
+  font-size: 1em;
+  margin: 1em auto 0;
+  padding: .2em .5em;
+  text-transform: uppercase;
+}
+form input[type="submit"]:focus,
+form input[type="submit"]:hover {
+  background-color: #ddd;
+}
+
+form hr {
+  border-width: 2px 0 0;
+  border-style: solid;
+  margin: 1.5em;
+}
+
+
+.teams .bio {
+  font-size: .8em;
+  margin-left: 20px;
+  padding: .625em;
+  word-break: break-word; /* so bios without spaces can't break our design */
+}
+.teams .bio.unknown {
+  font-style: italic;
+}
+.teams details.even {
+  background: #f4f4f4;
+}
+.teams details.odd {
+  background: #e0e0e0;
+}
+.teams details {
+  border-bottom: 1px solid #aaa;
+  margin: 0;
+}
+.teams summary {
+  padding: .5em;
+  overflow-x: auto;
+}
+
+.form-notice {
+  background-color: #f1f1f1;
+  padding: 1em;
+}
+.form-notice.minor {
+  font-size: smaller;
+}
+
+.notification {
+  background-color: #f1f1f1;
+  box-sizing: border-box;
+  cursor: pointer;
+  color: currentColor;
+  display: block;
+  text-align: center;
+  font-weight: normal;
+  text-decoration: none;
+  margin: 0;
+  padding: .5em;
+  width: 100%;
+}
+.notification.error {
+  background-color: #fb7979;
+}
+
+
+.updates .update {
+  border-bottom: 1px solid #000;
+  border-top: 1px solid #000;
+  margin: 1em 0;
+  padding: .75em 0;
+}
+.updates .update + .update {
+  border-top: none;
+  margin-top: -1em;
+}
+.updates h3 {
+  margin: 0 0 .5em;
+}
+.updates .time {
+  font-size: .8em;
+  font-weight: bold;
+}
+.updates p {
+  font-size: .8em;
+}
+.updates :last-child {
+  margin-bottom: 0;
+}

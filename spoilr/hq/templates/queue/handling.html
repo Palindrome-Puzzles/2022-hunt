@@ -1,0 +1,131 @@
+{% load humanize %}
+<html>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <style type="text/css">
+      body, td, input {
+        font: 10pt Verdana;
+      }
+      table {
+        border-collapse: collapse;
+        padding: 0px;
+        margin: 10px;
+      }
+      td {
+        padding: 5px 8px;
+        overflow: hidden;
+        white-space: nowrap;
+        border-top: 1px solid black;
+        border-bottom: 1px solid black;
+      }
+      th {
+        font: 10pt Verdana bold;
+      }
+      .ital {
+        font-style: italic;
+      }
+      .mono {
+        font: 12pt "Lucida Console", Monago, monospace;
+      }
+      .correct {
+        background: #dfd;
+      }
+      .incorrect {
+        background: #fdd;
+      }
+    </style>
+  </head>
+  <body>
+    <form id="form" action="." method="POST">
+      {% csrf_token %}
+      <input type="hidden" name="handled" value="true" />
+      <div style="text-align: right;">
+	Signed in as {{ handler.name }}{% if handler.hq_phone %}, using {{ handler.hq_phone }}{% endif %}
+      </div>
+      <div>
+	Handling <b><a href="{% url 'one_team' team.username %}" target="_blank">{{ team.name }}</a></b>
+      </div>
+      <div id="time-remaining">
+	Time remaining: <span id="timer">{{ timer }}</span> second(s)<br />
+      </div>
+      <script type="text/javascript">
+	var orig_t = {{ timer }};
+	var orig_date = new Date();
+	var t = orig_t;
+        setInterval(function () {
+	  secs = Math.floor((new Date() - orig_date)/1000);
+          t = orig_t - secs;
+          if (t > 0) {
+            $('#timer').html(t);
+          } else {
+            $('#time-remaining').html('Timed out!  Click <a href=".">here</a> to go back to the queue.');
+          }
+          if (t < 120) {
+            $('#time-remaining').css('background', '#faa');
+          } else if (t < 240) {
+            $('#time-remaining').css('background', '#ffa');
+          }
+        }, 1000);
+      </script>
+      <br />
+      <iframe name="call_frame" src="javascript: void 0" style="position: absolute; visibility: hidden;"></iframe>
+      <div>
+        You'll need to respond via email or phone to the team to resolve their submissions (we recommend using the YewLabs email or using *67 to mask your phone number)<br/>
+	Contacts in this set of submissions: (use one or more of these)<br />
+	{% for p in contacts_now %}
+	&nbsp;&nbsp;&nbsp;<b>{{ p }}</b><br />
+	{% endfor %}
+	{% if contacts_other %}
+	Other contacts for this team: (just in case)<br />
+	{% for p in contacts_other %}
+	&nbsp;&nbsp;&nbsp;<b>{{ p }}</b><br />
+	{% endfor %}
+	{% endif %}
+      </div>
+      <br />
+      {% if contact %}
+      <div>
+	Contact HQ submissions:
+	<table>
+	  <tr><th>Time</th><th>Contact</th><th>Reason</th><th></th></tr>
+	  {% for p in contact %}
+	  <tr id="row_m_{{ p.submission.id }}" class="correct">
+	    <td>{{ p.submission.timestamp|naturaltime }}</td><td>{{ p.submission.contact }}</td><td class="ital">{{ p.submission.comment }}</td>
+	    <td>
+	      <label for="c_{{ p.submission.id }}"><input id="c_{{ p.submission.id }}" class="check" type="checkbox" name="c_{{ p.submission.id }}" />Done</label>
+	    </td>
+	  </tr>
+	  {% endfor %}
+	</table>
+      </div>
+      {% endif %}
+      <input id="done" type="submit" value="All done here." />
+    </form>
+    <script type="text/javascript">
+      function check() {
+        var all = true;
+        var any = false;
+        $('.check').each(function() {
+          if (this.checked) {
+            any = true;
+            $('#row_'+this.id).css({'background': '#f8f8f8', 'color': '#aaa'});
+          } else {
+            all = false;
+            $('#row_'+this.id).css({'background': '', 'color': ''});
+          }
+        });
+        if (!any)
+          $('#done').attr('value', 'I give up, return them to the queue.');
+        else if (all)
+          $('#done').attr('value', 'Team handled!');
+        else
+          $('#done').attr('value', 'Team partially handled, return the rest to the queue.');
+      }
+      check();
+      $('.check').click(check);
+      $('#form').bind('submit', function(e) {
+        $(this).find('input:submit').attr('disabled', 'disabled');
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,11 @@
+table.barred td.barred-left {
+	border-left-width: thick;
+}
+
+table.barred .less-padding {
+	padding: 5px 0px;
+}
+
+table.barred .right {
+	text-align: right;
+}

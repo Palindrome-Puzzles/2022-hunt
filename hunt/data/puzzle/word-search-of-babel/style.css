@@ -1,0 +1,41 @@
+#word-search td {
+  width: 15px;
+  height: 15px;
+  min-width: 15px;
+  font-size: 10px;
+}
+
+.scrap {
+  border-style: dashed;
+  padding-left: 5px;
+  padding-right: 5px;
+  background-image: url("paper.jpg");
+  opacity: 0.75;
+}
+
+.scrap-top {
+  text-align: center;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.scrap-bottom {
+  text-align: center;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.scrap-body {
+  overflow-wrap: break-word;
+  font-family: monospace;
+}
+
+.resultWordString {
+  font-family: monospace;
+  font-size: medium;
+}
+
+.wrong {
+  background-color:#FF9999;
+  font-weight: bold;
+}

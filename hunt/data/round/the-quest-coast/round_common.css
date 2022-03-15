@@ -1,0 +1,33 @@
+h1,
+.round-map {
+    font-family: 'Jim Nightshade', sans-serif;
+    font-weight: 400;
+    font-size: 60px;
+}
+
+.page-background {
+    background-color: #eaf3a0;
+    background-image: none;
+}
+.page-background-top {
+    background-image: url(images/bg-top.jpg);
+}
+.page-background-map {
+    background-image: url(images/bg-repeat.jpg);
+    background-repeat: repeat-y;
+    background-size: 100%;
+}
+
+header,
+.page-background-top {
+    background-size: contain;
+    min-width: 100%;
+}
+header.large-wordmark,
+.page-background-top {
+    aspect-ratio: 2500/918;
+}
+
+.bonus-puzzle-content {
+    text-align: center;
+}

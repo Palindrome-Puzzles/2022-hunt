@@ -1,0 +1,21 @@
+{% extends "top/sponsors/layout.tmpl" %}
+
+{% load static %}
+
+{% block sponsor_title %}Hudson River Trading{% endblock %}
+
+{% block sponsor_heading %}Hudson River Trading{% endblock %}
+
+{% block sponsor_details %}
+<ul class="top-breadcrumb"><li><a href="{% url 'sponsors' %}">&laquo; See all sponsors</a></li></ul>
+<p class="extra-margin-bottom"><a href="http://hudsonrivertrading.com" target="_blank" rel="noopener nofollow"><img src="{% static 'sponsors/hudson-river-trading.svg' %}" width="250" alt="Hudson River Trading logo"></a></p>
+<p class="extra-margin-bottom"><a href="http://hudsonrivertrading.com" target="_blank" rel="noopener nofollow" class="sponsor-link">Visit our website</a></p>
+<h2>Built by coders. Led by coders.</h2>
+<p>At Hudson River Trading (HRT) we are mathematicians, computer scientists, statisticians, physicists and engineers. We research and develop automated trading algorithms using advanced mathematical techniques. We have built one of the world's most sophisticated computing environments, and our researchers are at the forefront of innovation in the world of algorithmic trading.</p>
+
+<p>HRT's founding partners graduated from Harvard and MIT with degrees in computer science and mathematics, and founded HRT in 2002. Armed with programming skills and sharp quantitative minds, the founders hypothesized that by applying a fresh take to trading stocks, one that truly leverages the power of technology, they could meaningfully impact a world still dominated by manual operators. Very quickly, their algorithms saw success in the markets and HRT grew from their origins in US equities to a global, multi-asset class trading firm.</p>
+
+<p>Today HRT employs over 600 brilliant minds from a variety of disciplines—from highly technical to deeply mathematical to the liberal arts. We are critical thinkers and eager automators, chasing new solutions to any problem we encounter.</p>
+
+<p>We trade on nearly all of the world's electronic markets, and are a leading voice for fair and open markets. Our internal code of ethics far exceeds the expectations of the regulatory environment in which we operate. We are conscientious market participants advocating for fair and transparent markets for everyone. This philosophy influences every aspect of our research.</p>
+{% endblock %}

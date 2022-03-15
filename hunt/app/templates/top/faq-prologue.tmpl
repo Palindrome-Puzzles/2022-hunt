@@ -1,0 +1,63 @@
+{% extends "hunt/site_layout.tmpl" %}
+{% load assets hosts %}
+
+{% block title %}Frequently Asked Questions | {{ block.super }}{% endblock %}
+
+{% block site_stylesheets %}
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="{% aux 'prologue' 'prologue_top.css' %}">
+{% endblock site_stylesheets %}
+
+{% block site_content %}
+<main class="faq">
+  <header>
+    <h1>Frequently Asked Questions</h1>
+    <a class="wordmark-link" href="{% url 'index' %}">
+      <img src="{% aux 'prologue' 'wordmark.png' %}" alt="Star Rats">
+    </a>
+  </header>
+
+  <div class="paper-edge top"></div>
+  <section id="main-content" class="content">
+    <h2>Is this really part of the MIT Mystery Hunt?</h2>
+
+    <p>Yes! Kind of! It is an entirely optional prologue to the Mystery Hunt. Solving these puzzles will not put you ahead of the game when Hunt begins. Skipping these puzzles will not put you at a disadvantage. These puzzles are simply a fun appetizer ahead of the main event.</p>
+
+    <h2>Wait, what is the MIT Mystery Hunt?</h2>
+
+    <p>It is an annual competition in which teams of very smart people tackle a great many devious puzzles. It is held each year in mid-January at the Massachusetts Institute of Technology. The upcoming event starts at <a
+        href="https://www.timeanddate.com/worldclock/fixedtime.html?msg=MIT+Mystery+Hunt+2022&iso=20220114T12&p1=43"
+        rel="nofollow noopener noreferrer"
+        target="_blank"
+      >noon ET on January 14</a>. <a href="{% host_url 'registration_index' host 'registration' %}" target="_blank">Find out more and register for the 2022 event</a>, as either a team or as an individual in search of a team.</p>
+
+    <h2>And who are you?</h2>
+
+    <p>We are Team Palindrome. We won Mystery Hunt in 2021. Traditionally the team that wins Hunt creates and runs the next one. We’ve been working on puzzles all year and look forward to sharing them with you.</p>
+
+    <h2>So your team needed to make some outrageous number of puzzles for the Mystery Hunt, and you chose to make <em>even more of them?</em></h2>
+
+    <p>We plead insanity.</p>
+
+    <h2>Do we need to log in to the website? It seems like we can check answers without doing that.</h2>
+
+    <p>Right. If you’re on a team and want to keep track of your team’s progress across these puzzles, log in just like you will during Hunt weekend. But you don’t need to do that. If you’re solving these puzzles on your own, you can check answers without a username or password, but obviously in that case your progress won’t be saved.</p>
+
+    <h2>What if we need a hint on these puzzles?</h2>
+
+    <p>We will have a full-fledged system for providing hints during the official Hunt weekend. But it’s not Hunt weekend yet, is it? So, no hints, sorry. But if you see something you think merits a correction, please do let us know at <a href="mailto:hunt@mitmh2022.com" target="_blank">hunt@mitmh2022.com</a>.</p>
+
+    <h2 id="q-answer-checking">How do you verify answers are correct?</h2>
+
+    <p>We only care about case-insensitive letters and numbers when checking answers - all other characters including spaces, hyphens and emojis are ignored.</p>
+    <p>If your answer contains letters with accents, we do our best effort to remove the accents first, but it's safer if you do that yourself before submitting an answer.</p>
+
+    <h2>Anything else we need to know?</h2>
+    <p>The “Copy to Clipboard” button works best in Google Sheets, but it should at least be serviceable in other programs.</p>
+
+    <h2>Is anything on this page a puzzle?</h2>
+    <p>No.</p>
+  </section>
+  <div class="paper-edge bottom"></div>
+</main>
+{% endblock site_content %}

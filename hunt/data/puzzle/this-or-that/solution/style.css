@@ -1,0 +1,30 @@
+.highlighted-cell {
+  background-color: #00FFFF;
+  color-adjust: exact;
+  -webkit-print-color-adjust: exact;
+}
+
+.clue-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 1em 0;
+  row-gap: 1em;
+}
+.clue-row table {
+  margin: .1em auto;
+}
+.clue-row table:nth-of-type(1) {
+  margin-left: 0;
+}
+.clue-row table:nth-of-type(2) {
+  margin-right: 0;
+}
+
+.clue-row table tr {
+  break-inside: avoid-page;
+}
+
+.colortext {
+  color: red;
+}

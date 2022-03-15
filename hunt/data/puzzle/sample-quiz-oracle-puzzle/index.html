@@ -1,0 +1,145 @@
+{% load static %}
+
+<div class="flavor">
+    <p>Can you outsmart a fifth-grader?</p>
+</div>
+
+<p>Note: this is a really simplified version of <a href="https://2020.galacticpuzzlehunt.com/puzzle/make-your-own-math-quiz" target="_blank" rel="noopener nofollow noreferrer">Galactic's 2020 Make Your Own Maths Quiz</a> puzzle</p>
+
+<p>Write some maths questions to satisfy these prompts!</p>
+
+<p class="result hidden">
+    Nice work - the answer is <span class="answer"></span>
+</p>
+
+<p class="disconnected-message hidden no-copy">
+    Connection lost.
+    <button class="retry" type="button" disabled>Retry</button>
+</p>
+
+<div class="updating">Updating ...</div>
+
+<table>
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Prompt</th>
+      <th>Question</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody></tbody>
+</table>
+
+<script type="module">
+import Cookies from "{% static 'lib/js-cookie.module.min.js' %}";
+
+// Export globally so the auto onload handler can find this.
+window.puzzleOnLoad = puzzleOnLoad;
+
+const csrfToken = Cookies.get('csrftoken');
+let busy = false;
+let queued = false;
+let debounceTimeout = null;
+
+function puzzleOnLoad() {
+    refetchQuestions();
+    document.querySelector('.retry').addEventListener('click', () => {
+        document.querySelector('.disconnected-message').classList.add('hidden');
+        document.querySelector('.updating').classList.remove('hidden');
+        document.querySelector('.retry').disabled = true;
+        refetchQuestions();
+    });
+    document.querySelector('table').addEventListener('input', refetchQuestions);
+}
+
+function refetchQuestions() {
+    if (busy) {
+        queued = true;
+        return;
+    }
+    busy = true;
+    document.querySelector('.updating').innerText = 'Updating ...';
+
+    if (debounceTimeout) {
+        clearTimeout(debounceTimeout);
+    }
+    debounceTimeout = setTimeout(performFetch, 200);
+}
+
+function performFetch() {
+    const questions = Array.from(document.querySelectorAll('table input')).map(input => input.value);
+
+    fetch('{{ puzzle_info.full_path }}state', {
+        method: 'POST',
+        mode: 'same-origin',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'X-CSRFToken': csrfToken,
+        },
+        body: JSON.stringify(questions),
+    })
+    .then(response => response.json())
+    .then(({prompts, answer}) => {
+        document.querySelector('.disconnected-message').classList.add('hidden');
+        document.querySelector('.updating').classList.remove('hidden');
+
+        updatePrompts(prompts);
+        maybeUpdateAnswer(answer);
+        busy = false;
+        document.querySelector('.updating').innerText = 'Up-to-date!';
+
+        if (queued) {
+            queued = false;
+            refetchQuestions();
+        }
+    }).catch(err => {
+        busy = false;
+
+        document.querySelector('.disconnected-message').classList.remove('hidden');
+        document.querySelector('.retry').disabled = false;
+        document.querySelector('.updating').classList.add('hidden');
+    });
+}
+
+function updatePrompts(prompts) {
+    const tbody = document.querySelector('tbody');
+    const trs = document.querySelectorAll('tbody tr');
+    for (let i = trs.length; i < prompts.length; i++) {
+        const tr = document.createElement('tr');
+        const td1 = document.createElement('td');
+        td1.innerText = (i + 1).toString();
+        tr.appendChild(td1);
+
+        const td2 = document.createElement('td');
+        td2.innerText = prompts[i].prompt;
+        tr.appendChild(td2);
+
+        const td3 = document.createElement('td');
+        const input = document.createElement('input');
+        td3.appendChild(input);
+        tr.appendChild(td3);
+
+        const td4 = document.createElement('td');
+        tr.appendChild(td4);
+
+        tbody.appendChild(tr);
+    }
+
+    const statusCells = document.querySelectorAll('tbody td:nth-child(4)');
+    for (let i = 0; i < prompts.length; i++) {
+        statusCells[i].innerText = prompts[i].status;
+    }
+}
+
+function maybeUpdateAnswer(answer) {
+    if (answer) {
+        document.querySelector('.result').classList.remove('hidden');
+        document.querySelector('.answer').innerText = answer;
+    }
+}
+
+</script>
+
+<button id="clipboard-button"></button>

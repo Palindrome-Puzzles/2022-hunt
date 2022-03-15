@@ -1,0 +1,199 @@
+.pictures {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+}
+
+.captioned {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 250px;
+}
+
+.blanks {
+  font-size: .8em;
+}
+
+.bracket-container {
+    overflow-x:auto;
+}
+
+.bracket-right {
+    text-align: right;
+}
+
+.bracket-center {
+    text-align: center;
+}
+
+.venue-text {
+    font-size: .7em;
+}
+
+.seed-table {
+    font-style: italic;
+    display: inline-block;
+    padding: 2px;
+    border: 1px solid black;
+}
+
+.seed-text {
+    font-size: 0.8em;
+}
+
+.highlighted-cell{
+    background-color: #F7DC6F;
+    font-family: monospace;
+    font-weight: bold;
+}
+
+.bottom{
+    border-bottom: 1px solid black;
+}
+
+.right {
+    border-right: 1px solid black;
+}
+
+.left {
+    border-left: 1px solid black;
+}
+
+.tournament {
+    display: flex;
+    flex-direction: row;
+}
+.tournament .round {
+  font-size: .75em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 200px;
+  list-style: none;
+  padding: 0;
+}
+.tournament .round .spacer {
+  flex-grow: 2;
+}
+.tournament .round .spacer:first-child,
+.tournament .round .spacer:last-child {
+  flex-grow: 1;
+}
+
+.first-four {
+  border: 1px solid #888;
+  border-radius: 1em;
+  background-color: lightcyan;
+  padding: 0 1em;
+}
+.tournament-header {
+  text-align: center;
+  font-weight: bold;
+  border-radius: 1em;
+  border: 1px solid black;
+  background-color: #f54e00;
+  color: white;
+}
+
+.first-four-winner li.game-left,
+.round-1 li.game-left,
+.round-2 li.game-left,
+.round-3 li.game-left,
+.round-4 li.game-left,
+.semi-final li.game-left {
+    padding-left: 0.5em;
+}
+
+.first-four-winner li.game-right,
+.round-1 li.game-right,
+.round-2 li.game-right,
+.round-3 li.game-right,
+.round-4 li.game-right,
+.semi-final li.game-right {
+    padding-right: 0.5em;
+}
+
+.region {
+    font-size: .75em;
+  padding-top: 10px;
+  font-style: italic;
+  font-weight: bold;
+}
+.region-right {
+    text-align:right;
+  padding-right: 5px;
+}
+.region-left {
+    text-align:left;
+  padding-left: 5px;
+}
+
+.region-center {
+    text-align:center;
+  padding-left: 5px;
+}
+
+ul.seed li.game-left span:first-child,
+ul.seed li.game-right span:last-child {
+    font-size: 0.4em;
+    font-style: italic;
+    display: inline-block;
+    padding: 2px;
+    border: 1px solid black;
+}
+
+ul.seed li.game-left span:last-child,
+ul.seed li.game-right span:first-child {
+    font-size: 1.1em;
+    font-family: monospace;
+    font-weight: bold;
+    background-color: #CFE2F4;
+}
+
+li.game-right {
+  text-align: right;
+  border-left: 1px solid #aaa;
+}
+li.game-left {
+    border-right: 1px solid #aaa;
+}
+li.game-bottom {
+  border-bottom: 1px solid #aaa;
+}
+li.game-top {
+  border: none;
+  border-bottom: 1px solid #aaa;
+}
+li.game-left.spacer {
+    border-right: 1px solid #aaa;
+    min-height: 5px;
+    padding-right:.25em;
+}
+li.game-right.spacer {
+    border-left: 1px solid #aaa;
+    min-height: 5px;
+    padding-left:.25em;
+    text-align: left;
+}
+
+.final {
+    text-align: center;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    border: 1px solid #aaa;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    font-weight:bold;
+}
+.finals .centered {
+    text-align:center;
+    font-weight:bold;
+}
+.finals .centered > input {
+    display:block;
+    width:4em;
+    margin: 0 auto 0 auto;
+    text-align:center;
+}

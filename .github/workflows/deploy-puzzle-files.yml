@@ -1,0 +1,82 @@
+name: 'Template: Deploy puzzle files'
+
+on:
+  workflow_call:
+    inputs:
+      django_env:
+        description: 'Django environment'
+        required: true
+        type: string
+
+      gzip_files:
+        description: 'Whether to gzip non-binary files'
+        required: true
+        default: true
+        type: boolean
+
+      gcloud_bucket:
+        description: 'The name of the Google Cloud bucket to store files'
+        required: true
+        type: string
+
+    secrets:
+      GCLOUD_CREDENTIALS:
+        description: 'The project ID of the Google Cloud project'
+        required: true
+
+      GCLOUD_PROJECT_ID:
+        description: 'Credentials to authenticate with Google Cloud'
+        required: true
+
+jobs:
+  deploy:
+    name: Deploy puzzle files
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        lfs: true
+    - uses: ./.github/actions/setup-django-manage
+      with:
+        requirements_file: 'deploy_gcloud.txt'
+    - uses: ./.github/actions/build-puzzle-files
+    - uses: ./.github/actions/setup-gcloud
+      with:
+        gcloud_credentials: ${{ secrets.GCLOUD_CREDENTIALS }}
+        gcloud_project_id: ${{ secrets.GCLOUD_PROJECT_ID }}
+
+    - name: Collect puzzle files
+      env:
+        DJANGO_ENV: ${{ inputs.django_env }}
+      run: python3 manage.py collectpuzzlefiles --noinput --gzip-files=${{ inputs.gzip_files }}
+      shell: bash
+
+    # Note: this one uses the -d flag to delete existing files that don't match.
+    # **When launched, remove the -d flag as it can lead to breaking puzzles.**
+
+    # Note: this uses the -c flag to force using checksums instead of mtime. mtime
+    # is not appropriate as we just copied over the static files now.
+    - name: Deploy non-gzippable puzzle files
+      env:
+        CLOUDSDK_PYTHON: python3
+      run: gsutil -m rsync -c -d -R static_temp/not-gzip/ gs://${{ inputs.gcloud_bucket }}/static/
+
+    # And then this copies the gzippable files in, and uses the -Z flag to
+    # compress them on the fly. cp fails if the folder is missing, so perform a
+    # check first.
+    - name: Deploy gzippable puzzle files
+      env:
+        CLOUDSDK_PYTHON: python3
+      run: |
+        for d in static_temp/gzip/*/ ; do
+          if [ -d "$d" ]; then
+            gsutil -m cp -Z -R "$d" gs://${{ inputs.gcloud_bucket }}/static/
+          fi
+        done
+
+    - name: Delete puzzle files
+      env:
+        DJANGO_ENV: ${{ inputs.django_env }}
+      run: python3 manage.py removepuzzlefiles --noinput
+      shell: bash

@@ -1,0 +1,97 @@
+{% extends 'round_files/'|add:round_info.round.url|add:'/subview.tmpl' %}
+
+{% block subview_content %}
+<style>
+#chatcontainer {
+    border: 2em black;
+    max-height: 40%;
+    overflow-y: scroll;
+    width: 100%;
+}
+
+#chatcontainer > .td {
+    vertical-align: top;
+}
+
+tr.support {
+    background-color: beige;
+}
+
+tr.user {
+    background-color: aliceblue;
+}
+input[type=text]{
+    width: 80%;
+    font-size: large;
+    padding: 0.4em 0.3em;
+}
+input[type=submit]{
+    width: 15%;
+    font-size: large;
+    padding: 0.4em 0.3em;
+}
+</style>
+
+<h2>Support chat</h2>
+<div class='form-group'>
+    <div class='chatarea' id='chatcontainer'>
+        <table class='table table-bordered' id="chattable">
+            <tr class="support"><td class='text-capitalize'>
+                support
+            </td>
+            <td>
+                Hi, this is our help talking box! I’m still learning to help and can only reply to things using the ten hundred most used words, initially.
+            </td></tr>
+        </table>
+    </div>
+    <form method="POST" id="chat">
+    {% csrf_token %}
+    <input class='form-control' type="text" name="question" id="question">
+    <input class='form-control' id="submit" type="submit" value="send">
+    </form>
+</div>
+
+<script>
+$(document).ready(initialisechat);
+
+function insertChatrow(speaker, message) {
+    $("#chattable tr:last").after(`<tr class="${speaker}"><td class='text-capitalize'>${speaker}</td><td>${message}</td></tr>`)
+}
+
+function handleResponse(data){
+    insertChatrow("support", data['a']);
+    console.log(data);
+    $("#submit").removeAttr("disabled");
+    $("#question").removeAttr("disabled").val("").focus();
+}
+
+function submitquestion(event){
+    $("#submit").attr("disabled", true);
+    $("#question").attr("disabled", true);
+
+    event.preventDefault();
+
+    insertChatrow("user", $("#question").val());
+
+    let formData = {
+        q: $("#question").val(),
+        csrfmiddlewaretoken: $('input[name="csrfmiddlewaretoken"]').val()
+    }
+
+    $.ajax({
+        type: "POST",
+        url: "{{ puzzle_info.full_path }}msg",
+        data: formData,
+        dataType: 'json',
+        encode: true,
+    }).done(handleResponse);
+
+    return false;
+}
+
+function initialisechat(){
+    $("#question-select").removeAttr("disabled");
+    $("#chat").submit(submitquestion);
+}
+</script>
+{% endblock %}

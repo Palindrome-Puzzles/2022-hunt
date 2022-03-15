@@ -1,0 +1,23 @@
+<style>
+.ministry-reward .reward img {
+  height: auto;
+  margin: 1em;
+  max-width: 290px;
+  min-width: 150px;
+  width: 100%;
+}
+</style>
+
+<div class="ministry-reward reward-wrapper can-reduce-animation">
+{% if not showing_all %}<div class="not-a-puzzle-badge">Not a puzzle</div>{% endif %}
+<p class="caption">Congratulations! You stopped Bookspace's destruction by feeding the Bookwyrm a New Berry!</p>
+<p class="caption">In fact, you found a whole patch of New Berries, enough for each member of your team to keep one — and these are the enamel pin variety.  (Captain, look for more information about shipping after hunt.)</p>
+<div class="reward">
+  <a href="{{ reward.rd_root }}rewards-gvVSBF6R3h/Certificate.pdf" target="_blank">
+    <img src="{{ reward.rd_root }}rewards-gvVSBF6R3h/Certificate.png" alt="Certificate of achievement">
+  </a>
+  <a href="{{ reward.rd_root }}rewards-gvVSBF6R3h/newberry.jpg" target="_blank">
+    <img src="{{ reward.rd_root }}rewards-gvVSBF6R3h/newberry.jpg" alt="Newberry medal pin">
+  </a>
+</div>
+</div>

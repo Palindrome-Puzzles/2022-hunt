@@ -1,0 +1,143 @@
+h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 500;
+}
+
+header.large-wordmark img {
+    max-width: 670px;
+}
+header:not(.large-wordmark) img {
+    max-height: 150px;
+}
+
+.page-background {
+    background-image: url(bg.jpg);
+    background-color: #747473;
+    background-position: center;
+    background-size: cover;
+    position: fixed;
+    top: 0;
+}
+
+main.prologue header .subtitle {
+    /* The star rats logo has lots of padding, so bring the subtitle even closer. */
+    margin-top: -40px;
+}
+@media only screen and (min-width: 320px) and (max-width: 770px), not screen {
+    main.prologue header .subtitle {
+        margin-top: -5.2vw;
+    }
+}
+@media only screen and (max-width: 319.9px), not screen {
+    main.prologue header .subtitle {
+        margin-top: -16.6px;
+    }
+}
+
+hr.rat-divider {
+    background: url(rat-divider.svg) no-repeat top center;
+    border: none;
+    height: 18px;
+}
+
+.prologue .content {
+    font-size: 24px;
+}
+.content {
+    background-color: #D1E7C1;
+}
+.content .headline {
+    display: block;
+    width: 100%;
+}
+
+.faq .content h2:not(:first-child) {
+    margin-top: 36px;
+}
+
+.paper-edge {
+    background-image: url(../paper-edge.svg);
+    /* Calculated using https://codepen.io/sosuke/pen/Pjoqqp, and then manually tweaked. */
+    filter: invert(88%) sepia(23%) saturate(212%) hue-rotate(51deg) brightness(102%) contrast(85%);
+}
+
+.puzzles {
+    font-family: 'Space Grotesk', sans-serif;
+    column-gap: 50px;
+    justify-content: space-around;
+    flex-wrap: wrap-reverse;
+}
+.pdf {
+    flex: 0 1 263px;
+    margin: 0 auto;
+    order: -1;
+}
+.pdf img {
+    box-shadow: 3px 3px 10px black;
+    margin-bottom: 10px;
+    width: 100%;
+}
+.pdf a {
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+}
+.pdf a span {
+    display: block;
+}
+
+
+.rats {
+    flex: 1 1 auto;
+}
+.rats table {
+    text-align: center;
+    text-transform: uppercase;
+    width: 100%;
+}
+.rats th {
+    font-size: 24px;
+}
+.rats td {
+    font-size: 20px;
+}
+.rats td,
+.rats th {
+    border-bottom: 1px dashed #000;
+    padding: .5em;
+}
+
+.pdf a,
+.rats a {
+    color: #000;
+}
+
+
+.prologue-notice-bar {
+    border-bottom: 1px solid #000;
+    border-top: 1px solid #000;
+    display: flex;
+    font-size: 18px;
+    padding: 1em;
+    margin: 24px 0;
+}
+.prologue-notice-bar:first-child {
+  margin-top: 0;
+}
+.prologue-notice-bar .alert {
+    background-image: url(alert-icon.svg);
+    background-size: cover;
+    height: 40px;
+    margin-right: 20px;
+    width: 40px;
+}
+.prologue-notice-bar .text {
+    flex: 1;
+}
+.prologue-notice-bar .text p:first-child {
+    margin-top: 0;
+}
+.prologue-notice-bar .text p:last-child {
+    margin-bottom: 0;
+}

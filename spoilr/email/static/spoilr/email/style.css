@@ -1,0 +1,96 @@
+main .archive {
+/*     display: flex;
+    flex-wrap: wrap; */
+}
+
+/* main form.filters {
+    border: 1px solid #000;
+    padding: 1em;
+    width: fit-content;
+}
+*/
+main form h3 {
+    margin: 0;
+}
+
+main form .form-row {
+    display: flex;
+    margin: .5em 0;
+}
+main form .form-row input[type=submit] {
+    margin-left: 115px;
+}
+main form .form-row label {
+    margin-right: 15px;
+    text-align: right;
+    width: 100px;
+}
+
+main .emails {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    padding-left: 1em;
+}
+
+main .email {
+    border-left: 3px solid #999;
+    margin-bottom: 1em;
+    padding: 1em;
+}
+main .email .email-content {
+/*     display: flex;
+    flex-wrap: wrap;
+    column-gap: 2em; */
+}
+main .email .details {
+    min-width: 200px;
+}
+main .email.out {
+    border-color: #c99;
+}
+main .email h3 {
+    margin: 0 0 .5em;
+}
+main .email h3 em {
+    font-size: small;
+}
+main .email .text,
+main .email .html {
+    border: 1px solid #ccc;
+    border-left: 5px solid #99f;
+    padding: .5em;
+    margin: .5em 0;
+    min-width: 400px;
+}
+main .email .email {
+    margin: 1em;
+}
+
+main .email .html {
+    border-left-color: #9f9;
+}
+
+main .emails .actions {
+    margin-bottom: 1em;
+    padding: .5em 0;
+}
+
+main .emails .actions form,
+main .emails .actions .action {
+    display: inline-block;
+}
+main .emails .actions form:first-of-type {
+    margin-left: 0;
+}
+
+main .emails .email-reply-form {
+    border-left: 5px solid #f99;
+    margin: -1em 0 1em;
+    padding: .5em;
+}
+.email-reply-form textarea {
+    display: block;
+    height: 100px;
+    width: 400px;
+}

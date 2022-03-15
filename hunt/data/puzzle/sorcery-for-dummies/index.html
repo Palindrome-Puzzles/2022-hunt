@@ -1,0 +1,104 @@
+{% load static %}
+
+<section class="section">
+    <p class="sorcery-note">
+        Sorcery is easy! Just come up with the right sequence of words, and your enemy will be vanquished! Remember these simple rules:
+        <br><br>
+        1. To vanquish an enemy, create a spell that resolves to the name of that enemy.<br>
+        2. The <b>final word</b> in a successful spell must be one of:
+            ACUMEN,
+            DIMWIT,
+            GELATINOUS,
+            LEOPARD,
+            MIRACLE,
+            OBSOLESCENT,
+            PROFOUND,
+            VOWEL.
+        <br>
+        3. Each of the eight spells is either 3 or 4 words long.
+    </p>
+    <div class="output-wrap"><div class="loading-wrap"><div class="loading"><div></div><div></div><div></div><div></div></div></div><span class="output">&nbsp;</span></div>
+    <form method="post" id="spell-form">
+        <div class="field">
+            <div class="control">
+                <input name="spell" class="input" type="text" value="" maxlength="60">
+            </div>
+        </div>
+
+        <div class="button-wrap">
+            <button type="submit">Cast this spell!</button>
+        </div>
+        <div class="note"></div>
+    </form>
+    <br>
+
+    <div class="monster-group">
+        <div class="monster monster0"><img src="images/0.jpg" alt="Monster 0"><div class="len three-stars"><img src="images/3stars.png" alt="⭐️⭐️⭐️"></div></div>
+        <div class="monster monster1"><img src="images/1.jpg" alt="Monster 1"><div class="len four-stars"><img src="images/4stars.png" alt="⭐️⭐️⭐️⭐️"></div></div>
+        <div class="monster monster2"><img src="images/2.jpg" alt="Monster 2"><div class="len four-stars"><img src="images/4stars.png" alt="⭐️⭐️⭐️⭐️"></span></div></div>
+        <div class="monster monster3"><img src="images/3.jpg" alt="Monster 3"><div class="len four-stars"><img src="images/4stars.png" alt="⭐️⭐️⭐️⭐️"></span></div></div>
+        <div class="monster monster4"><img src="images/4.jpg" alt="Monster 4"><div class="len three-stars"><img src="images/3stars.png" alt="⭐️⭐️⭐️"></div></div>
+        <div class="monster monster5"><img src="images/5.jpg" alt="Monster 5"><div class="len three-stars"><img src="images/3stars.png" alt="⭐️⭐️⭐️"></div></div>
+        <div class="monster monster6"><img src="images/6.jpg" alt="Monster 6"><div class="len four-stars"><img src="images/4stars.png" alt="⭐️⭐️⭐️⭐️"></div></div>
+        <div class="monster monster7"><img src="images/7.jpg" alt="Monster 7"><div class="len four-stars"><img src="images/4stars.png" alt="⭐️⭐️⭐️⭐️"></div></div>
+    </div>
+</section>
+
+<script type="module">
+import Cookies from "{% static 'lib/js-cookie.module.min.js' %}";
+
+var spells = {};
+$(document).ready(function() {
+    const csrfToken = Cookies.get("csrftoken");
+
+    $('#spell-form').submit(function(event) {
+        $('.note').html("").hide();
+        $('.output').html("&nbsp;");
+        $('.loading-wrap').show();
+
+        var body = {
+            'spell'  : $('input[name=spell]').val(),
+            'spells' : spells,
+        };
+
+        fetch(`${window.puzzleUrl}cast`, {
+            method: "POST",
+            mode: "same-origin",
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json",
+              "X-CSRFToken": csrfToken,
+            },
+            body: JSON.stringify(body),
+          }).then((response) => response.json())
+            .then(function(data) {
+                $('.loading-wrap').hide();
+                var status = data['status'];
+                var output = data['output'];
+                var codename = data['codename'];
+                var message = data['message'];
+                var spell = data['spell'];
+                if (status == "fail") {
+                    $('.note').html(data['reason']).show();
+                    $('.output').html("&nbsp;");
+                } else  {
+                    if (message != "") {
+                        $('.note').html(message).show();
+                    }
+                    $('.output').html(output);
+                    if (status == "monster") {
+                        $('.output').html("🎉 " + output + " 🎉");
+                        $('.note').addClass('success').show();
+                        $('.'+codename).addClass('killed');
+                        spells[codename] = spell;
+                    } else if (status == "final") {
+                        $('.output').html("🏆 " + output + " 🏆");
+                        $('.note').addClass('success').show();
+                    }
+                }
+                // console.log(data);
+            });
+        event.preventDefault();
+    });
+});
+</script>

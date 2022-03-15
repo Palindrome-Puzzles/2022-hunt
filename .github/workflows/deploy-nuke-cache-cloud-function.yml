@@ -1,0 +1,33 @@
+name: 'Deploy Nuke Cache Cloud Function'
+
+on:
+  push:
+    branches:
+    - main
+    paths:
+    - 'cloud_functions/nuke_cache/**'
+
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-nuke-cache-cloud-function
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    name: Deploy Nuke Cache Cloud Function
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - uses: ./.github/actions/setup-gcloud
+      with:
+        gcloud_credentials: ${{ secrets.GOOGLE_APPLICATIONS_CREDENTIAL }}
+        gcloud_project_id: ${{ secrets.GCLOUD_PROJECT_ID }}
+    - name: Deploy function
+      uses: 'google-github-actions/deploy-cloud-functions@v0'
+      with:
+        name: 'nuke_cache'
+        runtime: 'python39'
+        source_dir: 'cloud_functions/nuke_cache'
+        vpc_connector: 'projects/mitmh-2022/locations/us-central1/connectors/redis-vpc-connector'

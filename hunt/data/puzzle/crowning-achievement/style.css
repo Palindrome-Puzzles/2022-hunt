@@ -1,0 +1,11 @@
+.blank-words {
+  font-size: 1em;
+}
+
+@media print {
+table.grid th, table.grid td {
+    color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+    page-break-before: always;
+    }
+}

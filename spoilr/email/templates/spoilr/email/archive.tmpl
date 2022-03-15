@@ -1,0 +1,119 @@
+{% extends "hq/layout.tmpl" %}
+{% load static %}
+
+{% block title %}Email archive | {{ block.super }}{% endblock %}
+{% block heading %}Email archive{% endblock %}
+
+{% block breadcrumb_items %}
+<li><a href="{% url 'spoilr.email:archive' %}">Email archive</a></li>
+{% endblock breadcrumb_items %}
+
+{% block content %}
+<section class="archive content">
+  <form method="get" class="filters">
+    <h3>Filter emails</h3>
+    <div class="form-row">
+      <label for="id_interaction">Interaction</label>
+      <select name="interaction" id="id_interaction">
+        <option value=""{% if not interaction %} selected{% endif %}>All</option>
+        {% for interaction_url in interactions %}
+        <option value="{{ interaction_url }}"{% if interaction == interaction_url %} selected{% endif %}>{{ interaction_url }}</option>
+        {% endfor %}
+      </select>
+    </div>
+
+    <div class="form-row">
+      <label for="id_team">Team</label>
+      <select name="team" id="id_team">
+        <option value=""{% if not team %} selected{% endif %}>All</option>
+        {% for team_username in teams %}
+        <option value="{{ team_username }}"{% if team == team_username %} selected{% endif %}>{{ team_username }}</option>
+        {% endfor %}
+      </select>
+    </div>
+
+    <div class="form-row">
+      <label for="id_email">Email</label>
+      <input type="text" name="email" id="id_email" maxlength="100" value="{{ email }}">
+    </div>
+
+    <div class="form-row">
+      <label for="id_search">Search</label>
+      <input type="text" name="search" id="id_search" maxlength="100" value="{{ search }}">
+    </div>
+
+    <div class="form-row">
+      <label for="id_hidden">Show hidden</label>
+      <select name="hidden" id="id_hidden">
+        <option value="1"{% if hidden %} selected{% endif %}>Un-hidden emails only</option>
+        <option value="0"{% if not hidden %} selected{% endif %}>All emails</option>
+      </select>
+    </div>
+
+    <div class="form-row">
+      <label for="id_limit">Limit</label>
+      <select name="limit" id="id_limit">
+        <option value="10"{% if limit == 10 %} selected{% endif %}>10</option>
+        <option value="50"{% if limit == 50 %} selected{% endif %}>50</option>
+        <option value="100"{% if limit == 100 %} selected{% endif %}>100</option>
+        <option value="200"{% if limit == 200 %} selected{% endif %}>200</option>
+      </select>
+    </div>
+
+    <div class="form-row">
+      <input type="submit" value="Update">
+    </div>
+  </form>
+
+  <div class="emails">
+  {% for email_ref in emails %}
+    {% include 'spoilr/email/partials/email.tmpl' with type=email_ref.type email=email_ref.email %}
+
+    {% if request.handler and request.handler.sign_in_time %}
+    <div class="actions">
+      <form method="post" action="{% url 'spoilr.email:hide' %}">
+        {% csrf_token %}
+        <input type="submit" value="{% if email_ref.email.hidden %}Unhide{% else %}Hide{% endif %}">
+        <input type="hidden" name="type" value="{{ email_ref.type }}">
+        <input type="hidden" name="id" value="{{ email_ref.email.id }}">
+      </form>
+
+      {% if email_ref.type == 'in' and not email_ref.email.hidden %}
+      <button type="button" class="email-reply-button" data-message-id="{{ email_ref.email.id }}">Reply</button>
+      {% endif %}
+    </div>
+    {% else %}
+    <div class="actions"><em>Sign in as a handler to reply to emails</em></div>
+    {% endif %}
+  {% endfor %}
+  </div>
+
+  <div class="email-reply-form hidden">
+    <form method="post" action="{% url 'spoilr.email:reply' %}">
+      {% csrf_token %}
+      <div class="form-row">
+        <label for="id_body">Body</label>
+        <textarea name="body" id="id_body" placeholder="Enter your reply here" required></textarea>
+      </div>
+      <div>
+        <p>This will send a real email to a real team - be careful!</p>
+        <label for="id_confirm_email_reply">Enter "REPLY" to confirm</label>
+        <input type="text" name="confirm" id="id_confirm_email_reply" required>
+      </div>
+      <input type="hidden" name="id" value="">
+      <input type="submit" value="Reply">
+      <button type="button">Cancel</button>
+    </form>
+  </div>
+</section>
+{% endblock content %}
+
+{% block stylesheets %}
+<link rel="stylesheet" type="text/css" href="{% static 'spoilr/email/style.css' %}">
+{% endblock %}
+
+{% block scripts %}
+{% include 'hq/util/auto-reload-script.tmpl' %}
+{% include 'hq/util/auto-submit-form-script.tmpl' with selector='.filters' %}
+<script type="module" src="{% static 'spoilr/email/inline-reply.js' %}"></script>
+{% endblock scripts %}

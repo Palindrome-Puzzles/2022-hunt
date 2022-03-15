@@ -1,0 +1,23 @@
+name: Setup Google Cloud SQL access
+description: Starts and authenticates to Google Cloud SQL proxy
+
+inputs:
+  port:
+    description: The port to use for the Google Cloud SQL proxy
+    required: true
+    default: 5433
+    type: number
+
+  gcloud_credentials:
+    description: Credentials to authenticate with Google Cloud
+    required: true
+
+runs:
+  using: composite
+  steps:
+    - name: Start Cloud SQL proxy
+      uses: mattes/gce-cloudsql-proxy-action@v1
+      with:
+        creds: ${{ inputs.gcloud_credentials }}
+        instance: 'mitmh-2022:us-central1:mitmh-2022'
+        port: ${{ inputs.port }}

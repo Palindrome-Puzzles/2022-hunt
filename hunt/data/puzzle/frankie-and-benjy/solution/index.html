@@ -1,0 +1,22 @@
+{% load static %}
+
+<script src="{% static 'lib/sorttable.min.js' %}"></script>
+<script src="{% static 'lib/sorttable-initial-sort.js' %}"></script>
+
+<p>Each work on the top is an anagram of a novel whose title comes from a poem. The poets are pictured on the bottom in alphabetical order. For each, use the number underneath the poet to index into the poem that provided the title.</p>
+
+<table class="sortable">
+  <caption class="sr-only">Data for Frankie and Benjy</caption>
+<tr><th scope="col">Anagram</th><th scope="col">Title</th><th scope="col">Author</th><th scope="col" data-sortable-initial>Order</th><th scope="col">Poet</th><th scope="col">Poem</th><th scope="col">Index</th><th scope="col">Letter</th></tr>
+<tr><th scope="row">Danger: Hunted Olympians (HS)</th><td>A Many-Splendoured Thing</td><td>Han Suyin</td><td>1</td><td>Francis Thompson</td><td>The Kingdom of God/In No Strange Land</td><td>15</td><td>D</td></tr>
+<tr><th scope="row">Patiently Fitting Walls (ML'E)</th><td>A Swiftly Tilting Planet</td><td>Madeleine L'Engle</td><td>2</td><td>Conrad Aiken</td><td>Morning Song From "Senlin"</td><td>3</td><td>R</td></tr>
+<tr><th scope="row">Hook Allowed German (TW)</th><td>Look Homeward, Angel</td><td>Thomas Wolfe</td><td>3</td><td>John Milton</td><td>Lycidas</td><td>6</td><td>A</td></tr>
+<tr><th scope="row">Dent's Shingle (AC)</th><td>Endless Night</td><td>Agatha Christie</td><td>4</td><td>William Blake</td><td>Auguries of Innocence</td><td>10</td><td>F</td></tr>
+<tr><th scope="row">Thirteenth Design (FSF)</th><td>Tender Is the Night</td><td>F. Scott Fitzgerald</td><td>5</td><td>John Keats</td><td>Ode to a Nightingale</td><td>11</td><td>T</td></tr>
+<tr><th scope="row">Unitarian Shines (LH)</th><td>A Raisin in the Sun</td><td>Lorraine Hansberry</td><td>6</td><td>Langston Hughes</td><td>Harlem</td><td>2</td><td>A</td></tr>
+<tr><th scope="row">Buy Unconstrained Urn (BB)</th><td>In a Sunburned Country</td><td>Bill Bryson</td><td>7</td><td>Dorothea Mackellar</td><td>My Country</td><td>6</td><td>N</td></tr>
+<tr><th scope="row">All Spartan Fight (CA)</th><td>Things Fall Apart</td><td>Chinua Achebe</td><td>8</td><td>W. B. Yeats</td><td>The Second Coming</td><td>13</td><td>I</td></tr>
+<tr><th scope="row">Wide, When Tonight (MM)</th><td>Gone With the Wind</td><td>Margaret Mitchell</td><td>9</td><td>Ernest Dowson</td><td>Non Sum Qualis Eram Bonae Sub Regno Cynarae</td><td>6</td><td>M</td></tr>
+<tr><th scope="row">Right-Wing Whiskey Absconded (MA)</th><td>I Know Why the Caged Bird Sings</td><td>Maya Angelou</td><td>10</td><td>Paul Laurence Dunbar</td><td>Sympathy</td><td>5</td><td>A</td></tr>
+<tr><th scope="row">Sup? Handstand's Delusion (KH)</th><td>A Thousand Splendid Suns</td><td>Khaled Hosseini</td><td>11</td><td>Saib Tabrizi</td><td>Kabul</td><td>5</td><td>L</td></tr>
+</table>

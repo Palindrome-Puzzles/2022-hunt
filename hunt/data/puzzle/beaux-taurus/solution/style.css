@@ -1,0 +1,39 @@
+.cyan {
+  background-color: cyan;
+}
+.yellow {
+  background-color: yellow;
+}
+.magenta {
+  background-color: magenta;
+}
+.white {
+  background-color: white;
+}
+.grey {
+  background-color: grey;
+}
+
+/* Our custom tables will only have specific lines drawn */
+table.custom td {
+  height: 30px;
+  width: 60px;
+  min-width: 60px;
+  text-align: center;
+}
+
+.grid_top {
+  border-top: 2px solid black;
+}
+
+.grid_bottom {
+  border-bottom: 2px solid black;
+}
+
+.grid_left {
+  border-left: 2px solid black;
+}
+
+.grid_right {
+  border-right: 2px solid black;
+}

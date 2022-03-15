@@ -1,0 +1,34 @@
+Interaction URL	Name	Order	Type	Puzzle Trigger	Requires Puzzle Trigger Solved	Email Key Trigger	Invite Template	Message Template
+scavenger-item	Come up with another item for this year’s scavenger hunt list	130	submission	567	yes	Scavenger
+star-trek	Make a Star Trek episode about Hunt	190	submission	94	yes	Trek
+nobel	Decline a Nobel Prize for literature	160	submission	548	yes	Nobel
+eurovision	Perform a Eurovision song pastiche	200	submission	48	yes	Eurovision
+seven-x	Make a new 7X with MIT at one across	180	submission	462	yes	7X
+best-picture	Make a Best Picture-winning movie	170	submission	566	yes	Oscar
+nancy-drew	Write “Nancy Drew Solves a Puzzle”	220	submission	113	yes	Nancy
+we-didnt-start-the-fire	Create the 2021 verse for “We Didn’t Start the Fire”	140	submission	298	yes	Fire
+gashlycrumb	Write story of a Gashlycrumb Tiny	230	submission	513	yes	Tiny
+cameo-mcu	Cameo in an MCU movie	110	submission	349	yes	Cameo
+telegram	Send us a telegram	210	submission	311	yes	Telegram
+monopoly	Create your team’s Monopoly board	150	submission	324	yes	Monopoly
+pokeball	Catch one of your team members in a Poké Ball	120	submission	422	yes	Capture
+bookwyrm	Completed The Ministry metameta	500	story	1	yes		"Hello again! Please gather your team together in [5/10/15] minutes and join us in a Spacebook Messenger call so we can express our gratitude:
+
+[Zoom info goes here]
+
+Thanks,
+The MIT Library Ministers"	"Hello again! Please come and join a Spacebook Messenger call so we can express our gratitude:
+
+[link to team's story page where the video has unlocked]
+
+Thanks,
+The MIT Library Ministers"
+endgame	Completed The tollbooth	510	story	555	yes		"Hello again! Please gather your team together in [5/10/15] minutes and join us in a Spacebook Messenger call so we can express our gratitude:
+
+[Zoom info goes here]
+
+Thanks,
+The MIT Library Ministers"	"[placeholder for email version]"
+manuscrips	Requested a free answer	900	answer
+book-reports	Submitted a book report	1100	submission
+emoji-art	Submit Emoji Art for IDHAC	1200	submission

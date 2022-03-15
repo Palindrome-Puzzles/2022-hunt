@@ -1,0 +1,9 @@
+.grey-square {
+  background-color: #D9D9D9;
+  color-adjust: exact;
+  -webkit-print-color-adjust: exact;
+}
+
+ol.lettered {
+  list-style-type:upper-alpha;
+}

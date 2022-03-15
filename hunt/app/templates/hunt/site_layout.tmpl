@@ -1,0 +1,221 @@
+{% extends "hunt/layout.tmpl" %}
+{% load hosts static %}
+
+{% block stylesheets %}
+<link rel="stylesheet" type="text/css" href="{% static 'stylesheets/site.css' %}?v=4">
+{% block site_stylesheets %}{% endblock %}
+{% endblock stylesheets %}
+
+{% block scripts %}
+<script src="{% static 'lib/robust-websocket.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'core/site.js' %}?v=5"></script>
+{% block site_scripts %}{% endblock %}
+{% if is_breakglass_access or has_posthunt_team_banner %}
+<style type="text/css">
+.global-notice {
+  font-size: 18px;
+  line-height: 1.3;
+}
+@media (max-width: 1000px) {
+  .global-notice {
+    font-size: 1.8vw;
+  }
+}
+@media (max-width: 667px) {
+  .global-notice {
+    font-size: 12px;
+  }
+}
+</style>
+{% endif %}
+{% endblock scripts %}
+
+{% block head_scripts %}
+<script type="text/javascript">
+window.puzzleAuthToken = '{{ auth|escapejs }}';
+window.isPublicAccess = {% if not team or team.is_public %}true{% else %}false{% endif %};
+{% if puzzle_info %}
+window.puzzleStaticDirectory = '{{ puzzle_info.static_directory }}';
+window.puzzleUrl = '{{ puzzle_info.full_path }}';
+{% endif %}
+</script>
+{% endblock head_scripts %}
+
+{% block content %}
+<a class="sr-only sr-only-focusable" href="#main-content">Skip to main content</a>
+{% if is_breakglass_access %}
+<div class="banner hide-print global-notice" style="height: 64px; background-color: #f00; color: #fff;">Heads-up: You can only see this because you're using an admin team!</div>
+{% elif has_posthunt_team_banner %}
+<div class="banner hide-print global-notice" style="height: 64px; background-color: #DEF4FF;"><div><strong>Heads-up</strong>: Your team login and progress may no longer be accessible after Monday 24th January 12 PM TIMEMIT. Make sure to save any <a href="{% url 'rewards_drawer' %}">rewards</a> before then!</div></div>
+{% endif %}
+<div class="top-menu hide-print">
+  <div class="show-sm mobile-menu-heading">
+    <button
+      aria-label="Show menu"
+      aria-controls="id-responsive-menu-container"
+      aria-expanded="false"
+    >
+      <img src="{% static 'menu.svg' %}" aria-hidden="true">
+    </button>
+
+    {% if status == 'prelaunch' %}
+      <a href="{% url 'index' %}">Star Rats</a>
+    {% else %}
+      <a href="{% url 'index' %}">MITMH2022</a>
+    {% endif %}
+  </div>
+
+  <div class="responsive-menu-container can-reduce-transition{% if is_breakglass_access or has_posthunt_team_banner %} pushed{% endif %}" id="id-responsive-menu-container">
+    <nav class="breadcrumbs hide-sm" aria-label="Breadcrumbs">
+      <ol>
+        {% if status == 'prelaunch' %}
+          <li><a href="{% url 'index' %}">Star Rats</a></li>
+        {% else %}
+          <a href="{% url 'index' %}">MITMH2022</a>
+        {% endif %}
+      </ol>
+    </nav>
+
+    <nav class="site" aria-label="Hunt">
+      {% if status == 'prelaunch' %}
+      <ul>
+        <li><a href="{% url 'faq' %}" class="site-link">FAQ</a></li>
+        <li><a href="{% host_url 'registration_index' host 'registration' %}#updates-section" class="site-link" target="_blank">Updates</a></li>
+      </ul>
+      {% else %}
+      <ul>
+        <li class="dropdown-wrapper">
+          <div class="menu-label show-sm">Rounds</div>
+          <button class="dropdown-trigger unstyled" aria-expanded="true" aria-controls="id-rounds-menu">
+            <span class="show-l">Rounds</span>
+            <img src="{% static 'round.svg' %}" class="show-md" aria-label="Rounds">
+          </button>
+          <ul id="id-rounds-menu" class="dropdown-menu">
+            <li><a href="{% url 'prologue' %}" {% if act == 'act0' %}aria-current="page"{% endif %}>Star Rats (Prologue)</a></li>
+            <li class="ruled"><a href="{% url 'round_view' 'the-investigation' %}" {% if act == 'act1' %}aria-current="page"{% endif %}>The Investigation</a></li>
+            {% if acts_unlocked.act2 %}
+            <li class="ruled"><a href="{% url 'round_view' 'the-ministry' %}" {% if act == 'act2' %}aria-current="page"{% endif %}>The Ministry</a></li>
+            {% endif %}
+            {% if acts_unlocked.act3 %}
+              <li class="ruled">
+              {% url 'act3_hub' as act3_hub_url %}
+              <a href="{{ act3_hub_url }}" {% if request.path == act3_hub_url %}aria-current="page"{% endif %}>Pen Station</a>
+              </li>
+              {% for round in acts_unlocked.act3_rounds %}
+              <li class="indented"><a href="{% url 'round_view' round.url %}" {% if round_info.round.url == round.url %}aria-current="page"{% endif %}>{{ round.name }}</a></li>
+              {% endfor %}
+              {% if acts_unlocked.plot_device %}
+              <li class="indented"><a href="{% url 'round_view' 'plot-device' %}" {% if round_info.round.url == 'plot-device' %}aria-current="page"{% endif %}>Plot Device</a></li>
+              {% endif %}
+            {% endif %}
+            {% if acts_unlocked.act4 %}
+              <li class="indented"><a href="{% url 'endgame_puzzle' %}" {% if act == 'act4' %}aria-current="page"{% endif %}>The Tollbooth</a></li>
+            {% endif %}
+          </ul>
+        </li>
+
+        <li class="dropdown-wrapper">
+          <div class="menu-label show-sm">Hunt</div>
+          <button class="dropdown-trigger unstyled" aria-expanded="true" aria-controls="id-links-menu">
+            <span class="show-l">Hunt</span>
+            <img src="{% static 'link.svg' %}" class="show-md" aria-label="Hunt">
+          </button>
+          <ul id="id-links-menu" class="dropdown-menu">
+            {% url 'story' as story_url %}
+            {% url 'all_puzzles' as all_puzzles_url %}
+            {% url 'events' as events_url %}
+            {% url 'updates' as updates_url %}
+            {% url 'faq' as faq_url %}
+            {% url 'sponsors' as sponsors_url %}
+            {% url 'credits' as credits_url %}
+            {% url 'stats' as stats_url %}
+
+            <li><a href="{{ story_url }}" {% if request.path == story_url %}aria-current="page"{% endif %}>{% if acts_unlocked.act3 %}Video and Letter Archive{% else %}Video Archive{% endif %}</a></li>
+            <li><a href="{{ all_puzzles_url }}" {% if request.path == all_puzzles_url %}aria-current="page"{% endif %}>All Puzzles</a></li>
+            <hr>
+            <li><a href="{{ events_url }}" {% if request.path == events_url %}aria-current="page"{% endif %}>Events</a></li>
+            <hr>
+            <li><a href="{{ updates_url }}" {% if request.path == updates_url %}aria-current="page"{% endif %}>Updates from HQ</a></li>
+            <li><a href="{{ faq_url }}" {% if request.path == faq_url %}aria-current="page"{% endif %}>FAQ</a></li>
+            <li><a href="{{ sponsors_url }}" {% if request.path == sponsors_url %}aria-current="page"{% endif %}>Sponsors</a></li>
+            <li><a href="{{ credits_url }}" {% if request.path == credits_url %}aria-current="page"{% endif %}>Credits</a></li>
+            <li><a href="{{ stats_url }}" {% if request.path == stats_url %}aria-current="page"{% endif %}>Statistics</a></li>
+            <hr>
+            <li><a href="{% host_url 'registration_index' host 'registration' %}" target="_blank">Registration Website</a></li>
+          </ul>
+        </li>
+      </ul>
+      {% endif %}
+    </nav>
+
+    <div class="actions">
+      <div class="dropdown-wrapper volume-menu hidden-unless-js">
+        <div class="menu-label show-sm">Volume</div>
+        <button class="dropdown-trigger unstyled" aria-expanded="false" aria-controls="id-volume-control" aria-label="Volume">
+          <img src="{% static 'sound.svg' %}" class="volume-icon" aria-hidden="true">
+        </button>
+        <div id="id-volume-control" class="dropdown-menu" tabindex="-1">
+          <label for="id-volume-slider">Notification volume: <span class="volume-display">50</span>%</label>
+          <input type="range" min="0" max="100" step="5" value="50" id="id-volume-slider">
+          <p class="menu-info" tabindex="-1">Note: this has no effect on any audio puzzles.</p>
+        </div>
+      </div>
+
+      {% if request.user.is_staff and puzzle_info %}
+      <div class="dropdown-wrapper shortcuts">
+        <div class="menu-label show-sm">Admin Shortcuts</div>
+        <button class="dropdown-trigger unstyled" aria-expanded="true" aria-controls="id-shortcuts-menu">
+          Admin Shortcuts
+        </button>
+        <ul id="id-shortcuts-menu" class="dropdown-menu">
+          <form method="post" action="{% url 'shortcuts' %}">
+            {% csrf_token %}
+            {% for shortcut in shortcuts %}
+              <li><button type="submit" name="action" value="{{ shortcut.action }}" class="unstyled">{{ shortcut.name }}</button></li>
+            {% endfor %}
+            <input name="puzzle" value="{{ puzzle_info.puzzle.url }}" type="hidden">
+          </form>
+        </ul>
+      </div>
+      {% endif %}
+
+      {% if not is_login_allowed and team and team.is_public %}
+        <div class="unlinked-label hide-sm">{{ team.name }}</div>
+      {% else %}
+        {% if team %}
+        <div class="dropdown-wrapper team-menu">
+          <div class="menu-label show-sm">{% if request.impersonating %}<strong style="color: red">Impersonating</strong>: {% endif %}{{ team.name }}</div>
+          <button class="dropdown-trigger unstyled" aria-expanded="true" aria-controls="id-team-menu">
+            <span class="team-name">{% if request.impersonating %}<strong style="color: red">Impersonating</strong>: {% endif %}{{ team.name }}</span>
+          </button>
+          <ul id="id-team-menu" class="dropdown-menu">
+            {% if not team.is_public %}
+              <li><a href="{% url 'update_registration' %}?next={{ request.get_full_path|urlencode }}">Update Team Info</a></li>
+              <li><a href="{% url 'contact' %}">Contact HQ</a></li>
+              <li><a href="{% url 'rewards_drawer' %}">Rewards Drawer</a></li>
+            {% endif %}
+            {% if request.impersonating %}
+              <li><a href="{% url 'end_impersonate' %}">Stop Impersonating</a></li>
+            {% else %}
+              <li><a href="{% url 'logout' %}">Logout</a></li>
+            {% endif %}
+          </ul>
+        </div>
+        {% else %}
+        <a href="{% url 'login' %}?next={{ request.get_full_path|urlencode }}" class="site-link">Login</a>
+        {% endif %}
+      {% endif %}
+    </div>
+  </div>
+
+  <div class="menu-overlay show-sm{% if is_breakglass_access or has_posthunt_team_banner %} pushed{% endif %}"></div>
+</div>
+
+<div class="notifications"></div>
+<div class="page-background{% if is_breakglass_access or has_posthunt_team_banner %} pushed{% endif %}">
+  <div class="page-background-top"></div>
+  <div class="page-background-map"></div>
+</div>
+
+{% block site_content %}{% endblock %}
+{% endblock content %}

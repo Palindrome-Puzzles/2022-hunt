@@ -1,0 +1,31 @@
+{% load static %}
+
+<div class="flavor">
+  <p>Let's play a game. Can you reach the mysterious number 21?</p>
+</div>
+
+<p class="no-copy">
+  <button class="draw-card" type="button" disabled>Draw a card</button>
+  <button class="restart hidden" type="button">Start again</button>
+
+  <span class="disconnected-message hidden">
+    Connection lost.
+  </span>
+  <button class="retry hidden" type="button" disabled>Retry</button>
+</p>
+
+<div class="no-cards">No cards yet.</div>
+<div class="cards hidden"></div>
+
+<div class="result hidden"></div>
+
+<div class="error-message no-copy hidden">
+  Something went wrong. Please contact the hunt team to fix this!
+</div>
+
+<button id="clipboard-button"></button>
+
+<script>
+window.puzzleUrl = '{{ puzzle_info.full_path }}';
+</script>
+<script src="main.ts" type="module"></script>

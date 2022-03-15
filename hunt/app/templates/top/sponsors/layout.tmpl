@@ -1,0 +1,22 @@
+{% extends "hunt/site_layout.tmpl" %}
+{% load static %}
+
+{% block title %}{% block sponsor_title %}{% endblock %} | {{ block.super }}{% endblock %}
+
+{% block site_stylesheets %}
+<link rel="stylesheet" type="text/css" href="{% static 'stylesheets/sponsors.css' %}">
+{% endblock site_stylesheets %}
+
+{% block site_content %}
+<main class="sponsor">
+  <header>
+    <h1>{% block sponsor_heading %}{% endblock %}</h1>
+  </header>
+
+  <div class="paper-edge top"></div>
+  <section id="main-content" class="content">
+		{% block sponsor_details %}{% endblock %}
+  </section>
+  <div class="paper-edge bottom"></div>
+</main>
+{% endblock site_content %}

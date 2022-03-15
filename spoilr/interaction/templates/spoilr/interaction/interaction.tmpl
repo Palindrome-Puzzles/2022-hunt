@@ -1,0 +1,198 @@
+{% extends "hq/layout.tmpl" %}
+{% load humanize static %}
+
+{% block title %}Interaction: {{ interaction.name|truncatechars:40 }} | {{ block.super }}{% endblock %}
+{% block heading %}Interaction: {{ interaction.name|truncatechars:40 }}{% endblock %}
+
+{% block breadcrumb_items %}
+<li><a href="{% url 'spoilr.interaction:dashboard' %}">Interactions</a></li>
+<li><a href="{% url 'spoilr.interaction:interaction' interaction.url %}">{{ interaction.name|truncatechars:40 }}</a></li>
+{% endblock breadcrumb_items %}
+
+{% block content %}
+<section class="content interaction">
+  <h3>{{ interaction.name }}</h3>
+
+  {% include 'spoilr/interaction/partials/interaction-desc.tmpl' %}
+
+  <div class="pending">
+    <h4>Pending teams</h4>
+    {% if teams_ready|length %}
+    <p>These teams have access to the interaction, and the next step is on us!</p>
+    <form method="post">
+      {% csrf_token %}
+      <table>
+        <tr>
+          <th></th>
+          <th><span title="Claimed">✅</span></th>
+          <th>Team</th>
+          <th>Progress</th>
+          <th>When did they get access?</th>
+        </tr>
+        {% for info in teams_ready %}
+        <tr>
+          {% if request.handler and request.handler.sign_in_time %}
+          <td><input type="checkbox" name="task_id" value="{{ info.task.id }}"></td>
+          {% else %}
+          <td></td>
+          {% endif %}
+          <td>
+            {% if info.task.handler == request.handler %}
+            <span title="Claimed">✅</span>
+            {% endif %}
+          </td>
+          <td><a href="{% url 'spoilr.interaction:details' interaction.url info.team.username %}">{{ info.team.name|truncatechars:50 }}</a></td>
+          <td><a href="{% url 'spoilr.progress:team' info.team.username %}" target="_blank">Progress</a></td>
+          <td><span title="{{ info.create_time }}">{{ info.create_time|naturaltime }}</span></td>
+        </tr>
+        {% endfor %}
+      </table>
+
+      {% if request.handler and request.handler.sign_in_time %}
+      <p>You can take bulk actions on the selected teams.</p>
+      <div class="actions">
+        <div class="action">
+          <input type="submit" value="Claim" formaction="{% url 'spoilr.hq:task_claim' %}">
+        </div>
+        <div class="action">
+          <input type="submit" value="Unclaim" formaction="{% url 'spoilr.hq:task_unclaim' %}">
+        </div>
+        <div class="action">
+          <label for="id_snooze_hours_{{ task.id }}">Snooze for</label>
+          <select name="snooze_hours" id="id_snooze_hours_{{ task.id }}">
+            <option value=".16">10 minutes</option>
+            <option value=".5">30 minutes</option>
+            <option value="1">1 hour</option>
+            <option value="2">2 hours</option>
+            <option value="4">4 hours</option>
+            <option value="8">8 hours</option>
+          </select>
+          <input type="submit" value="Snooze" formaction="{% url 'spoilr.hq:task_snooze' %}">
+        </div>
+      </div>
+      {% else %}
+      <em>Sign in as a handler to claim these</em>
+      {% endif %}
+    </form>
+    {% else %}
+    <p>No pending teams!</p>
+    {% endif %}
+  </div>
+
+  {% if teams_snoozed|length %}
+  <hr>
+  <h4>Snoozed teams</h4>
+  <p>We've snoozed these interactions for later.</p>
+  <form method="post">
+      {% csrf_token %}
+      <table>
+      <tr>
+        <th></th>
+        <th>Team</th>
+        <th>Progress</th>
+        <th>When did they get access?</th>
+        <th>Snoozed until</th>
+        <th>Snoozed by</th>
+      </tr>
+      {% for info in teams_snoozed %}
+      <tr>
+        {% if request.handler and request.handler.sign_in_time %}
+        <td><input type="checkbox" name="task_id" value="{{ info.task.id }}"></td>
+        {% else %}
+        <td></td>
+        {% endif %}
+        <td><a href="{% url 'spoilr.interaction:details' interaction.url info.team.username %}">{{ info.team.name|truncatechars:50 }}</a></td>
+        <td><a href="{% url 'spoilr.progress:team' info.team.username %}" target="_blank">Progress</a></td>
+        <td><span title="{{ info.create_time }}">{{ info.create_time|naturaltime }}</span></td>
+        <td><span title="{{ info.task.snooze_until }}">{{ info.task.snooze_until|naturaltime }}</span></td>
+        <td>{{ info.task.handler }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+
+    {% if request.handler and request.handler.sign_in_time %}
+    <p>You can take bulk actions on the selected teams.</p>
+    <div class="actions">
+      <div class="action">
+        <input type="submit" value="Unsnooze and claim" formaction="{% url 'spoilr.hq:task_claim' %}">
+      </div>
+    </div>
+    {% endif %}
+  </form>
+  {% endif %}
+
+  {% if teams_claimed|length %}
+  <hr>
+  <h4>Claimed teams</h4>
+  <p>Another handler has claimed these interactions. If you need to yoink it, click the interaction name.</p>
+  <table>
+    <tr>
+      <th>Team</th>
+      <th>Progress</th>
+      <th>When did they get access?</th>
+      <th>When claimed</th>
+      <th>Claimed by</th>
+    </tr>
+    {% for info in teams_claimed %}
+    <tr>
+      <td><a href="{% url 'spoilr.interaction:details' interaction.url info.team.username %}">{{ info.team.name|truncatechars:50 }}</a></td>
+      <td><a href="{% url 'spoilr.progress:team' info.team.username %}" target="_blank">Progress</a></td>
+      <td><span title="{{ info.create_time }}">{{ info.create_time|naturaltime }}</span></td>
+      <td><span title="{{ info.task.claim_time }}">{{ info.task.claim_time|naturaltime }}</span></td>
+      <td>{{ info.task.handler }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+  {% endif %}
+
+  {% if teams_accomplished|length %}
+  <hr>
+  <h4>Completed teams</h4>
+  <p>These teams have completed the interaction. Click the interaction name to see details.</p>
+  <table>
+    <tr>
+      <th>Team</th>
+      <th>Progress</th>
+      <th>When did they get access?</th>
+      <th>When did they complete?</th>
+      <th>Completed by</th>
+    </tr>
+    {% for info in teams_accomplished %}
+    <tr>
+      <td><a href="{% url 'spoilr.interaction:details' interaction.url info.team.username %}">{{ info.team.name|truncatechars:50 }}</a></td>
+      <td><a href="{% url 'spoilr.progress:team' info.team.username %}" target="_blank">Progress</a></td>
+      <td><span title="{{ info.create_time }}">{{ info.create_time|naturaltime }}</span></td>
+      <td><span title="{{ info.accomplished_time }}">{{ info.accomplished_time|naturaltime }}</span></td>
+      <td>{{ info.task.handler }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+  {% endif %}
+
+  {% if teams_not_ready|length %}
+  <hr>
+  <h4>Not ready teams</h4>
+  <p>These teams do not have access to the interaction. Click the interaction name if you need to force giving them access (danger!).</p>
+  <table>
+    <tr>
+      <th>Team</th>
+      <th>Progress</th>
+    </tr>
+    {% for team in teams_not_ready %}
+    <tr>
+      <td><a href="{% url 'spoilr.interaction:details' interaction.url team.username %}">{{ team.name|truncatechars:50 }}</a></td>
+      <td><a href="{% url 'spoilr.progress:team' team.username %}" target="_blank">Progress</a></td>
+    </tr>
+    {% endfor %}
+  </table>
+  {% endif %}
+</section>
+{% endblock content %}
+
+{% block stylesheets %}
+<link rel="stylesheet" type="text/css" href="{% static 'spoilr/interaction/style.css' %}">
+{% endblock %}
+
+{% block scripts %}
+{% include 'hq/util/auto-reload-script.tmpl' %}
+{% endblock scripts %}

@@ -1,0 +1,16 @@
+.bg-green {
+    background-color: #6aaa64;
+}
+
+.wordle {
+    margin: 1rem;
+    display: inline-block;
+}
+.wordle td {
+    border: 1px solid #80808080;
+    font-family: monospace;
+}
+
+.wordle span {
+    color: red;
+}

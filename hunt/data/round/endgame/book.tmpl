@@ -1,0 +1,187 @@
+{% load assets static %}
+{% with puzzle_url=puzzle_info.puzzle.url round_url=round_info.round.url %}
+{% if endgame_available and team and not team.is_public %}
+<style>
+.cts-box {
+	position: relative;
+}
+.endgame-book {
+	position: absolute;
+	display: block;
+	width: 100px;
+	z-index: 100;
+	text-decoration: none;
+}
+.endgame-book img {
+	display: block;
+	max-width: 100%;
+}
+{% if puzzle_url == 'la-ronde' %}
+.endgame-book {
+	top: 80px;
+	left: 30px;
+	transform: rotate(-2deg);
+}
+{% elif puzzle_url == 'tryst-of-fate' %}
+.endgame-book {
+	left: 0;
+    bottom: 100px;
+    transform: rotate(25deg);
+}
+{% elif puzzle_url == 'how-to-do-quality-reviews' %}
+.endgame-book {
+	top: 10px;
+	right: 100px;
+	transform: rotate(48deg);
+}
+{% elif puzzle_url == 'how-to-find-a-component' %}
+.endgame-book {
+	top: 0;
+	right: 60px;
+    transform: rotate(10deg);
+}
+{% elif puzzle_url == 'how-to-require-some-more-assembly-picture-puzzle-3' %}
+.endgame-book {
+	bottom: 0;
+	right:0;
+	transform: rotate(-27deg);
+}
+{% elif puzzle_url == 'scream' %}
+.endgame-book {
+	bottom: 20px;
+	left: 60px;
+	transform: rotate(-10deg);
+}
+{% elif puzzle_url == 'shields' %}
+.endgame-book {
+	transform: rotate(-1deg);
+	top: 80px;
+	left: 60px;
+}
+{% elif puzzle_url == 'whats-in-the-box-whats-in-the-box' %}
+.endgame-book {
+	display: block;
+	position: static;
+    margin-left: auto;
+}
+{% elif puzzle_url == '❤️--☮️' %}
+.endgame-book {
+	left: 30px;
+    top: 180px;
+    transform: rotate(-5deg);
+}
+{% elif puzzle_url == 'lentalgram' %}
+.endgame-book {
+	top: 20px;
+    right: 60px;
+    transform: rotate(-2deg);
+}
+{% elif puzzle_url == 'dancing-triangles' %}
+.endgame-book {
+	top: 60px;
+	left: 40px;
+	transform: rotate(-45deg)
+}
+{% elif puzzle_url == 'ice-cream-roll' %}
+.endgame-book {
+	top: 50px;
+	left: 40px;
+	transform: rotate(35deg)
+}
+{% elif puzzle_url == 'the-salt-n-pepa-diner' %}
+.endgame-book {
+	top: 60px;
+	right: 30px;
+	transform: rotate(-20deg)
+}
+{% elif puzzle_url == 'sunday-dinner' %}
+.endgame-book {
+	top: 350px;
+	right: 80px;
+	transform: rotate(-75deg)
+}
+{% elif puzzle_url == 'projection-booth' %}
+.endgame-book {
+	top: 0px;
+	left: 10px;
+	transform: rotate(15deg)
+}
+{% elif puzzle_url == 'opening-bids' %}
+.endgame-book {
+	top: 30px;
+	right: 0px;
+	transform: rotate(5deg);
+}
+{% elif puzzle_url == 'diced-turkey-hash' %}
+.endgame-book {
+	top: 0px;
+	right: 0px;
+	transform: rotate(5deg)
+}
+{% elif puzzle_url == 'minor-details' %}
+.endgame-book {
+	top: 600px;
+	right: 150px;
+	transform: rotate(-15deg)
+}
+{% elif puzzle_url == 'my-son-the-science-fiction-fan' %}
+.endgame-book {
+	top: 100px;
+	right: 50px;
+	transform: rotate(85deg)
+}
+{% elif puzzle_url == 'potions' %}
+.endgame-book {
+	top: 0px;
+	left: 10px;
+	transform: rotate(-15deg)
+}
+{% elif puzzle_url == 'called-onto-the-carpet' %}
+.endgame-book {
+	top: 20px;
+	left: 2%;
+	transform: rotate(-5deg);
+}
+{% elif puzzle_url == 'double-entendre' %}
+.endgame-book {
+	top: 50px;
+	right: 10px;
+	transform: rotate(-18deg);
+}
+{% elif puzzle_url == 'trickster-tales' %}
+.endgame-book {
+	right: -10px;
+	top: 70px;
+	transform: rotate(5deg)
+}
+{% elif round_url == 'noirleans' %}
+.endgame-book {
+	left: 5%;
+	top: 380px;
+	transform: rotate(-5deg)
+}
+{% elif round_url == 'noirleans' %}
+.endgame-book {
+	left: 5%;
+	top: 380px;
+	transform: rotate(-5deg)
+}
+{% elif round_url == 'the-quest-coast' %}
+.endgame-book {
+	left: 5%;
+	top: 980px;
+	transform: rotate(5deg);
+}
+{% elif round_url == 'whoston' %}
+.endgame-book {
+	right: 12%;
+	top: 320px;
+	transform: rotate(-10deg);
+}
+{% endif %}
+</style>
+{% if book %} {# REMOVE THE if book when we've updated everywhere #}
+<a class="endgame-book" href="{% url 'cts_discover_book' puzzle='completing-the-story' book=book %}" class="no-copy">{% if book in endgame_books_discovered %}<img src="{% aux "endgame" "book-found.png" %}">{% else %}<img src="{% aux "endgame" "book.png" %}">{% endif %}</a>
+{% endif %}
+{% endif %}
+{% endwith %}

@@ -1,0 +1,29 @@
+pre.centered {
+  text-align: center;
+}
+
+td.clue, td.explanation {
+  margin-right: 10px;
+}
+
+td.explanation em {
+  font-style: normal;
+  font-weight: bold;
+}
+
+td.answer {
+  text-align: center;
+}
+
+figcaption {
+  text-align: center;
+  font-size: smaller;
+  font-style: italic;
+}
+
+span.callout {
+  display: block;
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}

@@ -1,0 +1,133 @@
+{% load assets static %}
+
+header {
+	background-image: url(images/wordmark.png);
+    background-position: top center;
+	background-repeat: no-repeat;
+	background-size: contain;
+	max-height: 300px;
+    margin: 2% auto;
+    width: 100%;
+}
+
+/* hide me from everyone except screen-readers */
+header h1 {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+.content,
+.puzzle-actions,
+.puzzle-action-embed {
+	background-color: #F0EEEE;
+}
+
+.page-background {
+    background-image: url(images/bg.jpg);
+	background-repeat: no-repeat;
+	background-color: #FFFFFF;
+    background-size: 100%;
+    background-position: center top;
+}
+@media only screen and (max-width: 1500px) {
+    .page-background {
+        background-size: 1500px;
+    }
+}
+
+/* Calculated using https://codepen.io/sosuke/pen/Pjoqqp. */
+.paper-edge {
+    background-image: url("{% static 'paper-edge.svg' %}");
+	filter: invert(97%) sepia(99%) saturate(14%) hue-rotate(292deg) brightness(99%) contrast(89%);
+}
+
+#main-content h2 {
+    text-align: center;
+    font-size: 1.3rem;
+    margin-bottom: 1.7em;
+}
+
+#main-content h2 span {
+    position: relative;
+}
+
+.found {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+}
+
+.found .book {
+    box-sizing: border-box;
+    font-family: Libre Baskerville, serif;
+    font-size: 1.4rem;
+    width: 100%;
+    margin-bottom: 1rem;
+    padding: .6em 1em 1em;
+    text-align: center;
+    background: white;
+    border-radius: 6px;
+    filter: drop-shadow(0px 3px 5px rgba(0,0,0,.1));
+}
+
+@media only screen and (min-width: 850px) {
+    .found .book:nth-child(odd) {
+      margin-right: 1rem;
+    }
+
+    .found .book {
+        width: 48%;
+    }
+}
+
+
+
+.solved {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.solved .book {
+    background: url("{% aux 'endgame' 'book.png' %}") no-repeat center 0;
+    width: 180px;
+    height: 210px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 20px 30px 0;
+}
+
+.solved .book a {
+    text-align: center;
+    font-family: Libre Baskerville, serif;
+    border-radius: 10px;
+    text-decoration: underline;
+    margin: 0 20px;
+    padding: 30px 9px 30px 25px;
+    color: white;
+}
+
+.solved .book.spoiler a {
+    color: transparent;
+    font-size: 0;
+}
+.solved .book.spoiler a::after {
+    content: "SPOILER";
+    color: white;
+    font-size: 1rem;
+}
+.solved .book.spoiler:hover a,
+.solved .book.spoiler a:focus {
+    color: white;
+    font-size: 1rem;
+}
+.solved .book.spoiler:hover a::after,
+.solved .book.spoiler a:focus::after {
+    font-size: 0;
+}

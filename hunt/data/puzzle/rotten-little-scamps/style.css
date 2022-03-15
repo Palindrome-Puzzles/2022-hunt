@@ -1,0 +1,6 @@
+.grids { margin: 0 auto }
+.grid-structure { margin-bottom: 40px; width: 320px; display: inline-block; break-inside: avoid-page; }
+
+.keep-inside {
+  break-inside: avoid-page;
+}

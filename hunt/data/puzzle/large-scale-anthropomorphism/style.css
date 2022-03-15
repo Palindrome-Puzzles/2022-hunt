@@ -1,0 +1,9 @@
+.row {
+  display: block;
+  background-color: #f9eab0;
+}
+
+img {
+  max-height: 200px;
+  max-width: 100%;
+}

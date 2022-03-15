@@ -1,0 +1,71 @@
+.round-map .caption {
+    background-color: #000000;
+    color: #fff;
+    font-size: 20px !important;
+    line-height: 24px !important;
+}
+.round-map a:hover .caption {
+	background-color: #75473F;
+    filter: brightness(1) !important;
+}
+.round-map .sticker img {
+    filter: drop-shadow(0 0 20px #aaa);
+}
+.round-map .sticker :focus img {
+    filter: drop-shadow(0 0 20px #fff);
+}
+.round-map .sticker:hover img {
+    filter: drop-shadow(0 0 20px #fff);
+}
+
+.page-background-top,
+.page-background-map {
+    max-width: 2500px;
+    min-width: unset;
+}
+header {
+    max-height: 918px;
+}
+
+.round-map .map {
+    aspect-ratio: 2500/3155;
+    background-image: url(images/bg-map.jpg);
+    background-size: 100%;
+    background-position: top center;
+    max-width: 2500px;
+    width: 100%;
+}
+
+/* When the map content is 1000px, start truncating the map instead. */
+@media only screen and (max-width: 1249.9px) {
+    header,
+    .page-background-top {
+        aspect-ratio: unset;
+        background-size: cover;
+        height: 459px;
+    }
+    .page-background-map {
+        background-size: 1250px;
+    }
+
+    .round-map {
+        width: 100vw
+    }
+    .round-map .map {
+        width: 1250px;
+    }
+}
+@media only screen and (max-width: 999.9px) {
+    header,
+    .page-background-top {
+        aspect-ratio: 2000/918;
+        height: unset;
+    }
+    .page-background-map {
+        background-size: 125%;
+    }
+
+    .round-map .map {
+        width: 125%;
+    }
+}

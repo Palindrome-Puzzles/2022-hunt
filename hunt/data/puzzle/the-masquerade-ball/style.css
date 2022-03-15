@@ -1,0 +1,54 @@
+.note {
+  background: #FFF5F9 url(images/lovenote.jpg) no-repeat;
+  background-size: 100% auto;
+  padding: 0.5em 0;
+  margin-bottom: 1em;
+  font-size: 0.9em;
+}
+.note div {
+  border-top: 2px solid #DBB15F;
+  border-bottom: 2px solid #DBB15F;
+  padding: 1em 210px;
+  text-align: center;
+}
+
+.costumes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+.costumes .costume {
+  padding: 1rem;
+  text-align: center;
+}
+.costumes .costume img {
+  max-width: 100%;
+  height: 250px;
+}
+.costumes caption {
+  display: block;
+}
+
+.note.spoiler-note div {
+  color: #FFF5F9;
+  position: relative;
+}
+.note.spoiler-note div::after {
+  content: "SPOILER";
+  color: #000;
+  font-size: 1rem;
+  font-weight: bold;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+.note.spoiler-note:hover div,
+.note.spoiler-note:focus div {
+  color: #000;
+}
+.note.spoiler-note:hover div::after,
+.note.spoiler-note:focus div::after {
+  font-size: 0;
+}

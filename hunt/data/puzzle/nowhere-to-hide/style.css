@@ -1,0 +1,25 @@
+.align-left {
+    text-align: left;
+    align-items: flex-start;
+}
+
+.align-right {
+    text-align: right;
+    align-items: flex-end;
+}
+
+table.d-pad{
+    text-align: center;
+}
+
+div.d-pad, canvas {
+    text-align: center;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+td > button {
+    width: 100%;
+    font-size: large;
+}

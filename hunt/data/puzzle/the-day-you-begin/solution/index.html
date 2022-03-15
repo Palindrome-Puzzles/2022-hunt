@@ -1,0 +1,198 @@
+<p>The flavor hints at XKCD, and specifically the premise of <a href="https://www.explainxkcd.com/wiki/index.php/327:_Exploits_of_a_Mom_">this comic</a>.</p>
+
+<p>You're not likely to get any students' names by guessing, but the student search box is very vulnerable to a SQL injection attack, as depicted in the comic. A hacking attempt that results in an error will cause the query (and error) to be printed, making future hacking attempts easier:</p>
+
+<pre>Robert'; DROP TABLE Students;--</pre>
+
+<p><img src="images/solution-1.PNG" width="581.3" height="165" alt="Screenshot showing error: SQLite error: Something went wrong with query select * from students where name = 'Robert'; DROP TABLE Students;--': You can only execute one statement at a time."/></p>
+
+<p><em>(Note that the underlying SQLite interface rejects attempts to modify the table, and even if it didn't, the entire database is recreated in-memory on every call, so hopefully hackers can't mess the puzzle up too hard.)</em></p>
+
+<p>Armed with this knowledge, we can rewrite the query to dump the entire students table:</p>
+
+<pre>' OR 1;--</pre>
+
+<p><img src="images/solution-2.PNG" width="412.7" height="363.3" alt="Screenshot showing students table whose values have been replaced with the words, 'Please do not use table students anymore. Student data has all been moved to students_new. Thank you. -Admins.'"/></p>
+
+<p>Whoops! Looks like we need to get data out of a different table. One way to do this is with a UNION injection attack, as follows:</p>
+
+<pre>' UNION SELECT * FROM students_new;--</pre>
+
+<p><img src="images/solution-3.PNG" width="580.3" height="158" alt="Screenshot showing error: SQLite error: Something went wrong with query select * from students where name = '' UNION SELECT * FROM students_new;--': SELECTs to the left and right of UNION do not have the same number of result columns"/></p>
+
+<p>Now we need to figure out what the columns are on the table we're joining with. We can guess, but it'll be easier to get by injection. Note that the error messages say &#8220;SQLite&#8221;; knowing which SQL implementation the puzzle is using is helpful for finding the right syntax to get the column names:</p>
+
+<pre>' UNION SELECT name, type FROM PRAGMA_TABLE_INFO('students_new');--</pre>
+
+<p><img src="images/solution-4.PNG" width="404" height="185.3" alt="Screenshot showing student table displaying the names of three columns: enrollment_date, student_first_name, and student_last_name."/></p>
+
+<p>Now we can easily get all the data from students_new by reducing the query of that table to two columns:</p>
+
+<pre>' UNION SELECT student_first_name || ' ' || student_last_name, enrollment_date 
+FROM students_new;--</pre>
+
+<p><img src="images/solution-5.PNG" width="405" height="355" alt="Screenshot showing the names and enrollment dates of students listed in the table below."/></p>
+
+<p>Each of the enrollment dates is the date of an XKCD webcomic. The following table lists the comic titles, and orders by student's last names (which start with the letters R-Z once each):</p>
+
+<table>
+<colgroup>
+<col />
+<col />
+<col />
+<col />
+</colgroup>
+
+<thead>
+</thead>
+
+<tbody>
+<tr>
+	<td style="font-family: monospace">BOBBY</td>
+	<td style="font-family: monospace">ROBERTS</td>
+	<td>2014-08-18</td>
+	<td>Query</td>
+</tr>
+<tr>
+	<td style="font-family: monospace">ALY</td>
+	<td style="font-family: monospace">SCHULZE</td>
+	<td>2019-11-15</td>
+	<td>Rey and Kylo</td>
+</tr>
+<tr>
+	<td style="font-family: monospace">ARIEL</td>
+	<td style="font-family: monospace">THWAITE</td>
+	<td>2019-11-29</td>
+	<td>Group Chat Rules</td>
+</tr>
+<tr>
+	<td style="font-family: monospace">EDDIE</td>
+	<td style="font-family: monospace">ULLYETT</td>
+	<td>2020-07-01</td>
+	<td>Oily House Index</td>
+</tr>
+<tr>
+	<td style="font-family: monospace">ISSA</td>
+	<td style="font-family: monospace">VIDHANI</td>
+	<td>2017-10-20</td>
+	<td>Cast Iron Pan</td>
+</tr>
+<tr>
+	<td style="font-family: monospace">CHETT</td>
+	<td style="font-family: monospace">WOLCOTT</td>
+	<td>2018-04-01</td>
+	<td>Right Click</td>
+</tr>
+<tr>
+	<td style="font-family: monospace">IGOR</td>
+	<td style="font-family: monospace">XENOPOL</td>
+	<td>2016-07-22</td>
+	<td>Walking Into Things</td>
+</tr>
+<tr>
+	<td style="font-family: monospace">CIERRA</td>
+	<td style="font-family: monospace">YEWDALE</td>
+	<td>2013-11-27</td>
+	<td>Git Commit</td>
+</tr>
+<tr>
+	<td style="font-family: monospace">YOKO</td>
+	<td style="font-family: monospace">ZANDERS</td>
+	<td>2015-02-06</td>
+	<td>Quotative Like</td>
+</tr>
+</tbody>
+</table>
+
+<p>Note that the last names are all the same length and the last letters of the sorted last names spell &#8220;SEE TITLES&#8221;. Each of the comic titles has one word that is a common SQL keyword. Each title's keyword is the same length as the associated student's name, and contains one letter in the same position:</p>
+
+<table>
+<colgroup>
+<col />
+<col />
+<col />
+<col />
+</colgroup>
+
+<thead>
+<tr>
+	<th>Comic Title</th>
+	<th>Keyword</th>
+	<th>First Name</th>
+	<th>Extraction</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>Query</td>
+	<td style="font-family: monospace">QUERY</td>
+	<td style="font-family: monospace">BOBBY</td>
+	<td style="font-family: monospace"><code>____Y</code></td>
+</tr>
+<tr>
+	<td>Rey and Kylo</td>
+	<td style="font-family: monospace">AND</td>
+	<td style="font-family: monospace">ALY</td>
+	<td style="font-family: monospace"><code>A__</code></td>
+</tr>
+<tr>
+	<td>Group Chat Rules</td>
+	<td style="font-family: monospace">GROUP</td>
+	<td style="font-family: monospace">ARIEL</td>
+	<td style="font-family: monospace"><code>_R___</code></td>
+</tr>
+<tr>
+	<td>Oily House Index</td>
+	<td style="font-family: monospace">INDEX</td>
+	<td style="font-family: monospace">EDDIE</td>
+	<td style="font-family: monospace"><code>__D__</code></td>
+</tr>
+<tr>
+	<td>Cast Iron Pan</td>
+	<td style="font-family: monospace">CAST</td>
+	<td style="font-family: monospace">ISSA</td>
+	<td style="font-family: monospace"><code>__S_</code></td>
+</tr>
+<tr>
+	<td>Right Click</td>
+	<td style="font-family: monospace">RIGHT</td>
+	<td style="font-family: monospace">CHETT</td>
+	<td style="font-family: monospace"><code>____T</code></td>
+</tr>
+<tr>
+	<td>Walking Into Things</td>
+	<td style="font-family: monospace">INTO</td>
+	<td style="font-family: monospace">IGOR</td>
+	<td style="font-family: monospace"><code>I___</code></td>
+</tr>
+<tr>
+	<td>Git Commit</td>
+	<td style="font-family: monospace">COMMIT</td>
+	<td style="font-family: monospace">CIERRA</td>
+	<td style="font-family: monospace"><code>C_____</code></td>
+</tr>
+<tr>
+	<td>Quotative Like</td>
+	<td style="font-family: monospace">LIKE</td>
+	<td style="font-family: monospace">YOKO</td>
+	<td style="font-family: monospace"><code>__K_</code></td>
+</tr>
+</tbody>
+</table>
+
+<p>Revealing the answer: <span class="answer">YARDSTICK</span></p>
+
+<div class="author-note">
+	<h2>Author’s Note</h2>
+	<p>The core idea of this puzzle – using <i>xkcd</i>’s “Exploits of a Mom” to clue SQL injection – was the first item off my “puzzle ideas for if we ever win Hunt” list. One of my favorite reactions to a Hunt puzzle is, “Oh, you want us to do <em>what?</em>” and this is my humble submission to the genre.</p>
+	<p>When I started working on this puzzle during Hunt development, it was still incomplete. I knew I wanted to make teams find hidden data through injection, and had some vague notion that data should tie back to <i>xkcd</i> in some way, but didn’t know the details. The last part of the puzzle wasn't meant to be particularly difficult, just a small dessert to reward solvers for their hacking. I’m glad I managed to find a way to end the puzzle that both ties into <i>xkcd</i> and back into SQL.</p>
+	<p>The name of the puzzle is probably less recognizable than most of the others in Acts 1 and 2. The choice of children’s book was mainly motivated by two things. One, I wanted to find a book about the first day of school, to fit the puzzle's theme. Two, I had a preference for a book with a PoC author as we already had plenty of representation for White authors among our puzzle title selections. Before I started searching I hadn't heard of <i>The Day You Begin</i> by Jacqueline Woodson, but when I read it I found myself connecting to the story and it seemed like a perfect fit. It was only after solvers pointed this out that I realized another wonderful feature of the title: It contains the SQL Keyword <code>BEGIN</code>, a very felicitous fit for this puzzle.</p>
+	<p>The health & safety disclaimers at the start of this Hunt originally included a disclaimer to the tune of, “If you think a puzzle requires you to hack our website, you’re probably misunderstanding something.” This puzzle is the sole reason that the text was changed to “If you think a puzzle requires you to take down the internet...” instead. Since we were essentially going up to a bunch of the smartest, most technically capable people in the world and told them “Please hack our website,” there were a few security features in place to prevent solver from breaking the puzzle too much:</p>
+	<ul>
+		<li>The SQLite library used by the implementation wouldn’t let you run more than one SQL statement per call.</li>
+		<li>The database being queried was created anew and dropped for each individual API call, so even if solvers somehow managed to run a mutative query, it wouldn’t affect any subsequent calls.</li>
+		<li>As a safeguard, the process running the database query was killed if it ever took longer than one second.</li>
+	</ul>
+	<p>Even with all that, putting this puzzle out there was a little nerve-wracking. I assume that some hackers more knowledgeable than myself could find a way to use the SQL submission box to take down our site. It seemed most likely, though, that we could expect good faith on the part of any solving team who got that far into the hunt; everyone was just there to enjoy puzzles, after all. Ultimately the puzzling community was well-behaved (at least one team even contacted us before trying SQL injection to make sure that was OK to do).</p>
+</div>

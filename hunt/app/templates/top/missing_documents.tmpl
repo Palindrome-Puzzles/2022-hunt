@@ -1,0 +1,28 @@
+{% extends "hunt/site_layout.tmpl" %}
+{% load hosts static %}
+
+{% block title %}Missing Documents | {{ block.super }}{% endblock %}
+
+{% block site_content %}
+<main class="faq">
+  <header>
+    <h1>Missing Documents</h1>
+  </header>
+
+  <div class="paper-edge top"></div>
+  <section id="main-content" class="content">
+    <p><strong>Urgent:</strong> We're still waiting on some documents from your team.</p>
+
+    <p>Two important steps need to be done before you can participate in Hunt.</p>
+
+    <p>First, all team members must read the <a href="https://docs.google.com/document/d/1ItQSJ5bK3q1HPta6rTz3GnrYk4THiNhbHbkMlwaqsKo/edit?usp=sharing">MIT Mystery Hunt 2022 Health & Safety Guidelines</a>,  following which the captain (and only the captain) needs to fill out the <a href="https://docs.google.com/forms/d/e/1FAIpQLScV4kCiYoVI9joCvnKWLGyeuoIjWlNabjbQjdlzROtGtAHxyg/viewform">MIT Mystery Hunt 2022 Code of Conduct & Overall Guidelines.</a></p>
+
+    <p>Second, every minor on your team must have a parent or guardian fill out the <a href="https://powerforms.docusign.net/eef84791-0a17-4bc2-b9ce-db17402a14f6?env=na2&acct=a76475db-2ab3-4a5f-b7bd-1ba6a5dd7f4e&accountId=a76475db-2ab3-4a5f-b7bd-1ba6a5dd7f4e">minor form.</a></p>
+
+    <p>Search for an email with the subject "[MIT Mystery Hunt] [Action Required] Minors Forms & Health + Safety Forms!" to see which forms your team is missing.</p>
+
+    <p>Please <a href="mailto:hq@mitmh2022.com" target="_blanl">email us</a> or <a href="{% url 'contact' %}">Contact HQ</a> to get access to the hunt, noting approximately when you filled out the forms.</p>  
+  </section>
+  <div class="paper-edge bottom"></div>
+</main>
+{% endblock site_content %}

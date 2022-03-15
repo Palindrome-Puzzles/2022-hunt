@@ -1,0 +1,21 @@
+{% load maps %}
+
+<style type="text/css">
+{% for sticker in sticker_info.stickers %}
+{% if sticker.css %}
+.round-map{{ round_map_context }} .sticker:nth-of-type({{ sticker.sticker_counter }}) {
+  {% sticker-css sticker.css %}
+}
+{% endif %}
+{% if sticker.img_css %}
+.round-map{{ round_map_context }} .sticker:nth-of-type({{ sticker.sticker_counter }}) img {
+  {% sticker-css sticker.img_css %}
+}
+{% endif %}
+{% if sticker.caption_css %}
+.round-map{{ round_map_context }} .sticker:nth-of-type({{ sticker.sticker_counter }}) .caption {
+  {% sticker-css sticker.caption_css %}
+}
+{% endif %}
+{% endfor %}
+</style>

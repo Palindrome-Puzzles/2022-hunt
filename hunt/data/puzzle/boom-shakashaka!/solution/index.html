@@ -1,0 +1,232 @@
+<p>
+  First solve the minesweeper/shakashaka grid based on the two puzzles' original rules and the extra rule given (that mines = shakashaka black squares).
+</p>
+
+<p>
+  An easy point to start is the 5 on the left side. Because shakashaka clues only go up to 4, we know this 5 has to be a clue for minesweeper, indicating that there are 5 mines around. No matter where the 5 mines are, the two 0's orthogonally adjacent to the 5 will see at least one mine, hence these two 0s cannot be minesweeper clues. They're therefore shakashaka clues/shakashaka squares/mines.
+</p>
+
+<p>
+  From this we can slowly work our way right, applying constraints from both minesweeper and shakashaka and eventually solving the entire grid. The final solution looks like:
+</p>
+
+<table class="shaka" cellspacing="0" cellpadding="0">
+  <tr>
+  <td class="black"></td>
+  <td class="black"></td>
+  <td class="black"></td>
+  <td><div class="upperleft"></div></td>
+  <td><div class="upperright"></div></td>
+  <td class="black"></td>
+  <td class="black"></td>
+  <td class="black"></td>
+  <td class="black"></td>
+  <td class="black"></td>
+  <td><div class="upperleft"></div></td>
+  <td><div class="upperright"></div></td>
+  <td class="black"></td>
+  <td class="black"></td>
+  </tr>
+  <tr>
+  <td></td>
+  <td></td>
+  <td><div class="upperleft"></div></td>
+  <td></td>
+  <td></td>
+  <td><div class="upperright"></div></td>
+  <td class="black"></td>
+  <td class="black"></td>
+  <td class="black"></td>
+  <td><div class="upperleft"></div></td>
+  <td></td>
+  <td></td>
+  <td><div class="upperright"></div></td>
+  <td class="black"></td>
+  </tr>
+  <tr>
+  <td></td>
+  <td></td>
+  <td><div class="lowerleft"></div></td>
+  <td></td>
+  <td></td>
+  <td><div class="lowerright"></div></td>
+  <td class="black"></td>
+  <td class="black"></td>
+  <td></td>
+  <td><div class="lowerleft"></div></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td><div class="upperright"></div></td>
+  </tr>
+  <tr>
+  <td></td>
+  <td></td>
+  <td class="black"></td>
+  <td><div class="lowerleft"></div></td>
+  <td><div class="lowerright"></div></td>
+  <td class="black"></td>
+  <td class="black"></td>
+  <td class="black"></td>
+  <td class="black"></td>
+  <td class="black"></td>
+  <td><div class="lowerleft"></div></td>
+  <td></td>
+  <td></td>
+  <td><div class="lowerright"></div></td>
+  </tr>
+  <tr>
+  <td></td>
+  <td></td>
+  <td><div class="upperleft"></div></td>
+  <td><div class="upperright"></div></td>
+  <td class="black"></td>
+  <td class="black"></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td class="black"></td>
+  <td><div class="lowerleft"></div></td>
+  <td><div class="lowerright"></div></td>
+  <td class="black"></td>
+  </tr>
+  <tr>
+  <td></td>
+  <td></td>
+  <td><div class="lowerleft"></div></td>
+  <td></td>
+  <td><div class="upperright"></div></td>
+  <td class="black"></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td class="black"></td>
+  <td></td>
+  <td class="black"></td>
+  <td class="black"></td>
+  </tr>
+  <tr>
+  <td></td>
+  <td></td>
+  <td class="black"></td>
+  <td><div class="lowerleft"></div></td>
+  <td><div class="lowerright"></div></td>
+  <td class="black"></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td class="black"></td>
+  <td class="black"></td>
+  <td class="black"></td>
+  <td class="black"></td>
+  </tr>
+  <tr>
+  <td></td>
+  <td></td>
+  <td class="black"></td>
+  <td class="black"></td>
+  <td><div class="upperleft"></div></td>
+  <td><div class="upperright"></div></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td class="black"></td>
+  <td><div class="upperleft"></div></td>
+  <td><div class="upperright"></div></td>
+  <td class="black"></td>
+  </tr>
+  <tr>
+  <td class="black"></td>
+  <td class="black"></td>
+  <td class="black"></td>
+  <td><div class="upperleft"></div></td>
+  <td></td>
+  <td></td>
+  <td><div class="upperright"></div></td>
+  <td class="black"></td>
+  <td class="black"></td>
+  <td class="black"></td>
+  <td><div class="upperleft"></div></td>
+  <td></td>
+  <td><div class="lowerright"></div></td>
+  <td></td>
+  </tr>
+  <tr>
+  <td class="black"></td>
+  <td></td>
+  <td><div class="upperleft"></div></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td><div class="upperright"></div></td>
+  <td class="black"></td>
+  <td><div class="upperleft"></div></td>
+  <td></td>
+  <td><div class="lowerright"></div></td>
+  <td class="black"></td>
+  <td class="black"></td>
+  </tr>
+  <tr>
+  <td class="black"></td>
+  <td class="black"></td>
+  <td><div class="lowerleft"></div></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td><div class="lowerright"></div></td>
+  <td></td>
+  <td><div class="lowerleft"></div></td>
+  <td><div class="lowerright"></div></td>
+  <td class="black"></td>
+  <td class="black"></td>
+  <td class="black"></td>
+  </tr>
+  <tr>
+  <td><div class="upperleft"></div></td>
+  <td><div class="upperright"></div></td>
+  <td class="black"></td>
+  <td><div class="lowerleft"></div></td>
+  <td></td>
+  <td></td>
+  <td><div class="lowerright"></div></td>
+  <td class="black"></td>
+  <td class="black"></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  </tr>
+  <tr>
+  <td><div class="lowerleft"></div></td>
+  <td><div class="lowerright"></div></td>
+  <td class="black"></td>
+  <td class="black"></td>
+  <td><div class="lowerleft"></div></td>
+  <td><div class="lowerright"></div></td>
+  <td class="black"></td>
+  <td class="black"></td>
+  <td class="black"></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  </tr>
+</table>
+
+<p>
+  The flavor text "hidden underneath all that icing" is a hint to look at what's being covered up by the white rectangles. If we overlay this solution over the number grid, we get:
+</p>
+
+<img src="images/solution.jpg" class="img-s" alt="Solved grid overlaying original numbers" /><br />
+
+<p>
+  The white rectangles of shakashaka, with the exception of the 1x1 squares, cover some numbers. Sum up the numbers under each rectangle -- halving the numbers that are only partially covered by white triangles. Order by the rectangle's areas (which form a nice sequence of even numbers from 2 to 18). The sums in this order are 4, 9, 14, 7, 4, 15, 14, 7, 19, which translates (in A1Z26) to the answer <span class="answer">DINGDONGS</span>.
+</p>

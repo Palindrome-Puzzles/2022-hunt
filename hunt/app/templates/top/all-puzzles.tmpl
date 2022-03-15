@@ -1,0 +1,136 @@
+{% extends "hunt/site_layout.tmpl" %}
+{% load assets humanize static %}
+
+{% block site_stylesheets %}
+<style>
+#main-content table {
+  width: 100%;
+}
+
+{% if team.is_public %}
+#main-content table th:nth-child(1) {
+  width:100%;
+}
+{% else %}
+#main-content table td:nth-child(1) {
+  text-align: center;
+}
+#main-content table th:nth-child(2) {
+  width:55%;
+}
+#main-content table th:nth-child(3) {
+  width:20%;
+}
+#main-content table th:nth-child(4) {
+  width:20%;
+}
+{% endif %}
+
+#main-content th {
+  text-align: left;
+  padding: .2em 0;
+}
+#main-content th.puzzle-th {
+  padding-left: .5em;
+}
+#main-content td {
+  text-align: left;
+  padding: 0;
+}
+
+header {
+  min-height: 100px !important;
+}
+
+header h1 {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+h2 {
+  font-size: 1.5em;
+}
+
+#main-content a, #main-content a:visited {
+/*   text-decoration: none; */
+  color: #32457a;
+}
+
+#main-content a:hover {
+  text-decoration: underline;
+}
+
+#main-content table a {
+  display: block;
+  padding: .3em .5em;
+}
+
+.pen-station {
+  margin: 2em 0;
+  text-align: center;
+}
+
+.checkmark {
+  padding: 0;
+  width: 15px;
+}
+.checkmark img {
+  width: 15px;
+  position: relative;
+  top: 1px;
+}
+#list-fruit-around,
+.meta {
+  font-weight: bold;
+}
+</style>
+
+{% endblock site_stylesheets %}
+
+{% block site_content %}
+<main>
+  <header>
+    <h1>All Puzzles</h1>
+  </header>
+
+  <div class="paper-edge top"></div>
+  <section id="main-content" class="content">
+    {% for round_info in rounds %}
+    {% if round_info.round.url != 'prologue' %}
+      {% if round_info.round.url == 'noirleans' %}
+        <h2 class="pen-station"><a href="{% url 'act3_hub' %}">Pen Station</a></h2>
+      {% endif %}
+      <h2>
+        {% if round_info.round.url == 'endgame' %}
+          Tollbooth
+        {% else %}
+          <a href="{% url 'round_view' round_info.round.url %}">{{ round_info.round.name }}</a>
+        {% endif %}
+      </h2>
+
+      <table>
+        <tr>
+          {% if not team.is_public %}<th class="checkmark-th"></th>{% endif %}
+          <th class="puzzle-th">Puzzle</th>
+          {% if not team.is_public %}
+          <th>Unlocked</th>
+          <th>Solved</th>
+          {% endif %}
+        </tr>
+        {% for puzzle_info in round_info.puzzles %}
+        <tr>
+          {% if not team.is_public %}<td class="checkmark">{% if puzzle_info.solved %}<img src="{% static "solved.svg" %}">{% endif %}</td>{% endif %}
+          <td><a href="{% url 'puzzle_view' puzzle_info.puzzle.url %}" class="{% if puzzle_info.puzzle.is_meta %} meta{% endif %}{% if puzzle_info.puzzle.round.url == 'plot-device' and not puzzle_info.puzzle.is_meta %} spoiler{% endif %}" id="list-{{ puzzle_info.puzzle.url }}">{{ puzzle_info.puzzle.name }}</a></td>
+          {% if not team.is_public %}
+          <td><span title="{{ puzzle_info.unlock_time }}">{{ puzzle_info.unlock_time|naturaltime }}</span></td>
+          <td>{% if puzzle_info.solved %}<span title="{{ puzzle_info.solved_time }}">{{ puzzle_info.solved_time|naturaltime }}</span>{% endif %}</td>
+          {% endif %}
+        </tr>
+        {% endfor %}
+      </table>
+    {% endif %}
+    {% endfor %}
+  </section>
+  <div class="paper-edge bottom"></div>
+</main>
+{% endblock site_content %}

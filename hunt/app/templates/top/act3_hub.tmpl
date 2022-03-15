@@ -1,0 +1,74 @@
+{% extends "hunt/site_layout.tmpl" %}
+{% load assets maps static styles %}
+
+{% block title %}Pen Station | {{ block.super }}{% endblock %}
+
+{% block site_stylesheets %}
+<link rel="stylesheet" type="text/css" href="{% static 'stylesheets/map.css' %}">
+<link rel="stylesheet" type="text/css" href="{% aux 'pen-station' 'style.css' %}">
+<style type="text/css">
+{% for sticker in sticker_info.stickers %}
+{% if sticker.css %}
+.round-map.{{ sticker.category }} .sticker:nth-of-type({{ sticker.sticker_counter }}) {
+  {% sticker-css sticker.css %}
+}
+{% endif %}
+{% if endgame_available %}
+.round-map.list .map {
+  aspect-ratio: 2/3;
+}
+{% endif %}
+{% endfor %}
+</style>
+
+{% endblock site_stylesheets %}
+
+{% block site_content %}
+<main>
+  <header class="large-wordmark">
+    <h1>
+      <a class="wordmark-link" href="{% url 'act3_hub' %}">
+        <img src="{% aux 'pen-station' 'images/wordmark.png' %}" alt="Pen Station">
+      </a>
+    </h1>
+  </header>
+
+  <section class="round-map fixed line full-width compact">
+    <div class="map">
+      {% for sticker in sticker_info.stickers %}
+      {% if sticker.category == 'line' %}
+      <div class="sticker">
+        <a href="{% if sticker.link %}{{ sticker.link }}{% else %}{% url 'round_view' sticker.round.url %}{% endif %}" class="sticker-content">
+          <img src="{% aux 'pen-station' 'images/' %}{{ sticker.image }}.png" alt="" aria-hidden="true">
+        </a>
+      </div>
+      {% endif %}
+      {% endfor %}
+      <img class="junction" src="{% aux 'pen-station' 'images/circle.png' %}" alt="" aria-hidden="true">
+    </div>
+  </section>
+
+  <section class="round-map list full-width compact">
+    <div class="map">
+      <img class="title" src="{% aux 'pen-station' 'images/title.png' %}" alt="Bookspace">
+      {% for sticker in sticker_info.stickers %}
+      {% if sticker.category == 'list' %}
+      {% if sticker.round %}
+      <div class="sticker">
+        <a href="{% if sticker.link %}{{ sticker.link }}{% else %}{% url 'round_view' sticker.round.url %}{% endif %}" class="sticker-content">
+          <img src="{% aux 'pen-station' 'images/' %}{{ sticker.image }}.png" alt="{{ sticker.round.name }}">
+        </a>
+      </div>
+      {% else %}
+      <div class="sticker inactive">
+        <div class="sticker-content">
+          <img src="{% aux 'pen-station' 'images/' %}{{ sticker.image }}.png" alt="Line Currently Under Repair">
+        </div>
+      </div>
+      {% endif %}
+      {% endif %}
+      {% endfor %}
+    </div>
+  </section>
+</main>
+{% endblock site_content %}

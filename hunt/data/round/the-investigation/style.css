@@ -1,0 +1,69 @@
+.round-map .caption {
+    background-color: #a90533;
+    color: #fff;
+}
+
+.round-map .sticker:not(.meta) .caption {
+	line-height: 28px;
+}
+
+.round-map a:hover .caption {
+	background-color: #F55E8D;
+    filter: brightness(1) !important;
+}
+
+.round-map .sticker img {
+    filter: drop-shadow(0 0 20px #fffa);
+}
+.round-map .sticker :focus img {
+    filter: drop-shadow(0 0 20px #fffa);
+}
+.round-map .sticker:hover img {
+    filter: drop-shadow(0 0 20px #fffa);
+}
+
+.page-background-top,
+.page-background-map {
+    max-width: 2500px;
+}
+@media only screen and (min-width: 2500px) {
+    .page-background-top,
+    .page-background-map {
+        background-size: 2500px;
+    }
+}
+
+@media only screen and (max-width: 1079.9px) {
+.round-map .sticker:not(.meta) .caption {
+	line-height: 18px;
+	}
+}
+
+/*
+ * Align the map to have the same size and location as the center of the map background.
+ */
+.round-map .map {
+    max-width: 2500px;
+    width: 100vw;
+}
+@media only screen and (max-width: 1079.9px) {
+    .round-map .map {
+        width: 1080px;
+    }
+}
+
+.round-map.expandable .sticker:not(.meta) img {
+    width: 66.67%;
+}
+.round-map .sticker:not(.meta) .caption {
+    left: -16.66%;
+}
+
+/* Tweaks for the meta sticker. */
+.round-map .sticker.meta .caption {
+    margin-top: -10%;
+}
+.round-map .sticker.meta img {
+    z-index: -1;
+}
+

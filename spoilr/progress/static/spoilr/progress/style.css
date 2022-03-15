@@ -1,0 +1,103 @@
+.content {
+  font: 14px monospace;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+.teams table {
+  table-layout: fixed;
+  width: 100%;
+}
+.teams td {
+  padding: 5px;
+  max-width: 500px;
+  vertical-align: top;
+}
+.teams .solved {
+  background: #dfd;
+}
+.teams .blocks {
+  word-break: break-all;
+}
+.teams .blocks .r {
+  font-size: 200%;
+}
+
+.puzzles th {
+  text-align: left;
+}
+.puzzles .f {
+/*   padding: 0px 5px; */
+}
+.puzzles .n {
+  text-align: right;
+}
+.puzzles .d {
+  text-align: right;
+}
+.puzzles .p {
+  text-align: right;
+/*   padding: 0px 5px; */
+}
+.puzzles .p_unreleased {
+  background: #eee; color: #666;
+}
+.puzzles .p_no_data {
+  background: #fff;
+}
+.puzzles .p_good {
+  background: #efe;
+}
+.puzzles .p_meh {
+  background: #ffe;
+}
+.puzzles .g {
+  width: 100px;
+/*   padding: 0px 15px 0px 0px; */
+}
+.puzzles .gb {
+  height: 5px; background: steelblue linear-gradient(black, black) no-repeat;
+}
+.puzzles .h {
+  border-top: 1px solid black; background: #eee;
+}
+.puzzles .a:not(:hover) {
+  opacity: 0.5;
+}
+
+.content table td.sol,
+.content table td.puzz {
+  padding-right: 0;
+}
+
+.team table {
+  margin-left: 20px;
+  border-collapse: collapse;
+}
+.team td {
+  padding: 0px 10px;
+  vertical-align: top;
+}
+.team .solved {
+  background: #dfd;
+}
+
+.puzzle table {
+  margin-left: 20px;
+  border-collapse: collapse;
+}
+.puzzle td {
+  padding: 0 10px;
+  vertical-align: top;
+}
+.puzzle.solved {
+  background: #dfd;
+}
+.puzzle.unsolved {
+  background: #fdd;
+}
+.puzzle.info {
+  margin-bottom: 10px;
+}

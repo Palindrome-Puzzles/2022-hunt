@@ -1,0 +1,24 @@
+{% load static %}
+
+<div class="flavor">
+    <p>You better get this room straightened out! How do you even find anything in here??</p>
+</div>
+
+<div class="disconnected banner no-copy hidden" role="alert">
+    Connection lost. We'll try save your changes when you're back online!
+</div>
+
+<div class="notice state-list-container no-copy hidden-until-interactive">
+    <div class="instructions"><strong>Save slots</strong> All changes are automatically saved and synced across your team.</div>
+    <div class="state-list"></div>
+</div>
+
+{{gen:gen-puzzle}}
+
+<p class="hidden-when-interactive no-copy">The first and last grids are the same--you can scroll through these as if the puzzles are on a cylinder.</p>
+
+<p class="copy-only">The first and last grids are the same--on screen, you'll be able to scroll through these as if the puzzles are on a cylinder.</p>
+
+<button id="clipboard-button"></button>
+
+<script src="main.ts" type="module"></script>

@@ -1,0 +1,126 @@
+name: 'Template: Release to GAE'
+
+on:
+  workflow_call:
+    inputs:
+      django_env:
+        description: 'Django environment'
+        required: true
+        type: string
+
+      redis_env:
+        description: 'Redis environment'
+        required: true
+        type: string
+
+      site_service:
+        description: 'The name of the site service to release'
+        type: string
+
+      site_service_yaml:
+        description: 'The YAML file describing the site service'
+        type: string
+
+      backend_service_yaml:
+        description: 'The name of the backend service to release'
+        type: string
+
+      service_limit:
+        description: 'The number of each old service to keep'
+        type: number
+
+    secrets:
+      GCLOUD_CREDENTIALS:
+        description: 'The project ID of the Google Cloud project'
+        required: true
+
+      GCLOUD_PROJECT_ID:
+        description: 'Credentials to authenticate with Google Cloud'
+        required: true
+
+jobs:
+  migrate-db:
+    name: Migrate database
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - uses: ./.github/actions/setup-django-manage
+      with:
+        requirements_file: 'db_only_gcloud.txt'
+    - uses: ./.github/actions/setup-gcloud
+      with:
+        gcloud_credentials: ${{ secrets.GCLOUD_CREDENTIALS }}
+        gcloud_project_id: ${{ secrets.GCLOUD_PROJECT_ID }}
+    - uses: ./.github/actions/setup-gcloud-sql
+      with:
+        gcloud_credentials: ${{ secrets.GCLOUD_CREDENTIALS }}
+
+    - name: Apply any migrations
+      env:
+        DJANGO_ENV: ${{ inputs.django_env }}
+      run: python3 manage.py migrate
+      shell: bash
+
+  release-site:
+    name: Release site
+    runs-on: ubuntu-latest
+    if: ${{ inputs.site_service_yaml }}
+
+    steps:
+    - uses: actions/checkout@v2
+    - uses: ./.github/actions/setup-gcloud
+      id: setup
+      with:
+        gcloud_credentials: ${{ secrets.GCLOUD_CREDENTIALS }}
+        gcloud_project_id: ${{ secrets.GCLOUD_PROJECT_ID }}
+        token_format: 'id_token'
+        id_token_audience: 'https://us-central1-mitmh-2022.cloudfunctions.net/nuke_cache'
+    - uses: ./.github/actions/setup-django-manage
+      with:
+        requirements_file: 'release_gcloud.txt'
+    - uses: ./.github/actions/build-puzzle-files
+    - name: Select requirements.txt
+      run: rm requirements.txt && cp requirements_gcloud.txt requirements.txt
+      shell: bash
+    - name: Release site
+      uses: google-github-actions/deploy-appengine@main
+      with:
+        project_id: ${{ secrets.GCLOUD_PROJECT_ID }}
+        deliverables: ${{ inputs.site_service_yaml }}
+        promote: true
+    - name: Nuke cache
+      run: 'curl -H "Authorization: bearer ${{ steps.setup.outputs.id_token }}" "https://us-central1-mitmh-2022.cloudfunctions.net/nuke_cache?env=${{ inputs.redis_env }}"'
+      shell: bash
+
+  release-backend:
+    name: Release backend service
+    runs-on: ubuntu-latest
+    if: ${{ inputs.backend_service_yaml }}
+
+    steps:
+    - uses: actions/checkout@v2
+    - uses: ./.github/actions/setup-gcloud
+      with:
+        gcloud_credentials: ${{ secrets.GCLOUD_CREDENTIALS }}
+        gcloud_project_id: ${{ secrets.GCLOUD_PROJECT_ID }}
+    - name: Release backend to App Engine
+      uses: google-github-actions/deploy-appengine@main
+      with:
+        project_id: ${{ secrets.GCLOUD_PROJECT_ID }}
+        deliverables: ${{ inputs.backend_service_yaml }}
+        promote: true
+
+  prune-versions-site:
+    name: 'Prune site app engine versions'
+    runs-on: ubuntu-latest
+    if: ${{ inputs.site_service }}
+
+    steps:
+    - uses: actions/checkout@v2
+    - uses: ./.github/actions/prune-gcloud-versions
+      with:
+        gcloud_credentials: ${{ secrets.GCLOUD_CREDENTIALS }}
+        gcloud_project_id: ${{ secrets.GCLOUD_PROJECT_ID }}
+        service_name: ${{ inputs.site_service }}
+        limit: ${{ inputs.service_limit }}

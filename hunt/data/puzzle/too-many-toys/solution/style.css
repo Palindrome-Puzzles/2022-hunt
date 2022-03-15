@@ -1,0 +1,14 @@
+table {
+  border: 1px solid black;
+  margin: 10px;
+}
+th {
+  text-align: left;
+}
+td.center {
+  text-align: center;
+}
+
+.focus {
+  color: red;
+}

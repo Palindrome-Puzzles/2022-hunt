@@ -1,0 +1,35 @@
+{% extends "hunt/site_layout.tmpl" %}
+{% load hosts static %}
+
+{% block title %}Sponsors | {{ block.super }}{% endblock %}
+
+{% block site_stylesheets %}
+<link rel="stylesheet" type="text/css" href="{% static 'stylesheets/sponsors.css' %}">
+{% endblock site_stylesheets %}
+
+{% block site_content %}
+<main class="sponsors">
+  <header>
+    <h1>Sponsors</h1>
+  </header>
+
+  <div class="paper-edge top"></div>
+  <section id="main-content" class="content">
+		<a href="{% url 'sponsor_details' 'hudson-river-trading' %}">
+			<img src="{% static 'sponsors/hudson-river-trading.svg' %}" width="250" alt="Hudson River Trading logo">
+			<span>Hudson River Trading</span>
+		</a>
+
+		<a href="{% url 'sponsor_details' 'g-research' %}">
+			<img src="{% static 'sponsors/g-research.png' %}" width="200" alt="G-Research logo" />
+			<span>G-Research</span>
+		</a>
+
+		<a href="{% url 'sponsor_details' 'jane-street' %}">
+			<img src="{% static 'sponsors/jane-street.png' %}" width="300" alt="Jane Street logo" />
+			<span>Jane Street</span>
+		</a>
+  </section>
+  <div class="paper-edge bottom"></div>
+</main>
+{% endblock site_content %}

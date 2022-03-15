@@ -1,0 +1,51 @@
+.round-map .caption {
+    background-color: #000;
+    color: #FFF;
+    margin-top: 10px;
+}
+.round-map a:hover .caption {
+	background-color: #F001F1;
+    filter: brightness(1) !important;
+}
+
+.round-map .sticker img {
+    filter: drop-shadow(0 0 20px #FFF);
+}
+.round-map .sticker :focus img {
+    filter: drop-shadow(0 0 20px #F001F1);
+}
+.round-map .sticker:hover img {
+    filter: drop-shadow(0 0 20px #EDEDED);
+}
+
+.page-background-map {
+    background-image: url(images/bg-map-round.jpg);
+}
+
+.round-map .map {
+    aspect-ratio: 20/38;
+    /* 2500px * 60% = 1500px */
+    max-width: 1500px;
+    width: 60%;
+}
+
+/* When the map is 1000px, start truncating the map instead. */
+@media only screen and (max-width: 1666.6px) {
+    .page-background-top,
+    .page-background-map {
+        background-size: 1666.6px;
+    }
+
+    .round-map .map {
+        width: 1000px;
+    }
+}
+@media only screen and (max-width: 1079.9px) {
+    .page-background-top,
+    .page-background-map {
+        background-size: 166.6%;
+    }
+    .round-map .map {
+        width: 100%;
+    }
+}

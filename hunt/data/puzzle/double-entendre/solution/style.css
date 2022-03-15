@@ -1,0 +1,34 @@
+.highlighted-square { background-color: #F7DC6F; }
+
+.grids {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+}
+
+.left-grid {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+  margin-right: 20px;
+  width: 450px;
+}
+
+.right-grid {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+  width: 450px;
+}
+
+table.crossword td,
+table.crossword th {
+  box-sizing: border-box;
+  height: 30px;
+  position: relative;
+  text-align: center;
+  width: 30px;
+  min-width: 30px;
+}

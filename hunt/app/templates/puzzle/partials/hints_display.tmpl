@@ -1,0 +1,76 @@
+{% load humanize timedelta %}
+
+<h2>Hints</h2>
+{% if status == 'complete' %}
+<div class="banner notice">
+  HQ is now closed. You can no longer submit hint requests but you can see hint requests and replies submitted during the hunt below.
+</div>
+{% elif is_autopilot %}
+<div class="banner notice">
+  HQ is now closed. You can still submit hint requests but we may not get to them. After wrap-up at 12PM TIMEMIT on Monday January 17, we'll be releasing all solutions.
+</div>
+{% endif %}
+{% if solved %}
+<div class="submit-response">
+  <p>You've already solved this puzzle.</p>
+</div>
+{% endif %}
+
+{% if hints %}
+<table>
+  <colgroup>
+    <col width="20%">
+    <col width="40%">
+    <col width="40%">
+  </colgroup>
+  <tr>
+    <th>Asked</th>
+    <th>Question</th>
+    <th>Response</th>
+  </tr>
+  {% for h in hints %}
+  <tr>
+    <td>{{ h.update_time|naturaltime }}</td>
+    <td>{{ h.question|linebreaks }}</td>
+    <td>
+      {% if h.result %}
+      {{ h.result|linebreaks }}
+      {% else %}
+      <em>Waiting for a response</em>
+      {% endif %}</td>
+  </tr>
+  {% endfor %}
+</table>
+{% endif %}
+
+{% if not solved and status != 'complete' %}
+  {% if not hints_available %}
+  <div class="submit-response">
+    {% if at_quota %}
+    <p>You have hit your quota for unresolved hint requests. You can request another hint once a request has been resolved.</p>
+    {% elif time_left %}
+    <p>Hints for this puzzle will be available in {{ time_left|natural_timedelta }}.</p>
+    {% else %}
+    <p>Hints are not available for this puzzle yet.</p>
+    {% endif %}
+  </div>
+  {% else %}
+  <p>You may occasionally ask any question about the puzzle. You may have one hint open across all puzzles at a time.</p>
+  <form method="POST">
+    {% csrf_token %}
+    <div class="form-row">
+      <label for="id_question">Your question</label>
+      <textarea id="id_question" name="question" required></textarea>
+    </div>
+    <div class="form-row">
+      <label for="id_email">Notification email (optional)</label>
+      <input id="id_email" name="email" type="text" value="{{ email }}">
+    </div>
+    <div class="form-row">
+      <input type="submit" value="Request hint">
+    </div>
+  </form>
+  <p>The response will also appear on this page. You may want to use an
+    <a href="http://newtech.about.com/od/mobile/a/Sms-Gateway-From-Email-To-Sms-Text-Message.htm" target="_blank">SMS gateway</a> email.</p>
+  {% endif %}
+{% endif %}

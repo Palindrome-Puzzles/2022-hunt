@@ -1,0 +1,48 @@
+.typewriter {
+    font-family: monospace;
+    text-align: center;
+}
+
+.poem {
+  text-align: center;
+  font-style: italic;
+  font-size: .8em;
+}
+
+.center-image{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.blank-words {
+  font-size: 1em;
+}
+
+.orange {
+	background-color: #FF9902;
+}
+
+.red {
+	background-color: #FF0000;
+}
+
+.bold-bottom{
+    border-bottom: 3px solid black;
+}
+
+.bold-right {
+    border-right: 3px solid black;
+}
+
+.bold-left {
+    border-left: 3px solid black;
+}
+
+.bold-top {
+  border-top: 3px solid black;
+}
+
+.bold-all {
+	border: 3px solid black;
+}

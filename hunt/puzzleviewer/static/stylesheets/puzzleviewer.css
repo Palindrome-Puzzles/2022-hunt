@@ -1,0 +1,15 @@
+.puzzle {
+    background-color: #e6e6f1;
+}
+
+.answer-form input {
+    font-family: inherit;
+    height: 30px;
+    width: 300px;
+}
+
+header h1,
+header .subtitle {
+    color: black;
+    text-shadow: none !important;
+}

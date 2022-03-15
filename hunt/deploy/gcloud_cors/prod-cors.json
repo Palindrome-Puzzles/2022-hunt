@@ -1,0 +1,13 @@
+[
+    {
+      "origin": [
+        "https://www.starrats.org",
+        "https://www.bookspace.world"
+        "https://starrats.org",
+        "https://bookspace.world"
+      ],
+      "method": ["GET"],
+      "responseHeader": [],
+      "maxAgeSeconds": 3600
+    }
+]

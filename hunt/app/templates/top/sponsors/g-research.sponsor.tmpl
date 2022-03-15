@@ -1,0 +1,15 @@
+{% extends "top/sponsors/layout.tmpl" %}
+
+{% load static %}
+
+{% block sponsor_title %}G-Research{% endblock %}
+
+{% block sponsor_heading %}G-Research{% endblock %}
+
+{% block sponsor_details %}
+<ul class="top-breadcrumb"><li><a href="{% url 'sponsors' %}">&laquo; See all sponsors</a></li></ul>
+<p class="extra-margin-bottom"><a href="https://www.gresearch.co.uk" target="_blank" rel="noopener nofollow"><img src="{% static 'sponsors/g-research.png' %}" width="200" alt="G-Research logo" /></a></p>
+<p class="extra-margin-bottom"><a href="https://www.gresearch.co.uk" target="_blank" rel="noopener nofollow" class="sponsor-link">Visit our website</a></p>
+<p>G-Research is Europe's leading quantitative finance research company, utilising mathematics, big data, and machine learning to predict movements in financial markets. We offer a world-class continuous learning environment where problem solvers from an array of disciplines come to explore the edge of the possible.
+</p>
+{% endblock %}

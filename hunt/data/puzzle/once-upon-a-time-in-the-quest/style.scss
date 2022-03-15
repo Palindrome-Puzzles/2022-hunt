@@ -1,0 +1,67 @@
+.quest-meta {
+	img {
+		max-width: 100%;
+	}
+}
+
+img.medallion {
+	max-width: 600px;
+	display: block;
+	margin: 0 auto 1rem;
+}
+
+
+.all-glyphs {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+.glyph {
+	width: 48%;
+	border: 1px solid #bbb;
+	box-shadow: 1px 1px 5px #ddd;
+	border-radius: 6px;
+	margin: 0 1.5% 1rem 0;
+	padding: 0;
+	text-align: center;
+	font-size: 0;
+
+	h3 {
+		font-size: 1.5rem;
+		margin: .5em 0 .2em;
+		padding: 0;
+
+		a {
+			color: #5e452a;
+		}
+	}
+
+	form {
+		font-size: 1rem;
+	}
+
+	.solution {
+		font-size: 1rem;
+		margin-bottom: 1rem;
+	}
+
+	.message {
+		font-size: 1rem;
+		margin-bottom: 1rem;
+	}
+}
+
+.partial-form {
+	margin-bottom: 1rem;
+
+	input[type=text] {
+		font-size: 1.3rem;
+		text-align: center;
+	}
+}
+
+.fixed-width {
+	min-width: 150px;
+	display: inline-block;
+}

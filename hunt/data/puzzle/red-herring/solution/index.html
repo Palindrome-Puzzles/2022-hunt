@@ -1,0 +1,106 @@
+<p>Solvers are presented with an odd-looking image of some Red Herrings.  Opening the image in your favorite image editor (GIMP or Photoshop are easiest) will show that it is an indexed color image which is unusual in modern times (but was common in the early years when GIF images were common).  This is hinted at in the first part of the comment of the image: <em>“Ugh, fish juice has seeped in and colored the table!”</em></p>
+
+<p>Each color is made up of a red, green and blue component, and since we are looking at red herrings, the red component can be ignored.  The first few colors in the palette have the red component set to 0x00 to confirm this (and this is what gives the image its odd green tint).</p>
+
+<p>Looking at the green and blue components reveals hex (or decimal) values within the range for letters.  Each text has several 0x00 entries following the end of the string to indicate string termination.</p>
+
+<p>There are two ways to extract the text:</p>
+<p>Option 1: In the image editor, view each hex code and translate it (this is the slow way!)</p>
+<img src="images/1.png">
+
+<p>Option 2: (The quick way) Open the image in a hex editor, search for the magic bytes “PLTE” and change the width of the viewing window so only 3 characters are displayed.</p>
+<img src="images/2.png">
+
+<p>In either case, solvers will extract the following messages:<br>
+Green = <strong>You will need the password gnirreh and to understand “magic bytes”.</strong><br>
+Blue = <strong>Well done! Now find the hidden file… but where does the image end?</strong></p>
+
+<p>Where could a file be hidden in an image? There are a number of places (and many of them would be very difficult to detect), but in this case, finding the file merely requires understanding a little about the file format of a PNG image.  For solvers who do not understand the file layout, the phrase “magic bytes” should lead to:
+<a href="https://en.wikipedia.org/wiki/List_of_file_signatures" target="_blank" rel="noopener nofollow noreferrer">https://en.wikipedia.org/wiki/List_of_file_signatures</a></p>
+
+<p>From there, the PNG page (<a href="https://en.wikipedia.org/wiki/Portable_Network_Graphics" target="_blank" rel="noopener nofollow noreferrer">https://en.wikipedia.org/wiki/Portable_Network_Graphics</a>) describes the critical chunks of the file.  As hinted by “but where does the image end?”, a PNG image ends with a section identified by the magic bytes “IEND”, which is then followed by a 4 byte checksum of the image content.  Anything following that 4 byte checksum is ignored.</p>
+
+<p>Looking at that section of the file shows a suspiciously large number of bytes following the checksum, and a little research (back on the file signatures wiki page) will show that “PK” is the signifier for a zip file.</p>
+<img src="images/3.png" class="img-l">
+
+<p>Copy everything from 0x50 (P of the PK) to the end of the file into a new file and name it with a file extension of <strong>zip</strong>.  Opening the zip file displays a number of data (binary/hex data) files, and audio (MP3) files.  Solvers will need the password from earlier (<strong>gnirreh</strong>) to extract the files.</p>
+
+<p>Listening to each audio file, solvers will hear the same voice in each “This audio is a red herring”, but each also has a different semi-regular static behind the voice.  The comments in the audio files can be linked together to provide a hint for the next step:</p>
+
+<table>
+<tr><th>File name</th><th>Comment</th></tr>
+<tr><td>red herring 1.mp3</td><td>73 Listen behind the words...70</td></tr>
+<tr><td>red herring 2.mp3</td><td>65... what else can you hear...63</td></tr>
+<tr><td>red herring 3.mp3</td><td>74... you need to see the sound ...72</td></tr>
+<tr><td>red herring 4.mp3</td><td>6F... the waveform won't help you...67</td></tr>
+<tr><td>red herring 5.mp3</td><td>72... you need to read these audio files ...61</td></tr>
+<tr><td>red herring 6.mp3</td><td>6D... put the characters in comments together. 2E</td></tr>
+</table>
+
+<p>Putting the bytes together spells out: <strong>spectrogram</strong>.</p>
+
+<p>Opening each audio file in Audacity (or other sound editing tool), and viewing the spectrogram will display something useful:</p>
+<img src="images/4.png" class="img-l">
+
+<p>The text from each file is:</p>
+
+<table>
+<tr><th>File name</th><th>Text</th></tr>
+<tr><td>red herring 1.mp3</td><td>a red herring</td></tr>
+<tr><td>red herring 2.mp3</td><td>nope not here</td></tr>
+<tr><td>red herring 3.mp3</td><td>not this one</td></tr>
+<tr><td>red herring 4.mp3</td><td>RAW RGBA 78x43</td></tr>
+<tr><td>red herring 5.mp3</td><td>try again ...</td></tr>
+<tr><td>red herring 6.mp3</td><td>out of luck</td></tr>
+</table>
+
+<p>The data files have names that are all fish, and they can be grouped into three of the same type of fish; one of each has “red” in its name. (Sometimes a fish has multiple common names.)</p>
+
+<table>
+<tr><th>Fish name</th><th>Common name</th></tr>
+<tr><td>Acanthopagrus schlegelii</td><td>blackhead seabream</td></tr>
+<tr><td>Evynnis japonica</td><td>crimson seabream</td></tr>
+<tr><td>Pagrus major</td><td>red seabream</td></tr>
+<tr><td> </td><td> </td></tr>
+<tr><td>Oreochromis aureus</td><td>blue tilapia</td></tr>
+<tr><td>Sarotherodon melanotheron</td><td>blackchin tilapia</td></tr>
+<tr><td>Tilapia rendalli</td><td>redbreast tilapia</td></tr>
+<tr><td> </td><td> </td></tr>
+<tr><td>Cymatogaster aggregata</td><td>shiner perch</td></tr>
+<tr><td>Macquaria australasica</td><td>Macquarie perch</td></tr>
+<tr><td>Perca fluviatilis</td><td>redfin perch</td></tr>
+<tr><td> </td><td> </td></tr>
+<tr><td>Oncorhynchus keta</td><td>chum salmon</td></tr>
+<tr><td>Oncorhynchus nerka</td><td>red salmon (or sockeye salmon)</td></tr>
+<tr><td>Salmo salar</td><td>Atlantic salmon</td></tr>
+<tr><td> </td><td> </td></tr>
+<tr><td>Lutjanus lutjanus</td><td>bigeye snapper</td></tr>
+<tr><td>Lutjanus sebae</td><td>emperor red snapper</td></tr>
+<tr><td>Ocyurus chrysurus</td><td>yellowtail snapper</td></tr>
+<tr><td> </td><td> </td></tr>
+<tr><td>Etrumeus teres</td><td>red-eye round herring</td></tr>
+<tr><td>Lile nigrofasciata</td><td>blackstripe herring</td></tr>
+<tr><td>Opisthonema berlangai</td><td>galapagos thread herring</td></tr>
+</table>
+
+<p>Examining the contents of these files will show that the files in each case are composed of a combination of 0xFF, 0xFE, and 0x00 bytes.</p>
+
+<p>Combine the message from the audio (RAW RBGA 78x43) with a set of these files, pasting the three files for a fish together in alphabetical order by their scientific names. Open the subsequent merged file as a RAW image file (the .data extension is valid for RAW format) and select the setting for RGBA and a size of 78x43.  This will produce a seemingly completely red rectangle for each set.</p>
+<img src="images/5.png">
+
+<p>Using the magic wand selection tool with a threshold/tolerance of 0 will display a text in each image.</p>
+<img src="images/6.png">
+
+<p>For each set of fish, these messages are:</p>
+
+<table>
+<tr><th>Fish</th><th>Message</th></tr>
+<tr><td>Seabream</td><td>404 Error Answer not found</td></tr>
+<tr><td>Tilapia</td><td>Your answer is not here. A red herring.</td></tr>
+<tr><td>Perch</td><td>Out of luck. Look elsewhere!</td></tr>
+<tr><td>Salmon</td><td>Try again not in this one.</td></tr>
+<tr><td>Snapper</td><td>Whoops! This isn’t right either.</td></tr>
+<tr><td>Herring</td><td>The answer is an animal of order Tubulidentata.</td></tr>
+</table>
+
+<p>There is only a single animal in the order Tubulidentata, and that is the answer: <span class="answer">AARDVARK</span>.</p>

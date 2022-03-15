@@ -1,0 +1,7 @@
+table.wide {
+  table-layout: fixed;
+  width: 100%;
+}
+table.wide th {
+  text-align: center;
+}

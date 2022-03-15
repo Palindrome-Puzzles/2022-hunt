@@ -1,0 +1,19 @@
+name: 'Staging: Release to Heroku'
+
+on:
+  # push:
+  #   branches:
+  #     - main
+
+  workflow_dispatch:
+
+concurrency:
+  group: release-to-heroku-staging
+  cancel-in-progress: true
+
+jobs:
+  release:
+    uses: 'Palindrome-Puzzles/2022-hunt/.github/workflows/release-to-heroku.yml@main'
+    secrets:
+      heroku_app_name: ${{ secrets.HEROKU_APP_NAME_STAGING }}
+      heroku_api_key: ${{ secrets.HEROKU_API_KEY_STAGING }}

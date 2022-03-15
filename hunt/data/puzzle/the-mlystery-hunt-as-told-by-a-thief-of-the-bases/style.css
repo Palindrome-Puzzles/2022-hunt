@@ -1,0 +1,8 @@
+.data-stream {
+  border-style: solid;
+  padding: 5px;
+}
+
+.data-stream .blanks {
+  font-size: 1.25em;
+}

@@ -1,0 +1,125 @@
+<h2>Part 1</h2>
+
+<p>The first part of the puzzle is a pure setting task, which is aided quite a bit by appropriate
+programming. One method for solving the task is: download the wordlist; reduce it to all 5-letter
+words; add all reversals of those 5-letter words; add the set of 6-letter words that are the
+5-letter words with the alphabet-sum character appended; remove all 5-letter words that have
+repeated letters; and use a crossword grid filler (such as the free one called Qxw, available
+online), to fill a grid that looks like this:</p>
+
+<pre class="centered">
+??????
+??????
+??????
+??????
+??????
+?????-
+</pre>
+
+<p>Solvers can either (1) keep trying to fill until the 5-letter words to the right and bottom
+contain 10 different letters; (2) try a pattern like ?OILY on the right, which can
+start with D, R, or S, and leaves a lot of good letters for the 5-letter word on the bottom, which
+should yield a valid result quicker than simply proceeding at random; or (3) separate the wordlist
+(described above) into 2 lists, one where the 6-letter entries end with one set of 13 letters, and
+one where the 6-letter entries end with a letter from the complement of that set&mdash;then fill the
+acrosses from one list and the downs from the other list (Qxw and some other commercial programs
+allow this), ensuring a fill with 10-different letters to the right and bottom.</p>
+
+<p>When solvers submit a string of 25 letters, it is checked by program, and if it meets all the
+rules, solvers receive part 2 of the puzzle. One string that works is:
+<span class="answer">ARECAGAVELIMIDEOITARSEERT</span>.</p>
+
+<h2>Part 2</h2>
+
+<p>The second part of the puzzle consists of 10 clues to a cryptic double-square puzzle with 17
+bigrams underneath.</p>
+
+<p>The solutions to the cryptic clues are:</p>
+
+<table>
+<thead>
+  <tr>
+    <th class="clue">Clue</th>
+    <th>Explanation</th>
+    <th>Answer</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td class="clue">Barrage used regularly to lock horns</td>
+    <td class="explanation">b<em>A</em>r<em>R</em>a<em>G</em>e <em>U</em>s<em>E</em>d</td>
+    <td class="answer">ARGUE</td>
+  </tr>
+  <tr>
+    <td class="clue">Bores fragment of glass counter with opening in glass for pathway, essentially</td>
+    <td class="explanation"><em>SHARD</em>&lt; with <em>G</em> for <em>H</em></td>
+    <td class="answer">DRAGS</td>
+  </tr>
+  <tr>
+    <td class="clue">Bunch of trees presented a turning to red and orange</td>
+    <td class="explanation"><em>GAVE</em> with <em>A</em> becoming <em>RO</em></td>
+    <td class="answer">GROVE</td>
+  </tr>
+  <tr>
+    <td class="clue">Female fish has sympathy</td>
+    <td class="explanation"><em>F</em> + <em>EELS</em></td>
+    <td class="answer">FEELS</td>
+  </tr>
+  <tr>
+    <td class="clue">Gala lacks source of snacks like cheeses</td>
+    <td class="explanation"><em>FEST</em> - <em>S</em> + <em>AS</em></td>
+    <td class="answer">FETAS</td>
+  </tr>
+  <tr>
+    <td class="clue">Gullible deviant returned without clothing</td>
+    <td class="explanation">d<em>EVIAN</em>t&lt;</td>
+    <td class="answer">NAIVE</td>
+  </tr>
+  <tr>
+    <td class="clue">Mountain range located past river country</td>
+    <td class="explanation"><em>R</em> + <em>URAL</em></td>
+    <td class="answer">RURAL</td>
+  </tr>
+  <tr>
+    <td class="clue">Russia's leader, following article, understood language</td>
+    <td class="explanation"><em>A</em> + <em>R</em> + <em>GOT</em></td>
+    <td class="answer">ARGOT</td>
+  </tr>
+  <tr>
+    <td class="clue">Some rude answers, more than one notable at school</td>
+    <td class="explanation">ru<em>DE ANS</em>wers</td>
+    <td class="answer">DEANS</td>
+  </tr>
+  <tr>
+    <td class="clue">Spirit mostly added in to season marble</td>
+    <td class="explanation"><em>GI</em>n in <em>AGE</em></td>
+    <td class="answer">AGGIE</td>
+  </tr>
+</tbody>
+</table>
+
+<p>The solution to the double-square is (words can read forwards or backwards):</p>
+
+<figure>
+<pre class="centered">
+<span class="answer">DEANS</span> 1
+<span class="answer">RURAL</span> 2
+<span class="answer">AGGIE</span> 3
+<span class="answer">GROVE</span> 4
+<span class="answer">SATEF</span> 5
+67890&nbsp;&nbsp;
+</pre>
+<figcaption>(Numbers have been added for convenience to the discussion below.)</figcaption>
+</figure>
+
+<p>Along with the puzzle, solvers are given a set of bigrams corresponding to the above coordinates
+<span class="callout monospace">20-57-61-48-19-05-39-82-10-85-58-94-83-72-93-16-71</span> except
+instead of pairs of digits they are given pairs of letters. Those letters correspond to the two
+5-letter right and bottom words that solvers submitted in the Part 1 task&mdash;which were
+constrained to be 10 different letters, so they can act unambiguously as a coordinate system.
+
+<p>Solvers will use the provided bigrams to extract letters from the Double Word Square of part 2,
+using the coordinate system they unwittingly provided in part 1, to get
+<span class="callout answer">LAD ON FIRST TV GUIDE</span>
+and that uniquely identifies <span class="answer">DESI ARNAZ JR</span> (to be entered in this
+fashion, per the instruction that the form of the answer must be the title of a Wikipedia article).</p>

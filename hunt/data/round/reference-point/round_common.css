@@ -1,0 +1,29 @@
+h1,
+.round-map {
+    font-family: 'Montagu Slab', sans-serif;
+    font-weight: 500;
+}
+
+.page-background {
+    background-image: url(images/bg-repeat.jpg);
+    background-size: auto auto;
+    background-repeat: repeat;
+}
+.page-background-top {
+    background-image: url(images/bg-top.png);
+    background-size: contain;
+}
+
+header,
+.page-background-top {
+    min-width: 100%;
+    max-height: 1096px;
+}
+header.large-wordmark,
+.page-background-top {
+    aspect-ratio: 2500/849;
+}
+
+header.large-wordmark {
+    padding-bottom: 10%;
+}

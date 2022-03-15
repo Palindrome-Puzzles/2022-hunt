@@ -1,0 +1,943 @@
+<p>The video is a conversation between two characters. Each of their lines clues a well-known movie. Upon further inspection, we realize that each of these movies was nominated for the Academy Award for Best Picture. There are 28 years represented, each with 4 (of 5 nominees) clued in the dialogue. That gets us to all 112 (28 * 4) lines.</p>
+
+<p>In 28 of the shots, the sign in the background shows a number. After mapping lines to movies and years, we can determine that each number is associated with a different year.</p>
+
+<table>
+
+<thead>
+<tr>
+	<th>#</th>
+	<th>Line</th>
+	<th>Movie</th>
+	<th>Year</th>
+	<th>Num</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>1</td>
+	<td>I've decided to have surgery in London.</td>
+	<td>The English Patient</td>
+	<td>1996</td>
+	<td>6</td>
+</tr>
+<tr>
+	<td>2</td>
+	<td>Don't forget to change trains in Paris!</td>
+	<td>The French Connection</td>
+	<td colspan="2">1971</td>
+</tr>
+<tr>
+	<td>3</td>
+	<td>You're a silly lass.</td>
+	<td>Funny Girl</td>
+	<td colspan="2">1968</td>
+</tr>
+<tr>
+	<td>4</td>
+	<td>I'm just a fan of interconnectivity.</td>
+	<td>Network</td>
+	<td>1976</td>
+	<td>1</td>
+</tr>
+<tr>
+	<td>5</td>
+	<td>I know what you mean. Once it took me almost THREE MONTHS to travel the globe.</td>
+	<td>Around the World in Eighty Days</td>
+	<td colspan="2">1956</td>
+</tr>
+<tr>
+	<td>6</td>
+	<td>That's not unusual, pussycat.</td>
+	<td>Tom Jones</td>
+	<td colspan="2">1963</td>
+</tr>
+<tr>
+	<td>7</td>
+	<td>You always say the correct things.</td>
+	<td>The Right Stuff</td>
+	<td colspan="2">1983</td>
+</tr>
+<tr>
+	<td>8</td>
+	<td>What can I say, I've got a really pretty brain.</td>
+	<td>A Beautiful Mind</td>
+	<td colspan="2">2001</td>
+</tr>
+<tr>
+	<td>9</td>
+	<td>Reminds me of the time I found myself on an unexpected vacation.</td>
+	<td>The Accidental Tourist</td>
+	<td>1988</td>
+	<td>4</td>
+</tr>
+<tr>
+	<td>10</td>
+	<td>Where were you on vacation, The Colosseum?</td>
+	<td>Roman Holiday</td>
+	<td colspan="2">1953</td>
+</tr>
+<tr>
+	<td>11</td>
+	<td>No, it was a city in North Dakota.</td>
+	<td>Fargo</td>
+	<td colspan="2">1996</td>
+</tr>
+<tr>
+	<td>12</td>
+	<td>USA! USA!</td>
+	<td>America America</td>
+	<td colspan="2">1963</td>
+</tr>
+<tr>
+	<td>13</td>
+	<td>And I on my way to catch a plane…</td>
+	<td>Airport</td>
+	<td colspan="2">1970</td>
+</tr>
+<tr>
+	<td>14</td>
+	<td>… USA! so lovely…</td>
+	<td>American Beauty</td>
+	<td colspan="2">1999</td>
+</tr>
+<tr>
+	<td>15</td>
+	<td>And my Lyft chauffeur said —</td>
+	<td>Taxi Driver</td>
+	<td colspan="2">1976</td>
+</tr>
+<tr>
+	<td>16</td>
+	<td>Oh! Was it… &quot;Don't crush your hand in the apple machine!&quot;?</td>
+	<td>The Cider House Rules</td>
+	<td colspan="2">1999</td>
+</tr>
+<tr>
+	<td>17</td>
+	<td>No, he said &quot;The Soviets are on their way! Don't make me say it again.&quot;</td>
+	<td>The Russians Are Coming</td>
+	<td colspan="2">1966</td>
+</tr>
+<tr>
+	<td>18</td>
+	<td>Sounds like a really decent guy.</td>
+	<td>Goodfellas</td>
+	<td>1990</td>
+	<td>3</td>
+</tr>
+<tr>
+	<td>19</td>
+	<td>Well, he was from Jersey.</td>
+	<td>Atlantic City</td>
+	<td colspan="2">1981</td>
+</tr>
+<tr>
+	<td>20</td>
+	<td>Not a city in Bavaria?</td>
+	<td>Munich</td>
+	<td colspan="2">2005</td>
+</tr>
+<tr>
+	<td>21</td>
+	<td>Anyway, right then, a bit of sunlight hits me.</td>
+	<td>Ray</td>
+	<td colspan="2">2004</td>
+</tr>
+<tr>
+	<td>22</td>
+	<td>Like a state on fire.</td>
+	<td>Mississippi Burning</td>
+	<td colspan="2">1988</td>
+</tr>
+<tr>
+	<td>23</td>
+	<td>… and all of a sudden — <em>BANG</em> — we hit another car.</td>
+	<td>Crash</td>
+	<td colspan="2">2005</td>
+</tr>
+<tr>
+	<td>24</td>
+	<td>Sounds like a bumpy ride.</td>
+	<td>Rocky</td>
+	<td colspan="2">1976</td>
+</tr>
+<tr>
+	<td>25</td>
+	<td>It was inexcusable, and I'll never let it go.</td>
+	<td>Unforgiven</td>
+	<td colspan="2">1992</td>
+</tr>
+<tr>
+	<td>26</td>
+	<td>You deserve reparation.</td>
+	<td>Atonement</td>
+	<td colspan="2">2007</td>
+</tr>
+<tr>
+	<td>27</td>
+	<td>The guy drove like a Roman dictator.</td>
+	<td>Julius Caesar</td>
+	<td colspan="2">1953</td>
+</tr>
+<tr>
+	<td>28</td>
+	<td>Or like Gordon Shumway, that is.</td>
+	<td>Alfie</td>
+	<td>1966</td>
+	<td>5</td>
+</tr>
+<tr>
+	<td>29</td>
+	<td>Then he leapt out and screamed, &quot;Sweet dreams and I hope you don't die!&quot;</td>
+	<td>Good Night and Good Luck</td>
+	<td>2005</td>
+	<td>1</td>
+</tr>
+<tr>
+	<td>30</td>
+	<td>Did anyone see this happen?</td>
+	<td>Witness</td>
+	<td colspan="2">1985</td>
+</tr>
+<tr>
+	<td>31</td>
+	<td>Just this one-man band.</td>
+	<td>The Music Man</td>
+	<td>1962</td>
+	<td>5</td>
+</tr>
+<tr>
+	<td>32</td>
+	<td>Just like Julia and Eric's dad!</td>
+	<td>Mister Roberts</td>
+	<td colspan="2">1955</td>
+</tr>
+<tr>
+	<td>33</td>
+	<td>Yeah, I loved his bebop, big band, fusion, …</td>
+	<td>All That Jazz</td>
+	<td colspan="2">1979</td>
+</tr>
+<tr>
+	<td>34</td>
+	<td>The dude could drizzle.</td>
+	<td>Rain Man</td>
+	<td colspan="2">1988</td>
+</tr>
+<tr>
+	<td>35</td>
+	<td>After that, I walked to The Red Mill.</td>
+	<td>Moulin Rouge</td>
+	<td>2001</td>
+	<td>3</td>
+</tr>
+<tr>
+	<td>36</td>
+	<td>Isn't that the shop where I got my ink of Axl?</td>
+	<td>The Rose Tattoo</td>
+	<td colspan="2">1955</td>
+</tr>
+<tr>
+	<td>37</td>
+	<td>No that was called The Queen of the Nile.</td>
+	<td>Cleopatra</td>
+	<td>1963</td>
+	<td>4</td>
+</tr>
+<tr>
+	<td>38</td>
+	<td>Or was it Queen of the Gods?</td>
+	<td>Juno</td>
+	<td colspan="2">2007</td>
+</tr>
+<tr>
+	<td>39</td>
+	<td>No, THAT place was owned by McFly.</td>
+	<td>Marty</td>
+	<td colspan="2">1955</td>
+</tr>
+<tr>
+	<td>40</td>
+	<td>What was his first name, Truman?</td>
+	<td>Capote</td>
+	<td colspan="2">2005</td>
+</tr>
+<tr>
+	<td>41</td>
+	<td>No, I think it was Bandito.</td>
+	<td>Patton</td>
+	<td colspan="2">1970</td>
+</tr>
+<tr>
+	<td>42</td>
+	<td>Sounds like a really perilous connection.</td>
+	<td>Dangerous Liaisons</td>
+	<td colspan="2">1988</td>
+</tr>
+<tr>
+	<td>43</td>
+	<td>I'll tell you this: he was a very rich child.</td>
+	<td>Million Dollar Baby</td>
+	<td colspan="2">2004</td>
+</tr>
+<tr>
+	<td>44</td>
+	<td>I wouldn't want to compete with him to see who could produce the most tears.</td>
+	<td>The Crying Game</td>
+	<td colspan="2">1992</td>
+</tr>
+<tr>
+	<td>45</td>
+	<td>Whether it's pepper, cayenne, oregano… that's your guy.</td>
+	<td>A Man for All Seasons</td>
+	<td colspan="2">1966</td>
+</tr>
+<tr>
+	<td>46</td>
+	<td>Yikes, spicy stuff makes me turn red and blue.</td>
+	<td>The Color Purple</td>
+	<td>1985</td>
+	<td>1</td>
+</tr>
+<tr>
+	<td>47</td>
+	<td>Really? It makes me speak lots of different languages.</td>
+	<td>Babel</td>
+	<td>2006</td>
+	<td>2</td>
+</tr>
+<tr>
+	<td>48</td>
+	<td>When was this, June 21st?</td>
+	<td>The Longest Day</td>
+	<td colspan="2">1962</td>
+</tr>
+<tr>
+	<td>49</td>
+	<td>Yes, and it was a really warm evening. Like really warm.</td>
+	<td>In the Heat of the Night</td>
+	<td>1967</td>
+	<td>3</td>
+</tr>
+<tr>
+	<td>50</td>
+	<td>Oh yeah, right after cold front hit the whole country.</td>
+	<td>The Big Chill</td>
+	<td colspan="2">1983</td>
+</tr>
+<tr>
+	<td>51</td>
+	<td>So, then, I found a pilot…</td>
+	<td>The Aviator</td>
+	<td colspan="2">2004</td>
+</tr>
+<tr>
+	<td>52</td>
+	<td>Did you write 手紙 to Sulfur Island?</td>
+	<td>Letters from Iwo Jima</td>
+	<td colspan="2">2006</td>
+</tr>
+<tr>
+	<td>53</td>
+	<td>I couldn't understand that.</td>
+	<td>Lost in Translation</td>
+	<td>2003</td>
+	<td>1</td>
+</tr>
+<tr>
+	<td>54</td>
+	<td>Sorry, I just recently got my degree and was showing off. Go on.</td>
+	<td>The Graduate</td>
+	<td colspan="2">1967</td>
+</tr>
+<tr>
+	<td>55</td>
+	<td>It was tough to get her away from her tangoing with Geri and Freki.</td>
+	<td>Dances With Wolves</td>
+	<td colspan="2">1990</td>
+</tr>
+<tr>
+	<td>56</td>
+	<td>Those are the ones who looted the missing boat!</td>
+	<td>Raiders of the Lost Ark</td>
+	<td colspan="2">1981</td>
+</tr>
+<tr>
+	<td>57</td>
+	<td>I know, it's the kind of thing that makes you want to murder a passerine.</td>
+	<td>To Kill a Mockingbird</td>
+	<td colspan="2">1962</td>
+</tr>
+<tr>
+	<td>58</td>
+	<td>I'm sobbing and murmuring just thinking about it.</td>
+	<td>Cries and Whispers</td>
+	<td>1973</td>
+	<td>4</td>
+</tr>
+<tr>
+	<td>59</td>
+	<td>(to waiter) Hey! Mr. Stone!</td>
+	<td>Oliver!</td>
+	<td>1968</td>
+	<td>1</td>
+</tr>
+<tr>
+	<td>60</td>
+	<td>Oh, you'll never believe who's joining us to eat.</td>
+	<td>Guess Who’s Coming to Dinner</td>
+	<td colspan="2">1967</td>
+</tr>
+<tr>
+	<td>61</td>
+	<td>(to waiter) Avez-vous ma saveur préférée de crème glacée?</td>
+	<td>Chocolat</td>
+	<td colspan="2">2000</td>
+</tr>
+<tr>
+	<td>62</td>
+	<td>She fights wild animals in front of a crowd.</td>
+	<td>Gladiator</td>
+	<td colspan="2">2000</td>
+</tr>
+<tr>
+	<td>63</td>
+	<td>(to waiter) … and make it HUGE.</td>
+	<td>Giant</td>
+	<td colspan="2">1956</td>
+</tr>
+<tr>
+	<td>64</td>
+	<td>And she has this lovely aroma.</td>
+	<td>Scent of a Woman</td>
+	<td colspan="2">1992</td>
+</tr>
+<tr>
+	<td>65</td>
+	<td>Merci. (Turns back) Everything here tastes like hardtack.</td>
+	<td>Seabiscuit</td>
+	<td colspan="2">2003</td>
+</tr>
+<tr>
+	<td>66</td>
+	<td>Try pureeing it.</td>
+	<td>MASH</td>
+	<td>1970</td>
+	<td>4</td>
+</tr>
+<tr>
+	<td>67</td>
+	<td>I give this place a D.</td>
+	<td>Howards End</td>
+	<td>1992</td>
+	<td>4</td>
+</tr>
+<tr>
+	<td>68</td>
+	<td>I can't decide between ordering a Cosmo… or a different Cosmo.</td>
+	<td>Kramer vs. Kramer</td>
+	<td colspan="2">1979</td>
+</tr>
+<tr>
+	<td>69</td>
+	<td>I got the Gwen's Smooch. It stung.</td>
+	<td>Kiss of the Spider Woman</td>
+	<td colspan="2">1985</td>
+</tr>
+<tr>
+	<td>70</td>
+	<td>What's in that? Honey, pumpkin, sugarplum?</td>
+	<td>Terms of Endearment</td>
+	<td colspan="2">1983</td>
+</tr>
+<tr>
+	<td>71</td>
+	<td>Just spit and polish.</td>
+	<td>Shine</td>
+	<td colspan="2">1996</td>
+</tr>
+<tr>
+	<td>72</td>
+	<td>Get back to your story, this is why I rise up from bed every day.</td>
+	<td>Awakenings</td>
+	<td colspan="2">1990</td>
+</tr>
+<tr>
+	<td>73</td>
+	<td>I should've come over to where you sleep and told the story there.</td>
+	<td>In the Bedroom</td>
+	<td colspan="2">2001</td>
+</tr>
+<tr>
+	<td>74</td>
+	<td>Only if you could evict the demons first.</td>
+	<td>The Exorcist</td>
+	<td colspan="2">1973</td>
+</tr>
+<tr>
+	<td>75</td>
+	<td>Hmm. So, I rode over the spooky creek.</td>
+	<td>Mystic River</td>
+	<td colspan="2">2003</td>
+</tr>
+<tr>
+	<td>76</td>
+	<td>Did you see any spectres?!</td>
+	<td>Ghost</td>
+	<td colspan="2">1990</td>
+</tr>
+<tr>
+	<td>77</td>
+	<td>No, but the going was slow, there were lots of cars on the road.</td>
+	<td>Traffic</td>
+	<td colspan="2">2000</td>
+</tr>
+<tr>
+	<td>78</td>
+	<td>Don't hit another car, you'll cut yourself and need a lot of bandages.</td>
+	<td>There Will Be Blood</td>
+	<td>2007</td>
+	<td>2</td>
+</tr>
+<tr>
+	<td>79</td>
+	<td>Especially if we're hit laterally.</td>
+	<td>Sideways</td>
+	<td>2004</td>
+	<td>3</td>
+</tr>
+<tr>
+	<td>80</td>
+	<td>… and you'll need more clothes. From your armoire.</td>
+	<td>The Dresser</td>
+	<td>1983</td>
+	<td>3</td>
+</tr>
+<tr>
+	<td>81</td>
+	<td>We passed Hobbes and Puff, though we could barely see them.</td>
+	<td>Crouching Tiger Hidden Dragon</td>
+	<td>2000</td>
+	<td>3</td>
+</tr>
+<tr>
+	<td>82</td>
+	<td>You'll never see those two, even if you start now and go forever.</td>
+	<td>From Here to Eternity</td>
+	<td>1953</td>
+	<td>4</td>
+</tr>
+<tr>
+	<td>83</td>
+	<td>And then we saw several horse-drawn vehicles, aflame!</td>
+	<td>Chariots of Fire</td>
+	<td>1981</td>
+	<td>3</td>
+</tr>
+<tr>
+	<td>84</td>
+	<td>Pour some out for those who've left us.</td>
+	<td>The Departed</td>
+	<td colspan="2">2006</td>
+</tr>
+<tr>
+	<td>85</td>
+	<td>Finally we were able to separate ourselves from the pack.</td>
+	<td>Breaking Away</td>
+	<td>1979</td>
+	<td>4</td>
+</tr>
+<tr>
+	<td>86</td>
+	<td>Just like my favorite Cincinnati team.</td>
+	<td>Reds</td>
+	<td colspan="2">1981</td>
+</tr>
+<tr>
+	<td>87</td>
+	<td>And the pilot throws off their cloak to reveal themselves to be —</td>
+	<td>The Robe</td>
+	<td colspan="2">1953</td>
+</tr>
+<tr>
+	<td>88</td>
+	<td>… Elizabeth II?</td>
+	<td>The Queen</td>
+	<td colspan="2">2006</td>
+</tr>
+<tr>
+	<td>89</td>
+	<td>No no, she's so busy boxing with that member of Parliament and all of her friends.</td>
+	<td>The Lord of the Rings: The Fellowship of the Ring</td>
+	<td colspan="2">2001</td>
+</tr>
+<tr>
+	<td>90</td>
+	<td>Was it Barry Sanders covered in snow?</td>
+	<td>The Lion in Winter</td>
+	<td colspan="2">1968</td>
+</tr>
+<tr>
+	<td>91</td>
+	<td>Nope. Last I heard he was trading a Wachowski movie for a Zwick.</td>
+	<td>Bound for Glory</td>
+	<td colspan="2">1976</td>
+</tr>
+<tr>
+	<td>92</td>
+	<td>My beloved and a ghost?</td>
+	<td>Bonnie and Clyde</td>
+	<td colspan="2">1967</td>
+</tr>
+<tr>
+	<td>93</td>
+	<td>No! It was Charlie Daniels, dressed up as Santa!</td>
+	<td>Fiddler on the Roof</td>
+	<td>1971</td>
+	<td>4</td>
+</tr>
+<tr>
+	<td>94</td>
+	<td>That's no easy task!</td>
+	<td>Picnic</td>
+	<td>1955</td>
+	<td>3</td>
+</tr>
+<tr>
+	<td>95</td>
+	<td>Thank god it wasn't Elvis. We'd make a weird pair.</td>
+	<td>The King and I</td>
+	<td>1956</td>
+	<td>3</td>
+</tr>
+<tr>
+	<td>96</td>
+	<td>No weirder than Nickleby and Lady Ogilvy II.</td>
+	<td>Nicholas and Alexandra</td>
+	<td colspan="2">1971</td>
+</tr>
+<tr>
+	<td>97</td>
+	<td>You can say that again… or write that on two stone tablets.</td>
+	<td>The Ten Commandments</td>
+	<td colspan="2">1956</td>
+</tr>
+<tr>
+	<td>98</td>
+	<td>This pilot was great at steering the plane, giving orders, and taking people to antipodes.</td>
+	<td>Master and Commander</td>
+	<td colspan="2">2003</td>
+</tr>
+<tr>
+	<td>99</td>
+	<td>Yep, and then we went over 5000 energy-efficient feet up in the air.</td>
+	<td>The Green Mile</td>
+	<td>1999</td>
+	<td>3</td>
+</tr>
+<tr>
+	<td>100</td>
+	<td>Did you see spraypaint across the country?</td>
+	<td>American Graffiti</td>
+	<td colspan="2">1973</td>
+</tr>
+<tr>
+	<td>101</td>
+	<td>Only some tigers and stargazers in the meadow.</td>
+	<td>Lilies of the Field</td>
+	<td colspan="2">1963</td>
+</tr>
+<tr>
+	<td>102</td>
+	<td>Clattering like little rocks on the beach.</td>
+	<td>The Sand Pebbles</td>
+	<td colspan="2">1966</td>
+</tr>
+<tr>
+	<td>103</td>
+	<td>Uncovering mysteries and untruths.</td>
+	<td>Secrets &amp; Lies</td>
+	<td colspan="2">1996</td>
+</tr>
+<tr>
+	<td>104</td>
+	<td>With no risk of a rebellion about the prize money.</td>
+	<td>Mutiny on the Bounty</td>
+	<td colspan="2">1962</td>
+</tr>
+<tr>
+	<td>105</td>
+	<td>We landed in Ethiopia, but then we left.</td>
+	<td>Out of Africa</td>
+	<td colspan="2">1985</td>
+</tr>
+<tr>
+	<td>106</td>
+	<td>Is that where grandfathers aren't allowed?</td>
+	<td>No Country for Old Men</td>
+	<td colspan="2">2007</td>
+</tr>
+<tr>
+	<td>107</td>
+	<td>Not really, there are a handful of simple steps to avoid that.</td>
+	<td>Five Easy Pieces</td>
+	<td colspan="2">1970</td>
+</tr>
+<tr>
+	<td>108</td>
+	<td>One of them is to not anger a bee.</td>
+	<td>The Sting</td>
+	<td colspan="2">1973</td>
+</tr>
+<tr>
+	<td>109</td>
+	<td>Sounds like a recipe for immediate world annihilation.</td>
+	<td>Apocalypse Now</td>
+	<td colspan="2">1979</td>
+</tr>
+<tr>
+	<td>110</td>
+	<td>You know, we should leave if we're gonna hit the final screening tonight.</td>
+	<td>The Last Picture Show</td>
+	<td colspan="2">1971</td>
+</tr>
+<tr>
+	<td>111</td>
+	<td>Oh yeah, my source told me it's a good one. What's it about?</td>
+	<td>The Insider</td>
+	<td colspan="2">1999</td>
+</tr>
+<tr>
+	<td>112</td>
+	<td>It's about 3 after and 5 before what we've been talking about this whole time.</td>
+	<td>Romeo and Juliet</td>
+	<td>1968</td>
+</tr>
+</tbody>
+</table>
+
+
+<p>By indexing the number into the name of the movie remaining from each year, and reading in given order, we can get our answer: <span class="answer">MAKE A BEST PICTURE WINNING MOVIE</span>.</p>
+
+<table>
+
+<thead>
+<tr>
+	<th>Order</th>
+	<th>Outcast</th>
+	<th>Year</th>
+	<th>Index</th>
+	<th>Letter</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>1</td>
+	<td>Jerry Maguire</td>
+	<td>1996</td>
+	<td>6</td>
+	<td>M</td>
+</tr>
+<tr>
+	<td>2</td>
+	<td>All the President’s Men</td>
+	<td>1976</td>
+	<td>1</td>
+	<td>A</td>
+</tr>
+<tr>
+	<td>3</td>
+	<td>Working Girl</td>
+	<td>1988</td>
+	<td>4</td>
+	<td>K</td>
+</tr>
+<tr>
+	<td>4</td>
+	<td>The Godfather: Part III</td>
+	<td>1990</td>
+	<td>3</td>
+	<td>E</td>
+</tr>
+<tr>
+	<td>5</td>
+	<td>Who’s Afraid of Virginia Woolf?</td>
+	<td>1966</td>
+	<td>5</td>
+	<td>A</td>
+</tr>
+<tr>
+	<td>6</td>
+	<td>Brokeback Mountain</td>
+	<td>2005</td>
+	<td>1</td>
+	<td>B</td>
+</tr>
+<tr>
+	<td>7</td>
+	<td>Lawrence of Arabia</td>
+	<td>1962</td>
+	<td>5</td>
+	<td>E</td>
+</tr>
+<tr>
+	<td>8</td>
+	<td>Gosford Park</td>
+	<td>2001</td>
+	<td>3</td>
+	<td>S</td>
+</tr>
+<tr>
+	<td>9</td>
+	<td>How the West Was Won</td>
+	<td>1963</td>
+	<td>4</td>
+	<td>T</td>
+</tr>
+<tr>
+	<td>10</td>
+	<td>Prizzi’s Honor</td>
+	<td>1985</td>
+	<td>1</td>
+	<td>P</td>
+</tr>
+<tr>
+	<td>11</td>
+	<td>Little Miss Sunshine</td>
+	<td>2006</td>
+	<td>2</td>
+	<td>I</td>
+</tr>
+<tr>
+	<td>12</td>
+	<td>Doctor Dolittle</td>
+	<td>1967</td>
+	<td>3</td>
+	<td>C</td>
+</tr>
+<tr>
+	<td>13</td>
+	<td>The Lord of the Rings: The Return of the King</td>
+	<td>2003</td>
+	<td>1</td>
+	<td>T</td>
+</tr>
+<tr>
+	<td>14</td>
+	<td>A Touch of Class</td>
+	<td>1973</td>
+	<td>4</td>
+	<td>U</td>
+</tr>
+<tr>
+	<td>15</td>
+	<td>Rachel Rachel</td>
+	<td>1968</td>
+	<td>1</td>
+	<td>R</td>
+</tr>
+<tr>
+	<td>16</td>
+	<td>Love Story</td>
+	<td>1970</td>
+	<td>4</td>
+	<td>E</td>
+</tr>
+<tr>
+	<td>17</td>
+	<td>A Few Good Men</td>
+	<td>1992</td>
+	<td>4</td>
+	<td>W</td>
+</tr>
+<tr>
+	<td>18</td>
+	<td>Michael Clayton</td>
+	<td>2007</td>
+	<td>2</td>
+	<td>I</td>
+</tr>
+<tr>
+	<td>19</td>
+	<td>Finding Neverland</td>
+	<td>2004</td>
+	<td>3</td>
+	<td>N</td>
+</tr>
+<tr>
+	<td>20</td>
+	<td>Tender Mercies</td>
+	<td>1983</td>
+	<td>3</td>
+	<td>N</td>
+</tr>
+<tr>
+	<td>21</td>
+	<td>Erin Brockovich</td>
+	<td>2000</td>
+	<td>3</td>
+	<td>I</td>
+</tr>
+<tr>
+	<td>22</td>
+	<td>Shane</td>
+	<td>1953</td>
+	<td>4</td>
+	<td>N</td>
+</tr>
+<tr>
+	<td>23</td>
+	<td>On Golden Pond</td>
+	<td>1981</td>
+	<td>3</td>
+	<td>G</td>
+</tr>
+<tr>
+	<td>24</td>
+	<td>Norma Rae</td>
+	<td>1979</td>
+	<td>4</td>
+	<td>M</td>
+</tr>
+<tr>
+	<td>25</td>
+	<td>A Clockwork Orange</td>
+	<td>1971</td>
+	<td>4</td>
+	<td>O</td>
+</tr>
+<tr>
+	<td>26</td>
+	<td>Love Is a Many-Splendored Thing</td>
+	<td>1955</td>
+	<td>3</td>
+	<td>V</td>
+</tr>
+<tr>
+	<td>27</td>
+	<td>Friendly Persuasion</td>
+	<td>1956</td>
+	<td>3</td>
+	<td>I</td>
+</tr>
+<tr>
+	<td>28</td>
+	<td>The Sixth Sense</td>
+	<td>1999</td>
+	<td>3</td>
+	<td>E</td>
+</tr>
+</tbody>
+</table>
+
+<div class="author-note">
+    <h2>Author's Notes</h2>
+	<p>The video features Sandy's 10-year-old daughter Zella in both parts.</p>
+
+	<p>The title (and the video) is a play on the singularly idiosyncratic dinner party movie <a href="https://en.wikipedia.org/wiki/My_Dinner_with_Andre">My Dinner With Andre</a>,  but swapping out Andre for Big Boi — Andre (3000) and Big Boi being the members of the duo in the band Outkast. That was where the joke was meant to end, but in our testing we discovered an accidental deeper meaning: in this puzzle you are finding all but one member of a set, and then indexing into the remaining member. In other words, the <i>outcast</i>. Sometimes the puzzle gods just smile on you.
+
+	<p>The instructions about making a movie were written by April and Eric Pinnick.</p>
+</div>

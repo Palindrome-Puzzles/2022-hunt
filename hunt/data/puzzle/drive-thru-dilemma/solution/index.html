@@ -1,0 +1,174 @@
+<p>Solvers are presented with a set of ten audio files, encoded with a mixture of beeping and words depending on the audio file.  Some of these encodings are easy to identify, while others are trickier.  </p>
+
+<p>The encodings are as follows:</p>
+
+<table>
+<tr><td>File</td>
+<td>Encoding</td></tr>
+<tr><td>a</td>
+<td>morse</td></tr>
+<tr><td>b</td>
+<td>semaphore (flag directions)</td></tr>
+<tr><td>c</td>
+<td>bacon</td></tr>
+<tr><td>d</td>
+<td>Pig latin</td></tr>
+<tr><td>e</td>
+<td>tap code</td></tr>
+<tr><td>f</td>
+<td>DTMF/phone speak</td></tr>
+<tr><td>g</td>
+<td>audio spectrograph</td></tr>
+<tr><td>h</td>
+<td>UbbiDubbi</td></tr>
+<tr><td>i</td>
+<td>phonetic alphabet</td></tr>
+<tr><td>j</td>
+<td>braille spoken (123456)</td></tr>
+</table>
+
+<p>Each of the sentences, once decoded, is a Harvard sentence (<a href="http://www.cs.columbia.edu/~hgs/audio/harvard.html">http://www.cs.columbia.edu/~hgs/audio/harvard.html</a>) with one word altered.  Harvard sentences, sometimes called Harvard lines, are a collection of sample phrases that are used for standardized testing of Voice over IP, cellular, and other telephone systems. They are phonetically balanced sentences that use specific phonemes at the same frequency they appear in English.</p>
+
+<p>Each audio file is a sentence from one of the first ten sets of sentences.  In each case, the word that is replaced is the one that matches the sentence number.</p>
+
+<table>
+<tr><td>File</td>
+<td>Set</td>
+<td>Sentence number</td>
+<td>Translated sentence</td>
+<td>Actual word</td>
+<td>Replaced with</td></tr>
+<tr><td>a</td>
+<td>1</td>
+<td>8</td>
+<td>The hogs were fed chopped corn and <strong>thing</strong>.</td>
+<td>garbage</td>
+<td>thing</td></tr>
+<tr><td>b</td>
+<td>2</td>
+<td>3</td>
+<td>The source <strong>item</strong> the huge river is the clear spring.</td>
+<td>of</td>
+<td>item</td></tr>
+<tr><td>c</td>
+<td>3</td>
+<td>6</td>
+<td>Two blue fish swam in <strong>small</strong> tank.</td>
+<td>the</td>
+<td>small</td></tr>
+<tr><td>d</td>
+<td>4</td>
+<td>5</td>
+<td>Mend the coat before <strong>means</strong> go out.</td>
+<td>you</td>
+<td>means</td></tr>
+<tr><td>e</td>
+<td>5</td>
+<td>7</td>
+<td>The rope will bind the seven <strong>cheese</strong> at once.</td>
+<td>books</td>
+<td>cheese</td></tr>
+<tr><td>f</td>
+<td>6</td>
+<td>2</td>
+<td>The <strong>food</strong> maze failed to fool the mouse.</td>
+<td>crooked</td>
+<td>food</td></tr>
+<tr><td>g</td>
+<td>7</td>
+<td>10</td>
+<td>Those words were the cue for the actor to <strong>Spanish</strong>.</td>
+<td>leave</td>
+<td>Spanish</td></tr>
+<tr><td>h</td>
+<td>8</td>
+<td>9</td>
+<td>The pearl was worn in a thin silver <strong>in</strong>.</td>
+<td>ring</td>
+<td>in</td></tr>
+<tr><td>i</td>
+<td>9</td>
+<td>1</td>
+<td><strong>Popular</strong> Navy attacked the big task force.</td>
+<td>The</td>
+<td>Popular</td></tr>
+<tr><td>j</td>
+<td>10</td>
+<td>4</td>
+<td>The fin was <strong>that</strong> and cut the clear water.</td>
+<td>sharp</td>
+<td>that</td></tr>
+</table>
+
+<p>Reordering by the Sentence number within a set gives the clue phrase “Popular food item that means small cheese thing in Spanish”.</p>
+
+<table>
+<tr><td>File</td>
+<td>Set</td>
+<td>Sentence number</td>
+<td>Translated sentence</td>
+<td>Actual word</td>
+<td>Replaced with</td></tr>
+<tr><td>i</td>
+<td>9</td>
+<td>1</td>
+<td>Popular Navy attacked the big task force.</td>
+<td>The</td>
+<td>Popular</td></tr>
+<tr><td>f</td>
+<td>6</td>
+<td>2</td>
+<td>The food maze failed to fool the mouse.</td>
+<td>crooked</td>
+<td>food</td></tr>
+<tr><td>b</td>
+<td>2</td>
+<td>3</td>
+<td>The source item the huge river is the clear spring.</td>
+<td>of</td>
+<td>item</td></tr>
+<tr><td>j</td>
+<td>10</td>
+<td>4</td>
+<td>The fin was that and cut the clear water.</td>
+<td>sharp</td>
+<td>that</td></tr>
+<tr><td>d</td>
+<td>4</td>
+<td>5</td>
+<td>Mend the coat before means go out.</td>
+<td>you</td>
+<td>means</td></tr>
+<tr><td>c</td>
+<td>3</td>
+<td>6</td>
+<td>Two blue fish swam in small tank.</td>
+<td>the</td>
+<td>small</td></tr>
+<tr><td>e</td>
+<td>5</td>
+<td>7</td>
+<td>The rope will bind the seven cheese at once.</td>
+<td>books</td>
+<td>cheese</td></tr>
+<tr><td>a</td>
+<td>1</td>
+<td>8</td>
+<td>The hogs were fed chopped corn and thing.</td>
+<td>garbage</td>
+<td>thing</td></tr>
+<tr><td>h</td>
+<td>8</td>
+<td>9</td>
+<td>The pearl was worn in a thin silver in.</td>
+<td>ring</td>
+<td>in</td></tr>
+<tr><td>g</td>
+<td>7</td>
+<td>10</td>
+<td>Those words were the cue for the actor to Spanish.</td>
+<td>leave</td>
+<td>Spanish</td></tr>
+</table>
+
+<p>This clue phrase gives the answer <span class='answer'>QUESADILLA</span>.</p>

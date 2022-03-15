@@ -1,0 +1,65 @@
+{% extends "hunt/site_layout.tmpl" %}
+{% load assets humanize static %}
+
+{% block title %}Archive | {{ block.super }}{% endblock %}
+
+{% block site_stylesheets %}
+<link href="{% static 'stylesheets/story.css' %}" rel="stylesheet">
+{% endblock site_stylesheets %}
+
+{% block site_content %}
+<main>
+  <header>
+    {% if story.round3_unlocked %}
+    <h1>Video and Letter Archive</h1>
+    {% else %}
+    <h1>Video Archive</h1>
+    {% endif %}
+  </header>
+
+  <div class="paper-edge top"></div>
+  <section id="main-content" class="content">
+    <h2 id="yourtasks">Your tasks</h2>
+    <ul class="tasks{% if team.is_public %} public{% endif %}">
+    {% for task in story.tasks %}
+    {% if task.open %}
+    <li class="{{ task.done|yesno:"done," }}">{{ task.text|safe }}</li>
+    {% endif %}
+    {% endfor %}
+    </ul>
+
+    <p class="important"><strong>IMPORTANT</strong>: Nothing on this page is a puzzle, nor is anything on this page clueful to puzzles.</p>
+
+    <h2 id="videos">Videos</h2>
+    <h3 id="opening_ceremony">A Star Rats update from Hayden Library</h3>
+    <p>The search for Star Rats is derailed when it is discovered that Hayden Library has mysteriously disappeared. <em>Your task is to investigate the huge void that has sucked in Hayden Library.</em></p>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/xHZhW8gvsJg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+    {% for beat in story.beats %}
+      {% if beat.yt_id %}
+      <h3 id="{{ beat.slug }}">{{ beat.story_page_headline }}</h3>
+      <p class="video-desc">{{ beat.story_page_text|safe }}</p>
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ beat.yt_id }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      {% endif %}
+    {% endfor  %}
+
+    {% if story.round3_unlocked %}
+      <h2 id="letters">Letters</h2>
+      <div class="letters">
+
+      {% for beat in story.beats %}
+        {% if beat.section == "letter" %}
+        <div class="letter" id="{{ beat.slug }}">
+          <div class="thumb"><a href="{% static 'letters/pdf/'|add:beat.code|add:'.pdf' %}"><img src="{% static 'letters/jpg/'|add:beat.code|add:'.jpg' %}"></a></div>
+          <p>{{ beat.story_page_text|safe }}</p>
+        </div>
+        {% endif %}
+      {% endfor %}
+
+      </div>
+    {% endif %}
+        <p class="important"><strong>IMPORTANT</strong>: Nothing on this page is a puzzle, nor is anything on this page clueful to puzzles.</p>
+  </section>
+  <div class="paper-edge bottom"></div>
+</main>
+{% endblock site_content %}

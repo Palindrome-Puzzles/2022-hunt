@@ -1,0 +1,120 @@
+{% extends "hunt/layout.tmpl" %}
+{% load static styles %}
+
+{% block title %}{{ puzzle_title }} | {{ block.super }}{% endblock %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{% static 'stylesheets/site.css' %}">
+<link rel="stylesheet" href="{% static 'stylesheets/puzzleviewer.css' %}">
+{% if serve_css_from_file %}
+<link rel="stylesheet" href="style.css">
+{% else %}
+{{ puzzle_style|wrap_styles|safe }}
+{% endif %}
+{% endblock stylesheets %}
+
+{% block head_scripts %}
+<script type="text/javascript">
+window.puzzleAuthToken = '{{ auth|escapejs }}';
+window.puzzleStaticDirectory = '{{ puzzle_info.static_directory|escapejs }}';
+window.puzzleUrl = '{{ puzzle_info.full_path|escapejs }}';
+</script>
+{% endblock head_scripts %}
+
+{% block scripts %}
+<script src="{% static 'core/site.js' %}" type="text/javascript"></script>
+<script src="{% static 'core/puzzle.js' %}" type="module"></script>
+<script src="{% static 'core/copyjack.js' %}" type="module"></script>
+<script type="module">
+window.addEventListener('load', () => {
+  const form = document.querySelector('.answer-form');
+  const correctPanel = document.querySelector('.correct-panel');
+  const incorrectPanel = document.querySelector('.incorrect-panel');
+  const pseudoPanel = document.querySelector('.pseudo-panel');
+
+  form.addEventListener('submit', async (event) => {
+    const correctAnswerHash = '{{ answer_sha256 }}';
+    const pseudoHashes = {{ pseudo_sha256|safe }};
+    const answer = normalizePuzzleAnswer(document.querySelector('#answer').value);
+    hashPuzzleAnswer(answer).then((answerHash) => {
+      correctPanel.classList.add('hidden');
+      incorrectPanel.classList.add('hidden');
+      pseudoPanel.classList.add('hidden');
+
+      if (answerHash === correctAnswerHash) {
+        correctPanel.classList.remove('hidden');
+      } else if (pseudoHashes[answerHash]) {
+        pseudoPanel.classList.remove('hidden');
+        pseudoPanel.innerHTML = pseudoHashes[answerHash];
+      } else {
+        correctPanel.classList.add('hidden');
+        incorrectPanel.classList.remove('hidden');
+      }
+    });
+    event.preventDefault();
+  });
+});
+
+async function hashPuzzleAnswer(answer) {
+  const encodedAnswer = new TextEncoder().encode(answer);
+  const hashBuffer = await crypto.subtle.digest('SHA-256', encodedAnswer);
+  const hashArray = Array.from(new Uint8Array(hashBuffer));
+  return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+}
+
+function normalizePuzzleAnswer(answer) {
+  return answer.toUpperCase().replace(/[^A-Z0-9]/g, '')
+}
+</script>
+{% endblock scripts %}
+
+{% block content %}
+<main>
+  <header>
+    <h1>
+      {{ puzzle_title }}
+      <a class="subtitle" href="{% url 'puzzle_list' %}">Back to Puzzle List</a>
+    </h1>
+
+    {% if request.user.is_staff %}
+    <h2>Shortcuts</h2>
+    <form method="post" action="{% url 'shortcuts' %}">
+      {% csrf_token %}
+      <button type="submit" name="action" value="unsolve">Clear puzzle progress</button>
+      <input name="puzzle" value="{{ puzzle_url }}" type="hidden">
+    </form>
+    {% endif %}
+    <a href="{% url 'puzzle_view' puzzle_url %}">Go to real puzzle</a>
+  </header>
+
+  <div class="puzzle-actions">
+    <div class="correct-panel hidden">
+      <h3>Correct!</h3>
+      <p><a href="{% url 'solution' puzzle_url %}">View Solution</a></p>
+      <p>Please <a href="https://lol.puzzup.lol/puzzle/{{ puzzle_external_id }}">leave feedback</a> if this was a testsolve!</p>
+    </div>
+    <div class="incorrect-panel hidden">
+      <h3>Incorrect!</h3>
+    </div>
+    <p class="pseudo-panel hidden"></p>
+
+    <form class="answer-form">
+      <label for="answer">Enter your answer guess:</label>
+      <input id="answer" maxlength="500" name="answer" type="text" required />
+      <button type="submit">Submit</button>
+    </form>
+
+    {% if has_posthunt %}
+    <div>
+      <a href="{% url 'posthunt' puzzle_url %}">View post-hunt version</a>
+    </div>
+    {% endif %}
+  </div>
+
+  <section id="main-content" class="content puzzle">
+    <!-- Puzzle content begins here -->
+    {{ index_html|safe }}
+    <!-- Puzzle content ends here -->
+  </section>
+</main>
+{% endblock content %}

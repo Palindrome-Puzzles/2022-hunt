@@ -1,0 +1,16 @@
+.numbered-blanks {
+	margin-top: 4rem;
+}
+
+.numbered-blanks u {
+	margin-right: 10px;
+	width: 30px;
+}
+
+.numbered-blanks .word-break {
+	margin-right: 1.25rem;
+}
+
+.word {
+  display: inline-block;
+}

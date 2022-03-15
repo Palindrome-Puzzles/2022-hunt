@@ -1,0 +1,63 @@
+ul.pieces li, ol.pieces li{
+  padding-top: 5px;
+}
+
+table.grid td:not(.no-border) {
+  border: 2px dashed #bcbcbc;
+}
+
+.center-image{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+table.snake td{
+  text-align: center;
+  background-color: #FFFDF1;
+}
+
+.bold-bottom{
+    border-bottom: 3px solid black;
+}
+
+.bold-right {
+    border-right: 3px solid black;
+}
+
+.bold-left {
+    border-left: 3px solid black;
+}
+
+.bold-top {
+  border-top: 3px solid black;
+}
+
+
+.diagonal-bottom {
+  background: linear-gradient(to top right, #fff calc(50% - 2px), black , #fff calc(50% + 2px) )
+}
+
+.diagonal-top {
+  background: linear-gradient(to bottom right, #fff calc(50% - 2px), black , #fff calc(50% + 2px) )  
+}
+
+.dashed-all{
+  border: 2px dashed #bcbcbc;
+}
+
+.dashed-right {
+  border-right: 2px dashed #bcbcbc;
+}
+
+.dashed-left {
+  border-left: 2px dashed #bcbcbc;
+}
+
+.dashed-top {
+  border-top: 2px dashed #bcbcbc;
+}
+
+.dashed-bottom {
+  border-bottom: 2px dashed #bcbcbc;
+}

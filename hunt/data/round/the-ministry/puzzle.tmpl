@@ -1,0 +1,15 @@
+{% extends "round_files/generic_puzzle.tmpl" %}
+
+{% block extra_stylesheets %}
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600&display=swap" rel="stylesheet">
+{% endblock extra_stylesheets %}
+
+{% block wordmark %}
+{% include 'round_files/generic_wordmark.tmpl' with round_info=round_info %}
+{% endblock wordmark %}
+
+{% block puzzle_rewards %}
+{% if round_reward and puzzle_info.puzzle.external_id == 508 %}
+{% include 'round_files/the-ministry/reward.tmpl' with reward=round_reward showing_all=False %}
+{% endif %}
+{% endblock puzzle_rewards %}

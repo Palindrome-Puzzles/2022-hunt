@@ -1,0 +1,37 @@
+{% load static %}
+
+h1,
+.round-map {
+    font-family: 'Overpass', sans-serif;
+    font-weight: 500;
+}
+
+.page-background {
+    background-color: #394b59;
+    background-image: url(images/bg-repeat.jpg);
+    background-repeat: repeat-y;
+    background-size: 100%;
+}
+.page-background-top {
+    background-image: url(images/bg.jpg);
+    background-position: top;
+    max-height: 1955px;
+    height: 100%;
+}
+.page-background-map {
+    background-image: url(images/bg-sidewalk.jpg);
+}
+
+header {
+    max-height: 400px;
+    min-width: 100%;
+}
+
+.bonus-puzzle-content .content {
+    background-color: #DEF4FF;
+}
+.bonus-puzzle-content .paper-edge {
+    background-image: url("{% static 'paper-edge.svg' %}");
+    /* Calculated using https://codepen.io/sosuke/pen/Pjoqqp. */
+    filter: invert(78%) sepia(20%) saturate(188%) hue-rotate(164deg) brightness(114%) contrast(102%);
+}

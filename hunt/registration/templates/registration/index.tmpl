@@ -1,0 +1,235 @@
+{% extends "registration/base.tmpl" %}
+{% load hosts static %}
+
+{% block notifications %}
+{% if status == 'updated' %}
+<a class="notification" href="{{ request.path }}">Your team has been updated!</a>
+{% elif status == 'registered' %}
+<a class="notification" href="{{ request.path }}">Your team has been registered!</a>
+{% elif status == 'registered-solver' %}
+<a class="notification" href="{{ request.path }}">We've received your unattached solver registration!</a>
+{% endif %}
+{% endblock notifications %}
+
+{% block content %}
+<div class="scroller">
+  <p class="menu-links">
+    {% if is_hunt_complete %}
+      {% if user.is_authenticated %}
+      <a href="{% host_url 'index' host 'site-1' %}">Go to Hunt</a>
+      {% else %}
+      <a href="{% url 'registration_login' %}">Login</a>
+      {% endif %}
+    {% else %}
+      {% if user.is_authenticated %}
+        <a href="{% url 'update_registration' %}">Update Registration</a>
+      {% else %}
+        <a href="{% url 'register_team' %}">Register</a>
+        <span class="link-spacer" aria-hidden="true">|</span>
+        <a href="{% url 'registration_login' %}">Login</a>
+      {% endif %}
+    {% endif %}
+  </p>
+
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 200" aria-hidden="true" alt="NO{% if has_this_is_now_a_puzzle_access %}W{% else %}T{% endif %} A PUZZLE">
+    <defs>
+      <style>
+        @import url(https://use.typekit.net/xef3sni.css);
+        svg {
+          font-family: aktiv-grotesk, sans-serif;
+          font-size: 23px;
+          font-weight: bold;
+          {% if has_this_is_now_a_puzzle_access %}
+          letter-spacing: .048em;
+          {% else %}
+          letter-spacing: .012em;
+          {% endif %}
+        }
+        .no-motion {
+          display: none;
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .motion { display: none; }
+          .no-motion { display: block; }
+        }
+      </style>
+      <path id="curve" fill="transparent" d="M 776 94 L 776 106 C 776 144.634 744.634 176 706 176 L 94 176 C 55.366 176 24 144.634 24 106 L 24 94 C 24 55.366 55.366 24 94 24 L 706 24 C 744.634 24 776 55.366 776 94 Z"/>
+    </defs>
+    {% if has_this_is_now_a_puzzle_access %}
+    <g>
+      <text class="motion">
+        <textPath href="#curve">
+          NOW A PUZZLE  NOW A PUZZLE  NOW A PUZZLE  NOW A PUZZLE  NOW A PUZZLE  NOW A PUZZLE  NOW A PUZZLE  NOW A PUZZLE  NOW A PUZZLE  NOW A PUZZLE  NOW A PUZZLE  NOW A PUZZLE  NOW A PUZZLE  NOW A PUZZLE  NOW A PUZZLE  NOW A PUZZLE  NOW A PUZZLE  NOW A PUZZLE
+          <animate attributeType="XML" attributeName="startOffset" from="-100%" to="0%" dur="120s" repeatCount="indefinite"/>
+        </textPath>
+      </text>
+      <text class="no-motion">
+        <textPath href="#curve">
+          NOW A PUZZLE  NOW A PUZZLE  NOW A PUZZLE  NOW A PUZZLE  NOW A PUZZLE  NOW A PUZZLE  NOW A PUZZLE  NOW A PUZZLE  NOW A PUZZLE
+        </textPath>
+      </text>
+    </g>
+    {% else %}
+    <g>
+      <text class="motion">
+        <textPath href="#curve">
+          NOT A PUZZLE  NOT A PUZZLE  NOT A PUZZLE  NOT A PUZZLE  NOT A PUZZLE  NOT A PUZZLE  NOT A PUZZLE  NOT A PUZZLE  NOT A PUZZLE  NOT A PUZZLE  NOT A PUZZLE  NOT A PUZZLE  NOT A PUZZLE  NOT A PUZZLE  NOT A PUZZLE  NOT A PUZZLE  NOT A PUZZLE  NOT A PUZZLE  NOT A PUZZLE  NOT A PUZZLE  NOT A PUZZLE
+          <animate attributeType="XML" attributeName="startOffset" from="-100%" to="0%" dur="120s" repeatCount="indefinite"/>
+        </textPath>
+      </text>
+      <text class="no-motion">
+        <textPath href="#curve">
+          NOT A PUZZLE  NOT A PUZZLE  NOT A PUZZLE  NOT A PUZZLE  NOT A PUZZLE  NOT A PUZZLE  NOT A PUZZLE  NOT A PUZZLE  NOT A PUZZLE  NOT A PUZZLE
+        </textPath>
+      </text>
+    </g>
+    {% endif %}
+  </svg>
+</div>
+
+<main id="main-content">
+  <section>
+    <p class="menu-links toc">
+      {% if rd0_released %}
+      <a href="#updates-section">Updates</a>
+      <span class="link-spacer" aria-hidden="true">|</span>
+      {% endif %}
+      <a href="#faq-section">FAQ</a>
+      <span class="link-spacer" aria-hidden="true">|</span>
+      <a href="#teams-section">Teams</a>
+    </p>
+  </section>
+
+  {% include 'registration/partials/updates.tmpl' %}
+  {% include 'registration/partials/faq.tmpl' %}
+
+  <section class="teams">
+    <h2 id="teams-section">Teams</h2>
+    {% for team in teams %}
+      {% cycle 'odd' 'even' as parity silent %}
+
+      <details class="{{ parity }}">
+        {% comment %}
+        The display_emoji property handles escaping, so we know this is safe,
+        even though it is user-provided.
+        {% endcomment %}
+        {% autoescape off %}
+        {# TODO(sahil): Handle very long team names without breaking. #}
+        <summary>{{ team.teamregistrationinfo.display_emoji }} {{ team.name }}</summary>
+        {% endautoescape %}
+
+        {% if team.teamregistrationinfo.bg_bio %}
+        <div class="bio">{{ team.teamregistrationinfo.bg_bio }}</div>
+        {% else %}
+        <div class="bio unknown">Not much is known about this team</div>
+        {% endif %}
+      </details>
+
+      {% empty %}
+      <p>No teams yet - will you be the first?</p>
+    {% endfor %}
+  </section>
+</main>
+
+{% if rd0_released %}
+<a href="{% host_url 'index' host 'site-1' %}" target="_blank" class="zappy special">
+  <div class="twitch">
+    <img src="{% static 'registration/rat.svg' %}" alt="A rat silhouette" class="flipped">
+  </div>
+</a>
+<style type="text/css">
+@media (prefers-reduced-motion: reduce) {
+  .zappy,
+  .zappy img {
+    transition: none !important;
+  }
+  .twitch {
+    animation: none !important;
+  }
+}
+.zappy {
+  border: none;
+  bottom: 0;
+  padding: 1em 2em 0;
+  position: fixed;
+  transition: transform 4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.zappy img {
+  filter: drop-shadow(0 0 10px #fff);
+  transition: transform .2s;
+  width: 40px;
+}
+.zappy:focus img,
+.zappy:hover img {
+  filter: drop-shadow(0 0 10px #2fc29a);
+}
+.zappy img.flipped {
+  transform: scaleX(-1);
+}
+.zappy:focus {
+  outline: none;
+}
+.zappy:focus img {
+  outline: 1px dashed #000;
+}
+.twitch {
+  animation: twitch 3s linear 1s infinite;
+}
+@keyframes twitch {
+  0% { transform: rotate(0); }
+  3% { transform: rotate(10deg); }
+  5% { transform: rotate(-7deg); }
+  7% { transform: rotate(10deg); }
+  9% { transform: rotate(-7deg); }
+  11% { transform: rotate(10deg); }
+  13% { transform: rotate(-7deg); }
+  15% { transform: rotate(0); }
+}
+</style>
+<script type="text/javascript">
+(function() {
+const zappyButton = document.querySelector('.zappy');
+const zappyImg = document.querySelector('.zappy img');
+const reduceMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+const squeak = new Audio('{{ static_url }}assets/rat-squeak.mp3');
+
+zappyButton.addEventListener('click', function() {
+  squeak.play();
+});
+
+window.addEventListener('resize', function() {
+  if (!reduceMotionQuery.matches) {
+    const pos = parseInt(zappyButton.dataset.pos, 10) || 0;
+    if (pos > window.innerWidth - 40) {
+      zappyButton.dataset.pos = window.innerWidth;
+      moveZappy();
+    }
+  }
+});
+
+let timeout;
+function moveZappy() {
+  if (!reduceMotionQuery.matches) {
+    const pos = parseInt(zappyButton.dataset.pos, 10) || 0;
+    const left = Math.max(pos, 0);
+    const right = Math.max(window.innerWidth - pos - 40, 0);
+    const canMoveLeft = left > 200;
+    const canMoveRight = right > 200;
+    if (!canMoveLeft && !canMoveRight) return;
+
+    const dir = (Math.random() < left / (left + right)) ? -1 : 1;
+    const newPos = pos + dir * (100 + Math.random() * 100);
+    zappyButton.style.transform = `translateX(${newPos}px)`;
+    zappyButton.dataset.pos = newPos;
+    zappyImg.classList.toggle('flipped', dir === 1);
+  }
+
+  const delay = Math.round(5000 + Math.random() * 1000);
+  if (timeout) clearTimeout(timeout);
+  timeout = setTimeout(moveZappy, delay);
+}
+timeout = setTimeout(moveZappy, Math.round(1000 + Math.random() * 1000));
+})();
+</script>
+{% endif %}
+{% endblock content %}

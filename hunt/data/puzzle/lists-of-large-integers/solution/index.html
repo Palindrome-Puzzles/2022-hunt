@@ -1,0 +1,244 @@
+<h2>Initial Observations</h2>
+<p>The first step is to factor as many of the numbers as possible.  Naturally, smaller numbers will be easier to factor than larger ones.  There are a number of websites that will do this; some are very good, others are not so good.  Depending on what websites and tools they use, solvers may be able to factor most or all of the numbers in the "Factoring practice" section, but I do not believe they will be able to factor N or any of the numbers in the "Extra practice" section (with one possible exception, noted later).  At the very least, they should be able to find the following factorizations.</p>
+
+<p>19534199367679       =  2222321 * 8789999<br>
+214956291449113      =  12591707 * 17071259<br>
+189227               =  17 * 11131<br>
+901406955906697      =  10578521 * 85211057<br>
+8786083664737        =  1112333 * 7898789<br>
+1747473647           =  22123 * 78989<br>
+460220396751503      =  21452747 * 21452749<br>
+141404439546196699   =  112111 * 1261289610709<br>
+2498570204489999     =  49985699 * 49985701<br>
+994897763            =  31541 * 31543<br>
+109874163126125579   =  111232321 * 987789899</p>
+
+<p>Solvers should observe that each of the given numbers is a product of two primes, and each factorization has some interesting property.  There are four interesting properties that each factorization may have, which we will arbitrarily label (a) through (d).</p>
+
+<p>(a)  The factors differ by 2 (i.e., they are "twin primes").<br>
+(b)  One of the factors has all but one of its digits equal to 1 (while the other factor has no apparent structure).<br>
+(c)  One of the factors only uses the digits 1, 2, and 3, while the other factor only uses the digits 7, 8, and 9.<br>
+(d)  The factors use the same digits as each other; the first half of one factor is the last half of the other factor, and vice versa.</p>
+
+<p>At this point, solvers may conjecture that the larger numbers in the puzzle, including the ones in the "Extra practice" section, will have factorizations with one of these properties.  It turns out that for each of the properties (a)-(d), twelve of the numbers in the "Factoring practice" section and one of the numbers in the "Extra practice" section have a factorization with that property.  (The number N at the start of the puzzle does not have a factorization with any of these properties.)</p>
+
+<h2>Writing programs to factor numbers with given properties.</h2>
+<p>For each property, it is possible to write a program to quickly factor any number that has a factorization with that property.  Needless to say, one will have to do this in a programming language which supports doing exact computations on very large integers.  The details of these programs will differ from language to language, but the following paragraphs describe the mathematical algorithms involved.</p>
+
+<p>For property (a), the factors differ by 2.  So if the number to be factored is M, then we can write M = (x-1)*(x+1) for some x.  Equivalently, M = x<sup>2</sup> - 1, so x = sqrt(M+1).  So to factor a number with this property, we need to check if M+1 is a square, and if so, take its square root.  (Incidentally, the general-purpose factoring method known as <a href="https://en.wikipedia.org/wiki/Fermat%27s_factorization_method" target="_blank">Fermat's Method</a> works effectively if the factors of M are very close to being equal, and would find this factorization immediately.  However, Fermat's method is not very powerful in general when dealing with large numbers, and so most modern optimized factoring programs wouldn't bother trying to apply Fermat's method.  However, it is conceivable that a general purpose factoring program might give Fermat's method a try before moving on to more powerful algorithms.  I think this is the only case in which a general-purpose factoring program would be able to factor one of the numbers in the "Extra practice" section.)</p>
+
+<p>For property (b), one of the factors has all but one of its digits equal to 1.  In this case, it is reasonably quick to enumerate all numbers of this form which are less than the number to be factored and test if the given number is divisible by any of them.  If M has k digits, then one should consider factors whose length j is k or less; for a j-digit factor, there are j positions which could be the non-1, and 9 possible values for that digit.  While one could check if each of these potential factors is prime, it is probably quicker to just try dividing M by each of the numbers.  In the case of the largest number in the "Extra practice" section, there are about 300,000 potential factors to try, but this should not take more than a few seconds.</p>
+
+<p>For property (c), one of the factors only uses the digits 1, 2, and 3, while the other factor only uses the digits 7, 8, and 9.  In this case, one can build up the factors starting with their rightmost digits.  For instance, suppose the final three digits of the original number M are 937.  If x and y are the factors, then naively, x can end in 1, 2, or 3 and y can end in 7, 8, or 9, however, since their product M is 7 mod 10, the only possibilities are (1,7) and (3,9).  Now look at the bottom two digits.  Modulo 100, the possibilities are (11,77), (21,77), (31,77), (11,87), (21,87), (31,87), (11,97), (21,97), (31,97), (13,79), (23,79), (33,79), (13,89), (23,89), (33,89), (13,99), (23,99), and (33,99).  By design, all of these lead to a product which is 7 mod 10, but the only ones which lead to a product which is 37 mod 100 are (21,97) and (33,89).  Then working mod 1000, each of these will lead to nine possibilities, and one can rule out those whose product is not 937 mod 1000.  And so on.  There may be a handful of possibilities at the end; the final step is to see if their product is the given number.</p>
+
+<p>For property (d), the factors have the same digits, but with their first and second halves swapped.  Let K denote the number of digits in each "half".  Then each factor will have 2*K digits, and their product will therefore have either 4*K - 1 or 4*K digits.  So we can determine K by looking at the number of digits in the given number M.  Letting u and v denote the value of each "half", the factors are</p>
+<p>
+  <pre>  x  =   10<sup>K</sup> * u  +  v   </pre> and
+  <pre>  y  =   10<sup>K</sup> * v  +  u.</pre></p>
+<p>So we have</p>
+<p><pre>  M  =   (10<sup>K</sup> * u  +  v) * (10<sup>K</sup> * v  +  u)
+  M  =   10<sup>(2*K)</sup> * u*v   +   10<sup>K</sup> * (u<sup>2</sup> + v<sup>2</sup>)   +   u*v</pre></p>
+<p>Both u and v are less than 10<sup>K</sup>, so u*v < 10<sup>(2*K)</sup> and (u<sup>2</sup> + v<sup>2</sup>) < 2*10<sup>(2*K)</sup>.  From this we can see that the bottom K digits of M will equal the bottom K digits of u*v, since the first two terms above each end with at least K 0's.  Also, the top digits of M will equal the top digits of u*v.  This is true because the sum of the second and third terms has at most 3*K+1 digits, while M has about 4*K digits.  Here's an example to make this clear.</p>
+<p><pre>  u = 84397
+  v = 61653
+  x = 8439761653
+  y = 6165384397
+  M = 52034374809805128241
+  K = 5
+
+  10<sup>10</sup> * u*v    =   52033282410000000000
+  10<sup>5</sup> * u<sup>2</sup>      =        712285360900000
+  10<sup>5</sup> * v<sup>2</sup>      =        380109240900000
+  u*v           =             5203328241
+                    --------------------
+  M             =   52034374809805128241</pre></p>
+
+<p>So we can almost just read off the value of u*v from the high and low digits of M.  The only complication is that there may be carries from the addition of 10<sup>K</sup> * u<sup>2</sup> and 10<sup>K</sup> * v<sup>2</sup> which overflow into the high digits.  But this carry can be no larger than 2.  So there are three possibilities for u*v.  We'll have to try them each in turn.</p>
+<p>In each case, we can then compute u<sup>2</sup> + v<sup>2</sup>, since it is (M - 10<sup>(2*K)</sup>*u*v - u*v) / 10<sup>K</sup>.  Let c = u*v and let d = u<sup>2</sup> + v<sup>2</sup>.  Then d+2*c and d-2*c should both be perfect squares.  Assuming they are, then u+v = sqrt(d+2*c) and |u-v| = sqrt(d-2*c), and so u = 1/2 * (sqrt(d+2*c) + sqrt(d-2*c)) and v = 1/2 * (sqrt(d+2*c) - sqrt(d-2*c)) or vice versa.</p>
+
+<h2>Reading and applying the messages from the "Extra practice" numbers.</h2>
+<p>Once solvers have written the program for a particular property, they should try it against all the numbers in the puzzle to see what numbers factor in that way.  Writing these programs is (likely) the only way to factor the numbers in the "Extra practice" section.  These programs will also help get any remaining numbers from the "Factoring practice" section that they weren't able to get with general-purpose factoring algorithms.</p>
+
+<p>Each of the numbers in the "Extra practice" section factors in a way matching one of the properties (a)-(d).  Solvers won't know ahead of time which number has which property; they'll have to try each program against each number.  In each case, the factorization produces a message in some way.</p>
+
+<h2>Group (a): Twin primes.</h2>
+<p>Property (a) applies to the second number in the "Extra practice" section.  Its factorization is:</p>
+<p class="wrap">53735505445758898384038022841430842526695016035215069425183418246952027784446685057194827746723798138041190616673025150514812640845073458956680497851907441298986714469900118428921656029214999261571466081111832354937985056601915083253489123 = 231809200520080519050914020119052008091820251909241920151610211920020506151805200805060918192014151412052020051899004181 * 231809200520080519050914020119052008091820251909241920151610211920020506151805200805060918192014151412052020051899004183.</p>
+
+<p>Reading either of these factors by taking two digits at a time and converting 01-26 to letters spells:</p>
+<p>WRITE THESE IN BASE THIRTY-SIX, STOP JUST BEFORE THE FIRST NON-LETTER.</p>
+<p>(This is followed by the two-digit value 99 and some other irrelevant digits; this was necessary in order to make the factors prime.)</p>
+<p>The "THESE" in the message refers to the factors of the numbers in the "Factoring practice" section which have property (a).  Below are the numbers in the "Factoring practice" section which have property (a), along with their factorizations, and the base-36 representation of the smaller factor (the base-36 representation of the larger factor only differs slightly at the end).</p>
+
+<table>
+<tr><th>Number</th><th>Factorization</th><th>Base-36</th></tr>
+<tr><td>39791368329452832625515474137530708563051258383</td><td>199477738932074404605371 * 199477738932074404605373</td><td>wheaccessible4b</td></tr>
+<tr><td>3711998770179672595970946737378638507112963</td><td>1926654813447305769341 * 1926654813447305769343</td><td>baltirioles03h</td></tr>
+<tr><td>3082217056855472199178855162943</td><td>1755624406544711 * 1755624406544713</td><td>habepus01z</td></tr>
+<tr><td>15295070936253362310477459095057352129491185752899</td><td>3910891322480511259045229 * 3910891322480511259045231</td><td>housesofparent65</td></tr>
+<tr><td>5180714955245139411537169418303</td><td>2276118396578951 * 2276118396578953</td><td>metector5z</td></tr>
+<tr><td>460220396751503</td><td>21452747 * 21452749</td><td>crt1n</td></tr>
+<tr><td>2978755679531542500956164661863581487103</td><td>54577977972177958847 * 54577977972177958849</td><td>binomiarem3zz</td></tr>
+<tr><td>2498570204489999</td><td>49985699 * 49985701</td><td>trd7n</td></tr>
+<tr><td>994897763</td><td>31541 * 31543</td><td>oc5</td></tr>
+<tr><td>8886362275807186829792053906565592989496636512945123</td><td>94267503816570781359320681 * 94267503816570781359320683</td><td>buenosagentina06h</td></tr>
+<tr><td>10014329987386541999573139069136253196764673599</td><td>100071624286740454603559 * 100071624286740454603561</td><td>gandabetting1lz</td></tr>
+<tr><td>17450582025965056503921631066757650600572777023</td><td>132100651118626423309031 * 132100651118626423309033</td><td>lieutenvernor8n</td></tr>
+</table>
+
+<p>Stopping just before the first non-letter produces some almost-readable sequences of letters.  Solvers must recognize these as words or phrases with some letters missing (always a consecutive sequence of letters from within the original word or phrase).  The shortest examples will be ambiguous at first, but the larger ones should be uniquely identifiable.  In each case, the missing letters can be anagrammed to form a word from the NATO phonetic alphabet.  This further constraint should allow the solvers to identify the shortest ones as well.  In this way, each item on the list yields a letter.</p>
+
+<table>
+<tr><th></th></tr>
+<tr><td>wheaccessible</td><td>whe[elchair] accessible</td><td>elchair</td><td>charlie</td><td>C</td></tr>
+<tr><td>baltirioles</td><td>balti[more o]rioles</td><td>moreo</td><td>romeo</td><td>R</td></tr>
+<tr><td>habepus</td><td>habe[as cor]pus</td><td>ascor</td><td>oscar</td><td>O</td></tr>
+<tr><td>housesofparent</td><td>houses of par[liam]ent</td><td>liam</td><td>lima</td><td>L</td></tr>
+<tr><td>metector</td><td>m[etal d]etector</td><td>etald</td><td>delta</td><td>D</td></tr>
+<tr><td>crt</td><td>cr[oche]t</td><td>oche</td><td>echo</td><td>E</td></tr>
+<tr><td>binomiarem</td><td>binomia[l theo]rem</td><td>ltheo</td><td>hotel</td><td>H</td></tr>
+<tr><td>trd</td><td>tr[inida]d</td><td>inida</td><td>india</td><td>I</td></tr>
+<tr><td>oc</td><td>oc[tagon]</td><td>tagon</td><td>tango</td><td>T</td></tr>
+<tr><td>buenosagentina</td><td>buenos a[ires, ar]gentina</td><td>iresar</td><td>sierra</td><td>S</td></tr>
+<tr><td>gandabetting</td><td>[aidin]g and abetting</td><td>aidin</td><td>india</td><td>I</td></tr>
+<tr><td>lieutenvernor</td><td>lieuten[ant go]vernor</td><td>antgo</td><td>tango</td><td>T</td></tr>
+</table>
+
+<h2>Group (b): Almost-all-1's.</h2>
+<p>Property (b) applies to the fourth number in the "Extra practice" section.  Its factorization is:</p>
+<p class="wrap">2575657783400810095955063818861033325050679161681409136325985009571994361108682930688653936574971570369702482911305533513778159182277112740897510755386867643432164435453427621656508883131776463866577206466109953307610978877332010220955094288332010995386556661 = 1111111111111411111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111 * 2318092005060103201518191209110520080919151405091420051814011825200805141805010420231501190104011908011404151405011901041520990051</p>
+
+<p>Reading the factor that doesn't have all the 1's by taking two digits at a time and converting 01-26 to letters spells:</p>
+<p>WRITE FACTORS LIKE THIS ONE IN TERNARY, THEN READ TWO AS A DASH AND ONE AS A DOT.</p>
+<p>(This is followed by the two-digit value 99 and some other irrelevant digits; this was necessary in order to make this factor prime.)</p>
+<p>The values to write in ternary are the random-looking factors of the numbers in the "Factoring practice" section which have property (b).  Below are the numbers in the "Factoring practice" section which have property (b), along with their factorizations, and the ternary (base-3) representation of the appropriate factor.</p>
+
+<table>
+<tr><th width="34%">Number</th><th width="33%">Factorization</th><th width="33%">Ternary</th></tr>
+<tr><td>189227</td><td>11131 * 17</td><td>122</td></tr>
+<tr><td>787239570289537512222222222293073783548280598243498265193268471</td><td>1111111111111111111111111111211111111111111111 * 708515613260583761</td><td>11201110012210121010111001102110102102</td></tr>
+<tr><td>1071192665257639935967626890075247639345511147725368947749088752071458037</td><td>61111111111111111111111111111111 * 17528607249670471679470258201231356877667</td><td>1110112022022010121002220121102122022012210110212101110011110222011102021210110202122</td></tr>
+<tr><td>5347315044682706283655967287</td><td>11111131 * 481257492570531864277</td><td>11101202100201201110012101011021021101010121</td></tr>
+<tr><td>55851639599835914353706479666411113624434334587331258668759159034814447</td><td>11111111111111111111111111111111111611111 * 5026647563985232291833583169977</td><td>11101120121011120110111202220121001110100120111022202102101202201</td></tr>
+<tr><td>141404439546196699</td><td>112111 * 1261289610709</td><td>11110120121102220221001021</td></tr>
+<tr><td>99441942195170607823305446325740207567415787969860981834659</td><td>1111111111111111111711111 * 89497747975653546992646126736088069</td><td>10222021001221012102220211011202121010211002111022202102110112101101211022</td></tr>
+<tr><td>1729423628530534793342588705128962247243</td><td>111111111111111112111111 * 15564812656774813</td><td>2210121010102120001211010202010121</td></tr>
+<tr><td>283759693117599582828357156718284226077777777777777777749401808468571656732770613</td><td>1111111111211111111111111111111111111111111111111111111 * 255383723782855089405064483</td><td>11101120122101012102111022201220121101220110210210010121</td></tr>
+<tr><td>38920281861605663773</td><td>111511111111 * 349026043</td><td>220022202100201111</td></tr>
+<tr><td>8352002239403322306521869996577702511111111111027595598554755931225606228409</td><td>11111711111111111111111111111111111111111111111 * 751639613007196618969543944319</td><td>122201201221012021010111010012210012101011210102121020112012101</td></tr>
+<tr><td>53150100236619436751715487607</td><td>1111151 * 47833372994866977352057</td><td>121012011021002111022201220212102220121102220121</td></tr>
+</table>
+
+<p>As the phrase indicates, we must now take these ternary strings, take the 1's as dots and 2's as dashes and read in Morse code.  The 0's indicate breaks between letters.  (In some cases there are multiple 0's in a row; this has no relevance and was only necessary to make the factors prime.)  Here are the phrases that come from decoding the Morse code:</p>
+
+<table>
+<tr><td>122</td><td>W</td></tr>
+<tr><td>11201110012210121010111001102110102102</td><td>U.S. PRESIDENT</td></tr>
+<tr><td>1110112022022010121002220121102122022012210110212101110011110222011102021210110202122</td><td>SUMMER OLYMPICS HOST CITY</td></tr>
+<tr><td>11101202100201201110012101011021021101010121</td><td>SANTA'S REINDEER</td></tr>
+<tr><td>11101120121011120110111202220121001110100120111022202102101202201</td><td>SURVIVOR SEASON NAME</td></tr>
+<tr><td>11110120121102220221001021</td><td>HALOGEN</td></tr>
+<tr><td>10222021001221012102220211011202121010211002111022202102110112101101211022</td><td>EON-PRODUCED BOND FILM</td></tr>
+<tr><td>2210121010102120001211010202010121</td><td>GREEK LETTER</td></tr>
+<tr><td>11101120122101012102111022201220121101220110210210010121</td><td>SUPER BOWL WINNER</td></tr>
+<tr><td>220022202100201111</td><td>MONTH</td></tr>
+<tr><td>122201201221012021010111010012210012101011210102121020112012101</td><td>JAPANESE PREFECTURE</td></tr>
+<tr><td>121012011021002111022201220212102220121102220121</td><td>RAINBOW COLOR</td></tr>
+</table>
+
+<p>Each of these describes an ordered list of items.  Solvers must now notice that the other factor (the one with all the 1's) has the same number of digits as there are items in this list.  The location of the non-1 digit in this factor indicates which item to take from the list, and the digit itself indicates which letter to take from that item.  In this way, each item on the list yields a letter.</p>
+
+<table>
+<tr><th>Decoded Morse code</th><th>Other factor</th><th>number of digits</th><th>location of non-1 digit</th><th>value of non-1 digit</th><th>list item</th><th>extracted letter</th></tr>
+<tr><td>W (i.e., "the 5 W's")</td><td>11131</td><td>5</td><td>4</td><td>3</td><td>WH(E)RE  (or WH(E)N)</td><td>E</td></tr>
+<tr><td>U.S. PRESIDENT</td><td>1111111111111111111111111111211111111111111111</td><td>46</td><td>29</td><td>2</td><td>H(A)RDING  (or W(A)RREN HARDING)</td><td>A</td></tr>
+<tr><td>SUMMER OLYMPICS HOST CITY</td><td>61111111111111111111111111111111</td><td>32</td><td>1</td><td>6</td><td>ATHEN(S)</td><td>S</td></tr>
+<tr><td>SANTA'S REINDEER</td><td>11111131</td><td>8</td><td>7</td><td>3</td><td>DO(N)NER  (or DU(N)DER)</td><td>N</td></tr>
+<tr><td>SURVIVOR SEASON NAME</td><td>11111111111111111111111111111111111611111</td><td>41</td><td>36</td><td>6</td><td>GHOST (I)SLAND</td><td>I</td></tr>
+<tr><td>HALOGEN</td><td>112111</td><td>6</td><td>3</td><td>2</td><td>B(R)OMINE</td><td>R</td></tr>
+<tr><td>EON-PRODUCED BOND FILM</td><td>1111111111111111111711111</td><td>25</td><td>20</td><td>7</td><td>DIE ANO(T)HER DAY</td><td>T</td></tr>
+<tr><td>GREEK LETTER</td><td>111111111111111112111111</td><td>24</td><td>18</td><td>2</td><td>S(I)GMA</td><td>I</td></tr>
+<tr><td>SUPER BOWL WINNER</td><td>1111111111211111111111111111111111111111111111111111111</td><td>55</td><td>11</td><td>2</td><td>R(A)IDERS  (or O(A)KLAND RAIDERS)</td><td>A</td></tr>
+<tr><td>MONTH</td><td>111511111111</td><td>12</td><td>4</td><td>5</td><td>APRI(L)</td><td>L</td></tr>
+<tr><td>JAPANESE PREFECTURE</td><td>11111711111111111111111111111111111111111111111</td><td>47</td><td>6</td><td>7</td><td>YAMAGA(T)A</td><td>T</td></tr>
+<tr><td>RAINBOW COLOR</td><td>1111151</td><td>7</td><td>6</td><td>5</td><td>INDI(G)O</td><td>G</td></tr>
+</table>
+
+<h2>Group (c): 123/789.</h2>
+<p>Property (c) applies to the first number in the "Extra practice" section.  Its factorization is:</p>
+<p class="wrap">8641975308641975308641983198319753086419753165308741995309649864197532864397531653094508671975308641975418488294100246913680446917903822570343599335825702569027580269237023569324691358257028013609124880246913593717171593759122247 = 1111111111111111111111112111211111111111111121111111111111112111111111111111111211112111111111111111111122232323223 * 7777777777777777777777777877787777777777777778777777777777777877777777777777777787777877777777777777777778988999889</p>
+
+<p>In this case, the message is spelled by counting the length of the runs of 1's and 7's in the factors, and converting values 1-26 to letters.  The factor with the digits 1, 2, and 3 spells out X-COORDS, and the factor with the digits 7, 8, and 9 spells out Y-COORDS.  (The sequences of 2's and 3's or 8's and 9's at the end of the factor are not relevant, but were necessary to make the factors prime.)  As before, this message applies to the numbers from the "Factoring practice" section that have property (c).  In each case, the two factors have the same number of digits.  If the factors each have k digits, then the factorization can be viewed as a sequence of k points in the plane, with the 1/2/3 factor providing the sequence of x-coordinates and the 7/8/9 factor providing the sequence of y-coordinates.  In each case, tracing a path from point to point in this order forms the shape of a letter.  Here are the numbers having property (c) and the letters that are traced out.</p>
+
+<table>
+<tr><th width="60%">Number</th><th width="30%">Factorization</th><th width="10%">Letter Traced</th></tr>
+<tr><td>19534199367679</td><td>2222321 * 8789999</td><td>T</td></tr>
+<tr><td>2321232109529620879232440974951812577844759023546644912053882357</td><td>23212321121111121123211212121111 * 99999999888787888999998888888787</td><td>F</td></tr>
+<tr><td>23219871851855763335782491367879</td><td>2322222222222121 * 9998987878789999</td><td>T</td></tr>
+<tr><td>8786083664737</td><td>1112333 * 7898789</td><td>N</td></tr>
+<tr><td>1747473647</td><td>22123 * 78989</td><td>Y</td></tr>
+<tr><td>10766631337813005877</td><td>1211111123 * 8889878999</td><td>F</td></tr>
+<tr><td>2199019873831765884487930571</td><td>22212322232123 * 98999998777777</td><td>I</td></tr>
+<tr><td>25510668697534651151670056365837967101</td><td>3233332323332111123 * 7889899999899987887</td><td>R</td></tr>
+<tr><td>107761940739308276072269174795987546825983923848968572616704902577</td><td>121232321232123212121232323232123 * 888887877787778777777788878888899</td><td>S</td></tr>
+<tr><td>109874163126125579</td><td>111232321 * 987789899</td><td>D</td></tr>
+<tr><td>886173830970016137257</td><td>11233333211 * 78887878987</td><td>A</td></tr>
+<tr><td>17553310313391831427419798992424226572390571</td><td>2222222121232221212123 * 7898989999999877777777</td><td>I</td></tr>
+</table>
+
+<h2>Group (d): Swapped halves.</h2>
+<p>Property (d) applies to the third number in the "Extra practice" section.  Its factorization is:</p>
+<p class="wrap">401833279169841952944755364355519074282215394320089433871085108080700877204461640309371860634695761359356236526845461433287618955686322816939429649784867491999050815812786166671859895000235580003337396071913709307120309146066422068125305900967083807629207 = 20011105040906060518051403050205202305051420080508011222051999072008051421190520080520140914051608151405110525160104031504059901 * 20080514211905200805201409140516081514051105251601040315040599012001110504090606051805140305020520230505142008050801122205199907</p>
+<p>Each factor produces a message by taking two digits at a time and converting 01-26 to letters.  Each message ends with the digits "99" just less than halfway through the factor.  The messages are:</p>
+<p>TAKE DIFFERENCE BETWEEN THE HALVES.<br>
+THEN USE THE T-NINE PHONE KEYPAD CODE.</p>
+<p>This message applies to the numbers from the "Factoring practice" section that have property (d).  In this case, the "halves" are the first and last half of either of the factors.  Subtracting these from each other yields a number composed of digits in the range 2-9.  Here are these numbers, their factorizations, and the differences:</p>
+
+<table>
+<tr><th width="60%">Number</th><th width="20%">Factorization</th><th width="20%">Difference</th></tr>
+<tr><td>214956291449113</td><td>12591707 * 17071259</td><td>448</td></tr>
+<tr><td>901406955906697</td><td>10578521 * 85211057</td><td>7464</td></tr>
+<tr><td>3300496054652849299477750057379339360003077785295953361</td><td>1485089493955322224223308337 * 2222422330833714850894939553</td><td>7373328368784</td></tr>
+<tr><td>81283924278344381272501</td><td>101487800923 * 800923101487</td><td>699436</td></tr>
+<tr><td>3091728344434862113919480189246303747291289278714438254946709193</td><td>45380599705823276812885604149759 * 68128856041497594538059970582327</td><td>2274825633567432</td></tr>
+<tr><td>10407380209383446275966557465924380674424617823829601172688892830847</td><td>2252333597208021146207099260448677 * 4620709926044867722523335972080211</td><td>23683763288368466</td></tr>
+<tr><td>1139054746237729680986140408353804600403</td><td>12414384439175281721 * 91752817211241438443</td><td>7933843278</td></tr>
+<tr><td>3617682143709759003372062762728801174423</td><td>46026389497860017227 * 78600172274602638949</td><td>3257378278</td></tr>
+<tr><td>59341794886382146994540643159564679952539090405004916463</td><td>6609513793256189782390569983 * 8978239056998366095137932561</td><td>23687252637422</td></tr>
+<tr><td>395381823812368982714449</td><td>407001971449 * 971449407001</td><td>564448</td></tr>
+<tr><td>692762106919595886507993868480966094743173852937457877420193201</td><td>24095129489759632875112612339427 * 28751126123394272409512948975963</td><td>465599663363464</td></tr>
+<tr><td>31524268415523389441572697469871353458471520331</td><td>157243809367200480187693 * 200480187693157243809367</td><td>43236378326</td></tr>
+</table>
+
+<p>The T9 phone keypad code is the code which maps ABC=2, DEF=3, GHI=4, JKL=5, MNO=6, PQRS=7, TUV=8, and WXYZ=9.  Solvers have to convert these digits into letters to make meaningful words or phrases.  The shortest ones might be ambiguous at first, but the longer ones only have one reasonable interpretation.  Each of these is a word or phrase that might lead to a single letter when interpreted as though it were part of a cryptic clue.  Here are the phrases and the letters they lead to.</p>
+
+<table>
+<tr><td>448</td><td>HIT</td><td>H</td></tr>
+<tr><td>7464</td><td>RING</td><td>O</td></tr>
+<tr><td>7373328368784</td><td>PERFECT FOURTH</td><td>F</td></tr>
+<tr><td>699436</td><td>OXYGEN</td><td>O</td></tr>
+<tr><td>2274825633567432</td><td>CAPITAL OF FLORIDA</td><td>F</td></tr>
+<tr><td>23683763288368466</td><td>CENTER OF ATTENTION</td><td>N</td></tr>
+<tr><td>7933843278</td><td>SWEET HEART</td><td>E</td></tr>
+<tr><td>3257378278</td><td>FALSE START</td><td>F</td></tr>
+<tr><td>23687252637422</td><td>CENTRAL AMERICA</td><td>R</td></tr>
+<tr><td>564448</td><td>KNIGHT</td><td>N</td></tr>
+<tr><td>465599663363464</td><td>HOLLYWOOD ENDING</td><td>D</td></tr>
+<tr><td>43236378326</td><td>HEAD OF STEAM</td><td>S</td></tr>
+</table>
+
+<h2>The clue phrase and the final program.</h2>
+<p>In this way, each of the 48 numbers in the "Factoring practice" section leads to a single letter.  Reading these letters in the order the numbers appear in the original puzzle spells:</p>
+<p>THE FACTORS OF N ONLY DIFFER IN THEIR FIRST AND LAST DIGITS.</p>
+
+<p>The final step is to factor N.  This will require writing another program.  One way to do this is as follows.  Let x and y be the factors of N, with x < y.  Consider the value of D = y - x.  Since x and y only differ in their first and last digits, there are only a few possibilities for D.  The difference in the first digit will contribute u * 10<sup>139</sup> to the difference, where u is in the set {1,2,3,4,5,6,7,8} (recall that x and y are known to be 140 digits long).  The difference in the last digit will contribute v to the difference, where v is in the set {-8, -6, -4, -2, 2, 4, 6, 8} (note that x and y must both be odd, although we don't know which one will have a larger units digit).  So there are 64 possibilities for D.  If we know D, then we can solve for x, since y = (x + D) and N = x * y, so we have x * (x + D) = N, which we can write as x<sup>2</sup> + D*x - N = 0 and solve for x.  So x = -D/2 + sqrt(D<sup>2</sup> + 4*N)/2.  For each of the 64 possible values of D, we check if D<sup>2</sup> + 4*N is a square.  If so, then we know the factors of N.</p>
+
+<p>The factors are:</p>
+<ul class="no-bullets"><li><span class="wrap">12305121204151405200805011419230518251521180512151511091407061518091905211815261514052008051805192015062008091914211302051809190609121205189</span></li>
+<li><span class="wrap">82305121204151405200805011419230518251521180512151511091407061518091905211815261514052008051805192015062008091914211302051809190609121205183</span></li></ul>
+
+<p>Ignoring the first and last digits, and reading the rest two digits at a time spells the following:</p>
+
+<p>WELL DONE! THE ANSWER YOU'RE LOOKING FOR IS EUROZONE.  THE REST OF THIS NUMBER IS FILLER.</p>
+
+<p>The answer is <span class="answer">EUROZONE</span>.</p>

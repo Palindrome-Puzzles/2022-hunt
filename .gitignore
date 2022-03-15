@@ -1,0 +1,44 @@
+*.pyc
+__pycache__
+*.egg-info/
+
+# OSX artifacts.
+.DS_Store
+__MACOSX
+
+# Codekit config
+*.codekit3
+
+# Artifacts for running the server.
+/.env
+/db.sqlite3
+/env/
+/node_modules/
+/static/
+/static_temp/
+
+# Settings for running locally.
+/hunt/deploy/settings/local.py
+/hunt/deploy/hosts/local.py
+
+# For accessing the Google Cloud SQL server.
+cloud_sql_proxy.exe
+
+# Build artifacts for puzzle and round data.
+/hunt/data/chunks/*
+/hunt/data/puzzle/**/*.compiled.css
+/hunt/data/puzzle/**/*.compiled.html
+/hunt/data/puzzle/**/dist/*
+/hunt/data/round/**/*.compiled.css
+/hunt/data/round/**/*.compiled.html
+/hunt/data/round/**/dist/*
+/hunt/out-tsc/
+
+# PII.
+/hunt/registration/management/commands/data/
+
+# misc
+/.idea
+
+# Mac app
+.nova

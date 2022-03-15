@@ -1,0 +1,62 @@
+.monospace {
+    font-family: 'Courier New', monospace;
+}
+.blue {color: #0000FF;}
+.brown {color: #970000;}
+.red {color: #EC0033;}
+.orange {color: #BD5B00;}
+.magenta {color: #DC00AC;}
+.green {color: #667E45;}
+.bold {font-weight: bold;}
+pre {
+    font-size: x-large;
+    display: inline-block;
+    text-align: left;
+}
+
+.dividend {
+    border-top: 1px black solid;
+}
+
+.divisor {
+    border-right: 1px black solid;
+    border-radius: 0px 0px 10px 0px;
+}
+
+td {
+    height: 1em;
+    min-width: 1em;
+    text-align: center;
+}
+
+.ruled {
+    border-bottom: 1px black solid;
+}
+
+.no-grid, .no-grid td {
+    border-bottom: none !important;
+}
+
+.ruled-left {
+    border-left: 1px black solid;
+}
+
+.ruled-top {
+    border-top: 1px black solid;
+}
+
+sup {
+    font-size: small !important;
+}
+
+@media print {
+    .pagebreak { page-break-after: always; }
+}
+
+.align-right td{
+    text-align: right;
+    font-family: 'Space Mono', monospace;
+    font-size: larger;
+    padding-left: 1em;
+    padding-right: 1em;
+}

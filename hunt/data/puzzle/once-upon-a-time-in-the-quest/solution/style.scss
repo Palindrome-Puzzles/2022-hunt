@@ -1,0 +1,111 @@
+img.medallion {
+	max-width: 100%;
+	max-width: 300px;
+	display: block;
+	margin: 0 auto 1rem;
+}
+
+summary {
+	font-weight: bold;
+}
+
+.glyph {
+	margin-bottom: 2em;
+	padding-left: 1.5em;
+
+	img {
+		max-width: 100%;
+	}
+
+	.puzzle-title {
+		font-size: 1.7rem;
+		font-weight: bold;
+		padding: 1em 0 .2em;
+	}
+
+	.puzzle-author {
+		font-style: italic;
+		margin-bottom: 1em;
+	}
+
+	.glyph-sol-box {
+		display: flex;
+	}
+
+	.glyph-image {
+		flex: 4;
+		margin-right: 1.5em;
+	}
+
+	.glyph-solution {
+		flex: 6;
+	}
+
+	table {
+		border-collapse: collapse;
+		margin: 0;
+
+		&.square {
+			border: 2px solid black;
+		}
+
+		&.grid td {
+			height: 1em;
+			width: 1em;
+			text-align: center;
+		}
+
+		td.topgs {
+			border-top: 2px solid #ccc;
+		}
+
+		td.leftgs {
+			border-left: 2px solid #ccc;
+		}
+
+		td.rightgs {
+			border-right: 2px solid #ccc;
+		}
+
+		td.bottomgs {
+			border-bottom: 2px solid #ccc;
+		}
+
+		td.topbs {
+			border-top: 2px solid black;
+		}
+
+		td.leftbs {
+			border-left: 2px solid black;
+		}
+
+		td.rightbs {
+			border-right: 2px solid black;
+		}
+
+		td.rightbd {
+			border-right: 2px dashed black;
+		}
+
+		td.bottombs {
+			border-bottom: 2px solid black;
+		}
+
+		&.square td {
+			border: 1px solid black;
+		}
+
+		td.black {
+			background-color: black;
+		}
+
+		td.grey {
+			background-color: #ccc;
+		}
+
+		td.yellow {
+			background-color: #ff0;
+		}
+
+	}
+}

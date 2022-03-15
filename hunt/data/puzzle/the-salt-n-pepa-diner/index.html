@@ -1,0 +1,135 @@
+{% load static %}
+
+<section class="snp cts-box">
+    <p class="poem">
+        What's new, pussycat?<br>
+		Our jukebox is full of this and that.<br>
+		Push it real good to get lyrical.<br>
+		What comes next is a minor miracle.
+    </p>
+    <form action="/" id="snp-form">
+
+		<div class="shell">
+
+		<div class="jukebox">
+			<div class="default">Click on any letter to start.</div>
+			<div class="col left"></div>
+			<div class="col right"></div>
+		</div>
+
+        <div class="page-select no-copy">
+			<button type="button" class="monospace letter-button" data-tracks="5">A</button>
+			<button type="button" class="monospace letter-button" data-tracks="6">B</button>
+			<button type="button" class="monospace letter-button" data-tracks="9">C</button>
+			<button type="button" class="monospace letter-button" data-tracks="7">D</button>
+			<button type="button" class="monospace letter-button" data-tracks="8">E</button>
+			<button type="button" class="monospace letter-button" data-tracks="5">F</button>
+			<button type="button" class="monospace letter-button" data-tracks="7">G</button>
+			<button type="button" class="monospace letter-button" data-tracks="7">H</button>
+			<button type="button" class="monospace letter-button" data-tracks="6">I</button>
+			<button type="button" class="monospace letter-button" data-tracks="6">J</button>
+			<button type="button" class="monospace letter-button" data-tracks="7">K</button>
+			<button type="button" class="monospace letter-button" data-tracks="6">L</button>
+		</div>
+
+    	<div class="track-select no-copy">
+        	<button type="button" class="monospace track-button" value="1">1</button>
+        	<button type="button" class="monospace track-button" value="2">2</button>
+        	<button type="button" class="monospace track-button" value="3">3</button>
+        	<button type="button" class="monospace track-button" value="4">4</button>
+        	<button type="button" class="monospace track-button" value="5">5</button>
+        	<button type="button" class="monospace track-button" value="6">6</button>
+        	<button type="button" class="monospace track-button" value="7">7</button>
+        	<button type="button" class="monospace track-button" value="8">8</button>
+        	<button type="button" class="monospace track-button" value="9">9</button>
+			<div class="click-num">Click any number to play a song!</div>
+    	</div>
+    	</div>
+    </form>
+    {% include "round_files/endgame/book.tmpl" with book="cts-aschedule" %}
+</section>
+
+<table id="song-container" class="copy-only"></table>
+
+<button id="clipboard-button"></button>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/json2html/2.1.0/json2html.min.js"></script>
+<script>
+var songs = ['A3','B6','C9','D5','E6','F5','G5','H4','I4','J5','K7','L6'];
+var audio = null;
+
+var allsongs = [{"Letter": "A","Num": 1,"Song": "Dancing In The Street","Artist": "Martha Reeves and the Vandellas"},{"Letter": "A","Num": 2,"Song": "Oh Sheila","Artist": "Ready for the World"},{"Letter": "A","Num": 3,"Song": "One Thing Leads To Another","Artist": "The Fixx"},{"Letter": "A","Num": 4,"Song": "Nasty","Artist": "Janet Jackson"},{"Letter": "A","Num": 5,"Song": "Torn","Artist": "Natalie Imbruglia"},{"Letter": "B","Num": 1,"Song": "Nobody","Artist": "Mitski"},{"Letter": "B","Num": 2,"Song": "Everyday People","Artist": "Sly & The Family Stone"},{"Letter": "B","Num": 3,"Song": "Eres Tu","Artist": "Mocedades"},{"Letter": "B","Num": 4,"Song": "Dreams","Artist": "Fleetwood Mac"},{"Letter": "B","Num": 5,"Song": "These Boots Are Made For Walkin'","Artist": "Nancy Sinatra"},{"Letter": "B","Num": 6,"Song": "Money, Money, Money","Artist": "ABBA"},{"Letter": "C","Num": 1,"Song": "How Will I Know","Artist": "Whitney Houston"},{"Letter": "C","Num": 2,"Song": "Evil Woman","Artist": "Electric Light Orchestra"},{"Letter": "C","Num": 3,"Song": "She Drives Me Crazy","Artist": "Fine Young Cannibals"},{"Letter": "C","Num": 4,"Song": "Eleanor Rigby","Artist": "The Beatles"},{"Letter": "C","Num": 5,"Song": "Senses Working Overtime","Artist": "XTC"},{"Letter": "C","Num": 6,"Song": "Oblivion","Artist": "Bastille"},{"Letter": "C","Num": 7,"Song": "Never Gonna Give You Up","Artist": "Rick Astley"},{"Letter": "C","Num": 8,"Song": "Girl of the Year","Artist": "Beach House"},{"Letter": "C","Num": 9,"Song": "Questions 67 and 68","Artist": "Chicago"},{"Letter": "D","Num": 1,"Song": "She Blinded Me With Science","Artist": "Thomas Dolby"},{"Letter": "D","Num": 2,"Song": "On The Regular","Artist": "Shamir"},{"Letter": "D","Num": 3,"Song": "Rock Lobster","Artist": "B-52s"},{"Letter": "D","Num": 4,"Song": "Amanaemonesia","Artist": "Chairlift"},{"Letter": "D","Num": 5,"Song": "Be Our Guest","Artist": "Beauty and the Beast soundtrack"},{"Letter": "D","Num": 6,"Song": "Ring My Bell","Artist": "Anita Ward"},{"Letter": "D","Num": 7,"Song": "Tilted","Artist": "Christine and the Queens"},{"Letter": "E","Num": 1,"Song": "I 2 I","Artist": "A Goofy Movie Original Soundtrack"},{"Letter": "E","Num": 2,"Song": "Save the Last Dance For Me","Artist": "The Drifters"},{"Letter": "E","Num": 3,"Song": "Toy Soldiers","Artist": "Martika"},{"Letter": "E","Num": 4,"Song": "Saved By A Waif","Artist": "Alvvays"},{"Letter": "E","Num": 5,"Song": "Operator (He Doesn't Call Me)","Artist": "Lapsley"},{"Letter": "E","Num": 6,"Song": "Smells Like Teen Spirit","Artist": "Nirvana"},{"Letter": "E","Num": 7,"Song": "Ready for the Floor","Artist": "Hot Chip"},{"Letter": "E","Num": 8,"Song": "Jolene","Artist": "Dolly Parton"},{"Letter": "F","Num": 1,"Song": "One More Time","Artist": "Daft Punk"},{"Letter": "F","Num": 2,"Song": "Harmony Hall","Artist": "Vampire Weekend"},{"Letter": "F","Num": 3,"Song": "Not Ready to Make Nice","Artist": "The Chicks"},{"Letter": "F","Num": 4,"Song": "Mr. Brightside","Artist": "The Killers"},{"Letter": "F","Num": 5,"Song": "Basketball","Artist": "Kurtis Blow"},{"Letter": "G","Num": 1,"Song": "Uptight (Everything's Alright)","Artist": "Stevie Wonder"},{"Letter": "G","Num": 2,"Song": "Life, In a Nutshell","Artist": "Barenaked Ladies"},{"Letter": "G","Num": 3,"Song": "Are \"Friends\" Electric","Artist": "Tubeway Army"},{"Letter": "G","Num": 4,"Song": "No Myth","Artist": "Michael Penn"},{"Letter": "G","Num": 5,"Song": "Least Complicated","Artist": "Indigo Girls"},{"Letter": "G","Num": 6,"Song": "Everybody Wants to Rule the World","Artist": "Tears for Fears"},{"Letter": "G","Num": 7,"Song": "You Happy Puppet","Artist": "10,000 Maniacs"},{"Letter": "H","Num": 1,"Song": "Shunned + Falsified","Artist": "Mike Doughty"},{"Letter": "H","Num": 2,"Song": "Rich Girl","Artist": "Daryl Hall and John Oates"},{"Letter": "H","Num": 3,"Song": "On Hold","Artist": "The xx"},{"Letter": "H","Num": 4,"Song": "Change My Way of Living","Artist": "The Allman Brothers"},{"Letter": "H","Num": 5,"Song": "Upside Down","Artist": "Diana Ross"},{"Letter": "H","Num": 6,"Song": "Tennessee Waltz","Artist": "Sam Cooke"},{"Letter": "H","Num": 7,"Song": "I'm Not in Love","Artist": "10cc"},{"Letter": "I","Num": 1,"Song": "No Diggity","Artist": "Blackstreet ft. Dr. Dre"},{"Letter": "I","Num": 2,"Song": "Everybody Have Fun Tonight","Artist": "Wang Chung"},{"Letter": "I","Num": 3,"Song": "That Funny Feeling","Artist": "Bo Burnham"},{"Letter": "I","Num": 4,"Song": "Stormy Weather","Artist": "Lena Horne"},{"Letter": "I","Num": 5,"Song": "Ooh Aah...Just a Little Bit","Artist": "Gina G"},{"Letter": "I","Num": 6,"Song": "Strangers","Artist": "Portishead"},{"Letter": "J","Num": 1,"Song": "Other Side of the World","Artist": "KT Tunstall"},{"Letter": "J","Num": 2,"Song": "Life and How to Live It","Artist": "R.E.M."},{"Letter": "J","Num": 3,"Song": "Venus","Artist": "Bananarama"},{"Letter": "J","Num": 4,"Song": "Eventually","Artist": "Tame Impala"},{"Letter": "J","Num": 5,"Song": "Don't Worry About the Government","Artist": "Talking Heads"},{"Letter": "J","Num": 6,"Song": "Walk Like an Egyptian","Artist": "The Bangles"},{"Letter": "K","Num": 1,"Song": "Happy Sad","Artist": "Pizzicato Five"},{"Letter": "K","Num": 2,"Song": "Our House","Artist": "Madness"},{"Letter": "K","Num": 3,"Song": "Afternoons & Coffeespoons","Artist": "Crash Test Dummies"},{"Letter": "K","Num": 4,"Song": "West End Girls","Artist": "Pet Shop Boys"},{"Letter": "K","Num": 5,"Song": "Hazey","Artist": "Glass Animals"},{"Letter": "K","Num": 6,"Song": "Optimist","Artist": "David Byrne & St. Vincent"},{"Letter": "K","Num": 7,"Song": "Celebrity","Artist": "Brad Paisley"},{"Letter": "L","Num": 1,"Song": "Award Tour","Artist": "A Tribe Called Quest"},{"Letter": "L","Num": 2,"Song": "Want You Back","Artist": "HAIM"},{"Letter": "L","Num": 3,"Song": "Henrietta, Indiana","Artist": "Josh Ritter"},{"Letter": "L","Num": 4,"Song": "Our Lips Are Sealed","Artist": "The Go-Go's"},{"Letter": "L","Num": 5,"Song": "Anonymous Skulls","Artist": "Medeski Martin & Wood"},{"Letter": "L","Num": 6,"Song": "Hustle","Artist": "P!nk"}];
+
+//Write songs to DOM for clipboard copying
+let listTemplate = {'<>':'tr','html':'<td>${Letter}${Num}</td><td>${Song}</td><td>${Artist}</td>'};
+$("#song-container").json2html(allsongs,listTemplate);
+
+$(document).ready(function() {
+	var getLeftSongs = function (letter, trackCount) {
+		halfway = Math.round(trackCount/2);
+		return $.grep(allsongs, function(song, i) {
+			return (song.Letter === letter && song.Num <= halfway);
+		});
+	}
+
+	var getRightSongs = function (letter, trackCount) {
+		halfway = Math.round(trackCount/2);
+		return $.grep(allsongs, function(song, i) {
+			return (song.Letter === letter && song.Num > halfway);
+		});
+	}
+
+	window.currentLetter = "";
+
+    $('.letter-button').click(function(){
+		window.currentLetter = $(this).html();
+		$('.letter-button').removeClass('active');
+		$(this).addClass('active');
+
+        var trackCount = $(this).data('tracks');
+        if (audio) {
+            audio.pause();
+        }
+        $('.track-select').show();
+        $('.track-select button').removeClass('active');
+
+        $('.track-button').hide();
+        for (i = 1; i <= trackCount; i++) {
+            $('.track-button[value=' + i + ']').show();
+        }
+
+		var leftSongs = getLeftSongs(window.currentLetter, trackCount);
+		var rightSongs = getRightSongs(window.currentLetter, trackCount);
+		var songListing = {'<>':'div','class':'track track${Num}','html':'<span class="n">${Letter}${Num}</span><div class="song">${Song}</div><div class="artist">${Artist}</div>'};
+		$(".jukebox .default").remove();
+		$(".jukebox .left").html("");
+		$(".jukebox .right").html("");
+		$(".jukebox .left").json2html(leftSongs,songListing);
+		$(".jukebox .right").json2html(rightSongs,songListing);
+
+		// <div class="track track1"><span class="n">1</span></div>
+	});
+
+    $('.track-button').click(function(){
+		window.currentTrack = $(this).html();
+		$('.track-button').removeClass('active');
+		$(this).addClass('active');
+
+        if (audio) {
+            audio.pause();
+        }
+
+        var code = currentLetter + currentTrack;
+            if (songs.includes(code)) {
+                audio = new Audio(window.puzzleStaticDirectory + 'songs/' + code + '.mp3');
+                audio.play();
+            } else {
+                audio = new Audio(window.puzzleStaticDirectory + 'songs/wnp.m4a');
+                audio.play();
+            }
+
+	});
+});
+</script>
+
+</body>
+</html>

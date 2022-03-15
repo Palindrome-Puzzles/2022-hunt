@@ -1,0 +1,11 @@
+.bordered_cell { text-align: center; border: 1pt solid black; }
+.bordered_end_cell { text-align: center; background: #000000; }
+.exterior { text-align: center; border: 0px; min-width: 15px; max-width: 15px; min-height: 15px;; max-height: 15px; }
+
+@media print {
+table.grid th, table.grid td {
+    color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+    page-break-before: always;
+    }
+}

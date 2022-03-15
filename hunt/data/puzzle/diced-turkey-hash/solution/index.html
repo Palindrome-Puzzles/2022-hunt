@@ -1,0 +1,215 @@
+<em>The fool spits the dice out of his mouth and speaks plainly.</em>
+
+<h2>The Grid</h2>
+
+<p>Considering the twenty alphanumeric strings, you may notice that they combine the numerals 0 through 9 and characters ranging from A through J: they are numbers in base-20 (or if you prefer Latin adjectives, they’re vigesimal).</p>
+
+<p>If you convert them into binary (as suggested by “it all boils down to a binary question”), you will find that the longest numbers now have 20 digits. This means that they will all fit into the blank 20-by-20 grid.</p>
+
+<p><table class="numbers">
+<tr><th>Base 20</th><th>Binary</th></tr>
+<tr><td>14C30</td><td>00110000000011111100</td></tr>
+<tr><td>6G5H</td><td>00001101010011110101</td></tr>
+<tr><td>10B20</td><td>00101000001001011000</td></tr>
+<tr><td>G92E</td><td>00100000001001000110</td></tr>
+<tr><td>39HJ6</td><td>10001000100001010010</td></tr>
+<tr><td>G92E</td><td>00100000001001000110</td></tr>
+<tr><td>39HJ6</td><td>10001000100001010010</td></tr>
+<tr><td>GI84</td><td>00100001000011000100</td></tr>
+<tr><td>14BF9</td><td>00110000000001100101</td></tr>
+<tr><td>GA8C</td><td>00100000010001001100</td></tr>
+<tr><td>39HJ6</td><td>10001000100001010010</td></tr>
+<tr><td>GBDI</td><td>00100000011001000110</td></tr>
+<tr><td>6J1I</td><td>00001101100101010110</td></tr>
+<tr><td>G92F</td><td>00100000001001000111</td></tr>
+<tr><td>4FG30</td><td>10111011000111111100</td></tr>
+<tr><td>0</td><td>00000000000000000000</td></tr>
+<tr><td>47HE</td><td>00001000100101010010</td></tr>
+<tr><td>6G5H</td><td>00001101010011110101</td></tr>
+<tr><td>47HE</td><td>00001000100101010010</td></tr>
+<tr><td>1GIFC</td><td>01001000001001011000</td></tr>
+</table></p>
+
+<p>Or, as rendered in the grid with the 0s as empty cells and the 1s as blocks of black:</p>
+
+<p><table class="grid crossword">
+<tr><td></td><td></td><td class="filled"></td><td class="filled"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="filled"></td><td class="filled"></td><td class="filled"></td><td class="filled"></td><td class="filled"></td><td class="filled"></td><td></td><td></td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="filled"></td><td class="filled"></td><td></td><td class="filled"></td><td></td><td class="filled"></td><td></td><td></td><td class="filled"></td><td class="filled"></td><td class="filled"></td><td class="filled"></td><td></td><td class="filled"></td><td></td><td class="filled"></td></tr>
+<tr><td></td><td></td><td class="filled"></td><td></td><td class="filled"></td><td></td><td></td><td></td><td></td><td></td><td class="filled"></td><td></td><td></td><td class="filled"></td><td></td><td class="filled"></td><td class="filled"></td><td></td><td></td><td></td></tr>
+<tr><td></td><td></td><td class="filled"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="filled"></td><td></td><td></td><td class="filled"></td><td></td><td></td><td></td><td class="filled"></td><td class="filled"></td><td></td></tr>
+<tr><td class="filled"></td><td></td><td></td><td></td><td class="filled"></td><td></td><td></td><td></td><td class="filled"></td><td></td><td></td><td></td><td></td><td class="filled"></td><td></td><td class="filled"></td><td></td><td></td><td class="filled"></td><td></td></tr>
+<tr><td></td><td></td><td class="filled"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="filled"></td><td></td><td></td><td class="filled"></td><td></td><td></td><td></td><td class="filled"></td><td class="filled"></td><td></td></tr>
+<tr><td class="filled"></td><td></td><td></td><td></td><td class="filled"></td><td></td><td></td><td></td><td class="filled"></td><td></td><td></td><td></td><td></td><td class="filled"></td><td></td><td class="filled"></td><td></td><td></td><td class="filled"></td><td></td></tr>
+<tr><td></td><td></td><td class="filled"></td><td></td><td></td><td></td><td></td><td class="filled"></td><td></td><td></td><td></td><td></td><td class="filled"></td><td class="filled"></td><td></td><td></td><td></td><td class="filled"></td><td></td><td></td></tr>
+<tr><td></td><td></td><td class="filled"></td><td class="filled"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="filled"></td><td class="filled"></td><td></td><td></td><td class="filled"></td><td></td><td class="filled"></td></tr>
+<tr><td></td><td></td><td class="filled"></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="filled"></td><td></td><td></td><td></td><td class="filled"></td><td></td><td></td><td class="filled"></td><td class="filled"></td><td></td><td></td></tr>
+<tr><td class="filled"></td><td></td><td></td><td></td><td class="filled"></td><td></td><td></td><td></td><td class="filled"></td><td></td><td></td><td></td><td></td><td class="filled"></td><td></td><td class="filled"></td><td></td><td></td><td class="filled"></td><td></td></tr>
+<tr><td></td><td></td><td class="filled"></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="filled"></td><td class="filled"></td><td></td><td></td><td class="filled"></td><td></td><td></td><td></td><td class="filled"></td><td class="filled"></td><td></td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="filled"></td><td class="filled"></td><td></td><td class="filled"></td><td class="filled"></td><td></td><td></td><td class="filled"></td><td></td><td class="filled"></td><td></td><td class="filled"></td><td></td><td class="filled"></td><td class="filled"></td><td></td></tr>
+<tr><td></td><td></td><td class="filled"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="filled"></td><td></td><td></td><td class="filled"></td><td></td><td></td><td></td><td class="filled"></td><td class="filled"></td><td class="filled"></td></tr>
+<tr><td class="filled"></td><td></td><td class="filled"></td><td class="filled"></td><td class="filled"></td><td></td><td class="filled"></td><td class="filled"></td><td></td><td></td><td></td><td class="filled"></td><td class="filled"></td><td class="filled"></td><td class="filled"></td><td class="filled"></td><td class="filled"></td><td class="filled"></td><td></td><td></td></tr>
+<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="filled"></td><td></td><td></td><td></td><td class="filled"></td><td></td><td></td><td class="filled"></td><td></td><td class="filled"></td><td></td><td class="filled"></td><td></td><td></td><td class="filled"></td><td></td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="filled"></td><td class="filled"></td><td></td><td class="filled"></td><td></td><td class="filled"></td><td></td><td></td><td class="filled"></td><td class="filled"></td><td class="filled"></td><td class="filled"></td><td></td><td class="filled"></td><td></td><td class="filled"></td></tr>
+<tr><td></td><td></td><td></td><td></td><td class="filled"></td><td></td><td></td><td></td><td class="filled"></td><td></td><td></td><td class="filled"></td><td></td><td class="filled"></td><td></td><td class="filled"></td><td></td><td></td><td class="filled"></td><td></td></tr>
+<tr><td></td><td class="filled"></td><td></td><td></td><td class="filled"></td><td></td><td></td><td></td><td></td><td></td><td class="filled"></td><td></td><td></td><td class="filled"></td><td></td><td class="filled"></td><td class="filled"></td><td></td><td></td><td></td></tr>
+</table></p>
+
+<p>Let’s put that grid aside for a moment and turn our attention to the dice.</p>
+
+<h2>The Dice</h2>
+
+<p>Two of the dice have the numbers 1 through 20, as rendered in vigesimal numbering systems: the Mayan (also the Aztec system), as clued by “land of the feathered serpent” and Dzonghka, the language of Bhutan (aka “land of the thunder dragon”).</p>
+
+<p>The other two dice represent sets of 20: the first 20 narrative feature films directed by Steven Soderbergh and the major arcana of the Tarot (minus the first and last arcana).</p>
+
+<p>Soderbergh is hinted at by “in a director’s chair”; this list of movies doesn’t include his concert films or his shorts, only his full-length narrative films (as underscored by “long stretches of lies and make-believe”), so no <em>Gray’s Anatomy</em>. We start after the Yes concert film <em>9012Live</em> (“After you say yes”) and end before <em>Haywire</em> (“halt before things go haywire”). The sequence of 20 films on that die is associated with the numbers on the Mayan die (as indicated by the “land of the feathered serpent” and the color blue).</p>
+
+<p>The first face in the sequence and the proper orientation on each die is indicated by the small red triangle.</p>
+
+<table>
+<tr><th></th><th>Soderbergh Film</th><th>Image</th><th>Mayan Number</th><th>Image</th></tr>
+<tr><td>1</td><td><em>Sex, Lies and Videotape</em></td><td><a href="images/soderbergh/videotape.png" target="_blank"><img src="images/soderbergh/videotape.png" width="150"></a></td><td>19</td><td><a href="images/mayan/19.png" target="_blank"><img src="images/mayan/19.png" width="150"></a></td></tr>
+<tr><td>2</td><td><em>Kafka</em></td><td><a href="images/soderbergh/kafka.png" target="_blank"><img src="images/soderbergh/kafka.png" width="150"></a></td><td>17</td><td><a href="images/mayan/17.png" target="_blank"><img src="images/mayan/17.png" width="150"></a></td></tr>
+<tr><td>3</td><td><em>King of the Hill</em></td><td><a href="images/soderbergh/king.png" target="_blank"><img src="images/soderbergh/king.png" width="150"></a></td><td>15</td><td><a href="images/mayan/15.png" target="_blank"><img src="images/mayan/15.png" width="150"></a></td></tr>
+<tr><td>4</td><td><em>The Underneath</em></td><td><a href="images/soderbergh/underneath.png" target="_blank"><img src="images/soderbergh/underneath.png" width="150"></a></td><td>13</td><td><a href="images/mayan/13.png" target="_blank"><img src="images/mayan/13.png" width="150"></a></td></tr>
+<tr><td>5</td><td><em>Schizopolis</em></td><td><a href="images/soderbergh/schizopolis.png" target="_blank"><img src="images/soderbergh/schizopolis.png" width="150"></a></td><td>11</td><td><a href="images/mayan/11.png" target="_blank"><img src="images/mayan/11.png" width="150"></a></td></tr>
+<tr><td>6</td><td><em>Out of Sight</em></td><td><a href="images/soderbergh/outofsight.png" target="_blank"><img src="images/soderbergh/outofsight.png" width="150"></a></td><td>9</td><td><a href="images/mayan/9.png" target="_blank"><img src="images/mayan/9.png" width="150"></a></td></tr>
+<tr><td>7</td><td><em>The Limey</em></td><td><a href="images/soderbergh/limey.png" target="_blank"><img src="images/soderbergh/limey.png" width="150"></a></td><td>7</td><td><a href="images/mayan/7.png" target="_blank"><img src="images/mayan/7.png" width="150"></a></td></tr>
+<tr><td>8</td><td><em>Erin Brockovich</em></td><td><a href="images/soderbergh/erin.png" target="_blank"><img src="images/soderbergh/erin.png" width="150"></a></td><td>5</td><td><a href="images/mayan/5.png" target="_blank"><img src="images/mayan/5.png" width="150"></a></td></tr>
+<tr><td>9</td><td><em>Traffic</em></td><td><a href="images/soderbergh/traffic.png" target="_blank"><img src="images/soderbergh/traffic.png" width="150"></a></td><td>3</td><td><a href="images/mayan/3.png" target="_blank"><img src="images/mayan/3.png" width="150"></a></td></tr>
+<tr><td>10</td><td><em>Ocean's Eleven</em></td><td><a href="images/soderbergh/oceans11.png" target="_blank"><img src="images/soderbergh/oceans11.png" width="150"></a></td><td>1</td><td><a href="images/mayan/1.png" target="_blank"><img src="images/mayan/1.png" width="150"></a></td></tr>
+<tr><td>11</td><td><em>Full Frontal</em></td><td><a href="images/soderbergh/fullfrontal.png" target="_blank"><img src="images/soderbergh/fullfrontal.png" width="150"></a></td><td>12</td><td><a href="images/mayan/12.png" target="_blank"><img src="images/mayan/12.png" width="150"></a></td></tr>
+<tr><td>12</td><td><em>Solaris</em></td><td><a href="images/soderbergh/solaris.png" target="_blank"><img src="images/soderbergh/solaris.png" width="150"></a></td><td>2</td><td><a href="images/mayan/2.png" target="_blank"><img src="images/mayan/2.png" width="150"></a></td></tr>
+<tr><td>13</td><td><em>Ocean's Twelve</em></td><td><a href="images/soderbergh/oceans12.png" target="_blank"><img src="images/soderbergh/oceans12.png" width="150"></a></td><td>14</td><td><a href="images/mayan/14.png" target="_blank"><img src="images/mayan/14.png" width="150"></a></td></tr>
+<tr><td>14</td><td><em>Bubble</em></td><td><a href="images/soderbergh/bubble.png" target="_blank"><img src="images/soderbergh/bubble.png" width="150"></a></td><td>4</td><td><a href="images/mayan/4.png" target="_blank"><img src="images/mayan/4.png" width="150"></a></td></tr>
+<tr><td>15</td><td><em>The Good German</em></td><td><a href="images/soderbergh/german.png" target="_blank"><img src="images/soderbergh/german.png" width="150"></a></td><td>16</td><td><a href="images/mayan/16.png" target="_blank"><img src="images/mayan/16.png" width="150"></a></td></tr>
+<tr><td>16</td><td><em>Ocean's Thirteen</em></td><td><a href="images/soderbergh/oceans13.png" target="_blank"><img src="images/soderbergh/oceans13.png" width="150"></a></td><td>6</td><td><a href="images/mayan/6.png" target="_blank"><img src="images/mayan/6.png" width="150"></a></td></tr>
+<tr><td>17</td><td><em>Che</em></td><td><a href="images/soderbergh/che.png" target="_blank"><img src="images/soderbergh/che.png" width="150"></a></td><td>18</td><td><a href="images/mayan/18.png" target="_blank"><img src="images/mayan/18.png" width="150"></a></td></tr>
+<tr><td>18</td><td><em>The Girlfriend Experience</em></td><td><a href="images/soderbergh/girlfriend.png" target="_blank"><img src="images/soderbergh/girlfriend.png" width="150"></a></td><td>8</td><td><a href="images/mayan/8.png" target="_blank"><img src="images/mayan/8.png" width="150"></a></td></tr>
+<tr><td>19</td><td><em>The Informant!</em></td><td><a href="images/soderbergh/informant.png" target="_blank"><img src="images/soderbergh/informant.png" width="150"></a></td><td>20</td><td><a href="images/mayan/20.png" target="_blank"><img src="images/mayan/20.png" width="150"></a></td></tr>
+<tr><td>20</td><td><em>Contagion</em></td><td><a href="images/soderbergh/contagion.png" target="_blank"><img src="images/soderbergh/contagion.png" width="150"></a></td><td>10</td><td><a href="images/mayan/10.png" target="_blank"><img src="images/mayan/10.png" width="150"></a></td></tr>
+</table>
+<em>Soderbergh images licensed from The Noun Project. Mayan numerals via Wikimedia commons.</em>
+
+<p>(Note that for the <em>Ocean’s</em> trilogy, the numbers 11, 12, and 13 are presented as casino chips.)</p>
+
+<p>Confirming that this sequence is correct: “Your quest will lead you through eleven blocks of an insane city: you will meet nine blind men and then brawl with seven British sailors.” That alludes to three consecutive pairs of matching faces (5th-6th-7th): <em>Schizopolis</em> (11), <em>Out of Sight</em> (9), <em>The Limey</em> (7). And the resulting sequence of numbers is quite literally “diminishing odds.”</p>
+
+<p>The die with the major arcana follows The Fool (card 0) and stops before the end of the world (The World is card 21). There are two popular orderings of the major arcana; the text tells you to eschew the Rider-Waite ordering (“Be a walker, not a rider—but do not wait.”). The sequence of 20 Tarot cards is associated with the numbers on the Dzongkha die (as indicated by “land of the thunder dragon” and the color orange).</p>
+
+<p>The first face in the sequence and the proper orientation on each die is indicated by the small red triangle.</p>
+
+<table>
+<tr><th></th><th>Major Arcana</th><th>Image</th><th>Dzongkha Number</th><th>Image</th></tr>
+<tr><td>1</td><td>The Magician</td><td><a href="images/tarot/magician.png" target="_blank"><img src="images/tarot/magician.png" width="150"></a></td><td>2</td><td><a href="images/bhutan/2.png" target="_blank"><img src="images/bhutan/2.png" width="150"></a></td></tr>
+<tr><td>2</td><td>The High Priestess</td><td><a href="images/tarot/highpriestess.png" target="_blank"><img src="images/tarot/highpriestess.png" width="150"></a></td><td>3</td><td><a href="images/bhutan/3.png" target="_blank"><img src="images/bhutan/3.png" width="150"></a></td></tr>
+<tr><td>3</td><td>The Empress</td><td><a href="images/tarot/empress.png" target="_blank"><img src="images/tarot/empress.png" width="150"></a></td><td>5</td><td><a href="images/bhutan/5.png" target="_blank"><img src="images/bhutan/5.png" width="150"></a></td></tr>
+<tr><td>4</td><td>The Emperor</td><td><a href="images/tarot/emperor.png" target="_blank"><img src="images/tarot/emperor.png" width="150"></a></td><td>7</td><td><a href="images/bhutan/7.png" target="_blank"><img src="images/bhutan/7.png" width="150"></a></td></tr>
+<tr><td>5</td><td>The Hierophant</td><td><a href="images/tarot/hierophant.png" target="_blank"><img src="images/tarot/hierophant.png" width="150"></a></td><td>11</td><td><a href="images/bhutan/11.png" target="_blank"><img src="images/bhutan/11.png" width="150"></a></td></tr>
+<tr><td>6</td><td>The Lovers</td><td><a href="images/tarot/lovers.png" target="_blank"><img src="images/tarot/lovers.png" width="150"></a></td><td>13</td><td><a href="images/bhutan/13.png" target="_blank"><img src="images/bhutan/13.png" width="150"></a></td></tr>
+<tr><td>7</td><td>The Chariot</td><td><a href="images/tarot/chariot.png" target="_blank"><img src="images/tarot/chariot.png" width="150"></a></td><td>17</td><td><a href="images/bhutan/17.png" target="_blank"><img src="images/bhutan/17.png" width="150"></a></td></tr>
+<tr><td>8</td><td>Justice</td><td><a href="images/tarot/justice.png" target="_blank"><img src="images/tarot/justice.png" width="150"></a></td><td>19</td><td><a href="images/bhutan/19.png" target="_blank"><img src="images/bhutan/19.png" width="150"></a></td></tr>
+<tr><td>9</td><td>The Hermit</td><td><a href="images/tarot/hermit.png" target="_blank"><img src="images/tarot/hermit.png" width="150"></a></td><td>20</td><td><a href="images/bhutan/20.png" target="_blank"><img src="images/bhutan/20.png" width="150"></a></td></tr>
+<tr><td>10</td><td>Wheel of Fortune</td><td><a href="images/tarot/wheel.png" target="_blank"><img src="images/tarot/wheel.png" width="150"></a></td><td>18</td><td><a href="images/bhutan/18.png" target="_blank"><img src="images/bhutan/18.png" width="150"></a></td></tr>
+<tr><td>11</td><td>Strength</td><td><a href="images/tarot/strength.png" target="_blank"><img src="images/tarot/strength.png" width="150"></a></td><td>16</td><td><a href="images/bhutan/16.png" target="_blank"><img src="images/bhutan/16.png" width="150"></a></td></tr>
+<tr><td>12</td><td>The Hanged Man</td><td><a href="images/tarot/hanged.png" target="_blank"><img src="images/tarot/hanged.png" width="150"></a></td><td>15</td><td><a href="images/bhutan/15.png" target="_blank"><img src="images/bhutan/15.png" width="150"></a></td></tr>
+<tr><td>13</td><td>Death</td><td><a href="images/tarot/death.png" target="_blank"><img src="images/tarot/death.png" width="150"></a></td><td>14</td><td><a href="images/bhutan/14.png" target="_blank"><img src="images/bhutan/14.png" width="150"></a></td></tr>
+<tr><td>14</td><td>Temperance</td><td><a href="images/tarot/temperance.png" target="_blank"><img src="images/tarot/temperance.png" width="150"></a></td><td>12</td><td><a href="images/bhutan/12.png" target="_blank"><img src="images/bhutan/12.png" width="150"></a></td></tr>
+<tr><td>15</td><td>The Devil</td><td><a href="images/tarot/devil.png" target="_blank"><img src="images/tarot/devil.png" width="150"></a></td><td>10</td><td><a href="images/bhutan/10.png" target="_blank"><img src="images/bhutan/10.png" width="150"></a></td></tr>
+<tr><td>16</td><td>The Tower</td><td><a href="images/tarot/tower.png" target="_blank"><img src="images/tarot/tower.png" width="150"></a></td><td>9</td><td><a href="images/bhutan/9.png" target="_blank"><img src="images/bhutan/9.png" width="150"></a></td></tr>
+<tr><td>17</td><td>The Star</td><td><a href="images/tarot/star.png" target="_blank"><img src="images/tarot/star.png" width="150"></a></td><td>8</td><td><a href="images/bhutan/8.png" target="_blank"><img src="images/bhutan/8.png" width="150"></a></td></tr>
+<tr><td>18</td><td>The Moon</td><td><a href="images/tarot/moon.png" target="_blank"><img src="images/tarot/moon.png" width="150"></a></td><td>6</td><td><a href="images/bhutan/6.png" target="_blank"><img src="images/bhutan/6.png" width="150"></a></td></tr>
+<tr><td>19</td><td>The Sun</td><td><a href="images/tarot/sun.png" target="_blank"><img src="images/tarot/sun.png" width="150"></a></td><td>4</td><td><a href="images/bhutan/4.png" target="_blank"><img src="images/bhutan/4.png" width="150"></a></td></tr>
+<tr><td>20</td><td>Judgement</td><td><a href="images/tarot/judgement.png" target="_blank"><img src="images/tarot/judgement.png" width="150"></a></td><td>1</td><td><a href="images/bhutan/1.png" target="_blank"><img src="images/bhutan/1.png" width="150"></a></td></tr>
+</table>
+<em>Tarot images licensed from The Noun Project.</em>
+
+<p>(The High Priestess’s symbol is her diadem; Judgement’s symbol is the trumpet.)</p>
+
+<p>Confirming that this sequence is correct: “resist the temptations of ten succubi, take shelter in a castle with nine turrets, and get autographs from eight celebrities.” That alludes to three consecutive pairs of matching faces (15th-16th-17th): The Devil (10), The Tower (9), The Star (8). And the resulting sequence of numbers strides through the primes.</p>
+
+<h2>Putting It All Together</h2>
+
+<p>We can now turn our attention back to the grid. The text suggests that the Soderbergh/Mayan sequence is useful for traveling east and that the Tarot/Dzongkha sequence is useful for traveling south, and that they will provide the true path after the terrain is reordered. So we will shuffle the columns and then the rows according to those sequences. (Shuffling the rows and then the columns would produce the same final result.)</p>
+
+<p>Our original grid, with numbering running both east and south:</p>
+
+<table class="grid crossword">
+<tr><th scope="col"></th><th scope="col">1</th><th scope="col">2</th><th scope="col">3</th><th scope="col">4</th><th scope="col">5</th><th scope="col">6</th><th scope="col">7</th><th scope="col">8</th><th scope="col">9</th><th scope="col">10</th><th scope="col">11</th><th scope="col">12</th><th scope="col">13</th><th scope="col">14</th><th scope="col">15</th><th scope="col">16</th><th scope="col">17</th><th scope="col">18</th><th scope="col">19</th><th scope="col">20</th></tr>
+<tr><th scope="row">1</th><td></td><td></td><td class="filled"></td><td class="filled"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="filled"></td><td class="filled"></td><td class="filled"></td><td class="filled"></td><td class="filled"></td><td class="filled"></td><td></td><td></td></tr>
+<tr><th scope="row">2</th><td></td><td></td><td></td><td></td><td class="filled"></td><td class="filled"></td><td></td><td class="filled"></td><td></td><td class="filled"></td><td></td><td></td><td class="filled"></td><td class="filled"></td><td class="filled"></td><td class="filled"></td><td></td><td class="filled"></td><td></td><td class="filled"></td></tr>
+<tr><th scope="row">3</th><td></td><td></td><td class="filled"></td><td></td><td class="filled"></td><td></td><td></td><td></td><td></td><td></td><td class="filled"></td><td></td><td></td><td class="filled"></td><td></td><td class="filled"></td><td class="filled"></td><td></td><td></td><td></td></tr>
+<tr><th scope="row">4</th><td></td><td></td><td class="filled"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="filled"></td><td></td><td></td><td class="filled"></td><td></td><td></td><td></td><td class="filled"></td><td class="filled"></td><td></td></tr>
+<tr><th scope="row">5</th><td class="filled"></td><td></td><td></td><td></td><td class="filled"></td><td></td><td></td><td></td><td class="filled"></td><td></td><td></td><td></td><td></td><td class="filled"></td><td></td><td class="filled"></td><td></td><td></td><td class="filled"></td><td></td></tr>
+<tr><th scope="row">6</th><td></td><td></td><td class="filled"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="filled"></td><td></td><td></td><td class="filled"></td><td></td><td></td><td></td><td class="filled"></td><td class="filled"></td><td></td></tr>
+<tr><th scope="row">7</th><td class="filled"></td><td></td><td></td><td></td><td class="filled"></td><td></td><td></td><td></td><td class="filled"></td><td></td><td></td><td></td><td></td><td class="filled"></td><td></td><td class="filled"></td><td></td><td></td><td class="filled"></td><td></td></tr>
+<tr><th scope="row">8</th><td></td><td></td><td class="filled"></td><td></td><td></td><td></td><td></td><td class="filled"></td><td></td><td></td><td></td><td></td><td class="filled"></td><td class="filled"></td><td></td><td></td><td></td><td class="filled"></td><td></td><td></td></tr>
+<tr><th scope="row">9</th><td></td><td></td><td class="filled"></td><td class="filled"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="filled"></td><td class="filled"></td><td></td><td></td><td class="filled"></td><td></td><td class="filled"></td></tr>
+<tr><th scope="row">10</th><td></td><td></td><td class="filled"></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="filled"></td><td></td><td></td><td></td><td class="filled"></td><td></td><td></td><td class="filled"></td><td class="filled"></td><td></td><td></td></tr>
+<tr><th scope="row">11</th><td class="filled"></td><td></td><td></td><td></td><td class="filled"></td><td></td><td></td><td></td><td class="filled"></td><td></td><td></td><td></td><td></td><td class="filled"></td><td></td><td class="filled"></td><td></td><td></td><td class="filled"></td><td></td></tr>
+<tr><th scope="row">12</th><td></td><td></td><td class="filled"></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="filled"></td><td class="filled"></td><td></td><td></td><td class="filled"></td><td></td><td></td><td></td><td class="filled"></td><td class="filled"></td><td></td></tr>
+<tr><th scope="row">13</th><td></td><td></td><td></td><td></td><td class="filled"></td><td class="filled"></td><td></td><td class="filled"></td><td class="filled"></td><td></td><td></td><td class="filled"></td><td></td><td class="filled"></td><td></td><td class="filled"></td><td></td><td class="filled"></td><td class="filled"></td><td></td></tr>
+<tr><th scope="row">14</th><td></td><td></td><td class="filled"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="filled"></td><td></td><td></td><td class="filled"></td><td></td><td></td><td></td><td class="filled"></td><td class="filled"></td><td class="filled"></td></tr>
+<tr><th scope="row">15</th><td class="filled"></td><td></td><td class="filled"></td><td class="filled"></td><td class="filled"></td><td></td><td class="filled"></td><td class="filled"></td><td></td><td></td><td></td><td class="filled"></td><td class="filled"></td><td class="filled"></td><td class="filled"></td><td class="filled"></td><td class="filled"></td><td class="filled"></td><td></td><td></td></tr>
+<tr><th scope="row">16</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><th scope="row">17</th><td></td><td></td><td></td><td></td><td class="filled"></td><td></td><td></td><td></td><td class="filled"></td><td></td><td></td><td class="filled"></td><td></td><td class="filled"></td><td></td><td class="filled"></td><td></td><td></td><td class="filled"></td><td></td></tr>
+<tr><th scope="row">18</th><td></td><td></td><td></td><td></td><td class="filled"></td><td class="filled"></td><td></td><td class="filled"></td><td></td><td class="filled"></td><td></td><td></td><td class="filled"></td><td class="filled"></td><td class="filled"></td><td class="filled"></td><td></td><td class="filled"></td><td></td><td class="filled"></td></tr>
+<tr><th scope="row">19</th><td></td><td></td><td></td><td></td><td class="filled"></td><td></td><td></td><td></td><td class="filled"></td><td></td><td></td><td class="filled"></td><td></td><td class="filled"></td><td></td><td class="filled"></td><td></td><td></td><td class="filled"></td><td></td></tr>
+<tr><th scope="row">20</th><td></td><td class="filled"></td><td></td><td></td><td class="filled"></td><td></td><td></td><td></td><td></td><td></td><td class="filled"></td><td></td><td></td><td class="filled"></td><td></td><td class="filled"></td><td class="filled"></td><td></td><td></td><td></td></tr>
+</table>
+
+<p>Reorder the columns heading west to east according to the Soderbergh/Mayan sequence, beginning with the 19th column (moved to the 1st column), then the 17th (moved to the 2nd), and so on:</p>
+
+<table class="grid crossword">
+<tr><th></th><th scope="column">19</th><th scope="column">17</th><th scope="column">15</th><th scope="column">13</th><th scope="column">11</th><th scope="column">9</th><th scope="column">7</th><th scope="column">5</th><th scope="column">3</th><th scope="column">1</th><th scope="column">12</th><th scope="column">2</th><th scope="column">14</th><th scope="column">4</th><th scope="column">16</th><th scope="column">6</th><th scope="column">18</th><th scope="column">8</th><th scope="column">20</th><th scope="column">10</th></tr>
+<tr><th scope="row">1</th><td></td><td class="filled"></td><td class="filled"></td><td class="filled"></td><td></td><td></td><td></td><td></td><td class="filled"></td><td></td><td></td><td></td><td class="filled"></td><td class="filled"></td><td class="filled"></td><td></td><td class="filled"></td><td></td><td></td><td></td></tr>
+<tr><th scope="row">2</th><td></td><td></td><td class="filled"></td><td class="filled"></td><td></td><td></td><td></td><td class="filled"></td><td></td><td></td><td></td><td></td><td class="filled"></td><td></td><td class="filled"></td><td class="filled"></td><td class="filled"></td><td class="filled"></td><td class="filled"></td><td class="filled"></td></tr>
+<tr><th scope="row">3</th><td></td><td class="filled"></td><td></td><td></td><td class="filled"></td><td></td><td></td><td class="filled"></td><td class="filled"></td><td></td><td></td><td></td><td class="filled"></td><td></td><td class="filled"></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><th scope="row">4</th><td class="filled"></td><td></td><td></td><td></td><td class="filled"></td><td></td><td></td><td></td><td class="filled"></td><td></td><td></td><td></td><td class="filled"></td><td></td><td></td><td></td><td class="filled"></td><td></td><td></td><td></td></tr>
+<tr><th scope="row">5</th><td class="filled"></td><td></td><td></td><td></td><td></td><td class="filled"></td><td></td><td class="filled"></td><td></td><td class="filled"></td><td></td><td></td><td class="filled"></td><td></td><td class="filled"></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><th scope="row">6</th><td class="filled"></td><td></td><td></td><td></td><td class="filled"></td><td></td><td></td><td></td><td class="filled"></td><td></td><td></td><td></td><td class="filled"></td><td></td><td></td><td></td><td class="filled"></td><td></td><td></td><td></td></tr>
+<tr><th scope="row">7</th><td class="filled"></td><td></td><td></td><td></td><td></td><td class="filled"></td><td></td><td class="filled"></td><td></td><td class="filled"></td><td></td><td></td><td class="filled"></td><td></td><td class="filled"></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><th scope="row">8</th><td></td><td></td><td></td><td class="filled"></td><td></td><td></td><td></td><td></td><td class="filled"></td><td></td><td></td><td></td><td class="filled"></td><td></td><td></td><td></td><td class="filled"></td><td class="filled"></td><td></td><td></td></tr>
+<tr><th scope="row">9</th><td></td><td></td><td class="filled"></td><td></td><td></td><td></td><td></td><td></td><td class="filled"></td><td></td><td></td><td></td><td class="filled"></td><td class="filled"></td><td></td><td></td><td class="filled"></td><td></td><td class="filled"></td><td></td></tr>
+<tr><th scope="row">10</th><td></td><td class="filled"></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="filled"></td><td></td><td></td><td></td><td class="filled"></td><td></td><td></td><td></td><td class="filled"></td><td></td><td></td><td class="filled"></td></tr>
+<tr><th scope="row">11</th><td class="filled"></td><td></td><td></td><td></td><td></td><td class="filled"></td><td></td><td class="filled"></td><td></td><td class="filled"></td><td></td><td></td><td class="filled"></td><td></td><td class="filled"></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><th scope="row">12</th><td class="filled"></td><td></td><td></td><td></td><td class="filled"></td><td></td><td></td><td></td><td class="filled"></td><td></td><td></td><td></td><td class="filled"></td><td></td><td></td><td></td><td class="filled"></td><td></td><td></td><td class="filled"></td></tr>
+<tr><th scope="row">13</th><td class="filled"></td><td></td><td></td><td></td><td></td><td class="filled"></td><td></td><td class="filled"></td><td></td><td></td><td class="filled"></td><td></td><td class="filled"></td><td></td><td class="filled"></td><td class="filled"></td><td class="filled"></td><td class="filled"></td><td></td><td></td></tr>
+<tr><th scope="row">14</th><td class="filled"></td><td></td><td></td><td></td><td class="filled"></td><td></td><td></td><td></td><td class="filled"></td><td></td><td></td><td></td><td class="filled"></td><td></td><td></td><td></td><td class="filled"></td><td></td><td class="filled"></td><td></td></tr>
+<tr><th scope="row">15</th><td></td><td class="filled"></td><td class="filled"></td><td class="filled"></td><td></td><td></td><td class="filled"></td><td class="filled"></td><td class="filled"></td><td class="filled"></td><td class="filled"></td><td></td><td class="filled"></td><td class="filled"></td><td class="filled"></td><td></td><td class="filled"></td><td class="filled"></td><td></td><td></td></tr>
+<tr><th scope="row">16</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><th scope="row">17</th><td class="filled"></td><td></td><td></td><td></td><td></td><td class="filled"></td><td></td><td class="filled"></td><td></td><td></td><td class="filled"></td><td></td><td class="filled"></td><td></td><td class="filled"></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><th scope="row">18</th><td></td><td></td><td class="filled"></td><td class="filled"></td><td></td><td></td><td></td><td class="filled"></td><td></td><td></td><td></td><td></td><td class="filled"></td><td></td><td class="filled"></td><td class="filled"></td><td class="filled"></td><td class="filled"></td><td class="filled"></td><td class="filled"></td></tr>
+<tr><th scope="row">19</th><td class="filled"></td><td></td><td></td><td></td><td></td><td class="filled"></td><td></td><td class="filled"></td><td></td><td></td><td class="filled"></td><td></td><td class="filled"></td><td></td><td class="filled"></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><th scope="row">20</th><td></td><td class="filled"></td><td></td><td></td><td class="filled"></td><td></td><td></td><td class="filled"></td><td></td><td></td><td></td><td class="filled"></td><td class="filled"></td><td></td><td class="filled"></td><td></td><td></td><td></td><td></td><td></td></tr>
+</table>
+
+
+<p>Now reorder the rows heading north to south according to the Tarot/Dzongkha sequence, beginning with the 2nd row (now the 1st row), then the 3rd (now the 2nd), and so on:</p>
+
+<table class="grid crossword">
+<tr><th></th><th scope="column">19</th><th scope="column">17</th><th scope="column">15</th><th scope="column">13</th><th scope="column">11</th><th scope="column">9</th><th scope="column">7</th><th scope="column">5</th><th scope="column">3</th><th scope="column">1</th><th scope="column">12</th><th scope="column">2</th><th scope="column">14</th><th scope="column">4</th><th scope="column">16</th><th scope="column">6</th><th scope="column">18</th><th scope="column">8</th><th scope="column">20</th><th scope="column">10</th></tr>
+<tr><th scope="row">2</th><td></td><td></td><td class="filled"></td><td class="filled"></td><td></td><td></td><td></td><td class="filled"></td><td></td><td></td><td></td><td></td><td class="filled"></td><td></td><td class="filled"></td><td class="filled"></td><td class="filled"></td><td class="filled"></td><td class="filled"></td><td class="filled"></td></tr>
+<tr><th scope="row">3</th><td></td><td class="filled"></td><td></td><td></td><td class="filled"></td><td></td><td></td><td class="filled"></td><td class="filled"></td><td></td><td></td><td></td><td class="filled"></td><td></td><td class="filled"></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><th scope="row">5</th><td class="filled"></td><td></td><td></td><td></td><td></td><td class="filled"></td><td></td><td class="filled"></td><td></td><td class="filled"></td><td></td><td></td><td class="filled"></td><td></td><td class="filled"></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><th scope="row">7</th><td class="filled"></td><td></td><td></td><td></td><td></td><td class="filled"></td><td></td><td class="filled"></td><td></td><td class="filled"></td><td></td><td></td><td class="filled"></td><td></td><td class="filled"></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><th scope="row">11</th><td class="filled"></td><td></td><td></td><td></td><td></td><td class="filled"></td><td></td><td class="filled"></td><td></td><td class="filled"></td><td></td><td></td><td class="filled"></td><td></td><td class="filled"></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><th scope="row">13</th><td class="filled"></td><td></td><td></td><td></td><td></td><td class="filled"></td><td></td><td class="filled"></td><td></td><td></td><td class="filled"></td><td></td><td class="filled"></td><td></td><td class="filled"></td><td class="filled"></td><td class="filled"></td><td class="filled"></td><td></td><td></td></tr>
+<tr><th scope="row">17</th><td class="filled"></td><td></td><td></td><td></td><td></td><td class="filled"></td><td></td><td class="filled"></td><td></td><td></td><td class="filled"></td><td></td><td class="filled"></td><td></td><td class="filled"></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><th scope="row">19</th><td class="filled"></td><td></td><td></td><td></td><td></td><td class="filled"></td><td></td><td class="filled"></td><td></td><td></td><td class="filled"></td><td></td><td class="filled"></td><td></td><td class="filled"></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><th scope="row">20</th><td></td><td class="filled"></td><td></td><td></td><td class="filled"></td><td></td><td></td><td class="filled"></td><td></td><td></td><td></td><td class="filled"></td><td class="filled"></td><td></td><td class="filled"></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><th scope="row">18</th><td></td><td></td><td class="filled"></td><td class="filled"></td><td></td><td></td><td></td><td class="filled"></td><td></td><td></td><td></td><td></td><td class="filled"></td><td></td><td class="filled"></td><td class="filled"></td><td class="filled"></td><td class="filled"></td><td class="filled"></td><td class="filled"></td></tr>
+<tr><th scope="row">16</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><th scope="row">15</th><td></td><td class="filled"></td><td class="filled"></td><td class="filled"></td><td></td><td></td><td class="filled"></td><td class="filled"></td><td class="filled"></td><td class="filled"></td><td class="filled"></td><td></td><td class="filled"></td><td class="filled"></td><td class="filled"></td><td></td><td class="filled"></td><td class="filled"></td><td></td><td></td></tr>
+<tr><th scope="row">14</th><td class="filled"></td><td></td><td></td><td></td><td class="filled"></td><td></td><td></td><td></td><td class="filled"></td><td></td><td></td><td></td><td class="filled"></td><td></td><td></td><td></td><td class="filled"></td><td></td><td class="filled"></td><td></td></tr>
+<tr><th scope="row">12</th><td class="filled"></td><td></td><td></td><td></td><td class="filled"></td><td></td><td></td><td></td><td class="filled"></td><td></td><td></td><td></td><td class="filled"></td><td></td><td></td><td></td><td class="filled"></td><td></td><td></td><td class="filled"></td></tr>
+<tr><th scope="row">10</th><td></td><td class="filled"></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="filled"></td><td></td><td></td><td></td><td class="filled"></td><td></td><td></td><td></td><td class="filled"></td><td></td><td></td><td class="filled"></td></tr>
+<tr><th scope="row">9</th><td></td><td></td><td class="filled"></td><td></td><td></td><td></td><td></td><td></td><td class="filled"></td><td></td><td></td><td></td><td class="filled"></td><td class="filled"></td><td></td><td></td><td class="filled"></td><td></td><td class="filled"></td><td></td></tr>
+<tr><th scope="row">8</th><td></td><td></td><td></td><td class="filled"></td><td></td><td></td><td></td><td></td><td class="filled"></td><td></td><td></td><td></td><td class="filled"></td><td></td><td></td><td></td><td class="filled"></td><td class="filled"></td><td></td><td></td></tr>
+<tr><th scope="row">6</th><td class="filled"></td><td></td><td></td><td></td><td class="filled"></td><td></td><td></td><td></td><td class="filled"></td><td></td><td></td><td></td><td class="filled"></td><td></td><td></td><td></td><td class="filled"></td><td></td><td></td><td></td></tr>
+<tr><th scope="row">4</th><td class="filled"></td><td></td><td></td><td></td><td class="filled"></td><td></td><td></td><td></td><td class="filled"></td><td></td><td></td><td></td><td class="filled"></td><td></td><td></td><td></td><td class="filled"></td><td></td><td></td><td></td></tr>
+<tr><th scope="row">1</th><td></td><td class="filled"></td><td class="filled"></td><td class="filled"></td><td></td><td></td><td></td><td></td><td class="filled"></td><td></td><td></td><td></td><td class="filled"></td><td class="filled"></td><td class="filled"></td><td></td><td class="filled"></td><td></td><td></td><td></td></tr>
+</table>
+
+<p>To embark on this journey requires <span class="answer">ONE STEP</span>.</p>

@@ -1,0 +1,30 @@
+name: 'Template: Import to Heroku'
+
+on:
+  workflow_call:
+    secrets:
+      heroku_app_name:
+        description: 'The app name to use in Heroku'
+        required: true
+
+      heroku_api_key:
+        description: 'The API key for authenticating to Heroku'
+        required: true
+
+jobs:
+  deploy:
+    name: Import to Heroku
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Import puzzles and teams
+      env:
+        HEROKU_API_KEY: ${{ secrets.heroku_api_key }}
+      run: heroku run --app ${{ secrets.heroku_app_name }} bash ./bin/import-all.sh
+
+    # Don't do this for the real hunt of course, but we can keep the staging and
+    # public hunt always launched for now.
+    - name: Launch hunt
+      env:
+        HEROKU_API_KEY: ${{ secrets.heroku_api_key }}
+      run: heroku run --app ${{ secrets.heroku_app_name }} bash ./bin/launch-hunt.sh

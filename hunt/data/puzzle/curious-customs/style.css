@@ -1,0 +1,24 @@
+table.cyan,
+table.grid td.cyan {
+  background-color:#00FFFF;
+  color-adjust:exact;
+  -webkit-print-color-adjust:exact;
+}
+table.yellow,
+table.grid td.yellow {
+  background-color:#FFFF00;
+  color-adjust:exact;
+  -webkit-print-color-adjust:exact;
+}
+table.gray,
+table.grid td.gray {
+  background-color:#EFEFEF;
+  color-adjust:exact;
+  -webkit-print-color-adjust:exact;
+}
+table.blue,
+table.grid td.blue {
+  background-color:#C9DAF8;
+  color-adjust:exact;
+  -webkit-print-color-adjust:exact;
+}

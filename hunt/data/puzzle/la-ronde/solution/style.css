@@ -1,0 +1,33 @@
+.highlighted-square { background-color: #F7DC6F; }
+
+table.crossword td,
+table.crossword th {
+  box-sizing: border-box;
+  height: 30px;
+  position: relative;
+  text-align: center;
+  width: 30px;
+  min-width: 30px;
+}
+
+@media print {
+table.grid th, table.grid td {
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+    }
+}
+
+.green { background-color: #00FF00;}
+.light-red { background-color: #F4CCCC;}
+.light-yellow { background-color: #FFF2CC;}
+.melon { background-color: #D8EAD3;}
+.sky { background-color: #C8DAF9;}
+.mid-green { background-color: #B7D7A8;}
+.goldenrod { background-color: #C27BA1;}
+.mauve { background-color: #D5A6BD;}
+.cornflower { background-color: #A4C2F4;}
+.yellow { background-color: #FFFF04;}
+.clay { background-color: #E06666;}

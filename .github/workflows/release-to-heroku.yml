@@ -1,0 +1,48 @@
+name: 'Template: Release to Heroku'
+
+on:
+  workflow_call:
+    secrets:
+      heroku_app_name:
+        description: 'The app name to use in Heroku'
+        required: true
+
+      heroku_api_key:
+        description: 'The API key for authenticating to Heroku'
+        required: true
+
+jobs:
+  release:
+    name: Release to Heroku
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+
+    # Based on https://github.com/AkhileshNS/heroku-deploy/blob/master/index.js.
+    # It seems to be needed for git pushes, which skip checking for the env API
+    # key.
+    - name: Create ~/.netrc
+      run: |
+        cat >~/.netrc <<-EOF
+          machine api.heroku.com
+            login bot@noreply.github.com
+            password ${{ secrets.heroku_api_key }}
+          machine git.heroku.com
+            login bot@noreply.github.com
+            password ${{ secrets.heroku_api_key }}
+        EOF
+
+    - name: Add Remote
+      env:
+        HEROKU_API_KEY: ${{ secrets.heroku_api_key }}
+      run: heroku git:remote --app ${{ secrets.heroku_app_name }}
+
+    - name: Push to Heroku
+      env:
+        HEROKU_API_KEY: ${{ secrets.heroku_api_key }}
+      # Needed for LFS support.
+      # https://github.com/raxod502/heroku-buildpack-git-lfs
+      run: git push heroku main:refs/heads/main --no-verify

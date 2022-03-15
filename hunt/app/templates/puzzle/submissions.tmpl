@@ -1,0 +1,121 @@
+{% extends "hunt/layout.tmpl" %}
+{% load humanize static timedelta %}
+
+{% block title %}Submit Answer: {{ puzzle.name | safe }}{% endblock %}
+
+{% block stylesheets %}
+<link rel="stylesheet" type="text/css" href="{% static 'stylesheets/embed.css' %}?v=1">
+<link rel="stylesheet" type="text/css" href="{% static 'stylesheets/submit.css' %}">
+{% endblock stylesheets %}
+
+{% block content %}
+<main id="main-content" class="answer">
+  {% if not solved and not time_left and allow_guessing %}
+  <form method="POST">
+    {% csrf_token %}
+    <label >
+    {% if label %}
+      <span>{{ label }}</span>
+    {% endif %}
+    <input type="text" name="answer" autocomplete="off" required>
+    </label>
+    <input type="submit" value="Answer">
+  </form>
+  {# Progress will only be set if the puzzle has multiple answers.#}
+  {% if progress and progress.0 > 0 %}
+    <div class="progress">{{progress.0}}/{{progress.1}} answers found.</div>
+  {% endif %}
+  {% endif %}
+
+  {% if response.message or time_left %}
+  <div class="response">
+    {% if response.message %}
+    <span class="{{ response.status }}">{{ response.message|safe }}</span>
+    {% else %}
+      {% if lock_out_message %}
+        {{ lock_out_message }} Try again after {{ time_left|natural_timedelta }}.
+      {% else %}
+        You're guessing too fast! Try again after {{ time_left|natural_timedelta }}.
+      {% endif %}
+    {% endif %}
+  </div>
+  {% endif %}
+
+  {% if answers %}
+  {% if not is_minipuzzle or not solved and allow_guessing %}
+  <table class="past_answers">
+    <colgroup>
+      <col width="20%">
+      <col width="70%">
+      <col width="10%">
+    </colgroup>
+    {% for row in answers %}
+    <tr>
+      <td>{{ row.update_time|naturaltime }}</td>
+      {% if row.message %}
+        <td colspan="2">
+          <span class="answer">{{row.answer.disp}}</span>:
+          <span class="answer-response {{row.status}}" >{{row.message|safe}}</span>
+        </td>
+      {% else %}
+        <td class="answer">{{ row.answer.disp }}</td>
+        {% if row.correct %}
+          <td class="correct">Correct!</td>
+        {% else %}
+          <td class="incorrect">Incorrect</td>
+        {% endif %}
+      {% endif %}
+    </tr>
+    {% endfor %}
+  </table>
+  {% endif %}
+  {% endif %}
+
+  {% if solved and is_minipuzzle %}
+  <div class="puzzle-win banner">
+    {% if message %}
+    <span>Correct! <span class="answer">{{ answer }}</span> {{ message }}</span>
+    {% else %}
+    <span>Congratulations! The answer is <span class="answer">{{ answer }}</span>.</span>
+    {% endif %}
+  </div>
+  {% endif %}
+  {% if is_minipuzzle and not allow_guessing and team.is_public %}
+  <div class="notice banner">
+    <span>When you win the game, you received the answer <span class="answer-display spoiler-display">{{ correct_answer }}</span>.</span>
+  </div>
+  {% endif %}
+</main>
+{% endblock content %}
+
+{% block scripts %}
+<script type="text/javascript">
+function updateFrameSize() {
+  if (frameElement) {
+    frameElement.style.height = document.body.offsetHeight + 'px';
+  }
+}
+updateFrameSize();
+window.addEventListener('load', updateFrameSize);
+
+var form = document.querySelector('form');
+if (form) {
+  form.addEventListener('submit', function() {
+    var submit = document.querySelector('input[type="submit"]');
+    submit.disabled = true;
+    submit.value = 'Submitting…';
+  });
+}
+{% if solve_sound_url %}
+if (parent && parent.playSolveSound) {
+  parent.playSolveSound('{{ solve_sound_url|escapejs }}');
+}
+{% endif %}
+{% if bonus_content %}
+if (parent && parent.document.querySelector) {
+  const bonusContentContainer = parent.document.querySelector('.bonus-puzzle-container');
+  bonusContentContainer.innerHTML = '{{ bonus_content.html|escapejs }}';
+}
+{% endif %}
+</script>
+{% endblock scripts %}

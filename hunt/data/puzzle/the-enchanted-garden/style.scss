@@ -1,0 +1,22 @@
+.garden {
+    img {
+        max-width: 100%;
+    }
+
+    &.prefer-2-col > * {
+        flex-basis: 48%;
+    }
+
+    .vines {
+        padding: 0 0 0 1em;
+
+        li {
+            margin: 0;
+        }
+    }
+}
+
+.note-to-solvers {
+    font-style: italic;
+    font-size: .9em;
+}

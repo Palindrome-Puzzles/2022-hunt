@@ -1,0 +1,51 @@
+{% load static %}
+<p class="errata">Errata as of Saturday, 12:30pm TIMEMIT: the "web" link sent via email should lead to <code>https://www.bookspace.world/puzzle/tech-support/help</code>, not <code>https://www.bookspace.world/puzzle/tech-support/web</code>. This has been corrected for emails sent after 12:30pm TIMEMIT.</p>
+<div id="alert" class='notice alert alert-success hidden'>
+    Success! You should receive an email shortly. Please check your email inbox (and maybe your junk/spam for an email from &lt;no-reply+tech-support@mitmh2022.com&gt;).
+</div>
+<p>
+    Looking for tech support? We usually have live support, but we’re a little busy at the moment, so put your email address here, check out our <a href="{% url 'puzzle_tech_support_help' 'tech-support' %}">web page</a>, or our <a href="{% url 'puzzle_tech_support_chat' 'tech-support' %}">chat bot</a>, and I’m sure we can get you what you need.
+</p>
+<div class='form-group'>
+    <p><label for="email">Email: </label><input class='form-control' id='email' name='email' type="email" required></p>
+    <input id='reset' type="submit" onClick="reset();" value="Request assistance">
+</div>
+<script type="module">
+    import Cookies from "{% static 'lib/js-cookie.module.min.js' %}";
+    const CSRF_TOKEN = Cookies.get('csrftoken');
+    window.reset = reset;
+    window.puzzleOnLoad = puzzleOnLoad;
+
+    function puzzleOnLoad() {
+        $("#email").on('keyup', function(event){
+            if (event.keyCode === 13) {
+                event.preventDefault();
+                reset();
+            }
+        });
+    }
+
+    function handleresponse(data){
+        if (data.success) {
+            $("#reset").attr("disabled", false);
+            $("#alert").removeClass("hidden");
+        }
+    }
+
+    function reset(){
+        $("#alert").addClass("hidden");
+        $("#reset").attr("disabled", true);
+        $.ajax({
+            type: "POST",
+            url:"./reset",
+            data:{
+                'email': $("#email").val()
+            },
+            headers:{
+                "X-CSRFToken": Cookies.get("csrftoken")
+            },
+            success:handleresponse
+        })
+        return false;
+    }
+</script>

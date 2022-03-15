@@ -1,0 +1,75 @@
+{% load hosts %}
+
+<section>
+  <h2 id="faq-section">Frequently Asked Questions</h2>
+
+  <h3>Huh? What is this?</h3>
+  <p>This is the site for registering for the 2022 MIT Mystery Hunt! To learn more about the background and history of the MIT Mystery Hunt, see its <a href="https://www.mit.edu/~puzzle/" target="_blank" rel="noopener noreferrer">official site here</a>.</p>
+
+  <h3>When and where will the hunt take place?</h3>
+  <p>Due to continued concerns about COVID-19, the 2022 Mystery Hunt will once again be held remotely, and not on MIT’s campus. It will begin at <a href="https://www.timeanddate.com/worldclock/fixedtime.html?msg=MIT+Mystery+Hunt+2022&iso=20220114T12&p1=43" rel="nofollow noopener noreferrer" target="_blank">12:00 p.m. TIMEMIT on Friday, January 14th, 2022</a>. Wrap-up will take place at <a href="https://www.timeanddate.com/worldclock/fixedtime.html?msg=Mystery+Hunt+2022+Wrap-up&iso=20220117T12&p1=43" rel="nofollow noopener noreferrer" target="_blank">12:00 p.m. TIMEMIT on Monday, January 17th, 2022</a>.</p>
+
+  <h3>TIMEMIT?</h3>
+  <p>As in, the time zone that MIT is in. Which is to say, Eastern. Look, we’re called Palindrome and TIMEMIT was just sitting there.</p>
+
+  <h3>Is there a deadline to register?</h3>
+  <p>We ask that teams register by December 20. The final deadline to register is Monday, January 10, but teams registering that late will not have time to receive the physical components that will accompany certain Hunt puzzles.</p>
+
+  <h3>Can you help me find a team to join?</h3>
+  <p>We would be happy to. Please fill out <a href="{% url 'register_solver' %}">this form</a> and we will try to help you find a team.</p>
+
+  <h3>If Mystery Hunt is virtual, does that mean we shouldn’t come to the MIT campus?</h3>
+  <p>Right. Those who are not already a part of the MIT community should experience the hunt from home. We recommend as well that people on campus not gather in large numbers. You will be able to fully enjoy the Hunt from any location with Internet access.</p>
+
+  <h3>Will you have tips to help our team with online collaboration?</h3>
+  <p>Yes! Last year's running team, ✈️✈️✈️ Galactic Trendsetters ✈️✈️✈️, will run an online workshop at <a href="https://www.timeanddate.com/worldclock/fixedtime.html?msg=Remote+Collaboration+Workshop+for+MIT+Mystery+Hunt+2022&iso=20220108T19&p1=43" rel="nofollow noopener noreferrer" target="_blank">7:00 p.m. TIMEMIT on Saturday, January 8th 2022</a>, with a special focus on remote collaboration tools. We'll post a link to a recording of that event after it happens. If you don’t want to wait that long, you could always watch the previous workshop by Left Out, which you can find <a href="https://www.youtube.com/channel/UCiZ33i0gQ0i0Nydh6XkaGBQ" rel="noopener noreferrer" target="_blank">here</a>.</p>
+
+  <h3>Is the object of the hunt still to find a coin somewhere on campus?</h3>
+  <p>Yes.</p>
+
+  <h3>How will that work if the hunt itself is not on campus?</h3>
+  <p>You’ll see.</p>
+
+  <h3>What does the winning team get?</h3>
+  <p>Honor, glory, and the responsibility to create and run the 2023 Mystery Hunt.</p>
+
+  <h3>Will there be any Mystery Hunt merchandise?</h3>
+  <p>Yes! Teams who register on time will hear from us so we can arrange for them to receive physical elements they’ll need for certain puzzles. There will also be an official T-shirt, of course.</p>
+
+  <h3>Are there any team size restrictions?</h3>
+  <p>No. You may register a team of any size. We believe we have designed a Hunt that can be completed by a team of 75 by Sunday night, but we're working to make the event an amazing experience for both small and large teams.</p>
+
+  <h3>Is this event still related to MIT?</h3>
+  <p>Of course! This is the MIT Mystery Hunt, organized through MIT Puzzle Club, and there will be plenty of MIT-specific and Boston-specific content. Familiarity with MIT and the surrounding area will help you succeed in the hunt, and MIT students are especially encouraged to participate!</p>
+
+  <h3>Do I need to be affiliated with MIT to participate?</h3>
+  <p>No. Everyone who likes puzzles will enjoy the hunt, and we invite them to participate! However, teams who expect to be competitive are encouraged to have current MIT students on their team—especially since the writing team must have students on it.</p>
+
+  <h3>How can I support the MIT Mystery Hunt?</h3>
+  <p>Registration for Mystery Hunt is free, but there are a number of ways you can help support us. In particular, if you would like to donate to the MIT Mystery Hunt fund, you can go to <a href="https://giving.mit.edu/form?fundId=2720842" target="_blank" rel="noopener noreferrer">MIT Giving</a> and click on the “give” button next to “Mystery Hunt”.</p>
+
+  {% if rd0_released %}
+  <h3>What was that noise?</h3>
+  <p>Oh, it's probably <a href="https://www.youtube.com/watch?v=glOx2eVTpFo" target="_blank" rel="nofollow noopener noreferrer">just the rats</a>.</p>
+
+  <h3>WHAT RATS?</h3>
+  <p>More information is available at <a href="{% host_url 'index' host 'site-1' %}" target="_blank">www.starrats.org</a></p>
+  {% endif %}
+
+  <h3>I have questions not answered in this FAQ!</h3>
+  <p>In that case, e-mail us at <a href="mailto:puzzle@mit.edu" target="_blank">puzzle@mit.edu</a>.</p>
+
+  <h3>Is anything on this page a puzzle?</h3>
+  {% if has_this_is_now_a_puzzle_access %}
+  <p>Please don't solve my masters’ project. 6* 3 1 6<br>
+    A feeder about the Roman Goddess of Night 4 2 3*, 1 6<br>
+  A feeder about a type of bug. 4 2 3*, 1 6<br>
+  … then what is it? 4, 2* 3 1 6<br>
+  A feeder about a Valve game. 4 2 4* 6<br>
+  … is instead a red herring. 4, 2* 3 1 6<br>
+  Make a feeder into a baby! 4 2 "3* 1 6"<br>
+  A feeder about the Turner who led a rebellion. 4 2 3*, 1 6</p>
+  {% else %}
+  <p>No.</p>
+  {% endif %}
+</section>

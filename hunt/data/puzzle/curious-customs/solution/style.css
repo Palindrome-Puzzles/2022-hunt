@@ -1,0 +1,23 @@
+table.barred td.magenta {
+  background-color:#FF00FF;
+  color-adjust:exact;
+}
+table.barred td.cyan {
+  background-color:#00FFFF;
+  color-adjust:exact;
+}
+table.barred td.yellow {
+  background-color:#FFFF00;
+  color-adjust:exact;
+}
+table.barred td.gray {
+  background-color:#EFEFEF;
+  color-adjust:exact;
+}
+table.barred td.blue {
+  background-color:#C9DAF8;
+  color-adjust:exact;
+}
+table.borderless {
+  border: none;
+}

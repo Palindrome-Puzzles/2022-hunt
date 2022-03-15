@@ -1,0 +1,29 @@
+{% load assets puzzles static %}
+
+<style>
+.tollbooth-reward .reward img {
+  height: auto;
+  margin: 1em;
+  max-width: 290px;
+  min-width: 150px;
+  width: 100%;
+}
+</style>
+
+{% if is_autopilot %}
+<p class="notice"><a href="{% url 'story' %}#tock_6">Watch this video</a> to bring your LITCOIN back to Tock.</p>
+{% else %}
+<p class="notice"><a href="{% url 'story' %}#tock_6">Watch this video</a> to bring your LITCOIN back to Tock, then check your email.</p>
+{% endif %}
+<hr>
+{% if completed_interactions|has_interaction:'endgame' %}
+<div class="tollbooth-reward reward-wrapper can-reduce-animation">
+{% if not showing_all %}<div class="not-a-puzzle-badge">Not a puzzle</div>{% endif %}
+<p class="caption">Congratulations! You've restored Bookspace and returned to MIT safely!</p>
+<div class="reward">
+  <a href="{{ reward.rd_root }}rewards-OnpMEZtnHN/thankyou.jpg" target="_blank">
+    <img src="{{ reward.rd_root }}rewards-OnpMEZtnHN/thankyou.jpg" alt="MITMH2022 profile pic">
+  </a>
+</div>
+</div>
+{% endif %}

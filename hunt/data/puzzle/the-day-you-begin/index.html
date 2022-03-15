@@ -1,0 +1,30 @@
+{% load static %}
+
+<div class="flavor">
+    Mr. Cueball is excited to meet his new students. He wants to look them up in the database, but the school's website is comically bad.
+</div>
+<!-- NOTE TO SOLVERS: You can feel free to root around this client code, but it's not particularly needed to solve the puzzle. -->
+<div>
+    <label>
+    Enter student first name: &nbsp;
+    <input id="studentName" type="text" />
+    </label>
+    <input id="searchButton" type="submit" value="Search"/>
+    <div id="errorMessage"></div>
+    <br/>
+    <table>
+        <thead>
+            <tr>
+                <th>Student Name</th>
+                <th>Date of Enrollment</th>
+            </tr>
+        </thead>
+        <tbody id="studentData"></tbody>
+    </table>
+</div>
+
+<script type="module">
+    import Cookies from "{% static 'lib/js-cookie.module.min.js' %}";
+    window.getCookie = Cookies.get;
+</script>
+<script type="module" src="search.js"></script>

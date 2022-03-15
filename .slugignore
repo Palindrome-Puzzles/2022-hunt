@@ -1,0 +1,8 @@
+# Prevent sending puzzle files to heroku - they'll be accessed through Google Cloud
+# anyway.
+/hunt/data/puzzle/**/*.mp3
+/hunt/data/puzzle/**/*.wav
+/hunt/data/puzzle/**/*.jpg
+/hunt/data/puzzle/**/*.png
+/hunt/data/round/**/*.jpg
+/hunt/data/round/**/*.png

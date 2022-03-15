@@ -1,0 +1,44 @@
+{% extends "hunt/site_layout.tmpl" %}
+{% load static styles %}
+
+{% block title %}Solution to {{ puzzle_info.puzzle.name|safe }} | {{ block.super }}{% endblock %}
+
+{% block site_stylesheets %}
+{{ round_common_style|wrap_styles|safe }}
+{{ puzzle_solution_style|wrap_styles|safe }}
+{% block extra_stylesheets %}{% endblock %}
+{% endblock site_stylesheets %}
+
+{% block site_scripts %}
+<script src="{% static 'core/puzzle.js' %}" type="module"></script>
+{% block extra_scripts %}{% endblock %}
+{% endblock site_scripts %}
+
+{% block site_content %}
+<main>
+  <header>
+    <h1>Solution to <a href="{% url 'puzzle_view' puzzle_info.puzzle.url %}">{{ puzzle_info.puzzle.name }}</a></h1>
+    {% block wordmark %}{% endblock %}
+  </header>
+
+  <div class="paper-edge top"></div>
+  <div class="puzzle-actions">
+    <p>
+      Answer: <span class="answer spoiler">{{ puzzle_info.puzzle.answer }}</span>
+      {% for credit in credits %}
+        <br>
+        {{ credit|safe }}
+      {% endfor %}
+    </p>
+  </div>
+  <div class="paper-edge bottom"></div>
+
+  <div class="paper-edge top"></div>
+  <section id="main-content" class="content puzzle">
+    <!-- Puzzle content begins here -->
+    {{ puzzle_solution_html|safe }}
+    <!-- Puzzle content ends here -->
+  </section>
+  <div class="paper-edge bottom"></div>
+</main>
+{% endblock site_content %}

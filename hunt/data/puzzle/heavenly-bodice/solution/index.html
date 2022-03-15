@@ -1,0 +1,507 @@
+<p>The instructions describe two Star Battle grids, which when assembled and solved look like this:</p>
+
+<section class="grids">
+	<div class="left-grid">
+		<table class="grid crossword barred">
+			<tr>
+				<td class="barred-top--first-row barred-left--first-col"></td>
+				<td class="barred-top--first-row barred-right"></td>
+				<td class="barred-top--first-row barred-bottom"></td>
+				<td class="barred-top--first-row">⭐</td>
+				<td class="barred-top--first-row barred-bottom"></td>
+				<td class="barred-top--first-row barred-bottom">⭐</td>
+				<td class="barred-top--first-row barred-right barred-bottom"></td>
+				<td class="barred-top--first-row"></td>
+				<td class="barred-top--first-row barred-right barred-bottom"></td>
+				<td class="barred-top--first-row barred-right"></td>
+			</tr>
+			<tr>
+				<td class="barred-left--first-col">⭐</td>
+				<td></td>
+				<td class="barred-right barred-bottom"></td>
+				<td class="barred-right barred-bottom"></td>
+				<td></td>
+				<td class="barred-bottom"></td>
+				<td class="barred-bottom"></td>
+				<td class="barred-right barred-bottom">⭐</td>
+				<td></td>
+				<td class="barred-right"></td>
+			</tr>
+			<tr>
+				<td class="barred-left--first-col"></td>
+				<td class="barred-right barred-bottom"></td>
+				<td></td>
+				<td class="barred-right">⭐</td>
+				<td class="barred-right"></td>
+				<td class="barred-bottom"></td>
+				<td></td>
+				<td class="barred-bottom"></td>
+				<td class="barred-bottom"></td>
+				<td class="barred-right barred-bottom">⭐</td>
+			</tr>
+			<tr>
+				<td class="barred-left--first-col barred-right"></td>
+				<td class="barred-bottom">⭐</td>
+				<td class="barred-bottom"></td>
+				<td class="barred-bottom barred-right"></td>
+				<td class="barred-bottom"></td>
+				<td class="barred-right barred-bottom">⭐</td>
+				<td class="barred-right"></td>
+				<td class="barred-bottom"></td>
+				<td class="barred-bottom"></td>
+				<td class="barred-right"></td>
+			</tr>
+			<tr>
+				<td class="barred-left--first-col"></td>
+				<td class="barred-bottom"></td>
+				<td></td>
+				<td class="barred-bottom"></td>
+				<td class="barred-bottom"></td>
+				<td></td>
+				<td class="barred-right"></td>
+				<td>⭐</td>
+				<td class="barred-right"></td>
+				<td class="barred-right">⭐</td>
+			</tr>
+			<tr>
+				<td class="barred-left--first-col barred-right barred-bottom"></td>
+				<td class="barred-right">⭐</td>
+				<td class="barred-right barred-bottom"></td>
+				<td class="barred-right"></td>
+				<td class="barred-right">⭐</td>
+				<td class="barred-bottom"></td>
+				<td class="barred-right barred-bottom"></td>
+				<td></td>
+				<td class="barred-right"></td>
+				<td class="barred-right"></td>
+			</tr>
+			<tr>
+				<td class="barred-left--first-col barred-bottom"></td>
+				<td></td>
+				<td></td>
+				<td class="barred-right barred-bottom"></td>
+				<td class="barred-bottom"></td>
+				<td class="barred-bottom"></td>
+				<td class="barred-right barred-bottom">⭐</td>
+				<td></td>
+				<td class="barred-right barred-bottom">⭐</td>
+				<td class="barred-right"></td>
+			</tr>
+			<tr>
+				<td class="barred-left--first-col barred-right">⭐</td>
+				<td class="barred-bottom"></td>
+				<td class="barred-right barred-bottom">⭐</td>
+				<td></td>
+				<td class="barred-right"></td>
+				<td></td>
+				<td class="barred-right"></td>
+				<td class="barred-right barred-bottom"></td>
+				<td></td>
+				<td class="barred-right"></td>
+			</tr>
+			<tr>
+				<td class="barred-left--first-col"></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td class="barred-right barred-bottom"></td>
+				<td></td>
+				<td class="barred-right">⭐</td>
+				<td></td>
+				<td>⭐</td>
+				<td class="barred-right"></td>
+			</tr>
+			<tr>
+				<td class="barred-left--first-col barred-bottom"></td>
+				<td class="barred-bottom"></td>
+				<td class="barred-bottom">⭐</td>
+				<td class="barred-bottom barred-right"></td>
+				<td class="barred-bottom">⭐</td>
+				<td class="barred-bottom"></td>
+				<td class="barred-bottom barred-right"></td>
+				<td class="barred-bottom"></td>
+				<td class="barred-bottom"></td>
+				<td class="barred-right barred-bottom"></td>
+			</tr>
+		</table>
+	</div>
+	<div class="right-grid">
+		<table class="grid crossword barred">
+			<tr>
+				<td class="barred-top--first-row barred-left--first-col"></td>
+				<td class="barred-top--first-row barred-right"></td>
+				<td class="barred-top--first-row"></td>
+				<td class="barred-top--first-row"></td>
+				<td class="barred-top--first-row barred-right"></td>
+				<td class="barred-top--first-row barred-right">⭐</td>
+				<td class="barred-top--first-row"></td>
+				<td class="barred-top--first-row"></td>
+				<td class="barred-top--first-row barred-right barred-bottom"></td>
+				<td class="barred-top--first-row barred-right">⭐</td>
+			</tr>
+			<tr>
+				<td class="barred-left--first-col">⭐</td>
+				<td class="barred-right"></td>
+				<td class="barred-bottom">⭐</td>
+				<td class="barred-bottom"></td>
+				<td class="barred-right"></td>
+				<td class="barred-right"></td>
+				<td></td>
+				<td class="barred-right"></td>
+				<td></td>
+				<td class="barred-right"></td>
+			</tr>
+			<tr>
+				<td class="barred-left--first-col"></td>
+				<td class="barred-right"></td>
+				<td></td>
+				<td class="barred-right"></td>
+				<td class="barred-right barred-bottom">⭐</td>
+				<td class="barred-right"></td>
+				<td></td>
+				<td class="barred-right"></td>
+				<td class="barred-bottom">⭐</td>
+				<td class="barred-right barred-bottom"></td>
+			</tr>
+			<tr>
+				<td class="barred-left--first-col barred-bottom">⭐</td>
+				<td class="barred-bottom barred-right"></td>
+				<td></td>
+				<td class="barred-right"></td>
+				<td></td>
+				<td class="barred-right"></td>
+				<td>⭐</td>
+				<td class="barred-right"></td>
+				<td></td>
+				<td class="barred-right"></td>
+			</tr>
+			<tr>
+				<td class="barred-left--first-col"></td>
+				<td class="barred-right"></td>
+				<td class="barred-bottom">⭐</td>
+				<td class="barred-right"></td>
+				<td class="barred-bottom">⭐</td>
+				<td class="barred-right barred-bottom"></td>
+				<td></td>
+				<td class="barred-right"></td>
+				<td></td>
+				<td class="barred-right"></td>
+			</tr>
+			<tr>
+				<td class="barred-left--first-col"></td>
+				<td></td>
+				<td class="barred-right"></td>
+				<td class="barred-bottom"></td>
+				<td class="barred-right"></td>
+				<td></td>
+				<td>⭐</td>
+				<td class="barred-bottom barred-right"></td>
+				<td>⭐</td>
+				<td class="barred-right"></td>
+			</tr>
+			<tr>
+				<td class="barred-left--first-col barred-bottom"></td>
+				<td>⭐</td>
+				<td></td>
+				<td class="barred-right">⭐</td>
+				<td class="barred-right"></td>
+				<td class="barred-bottom"></td>
+				<td class="barred-right barred-bottom"></td>
+				<td></td>
+				<td></td>
+				<td class="barred-right"></td>
+			</tr>
+			<tr>
+				<td class="barred-left--first-col barred-right"></td>
+				<td class="barred-bottom"></td>
+				<td class="barred-bottom"></td>
+				<td class="barred-right barred-bottom"></td>
+				<td></td>
+				<td class="barred-right">⭐</td>
+				<td class="barred-right"></td>
+				<td class="barred-bottom">⭐</td>
+				<td class="barred-bottom"></td>
+				<td class="barred-right barred-bottom"></td>
+			</tr>
+			<tr>
+				<td class="barred-left--first-col"></td>
+				<td>⭐</td>
+				<td class="barred-right"></td>
+				<td class="barred-bottom"></td>
+				<td class="barred-bottom"></td>
+				<td class="barred-right"></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td class="barred-right">⭐</td>
+			</tr>
+			<tr>
+				<td class="barred-left--first-col barred-bottom"></td>
+				<td class="barred-bottom"></td>
+				<td class="barred-bottom"></td>
+				<td class="barred-bottom">⭐</td>
+				<td class="barred-bottom barred-right"></td>
+				<td class="barred-bottom barred-right"></td>
+				<td class="barred-bottom"></td>
+				<td class="barred-bottom">⭐</td>
+				<td class="barred-bottom"></td>
+				<td class="barred-right barred-bottom"></td>
+			</tr>
+		</table>
+	</div>
+</section>
+
+<p>The instructions further describe two "gapped" 10x10 crossword grids, which when solved look like this:</p>
+
+<section class="grids">
+	<div class="left-grid">
+		<table class="grid crossword">
+			<tr>
+				<td class="filled"></td>
+				<td class="filled"></td>
+				<td class="filled"></td>
+				<td class="highlighted-square">S</td>
+				<td>U</td>
+				<td class="highlighted-square">P</td>
+				<td>P</td>
+				<td class="filled"></td>
+				<td class="filled"></td>
+				<td class="filled"></td>
+			</tr>
+			<tr>
+				<td class="highlighted-square">A</td>
+				<td>S</td>
+				<td class="filled"></td>
+				<td>T</td>
+				<td class="filled"></td>
+				<td class="filled"></td>
+				<td class="filled"></td>
+				<td class="highlighted-square">R</td>
+				<td>O</td>
+				<td class="filled"></td>
+			</tr>
+			<tr>
+				<td class="filled"></td>
+				<td>H</td>
+				<td>A</td>
+				<td class="highlighted-square"></td>
+				<td>B</td>
+				<td>O</td>
+				<td class="filled"></td>
+				<td>O</td>
+				<td class="filled"></td>
+				<td class="highlighted-square">B</td>
+			</tr>
+			<tr>
+				<td class="filled"></td>
+				<td class="highlighted-square">A</td>
+				<td class="filled"></td>
+				<td>R</td>
+				<td class="filled"></td>
+				<td class="highlighted-square">T</td>
+				<td>I</td>
+				<td class="filled"></td>
+				<td>L</td>
+				<td>Y</td>
+			</tr>
+			<tr>
+				<td>S</td>
+				<td class="filled"></td>
+				<td class="filled"></td>
+				<td>A</td>
+				<td>I</td>
+				<td class="filled"></td>
+				<td>N</td>
+				<td class="highlighted-square">T</td>
+				<td class="filled"></td>
+				<td class="highlighted-square"></td>
+			</tr>
+			<tr>
+				<td>T</td>
+				<td class="highlighted-square">H</td>
+				<td class="filled"></td>
+				<td>N</td>
+				<td class="highlighted-square">E</td>
+				<td class="filled"></td>
+				<td>E</td>
+				<td class="filled"></td>
+				<td>D</td>
+				<td class="filled"></td>
+			</tr>
+			<tr>
+				<td class="filled"></td>
+				<td class="filled"></td>
+				<td>W</td>
+				<td class="filled"></td>
+				<td class="filled"></td>
+				<td class="filled"></td>
+				<td class="highlighted-square">A</td>
+				<td>S</td>
+				<td class="highlighted-square">T</td>
+				<td>E</td>
+			</tr>
+			<tr>
+				<td class="highlighted-square"></td>
+				<td>S</td>
+				<td class="highlighted-square">A</td>
+				<td class="filled"></td>
+				<td>T</td>
+				<td>T</td>
+				<td class="filled"></td>
+				<td class="filled"></td>
+				<td>A</td>
+				<td>R</td>
+			</tr>
+			<tr>
+				<td>I</td>
+				<td class="filled"></td>
+				<td class="filled"></td>
+				<td>D</td>
+				<td>Y</td>
+				<td class="filled"></td>
+				<td class="highlighted-square">L</td>
+				<td class="filled"></td>
+				<td class="highlighted-square">L</td>
+				<td class="filled"></td>
+			</tr>
+			<tr>
+				<td class="filled"></td>
+				<td class="filled"></td>
+				<td class="highlighted-square">Y</td>
+				<td class="filled"></td>
+				<td class="highlighted-square"></td>
+				<td>A</td>
+				<td class="filled"></td>
+				<td class="filled"></td>
+				<td>K</td>
+				<td>S</td>
+			</tr>
+		</table>
+	</div>
+	<div class="right-grid">
+		<table class="grid crossword barred">
+			<tr>
+				<td class="filled"></td>
+				<td>B</td>
+				<td>R</td>
+				<td>I</td>
+				<td>G</td>
+				<td class="highlighted-square"></td>
+				<td>H</td>
+				<td>T</td>
+				<td class="filled"></td>
+				<td class="highlighted-square"></td>
+			</tr>
+			<tr>
+				<td class="highlighted-square">B</td>
+				<td>E</td>
+				<td class="highlighted-square">E</td>
+				<td>T</td>
+				<td class="filled"></td>
+				<td>L</td>
+				<td>E</td>
+				<td class="filled"></td>
+				<td class="filled"></td>
+				<td>S</td>
+			</tr>
+			<tr>
+				<td>T</td>
+				<td class="filled"></td>
+				<td class="filled"></td>
+				<td>R</td>
+				<td class="highlighted-square">A</td>
+				<td class="filled"></td>
+				<td class="filled"></td>
+				<td class="filled"></td>
+				<td class="highlighted-square">C</td>
+				<td>T</td>
+			</tr>
+			<tr>
+				<td class="highlighted-square">H</td>
+				<td>U</td>
+				<td class="filled"></td>
+				<td class="filled"></td>
+				<td>B</td>
+				<td class="filled"></td>
+				<td class="highlighted-square">E</td>
+				<td>R</td>
+				<td class="filled"></td>
+				<td class="filled"></td>
+			</tr>
+			<tr>
+				<td class="filled"></td>
+				<td class="filled"></td>
+				<td class="highlighted-square">S</td>
+				<td class="filled"></td>
+				<td class="highlighted-square"></td>
+				<td>E</td>
+				<td>L</td>
+				<td class="filled"></td>
+				<td>A</td>
+				<td class="filled"></td>
+			</tr>
+			<tr>
+				<td>R</td>
+				<td class="filled"></td>
+				<td>E</td>
+				<td class="filled"></td>
+				<td>B</td>
+				<td>A</td>
+				<td class="highlighted-square"></td>
+				<td>I</td>
+				<td class="highlighted-square">T</td>
+				<td class="filled"></td>
+			</tr>
+			<tr>
+				<td>E</td>
+				<td class="highlighted-square">R</td>
+				<td>A</td>
+				<td class="highlighted-square">Y</td>
+				<td class="filled"></td>
+				<td class="filled"></td>
+				<td>E</td>
+				<td>S</td>
+				<td class="filled"></td>
+				<td class="filled"></td>
+			</tr>
+			<tr>
+				<td>E</td>
+				<td>R</td>
+				<td class="filled"></td>
+				<td class="filled"></td>
+				<td>E</td>
+				<td class="highlighted-square">S</td>
+				<td class="filled"></td>
+				<td class="highlighted-square">T</td>
+				<td class="filled"></td>
+				<td>U</td>
+			</tr>
+			<tr>
+				<td class="filled"></td>
+				<td class="highlighted-square">E</td>
+				<td>T</td>
+				<td class="filled"></td>
+				<td class="filled"></td>
+				<td>H</td>
+				<td class="filled"></td>
+				<td>E</td>
+				<td class="filled"></td>
+				<td class="highlighted-square">R</td>
+			</tr>
+			<tr>
+				<td class="filled"></td>
+				<td class="filled"></td>
+				<td class="filled"></td>
+				<td class="highlighted-square"></td>
+				<td>D</td>
+				<td class="filled"></td>
+				<td>R</td>
+				<td class="highlighted-square"></td>
+				<td>A</td>
+				<td>M</td>
+			</tr>
+		</table>
+	</div>
+</section>
+
+<p>The shaded squares represent the locations of the stars from the respective Star Battles, to give the answer words: <span class="answer">SPAR</span>, <span class="answer">BATT</span>, <span class="answer">HEAT</span>, <span class="answer">ALLY</span>, <span class="answer">BEACHES</span>, and <span class="answer">TRYSTER</span></p>

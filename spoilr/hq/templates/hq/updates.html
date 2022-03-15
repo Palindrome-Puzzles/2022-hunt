@@ -1,0 +1,70 @@
+{% extends "hq/layout.tmpl" %}
+{% load spacelesser static %}
+{% load tz %}
+
+{% block heading %}Updates from HQ{% endblock %}
+
+{% block stylesheets %}
+<style>
+body {
+  font: 10pt Verdana;
+}
+
+table {
+  border-collapse: collapse;
+  margin-top: 1em;
+}
+
+td, th {
+  padding: 2px 8px;
+  white-space: nowrap;
+  text-align: left;
+}
+</style>
+{% endblock %}
+
+{% block breadcrumb %}{% endblock %}
+
+{% block content %}
+<form method="POST">
+  <input type="submit" value="Publish selected updates"> (<a href="{% url 'admin:spoilr_hqupdate_add' %}">New</a>)
+  {% csrf_token %}
+  <table>
+    <tr>
+      <th>Publish this</th>
+      <th>Subject</th>
+      <th>Team</th>
+      <th>Puzzle</th>
+      <th>Last modified</th>
+      <th>Edit</th>
+    </tr>
+    {% for update in updates %}
+    <tr>
+      <td>
+        {% if update.published %}
+        Published
+        at {{ update.publish_time|localtime }}
+        {% else %}
+        <input type="checkbox" name="update_ids" value="{{ update.id }}">
+        {% endif %}
+      </td>
+      <td>{{ update.subject }}</td>
+      {% if update.team %}
+      <td>{{ update.team.name }}</td>
+      {% else %}
+      <td></td>
+      {% endif %}
+      {% if update.puzzle %}
+      <td>{{ update.puzzle.name }}</td>
+      {% else %}
+      <td></td>
+      {% endif %}
+      <td>{{ update.modification_time|localtime }}</td>
+      <td>
+        <a href="{% url 'admin:spoilr_hqupdate_change' update.id %}">Edit</a>
+      </td>
+    </tr>
+    {% endfor %}
+  </table>
+</form>
+{% endblock %}

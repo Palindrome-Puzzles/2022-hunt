@@ -1,0 +1,16 @@
+{% load assets %}
+
+<div class="map">
+  {% for sticker in sticker_info.stickers %}
+  <div class="sticker{% for class in sticker.classes %} {{ class }}{% endfor %}{% if not sticker.link and not sticker.puzzle %} sticker-content{% endif %} {{ sticker.solved|yesno:"solved," }}">
+    {% if sticker.link or sticker.puzzle %}
+    <a href="{% if sticker.puzzle %}{% url 'puzzle_view' sticker.puzzle.url %}{% else %}{{ sticker.link }}{% endif %}" class="sticker-content">
+    {% endif %}
+      <img src="{% rd 'images/' %}{{ sticker.image }}.png" alt="" aria-hidden="true">
+      {% if sticker.label or sticker.puzzle %}<span class="caption">{% if sticker.label %}{{ sticker.label }}{% elif sticker.puzzle %}{{ sticker.puzzle.name }}{% endif %}</span>{% endif %}
+    {% if sticker.link or sticker.puzzle %}
+    </a>
+    {% endif %}
+  </div>
+  {% endfor %}
+</div>

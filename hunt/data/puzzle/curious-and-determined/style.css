@@ -1,0 +1,13 @@
+#main-content .intro {
+    font-style: italic;
+}
+
+#main-content section {
+    border-top: 1px solid #333;
+    padding: 0 0;
+}
+
+#main-content .first {
+    border: none;
+    padding-top: 0;
+}

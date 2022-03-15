@@ -1,0 +1,39 @@
+.centered {
+    text-align: center;
+}
+
+.hieroglyphs {
+    font-size: x-large;
+}
+
+.blanks {
+    font-size: small;
+}
+
+.only-connect {
+    background-color: darkblue;
+    color: white;
+    text-align: center;
+}
+
+.large-glyphs {
+    font-size: xx-large;
+}
+
+.wall {
+    min-width: 942px;
+}
+
+.wallrow {
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.walltile {
+    padding: 3px;
+    display: flex;
+    flex-grow: 0;
+    overflow: hidden;
+    height:82px;
+}

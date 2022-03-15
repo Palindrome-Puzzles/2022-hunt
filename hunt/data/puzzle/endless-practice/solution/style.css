@@ -1,0 +1,64 @@
+hr {
+    margin-top: 54px;
+}
+
+.equation {
+    display: block;
+    max-width: 350px;
+    width: auto;
+    height: auto;
+}
+
+.pp-1 {background-color: red}
+.pp-2 {background-color: coral}
+.pp-3 {background-color: orange}
+.pp-4 {background-color: yellow}
+.pp-5 {background-color: lightgreen}
+.pp-6 {background-color: cyan}
+.pp-7 {background-color: lightblue}
+.pp-8 {background-color: lavender}
+.pp-9 {background-color: violet}
+
+.pp-table{
+    max-width: 500px;
+}
+.pp-table td{
+    font-family: monospace;
+}
+
+.mt-b {
+    color-adjust:exact;
+    -webkit-print-color-adjust: exact;
+    background-color: black;
+    color: white;
+}
+.mt-g {
+    color-adjust:exact;
+    -webkit-print-color-adjust: exact;
+    background-color: gray;
+}
+.mt-o {
+    color-adjust:exact;
+    -webkit-print-color-adjust: exact;
+    background-color:orange;
+}
+.mt-w {
+    color-adjust:exact;
+    -webkit-print-color-adjust: exact;
+    background-color: white;
+}
+
+.solution-image {
+    display: block;
+    max-width: 700px;
+    width: auto;
+    height: auto;
+}
+
+.grid-highlight {
+    background-color: rgb(172, 252, 252);
+}
+
+.us-bold {
+    font-weight: bold;
+}

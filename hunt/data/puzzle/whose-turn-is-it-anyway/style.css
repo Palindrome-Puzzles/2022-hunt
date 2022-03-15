@@ -1,0 +1,46 @@
+.emphasis {
+  font-weight: bold;
+  font-style: italic;
+}
+.reminder {
+  font-style: italic;
+}
+
+#wrapper {
+  max-width: 50em;
+  margin: auto; /* center */
+}
+
+ol.alpha {
+  list-style-type: lower-alpha;
+}
+
+/* Implement instructions as two layer list with number coming from outer list
+   and letter form inner list. */
+ol.instr_outer {
+  counter-reset: instr_num;
+}
+ol.instr_outer > li {
+  counter-increment: instr_num;
+}
+ol.instr_inner {
+  counter-reset: instr_letter;
+}
+ol.instr_inner > li {
+  counter-increment: instr_letter;
+}
+
+ol.instr_outer > li::marker {
+  content: none;
+}
+ol.instr_inner > li::marker {
+  content: counter(instr_num) counter(instr_letter, upper-alpha) "   ";
+  font-weight: bold;
+}
+
+ol.instr_outer > li:not(:last-child) { 
+   margin-bottom: 2em;  
+}
+ol.instr_inner > li:not(:last-child) { 
+   margin-bottom: 0.2em;  
+}

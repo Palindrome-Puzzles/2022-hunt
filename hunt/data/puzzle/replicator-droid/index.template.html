@@ -1,0 +1,123 @@
+<link rel="prefetch" href="images/component-black.png">
+<link rel="prefetch" href="images/component-blue.png">
+<link rel="prefetch" href="images/component-brown.png">
+<link rel="prefetch" href="images/component-gold.png">
+<link rel="prefetch" href="images/component-green.png">
+<link rel="prefetch" href="images/component-grey.png">
+<link rel="prefetch" href="images/component-maroon.png">
+<link rel="prefetch" href="images/component-orange.png">
+<link rel="prefetch" href="images/component-pink.png">
+<link rel="prefetch" href="images/component-purple.png">
+<link rel="prefetch" href="images/component-red.png">
+<link rel="prefetch" href="images/component-turquoise.png">
+<link rel="prefetch" href="images/component-white.png">
+<link rel="prefetch" href="images/component-yellow.png">
+<link rel="prefetch" href="images/recipe-off-1.png">
+<link rel="prefetch" href="images/recipe-off-2.png">
+<link rel="prefetch" href="images/recipe-off-3.png">
+<link rel="prefetch" href="images/recipe-off-4.png">
+<link rel="prefetch" href="images/recipe-off-5.png">
+<link rel="prefetch" href="images/card-off.png">
+
+<div class="disconnected banner no-copy hidden" role="alert">
+    Connection lost.
+    <button type="button">Retry</button>
+</div>
+
+<div class="error banner no-copy hidden" role="alert">
+    Something went wrong. Please contact the hunt team to fix this!
+</div>
+
+<div class="status banner no-copy">
+    <button type="button" disabled>
+        Restart
+    </button>
+</div>
+<div class="container">
+    <div class="log monospace">
+        <div class="message initial">
+            <p>You are a replicator operator droid on board a spaceship. The ship has been damaged by an alien attack, and you are to work towards fixing it by doing your job: operating the equipment replicator in your secure alcove.</p>
+            <p>You have ten replicator cards, all different colors. The replicator will take two cards at a time, and those will instruct it to manufacture machine components. You can then assemble those components into the specialized devices needed for the repair effort.</p>
+            <p>The available device recipes are shown at right.</p>
+            <p>Once a card is used, it cannot be used again.</p>
+        </div>
+    </div>
+
+    <div class="game">
+        <div class="recipes">
+            <button type="button" class="recipe unstyled" data-recipe="1" disabled>
+                <span class="sr-only">
+                    Recipe 1: Red, White and Maroon.
+                    <span class="status">Unavailable</span>
+                </span>
+            </button>
+            <button type="button" class="recipe unstyled" data-recipe="2" disabled>
+                <span class="sr-only">
+                    Recipe 2: Orange, Gold and Turquoise.
+                    <span class="status">Unavailable</span>
+                </span>
+            </button>
+            <button type="button" class="recipe unstyled" data-recipe="3" disabled>
+                <span class="sr-only">
+                    Recipe 3: Yellow and Purple.
+                    <span class="status">Unavailable</span>
+                </span>
+            </button>
+            <button type="button" class="recipe unstyled" data-recipe="4" disabled>
+                <span class="sr-only">
+                    Recipe 4: Green, Blue and Grey.
+                    <span class="status">Unavailable</span>
+                </span>
+            </button>
+            <button type="button" class="recipe unstyled" data-recipe="5" disabled>
+                <span class="sr-only">
+                    Recipe 5: Blue, Pink and Black.
+                    <span class="status">Unavailable</span>
+                </span>
+            </button>
+        </div>
+
+        <div class="cards">
+            <button type="button" class="card unstyled" data-color="red" disabled>
+                <span class="sr-only">Red <span class="status"></span></span>
+            </button>
+             <button type="button" class="card unstyled" data-color="orange" disabled>
+                <span class="sr-only">Orange <span class="status"></span></span>
+            </button>
+            <button type="button" class="card unstyled" data-color="yellow" disabled>
+                <span class="sr-only">Yellow <span class="status"></span></span>
+            </button>
+            <button type="button" class="card unstyled" data-color="green" disabled>
+                <span class="sr-only">Green <span class="status"></span></span>
+            </button>
+            <button type="button" class="card unstyled" data-color="blue" disabled>
+                <span class="sr-only">Blue <span class="status"></span></span>
+             </button>
+            <button type="button" class="card unstyled" data-color="purple" disabled>
+                <span class="sr-only">Purple <span class="status"></span></span>
+            </button>
+            <button type="button" class="card unstyled" data-color="grey" disabled>
+                <span class="sr-only">Grey <span class="status"></span></span>
+            </button> 
+            <button type="button" class="card unstyled" data-color="brown" disabled>
+                <span class="sr-only">Brown <span class="status"></span></span>
+            </button>
+            <button type="button" class="card unstyled" data-color="pink" disabled>
+                <span class="sr-only">Pink <span class="status"></span></span>
+            </button>
+            <button type="button" class="card unstyled" data-color="white" disabled>
+                <span class="sr-only">White <span class="status"></span></span>
+            </button>
+        </div>
+
+        <img src="images/funnel.png" alt="Funnel" class="flavor-image">
+
+        <div class="components"></div>
+
+        <img src="images/conveyor-belt.png" alt="Conveyor belt" class="flavor-image">
+    </div>
+</div>
+
+<button id="clipboard-button" data-skip-inline-styles="true"></button>
+
+<script src="main.ts" type="module"></script>

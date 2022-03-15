@@ -1,0 +1,27 @@
+{% extends "hunt/layout.tmpl" %}
+{% load static %}
+
+{% block title %}Request hint: {{ puzzle.name | safe }}{% endblock %}
+
+{% block stylesheets %}
+<link rel="stylesheet" type="text/css" href="{% static 'stylesheets/embed.css' %}?v=1">
+<link rel="stylesheet" type="text/css" href="{% static 'stylesheets/submit.css' %}">
+{% endblock stylesheets %}
+
+{% block content %}
+<main id="main-content" class="hints">
+  {% include 'puzzle/partials/hints_display.tmpl' %}
+</main>
+{% endblock content %}
+
+{% block scripts %}
+<script type="text/javascript">
+function updateFrameSize() {
+  if (frameElement) {
+    frameElement.style.height = document.body.offsetHeight + 'px';
+  }
+}
+updateFrameSize();
+window.addEventListener('load', updateFrameSize);
+</script>
+{% endblock scripts %}

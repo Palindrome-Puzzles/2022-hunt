@@ -1,0 +1,87 @@
+{% extends "hq/layout.tmpl" %}
+{% load spacelesser static %}
+
+{% block heading %}System Event Log{% endblock %}
+
+{% block stylesheets %}
+<style>
+td, th {
+  font-size: 10px;
+}
+
+tr.puzzle-solved {
+  background-color: #FEF2B9;
+}
+tr.metapuzzle-solved {
+  background-color: #B3F1B0;
+}
+</style>
+{% endblock %}
+
+{% block breadcrumb %}{% endblock %}
+
+{% block content %}
+    <form method="get" class="filters">
+    <h3>Search log</h3>
+    <div class="form-row">
+      <label for="id_puzzle">Puzzle</label>
+      <select name="puzzle" id="id_puzzle">
+        <option value=""{% if not puzzle %} selected{% endif %}>All</option>
+        {% for puzzle_url in puzzles %}
+        <option value="{{ puzzle_url }}"{% if puzzle == puzzle_url %} selected{% endif %}>{{ puzzle_url }}</option>
+        {% endfor %}
+      </select>
+    </div>
+
+    <div class="form-row">
+      <label for="id_team">Team</label>
+      <select name="team" id="id_team">
+        <option value=""{% if not team %} selected{% endif %}>All</option>
+        {% for team_username in teams %}
+        <option value="{{ team_username }}"{% if team == team_username %} selected{% endif %}>{{ team_username }}</option>
+        {% endfor %}
+      </select>
+    </div>
+
+    <div class="form-row">
+      <label for="id_search">Search</label>
+      <input type="text" name="search" id="id_search" maxlength="100" value="{{ search }}">
+    </div>
+
+    <div class="form-row">
+      <label for="id_limit">Limit</label>
+      <select name="limit" id="id_limit">
+        <option value="10"{% if limit == 10 %} selected{% endif %}>10</option>
+        <option value="50"{% if limit == 50 %} selected{% endif %}>50</option>
+        <option value="100"{% if limit == 100 %} selected{% endif %}>100</option>
+        <option value="200"{% if limit == 200 %} selected{% endif %}>200</option>
+        <option value="1000"{% if limit == 1000 %} selected{% endif %}>1000</option>
+      </select>
+    </div>
+
+    <div class="form-row">
+      <input type="submit" value="Update">
+    </div>
+  </form>
+
+    <table id="entries">
+      <thead>
+        <tr>
+          <th>Time</th>
+          <th>Team URL</th>
+          <th width="50%">Message</th>
+          <th>Event Type</th>
+          <th>Object ID</th>
+        </tr>
+      </thead>
+      {% for e in entries %}
+      <tr class="entry {{ e.event_type }}">
+<td>{{ e.timestamp|date:'D H:i:s' }}</td>
+<td>{% if e.team %}{{ e.team.username }}{% endif %}</td>
+<td>{{ e.message|safe }}</td>
+<td>{{ e.event_type }}</td>
+<td>{{ e.object_id }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+{% endblock %}

@@ -1,0 +1,117 @@
+.puzzle-status.banner {
+    background-color: #e2f2b5;
+    &.complete {
+        background-color: #c9fa3f;
+    }
+    &.invalid {
+        background-color: #f2b0b0;
+    }
+}
+
+.game-area {
+    background-color: #e6f4e0;
+    display: flex;
+    padding: 16px;
+}
+
+.board {
+    box-shadow: 8px 8px 8px #253221;
+}
+.board td {
+    background-color: #f3eabd;
+    height: 75px;
+    text-align: center;
+    width: 75px;
+}
+.board td[data-rank="1"] {
+    background-color: #d07987;
+}
+.board td[data-rank="4"] {
+    background-color: #868bd8;
+}
+
+.captures {
+    align-items: center;
+    display: flex;
+    flex-basis: 30%;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+
+    &.p1 {
+        margin-right: 1em;
+    }
+    &.p2 {
+        margin-left: 1em;
+    }
+}
+
+.captures-wrapper:not(.empty) {
+    background-color: #f3eabd;
+    border-radius: 4px;
+    border: 2px solid #000;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.piece {
+    button,
+    .piece-wrapper {
+        box-sizing: content-box;
+        height: 65px;
+        width: 65px;
+    }
+    .piece-wrapper {
+        border-radius: 4px;
+        border-style: solid;
+        border-width: 4px;
+        box-shadow: 0 0 10px #0009;
+    }
+    &.p1 .piece-wrapper {
+        border-color: #ad0a28;
+    }
+    &.p2 .piece-wrapper {
+        border-color: #170aad;
+    }
+    &.in-play.p1 .piece-wrapper {
+        transform: rotate(90deg);
+    }
+    &.in-play.p2 .piece-wrapper {
+        transform: rotate(-90deg);
+    }
+
+    &:focus-within button {
+        outline: 4px solid green;
+    }
+
+    img {
+        display: block;
+        height: 65px;
+        line-height: 65px;
+        width: 65px;
+    }
+
+    &.selected .piece-wrapper {
+        filter: brightness(150%);
+    }
+    &[data-clickable="true"] .piece-wrapper {
+        cursor: pointer;
+    }
+    &.captured {
+        margin: 5px;
+    }
+}
+
+.game-area.from .piece:not(.move-from) {
+    opacity: .6;
+}
+.game-area.to {
+    .piece.in-play:not(.move-to):not(.selected),
+    .captures {
+        filter: brightness(50%);
+    }
+}
+.move-to {
+    cursor: pointer;
+}

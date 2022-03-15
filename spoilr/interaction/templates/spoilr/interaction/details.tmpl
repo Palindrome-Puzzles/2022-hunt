@@ -1,0 +1,130 @@
+{% extends "hq/layout.tmpl" %}
+{% load humanize static %}
+
+{% block title %}{{ interaction.name|truncatechars:40 }} for {{ team.name|truncatechars:40 }} | {{ block.super }}{% endblock %}
+{% block heading %}{{ interaction.name|truncatechars:40 }} for {{ team.name|truncatechars:40 }}{% endblock %}
+
+{% block breadcrumb_items %}
+<li><a href="{% url 'spoilr.interaction:dashboard' %}">Interactions</a></li>
+<li><a href="{% url 'spoilr.interaction:interaction' interaction.url %}">{{ interaction.name|truncatechars:40 }}</a></li>
+<li><a href="{% url 'spoilr.interaction:details' interaction.url team.username %}">{{ team.name|truncatechars:40 }}</a></li>
+{% endblock breadcrumb_items %}
+
+{% block content %}
+<section class="content details">
+  <h3>{{ interaction.name }}</h3>
+  <h4>{{ team.name|truncatechars:100 }}</h4>
+  <p><a href="{% url 'spoilr.progress:team' team.username %}" target="_blank">Progress</a></p>
+
+  {% include 'spoilr/interaction/partials/interaction-desc.tmpl' %}
+
+  {% if status == 'ready' %}
+  <h4 class="status">The interaction is ready to be resolved.</h4>
+  {% elif status == 'unclaimed' %}
+  <h4 class="status">The interaction is ready to be claimed.</h4>
+  {% elif status == 'snoozed' %}
+  <h4 class="status">The interaction has been snoozed <span title="{{ task.snooze_until }}">{{ task.snooze_until|naturaltime }}</span> by {{ task.handler }}.</h4>
+  {% elif status == 'claimed' %}
+  <h4 class="status">The interaction has been claimed <span title="{{ task.claim_time }}">{{ task.claim_time|naturaltime }}</span> by {{ task.handler }}.</h4>
+  {% elif status == 'accomplished' %}
+  <h4 class="status">The interaction has been marked as accomplished <span title="{{ interaction_access.accomplished_time }}">{{ interaction_access.accomplished_time|naturaltime }}</span> by {{ task.handler }}.</h4>
+  {% elif status == 'not_ready' %}
+  <h4 class="status">The team is not ready for the interaction yet.</h4>
+  {% endif %}
+
+  {% if task and request.handler and request.handler.sign_in_time %}
+    <form method="post">
+      {% csrf_token %}
+      <input type="hidden" name="task_id" value="{{ task.id }}">
+      {% include 'hq/util/task-actions.tmpl' with task=task can_dismiss=False can_reopen=allow_danger %}
+    </form>
+
+    {% if interaction.interactiondata.type == 'story' and status == 'ready' %}
+      <hr>
+      {% include 'spoilr/interaction/partials/story-details.tmpl' %}
+    {% elif interaction.interactiondata.type == 'answer' %}
+      <hr>
+      {% include 'spoilr/interaction/partials/answer-details.tmpl' %}
+    {% endif %}
+
+    {% if status == 'ready' %}
+      <hr>
+
+      <form method="post" class="resolve">
+        <p>This may progress the team in the hunt and can't be reversed!</p>
+
+        {% csrf_token %}
+        <input type="hidden" name="task_id" value="{{ task.id }}">
+        <div>
+          <label for="id_confirm_resolve">Enter "RESOLVE" to confirm</label>
+          <input type="text" name="confirm" id="id_confirm_resolve" required>
+        </div>
+        <input type="submit" value="Resolve" formaction="{% url 'spoilr.interaction:resolve' %}">
+      </form>
+    {% endif %}
+  {% endif %}
+
+  {% if request.handler and request.handler.sign_in_time and status == 'not_ready' and allow_danger %}
+  <form method="post" class="resolve">
+    <strong style="color: red">DANGER!</strong>
+    <p>This may progress the team in the hunt and can't be reversed!</p>
+    {% csrf_token %}
+    <input type="hidden" name="team_id" value="{{ team.id }}">
+    <input type="hidden" name="interaction_id" value="{{ interaction.id }}">
+    <div>
+      <label for="id_confirm_release">Enter "RELEASE" to confirm</label>
+      <input type="text" name="confirm" id="id_confirm_release" required>
+    </div>
+    <input type="submit" value="Release" formaction="{% url 'spoilr.interaction:danger_release' %}">
+  </form>
+  {% endif %}
+
+  {% if emails %}
+    <hr>
+    <h3>Email submissions</h3>
+    <p>See <a href="{% url 'spoilr.email:archive' %}?team={{ team.username }}" target="_blank">all emails for team</a>
+    {% if emails|length %}
+    <div class="emails">
+      {% for email_ref in emails %}
+        {% include 'spoilr/email/partials/email.tmpl' with type=email_ref.type email=email_ref.email compact=False %}
+
+        {% if task and task.handler == request.handler and request.handler.sign_in_time %}
+        <div class="actions">
+          <button type="button" class="email-reply-button" data-message-id="{{ email_ref.email.id }}">Reply</button>
+        </div>
+        {% else %}
+        <div class="actions"><em>Sign in as a handler and claim the task to reply to emails</em></div>
+        {% endif %}
+      {% endfor %}
+
+      <div class="email-reply-form hidden">
+        <form method="post" action="{% url 'spoilr.email:reply' %}">
+          {% csrf_token %}
+          <div class="form-row">
+            <label for="id_body">Body</label>
+            <textarea name="body" id="id_body" placeholder="Enter your reply here" required></textarea>
+          </div>
+          <div>
+            <p>This will send a real email to a real team - be careful!</p>
+            <label for="id_confirm_email_reply">Enter "REPLY" to confirm</label>
+            <input type="text" name="confirm" id="id_confirm_email_reply" required>
+          </div>
+          <input type="hidden" name="id" value="{{ email.id }}">
+          <input type="submit" value="Reply">
+          <button type="button">Cancel</button>
+        </form>
+      </div>
+    </div>
+    {% endif %}
+  {% endif %}
+</section>
+{% endblock content %}
+
+{% block stylesheets %}
+<link rel="stylesheet" type="text/css" href="{% static 'spoilr/email/style.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'spoilr/interaction/style.css' %}">
+{% endblock %}
+
+{% block scripts %}
+<script type="module" src="{% static 'spoilr/email/inline-reply.js' %}"></script>
+{% endblock scripts %}

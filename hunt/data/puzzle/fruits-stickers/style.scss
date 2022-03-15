@@ -1,0 +1,41 @@
+#main-content {
+    * {
+        box-sizing: border-box;
+    }
+
+	img {
+		max-width: 100%;
+	}
+
+	.stickers {
+    	display: grid;
+    	grid-template-columns: repeat(auto-fit, 25%);
+    	padding: 1rem;
+	}
+
+	.sticker-box {
+		margin-bottom: 1em;
+
+		.num {
+			text-align: center;
+			display: block;
+		}
+	}
+
+	.sticker {
+    	img {
+        	max-width: 100%;
+    	}
+	}
+
+	.tag {
+		position: relative;
+		margin-top: -140px;
+		left: 30%;
+		width: 70%;
+	}
+
+	.bottom {
+		padding-top: 1em;
+	}
+}

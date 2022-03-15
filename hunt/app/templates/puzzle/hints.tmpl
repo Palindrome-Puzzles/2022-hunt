@@ -1,0 +1,20 @@
+{% extends 'round_files/'|add:puzzle_info.puzzle.round.url|add:'/subview.tmpl' %}
+{% load static %}
+
+{% block subview_title %}Request hint{% endblock %}
+{% block subview_heading %}Request hint{% endblock %}
+
+{% block site_stylesheets %}
+{{ block.super }}
+<link rel="stylesheet" type="text/css" href="{% static 'stylesheets/submit.css' %}">
+{% endblock site_stylesheets %}
+
+{% block site_content %}
+<main class="hints">
+  <div class="paper-edge top"></div>
+  <section id="main-content" class="content">
+    {% include 'puzzle/partials/hints_display.tmpl' %}
+  </section>
+  <div class="paper-edge bottom"></div>
+</main>
+{% endblock site_content %}

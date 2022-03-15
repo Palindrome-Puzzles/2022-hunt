@@ -1,0 +1,14 @@
+{% load assets fantasy static %}
+
+{% fantasy_submission puzzle_info.puzzle team as result %}
+{% if team and puzzle_info.solved and result.glyph_filename %}
+<section class="bonus-puzzle-content">
+  <div class="paper-edge top"></div>
+  <div class="content">
+    <h2>That is the solution to this puzzle, but…</h2>
+    <p>… that is only the first step on a quest to a fantastical realm you must now embark upon! This mysterious glyph should help you on your way.</p>
+    <a href="{% url 'puzzle_view' 'once-upon-a-time-in-the-quest' %}#{{ result.puzzle_url }}"><img class="glyph" width="350" src="{% rd 'images/glyphs/'|add:result.glyph_filename  %}"></a>
+  </div>
+  <div class="paper-edge bottom"></div>
+</section>
+{% endif %}

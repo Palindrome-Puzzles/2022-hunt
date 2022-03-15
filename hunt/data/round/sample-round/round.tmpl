@@ -1,0 +1,21 @@
+{% extends "round_files/generic_round.tmpl" %}
+{% load assets %}
+
+{% block round_content %}
+<p>Round-specific content can go here!</p>
+
+<table>
+  <thead>
+    <tr>
+      <td>Source</td>
+      <td>Image</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Round directory</td>
+      <td><img src="{% rd 'round-pumpkin.jpg' %}" height="100"></td>
+    </tr>
+  </tbody>
+</table>
+{% endblock round_content %}

@@ -1,0 +1,85 @@
+{% extends "round_files/generic_round.tmpl" %}
+{% load assets maps static %}
+
+{% block extra_stylesheets %}
+<link href="https://fonts.googleapis.com/css2?family=Red+Hat+Mono:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="{% static 'stylesheets/map.css' %}">
+{% include 'round_files/generic_map_stylesheet.tmpl' with sticker_info=sticker_info round_map_context=".fixed" %}
+<style type="text/css">
+{% if sticker_info.has_meta %}
+.round-map.list .meta {
+  flex-basis: 80%;
+  margin-bottom: 1em;
+  position: relative;
+  text-align: center;
+}
+.round-map.list .meta img {
+  max-width: 50%;
+}
+.round-map.list .meta a {
+  text-decoration: none;
+}
+.round-map.list .meta .caption {
+  bottom: -2.9%;
+  left: 50%;
+  position: absolute;
+  transform: translateX(-50%);
+}
+.round-map.list .page:nth-of-type(5),
+.round-map.list .page:nth-of-type(6),
+.round-map.list .page:nth-of-type(10),
+.round-map.list .page:nth-of-type(11) {
+  margin: 0 1%;
+}
+{% else %}
+.round-map.list .page:nth-of-type(4),
+.round-map.list .page:nth-of-type(5),
+.round-map.list .page:nth-of-type(9),
+.round-map.list .page:nth-of-type(10) {
+  margin: 0 1%;
+}
+{% endif %}
+</style>
+{% endblock extra_stylesheets %}
+
+{% block wordmark %}
+{% include 'round_files/generic_wordmark.tmpl' with round_info=round_info %}
+{% endblock wordmark %}
+
+{% block round_map %}
+<!-- Map 1: Components -->
+<section class="round-map fixed">
+  <div class="map">
+    {% for sticker in sticker_info.stickers %}
+    {% if not sticker.wordmark and not sticker.is_meta %}
+    <div class="sticker sticker-content{% for class in sticker.classes %} {{ class }}{% endfor %}">
+      <img src="{% rd 'images/' %}{{ sticker.image }}.png" alt="" aria-hidden="true">
+    </div>
+    {% endif %}
+    {% endfor %}
+  </div>
+</section>
+
+<!-- Map 2: Wordmarks. -->
+<section class="round-map list">
+  <div class="map">
+    {% for sticker in sticker_info.stickers %}
+    {% if sticker.wordmark %}
+    <div class="page {{ sticker.solved|yesno:"solved," }} {% for class in sticker.classes %} {{ class }}{% endfor %}">
+      <a href="{% url 'puzzle_view' sticker.puzzle.url %}">
+        <img src="{{ sticker.wordmark }}" alt="" aria-hidden="true">
+        <span class="caption custom{% if team.is_public %} spoiler{% endif %}"><span>{{ sticker.puzzle.name }}</span></span>
+      </a>
+    </div>
+    {% elif sticker.is_meta %}
+    <div class="sticker sticker-content{% for class in sticker.classes %} {{ class }}{% endfor %}">
+      <a href="{% url 'puzzle_view' sticker.puzzle.url %}">
+        <img src="{% rd 'images/' %}{{ sticker.image }}.png" alt="" aria-hidden="true">
+        <span class="caption"><span>{{ sticker.puzzle.name }}</span></span>
+      </a>
+    </div>
+    {% endif %}
+    {% endfor %}
+  </div>
+</section>
+{% endblock round_map %}

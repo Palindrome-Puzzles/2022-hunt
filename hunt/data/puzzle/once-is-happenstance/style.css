@@ -1,0 +1,36 @@
+/* COLORS */
+.cyan {
+	background-color: cyan;
+}
+
+.lavender {
+	background-color: #DAD1E8;
+}
+
+.tan {
+	background-color: #FFF2CB;
+	padding-right: 1rem;
+	padding-left: 1rem;
+}
+
+.yellow {
+	background-color: yellow;
+}
+
+/* CELLS */
+.center {
+	text-align: center;
+}
+
+.cyan-empty {
+	width: 1rem;
+}
+
+.empty {
+	width: 3rem;
+}
+
+
+.keep-colors-in-print {
+	color-adjust: exact;
+}

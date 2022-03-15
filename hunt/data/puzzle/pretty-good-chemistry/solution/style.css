@@ -1,0 +1,49 @@
+th { vertical-align: bottom; }
+
+.puzzle col.answer      { width: 15% }
+.puzzle col.explanation { width: 25% }
+
+#cryptic-explanations td.clue ins {
+  font-weight: bold;
+}
+
+td.answer {
+  text-align: center;
+}
+
+#cryptic-explanations td.explanation em {
+  font-weight: bold;
+  font-style: inherit;
+}
+
+#cryptic-explanations td.explanation del {
+  text-decoration: line-through 2px solid black;
+  color: #888;
+}
+
+th span.second-line { display: block; }
+
+#vitamins col.vitamins { width: 170px; }
+#vitamins col.answers  { width: 300px; }
+#vitamins col.formulas { width: 300px; }
+
+#vitamins td .answer del {
+  text-decoration: inherit;
+  font-weight: lighter;
+  color: #888;
+}
+#vitamins td .answer del:before { content: "["; }
+#vitamins td .answer del:after  { content: "]"; }
+
+#loop {
+  text-align: center;
+}
+
+#loop col.answers  { width: 100px; }
+#loop col.elements { width: 150px; }
+#loop col.extras   { width: 100px; }
+
+#loop td em {
+  font-weight: bold;
+  font-style: inherit;
+}

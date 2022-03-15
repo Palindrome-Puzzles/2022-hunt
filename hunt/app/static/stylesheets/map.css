@@ -1,0 +1,123 @@
+@media only screen and (max-width: 599.9px) {
+    .round-map:not(.compact) {
+        display: none;
+    }
+}
+
+/* Use .round-map as a centered viewport over the map. */
+.round-map {
+    margin: 0 auto 40px;
+    position: relative;
+}
+.round-map:not(.full-width) {
+    width: 98vw;
+}
+.round-map .map {
+    position: relative;
+}
+
+.round-map:not(.pannable) {
+    overflow: hidden;
+}
+.round-map:not(.pannable) .map {
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/*
+ * Abuse CSS grids to have the map expand to fill arbitrarily positioned children.
+ * This takes each child out of the rendering flow to make it happen.
+ *
+ * https://stackoverflow.com/a/49536694
+ */
+.round-map.expandable .map {
+    display: grid;
+}
+.round-map.expandable .map .sticker {
+    grid-area: 1/1;
+    height: fit-content;
+}
+
+.round-map.pannable {
+    margin-left: 0;
+    margin-right: 0;
+    overflow-x: scroll;
+}
+.round-map.pannable .map {
+    margin: auto;
+}
+html.supports-js .round-map.pannable {
+    cursor: grab;
+}
+html.supports-js .round-map.pannable.panning {
+    cursor: grabbing;
+    user-select: none;
+}
+html.supports-js .round-map.pannable {
+    scrollbar-width: none;
+}
+html.supports-js .round-map.pannable::-webkit-scrollbar {
+    display: none;
+}
+
+.round-map .sticker-content {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+}
+
+.round-map.fixed .sticker-content,
+.round-map.pannable .sticker-content {
+    align-items: center;
+}
+
+.round-map.fixed .sticker,
+.round-map.pannable .sticker {
+    position: absolute;
+}
+
+.round-map.expandable .sticker img {
+    height: 100%;
+    object-fit: contain;
+    width: 100%;
+}
+
+.round-map .caption {
+    font-size: 18px;
+    line-height: 21px;
+    position: relative;
+}
+@media only screen and (max-width: 1079.9px) {
+    .round-map .caption {
+        font-size: 15px;
+        line-height: 17px;
+    }
+}
+
+.round-map .caption:not(.custom) {
+    border-radius: 20px;
+    position: relative;
+    padding: 6px 16px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+.round-map .sticker :focus .caption:not(.custom) {
+    filter: brightness(1.5);
+}
+.round-map .sticker:hover .caption:not(.custom) {
+    filter: brightness(2.5);
+}
+
+.round-map .sticker.solved .caption::before {
+    content: "";
+    display: block;
+    background: url('../solved.svg') no-repeat 0 0;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    margin-top: -24px;
+    margin-left: -14px;
+    top: 0;
+    left: 50%;
+}

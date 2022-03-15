@@ -1,0 +1,124 @@
+.intro {
+  text-align: center;
+}
+
+table {
+  /* improve printing of non-.grid grid */
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+  break-inside: avoid;
+}
+
+table td:not(:empty) {
+  height: 60px;
+  width: 60px;
+  padding: 0;
+  text-align: center;
+}
+
+table td.filled {
+  background-color: green;
+  background-image: url('./hedge.png');
+  background-size: cover;
+  color: white;
+  -webkit-text-stroke: 1px black;
+  text-stroke: 1px black;
+  font-weight: bold;
+  font-size: 32px;
+  line-height: 30px;
+  height: 30px;
+  width: 30px;
+  padding: 0;
+}
+
+table tr:first-of-type td.filled,
+table tr:last-of-type td.filled {
+  background-image: url('./hedge-tall.png');
+}
+
+table td:first-of-type.filled,
+table td:last-of-type.filled {
+  background-image: url('./hedge-wide.png');
+}
+
+table tr:first-of-type td:first-of-type.filled,
+table tr:first-of-type td:last-of-type.filled,
+table tr:last-of-type td:first-of-type.filled,
+table tr:last-of-type td:last-of-type.filled {
+  background-image: url('./hedge-tall-and-wide-aka-big.png');
+}
+
+table .person a,
+table img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.profiles {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+  overflow-y: scroll;
+  padding: 10px;
+  background-color: #fe3c72;
+  border: 5px solid #424242;
+  border-radius: 20px;
+  align-items: flex-start;
+  scroll-behavior: smooth;
+}
+
+.profile {
+  box-sizing: content-box;
+  flex-shrink: 0;
+  width: 284px;
+  padding: 8px;
+  border: 10px solid transparent;
+  box-shadow: 0 0 10px black;
+  border-radius: 10px;
+  background: white;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  margin: 5px;
+}
+
+.profile:target {
+  border-color: #8bc1f7;
+}
+
+.profile > * {
+  /* full width */
+  grid-column: 1/-1;
+}
+
+.profile > .age,
+.profile > .pronouns {
+  grid-column: auto;
+}
+
+.profile .pronouns {
+  text-align: right;
+}
+
+.profile > p {
+  margin: 0.5em 0;
+}
+
+.profile .name {
+  font-weight: bold;
+  text-align: center;
+  grid-column: 1/-1;
+}
+
+.profile img {
+  grid-column: 1/-1;
+  width: 100%;
+  height: auto;
+}
+
+.profile .label {
+  display: block;
+  text-transform: lowercase;
+  font-variant: small-caps;
+  font-weight: bold;
+}

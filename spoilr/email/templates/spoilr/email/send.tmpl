@@ -1,0 +1,65 @@
+{% extends "hq/layout.tmpl" %}
+{% load static %}
+
+{% block title %}Send an email | {{ block.super }}{% endblock %}
+{% block heading %}Send an email{% endblock %}
+
+{% block breadcrumb_items %}
+<li><a href="{% url 'spoilr.email:send' %}">Send an email</a></li>
+{% endblock breadcrumb_items %}
+
+{% block content %}
+<section class="content">
+  <div class="banner">
+    <span><strong>Warning</strong>: If possible use the shared Gmail account instead! (This is a backup method.)</span>
+  </div>
+
+  {% if error %}
+  <div class="banner error">
+    <span><strong>Error</strong>: {{ error }}</span>
+  </div>
+  {% endif %}
+
+  {% if request.handler and request.handler.sign_in_time %}
+  <div class="actions">
+    <form method="post" class="email-reply-form">
+      {% csrf_token %}
+      <div class="form-row">
+        <label for="id_recipient">Recipient</label>
+        <input type="text" name="recipient" id="id_recipient" required value="{{ recipient }}" maxlength="500">
+      </div>
+
+      <div class="form-row">
+        <label for="id_sender">Sender</label>
+        <input type="text" name="sender" id="id_sender" required value="{{ sender }}" maxlength="500">
+      </div>
+
+      <div class="form-row">
+        <label for="id_subject">Subject</label>
+        <input type="text" name="subject" id="id_subject" required value="{{ subject }}" maxlength="500">
+      </div>
+
+      <div class="form-row">
+        <label for="id_body">Body</label>
+        <textarea name="body" placeholder="Enter your message here" required>{{ body_text }}</textarea>
+      </div>
+
+      <div>
+        <p>This will send a real email to a real team - be careful!</p>
+        <label for="id_confirm_email_send">Enter "SEND" to confirm</label>
+        <input type="text" name="confirm" id="id_confirm_email_send" required>
+      </div>
+
+      <input type="hidden" name="id" value="">
+      <input type="submit" value="Send">
+    </form>
+  </div>
+  {% else %}
+  <div class="actions"><em>Sign in as a handler to send emails</em></div>
+  {% endif %}
+</section>
+{% endblock content %}
+
+{% block stylesheets %}
+<link rel="stylesheet" type="text/css" href="{% static 'spoilr/email/style.css' %}">
+{% endblock %}

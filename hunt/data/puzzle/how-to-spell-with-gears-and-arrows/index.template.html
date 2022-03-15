@@ -1,0 +1,40 @@
+{% load static %}
+
+<div class="flavor">
+    <p>Correctly assembling this contraption would be a real feather in your cap!</p>
+</div>
+
+
+<p><a href="images/How To Spell With Gears And Arrows.pdf" target="_blank" rel="noopener noreferrer">Download puzzle PDF</a></p>
+
+
+<div class="notice">
+    <p>NOTE: This puzzle is entirely contained in the PDF linked above. In case it might be useful, a set of virtual gears is
+        provided below. The virtual gears are not part of the puzzle, but are provided only as an optional solving aid. To the
+        extent the virtual gears do not precisely match the PDF, the PDF should be considered canonical. <span class="hidden save-slot-instructions">The five save states are
+        synced across your team -- that is, changes to state 1 will be visible in state 1 for your whole team, and so on with
+        states 2 through 5.</span></p>
+</div>
+
+
+<div class="disconnected banner no-copy hidden" role="alert">
+    Connection lost. We'll try save your changes when you're back online!
+</div>
+
+<div class="notice state-list-container no-copy hidden-until-interactive">
+    <div class="instructions"><strong>Save slots</strong> All updates are automatically saved and synced across your team.</div>
+    <div class="state-list"></div>
+</div>
+
+<div class="controls hidden-until-interactive no-copy">
+    <button type="button" class="toggle-engaged"></button>
+</div>
+
+{{gen:gen-puzzle}}
+
+<script src="main.ts" type="module"></script>
+<script type="module">
+if (!window.isPublicAccess) {
+    document.querySelector('.save-slot-instructions').classList.remove('hidden');
+}
+</script>

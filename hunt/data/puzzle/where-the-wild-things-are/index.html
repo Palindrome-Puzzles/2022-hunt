@@ -1,0 +1,11 @@
+<div class="flavor">
+<p class="notice">This puzzle utilizes the <strong>manila envelope(s)</strong> your team was mailed. You should now open this item.<br><br><span class="font-style:normal"><em>Teams may have ordered multiple envelopes; the contents of each envelope are identical.</em></span></p>
+<p style="font-style:normal;">All teams will also need to <a href="coloring_book_page.pdf" target="_blank">download a PDF</a> to solve this puzzle.</p>
+</div>
+
+{% load puzzles %}
+{% if puzzle_info|has_been_available_for_minutes:120 %}
+<p class="no-copy"><em>An activity book was mailed to teams before the Hunt. <a href="where-the-wild-things-are.pdf" target="_blank">Download an additional copy.</a></em>
+{% else %}
+<p class= "notice">For those without the physical item, the virtual version of this puzzle will unlock in {{ puzzle_info|until_available_for_minutes:120 }} minutes.</p>
+{% endif %}

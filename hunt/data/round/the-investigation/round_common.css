@@ -1,0 +1,41 @@
+h1,
+.round-map {
+    font-family: 'Titillium Web', sans-serif;
+    font-weight: 600;
+}
+
+body {
+    background-image: url(images/bg-repeat.jpg);
+    background-color: #b5d25e;
+}
+.page-background {
+    background: none;
+}
+.page-background-top {
+    background-image: url(images/bg-top.jpg);
+}
+.page-background-map {
+    background-image: url(images/bg-map.jpg);
+}
+
+header,
+.page-background-top {
+    max-height: 350px;
+    min-width: 100%;
+}
+header.large-wordmark,
+.page-background-top {
+    aspect-ratio: 125/34;
+}
+@media only screen and (min-width: 1287px) {
+    /* 350 * 125/34 = 1287 */
+    .page-background-top {
+        background-size: cover;
+    }
+}
+
+@media only screen and (max-width: 1079.9px) {
+    .page-background-map {
+        background-size: 1080px;
+    }
+}

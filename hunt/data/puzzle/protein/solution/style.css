@@ -1,0 +1,19 @@
+.grid .wh {
+  background-color:#ffffff;
+  color-adjust: exact;
+}
+
+.grid .lb {
+  background-color:#38fff8;
+  color-adjust: exact;
+}
+
+.grid .dr {
+  background-color:#fe0000;
+  color-adjust: exact;
+}
+
+.grid .lr {
+  background-color:#ffccc9;
+  color-adjust: exact;
+}

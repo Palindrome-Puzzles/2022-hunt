@@ -1,0 +1,1055 @@
+{% extends "hunt/site_layout.tmpl" %}
+{% load hosts static %}
+
+{% block title %}Credits | {{ block.super }}{% endblock %}
+
+{% block site_stylesheets %}
+<style type="text/css">
+.credit {
+  margin-bottom: .75em;
+}
+.credit:not(.major):not(.no-role) {
+  border-bottom: 1px dotted #000;
+  display: flex;
+  justify-content: space-between;
+}
+.credit:not(.major):not(.no-role) .name {
+  margin-right: 2em;
+}
+.credit.major {
+  margin: 0 auto 1em;
+  max-width: 600px;
+}
+.credit.major .name {
+  font-weight: bold;
+}
+h2,
+h3,
+.credit.no-role,
+.credit.major {
+  text-align: center;
+}
+h2 {
+  font-size: 1.3em;
+  text-transform: uppercase;
+}
+h3 {
+  font-size: 1.15em;
+  text-transform: uppercase;
+}
+h2:not(:first-child),
+h3:not(:first-child) {
+  margin: 1.5em 0 .5em;
+}
+.no-role-wrapper {
+  columns: 3 250px;
+  margin: auto;
+}
+.credit + .no-role-wrapper {
+  margin-top: 2em;
+}
+</style>
+{% endblock %}
+
+{% block site_content %}
+<main class="credits">
+  <header>
+    <h1>Credits</h1>
+  </header>
+
+  <div class="paper-edge top"></div>
+  <section id="main-content" class="content">
+    <h2>MIT Puzzle Club Representatives</h2>
+    <div class="credit major">
+      <div class="name">Julia Wagner</div>
+      <div class="role">MIT Puzzle Club President / MIT Liaison</div>
+    </div>
+
+    <div class="credit major">
+      <div class="name">Wayne Zhao</div>
+      <div class="role">Treasurer / MIT Liaison</div>
+    </div>
+
+    <h2>Editorial Team</h2>
+    <div class="credit">
+      <div class="name">Eric Berlin</div>
+      <div class="role">Team Captain</div>
+    </div>
+    <div class="credit">
+      <div class="name">Foggy Brume</div>
+      <div class="role">Editor in Chief</div>
+    </div>
+    <div class="credit">
+      <div class="name">Dave Shukan</div>
+      <div class="role">Editor in Chief</div>
+    </div>
+    <div class="credit">
+      <div class="name">Sandy Weisz</div>
+      <div class="role">Editor in Chief</div>
+    </div>
+    <div class="credit">
+      <div class="name">Joe Cabrera</div>
+      <div class="role">Editor</div>
+    </div>
+    <div class="credit">
+      <div class="name">Matt Cleinman</div>
+      <div class="role">Editor</div>
+    </div>
+    <div class="credit">
+      <div class="name">Katie Hamill</div>
+      <div class="role">Editor</div>
+    </div>
+    <div class="credit">
+      <div class="name">Mark Halpin</div>
+      <div class="role">Editor</div>
+    </div>
+    <div class="credit">
+      <div class="name">Jen McTeague</div>
+      <div class="role">Editor</div>
+    </div>
+    <div class="credit">
+      <div class="name">Mike Nothnagel</div>
+      <div class="role">Editor</div>
+    </div>
+    <div class="credit">
+      <div class="name">Kah Kien Ong</div>
+      <div class="role">Editor</div>
+    </div>
+    <div class="credit">
+      <div class="name">Joon Pahk</div>
+      <div class="role">Editor</div>
+    </div>
+    <div class="credit">
+      <div class="name">Ben Smith</div>
+      <div class="role">Editor</div>
+    </div>
+    <div class="credit">
+      <div class="name">Matthew Stein</div>
+      <div class="role">Editor</div>
+    </div>
+    <div class="credit">
+      <div class="name">Scott Weiss</div>
+      <div class="role">Editor</div>
+    </div>
+    <div class="credit">
+      <div class="name">Jen McTeague</div>
+      <div class="role">Meta Captain</div>
+    </div>
+    <div class="credit">
+      <div class="name">Mark Halpin</div>
+      <div class="role">Meta Captain</div>
+    </div>
+    <div class="credit">
+      <div class="name">Dave Shukan</div>
+      <div class="role">Meta Captain</div>
+    </div>
+
+    <h2>The Department of Art and Design (DAD)</h2>
+    <div class="credit major">
+      <div class="name">Justin Ladia</div>
+      <div class="role">Art Director, Social Media, Round Art Production (The Investigation at MIT Campus, The Ministry of Intertextual Transportation, New You City, Recipeoria, Howtoona, Reference Point, Whoston, The Plot Device), Area and Round Wordmarks, Puzzle Art, Trailers and Animations, Solve Sound Design, Coin and Token Design and Production</div>
+    </div>
+    <div class="credit major">
+      <div class="name">Joe Cabrera</div>
+      <div class="role">Assistant Art Director, Round Art Production (Noirleans), Coin Contributor, Puzzle Art Lead</div>
+    </div>
+    <div class="credit major">
+      <div class="name">Suzanna Roberts</div>
+      <div class="role">Round Art Production (The Quest Coast, Whoston, The Phantom Tollbooth), T-Shirt Design, Coin Contributor, Video Backgrounds, Puzzle Art</div>
+    </div>
+    <div class="credit">
+      <div class="name">Lea Berlin</div>
+      <div class="role">Round Art Production (Star Rats), Puzzle Art</div>
+    </div>
+    <div class="credit">
+      <div class="name">Christopher Benson</div>
+      <div class="role">Round Art Production (Lake Eerie)</div>
+    </div>
+    <div class="credit">
+      <div class="name">Alexandra Plante</div>
+      <div class="role">Round Art Production (Heartford)</div>
+    </div>
+    <div class="credit">
+      <div class="name">Scott Ford</div>
+      <div class="role">Round Art Production (Sci-Ficisco)</div>
+    </div>
+    <div class="credit">
+      <div class="name">Sam Posnick</div>
+      <div class="role">Pen Station</div>
+    </div>
+    <div class="credit">
+      <div class="name">Jacob Ford</div>
+      <div class="role">Registration Site, Coin Contributor</div>
+    </div>
+    <div class="credit">
+      <div class="name">Yao Yu</div>
+      <div class="role">Round Art (Whoston), Puzzle Art</div>
+    </div>
+    <div class="credit">
+      <div class="name">Helen Arnold</div>
+      <div class="role">Puzzle Art</div>
+    </div>
+    <div class="credit">
+      <div class="name">April Pinnick</div>
+      <div class="role">Coin Contributor</div>
+    </div>
+    <div class="credit">
+      <div class="name">Debby Levinson</div>
+      <div class="role">Accessibility Lead, Round Page Production</div>
+    </div>
+    <div class="credit">
+      <div class="name">Aaron Feldman</div>
+      <div class="role">Puzzle Art</div>
+    </div>
+    <div class="credit">
+      <div class="name">Matthew Sorensen (Puppet Bucket Productions)</div>
+      <div class="role">Tock Puppet Design and Fabrication</div>
+    </div>
+    <div class="credit">
+      <div class="name">Jenny Gutbezahl</div>
+      <div class="role">Solve Sound Design</div>
+    </div>
+    <div class="credit">
+      <div class="name">Ezra Weisz </div>
+      <div class="role">Solve Sound Design</div>
+    </div>
+    <div class="credit">
+      <div class="name">Wayne Zhao</div>
+      <div class="role">Solve Sound Design</div>
+    </div>
+
+    <h2>Story and Video</h2>
+    <div class="credit">
+      <div class="name">Dan Lepage</div>
+      <div class="role">Bookspace Theme</div>
+    </div>
+    <div class="credit">
+      <div class="name">Mark Halpin</div>
+      <div class="role">Story Captain</div>
+    </div>
+
+    <h3>Video Creation</h3>
+    <div class="credit">
+      <div class="name">Jenny Gutbezahl</div>
+      <div class="role">Coordinator and cat-herder in chief</div>
+    </div>
+    <div class="credit">
+      <div class="name">Aaron Feldman</div>
+      <div class="role">Chief video editor</div>
+    </div>
+
+    <h3>Captioning</h3>
+    <div class="no-role-wrapper">
+      <div class="credit no-role"><div class="name">Rachel Burdin</div></div>
+      <div class="credit no-role"><div class="name">Aaron Feldman</div></div>
+      <div class="credit no-role"><div class="name">Jenny Gutbezahl</div></div>
+      <div class="credit no-role"><div class="name">Renee Ngan</div></div>
+    </div>
+
+    <h3>Kick-Off</h3>
+    <div class="credit">
+      <div class="name">Justin Ladia</div>
+      <div class="role">Countdown, Health and Safety Presentation Animation & Voice-Over</div>
+    </div>
+    <div class="credit">
+      <div class="name">Eric Berlin</div>
+      <div class="role">Health and Safety Presentation Writer</div>
+    </div>
+    <div class="credit">
+      <div class="name">Jenny Gutbezahl</div>
+      <div class="role">Countdown Captioning and Health and Safety Presentation Writer</div>
+    </div>
+    <div class="credit">
+      <div class="name">Julia Wagner</div>
+      <div class="role">MIT Puzzle Club Segment</div>
+    </div>
+    <div class="credit">
+      <div class="name">Wayne Zhao</div>
+      <div class="role">MIT Puzzle Club Segment</div>
+    </div>
+
+    <h3>Opening Video</h3>
+    <div class="credit">
+      <div class="name">Eric Berlin</div>
+      <div class="role">Writer</div>
+    </div>
+    <div class="credit">
+      <div class="name">Eric Berlin</div>
+      <div class="role">Performer</div>
+    </div>
+    <div class="credit">
+      <div class="name">Kevin Wald</div>
+      <div class="role">Performer</div>
+    </div>
+    <div class="credit">
+      <div class="name">Steve Kaltenbaugh</div>
+      <div class="role">Performer</div>
+    </div>
+    <div class="credit">
+      <div class="name">Jenny Gutbezahl</div>
+      <div class="role">Performer</div>
+    </div>
+    <div class="credit">
+      <div class="name">Susan Glass</div>
+      <div class="role">Editor</div>
+    </div>
+
+    <h3>Minister Videos</h3>
+    <div class="credit">
+      <div class="name">Renee Ngan</div>
+      <div class="role">Writer</div>
+    </div>
+    <div class="credit">
+      <div class="name">Ben Smith</div>
+      <div class="role">Writer</div>
+    </div>
+    <div class="credit">
+      <div class="name">Justin Ladia</div>
+      <div class="role">Opening Animation and Art</div>
+    </div>
+    <div class="credit">
+      <div class="name">Nic Rhodes</div>
+      <div class="role">Billie Barker</div>
+    </div>
+    <div class="credit">
+      <div class="name">Maggi Rhodes</div>
+      <div class="role">Danni Dewey</div>
+    </div>
+    <div class="credit">
+      <div class="name">Renee Ngan</div>
+      <div class="role">Herschel Hayden</div>
+    </div>
+    <div class="credit">
+      <div class="name">Ben Smith</div>
+      <div class="role">Alexei Lewis</div>
+    </div>
+    <div class="credit">
+      <div class="name">Justin Ladia</div>
+      <div class="role">Randy Rotch</div>
+    </div>
+    <div class="credit">
+      <div class="name">Mike Nothnagel</div>
+      <div class="role">Riley Rotch</div>
+    </div>
+    <div class="credit">
+      <div class="name">Susan Glass (individual videos)</div>
+      <div class="role">Editor</div>
+    </div>
+    <div class="credit">
+      <div class="name">Aaron Feldman (group videos)</div>
+      <div class="role">Editor</div>
+    </div>
+
+    <h3>Tock Videos</h3>
+    <div class="credit">
+      <div class="name">Eric Berlin</div>
+      <div class="role">Writer</div>
+    </div>
+    <div class="credit">
+      <div class="name">Jenny Gutbezahl</div>
+      <div class="role">Writer</div>
+    </div>
+    <div class="credit">
+      <div class="name">Ben Smith</div>
+      <div class="role">Writer</div>
+    </div>
+    <div class="credit">
+      <div class="name">Matthew Sorensen</div>
+      <div class="role">Tock Puppet Design and Fabrication</div>
+    </div>
+    <div class="credit">
+      <div class="name">Dave Shukan</div>
+      <div class="role">Tock Performer</div>
+    </div>
+    <div class="credit">
+      <div class="name">Suzanna Roberts</div>
+      <div class="role">Backgrounds</div>
+    </div>
+    <div class="credit">
+      <div class="name">Jack Brotman</div>
+      <div class="role">Editor</div>
+    </div>
+
+    <h3>Bookspace Videos</h3>
+    <div class="credit">
+      <div class="name">Aaron Feldman</div>
+      <div class="role">Editor</div>
+    </div>
+    <div class="credit">
+      <div class="name">Lea Berlin</div>
+      <div class="role">Editor (New You City)</div>
+    </div>
+
+    <h3>Romance (Heartford)</h3>
+    <div class="credit">
+      <div class="name">Shai Nir Hana</div>
+      <div class="role">Writer</div>
+    </div>
+    <div class="credit">
+      <div class="name">Ashley Davis</div>
+      <div class="role">Lady Ida</div>
+    </div>
+    <div class="credit">
+      <div class="name">James Burdin</div>
+      <div class="role">Tomov Finland</div>
+    </div>
+    <div class="credit">
+      <div class="name">Rachel Burdin</div>
+      <div class="role">Muffy Loveswell</div>
+    </div>
+
+    <h3>How-To (Howtoona)</h3>
+    <div class="credit">
+      <div class="name">Jenny Gutbezahl/Wayne Zhao</div>
+      <div class="role">Writer</div>
+    </div>
+    <div class="credit">
+      <div class="name">r0b Elkind</div>
+      <div class="role">Host</div>
+    </div>
+
+    <h3>Horror (Lake Eerie)</h3>
+    <div class="credit">
+      <div class="name">Peter Gwinn</div>
+      <div class="role">Writer</div>
+    </div>
+    <div class="credit">
+      <div class="name">Peter Gwinn</div>
+      <div class="role">Tour Guide</div>
+    </div>
+
+    <h3>Self-Help (New You City)</h3>
+    <div class="credit">
+      <div class="name">Katie Hamill</div>
+      <div class="role">Writer</div>
+    </div>
+    <div class="credit">
+      <div class="name">Jen McTeague</div>
+      <div class="role">Presenter</div>
+    </div>
+
+    <h3>Mystery (Noirleans)</h3>
+    <div class="credit">
+      <div class="name">Jenny Gutbezahl</div>
+      <div class="role">Writer</div>
+    </div>
+    <div class="credit">
+      <div class="name">Jenny Gutbezahl</div>
+      <div class="role">Carlyle Anderson</div>
+    </div>
+    <div class="credit">
+      <div class="name">Eric Pinnick</div>
+      <div class="role">Jason Shambles</div>
+    </div>
+
+    <h3>Cookbooks (Recipeoria)</h3>
+    <div class="credit">
+      <div class="name">Eric Berlin</div>
+      <div class="role">Writer</div>
+    </div>
+    <div class="credit">
+      <div class="name">"Weird Al" Yankovic</div>
+      <div class="role">Chef</div>
+    </div>
+
+    <h3>Reference (Reference Point)</h3>
+    <div class="credit">
+      <div class="name">Kevin Wald</div>
+      <div class="role">Writer</div>
+    </div>
+    <div class="credit">
+      <div class="name">Katie Hamill</div>
+      <div class="role">Librarian</div>
+    </div>
+
+    <h3>Science Fiction (Sci-Ficisco)</h3>
+    <div class="credit">
+      <div class="name">Jenny Gutbezahl</div>
+      <div class="role">Writer</div>
+    </div>
+    <div class="credit">
+      <div class="name">Nate Heiss</div>
+      <div class="role">Alien</div>
+    </div>
+
+    <h3>Biography (Whoston)</h3>
+    <div class="credit">
+      <div class="name">Aaron Feldman</div>
+      <div class="role">Writer</div>
+    </div>
+    <div class="credit">
+      <div class="name">Alison Muratore</div>
+      <div class="role">Host</div>
+    </div>
+
+    <h3>Fantasy (The Quest Coast)</h3>
+    <div class="credit">
+      <div class="name">Mark Halpin/Eric Berlin</div>
+      <div class="role">Writer</div>
+    </div>
+    <div class="credit">
+      <div class="name">Mark Halpin</div>
+      <div class="role">Wizard</div>
+    </div>
+
+    <h3>Trailers & Animations</h3>
+    <div class="credit major">
+      <div class="name">Justin Ladia</div>
+      <div class="role">Star Rats Trailer, Health and Safety Presentation, <span class="spoiler">Falling Into the Plot Hole</span>, <span class="spoiler">Bookwyrm Eats a New Berry</span>, Plot Device Activation</div>
+    </div>
+
+    <h3>Live Interactions</h3>
+    <div class="credit">
+      <div class="name">Nic Rhode</div>
+      <div class="role">Billie Barker</div>
+    </div>
+    <div class="credit">
+      <div class="name">Amy Barker</div>
+      <div class="role">Billie Barker</div>
+    </div>
+    <div class="credit">
+      <div class="name">Ivy Hornibrook</div>
+      <div class="role">Billie Barker</div>
+    </div>
+    <div class="credit">
+      <div class="name">Maggi Rhode</div>
+      <div class="role">Danni Dewey</div>
+    </div>
+    <div class="credit">
+      <div class="name">Mike Seplowitz</div>
+      <div class="role">Danni Dewey</div>
+    </div>
+    <div class="credit">
+      <div class="name">Tyler Crosby</div>
+      <div class="role">Danni Dewey</div>
+    </div>
+    <div class="credit">
+      <div class="name">Shawn Pate</div>
+      <div class="role">Danni Dewey</div>
+    </div>
+    <div class="credit">
+      <div class="name">Renee Ngan</div>
+      <div class="role">Herschel Hayden</div>
+    </div>
+    <div class="credit">
+      <div class="name">Jenny Gutbezahl</div>
+      <div class="role">Herschel Hayden</div>
+    </div>
+    <div class="credit">
+      <div class="name">Ben Smith</div>
+      <div class="role">Alexei Lewis</div>
+    </div>
+    <div class="credit">
+      <div class="name">Justin Ladia</div>
+      <div class="role">Randy Rotch</div>
+    </div>
+    <div class="credit">
+      <div class="name">Will Zambole</div>
+      <div class="role">Randy Rotch</div>
+    </div>
+    <div class="credit">
+      <div class="name">Rob Elkind</div>
+      <div class="role">Randy Rotch</div>
+    </div>
+    <div class="credit">
+      <div class="name">Matt Cleinman</div>
+      <div class="role">Randy Rotch</div>
+    </div>
+    <div class="credit">
+      <div class="name">Mike Nothnagel</div>
+      <div class="role">Riley Rotch</div>
+    </div>
+    <div class="credit">
+      <div class="name">Shawn Pate</div>
+      <div class="role">Riley Rotch</div>
+    </div>
+    <div class="credit">
+      <div class="name">Phil Steindel</div>
+      <div class="role">Riley Rotch</div>
+    </div>
+    <div class="credit">
+      <div class="name">John Hornibrook</div>
+      <div class="role">Riley Rotch</div>
+    </div>
+
+    <h3>Final Interactions</h3>
+    <div class="credit">
+      <div class="name">Julia Wagner</div>
+      <div class="role">Herself</div>
+    </div>
+    <div class="credit">
+      <div class="name">Ben Smith</div>
+      <div class="role">Himself</div>
+    </div>
+    <div class="credit">
+      <div class="name">Jen McTeague</div>
+      <div class="role">"Writer"</div>
+    </div>
+
+    <h2>Events</h2>
+    <div class="credit">
+      <div class="name">Ashley Davis</div>
+      <div class="role">Event Lead</div>
+    </div>
+    <div class="credit">
+      <div class="name">Jen McTeague</div>
+      <div class="role">Event Team</div>
+    </div>
+    <div class="credit">
+      <div class="name">Wil Zambole</div>
+      <div class="role">Event Team</div>
+    </div>
+
+    <h3>Content Creators</h3>
+    <div class="credit">
+      <div class="name">Jen McTeague</div>
+      <div class="role"><em>The Let's Play That Goes Wrong</em></div>
+    </div>
+    <div class="credit">
+      <div class="name">Jen McTeague</div>
+      <div class="role"><em>Crisis in Publishing</em> (Thanks to Fraser Simpson, inspired by Max Woghiren)</div>
+    </div>
+    <div class="credit">
+      <div class="name">Aaron Feldman, Shai Nir Hana, Ashley Davis, and Kevin Wald</div>
+      <div class="role"><em>Cryptic Dixit</em></div>
+    </div>
+    <div class="credit">
+      <div class="name">Wil Zambole</div>
+      <div class="role"><em>Picaboo</em></div>
+    </div>
+    <div class="credit">
+      <div class="name">Jen McTeague</div>
+      <div class="role">Demostration Videos and Discord Tech</div>
+    </div>
+
+    <h3><em>The Let's Play That Goes Wrong</em> Sketch</h3>
+    <div class="credit">
+      <div class="name">Jen McTeague</div>
+      <div class="role">Jamie Aster - the GM, Minister of RPG Books</div>
+    </div>
+    <div class="credit">
+      <div class="name">Matt Cleinman</div>
+      <div class="role">Bob - the Wizard, Minister of Histories</div>
+    </div>
+    <div class="credit">
+      <div class="name">Rachel Burdin</div>
+      <div class="role">Anna - the Fighter, Minister of Westerns</div>
+    </div>
+    <div class="credit">
+      <div class="name">Linn Davis</div>
+      <div class="role">Otto - the Cleric, Minister of Graphic Novels</div>
+    </div>
+    <div class="credit">
+      <div class="name">Dahlia Schwartz</div>
+      <div class="role">Elle - the Rogue, Minister of Humor Books</div>
+    </div>
+
+    <h2>Tech</h2>
+    <div class="credit major">
+      <div class="name">Sahil Bhasin</div>
+      <div class="role">Tech Lead</div>
+    </div>
+    <div class="credit">
+      <div class="name">James Sugrono</div>
+      <div class="role">Internal Tools Lead</div>
+    </div>
+    <div class="credit">
+      <div class="name">Sandy Weisz</div>
+      <div class="role">Tech</div>
+    </div>
+    <div class="credit">
+      <div class="name">Jacob Ford</div>
+      <div class="role">Tech</div>
+    </div>
+    <div class="credit">
+      <div class="name">Isaac Garfinkle</div>
+      <div class="role">Tech</div>
+    </div>
+    <div class="credit">
+      <div class="name">Shawn Ligocki</div>
+      <div class="role">Tech</div>
+    </div>
+    <div class="credit">
+      <div class="name">Shai Nir Hana</div>
+      <div class="role">Tech</div>
+    </div>
+    <div class="credit">
+      <div class="name">Dan Lepage</div>
+      <div class="role">Tech</div>
+    </div>
+    <div class="credit">
+      <div class="name">Matt Cleinman</div>
+      <div class="role">Product Manager</div>
+    </div>
+
+    <h3>Puzzle Postproduction</h3>
+    <div class="no-role-wrapper">
+      <div class="credit no-role"><div class="name">Aaron Fuegi</div></div>
+      <div class="credit no-role"><div class="name">Ashley Davis</div></div>
+      <div class="credit no-role"><div class="name">Ben Smith</div></div>
+      <div class="credit no-role"><div class="name">Daniel Hunt</div></div>
+      <div class="credit no-role"><div class="name">Deborah Levinson</div></div>
+      <div class="credit no-role"><div class="name">Foggy Brume</div></div>
+      <div class="credit no-role"><div class="name">Isaac Garfinkle</div></div>
+      <div class="credit no-role"><div class="name">Jacob Ford</div></div>
+      <div class="credit no-role"><div class="name">James Sugrono</div></div>
+      <div class="credit no-role"><div class="name">Jen McTeague</div></div>
+      <div class="credit no-role"><div class="name">Joe Cabrera</div></div>
+      <div class="credit no-role"><div class="name">Kieran Boyd</div></div>
+      <div class="credit no-role"><div class="name">Mike Seplowitz</div></div>
+      <div class="credit no-role"><div class="name">Phil Steindel</div></div>
+      <div class="credit no-role"><div class="name">Sahil Bhasin</div></div>
+      <div class="credit no-role"><div class="name">Sandy Weisz</div></div>
+      <div class="credit no-role"><div class="name">Shai Nir Hana</div></div>
+      <div class="credit no-role"><div class="name">Shawn Ligocki</div></div>
+    </div>
+
+    <h2>Testsolving</h2>
+    <h3>Testsolve Coordinators</h3>
+    <div class="credit">
+      <div class="name">Jacob Ford</div>
+      <div class="role">Metapuzzle Testsolve Coordinator</div>
+    </div>
+    <div class="credit">
+      <div class="name">Jenny Gutbezahl</div>
+      <div class="role">Testsolve Coordinator</div>
+    </div>
+    <div class="credit">
+      <div class="name">Matt Stern</div>
+      <div class="role">Testsolve Coordinator</div>
+    </div>
+
+    <h3>Testsolvers (in order of number of puzzles fully tested)</h3>
+    <div class="credit major">
+      <div class="name">Renee Ngan</div>
+      <div class="role">Best Testsolver</div>
+    </div>
+
+    <div class="no-role-wrapper">
+      <div class="credit no-role"><div class="name">Phil Steindel</div></div>
+      <div class="credit no-role"><div class="name">James Sugrono</div></div>
+      <div class="credit no-role"><div class="name">Debby Levinson</div></div>
+      <div class="credit no-role"><div class="name">Matthew Schulz</div></div>
+      <div class="credit no-role"><div class="name">Aaron Feldman</div></div>
+      <div class="credit no-role"><div class="name">Jenny Gutbezahl</div></div>
+      <div class="credit no-role"><div class="name">Matt Stern</div></div>
+      <div class="credit no-role"><div class="name">Maree Cassidy</div></div>
+      <div class="credit no-role"><div class="name">Kevin Wald</div></div>
+      <div class="credit no-role"><div class="name">Shai Nir Hana</div></div>
+      <div class="credit no-role"><div class="name">Yao Yu</div></div>
+      <div class="credit no-role"><div class="name">Tracy Cobbs</div></div>
+      <div class="credit no-role"><div class="name">Mike Korn</div></div>
+      <div class="credit no-role"><div class="name">Jimmy Williams</div></div>
+      <div class="credit no-role"><div class="name">Katie Hamill</div></div>
+      <div class="credit no-role"><div class="name">Mike Seplowitz</div></div>
+      <div class="credit no-role"><div class="name">Matt Zinno</div></div>
+      <div class="credit no-role"><div class="name">Bram de Laat</div></div>
+      <div class="credit no-role"><div class="name">Ben Smith</div></div>
+      <div class="credit no-role"><div class="name">Jen McTeague</div></div>
+      <div class="credit no-role"><div class="name">Aaron Fuegi</div></div>
+      <div class="credit no-role"><div class="name">Kieran Boyd</div></div>
+      <div class="credit no-role"><div class="name">Dahlia Schwartz</div></div>
+      <div class="credit no-role"><div class="name">Andrew Esten</div></div>
+      <div class="credit no-role"><div class="name">Adam Cooper</div></div>
+      <div class="credit no-role"><div class="name">Mike Nothnagel</div></div>
+      <div class="credit no-role"><div class="name">Andrew Foerster</div></div>
+      <div class="credit no-role"><div class="name">Sofiya Cremin</div></div>
+      <div class="credit no-role"><div class="name">Sahil Bhasin</div></div>
+      <div class="credit no-role"><div class="name">Mark Halpin</div></div>
+      <div class="credit no-role"><div class="name">Wil Zambole</div></div>
+      <div class="credit no-role"><div class="name">Wayne Zhao</div></div>
+      <div class="credit no-role"><div class="name">Sandy Weisz</div></div>
+      <div class="credit no-role"><div class="name">Justin Ladia</div></div>
+      <div class="credit no-role"><div class="name">joon pahk</div></div>
+      <div class="credit no-role"><div class="name">Julia Wagner</div></div>
+      <div class="credit no-role"><div class="name">Susan Glass</div></div>
+      <div class="credit no-role"><div class="name">Shawn Ligocki</div></div>
+      <div class="credit no-role"><div class="name">Peter Gwinn</div></div>
+      <div class="credit no-role"><div class="name">Eric Berlin</div></div>
+      <div class="credit no-role"><div class="name">Steve Kaltenbaugh</div></div>
+      <div class="credit no-role"><div class="name">Rae Hughes</div></div>
+      <div class="credit no-role"><div class="name">Daniel Hunt</div></div>
+      <div class="credit no-role"><div class="name">Ashley Davis</div></div>
+      <div class="credit no-role"><div class="name">Matt Cleinman</div></div>
+      <div class="credit no-role"><div class="name">Kah Kien Ong</div></div>
+      <div class="credit no-role"><div class="name">Joe Bohanon</div></div>
+      <div class="credit no-role"><div class="name">Paul Bozoian</div></div>
+      <div class="credit no-role"><div class="name">Mark Navarrete</div></div>
+      <div class="credit no-role"><div class="name">JamieFC</div></div>
+      <div class="credit no-role"><div class="name">Chen Wang</div></div>
+      <div class="credit no-role"><div class="name">Amanda Harris</div></div>
+      <div class="credit no-role"><div class="name">Ronnie Kon</div></div>
+      <div class="credit no-role"><div class="name">Rachel Burdin</div></div>
+      <div class="credit no-role"><div class="name">Yossi Fendel</div></div>
+      <div class="credit no-role"><div class="name">Suzanna Roberts</div></div>
+      <div class="credit no-role"><div class="name">Patrick Stevens</div></div>
+      <div class="credit no-role"><div class="name">Shawn Pate</div></div>
+      <div class="credit no-role"><div class="name">Yuzhou Gu</div></div>
+      <div class="credit no-role"><div class="name">Aaron Yevick</div></div>
+      <div class="credit no-role"><div class="name">Joe Cabrera</div></div>
+      <div class="credit no-role"><div class="name">Hong Jhun Sim</div></div>
+      <div class="credit no-role"><div class="name">Gavin Edwards</div></div>
+      <div class="credit no-role"><div class="name">Chris Breaux</div></div>
+      <div class="credit no-role"><div class="name">Celestine Lau</div></div>
+      <div class="credit no-role"><div class="name">Arun Sannuti</div></div>
+      <div class="credit no-role"><div class="name">Thomas Idzikowski</div></div>
+      <div class="credit no-role"><div class="name">Isaac Garfinkle</div></div>
+      <div class="credit no-role"><div class="name">Brandon Cunningham</div></div>
+      <div class="credit no-role"><div class="name">Andy Kravis</div></div>
+      <div class="credit no-role"><div class="name">Jacob Ford</div></div>
+      <div class="credit no-role"><div class="name">Andrew Foerster</div></div>
+      <div class="credit no-role"><div class="name">Matthew Stein</div></div>
+      <div class="credit no-role"><div class="name">April Pinnick</div></div>
+      <div class="credit no-role"><div class="name">Eric Pinnick</div></div>
+      <div class="credit no-role"><div class="name">LeavingLeaves</div></div>
+      <div class="credit no-role"><div class="name">Jeremy White</div></div>
+      <div class="credit no-role"><div class="name">Dan Lepage</div></div>
+      <div class="credit no-role"><div class="name">Sean Fujiwara</div></div>
+      <div class="credit no-role"><div class="name">Jacob Gorenburg</div></div>
+      <div class="credit no-role"><div class="name">Tyler Crosby</div></div>
+      <div class="credit no-role"><div class="name">Foggy Brume</div></div>
+      <div class="credit no-role"><div class="name">Tom Weisswange</div></div>
+      <div class="credit no-role"><div class="name">Scott Weiss</div></div>
+      <div class="credit no-role"><div class="name">r0b Elkind</div></div>
+      <div class="credit no-role"><div class="name">Joshua Hendra</div></div>
+      <div class="credit no-role"><div class="name">Joshua Green</div></div>
+      <div class="credit no-role"><div class="name">Greg Dyer</div></div>
+      <div class="credit no-role"><div class="name">Drew Nelson</div></div>
+      <div class="credit no-role"><div class="name">Dmitry Gorenburg</div></div>
+      <div class="credit no-role"><div class="name">Dave Shukan</div></div>
+      <div class="credit no-role"><div class="name">Captain Kleznik</div></div>
+      <div class="credit no-role"><div class="name">Sandy Weisz</div></div>
+      <div class="credit no-role"><div class="name">Ashutosh Sodhani</div></div>
+    </div>
+
+    <h2>Hunt Support and Service</h2>
+    <div class="credit major">
+      <div class="name">Jenny Gutbezahl</div>
+      <div class="role">Workflow Manager (Interactions, Submission Review, Email Response)</div>
+    </div>
+    <div class="credit major">
+      <div class="name">Julia Wagner</div>
+      <div class="role">Health and Safety and Minor Forms Manager</div>
+    </div>
+
+    <h3>Point Persons</h3>
+    <div class="no-role-wrapper">
+      <div class="credit no-role"><div class="name">Alison Muratore</div></div>
+      <div class="credit no-role"><div class="name">Ben Smith</div></div>
+      <div class="credit no-role"><div class="name">Eric Berlin</div></div>
+      <div class="credit no-role"><div class="name">Jen McTeague</div></div>
+      <div class="credit no-role"><div class="name">Jenny Gutbezahl</div></div>
+      <div class="credit no-role"><div class="name">Justin Ladia</div></div>
+      <div class="credit no-role"><div class="name">Matt Cleinman</div></div>
+      <div class="credit no-role"><div class="name">Wil Zambole</div></div>
+    </div>
+
+    <h3>Interactions/Submission Reviews</h3>
+    <div class="no-role-wrapper">
+      <div class="credit no-role"><div class="name">April Pinnick</div></div>
+      <div class="credit no-role"><div class="name">Rae Hughes</div></div>
+      <div class="credit no-role"><div class="name">Ben Smith</div></div>
+      <div class="credit no-role"><div class="name">Katie Hamill</div></div>
+      <div class="credit no-role"><div class="name">Andrew Foerster</div></div>
+      <div class="credit no-role"><div class="name">Sandy Weisz</div></div>
+      <div class="credit no-role"><div class="name">Jen McTeague</div></div>
+      <div class="credit no-role"><div class="name">Matt Cleinman</div></div>
+      <div class="credit no-role"><div class="name">Nate Heiss</div></div>
+      <div class="credit no-role"><div class="name">Ronnie Kon</div></div>
+      <div class="credit no-role"><div class="name">James Sugrono</div></div>
+      <div class="credit no-role"><div class="name">Dan Berlin</div></div>
+      <div class="credit no-role"><div class="name">Debby Levinson</div></div>
+      <div class="credit no-role"><div class="name">Renee Ngan</div></div>
+      <div class="credit no-role"><div class="name">Tyler Crosby</div></div>
+      <div class="credit no-role"><div class="name">Rachel Burdin</div></div>
+      <div class="credit no-role"><div class="name">Steve Kaltenbaugh</div></div>
+      <div class="credit no-role"><div class="name">Adam Cooper</div></div>
+      <div class="credit no-role"><div class="name">Susan Glass</div></div>
+      <div class="credit no-role"><div class="name">Eric Berlin</div></div>
+      <div class="credit no-role"><div class="name">Shawn Pate</div></div>
+      <div class="credit no-role"><div class="name">Matthew Stein</div></div>
+      <div class="credit no-role"><div class="name">Peter Gwinn</div></div>
+      <div class="credit no-role"><div class="name">Gavin Edwards</div></div>
+      <div class="credit no-role"><div class="name">Jenny Gutbezahl</div></div>
+      <div class="credit no-role"><div class="name">Aaron Feldman</div></div>
+      <div class="credit no-role"><div class="name">Mike Seplowitz</div></div>
+      <div class="credit no-role"><div class="name">Phil Steindel</div></div>
+      <div class="credit no-role"><div class="name">Wil Zambole</div></div>
+      <div class="credit no-role"><div class="name">Julia Wagner</div></div>
+      <div class="credit no-role"><div class="name">Alison Muratore</div></div>
+      <div class="credit no-role"><div class="name">Maggi Rhodes</div></div>
+      <div class="credit no-role"><div class="name">Wayne Zhao</div></div>
+      <div class="credit no-role"><div class="name">Justin Ladia</div></div>
+    </div>
+
+    <h3>Hinting</h3>
+    <div class="no-role-wrapper">
+      <div class="credit no-role"><div class="name">Yao Yu</div></div>
+      <div class="credit no-role"><div class="name">Foggy Brume</div></div>
+      <div class="credit no-role"><div class="name">Joe Bohanon</div></div>
+      <div class="credit no-role"><div class="name">joon pahk</div></div>
+      <div class="credit no-role"><div class="name">Mark Halpin</div></div>
+      <div class="credit no-role"><div class="name">Matt Stern</div></div>
+      <div class="credit no-role"><div class="name">Celestine Lau</div></div>
+      <div class="credit no-role"><div class="name">Michael Korn</div></div>
+      <div class="credit no-role"><div class="name">Dave Shukan</div></div>
+      <div class="credit no-role"><div class="name">Suzanna Roberts</div></div>
+      <div class="credit no-role"><div class="name">Yossi Fendel</div></div>
+      <div class="credit no-role"><div class="name">Kevin Wald</div></div>
+      <div class="credit no-role"><div class="name">Joe Cabrera</div></div>
+      <div class="credit no-role"><div class="name">Matt Zinno</div></div>
+      <div class="credit no-role"><div class="name">Diana Tenery</div></div>
+      <div class="credit no-role"><div class="name">Wayne Zhao</div></div>
+      <div class="credit no-role"><div class="name">Gavin Edwards</div></div>
+      <div class="credit no-role"><div class="name">Chris Breaux</div></div>
+      <div class="credit no-role"><div class="name">Andy Kravis</div></div>
+      <div class="credit no-role"><div class="name">Renee Ngan</div></div>
+      <div class="credit no-role"><div class="name">Jenny Gutbezahl</div></div>
+      <div class="credit no-role"><div class="name">Arun Sannuti</div></div>
+      <div class="credit no-role"><div class="name">Aaron Fuegi</div></div>
+      <div class="credit no-role"><div class="name">Sandy Weisz</div></div>
+      <div class="credit no-role"><div class="name">James Sugrono</div></div>
+      <div class="credit no-role"><div class="name">Chen Wang</div></div>
+      <div class="credit no-role"><div class="name">Debby Levinson</div></div>
+      <div class="credit no-role"><div class="name">Tracy Cobbs</div></div>
+      <div class="credit no-role"><div class="name">Jeremy White</div></div>
+      <div class="credit no-role"><div class="name">Paul Bozoian</div></div>
+      <div class="credit no-role"><div class="name">Mike Seplowitz</div></div>
+      <div class="credit no-role"><div class="name">Matthew Schulz</div></div>
+      <div class="credit no-role"><div class="name">Eric Berlin</div></div>
+      <div class="credit no-role"><div class="name">Dahlia Schwartz</div></div>
+      <div class="credit no-role"><div class="name">Daniel Hunt</div></div>
+      <div class="credit no-role"><div class="name">Ronnie Kon</div></div>
+      <div class="credit no-role"><div class="name">Steve Kaltenbaugh</div></div>
+      <div class="credit no-role"><div class="name">Peter Gwinn</div></div>
+      <div class="credit no-role"><div class="name">Phil Steindel</div></div>
+      <div class="credit no-role"><div class="name">Kah Kien Ong</div></div>
+      <div class="credit no-role"><div class="name">Jen McTeague</div></div>
+      <div class="credit no-role"><div class="name">Aaron Feldman</div></div>
+      <div class="credit no-role"><div class="name">Matthew Stein</div></div>
+      <div class="credit no-role"><div class="name">Maree Cassidy</div></div>
+      <div class="credit no-role"><div class="name">Yuzhou Gu</div></div>
+      <div class="credit no-role"><div class="name">Julia Wagner</div></div>
+      <div class="credit no-role"><div class="name">Shai Nir Hana</div></div>
+      <div class="credit no-role"><div class="name">Andrew Esten</div></div>
+      <div class="credit no-role"><div class="name">Ben Pall</div></div>
+      <div class="credit no-role"><div class="name">Greg Dyer</div></div>
+      <div class="credit no-role"><div class="name">Patrick Stevens</div></div>
+      <div class="credit no-role"><div class="name">Scott Seiver</div></div>
+    </div>
+
+    <h3>E-Mail Queue</h3>
+    <div class="no-role-wrapper">
+      <div class="credit no-role"><div class="name">Ronnie Kon</div></div>
+      <div class="credit no-role"><div class="name">Dan Berlin</div></div>
+      <div class="credit no-role"><div class="name">Patrick Stevens</div></div>
+      <div class="credit no-role"><div class="name">Dahlia Schwartz</div></div>
+      <div class="credit no-role"><div class="name">Sandy Weisz</div></div>
+      <div class="credit no-role"><div class="name">Maree Cassidy</div></div>
+      <div class="credit no-role"><div class="name">Jen McTeague</div></div>
+      <div class="credit no-role"><div class="name">Katie Hamill</div></div>
+      <div class="credit no-role"><div class="name">Nate Heiss</div></div>
+      <div class="credit no-role"><div class="name">Alison Muratore</div></div>
+      <div class="credit no-role"><div class="name">April Pinnick</div></div>
+      <div class="credit no-role"><div class="name">Debby Levinson</div></div>
+      <div class="credit no-role"><div class="name">Jacob Ford</div></div>
+      <div class="credit no-role"><div class="name">Aaron Fuegi</div></div>
+      <div class="credit no-role"><div class="name">Aaron Feldman</div></div>
+      <div class="credit no-role"><div class="name">Andrew Foerster</div></div>
+      <div class="credit no-role"><div class="name">Jenny Gutbezahl</div></div>
+      <div class="credit no-role"><div class="name">Ben Smith</div></div>
+      <div class="credit no-role"><div class="name">James Sugrono</div></div>
+      <div class="credit no-role"><div class="name">Matt Cleinman</div></div>
+      <div class="credit no-role"><div class="name">Adam Cooper</div></div>
+      <div class="credit no-role"><div class="name">Rachel Burdin</div></div>
+      <div class="credit no-role"><div class="name">Julia Wagner</div></div>
+      <div class="credit no-role"><div class="name">Wayne Zhao</div></div>
+      <div class="credit no-role"><div class="name">Kah Kien Ong</div></div>
+      <div class="credit no-role"><div class="name">Eric Berlin</div></div>
+      <div class="credit no-role"><div class="name">Justin Ladia</div></div>
+      <div class="credit no-role"><div class="name">Phil Steindel</div></div>
+      <div class="credit no-role"><div class="name">Susan Glass</div></div>
+      <div class="credit no-role"><div class="name">Dave Shukan</div></div>
+      <div class="credit no-role"><div class="name">Kevin Wald</div></div>
+      <div class="credit no-role"><div class="name">Peter Gwinn</div></div>
+      <div class="credit no-role"><div class="name">Arun Sannuti</div></div>
+      <div class="credit no-role"><div class="name">Celestine Lau</div></div>
+      <div class="credit no-role"><div class="name">Foggy Brume</div></div>
+      <div class="credit no-role"><div class="name">joon pahk</div></div>
+      <div class="credit no-role"><div class="name">Rae Hughes</div></div>
+      <div class="credit no-role"><div class="name">Renee Ngan</div></div>
+      <div class="credit no-role"><div class="name">Matthew Stein</div></div>
+      <div class="credit no-role"><div class="name">Yuzhou Gu</div></div>
+    </div>
+
+    <h3>Event Runners</h3>
+    <div class="no-role-wrapper">
+      <div class="credit no-role"><div class="name">Rachel Burdin</div></div>
+      <div class="credit no-role"><div class="name">Joe Cabrera</div></div>
+      <div class="credit no-role"><div class="name">Gavin Edwards</div></div>
+      <div class="credit no-role"><div class="name">Aaron Feldman</div></div>
+      <div class="credit no-role"><div class="name">Andrew Foerster</div></div>
+      <div class="credit no-role"><div class="name">Aaron Fuegi</div></div>
+      <div class="credit no-role"><div class="name">Susan Glass</div></div>
+      <div class="credit no-role"><div class="name">Katie Hamill</div></div>
+      <div class="credit no-role"><div class="name">Rae Hughes</div></div>
+      <div class="credit no-role"><div class="name">Renee Ngan</div></div>
+      <div class="credit no-role"><div class="name">Kah Kien Ong</div></div>
+      <div class="credit no-role"><div class="name">Dahlia Schwartz</div></div>
+      <div class="credit no-role"><div class="name">Diana Tenery</div></div>
+      <div class="credit no-role"><div class="name">Wayne Zhao</div></div>
+      <div class="credit no-role"><div class="name">Matt Zinno</div></div>
+    </div>
+
+    <h2>Special Thanks</h2>
+    <div class="credit">
+      <div class="name">Susan Glass</div>
+      <div class="role">Wrap-Up Submissions Compilation</div>
+    </div>
+    <div class="credit">
+      <div class="name">Ethan Feuer</div>
+      <div class="role">Director of Student Engagement & Leadership</div>
+    </div>
+    <div class="credit">
+      <div class="name">Ramon Downes</div>
+      <div class="role">Assistant Director, Financial Operations for Student Organizations</div>
+    </div>
+    <div class="credit">
+      <div class="name">Mary Mango</div>
+      <div class="role">Financial Assistant, Student Organizations, Leadership and Engagement</div>
+    </div>
+    <div class="credit">
+      <div class="name">Judith Zinker</div>
+      <div class="role">MIT Events and Information Center</div>
+    </div>
+    <div class="credit">
+      <div class="name">David Tytell</div>
+      <div class="role">MIT Medical</div>
+    </div>
+    <div class="no-role-wrapper">
+      <div class="credit no-role"><div class="name">MIT Libraries</div></div>
+      <div class="credit no-role"><div class="name">MIT Disability & Access Services</div></div>
+      <div class="credit no-role"><div class="name">MIT Puzzle Club Exec</div></div>
+    </div>
+
+    <h2>Moral Support</h2>
+    <div class="credit">
+      <div class="name">Zappy</div>
+      <div class="role">Team Mascot</div>
+    </div>
+    <div class="credit">
+      <div class="name">Wil Zambole</div>
+      <div class="role">Ombudsperson</div>
+    </div>
+    <div class="credit">
+      <div class="name">Susan Glass</div>
+      <div class="role">Ombudsperson Emeritus</div>
+    </div>
+    <div class="credit">
+      <div class="name">MIT Mystery Hunt Participants</div>
+      <div class="role">Raison d'Être</div>
+    </div>
+  </section>
+  <div class="paper-edge bottom"></div>
+</main>
+{% endblock site_content %}

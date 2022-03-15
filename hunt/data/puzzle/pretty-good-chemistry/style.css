@@ -1,0 +1,58 @@
+.puzzle table {
+  table-layout: fixed;
+  width: 100%;
+  caption-side: bottom;
+}
+
+.puzzle table caption {
+  margin-top: 10px;
+  font-style: italic;
+  font-size: smaller;
+}
+
+.puzzle col {
+  width: 54px;
+}
+
+.puzzle td {
+  height: 60px;
+  border: 1px solid #999;
+  background: white;
+  padding: 2px;
+  font-family: "Ubuntu Condensed";
+  font-size: 12px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.puzzle td .parenthetical {
+  font-size: 10px;
+}
+
+.puzzle td.spacing {
+  border: none;
+  background: none;
+}
+
+.puzzle td:empty:not(.spacing) {
+  background-color: #CCC;
+}
+
+.puzzle td.image a:hover {
+  cursor: zoom-in;
+}
+
+.puzzle td.image img {
+  display: block;
+  margin: auto;
+}
+
+.puzzle > p {
+  text-align: center;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.puzzle ul {
+  break-inside: avoid-page;
+}

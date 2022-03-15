@@ -1,0 +1,14 @@
+html, body {
+  background: transparent;
+  min-width: 0;
+  height: auto;
+}
+
+main {
+  padding: 10px;
+}
+
+main:not(.hints) > .banner {
+  margin-left: -10px;
+  margin-right: -10px;
+}

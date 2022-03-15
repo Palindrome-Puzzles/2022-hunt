@@ -1,0 +1,44 @@
+name: Setup Google Cloud authentication
+
+inputs:
+  gcloud_project_id:
+    description: The project ID of the Google Cloud project
+    required: true
+
+  gcloud_credentials:
+    description: Credentials to authenticate with Google Cloud
+    required: true
+
+  token_format:
+    description: id_token to generate ID tokens, or missing to skip
+    required: false
+    default: ''
+
+  id_token_audience:
+    description: The audience for the generated ID Token.
+    required: false
+    default: ''
+
+outputs:
+  id_token:
+    description: The Google Cloud access token for calling other Google Cloud APIs
+    value: ${{ steps.auth.outputs.id_token }}
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Auth to Google Cloud
+      id: auth
+      uses: google-github-actions/auth@v0
+      with:
+        project_id: ${{ inputs.gcloud_project_id }}
+        credentials_json: ${{ inputs.gcloud_credentials }}
+        create_credentials_file: true
+        token_format: ${{ inputs.token_format }}
+        id_token_audience: ${{ inputs.id_token_audience }}
+
+    - name: Setup Google Cloud
+      uses: google-github-actions/setup-gcloud@master
+      with:
+        version: '365.0.1'
+        project_id: ${{ inputs.gcloud_project_id }}

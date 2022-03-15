@@ -1,0 +1,43 @@
+.grid-container {
+  margin: auto;
+  padding: 1em;
+  width: 800px;
+}
+
+.puzzle.interactive {
+  .grid-container {
+    background: linear-gradient(#fbe6c8, 2%, #ffffff, 98%, #fbe6c8);
+    border: 10px solid #fbe6c8;
+    border-radius: 10px;
+    height: 80vh;
+    max-height: 1200px;
+    min-height: 600px;
+    overflow-y: auto;
+  }
+}
+
+table.letters {
+  margin: 12px auto;
+
+  td {
+    box-sizing: border-box;
+    height: 30px;
+    width: 30px;
+  }
+
+  td.letter {
+    text-align: center;
+  }
+}
+
+table.crossword {
+  td {
+    height: 30px;
+    min-width: 30px;
+    width: 30px;
+  }
+
+  td.letter {
+    padding: 0;
+  }
+}

@@ -1,0 +1,142 @@
+#main-content {
+	* {
+		box-sizing: border-box;
+	}
+
+	img {
+		max-width: 100%;
+	}
+
+	h2 {
+		font-size: 1.5rem;
+		padding-top: 2rem;
+	}
+
+	table {
+		width: 100%;
+	}
+
+	th {
+		text-align: left;
+		vertical-align: bottom;
+		background: #eee;
+		border-bottom: 1px solid #ccc;
+	}
+
+	td {
+		font-size: .9rem;
+		padding: .7em .5em;
+	}
+
+	th {
+		font-size: 1rem;
+		padding: .4em .5em;
+	}
+
+	th:first-child, td:first-child {
+		padding-left: .5em;
+	}
+
+	.books {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, 20%);
+
+		.book {
+			padding: 1rem;
+
+			img {
+				width: 100%;
+			}
+		}
+	}
+
+	.directors {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, 20%);
+
+		.dir {
+			padding: 1rem;
+
+			img {
+				width: 100%;
+			}
+		}
+	}
+
+	.settings {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, 25%);
+
+		.setting {
+			padding: 1rem;
+
+			img {
+				width: 100%;
+			}
+		}
+	}
+
+	.genres {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, 25%);
+
+		.genre {
+			padding: 1rem;
+
+			img {
+				width: 100%;
+			}
+		}
+	}
+
+	td {
+		vertical-align: top;
+	}
+
+	%detail {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		width: 100%;
+
+		.detail-pic {
+			flex: 1;
+		}
+
+		.detail {
+			flex: 5;
+			padding: 0 0 0 2em;
+
+			p:first-child {
+				margin-top: 0;
+			}
+		}
+	}
+
+	.book-detail {
+		@extend %detail;
+	}
+
+	.dir-detail {
+		@extend %detail;
+	}
+
+	.styleof {
+		font-style: italic;
+	}
+
+	iframe {
+		margin: 0;
+	}
+
+	#booksindetail, #directorsindetail, #settingsindetail, #genresindetail {
+		border-top: 1px dashed #666;
+	}
+
+	em.req {
+		// font-weight: bold;
+		font-style: normal;
+		text-decoration: underline;
+		background-color: fade-out(yellow,.5);
+	}
+}

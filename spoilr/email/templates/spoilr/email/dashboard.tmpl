@@ -1,0 +1,82 @@
+{% extends "hq/layout.tmpl" %}
+{% load static %}
+
+{% block heading %}Unanswered emails{% endblock %}
+{% block title %}Unanswered emails{% endblock %}
+
+{% block breadcrumb_items %}
+<li><a href="{% url 'spoilr.email:dashboard' %}">Unanswered emails</a></li>
+{% endblock breadcrumb_items %}
+
+{% block content %}
+<section class="archive content">
+  {% if not is_active %}
+  <div class="banner">
+    <b>Note</b/>: This dashboard is for when hunt starts. Until then, we'll use the shared Gmail account to reply to emails.
+  </div>
+  {% endif %}
+
+
+  <div class="emails">
+  {% if hidden %}
+  <p>
+  These are <b>unhidden emails only</b>, for all emails see&nbsp;<a href="?hidden=0"> here</a>.
+  </p>
+  {% endif %}
+  {% for email_ref in emails %}
+    <div id="email-form-task-id-{{ email_ref.task.id }}">
+      {% include 'spoilr/email/partials/email.tmpl' with type='in' email=email_ref.email compact=email_ref.task.is_snoozed %}
+
+      {% if request.handler and request.handler.sign_in_time %}
+      <!-- Hide buttom -->
+      <form method="post" action="{% url 'spoilr.email:hide' %}">
+        {% csrf_token %}
+        <input type="submit" value="{% if email_ref.email.hidden %}Unhide{% else %}Hide{% endif %}">
+        <input type="hidden" name="type" value="in">
+        <input type="hidden" name="id" value="{{ email_ref.email.id }}">
+      </form>
+      <form method="post">
+        {% csrf_token %}
+        <input type="hidden" name="task_id" value="{{ email_ref.task.id }}">
+        {% include 'hq/util/task-actions.tmpl' with task=email_ref.task can_dismiss=False anchor_id=email_ref.task.id %}
+      </form>
+      {% if email_ref.task.handler == request.handler %}
+      <div class="actions">
+        <button type="button" class="email-reply-button" data-message-id="{{ email_ref.email.id }}">Reply</button>
+      </div>
+      {% endif %}
+      {% else %}
+      <div class="actions"><em>Sign in as a handler to reply to emails</em></div>
+      {% endif %}
+    </div>
+  {% endfor %}
+  </div>
+
+  <div class="email-reply-form hidden">
+    <form method="post" action="{% url 'spoilr.email:reply' %}">
+      {% csrf_token %}
+      <div class="form-row">
+        <label for="id_body">Body</label>
+        <textarea name="body" id="id_body" placeholder="Enter your reply here" required></textarea>
+      </div>
+      <div>
+        <p>This will send a real email to a real team - be careful!</p>
+        <label for="id_confirm_email_reply">Enter "REPLY" to confirm</label>
+        <input type="text" name="confirm" id="id_confirm_email_reply" required>
+      </div>
+      <input type="hidden" name="id" value="">
+      <input type="submit" value="Reply">
+      <button type="button">Cancel</button>
+    </form>
+  </div>
+</section>
+{% endblock content %}
+
+{% block stylesheets %}
+<link rel="stylesheet" type="text/css" href="{% static 'spoilr/email/style.css' %}">
+{% endblock %}
+
+{% block scripts %}
+{% include 'hq/util/auto-reload-script.tmpl' %}
+<script type="module" src="{% static 'spoilr/email/inline-reply.js' %}"></script>
+{% endblock scripts %}

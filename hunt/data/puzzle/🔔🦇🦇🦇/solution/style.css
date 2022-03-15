@@ -1,0 +1,16 @@
+table.crossword td,
+table.crossword th {
+  box-sizing: border-box;
+  height: 80px;
+  position: relative;
+  text-align: center;
+  width: 80px;
+}
+
+.shaded {
+  background-color: #CCCCCC;
+}
+
+.smaller-font {
+  font-size: .8em;
+}

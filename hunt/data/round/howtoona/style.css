@@ -1,0 +1,65 @@
+.round-map .caption {
+    background-color: #FFFFFF;
+    color: #000;
+    border: 1px solid #000;
+}
+
+.round-map a:hover .caption {
+	background-color: #FFDA02;
+    filter: brightness(1) !important;
+}
+
+.round-map .sticker img {
+    filter: drop-shadow(0 0 20px #fff);
+}
+.round-map .sticker :focus img {
+    filter: drop-shadow(0 0 20px #A3A3A3);
+}
+.round-map .sticker:hover img {
+    filter: drop-shadow(0 0 20px #A3A3A3);
+}
+
+header {
+    aspect-ratio: initial;
+    height: 500px;
+}
+.page-background-map {
+    background-size: 2500px;
+}
+.page-background-top {
+    aspect-ratio: auto;
+    height: 1200px;
+    background-size: 2500px;
+}
+
+.round-map .map {
+    background-image: url('images/bg-map.png');
+    background-size: cover;
+	aspect-ratio: 1399/2218;
+    max-width: 1399px;
+}
+
+@media only screen and (max-width: 1399.9px) {
+    header {
+        aspect-ratio: 14/5;
+        height: auto;
+    }
+    .page-background-map {
+        /* 1.785 = 2500/1400 */
+        background-size: 178.5%;
+    }
+    .page-background-top {
+        aspect-ratio: 14/12;
+        /* 1.785 = 2500/1400 */
+        background-size: 178.5%;
+        height: auto;
+    }
+}
+
+.round-map .sticker .caption {
+    margin-top: -20px;
+}
+
+.round-map .sticker img {
+    width: 100%;
+}

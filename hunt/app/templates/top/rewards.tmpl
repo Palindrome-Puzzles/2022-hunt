@@ -1,0 +1,129 @@
+{% extends "hunt/site_layout.tmpl" %}
+{% load static %}
+
+{% block title %}Rewards Drawer | {{ block.super }}{% endblock %}
+
+{% block site_stylesheets %}
+{% if rewards %}
+<style type="text/css">
+.not-a-puzzle {
+  font-size: smaller;
+  margin-bottom: 2em;
+}
+
+.notice {
+  font-style: normal;
+  margin-bottom: 0.5rem;
+  padding: 16px;
+  background-color: #DEF4FF;
+}
+
+.reward img {
+  height: auto;
+  margin: 1em;
+  max-width: 290px;
+  min-width: 150px;
+  width: 100%;
+}
+
+.manuscrip .reward {
+  align-content: center;
+  box-sizing: border-box;
+  flex-direction: column;
+  padding: 0 1em 1em;
+}
+.manuscrip h3 {
+  margin-bottom: .5em;
+  text-align: center;
+}
+.manuscrip p {
+  max-width: 800px;
+}
+.manuscrip form {
+  display: block;
+  text-align: center;
+}
+.manuscrip .form-row {
+  margin: 1em;
+}
+.manuscrip input {
+  display: block;
+  height: 30px;
+  margin: auto;
+}
+.manuscrip select {
+  height: 30px;
+  margin-left: 15px;
+}
+</style>
+{% endif %}
+{% endblock site_stylesheets %}
+
+{% block site_content %}
+<main class="rewards">
+  <header>
+    <h1>Rewards Drawer</h1>
+  </header>
+
+  <div class="paper-edge top"></div>
+  <section id="main-content" class="content">
+    <p class="notice">Nothing in this page is a puzzle. Please do not post images of your rewards or mention the contents of this page on social media until after the Hunt ends on January 17, 2022.</p>
+
+    <div class="reward-wrapper manuscrip">
+      <h2>Manuscrip</h2>
+      <p>If you participate in <a href="{% url 'events' %}">events</a>, you can earn <em>manuscrip</em>. These can be used to solve a puzzle for free.</p>
+      <div class="reward">
+        <h3>Manuscrip earned: {{ manuscrip_info.net_manuscrip|floatformat }}</h3>
+        {% if manuscrip_info.can_unlock and manuscrip_info.available_puzzles|length %}
+        <form method="post" action="{% url 'manuscrip_spend' %}">
+          {% csrf_token %}
+          <p>You have enough manuscrip to solve a puzzle for free. We'll confirm with your team captain before the puzzle is solved.</p>
+          <div class="form-row">
+            <label for="id_puzzle">Choose a puzzle</label>
+            <select name="puzzle" id="id_puzzle" required>
+              <option value="">--</option>
+              {% for puzzle in manuscrip_info.available_puzzles %}
+              <option value="{{ puzzle.url }}">{{ puzzle.name }}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <input type="submit" value="Request a free unlock">
+        </form>
+      </div>
+      {% endif %}
+      {% if manuscrip_info.pending_unlock %}
+      <p>A request to unlock <a href="{% url 'puzzle_view' manuscrip_info.pending_unlock.puzzle.url %}">{{ manuscrip_info.pending_unlock.puzzle.name }}</a> is pending.</p>
+      {% endif %}
+      {% if manuscrip_info.unlocked %}
+      <p>You've already unlocked</p>
+      <ul>
+        {% for unlock in manuscrip_info.unlocked %}
+        <li><a href="{% url 'puzzle_view' unlock.puzzle.url %}">{{ unlock.puzzle.name }}</a></li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+    </div>
+
+    {% if has_rewards %}
+      {% if rewards.prologue %}
+      <h2>Star Rats</h2>
+      {% include 'round_files/prologue/reward.tmpl' with reward=rewards.prologue showing_all=True %}
+      {% endif %}
+
+      {% if rewards.theministry %}
+      <h2>The Ministry</h2>
+      {% include 'round_files/the-ministry/reward.tmpl' with reward=rewards.theministry showing_all=True %}
+      {% endif %}
+
+      {% if rewards.endgame %}
+      <h2>MIT Mystery Hunt 2022</h2>
+      {% include 'round_files/endgame/reward.tmpl' with reward=rewards.endgame showing_all=True %}
+      {% endif %}
+
+    {% else %}
+    <p>There's nothing here yet...</p>
+    {% endif %}
+  </section>
+  <div class="paper-edge bottom"></div>
+</main>
+{% endblock site_content %}

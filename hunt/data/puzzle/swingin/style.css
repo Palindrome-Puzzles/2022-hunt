@@ -1,0 +1,15 @@
+div.swingin_clues { 
+display: inline-table
+}
+div.swingin_clue { 
+display: inline-block;
+text-align: center;
+vertical-align: middle;
+min-height: 140px;
+max-height: 140px;
+min-width: 140px;
+max-width: 140px;
+border: 3px solid black;
+margin: 5px;
+padding: 5px;
+}

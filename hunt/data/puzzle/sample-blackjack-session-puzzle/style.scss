@@ -1,0 +1,41 @@
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.card {
+    border: 2px solid #000;
+    display: flex;
+    flex-direction: column;
+    font-size: smaller;
+    height: 100px;
+    justify-content: space-around;
+    margin: 1em;
+    padding: 1em;
+    text-align: center;
+    width: 80px;
+
+    .rank,
+    .suit {
+        font-size: larger;
+    }
+}
+
+
+.diamonds,
+.hearts {
+    color: red;
+}
+
+.win {
+    color: green;
+}
+
+.disconnected-message,
+.error-message {
+    color: red;
+}
+
+.disconnected-message {
+    margin-left: 2em;
+}

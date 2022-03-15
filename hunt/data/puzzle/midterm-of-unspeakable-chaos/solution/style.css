@@ -1,0 +1,97 @@
+.blanks {
+	line-height: 0.8rem;
+}
+
+table.border-black {
+	border: 2px solid black;
+}
+
+.border-top-blue {
+	border-top: 2px solid blue;
+}
+
+.border-bottom-blue {
+	border-bottom: 2px solid blue !important;
+}
+
+.border-right-blue {
+	border-right: 2px solid blue;
+}
+
+.border-top-purple {
+	border-top: 2px solid purple;
+}
+
+.border-bottom-purple {
+	border-bottom: 2px solid purple !important;
+}
+
+.border-right-purple {
+	border-right: 2px solid purple;
+}
+
+.border-top-red {
+	border-top: 2px solid red;
+}
+
+.border-bottom-red {
+	border-bottom: 2px solid red !important;
+}
+
+.border-right-red {
+	border-right: 2px solid red;
+}
+
+.bottom {
+	vertical-align: bottom;
+}
+
+.center {
+	text-align: center;
+}
+
+.gray {
+	background-color: #CCCCCC;
+}
+
+.indent {
+	padding-left: 2rem;
+}
+
+.row-padding {
+	padding-top: 1rem;
+}
+
+.smaller-text {
+	font-size: 0.8rem;
+}
+
+/* special table formatting */
+.no-margin-top {
+	margin-top: 0;
+}
+
+.row-padding-bottom {
+	padding-bottom: 1rem;
+}
+
+.row-padding-top {
+	padding-top: 1rem;
+}
+
+table.part-of-speech td, table.part-of-speech th {
+	border-bottom: none !important;
+}
+
+table.part-of-speech th {
+	text-align: left;
+}
+
+table.part-of-speech td.border-thick, table.part-of-speech th.border-thick {
+	border-top: 2px solid #000;
+}
+
+table.part-of-speech td.top, table.part-of-speech th.top {
+	vertical-align: top;
+}
+

@@ -1,0 +1,23 @@
+.image-container {
+    max-width: 200px;
+    height: 100px;
+    margin: 5px;
+}
+
+img.stretch {
+    object-fit: contain;
+    height: 100%;
+    width: 100%;
+}
+
+.flex-group {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.text-lg {
+    font-size: 90px;
+}

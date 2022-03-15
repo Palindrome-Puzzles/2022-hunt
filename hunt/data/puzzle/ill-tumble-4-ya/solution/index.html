@@ -1,0 +1,106 @@
+<p>The 16 4-letter words form a Castawords puzzle.<br />
+<a href="http://www.solitairelaboratory.com/puzzlelaboratory/castword.html" target="_blank" rel="noopener nofollow noreferrer">http://www.solitairelaboratory.com/puzzlelaboratory/castword.html</a></p>
+
+<p>Here is one possible order in which words can be integrated into the solution -- other orderings are possible:<br />
+MAZE, FAME, FEAR, LARK / LOVE / FOUR, CURT / THAN / HOWL / VAIN / DICE, PLOD, VINY, GUYS / JUST, BINS</p>
+
+<pre>M R V  HD   S
+A   O  C  Y J B
+Z F L  TI   G
+E   KU NW P</pre>
+
+<h2 style="margin-bottom: 0;">Alphabetized</h2>
+<ul class="no-bullets" style="margin-top:2px;">
+<li style="margin-top:0;margin-bottom:0;">ABCJOY</li>
+<li style="margin-top:0;margin-bottom:0;">DHMRSV</li>
+<li style="margin-top:0;margin-bottom:0;">EKNPUW</li>
+<li style="margin-top:0;">FGILTZ</li>
+</ul>
+
+<p>Using the deduced cube faces, map the sequence of top faces shown by going through the word list in sequence for each die:</p>
+<pre>F - Z - I - G - T - L - F - I - T - L 
+O - A - Y - J - O - A - B - Y - A - C - O
+U - E - N - U - W - P - K - E - N - U - E
+R - M - V - S - H - D - R - M - S - V - H - R - V</pre>
+
+<p>Some faces can be labeled simply by examining these sequences for face-adjacency.</p>
+
+<ul>
+<li>I is adjacent to Z, G, F, and T, so it must be opposite L.  I is already known to be on the north face of the FGILTZ die, so L must be on its south face.</li>
+<li>A is adjacent to O, Y, B, and C, so it must be opposite J.  Because neither A nor J is yet on the ABCJOY die, but O and C are, we can deduce that A and J respectively must be east and west or west and east.</li>
+<li>R is adjacent to M, D, H, and V, so it must be opposite S.  R is already known to be on the top face, so S must be on the bottom face.  V is adjacent to M, S, H, and R, so it must be opposite D.  D is already known to be on the north face, so V must be on the south face.  H and M will be east-west or west-east.</li>
+</ul>
+
+<p>For the task of deducing which START square each die begins on, the concept of Manhattan distance is useful.  The FGILTZ die must reach the L goal square via a series of 9 tumbles.  The only START square that is close enough to the L to allow that is the one on the top row.  ABCJOY and EKNPUW must both reach their goal squares via a series of 10 tumbles.  If either of them start on the SW START square, they are too far away from their goal.  Therefore, DHMRSV must start on the SW START square.  We will return to the question of the START squares for the remaining two dice later, after we learn some other useful techniques. </p>
+
+<p>Given that we know the DHMRSV die tumbles to M on its first move, and M is on the east or west face, and that the die cannot tumble to the West from its START square, M must be on the west face and the die's path begins with a tumble to the East.  With the die now completely labeled, tracing its tumble path is trivial. </p>
+
+<p><a href="https://www.logicmazes.com/rc/long-rolling.pdf" target="_blank" rel="noopener nofollow noreferrer">This paper</a>, whose authors include the Demaines of MIT's CSAIL, includes a result that is very useful in understanding and analyzing this puzzle.  In section 2.4 on p. 7 and the accompanying Figure 9 on p. 8, we see the concept of U-turns and Z-turns illustrated.  Basically, after completing a U-turn, you end up showing the same face that started on top, and after completing a Z-turn, you end up showing the opposite face.</p>
+
+<p>Another sequence of tumbles that ends up showing the opposite face is, of course, a direct two-tumble roll such as 1-3-6 on a standard casino die. (1-3-2-6 would be a Z-turn.)</p>
+
+<p>Here are the givens so far about the FGILTZ die: 1) It starts with F on top, I on the north face, and L on the south face. 2) It begins on the START square in the top row. 3) Its tumble sequence is F-Z-I-G-T-L-F-I-T-L.  Therefore, it must first tumble East or West, then South.  This is followed by a Z-turn (I-G-T-L), followed by two 2-tumble inversions (L-F-I and I-T-L).  The only path that allows this with no contradictions is E-S-E-S-E-S-S-W-W.</p>
+
+<p>Here are the givens so far about the EKNPUW die: 1) It starts with U on top and E on the north face. 2) Its tumble sequence is U-E-N-U-W-P-K-E-N-U-E. Examining that sequence, we see that its first tumble must be South, and that it starts and ends with U-turns (U-E-N-U and E-N-U-E).  If that die started on the NE START square, it would be too far from its goal square for its path to include U-turns, so it must start on the SE START square.  The first U-turn could go South-East-North, but then the die would be too far from the goal to include the U-turn at the end, so the start must be South-West-North.  There is another option at this point, either North or West.  All options stemming from the North choice lead to contradictions or ending on a space other than the goal square, so West is the correct choice.  After the tumble West, we still have the option of moving P-K by tumbling North-West or West-North.  The West-North option leads to completing the path on a square other than the goal square, so North-West is correct, and we can complete the tumble path.</p>
+
+<p>Here are the givens so far about the ABCJOY die: 1) It starts with O on top and C on the north face. 2) Its tumble sequence is O-A-Y-J-O-A-B-Y-A-C-O. 3) A and J must be on the east and west faces, or the west and east faces, respectively. 4) The die must start on the only remaining START square, the NE one.  Since A is the result of the first tumble, we know that A must start on the east face and the first tumble must be West.  Analysis of the tumble sequence reveals two 2-tumble inversions (A-Y-J and J-O-A) and a U-turn (A-B-Y-A).  Process of elimination leads to the conclusion that the tumble sequence begins with 5 moves to the West.  At that point, the U-turn can be S-W-N or N-W-S.  The former option leads to completing the path on a square other than the goal square, so the latter option is correct.</p>
+
+<div style="width:80%; margin:auto;">
+<table class="grid crossword" style="display:inline;margin-right:2rem;margin-top:2rem;">
+<caption class="sr-only">Directions grid</caption>
+<tr><td class="no-border"></td><td class="small">NORTH</td><td class="no-border"></td></tr>
+<tr><td class="small">WEST</td><td class="small">TOP</td><td class="small">EAST</td></tr>
+<tr><td class="no-border"></td><td class="small">SOUTH</td><td class="no-border"></td></tr>
+<tr><td class="no-border"></td><td class="small">BOTTOM</td><td class="no-border"></td></tr>
+</table>
+
+<table class="grid crossword" style="display:inline;margin-right:2rem;">
+<caption class="sr-only">Die 1 grid</caption>
+<tr><td class="no-border"></td><td class="fancy orange">I</td><td class="no-border"></td></tr>
+<tr><td class="fancy orange">Z</td><td class="fancy orange">F</td><td class="fancy orange">T</td></tr>
+<tr><td class="no-border"></td><td class="fancy orange">L</td><td class="no-border"></td></tr>
+<tr><td class="no-border"></td><td class="fancy orange">G</td><td class="no-border"></td></tr>
+</table>
+
+<table class="grid crossword" style="display:inline;margin-right:2rem;">
+<caption class="sr-only">Die 2 grid</caption>
+<tr><td class="no-border"></td><td class="fancy yellow">C</td><td class="no-border"></td></tr>
+<tr><td class="fancy yellow">J</td><td class="fancy yellow">O</td><td class="fancy yellow">A</td></tr>
+<tr><td class="no-border"></td><td class="fancy yellow">B</td><td class="no-border"></td></tr>
+<tr><td class="no-border"></td><td class="fancy yellow">Y</td><td class="no-border"></td></tr>
+</table>
+
+<table class="grid crossword" style="display:inline;margin-right:2rem;">
+<caption class="sr-only">Die 3 grid</caption>
+<tr><td class="no-border"></td><td class="fancy blue">E</td><td class="no-border"></td></tr>
+<tr><td class="fancy blue">P</td><td class="fancy blue">U</td><td class="fancy blue">N</td></tr>
+<tr><td class="no-border"></td><td class="fancy blue">W</td><td class="no-border"></td></tr>
+<tr><td class="no-border"></td><td class="fancy blue">K</td><td class="no-border"></td></tr>
+</table>
+
+<table class="grid crossword" style="display:inline;">
+<caption class="sr-only">Die 4 grid</caption>
+<tr><td class="no-border"></td><td class="fancy magenta">D</td><td class="no-border"></td></tr>
+<tr><td class="fancy magenta">M</td><td class="fancy magenta">R</td><td class="fancy magenta">H</td></tr>
+<tr><td class="no-border"></td><td class="fancy magenta">V</td><td class="no-border"></td></tr>
+<tr><td class="no-border"></td><td class="fancy magenta">S</td><td class="no-border"></td></tr>
+</table>
+</div>
+
+<table class="grid" style="margin-top:2rem;">
+<caption class="sr-only">Puzzle grid</caption>
+<tr><td>O</td><td>L</td><td>N</td><td>R</td><td class="green small">START</td><td class="orange">R</td><td>I</td><td>R</td><td>E</td><td>A</td><td>H</td><td>G</td><td>H</td><td>T</td><td>K</td><td>E</td></tr>
+<tr><td>W</td><td>R</td><td>E</td><td>C</td><td>C</td><td class="orange">L</td><td class="orange">I</td><td>L</td><td>E</td><td>O</td><td>T</td><td>H</td><td>F</td><td>O</td><td>C</td><td>Y</td></tr>
+<tr><td>X</td><td>I</td><td>S</td><td>G</td><td>A</td><td>N</td><td class="orange">H</td><td class="orange">T</td><td>L</td><td class="yellow">C</td><td class="yellow">A</td><td>U</td><td>N</td><td>R</td><td>H</td><td>D</td></tr>
+<tr><td>B</td><td>S</td><td>I</td><td>M</td><td>R</td><td>D</td><td>E</td><td class="orange">S</td><td class="yellow">M</td><td class="yellow" style="border-right: 2px solid black;">E</td><td class="yellow">W</td><td class="yellow">R</td><td class="yellow">E</td><td class="yellow">D</td><td class="yellow">E</td><td class="green small">START</td></tr>
+<tr><td>T</td><td>V</td><td>N</td><td>E</td><td>U</td><td class="red fancy">L</td><td class="orange">O</td><td class="orange">N</td><td class="red fancy">O</td><td>N</td><td>P</td><td>G</td><td>I</td><td>M</td><td>Y</td><td>I</td></tr>
+<tr><td>L</td><td>D</td><td>G</td><td>J</td><td>T</td><td>Y</td><td colspan="2" style="text-align:center;">❤️</td><td>E</td><td>U</td><td>N</td><td>Z</td><td>T</td><td>B</td><td>A</td><td>H</td></tr>
+<tr><td>O</td><td>W</td><td>E</td><td>I</td><td>H</td><td class="red fancy" style="border-bottom:2px solid black;">V</td><td class="magenta">N</td><td class="blue">A</td><td class="red fancy" style="border-bottom:2px solid black;">E</td><td>H</td><td>F</td><td>U</td><td>E</td><td>N</td><td>O</td><td>C</td></tr>
+<tr><td>A</td><td>R</td><td>F</td><td>G</td><td>A</td><td class="magenta">A</td><td class="magenta">L</td><td class="blue">T</td><td class="blue">A</td><td>O</td><td>W</td><td>P</td><td>L</td><td>I</td><td>Q</td><td>N</td></tr>
+<tr><td>S</td><td>N</td><td>U</td><td class="magenta">A</td><td class="magenta">M</td><td class="magenta">H</td><td>I</td><td>C</td><td class="blue">S</td><td class="blue">W</td><td>S</td><td>Y</td><td>I</td><td>E</td><td>N</td><td>T</td></tr>
+<tr><td>T</td><td>O</td><td class="magenta">A</td><td class="magenta">O</td><td>I</td><td>H</td><td>K</td><td>Y</td><td>L</td><td class="blue">D</td><td class="blue" style="border-right:2px solid black;">N</td><td class="green small">START</td><td>R</td><td>V</td><td>E</td><td>G</td></tr>
+<tr><td>A</td><td class="magenta">O</td><td class="magenta">I</td><td>L</td><td>T</td><td>E</td><td>A</td><td>X</td><td>H</td><td>R</td><td class="blue">E</td><td class="blue">R</td><td>S</td><td>B</td><td>T</td><td>A</td></tr>
+<tr><td class="green small">START</td><td class="magenta">H</td><td>E</td><td>D</td><td>A</td><td>V</td><td>N</td><td>G</td><td>O</td><td>P</td><td>S</td><td>O</td><td>W</td><td>A</td><td>H</td><td>D</td></tr>
+</table>
+
+<p>After labeling each die's faces and mapping its tumble path, perform the extraction.  From the starting position, tumble all 4 dice to spell MAZE.  The M will be on a square containing H, the A's square contains E, Z's contains R, and E's contains R.  So the phrase starts HERR&hellip;  Continue in this fashion, appending only letters from new squares that are tumbled into, and you'll have the clue phrase "Her role in Die Hard Two was Samantha Coleman", leading to the answer <span class="answer">SHEILA MCCARTHY</span>.</p>

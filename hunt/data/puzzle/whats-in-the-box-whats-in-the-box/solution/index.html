@@ -1,0 +1,35 @@
+This is a swag puzzle in which solvers are sent a small box full of paper shreds of various colors, including white shreds as filler. They also find a PostScript program on the puzzle page itself that they’ll need to complete the puzzle.
+
+Solvers must find all the colored shreds and reassemble them into their original 15cm x 15cm sheets (The patterns on top and bottom are to help with alignment of otherwise blank shreds). On one side of the sheet is a type sample with lorem ipsum placeholder text; on the other is an illustration of a monster, a percentage sign, and a set of pips.
+
+<h2>Side A</h2>
+<div>
+<img width="300"  src="images/bluefront-final.png" alt="Lorem ipsum text on a blue background" /> <img width="300" src="images/goldenrodfront-final.png" alt="Lorem ipsum text on a goldenrod background" /> <img width="300" src="images/pinkfront-final.png" alt="Lorem ipsum text on a pink background" /> <img width="300" src="images/redfront-final.png" alt="Lorem ipsum text on a red background" /> <img width="300" src="images/yellow-front-final.png" alt="Lorem ipsum text on a yellow background" /> 
+</div>
+
+<h2>Side B</h2>
+<div>
+<img width="300" src="images/mummy.png" alt="Cartoon mummy with a percentage symbol and 5 black dots on a blue background; top of image has a black scalloped edge; bottom has a black wedge" /> <img width="300" src="images/ghost-final.png" alt="Cartoon ghost with a percentage symbol and 6 black dots on a goldenrod background; top of image has a black scalloped edge; bottom has a black wedge" /> <img width="300" src="images/vampire.png" alt="Cartoon vampire with a percentage symbol and 7 black dots on a pink background; top of image has a black scalloped edge; bottom has a black wedge" /> <img width="300" src="images/zombie-final.png" alt="Cartoon zombie with a percentage symbol and 9 black dots on a red background; top of image has a black scalloped edge; bottom has a black wedge" /> <img width="300" src="images/medusa-2.png" alt="Cartoon medusa with a percentage symbol and 12 black dots on a yellow background; top of image has a black scalloped edge; bottom has a black wedge" /> </div>
+
+<p>Solvers count the number of pipped shreds of each color and identify the monsters: </p>
+<ul>
+<li>Blue = 5, Mummy</li>
+<li>Goldenrod = 6, Ghost</li>
+<li>Pink = 7, Vampire</li>
+<li>Red = 9, Zombie</li>
+<li>Yellow = 12, Medusa</li>
+</ul>
+
+<p>The PostScript file is typeset in a generic monospaced font for core variables and functions, but includes five sections typeset in the fonts corresponding to the different lorem ipsum samples. At the bottom, it includes a string of unique shapes. It also includes a section with definitions for variables setting the number of pips of each color (initially set to zero), as well as a section with definitions for variables named after the monsters. By changing colored pip variables to the correct number for each color,  and only using the section that matches the font on each lorem ipsum section, the PostScript file draws shapes that overlay on certain letters in the lorem ipsum sample. </p>
+
+<p>However, the script also draws an extra ‘decoy’ shape on each type sample. Solvers must realize that the % (PostScript comment) symbol next to the monster indicates that they should comment out the line corresponding to that monster in the section matching the lorem ipsum font on the other side of the paper. (As an added hint, the decoy letters spell out, in the order colors are listed in the PostScript file, BOGUS)</p>
+
+<p>When the paper shreds have been reassembled, and the right lines commented out, the PostScript draws a set of different shapes that can be overlaid onto the matching font samples. </p>
+
+<p><img width="300" src="images/blue-solved.png" alt="Lorem ipsum text on a blue background with an E surrounded by a square an a P surrounded by a hexagon" /><br />Highlighted E and P</p>
+<p><img width="300" src="images/goldenrod-solved.png" alt="Lorem ipsum text on a goldenrod background with an R surrounded by a triangle and an E surrounded by a hexagon" /><br />Highlighted R and E</p>
+<p><img width="300" src="images/pink-solved.png" alt="Lorem ipsum text on a pink background with a P surrounded by a triangle and an I surrounded by a pentagon" /><br />Highlighted P and I</p>
+<p><img width="300" src="images/red-solved.png" alt="Lorem ipsum text on a red background with a T surrounded by a triangle and an A surrounded by a circle" /><br />Highlighted T and A</p>
+<p><img width="300" src="images/yellow-solved.png" alt="Lorem ipsum text on a yellow background with an E surrounded by a pentagon" /><br />Highlighted E</p>
+
+<p>Each shape surrounds a single letter, and read in order based on the string of shapes in the PostScript program, they spell out <span class="answer">PAPETERIE</span>.</p>

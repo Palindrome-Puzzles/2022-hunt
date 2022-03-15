@@ -1,0 +1,98 @@
+{% extends "hq/layout.tmpl" %}
+{% load spacelesser static %}
+
+{% block title %}Teams Dashboard | {{ block.super }}{% endblock %}
+{% block heading %}Teams Dashboard{% endblock %}
+
+{% block breadcrumb_items %}
+<li><a href="{% url 'spoilr.progress:teams' %}">Teams Dashboard</a></li>
+{% endblock breadcrumb_items %}
+
+{% block content %}
+<section class="content teams">
+  <p>
+    {{ teams|length }} teams,
+    {{ r_total }} rounds,
+    {{ p_total }} puzzles,
+    {{ i_total }} interactions
+    <br>
+    {{ i_pending }} pending interactions among {{ i_teams }} teams //
+    <br>
+    P=Puzzles (solved/released/total (open) [free answers])
+    C=Contact requests
+  </p>
+
+  {% spacelesser %}
+  {% for team in teams %}
+  <hr>
+  <table class="team-display" data-team-id="{{ team.team.id }}">
+    <tr>
+      <td colspan="2">
+        {{ forloop.counter }})&nbsp;
+        <a href="{% url 'spoilr.progress:team' team.team.username %}">
+          <b>{{ team.team.name|truncatechars:40 }}</b>
+        </a>
+        <br>
+        P:<b>{{ team.p_solved }}</b>/{{ team.p_released }}/{{ p_total }}
+        ({{ team.p_open }})
+        <br>
+        C:<b>{{ team.q_submissions }}</b>&nbsp;
+      </td>
+      <td><i>Interactions:</i></td>
+      <td class="blocks">{{ team.interactions|join:" " }}</td>
+      <td colspan="4">
+        <a href="{% url 'hq_log' %}?team={{ team.team.username }}">{{ team.log1.timestamp|date:'D H:i:s' }}: {{ team.log1.message }}</a>
+      </td>
+    </tr>
+    <tr>
+      {% for round in team.rounds %}
+      <td{% if round.solved %} class="solved"{% endif %}>
+        <i>{{ round.round.name }}:</i><br>
+        <b>{{ round.num_solved }}</b>/{{ round.num_released }}/{{ round.puzzles|length }}<br>
+      </td>
+      <td class="blocks{% if round.solved %} solved{% endif %}">{% if round.released %}{{ round.puzzles|join:" " }}{% endif %}</td>
+      {% autoescape off %}{% cycle '' '' '' '</tr><tr>' %}{% endautoescape %}
+      {% endfor %}
+      {% resetcycle %}
+    </tr>
+  </table>
+  {% endfor %}
+  {% endspacelesser %}
+</section>
+{% endblock content %}
+
+{% block stylesheets %}
+<link rel="stylesheet" type="text/css" href="{% static 'spoilr/progress/style.css' %}">
+{% endblock %}
+
+{% block scripts %}
+<script type="module">
+const ALL = {
+  i: { {% for i in all_interactions %}{{ i.id }}:'{{ i.name|escapejs }}',{% endfor %} },
+  p: { {% for p in all_puzzles %}{{ p.id }}:'{{ p.name|escapejs }}',{% endfor %} },
+};
+const IMG = {
+  s: '✅',
+  f: '❌',
+  r: '❗',
+  u: '❔',
+};
+for (const teamDisplay of document.querySelectorAll('.team-display')) {
+  const teamDisplayId = teamDisplay.dataset.teamId;
+  for (const blocks of teamDisplay.querySelectorAll('.blocks')) {
+    const specs = blocks.textContent;
+    blocks.textContent = '';
+    for (const spec of specs.split(' ')) {
+      if (!spec) continue;
+      const id = spec.substr(3);
+      const span = document.createElement('span');
+      span.setAttribute('title', ALL[spec[0]][id]);
+      span.setAttribute('class', spec[1]);
+      span.textContent = IMG[spec[2]];
+      blocks.appendChild(span);
+    }
+  }
+}
+</script>
+{% include 'hq/util/auto-reload-script.tmpl' %}
+{% endblock scripts %}

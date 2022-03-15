@@ -1,0 +1,36 @@
+{% extends "registration/base.tmpl" %}
+{% load static %}
+
+{% block notifications %}
+{% if status == 'existing' %}
+<a class="notification" href="{{ request.path }}">You've already registered a team!</a>
+{% elif form.errors %}
+<p class="notification error" tabindex="0">There was an error with your submission.</p>
+{% endif %}
+{% endblock notifications %}
+
+{% block content %}
+<main id="main-content">
+  {% if create %}
+    <h2 id="register-team-section">Register a Team</h2>
+    <p class="registration-links menu-links">
+      <a href="{% url 'registration_login' %}?next={% filter urlencode %}{% url 'update_registration' %}{% endfilter %}">Update your team's registration</a>
+      <span class="link-spacer">|</span>
+      <a href="{% url 'register_solver' %}">Register as an unattached solver</a>
+    </p>
+  {% else %}
+    <h2 id="update-registration-section">Update Your Registration</h2>
+    <p class="registration-links menu-links">
+      <a href="{% url 'registration_logout' %}?next={% filter urlencode %}{% url 'register_team' %}{% endfilter %}">Register a new team</a>
+      <span class="link-spacer">|</span>
+      <a href="{% url 'register_solver' %}">Register as an unattached solver</a>
+    </p>
+  {% endif %}
+
+  {% if create and registration_closed %}
+  <p><em>Registration for the 2022 Mystery Hunt is now closed. If you have any questions about this, please contact <a href="hunt@mitmh2022.com" target="_blank">hunt@mitmh2022.com</a>.</em></p>
+  {% else %}
+  {% include 'registration/partials/registration-form.tmpl' %}
+  {% endif %}
+</main>
+{% endblock content %}

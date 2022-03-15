@@ -1,0 +1,40 @@
+.round-map .caption {
+    background-color: #FFE4F0;
+    color: #000;
+	font-size: 20px !important;
+	line-height: 24px !important;
+}
+
+.round-map a:hover .caption {
+	background-color: #F2ED9C;
+    filter: brightness(1) !important;
+}
+
+.round-map .sticker img {
+    filter: drop-shadow(0 0 20px #fffa);
+}
+.round-map .sticker :focus img {
+    filter: drop-shadow(0 0 20px #B235BC);
+}
+.round-map a.sticker-content:hover img {
+    filter: drop-shadow(0 0 20px #B235BC);
+}
+
+.round-map {
+    min-width: 1000px;
+    margin-top: -100px !important;
+    padding-top: 100px;
+}
+.round-map .map {
+    aspect-ratio: 1/1;
+    max-width: 1400px;
+    width: 100%;
+}
+
+.round-map .sticker .caption {
+    margin-top: -20px;
+}
+
+.sticker img {
+    width: 100%;
+}

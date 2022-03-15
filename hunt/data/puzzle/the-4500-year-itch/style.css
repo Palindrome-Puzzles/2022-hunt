@@ -1,0 +1,17 @@
+.wall {
+    min-width: 942px;
+}
+
+.wallrow {
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.walltile {
+    padding: 3px;
+    display: flex;
+    flex-grow: 0;
+    overflow: hidden;
+    height:82px;
+}

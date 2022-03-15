@@ -1,0 +1,142 @@
+.banner.status {
+    background-color: #ccc;
+    justify-content: flex-end;
+}
+
+.container {
+    border: 1px solid #000;
+    min-width: 500px;
+    padding: 1em;
+    position: relative;
+}
+
+.log {
+    bottom: 1em;
+    overflow-y: scroll;
+    padding-right: 1em;
+    position: absolute;
+    width: 45%;
+    top: 1em;
+}
+.log .message {
+    font-size: .8em;
+    margin-bottom: 1em;
+}
+.log .message.initial {
+    font-size: .9em
+}
+.log p {
+    margin-top: 0;
+}
+.log .message:not(:last-child) {
+    border-bottom: 1px solid #666;
+}
+
+.game {
+    margin-left: 50%;
+    width: 50%;
+}
+.game img.flavor-image {
+    width: 100%;
+}
+
+.game .recipes,
+.game .cards {
+    column-gap: .5em;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-bottom: 1em;
+    position: relative;
+    row-gap: .5em;
+}
+.game .recipe,
+.game .card,
+.game .component {
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.game .recipe {
+    aspect-ratio: 895/740;
+    min-width: 150px;
+    width: 18%;
+}
+.game .card {
+    aspect-ratio: 248/366;
+    width: 18%;
+}
+
+.game .components {
+    aspect-ratio: 6/1;
+    display: flex;
+    justify-content: flex-end;
+    // Align the last component with the funnel mouth.
+    padding: 0 10% 0 5%;
+}
+.game .component {
+    background-size: 70%;
+    width: 20%;
+}
+
+$colors: 'blue', 'brown', 'green', 'grey', 'orange', 'pink', 'purple', 'red', 'white', 'yellow';
+$component-only-colors: 'black', 'gold', 'maroon', 'turquoise';
+@for $i from 1 through length($colors) {
+    .game .card[data-color="#{nth($colors, $i)}"] {
+        background-image: url("images/card-#{nth($colors, $i)}.png");
+    }
+    .game .card[data-color="#{nth($colors, $i)}"].used {
+        background-image: url("images/card-off.png");
+    }
+}
+
+$component-colors: join($colors, $component-only-colors);
+@for $i from 1 through length($component-colors) {
+    .game .component[data-color="#{nth($component-colors, $i)}"] {
+        background-image: url("images/component-#{nth($component-colors, $i)}.png");
+    }
+}
+
+@for $i from 1 through 5 {
+    .game .recipe[data-recipe="#{$i}"] {
+        background-image: url("images/recipe-#{$i}.png");
+    }
+    .game .recipe[data-recipe="#{$i}"][disabled] {
+        background-image: url("images/recipe-off-#{$i}.png");
+    }
+}
+
+.game .card:not([disabled]):hover,
+.game .recipe:not([disabled]):hover {
+    filter: drop-shadow(5px 5px 10px #0009);
+}
+.game .card:not([disabled]).selected {
+    filter: drop-shadow(5px 5px 10px #ff08);
+}
+.game .card:not([disabled]).selected:hover {
+    filter: drop-shadow(5px 5px 10px #ff0d);
+}
+.game button:not([disabled]) {
+    cursor: pointer;
+}
+
+@media not screen, only screen and (max-width: 1000px) {
+    .container {
+        display: flex;
+        flex-direction: column;
+    }
+    .log {
+        max-height: 400px;
+        order: 1;
+        position: static;
+        width: 100%;
+    }
+    .game {
+        border-bottom: 1px solid #000;
+        padding-bottom: 1em;
+        margin-bottom: 1em;
+        margin-left: 0;
+        width: 100%;
+    }
+}

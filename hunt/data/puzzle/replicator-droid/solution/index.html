@@ -1,0 +1,109 @@
+<p>The first step in solving the puzzle is to play and solve the game.</p>
+
+<h2>Exploring the Game</h2>
+<p>After a little bit of experimentation, you'll find that selecting two cards at a time will give you three colored components onto your conveyor belt (which only holds 5, so you need to use them rapidly enough, or lose them).  You should also notice that the three colors that come out are the two colors that went in, and a third one in the middle that is completely determined by that ordered pair.  This chart lists what you will get as a middle color, from selecting the color on the left and then the one on the top:</p>
+
+<table class="grid">
+<tr><th scope="col"></th><th scope="col">brown</th><th scope="col">red</th><th scope="col">grey</th><th scope="col">green</th><th scope="col">blue</th><th scope="col">pink</th><th scope="col">white</th><th scope="col">purple</th><th scope="col">yellow</th><th scope="col">orange</th></tr>
+<tr><th scope="row">brown</th><td>--</td><td>blue</td><td>purple</td><td>orange</td><td>gold</td><td>grey</td><td>grey</td><td>maroon</td><td>green</td><td>white</td></tr>
+<tr><th scope="row">red</th><td>gold</td><td>--</td><td>turquoise</td><td>purple</td><td>pink</td><td>orange</td><td>blue</td><td>blue</td><td>orange</td><td>yellow</td></tr>
+<tr><th scope="row">grey</th><td>maroon</td><td>gold</td><td>--</td><td>black</td><td>gold</td><td>yellow</td><td>blue</td><td>turquoise</td><td>pink</td><td>purple</td></tr>
+<tr><th scope="row">green</th><td>turquoise</td><td>white</td><td>turquoise</td><td>--</td><td>maroon</td><td>purple</td><td>black</td><td>black</td><td>white</td><td>yellow</td></tr>
+<tr><th scope="row">blue</th><td>yellow</td><td>grey</td><td>orange</td><td>purple</td><td>--</td><td>gold</td><td>brown</td><td>turquoise</td><td>green</td><td>red</td></tr>
+<tr><th scope="row">pink</th><td>black</td><td>green</td><td>green</td><td>black</td><td>purple</td><td>--</td><td>yellow</td><td>gold</td><td>white</td><td>green</td></tr>
+<tr><th scope="row">white</th><td>gold</td><td>yellow</td><td>yellow</td><td>grey</td><td>pink</td><td>maroon</td><td>--</td><td>maroon</td><td>maroon</td><td>white</td></tr>
+<tr><th scope="row">purple</th><td>maroon</td><td>turquoise</td><td>white</td><td>gold</td><td>red</td><td>black</td><td>blue</td><td>--</td><td>pink</td><td>black</td></tr>
+<tr><th scope="row">yellow</th><td>purple</td><td>red</td><td>white</td><td>pink</td><td>gold</td><td>maroon</td><td>turquoise</td><td>blue</td><td>--</td><td>turquoise</td></tr>
+<tr><th scope="row">orange</th><td>red</td><td>turquoise</td><td>black</td><td>grey</td><td>turquoise</td><td>brown</td><td>yellow</td><td>pink</td><td>green</td><td>--</td></tr>
+</table>
+
+<p>Certain listed combinations of three components will combine to make devices, and if you make them in the right order, they will advance the story.  The order for the devices needs to be: 
+<ol><li><strong>YST-ARS</strong>, to fix the hole in the ship.  (Irrelevant to solving the puzzle, but my rationale for the name was "why are there stars?")</li>
+<li><strong>TRY</strong>, to get air in the ship again.  Needs to be after fixing the hole, otherwise the air escapes.</li>
+<li><strong>DEY-YIC</strong>, to wake the captain.  Needs to be after you get air, so that the captain can survive.  (Name: you "de-ice" the captain.)</li>
+<li><strong>TEL-AST-URY</strong>, to brief the captain.  Needs to be after you get the captain, so that they are there for the briefing.  (Name: "Tell a story")</li>
+<li><strong>CMD</strong>, to teleport the captain to the bridge.  Needs to be after the captain is briefed.</li></ol></p>
+
+<h2>Logic puzzle #1:  Solving the Game</h2>
+<p>You need to figure out how to produce the ingredients for these devices so that they're available at the right times.  Here's one path for solving this logic puzzle.</p>  
+<p>We start with some important realizations:
+<ol><li>We start with 10 cards, which are selected in 5 pairs, creating 15 components.  The recipes account for 14 components.  So one component will not be used.</li>
+<li>Ten of the 15 components match the ten colors of the cards.  But one of these is brown, and brown is not in any of the recipes.  So the brown component will not be used; all the others will.</li>
+<li>The 5 other colors in the recipes are what we need to generate as the middle color of the triads.  These are: black, maroon, gold, turquoise, and a second blue.</li>
+<li>The first device cannot be created from a single pair of cards (it needs green, grey, and blue components; no two of these cards creates the third color).  Therefore the first device will need to wait until after two pairs of cards have been used, creating 6 components, so one will fall on the floor.  This needs to be the brown component, since it's the only one that doesn't get used.  So the first card selected needs to be brown.</li>
+<li>Only the last device needs two components, the others all need three.  After building the first device, we are left with two spare components on the conveyor belt, so the next step needs to be two more cards.  Then we can build a second device, and are again left with only two components, etc.  We need to alternate steps of cards and devices, until the end where we'll use the last pair of cards and then build the last two devices.</li></ol></p>
+
+<p>With this foundation, we can work backwards from what the end of the game needs to look like.
+	<ul>
+		<li>
+			After the last pair of cards, we need to build both of the last two devices.  So after those cards, the conveyor belt needs to have (in some order): {yellow, turquoise, orange, gold, purple}.  The last pair of cards needs to be two of {yellow, orange, purple}, and create gold or turquoise in the middle.  The only combination that does this is yellow/orange, giving turquoise in the middle.
+		</li>
+		<li>
+			Moving to the previous (4th) pair of cards, it needs to yield this conveyor belt:  {gold, purple, white, maroon, red} (in order to build the device which needs maroon/white/red, and have gold+purple left for the later step).  The pair of cards needs to be two of {purple, white, red}, creating gold or maroon in the middle.  The only combination that does this is white/purple, giving maroon in the middle.
+		</li>
+		<li>
+			Moving to the previous (3rd) pair of cards, it needs to yield this conveyor belt:  {gold, blue, pink, black, red} (in order to build the device which needs black/blue/pink, and have gold+red left for the later step).  The pair of cards needs to be two of {blue, pink, red}, creating gold, black, or blue in the middle.  The only combination that does this is blue/pink, giving gold in the middle.
+		</li>
+		<li>
+			We know at this point that the first 4 cards are (in some order) brown, red, grey, and green – and that one of the colors that they need to create is blue.  The only way to get this is to combine brown and red.  And we know that brown is the first card, so this is the first pair.
+		</li>
+		<li>
+			The second pair is grey and green, and in that order they give the black that we need them to.
+		</li>
+	</ul></p>
+
+<p>That gives us the sequences of card inputs and component outputs:</p>
+
+<table>
+	<tr><th>first card</th><th></th><th>second card</th></tr>
+	<tr><th>first component</th><th>middle component</th><th>third component</th></tr>
+	<tr><td>brown</td><td>blue</td><td>red</td></tr>
+	<tr><td>grey</td><td>black</td><td>green</td></tr>
+	<tr><td>blue</td><td>gold</td><td>pink</td></tr>
+	<tr><td>white</td><td>maroon</td><td>purple</td></tr>
+	<tr><td>yellow</td><td>turquoise</td><td>orange</td></tr>
+</table>
+
+<h2>Logic Puzzle #2: Cryptogram </h2>
+<p>With that sequence, we reach the end of the story, where you save the "Trigra-M civilization" – hinting that you should now look at the TRIGRAMs which have been appearing throughout the story.  You also get this hint for the puzzle:</p>
+
+<p>"It would be good to find a simple reply, that conveys what you saw during all this. You know the triads of components that come out of your replicator, and the designations of various items you have encountered. Perhaps by relating them you can form some appropriate message."</p>
+
+<p>This hints that you need to relate the triads of components which can come out of the machine, with the trigrams which form the designations of the various items in the story.  There is a complete correspondence between each colored component (which come in sets of three) and a letter (which also come in sets of three), so that the trigrams in the story represent 3-color combinations which are possible from the cards and the table above.  The logic puzzle is now a cryptogram in colors.  This might also be realized from doing some analysis on the trigrams; you could note that the first letters and the last letters both form the same list of 10 letters, and that there are 14 letters and 14 colors.</p> 
+
+<p>Here's a full list of the trigrams in the story, in order by their first appearance within a successful play through the game:</p>  
+<p>CRU, YST, ARS, DSA, HRM, DIH, TRY, TDA, CAS, LUY, DEY, YIC, SKD, SSC, SAT, TEL, AST, URY, DIM, UHA, MTD, CMD</p>
+
+<p>Here's a possible walkthrough for solving this logic puzzle.  It does not use all of the trigrams, but all of the trigrams are consistent with this solution.</p>
+
+<table>
+<tr><th>Consider this trigram</th><th>Color logic</th><th>Conclusion</th></tr>
+<tr><td>SSC</td><td>Only one color combines on the left to also give itself in the middle: white, when orange is on the left.</td><td>S=white, C=orange</td></tr>
+<tr><td>CAS</td><td>Orange (C) and white (S) combine to make yellow.</td><td>A=yellow</td></tr>
+<tr><td>ARS</td><td>Yellow (A) and white (S) combine to make turquoise.</td><td>R=turquoise</td></tr>
+<tr><td>AST</td><td>Only grey can be combined on the right with yellow (A) to make white (S).</td><td>T=grey</td></tr>
+<tr><td>YST</td><td>Besides yellow (A), the only other way to make white (S) from grey (T) is purple.</td><td>Y=purple</td></tr>
+<tr><td>TDA</td><td>Grey (T) and yellow (A) combine to make pink.</td><td>D=pink</td></tr>
+<tr><td>CMD</td><td>Orange (C) and pink (D) combine to make brown.</td><td>M=brown</td></tr>
+<tr><td>YIC</td><td>Purple (Y) and orange (C) combine to make black.</td><td>I=black</td></tr>
+<tr><td>SKD</td><td>White (S) and pink (D) combine to make maroon.</td><td>K=maroon</td></tr>
+<tr><td>DEY</td><td>Pink (D) and purple (Y) combine to make gold.</td><td>E=gold</td></tr>
+<tr><td>Letters and colors left at this point to be matched up: HUL / red, green, blue.</td></tr>
+<tr><td>URY</td><td>Of these, only blue combines with purple (Y) to make turquoise (R)</td><td>U=blue</td></tr>
+<tr><td>LUY</td><td>Of the remaining two, only red combines with purple (Y) to make blue (U).</td><td>L=red</td></tr>
+<tr><td>UHA</td><td>We can deduce green by elimination, but it's also the combination of blue (U) and yellow (A).</td><td>H=green</td></tr>
+</table>
+
+<h2>Final Extraction</h2>
+
+<p>With colors translated to letters, we can look again at the sequence of colored components that came out of the replicator during the successful play through of the game:</p>
+
+<table>
+<tr><td>M = brown</td><td>U = blue</td><td>L = red</td></tr>
+<tr><td>T = grey</td><td>I = black</td><td>H = green</td></tr>
+<tr><td>U = blue</td><td>E = gold</td><td>D = pink</td></tr>
+<tr><td>S = white</td><td>K = maroon</td><td>Y = purple</td></tr>
+<tr><td>A = yellow</td><td>R = turquoise</td><td>C = orange</td></tr>
+</table>
+
+<p>These spell MULTI-HUED SKY ARC, which describes "what you saw during all this": a <span class="answer">RAINBOW</span>.</p>

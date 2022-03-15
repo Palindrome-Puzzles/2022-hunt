@@ -1,0 +1,11 @@
+input[name=email] {
+    width: 100%;
+    font-size: large;
+    padding: .4em .3em;
+    /* margin-bottom: .5em; */
+    border: 1px solid #666;
+}
+
+input[type=submit] {
+    font-size: larger;
+}

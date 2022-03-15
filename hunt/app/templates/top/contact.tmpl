@@ -1,0 +1,108 @@
+{% extends "hunt/site_layout.tmpl" %}
+{% load humanize static %}
+
+{% block title %}Contact HQ | {{ puzzle_info.puzzle.name|safe }} | {{ block.super }}{% endblock %}
+
+{% block site_stylesheets %}
+<style type="text/css">
+main form {
+  border: 1px solid #000;
+  border-radius: 8px;
+  margin: 1em auto 2em;
+  padding: 1em;
+  width: fit-content;
+}
+main label {
+  display: block;
+  width: 200px;
+}
+main input[type=text],
+main textarea {
+  display: block;
+  width: 400px;
+  margin-bottom: 1em;
+}
+main input[type=text] {
+  height: 30px;
+}
+main textarea {
+  height: 150px;
+}
+main table {
+  width: 100%;
+}
+
+</style>
+{% endblock %}
+
+{% block site_content %}
+<main class="contact">
+  <header>
+    <h1>Contact HQ</h1>
+  </header>
+
+  <div class="paper-edge top"></div>
+  <section id="main-content" class="content">
+    {% if status == 'complete' %}
+    <div class="banner notice">
+      <span>HQ is now closed. You can no longer submit contact requests using this form. If there's something that needs our attention, please email us at <a href="mailto:hq@mitmh2022.com" target="_blank">hq@mitmh2022.com</a>.</span>
+    </div>
+    {% elif is_autopilot %}
+    <div class="banner notice">
+      HQ is now closed. You can still submit contact requests but we may not get to them. After wrap-up at 12PM TIMEMIT on Monday January 17, we'll be releasing all solutions.
+    </div>
+    {% endif %}
+
+    {% if status != 'complete' %}
+      {% if at_quota %}
+      <p>You have hit your quota for unresolved contact requests. You can contact us again once a request has been resolved.</p>
+      {% else %}
+      <p>Drop us a message and someone will contact your team.</p>
+
+      <form method="POST">
+        {% csrf_token %}
+        <div class="form-row">
+          <label for="id_comment">Reason (briefly)</label>
+          <textarea id="id_comment" name="comment" required></textarea>
+        </div>
+        <div class="form-row">
+          <label for="id_email">Notification email (optional)</label>
+          <input id="id_email" name="email" type="text" value="{{ email }}">
+        </div>
+        <div class="form-row">
+          <input type="submit" value="Submit">
+        </div>
+      </form>
+      {% endif %}
+    {% endif %}
+
+    {% if contact_requests %}
+    <table>
+      <colgroup>
+        <col width="20%">
+        <col width="40%">
+        <col width="40%">
+      </colgroup>
+      <tr>
+        <th>Asked</th>
+        <th>Question</th>
+        <th>Response</th>
+      </tr>
+      {% for c in contact_requests %}
+      <tr>
+        <td>{{ c.update_time|naturaltime }}</td>
+        <td>{{ c.comment|linebreaks }}</td>
+        <td>
+          {% if c.result %}
+          {{ c.result|linebreaks }}
+          {% else %}
+          <em>Waiting for a response</em>
+          {% endif %}</td>
+      </tr>
+      {% endfor %}
+    </table>
+    {% endif %}
+  </section>
+  <div class="paper-edge bottom"></div>
+</main>
+{% endblock site_content %}

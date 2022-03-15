@@ -1,0 +1,33 @@
+.grid_array {
+	text-align: center; 
+	margin: auto;
+	padding-bottom: 32px;
+}
+
+.grid_wrapper {
+	break-inside: avoid-page;
+	display: inline-block;
+	width: 24%;
+	min-width: 200px;
+	padding-bottom: 8px;
+}
+
+.grid {
+	margin: auto;
+	width: 90%;
+}
+
+td {
+	text-align: left;
+}
+
+.copy-only {
+	text-align: left;
+}
+
+@media print {
+	.grid_wrapper {
+		min-width: unset;
+	}
+}
+

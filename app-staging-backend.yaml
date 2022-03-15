@@ -1,0 +1,22 @@
+runtime: custom
+env: flex
+service: staging-backend
+
+beta_settings:
+  cloud_sql_instances: mitmh-2022:us-central1:mitmh-2022
+
+env_variables:
+  DJANGO_ENV: "staging_gcloud"
+
+network:
+  session_affinity: true
+
+runtime_config:
+  python_version: 3
+
+manual_scaling:
+  instances: 1
+
+resources:
+  cpu: 2
+  memory_gb: 4

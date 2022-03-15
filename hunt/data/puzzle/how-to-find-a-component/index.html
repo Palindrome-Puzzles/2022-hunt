@@ -1,0 +1,28 @@
+{% load assets how_to %}
+
+<div class="flavor">
+	What is this massive IKEA flat-pack?  1432 nuts and 13254 bolts???  And one of the diagrams seems to be missing important information...
+</div>
+
+<div class="cts-box icons">
+<div>
+	<img src="images/nut.png">
+	<img src="images/bolt.png">
+</div>
+{% include "round_files/endgame/book.tmpl" with book="cts-acompilat" %}
+
+</div>
+
+<div class="box"></div>
+
+{% if round_info.puzzles|length > 0 %}
+{% if team.is_public %}
+<p class="notice">These part were unlocked as you solved puzzles within <a href="{% url 'round_view' round_info.round.url %}">Howtoona</a>.</p>
+{% endif %}
+<div class="parts">
+{% for section in round_info.puzzles|how_to_component_sections:team.is_public %}
+	<div class="part"><img src="images/{{ section }}.png"></div>
+{% endfor %}
+</div>
+{% endif %}
+

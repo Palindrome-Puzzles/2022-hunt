@@ -1,0 +1,185 @@
+{% load static %}
+
+<div id="captcha">
+  <div id="header">
+    <p id="prompt-lead">Select all squares containing (a/an)</p>
+    <p id="prompt-word" style="font-size: 24px; font-weight: bold;">???</p>
+  </div>
+  <div id="images">
+    <div class="row">
+      <div class="selectable">
+        <img id="img-0" alt="" src="assets/images/blank.png"></img>
+      </div>
+      <div class="selectable">
+        <img id="img-1" alt="" src="assets/images/blank.png"></img>
+      </div>
+      <div class="selectable">
+        <img id="img-2" alt="" src="assets/images/blank.png"></img>
+      </div>
+    </div>
+    <div class="row">
+      <div class="selectable">
+        <img id="img-3" alt="" src="assets/images/blank.png"></img>
+      </div>
+      <div class="selectable">
+        <img id="img-4" alt="" src="assets/images/blank.png"></img>
+      </div>
+      <div class="selectable">
+        <img id="img-5" alt="" src="assets/images/blank.png"></img>
+      </div>
+    </div>
+    <div class="row">
+      <div class="selectable">
+        <img id="img-6" alt="" src="assets/images/blank.png"></img>
+      </div>
+      <div class="selectable">
+        <img id="img-7" alt="" src="assets/images/blank.png"></img>
+      </div>
+      <div class="selectable">
+        <img id="img-8" alt="" src="assets/images/blank.png"></img>
+      </div>
+  </div>
+  </div>
+  <div class="row">
+      <p id="error-msg" class="error"></p>
+  </div>
+    <div id="footer" class="row">
+    <div id="submit">
+      <button id="submit-btn" disabled type="button" onclick="submitCaptcha()">Submit</button>
+      <span onclick="playAudio();">&#127911;</span>
+        <audio id="player" src="assets/audio/blank.wav" type="audio/wav" style='display:none;'></audio>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <small><span id='msg-line'></span><a id='reset' onclick="getPuzzle('');">Start over</a></small>
+</div>
+<script type="module">
+import Cookies from "{% static 'lib/js-cookie.module.min.js' %}";
+
+var elements;
+const PUZZLE_ENDPOINT = "{{ puzzle_info.full_path }}state";
+const AUDIO_SUBDIR = "assets/audio/";
+const csrfToken = Cookies.get('csrftoken');
+
+window.puzzleOnLoad = puzzleOnLoad;
+window.submitCaptcha = submitCaptcha;
+window.getPuzzle = getPuzzle;
+window.playAudio = playAudio;
+
+function puzzleOnLoad () {
+    $("#reset").attr('href', "#");
+    elements = document.getElementsByClassName('selectable');
+    for (var i = 0; i < elements.length; i++) {
+      var element = elements[i];
+      element.onclick = function(ev) {
+        if (ev.target.tagName === 'IMG') {
+          ev.target.parentElement.classList.toggle('selected');
+        }
+        $("#error-msg.error").removeClass("error").text("Click the button below when finished");
+      }
+    }
+    $.ajaxSetup(
+        {
+            'dataType': 'json',
+            'cache': false,
+            'headers': {
+              "X-CSRFToken": csrfToken
+            }
+        }
+    )
+    if($("#images").length > 0){
+        getPuzzle(getState());
+    }
+};
+
+function updatePuzzle(payload) {
+    if (payload[1].length > 1){
+        $(".selectable.selected").removeClass("selected");
+        $("#prompt-word").text(payload[0]);
+        payload[1].forEach(function(url, idx){
+            $("#img-" + idx).attr('src', $("#img-" + idx).attr('src').replace(/\w+\.png/, url + ".png"));
+        });
+        $("#player").attr('src', $("#player").attr('src').replace(/\w+\.wav/, payload[0].toLowerCase() + ".wav"));
+        setLoaded();
+    } else {
+        $("#msg-line").html("Congratulations!");
+        $("#reset").html("Do it again?")
+    }
+    return;
+}
+
+function setLoading(){
+    $("#submit-btn").attr('disabled', true);
+}
+
+function setLoaded(){
+    $("#submit-btn").attr('disabled', false);
+}
+
+function getPuzzle(key){
+    $.post(
+        PUZZLE_ENDPOINT,
+        {
+            'op':1,
+            'key':key,
+            'X-CSRFToken': csrfToken
+        },
+        function(data){
+            return updatePuzzle(data);
+        }
+    );
+}
+
+function checkSubmitImage(data){
+    getPuzzle(data[2]);
+    setState(data[2]);
+    if(data[0] > 0){
+        $("#error-msg").addClass("error").text(data[1]);
+    } else {
+        $("#error-msg").text("");
+    }
+}
+
+function submitCaptcha() {
+    setLoading();
+    var selected = $("div.selected").children("img").get().map(
+        function(el){
+            return el.src.match(/(\w+)\.png/)[1];
+        }
+    ).join("|");
+    var unselected = $("div.selectable").not(".selected").children("img").get().map(
+        function(el){
+            return el.src.match(/(\w+)\.png/)[1];
+        }
+    ).join("|");
+    console.log(selected);
+    console.log(unselected);
+    $.post(
+        PUZZLE_ENDPOINT,
+        {
+            'op':2,
+            'selected': selected,
+            'unselected': unselected,
+            'key': getState(),
+            'X-CSRFToken': csrfToken
+        },
+        function(data) {
+            return checkSubmitImage(data);
+        }
+    )
+}
+
+function getState(){
+    return window.location.hash;
+}
+
+function setState(newState){
+    history.pushState('','', window.location);
+    window.location.hash = newState;
+}
+
+function playAudio(){
+  $("#player")[0].play();
+}
+</script>

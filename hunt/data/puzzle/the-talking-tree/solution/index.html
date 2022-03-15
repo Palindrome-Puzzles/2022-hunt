@@ -1,0 +1,35 @@
+<p>In The Talking Tree, solvers are presented with a number of sentences, and a number of syntax trees to go with them.</p>
+<p>Most of the labels and words in these syntax trees are masked, but placeholders are provided for one word in each, indicating that they’re the ones to pay attention to. Each sentence has its own unique structure, so one word from each sentence can be identified. There are a number of notations for parsing syntax, each with its own peculiarities (the labels are all blanked out to sidestep this issue). With some linguistic knowledge, it should be easy enough to identify which sentences map to each tree, though this can be done through trial and error (and by counting sentence length) even with no linguistic training.</p>
+<p>The next step is to notice that the number of spaces left blank for the word in each tree matches does not match the number of letters, but the number of phonemes. A clue for this is that words are enclosed between slashes, which is a common convention in transcription, one that solvers are hopefully familiar with from either dictionaries or other online sources such as Wikipedia. Transcriptions for most of these words can be found in online sources.</p>
+<table class='table'>
+    <thead>
+        <tr>
+            <td>Sentence</td>
+            <td>Keyword transcription</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr><td>Everywhere <strong>Alex</strong> walks the dog chases them.</td><td>/æleks/</td></tr>
+        <tr><td>Right while I was <strong>surfing</strong> the internet dropped.</td><td>/sɜrfiŋ/</td></tr>
+        <tr><td>Each horse raced past the <strong>finish</strong> line fell.</td><td>/fɪnɪʃ/</td></tr>
+        <tr><td>No <strong>person</strong> pushed quickly through the door fell.</td><td>/pɜrsən/</td></tr>
+        <tr><td><strong>Crafty</strong> people who hunt duck out on weekends.</td><td>/kræftɪ/</td></tr>
+        <tr><td>A young child walked through the park <strong>smiled</strong>.</td><td>/smaɪld/</td></tr>
+        <tr><td>Some florists sent the flowers were <strong>pleased</strong>.</td><td>/plizd/</td></tr>
+        <tr><td>The raft <strong>floating</strong> down the river sank.</td><td>/floʊtəd/</td></tr>
+        <tr><td>Places Alex ran around <strong>jogging</strong> closed today.</td><td>/dʒɒgɪŋ/</td></tr>
+        <tr><td>Eccentric people chased around the block <strong>surrendered</strong>.</td><td>/sərɛndərd/</td></tr>
+        <tr><td>Eerie <strong>ghost</strong> haunts scared those who visited.</td><td>/goʊst/</td></tr>
+        <tr><td>Nice people returned to their houses were <strong>saved</strong>.</td><td>/seɪvd/</td></tr>
+        <tr><td><strong>Sophie</strong> gave the child a dog bit a bandaid.</td><td>/soʊfi/</td></tr>
+    </tbody>
+</table>
+<p>The same slashes appear either side of the provided graph, directing solvers to fill in words left to right, one phoneme to each node. There are a few ways in here, the most straightforward of which is looking at the number of words which start with the same sounds, then words that have common second sounds, and so on.</p>
+<img src="image.png" alt="The final image from the puzzle, with the phonemes filled in.">
+<p>The colored nodes can be ordered by color (red, green, then blue), then by the number of sides it has (circle, double circle, triangle, etc), to yield <span class='monospace'>/ænsərɪzoʊkgroʊv/</span>, or ANSWER IS <span class='answer'>OAK GROVE</span>.</p>
+<div class='author-note'>
+<h2>Author’s Notes</h2>
+<p>This was inspired by the fact that I really enjoyed syntax trees in undergrad linguistics, and though it’s been many years since those lectures, I thought I’d find a way to incorporate this into a puzzle this year. With a suitable answer, I figured I could do something fun.</p>
+<p>The syntax trees were generated using the Stanford parser and then checked by hand. Would it have been faster to simply generate them by hand from the start? I guess I’ll never know. However, since there isn’t a single, standard convention for syntax parsing and I thought it was inelegant to clue the actual parser, I figured that using actual POS tags, though it might’ve been fun, was probably not fair game.</p>
+<p>Additionally, though the answer could’ve been anything, it’s nice when it’s thematic; in this case, I considered playing with the thought that in casual speech, /oʊkgroʊv/ almost certainly deletes either the /k/ or /g/, but that felt unfair, and also, after saying it to myself until it lost all meaning, I decided that it probably doesn’t delete reliably enough.</p>
+</div>

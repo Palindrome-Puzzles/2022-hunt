@@ -1,0 +1,13 @@
+.poem {
+	text-align: center;
+	font-style: italic;
+}
+
+table.charlotte td,
+table.charlotte th {
+  box-sizing: border-box;
+  min-width: 120px;
+  height: 60px;
+  position: relative;
+  text-align: center;
+}

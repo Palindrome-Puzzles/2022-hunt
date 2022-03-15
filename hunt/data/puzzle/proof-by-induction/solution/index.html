@@ -1,0 +1,1042 @@
+<link rel="stylesheet" text="text/css" href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400&display=swap">
+
+<p>This puzzle is about <strong>inductees into the
+<a href="https://www.rockhall.com" target="_blank">Rock &amp; Roll Hall of Fame</a></strong> and
+<strong><a href="https://codewithrockstar.com" target="_blank">Rockstar</a></strong>, a programming
+language “designed for creating programs that are also hair metal power ballads”.</p>
+
+<p>The sections of text look like song lyrics but are also marked up and formatted as source code.
+Some of the “lyrics” sound fairly natural (many are actual song lyrics), but others sound rather
+artificial, and a few use words that are common to programming like <code>let</code> and
+<code>while</code>.</p>
+
+<section>
+
+<h2>Opener</h2>
+
+<p>Here’s a brief overview of some Rockstar constructs used in the puzzle:</p>
+
+<p>There are three types of <a href="https://codewithrockstar.com/docs#variables" target="_blank"><i>variables</i></a>
+in Rockstar.
+  <ul>
+    <li><i>simple</i> variables: a single word, like <code>guitar</code></li>
+    <li><i>common</i> variables: a modifier and a word, like <code>the guitar</code> or <code>my guitar</code>
+      (the modifier is part of the name, so these two examples are <em>different</em>)</li>
+    <li><i>proper</i> variables: multiple words, all capitalized, like <code>Jimi Hendrix</code></li>
+  </ul>
+
+  You can also use <a href="https://codewithrockstar.com/docs#pronouns" target="_blank"><i>pronouns</i></a>
+  like <code><b>they</b></code> and <code><b>it</b></code> to refer to the most recently parsed variable.
+</p>
+
+<p>Rockstar has aliases for
+  <ul>
+    <li><a href="https://codewithrockstar.com/docs#constants-vs-keywords" target="_blank"><i>constants</i></a>,
+      so you can write <code><b>ok</b></code> and <code><b>lies</b></code> instead of
+      <code><b>true</b></code> and <code><b>false</b></code></li>
+    <li><a href="https://codewithrockstar.com/docs#operators" target="_blank"><i>operators</i></a>,
+      so you can write <code><b>with</b> <b>without</b> <b>of</b> <b>over</b></code> instead of
+      <code>+ - * /</code>.</li>
+  </ul>
+</p>
+
+<p>You can <a href="https://codewithrockstar.com/docs#literals-and-assignment" target="_blank"><i>assign</i></a>
+to variables using
+  <ul>
+    <li><code><b>let</b> <i>variable</i> <b>be</b> <i>expression</i></code></li>
+    <li><code><b>let</b> <i>variable</i> <b>be</b> <i>operation</i> <i>expression</i></code> to
+      perform <a href="https://codewithrockstar.com/docs#compound-assignment-operators" target="_blank"><i>compound assignment</i></a>
+      (<code>let x be with y</code> is <code>x += y</code>)</li>
+    <li><code><b>put</b> expression <b>in</b>|<b>into</b> <i>variable</i></code></li>
+    <li><code><i>variable</i> <b>say</b>|<b>says</b>|<b>said</b> <i>unquoted string</i></code></li>
+    <li><code><i>variable</i> <b>is</b>|<b>are</b>|<b>was</b>|<b>were</b> <i>poetic value</i></code>,
+      where the <i>poetic value</i> can be a <i>constant</i> or a
+      <a href="https://codewithrockstar.com/docs#poetic-number-literals" target="_blank"><i>poetic number</i></a>,
+      which forms a number whose digits are the lengths of the words in the phrase (modulo 10).</li>
+  </ul>
+
+  The contractions <code><b>'s</b></code> and <code><b>'re</b></code> are aliases for <code><b>is</b></code>.
+</p>
+
+<p><code><b>Rock</b></code> and <code><b>Roll</b></code> are
+<a href="https://codewithrockstar.com/docs#queue-operations" target="_blank"><i>array/queue operations</i></a>.</p>
+
+<p><code><b>Cast</b></code> and <code><b>burn</b></code> convert strings to numbers and numbers to unicode characters.</p>
+
+<p>In Rockstar, you <code><b>listen</b></code> to
+<a href="https://codewithrockstar.com/docs#inputoutput" target="_blank">input</a> and
+<code><b>say</b>|<b>scream</b>|<b>shout</b>|<b>whisper</b></code> output.</p>
+
+</section>
+
+<section>
+
+<h2>Inductees</h2>
+
+<p>The first ten programs can be completed by filling in the blanks with the titles of songs by
+a single Rock &amp; Roll Hall of Fame inductee. Rockstar language syntax and semantics help
+constrain which songs can be used and where. Clues are also provided by song lyrics or references,
+or parenthetical parts of titles (which do not affect the code, since parentheses are used for
+<a href="https://codewithrockstar.com/docs#comments" target="_blank">comments in Rockstar</a>).
+The list of initials below each code block should also help with discovering/confirming the list of
+songs.</p>
+
+<section>
+
+<h3>Sam Cooke</h3>
+
+<div class="side-by-side">
+
+<div class="rockstar">
+<pre><code><mark title="lyrics from “A Change Is Gonna Come”">I was born by the river, in a little tent</mark>
+Put it into my heart
+<mark title="modified lyric from “A Change Is Gonna Come”">It's been a long time comin', but I know</mark>
+<span class="answer blank">A Change Is Gonna Come</span>
+Heart is understanding, courage, compassion
+Let there be a change of heart
+
+<mark title="lyric from “That’s Where It’s At”">You're making not a sound</mark>
+<span class="answer blank">That's Where It's At</span>
+Love is a blessing
+Worry is my gently nagging kinsman
+While my heart ain't gone
+Let my heart be without worry
+Let that be with love
+
+Let me be that with you, you, you
+
+<mark title="lyric from “You Were Made for Me”">A fish was made to swim in the ocean</mark>
+<mark title="lyric from “You Were Made for Me”">A boat was made to sail on the sea</mark>
+<span class="answer blank">You Were Made for Me</span>
+My dreams were so real
+Let them be of a fish without a boat
+Let me be with my dreams of you
+
+<mark title="lyric from “Grandfather’s Clock”"><span class="answer blank">Grandfather's Clock</span> was too large for the shelf</mark>
+<mark title="lyric from “Grandfather’s Clock”">It was taller by half than the old man himself</mark>
+<span class="answer blank">The Song Is Ended</span>
+Let The Lord be there with me
+
+Peace is satisfaction. Heartfelt moments, relaxed sighs, waterfalls cascading noiselessly
+Put the song of the Lord into my heart
+Let it be of peace
+Turn them up
+Let Grandfather be with Him
+Whisper it</code></pre>
+</div>
+
+<div class="pseudo-code">
+<pre><code>I = 42352164
+my_heart = I
+my_heart = 41445314
+a_change = 54
+heart = 370
+there = a_change * heart
+
+you = 6315
+that = 532
+love = 18
+worry = 2677
+while my_heart != NULL
+  my_heart -= worry
+  that += love
+
+me = that + you + you + you
+
+a_fish = 424235
+a_boat = 424233
+you = 432
+my_dreams = 24
+my_dreams *= a_fish - a_boat
+me += my_dreams * you
+
+grandfather = 5335335
+grandfather = 62443337
+the_song = 5
+the_lord = there + me
+
+peace = 2.9775091
+my_heart = the_song * the_lord
+my_heart *= peace
+my_heart = round_up(my_heart)
+grandfather += my_heart
+print(grandfather)</code></pre>
+</div>
+
+</div>
+
+</section>
+
+<section>
+
+<h3>The Four Tops</h3>
+
+<div class="side-by-side">
+
+<div class="rockstar">
+<pre><code><span class="answer blank">Yesterday's Dreams</span> have changed
+An alternative is <mark title="phrase from “It’s the Same Old Song”">a different meaning</mark>
+Let it be of yesterday
+Our love is changed
+<span class="answer blank">It's the Same Old Song</span>, but
+Let it be <mark title="that is, “with a different meaning”, like the lyric from “It’s the Same Old Song”">with an alternative</mark>
+
+<span class="answer blank">Your Love Is Amazing</span>
+If your love ain't gone
+<span class="answer blank">Loving You Is Sweeter Than Ever</span>
+Let it be with your love, our love
+My life was loneliness
+Put my life without Loving You in gloom
+
+Restriction is a basic inability, with expensive ambiguity. Stops forward motion
+<mark title="lyric from “Are You Man Enough”">That's not a street you can walk</mark>
+Society Asks <span class="answer blank">Are You Man Enough</span>?
+<span class="answer blank">What Is A Man</span>?
+<mark title="lyric from “What Is A Man”">He's not ashamed to lose</mark>
+There is hope for future generations
+Let them be without what, Society Asks
+Let that be without restriction
+Put that over there in rooms
+
+<mark title="lyric from “7-Rooms of Gloom”">This House is just a place</mark>
+Let it be <span class="answer blank">7-Rooms of Gloom</span>
+Build them up, up
+Turn them up
+Whisper them</code></pre>
+</div>
+
+<div class="pseudo-code">
+<pre><code>yesterday = 647
+an_alternative = 197
+an_alternative *= yesterday
+our_love = 7
+our_love = 34343
+our_love += an_alternative
+
+your_love = 7
+if your_love != NULL
+  Loving_You = 744
+  Loving_You += your_love + our_love
+  my_life = 0
+  gloom = my_life - Loving_You
+
+restriction = 159499.576
+that = 316334
+Society_Asks = 336
+what = 13
+what = 3724
+there = 4361
+there -= what + Society_Asks
+that -= restriction
+rooms = that / there
+
+This_House = 415
+This_House = 7 - rooms * gloom
+This_House += 2
+This_House = round_up(This_House)
+print(This_House)</code></pre>
+</div>
+
+</div>
+
+</section>
+
+<section>
+
+<h3>Aretha Franklin</h3>
+
+<div class="side-by-side">
+
+<div class="rockstar">
+<pre><code><span class="answer blank">You're A Sweet Sweet Man</span>
+<mark title="lyric from “You’re A Sweet Sweet Man”">All I Know is it's so doggone good</mark>
+<span class="answer blank">This Girl's In Love With You</span>
+
+<mark title="lyric from “I Say A Little Prayer”"><span class="answer blank">I Say A Little Prayer</span> for you</mark>
+Put it in my heart
+Shatter it
+<mark title="lyric from “I Say A Little Prayer”, also hints at “Without You” as the end of the phrase">That's how it must be to live</mark>
+Let it be <span class="answer blank">Without You</span>
+Let that be of my heart
+
+<mark title="lyric from “Love Is The Only Thing”"><span class="answer blank">Love Is The Only Thing</span> that matters at all</mark>
+<span class="answer blank">You're All I Need to Get By</span>
+<mark title="lyric from “You’re All I Need to Get By”">It was plain to see, you were my destiny</mark>
+<span class="answer blank">Until You Were Gone</span>
+<mark title="lyric from “Until You Were Gone”">I said I'd get over you, baby</mark>
+Let love be with you
+Break it down
+
+The freeway's jam-packed. We ain't goin' nowhere!
+The perfume is a stinky pungent exaggeration. Cement 'n' blacktop
+Put the <span class="answer blank">Freeway of Love</span> in the mirror
+Turn it around
+Let This Girl be over it
+
+<span class="answer blank">A Rose Is Still A Rose</span>
+<mark title="modified lyric from “A Rose Is Still A Rose”">You're still a flower, baby girl</mark>
+<mark title="lyric from “Sisters Are Doin’ It For Themselves”">There's a woman right next to you</mark>
+<span class="answer blank">Sisters Are Doin' It For Themselves</span>
+Put All I Know of you, sisters in my soul
+Let that be with This Girl of my soul over there
+Turn it around
+
+<span class="answer blank">Rock Steady</span> like <mark title="phrase from “Rock Steady”">exactly what it is</mark>
+<span class="answer blank">Push</span> steady like <mark title="phrase from “Push”">we see the light</mark>
+While steady <span class="blank"><span class="answer">Ain't Nobody</span> (Gonna Turn Me Around)</span>
+Join steady in harmony
+Cast them into the water
+<span class="blank"><span class="answer">The Thrill Is Gone</span> (From Yesterday's Kiss)</span>
+Put it in steady
+
+Let that be with the water
+Let it be with the perfume of a rose
+Turn it around
+Whisper it</code></pre>
+</div>
+
+<div class="pseudo-code">
+<pre><code>you = 1553
+All_I_Know = 3274
+This_Girl = 2443
+
+I = "A Little Prayer for you"
+my_heart = I
+my_heart = my_heart.split("")
+that = 324224
+that -= you
+that *= len(my_heart)
+
+love = 3454723
+you = 314232
+you = 5233427
+until you == NULL
+  i = "I'd get over you, baby"
+  love += you
+  break
+
+the_freeway = 0.2447
+the_perfume = 1672.618
+the_mirror = the_freeway * love
+the_mirror = round(the_mirror)
+This_Girl /= the_mirror
+
+a_rose = 514
+you = 51644
+there = 155423
+sisters = 4230
+my_soul = All_I_Know * you * sisters
+that += This_Girl * my_soul / there
+that = round(that)
+
+steady.push(7422)
+steady.push(2335)
+while steady != NULL
+  harmony = steady.join("")
+  the_water = parse_number(harmony)
+  the_thrill = NULL
+  steady = the_thrill
+
+that += the_water
+that += the_perfume * a_rose
+that = round(that)
+print(that)</code></pre>
+</div>
+
+</div>
+
+</section>
+
+<section>
+
+<h3>The Impressions</h3>
+
+<div class="side-by-side">
+
+<div class="rockstar">
+<pre><code>My song says <mark title="lyric from “People Get Ready”"><span class="answer blank">People Get Ready</span>
+There's a train a-comin'</mark>
+Let it be of my song
+Put it into my heart
+
+Freedom is self-evident, unalienable
+Justice is blind
+Equality is <mark title="phrase from “This Is My Country”">three hundred years</mark> overdue
+<span class="answer blank">This Is My Country</span>
+Let it be of freedom, justice, and equality
+
+If there ain't freedom
+Shatter my heart
+
+If there ain't justice
+<span class="answer blank">Something's Mighty Mighty Wrong</span>
+Let us be something of my heart
+Hope is our foundation. Permanent and solid, enduring
+Build it up
+Let us be of hope
+Turn it up
+
+If there ain't equality
+My strength is a force to be reckoned with
+We're gonna <span class="answer blank">Keep On Pushing</span>
+Put it with my strength into our souls
+
+Delay was never ours
+Knock it down
+Shout this without delay with us, our souls</code></pre>
+</div>
+
+<div class="pseudo-code">
+<pre><code>my_song = "People Get Ready"
+there = 157
+there *= my_song
+my_heart = there
+
+freedom = 21
+justice = 5
+equality = 5757
+this = 27
+this *= freedom * justice * equality
+
+if there != freedom
+  my_heart = my_heart.split("")
+
+if there != justice
+  something = 665
+  us = something * len(my_heart)
+  hope = 30.9358
+  hope += 1
+  us *= hope
+  us = round_up(us)
+
+if there != equality
+  my_strength = 152284
+  we = 5427
+  our_souls = we + my_strength
+
+delay = 54
+delay -= 1
+print(this - delay + us + our_souls)</code></pre>
+</div>
+
+</div>
+
+</section>
+
+<section>
+
+<h3>The Isley Brothers</h3>
+
+<div class="side-by-side">
+
+<div class="rockstar">
+<pre><code><span class="answer blank">You're the Key To My Heart</span>
+Rock That Thang like a fox
+<span class="answer blank">The Heat Is On</span>
+<span class="answer blank">That's the Way Love Is</span>
+Put the heat of you with that into your hand
+
+Carefree is easy
+Let yourself be carefree
+<span class="blank"><span class="answer">It's a Disco Night</span> (Rock Don't Stop)</span>
+<span class="answer blank">Put Yourself In My Place</span>
+If my place ain't wrong
+<span class="answer blank">Everything Is Alright</span>
+Let it be without That Thang, That Thang
+Let my place be of everything
+Put your hand in mine
+Let it be without my place
+
+<span class="answer blank">Pop That Thang</span> <mark title="reference to “Pop That Thang”">in the barnyard</mark>
+Let mine be with it
+
+The sheets are aquamarine. Faded
+This Old Heart's broken 'n' worn
+Let it be <span class="answer blank">Between the Sheets</span>
+Build it up
+
+<span class="answer blank">Shout</span> <span class="blank"><span class="answer">This Old Heart of Mine</span> (Is Weak for You)</span></code></pre>
+</div>
+
+<div class="pseudo-code">
+<pre><code>you = 33225
+That_Thang.push(13)
+the_heat = 2
+that = 3342
+your_hand = the_heat * you + that
+
+carefree = 4
+yourself = carefree
+yourself = 155
+my_place = yourself
+if my_place != FALSE
+  everything = 7
+  everything -= len(That_Thang) + len(That_Thang)
+  my_place *= everything
+  mine = your_hand
+  mine -= my_place
+
+the_barnyard = That_Thang.pop()
+mine += the_barnyard
+
+the_sheets = 0.5
+This_Old_Heart = 614
+This_Old_Heart /= the_sheets
+This_Old_Heart += 1
+
+print(This_Old_Heart * mine)</code></pre>
+</div>
+
+</div>
+
+</section>
+
+<section>
+
+<h3>Etta James</h3>
+
+<div class="side-by-side">
+
+<div class="rockstar">
+<pre><code>A girl is tremendous
+A woman is formidable
+So are their dreams
+<span class="answer blank">It's a Man's Man's Man's World</span>
+<mark title="modified lyric from “It’s a Man’s Man’s Man’s World”">If it's nothing without a woman or a girl</mark>
+<mark title="song by Etta James">Say It Isn't So</mark>
+
+<span class="answer blank">Something's Got a Hold on Me</span>
+Last is empowering
+A piece is saying goodbye
+<span class="answer blank">Love's Been Rough on Me</span>
+Put something with love into my life
+<span class="answer blank">A Change Is Gonna Do Me Good</span>
+<span class="answer blank">The Blues Is My Business</span>
+Let this be a change between the blues
+Turn it around
+
+Put <span class="blank"><span class="answer">842-3089</span> (Call My Name)</span> in your phonebook
+Rock your dial with it
+Put it <span class="answer blank">At Last</span> into my heart
+Put a <span class="answer blank">Piece of My Heart</span> into your song
+<span class="answer blank">That's All I Want From You</span>
+Let them be without your song, and so
+
+Our story is beginning! Hallelujah!
+<span class="answer blank">Yesterday's Music</span> is gone
+Let it be without our story
+Let the end be that without this
+Feeling is honest, come my new day
+Shout the end of yesterday with feeling</code></pre>
+</div>
+
+<div class="pseudo-code">
+<pre><code>a_girl = 0
+a_woman = 0
+so = 56
+so = 14445
+if (so == NULL - a_woman) OR a_girl
+  print(so != so)
+
+something = 31422
+last = 0
+a_piece = 67
+love = 4522
+my_life = something + love
+the_blues = 28
+a_change = 5224
+this = a_change / the_blues
+this = round(this)
+
+your_phonebook = 842 - 3089
+your_dial.push(your_phonebook)
+my_heart = your_dial[last]
+your_song = a_piece * my_heart
+that = 31443
+that -= your_song + so
+
+our_story = 90
+yesterday = 524
+yesterday -= our_story
+the_end = that - this
+feeling = 64233
+print(the_end * yesterday + feeling)</code></pre>
+</div>
+
+</div>
+
+</section>
+
+<section>
+
+<h3>Bob Marley</h3>
+
+<div class="side-by-side">
+
+<div class="rockstar">
+<pre><code><span class="answer blank">What's New Pussycat</span>
+<mark title="modified lyric from “Three Little Birds”">Everything's gonna be all right</mark>
+The <mark title="lyric from “Sun Is Shining”"><span class="answer blank">Sun Is Shining</span>, the weather is sweet</mark>
+Let it be what of it
+
+<mark title="lyric from “Buffalo Soldier”">There was a <span class="answer blank">Buffalo Soldier</span> in the heart of America</mark>
+Running is a way
+<span class="answer blank">My Cup</span> is a humble vessel
+Let it be <mark title="modified phrase from “My Cup”">over running</mark>
+let them be with the sun
+
+The highly are humble
+The lowly are just the same
+<span class="answer blank">Jah Is Mighty</span>
+Let Him be <mark title="modified phrasing from “Jah Is Mighty”">with the highly, the lowly, the highly, the lowly</mark>
+Put my cup with Him into Jah
+
+<mark title="lyric from “Johnny Was”"><span class="answer blank">Johnny Was</span> a good, good, good, good man</mark>
+Let Jah be with him
+Let love be everything of Jah
+
+Fear is a harsh sister
+Everything is not without sadness. The adventurer travels far afield; chants hallelujah with gratitude
+Let it be without fear
+
+Let there be love over everything
+Turn it around
+Shout it</code></pre>
+</div>
+
+<div class="pseudo-code">
+<pre><code>what = 38
+everything = 5235
+the_sun = 73725
+the_sun = what * the_sun
+
+there = 17723527
+running = 13
+my_cup = 166
+my_cup /= running
+my_cup += the_sun
+
+the_highly = 6
+the_lowly = 434
+jah = 6
+jah += the_highly + the_lowly + the_highly + the_lowly
+jah = my_cup + jah
+
+johnny = 144443
+jah += johnny
+love = everything * jah
+
+fear = 156
+everything = 377.307366049
+everything -= fear
+
+there = love / everything
+there = round(there)
+print(there)</code></pre>
+</div>
+
+</div>
+
+</section>
+
+<section>
+
+<h3>Martha and the Vandellas</h3>
+
+<div class="side-by-side">
+
+<div class="rockstar">
+<pre><code>Here's the deal:
+<span class="answer blank">Everybody's Talking</span>
+Knock them down
+<span class="blank"><span class="answer">The Hurt Is Over</span> (Since I've Found You)</span>
+Let them be with everybody
+<span class="answer blank">This Is When I Need You Most</span>
+Put the hurt of this into me
+
+The time was so long, but now
+<mark title="lyric from “My Boyfriend’s Back”">You're gonna be in trouble</mark>
+<span class="answer blank">My Boyfriend's Back</span>
+Let me be over it
+<span class="answer blank">Loneliness Is A Lonely Feelin'</span>
+Let me be without loneliness
+
+Summer's too long
+My heart is burning. This <span class="blank">(Love Is Like a) <span class="answer">Heat Wave</span></span></span>
+The moon is high. Shiny, luminous ball; milk-white
+If <mark title="lyric from “Dancing in the Street”">summer's here and the time is right</mark>,
+We're <span class="answer blank">Dancing in the Street</span>
+
+<span class="answer blank">Let This Day Be</span> it over my heart
+Let them be over the moon
+Let me be without them
+Turn them around
+
+<span class="answer blank">Happiness Is Guaranteed</span>
+Rock <span class="blank"><span class="answer">A Love Like Yours</span> (Don't Come Knocking Everyday)</span>
+Rock a love like <span class="blank">(There's) <span class="answer">Always Something There To Remind Me</span></span>
+Unite a love with happiness
+Cast it into my dreams
+
+Say it with me</code></pre>
+</div>
+
+<div class="pseudo-code">
+<pre><code>here = 34
+everybody = 7
+everybody -= 1
+the_hurt = 4
+the_hurt += everybody
+this = 41434
+me = the_hurt * this
+
+the_time = 2433
+you = 5227
+my_boyfriend = 4
+me /= my_boyfriend
+loneliness = 166
+me -= loneliness
+
+summer = 34
+my_heart = 7.444
+the_moon = 4.584
+if summer == here AND the_time == TRUE
+  we = 7236
+
+This_Day = we / my_heart
+This_Day /= the_moon
+me -= This_Day
+This_Day = round(This_Day)
+
+happiness = 0
+a_love.push(5)
+a_love.push(695262)
+a_love.join(0)
+my_dreams = parse_number(a_love)
+
+print(my_dreams + me)</code></pre>
+</div>
+
+</div>
+
+</section>
+
+<section>
+
+<h3>The Supremes</h3>
+
+<div class="side-by-side">
+
+<div class="rockstar">
+<pre><code><mark title="lyric from “You Are The Heart Of Me”">Warm is your gentle touch</mark>
+<span class="answer blank">You Are The Heart Of Me</span>
+Perhaps <span class="blank"><span class="answer">Is There A Place</span> (In His Heart for Me)</span>?
+Let the wisdom be perhaps with you
+
+<mark title="lyric from “Love Is In Our Hearts”">We're happy holding hands</mark>
+<span class="answer blank">Love Is In Our Hearts</span>
+Let the beginning be we of love
+
+Time is power
+Put <span class="answer blank">The Wisdom Of Time</span> in chains
+
+<mark title="lyrics from “You Can’t Hurry Love”">Mama said it's a game of give and take</mark>
+Put her in your thoughts
+<span class="blank"><span class="answer">It's Got To Be A Miracle</span> (This Thing Called Love)</span>
+Easy is saying <mark title="song by The Supremes">Hello Stranger</mark>
+<span class="answer blank">It's So Hard For Me To Say Goodbye</span>
+My world was revealed
+<span class="answer blank">You're What's Missing In My Life</span>
+Here's to happiness and health!
+
+Let me be here with you, and your thoughts
+<span class="answer blank">Love Is Here And Now You're Gone</span>
+<mark title="lyric from “Love Is Here And Now You’re Gone”">You're not there, and the lonely cry fades in the air</mark>
+
+If love ain't easy
+<mark title="lyric from “This Is The Story”">Happiness is eluding me</mark>
+<span class="answer blank">This Is The Story</span>
+Let it be of my world
+Let me be over this, love
+Put me in love
+
+Put <span class="blank">(Don't Break These) <span class="answer">Chains of Love</span></span> in my heart
+<span class="answer blank">Loving You Is Better Than Ever</span>
+Let my heart be over Loving You
+
+Pain is our lopsidedness. Living is many kinds of feelings
+My words were never mine alone
+Let the end be her without pain, my heart
+
+Let tomorrow be <span class="answer blank">The Beginning of the End</span>
+Turn it down
+Shout it</code></pre>
+</div>
+
+<div class="pseudo-code">
+<pre><code>warm = 465
+you = 3522
+perhaps = 515
+the_wisdom = perhaps + you
+
+we = 575
+love = 236
+the_beginning = we * love
+
+time = 5
+chains = the_wisdom * time
+
+mama = "it's a game of give and take"
+your_thoughts = mama
+your_thoughts = 32217
+easy = 658
+easy = 2432237
+my_world = 8
+you = 57224
+here = 2936
+
+me = here + you + your_thoughts
+love = 43354
+you = 3533635233
+if love != easy
+  happiness = 72
+  this = 35
+  this *= my_world
+  me /= this * love
+  love = me
+
+my_heart = chains * love
+Loving_You = 644
+my_heart /= Loving_You
+
+pain = 32.624528
+my_words = 545
+the_end = my_words - pain - my_heart
+
+tomorrow = the_beginning * the_end
+tomorrow = round_down(tomorrow)
+print(tomorrow)</code></pre>
+</div>
+
+</div>
+
+</section>
+
+<section>
+
+<h3>Stevie Wonder</h3>
+
+<div class="side-by-side">
+
+<div class="rockstar">
+<pre><code><span class="answer blank">Love's in Need of Love Today</span>
+<mark title="lyric from “Love’s in Need of Love Today”">Hate's goin' 'round breaking many hearts</mark>
+Let me be love without hate
+
+<mark title="lyrics from “You Are The Sunshine of My Life”"><span class="answer blank">You Are The Sunshine of My Life</span>
+That's why I'll always be around</mark>
+<mark title="lyric from “My Love Is With You”"><span class="answer blank">My Love Is With You</span>, where ever you are</mark>
+Let me be with you, my love
+Put that in your heart
+
+<span class="answer blank">My Love Is On Fire</span>
+<mark title="lyric from “My Love Is On Fire”">My heart is on the wild</mark>
+<mark title="lyric from “I Was Made To Love Her”">That's why we made it through the years</mark>
+<span class="answer blank">I Was Made To Love Her</span>
+Let my heart be with her
+Each Beat is a new soothing, lilting descant. Twinkling star of evening
+You're so <span class="blank"><span class="answer">Uptight</span> (Everything's Alright)</span>
+
+<mark title="lyric from “It’s Wrong (Apartheid)”">Freedom is coming</mark>
+<span class="blank"><span class="answer">It's Wrong</span> (Apartheid)</span>
+If freedom ain't right
+<mark title="reference to “Isn’t She Lovely”">She's lovely, isn't she?</mark>
+Let freedom be <span class="answer blank">With Each Beat of My Heart</span>
+Turn it around
+
+A song is strong in my soul
+Put freedom <span class="answer blank">With a Song in My Heart</span>
+
+If my heart is as big <span class="answer blank">As</span> your heart
+Let me be with you, my love, my heart
+Let your heart be with that
+Let me be with your heart
+Say it</code></pre>
+</div>
+
+<div class="pseudo-code">
+<pre><code>love = 24245
+hate = 45846
+me = love - hate
+
+you = 38224
+that = 33626
+my_love = 435433
+me += you + my_love
+your_heart = that
+
+my_love = 24
+my_heart = 234
+that = 3242735
+i = 4243
+my_heart += i
+Each_Beat = 13877.9427
+you = 27
+
+freedom = 7
+freedom = FALSE
+if freedom != TRUE
+  freedom = 643
+  freedom += Each_Beat * my_heart
+  freedom = round(freedom)
+
+a_song = 6224
+my_heart = freedom + a_song
+
+if my_heart &gt;= your_heart
+  me += you + my_love + my_heart
+  your_heart += that
+  me += your_heart
+  print(me)</code></pre>
+</div>
+
+</div>
+
+</section>
+
+</section>
+
+<section id="finale">
+
+<h2>Finale</h2>
+
+<p>The final(e) code block is a complete Rockstar program, but it does nothing unless given some
+input.</p>
+
+<div class="side-by-side">
+
+<div class="rockstar">
+<pre><code>Our dreams are resplendent vermilion, gleaming warmly
+Thought is a path, not a destination
+Reality is a tenacious, steadfast matter
+The earth is solid
+The oceans are transparent
+My forge is a foundation
+Our love is strong. True
+Let it be of the earth
+Burn it
+
+Until our dreams are reality,
+The cosmos is mysterious
+Rock it
+Roll it
+Listen to your heart
+If it's empty,
+Break it down
+
+Split it with silence of thought
+While your heart is as big as the oceans
+Roll your heart into your soul
+Roll your heart into your voice
+Let your soul be with your voice
+Burn your soul with my forge
+Cast your soul into the flames
+Rock the cosmos with it
+
+Build our dreams up
+Unite the cosmos with our love
+Whisper it</code></pre>
+</div>
+
+<div class="pseudo-code">
+<pre><code>our_dreams = 1986
+thought = 14311
+reality = 1996
+the_earth = 5
+the_oceans = 1
+my_forge = 10
+our_love = 6.4
+our_love *= the earth
+our_love = unicode_char(our_love)
+
+until our_dreams == reality
+  the_cosmos = UNDEFINED
+  the_cosmos = [the_cosmos]
+  the_cosmos.pop()
+  your_heart = a line of input
+  if your_heart == ""
+    break
+
+  your_heart.split("" * thought)
+  while your_heart &gt;= the_oceans
+    your_soul = your_heart.pop()
+    your_voice = your_heart.pop()
+    your_soul += your_voice
+    parse_number(your_soul, my_forge)
+    the-flames = unicode_char(your_soul)
+    the_cosmos.push(the_flames)
+
+  our_dreams += 1
+  the_cosmos.join(our_love)
+  print(the_cosmos)</code></pre>
+</div>
+
+</div>
+
+<p>The inductee programs end in an
+<a href="https://codewithrockstar.com/docs#inputoutput" target="_blank">output statement</a>, each
+printing an eight-digit number when run. The programs were given in alphabetical order by artist, so
+they should be reordered before extraction. Each artist was inducted into the Hall of Fame in
+a different, consecutive class year, so the outputs should be reordered chronologically (the final
+program’s loop from 1986 to 1995 also helps clue/confirm this).</p>
+
+<table>
+<tr><th>Artist</th><th>Class</th><th>Output</th></tr>
+<tr><td>Sam Cooke</td><td>1986</td><td><samp class="answer">67488265</samp></td></tr>
+<tr><td>Aretha Franklin</td><td>1987</td><td><samp class="answer">82508782</samp></td></tr>
+<tr><td>The Supremes</td><td>1988</td><td><samp class="answer">69496984</samp></td></tr>
+<tr><td>Stevie Wonder</td><td>1989</td><td><samp class="answer">65866884</samp></td></tr>
+<tr><td>The Four Tops</td><td>1990</td><td><samp class="answer">84697372</samp></td></tr>
+<tr><td>The Impressions</td><td>1991</td><td><samp class="answer">69826869</samp></td></tr>
+<tr><td>The Isley Brothers</td><td>1992</td><td><samp class="answer">84837870</samp></td></tr>
+<tr><td>Etta James</td><td>1993</td><td><samp class="answer">72698473</samp></td></tr>
+<tr><td>Bob Marley</td><td>1994</td><td><samp class="answer">69708382</samp></td></tr>
+<tr><td>Martha and the Vandellas</td><td>1995</td><td><samp class="answer">50798469</samp></td></tr>
+</table>
+
+<p class="centered">Giving the outputs above as input to the final program produces the following
+output:</p>
+
+<pre class="centered"><samp>C 0 R A
+R 2 W R
+E 1 E T
+A V D T
+T E I H
+E R D E
+T S N F
+H E T I
+E F S R
+2 O T E
+</samp></pre>
+
+<p class="centered">Reading down the columns gives the answer to the puzzle:
+<span class="answer">CREATE THE 2021 VERSE FOR WE DIDNT START THE FIRE</span></p>
+
+</section>
+
+<div class="author-note">
+
+<h2>Author’s Note</h2>
+
+<p>Many thanks to <a href="https://dylanbeattie.net" target="_blank">Dylan Beattie</a> for creating
+<a href="https://codewithrockstar.com" target="_blank">Rockstar</a> in the first place, patiently
+responding to my questions, and being open to my suggestions.</p>
+
+<p>Thanks also to
+<a href="https://stackoverflow.com/users/1891219/gaborsch" target="_blank">Gabor Schermann</a>,
+author of <a href="https://github.com/gaborsch/rocky" target="_blank">Rocky</a>, who made me feel
+welcome right away.</p>
+
+<p><span class="horns">🤘</span></p>
+
+</div>

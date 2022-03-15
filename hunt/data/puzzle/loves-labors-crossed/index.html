@@ -1,0 +1,39 @@
+<script src="word-square-client-side.js?v=1"></script>
+
+<div class="flavor">
+Sometimes your significant other asks you to perform an unexpected task as a way to profess your love.
+</div>
+
+<p>Create a 5x5 double word square, with 5 words reading horizontally and 5 different words reading
+vertically. Each of the 10 words can appear in the grid either forwards or backwards (right, left,
+down, or up), all at your discretion. Then, after each row, write the letter equal to the
+letter-value sum (where A=1, B=2, etc) of the word, modulo 26 -- for example, the word CUPID yields
+the letter A, because C+U+P+I+D = 3+21+16+9+4 = 53 = 1 [mod 26]. (Consider a result of zero to equal
+26 = Z.) Those 5 row letters, in order, must spell either a word reading forwards or a word reading
+backwards. Then, under each column, write the letter equal to the letter-value sum of that column,
+modulo 26 (again, with zero = Z). Those 5 column letters, in order, must spell either a word reading
+forwards or a word reading backwards. Finally, the 5-letter word resulting from the across words,
+and the 5-letter word resulting from the down words, together must contain 10 different letters
+(that is, no repeats among them).</p>
+
+<p>All words used in the task (the ten 5-letter grid words and the two 5-letter extra words) must
+appear in the Scrabble TWL06 wordlist freely available for download at
+<a href="https://www.wordgamedictionary.com/twl06/">https://www.wordgamedictionary.com/twl06/</a>
+and mirrored <a href="twl06.txt">here</a>.</p>
+
+<p>When you have successfully completed the task, profess your love by submitting a single string of
+the 25 letters of your grid, in order (left to right, top to bottom), with no spaces or punctuation,
+here:</p>
+
+<form class="no-copy" onsubmit="validateWordSquare(); return false">
+<div>
+    <input type="text" id="word-square-input"
+      required size="30" placeholder="Enter your 25-letter string here.">
+    <button type="submit">Submit</button>
+</div>
+<div id="word-square-error"></div>
+</form>
+
+<div id="next-html"></div>
+
+<button id="clipboard-button"></button>

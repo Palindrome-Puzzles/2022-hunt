@@ -1,0 +1,43 @@
+.red-text {
+	color: red;
+}
+
+.centered {
+  text-align: center;
+}
+
+table.dropquote th {
+  box-sizing: border-box;
+  height: 35px;
+  min-width: 35px;
+  position: relative;
+  text-align: center;
+  width: 35px;
+  color: red;
+  font-size: .8em;
+}
+
+table.dropquote tr:nth-child(2) td {
+  border-top: 1px solid #000;
+}
+
+table.dropquote td {
+  border-left: 1px solid #000;
+  border-right: 1px solid #000;
+  box-sizing: border-box;
+  height: 35px;
+  min-width: 35px;
+  position: relative;
+  text-align: center;
+  width: 35px;
+}
+
+table.crossword td,
+table.crossword th {
+  box-sizing: border-box;
+  height: 35px;
+  min-width: 35px;
+  position: relative;
+  text-align: center;
+  width: 35px;
+}

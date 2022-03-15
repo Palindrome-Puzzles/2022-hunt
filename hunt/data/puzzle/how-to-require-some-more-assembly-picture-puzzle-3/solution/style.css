@@ -1,0 +1,114 @@
+table.snake td{
+  width: 30px;
+  height:  30px;
+  text-align: center;
+  background-color: #FFFDF1;
+}
+
+@media print {
+table.snake th, table.snake td {
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+    }
+}
+
+.center-image{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.blue {
+  background-color: #C8DAF9;
+}
+
+.red {
+  background-color: #F4CCCC;
+}
+
+.green {
+  background-color: #B7D7A8;
+}
+
+.gold {
+  background-color: #FFF2CC;
+}
+
+.highlight{
+  background-color: #FFFF04;
+}
+
+.dotted-all{
+  border: 1px dotted black;
+}
+
+.dotted-right {
+  border-right: 1px dotted black;
+}
+
+.dotted-left {
+  border-left: 1px dotted black;
+}
+
+.dotted-top {
+  border-top: 1px dotted black;
+}
+
+.dotted-bottom {
+  border-bottom: 1px dotted black;
+}
+
+.bold-bottom{
+    border-bottom: 3px solid black;
+}
+
+.bold-right {
+    border-right: 3px solid black;
+}
+
+.bold-left {
+    border-left: 3px solid black;
+}
+
+.bold-top {
+  border-top: 3px solid black;
+}
+
+.big-letter {
+  font-size: 150%;
+}
+
+.diagonal-bottom {
+  background: linear-gradient(to top right, #fff calc(50% - 2px), black , #fff calc(50% + 2px) )
+}
+
+.diagonal-top {
+  background: linear-gradient(to bottom right, #fff calc(50% - 2px), black , #fff calc(50% + 2px) )  
+}
+
+.dashed-all{
+  border: 2px dashed #bcbcbc;
+}
+
+.dashed-right {
+  border-right: 2px dashed #bcbcbc;
+}
+
+.dashed-left {
+  border-left: 2px dashed #bcbcbc;
+}
+
+.dashed-top {
+  border-top: 2px dashed #bcbcbc;
+}
+
+.dashed-bottom {
+  border-bottom: 2px dashed #bcbcbc;
+}
+
+.topline{
+  text-decoration: overline;
+}

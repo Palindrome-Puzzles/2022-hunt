@@ -1,0 +1,26 @@
+{% load self_help %}
+{% self_help_submission puzzle_info.puzzle team as result %}
+{% if team and puzzle_info.solved and result.message %}
+<section class="bonus-puzzle-content">
+  <div class="paper-edge top"></div>
+  <div class="content">
+    <h2>{{ result.interaction.name }}</h2>
+    {% if result.interaction_access %}
+    <div class="notice{% if result.interaction_access.accomplished %} complete{% endif %}">
+      {% if result.interaction_access.accomplished %}
+      Complete - your submission was accepted!
+      {% else %}
+      In-progress - we’ve received your submission.
+      {% endif %}
+    </div>
+    {% endif %}
+    {{ result.message|safe }}
+    {% if not result.interaction_access or not result.interaction_access.accomplished %}
+    <div>{{ result.instructions|safe }}</div>
+    <br/>
+    <div><em>If your submission includes additional files, please provide a <strong>Google Drive or Dropbox link</strong> rather than attaching them to your submission email. Additionally, emails sent from Outlook may not be properly received, so please use a different email client.</em></div>
+    {% endif %}
+  </div>
+  <div class="paper-edge bottom"></div>
+</section>
+{% endif %}

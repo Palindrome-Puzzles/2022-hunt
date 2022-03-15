@@ -1,0 +1,32 @@
+h1,
+.round-map {
+    font-family: 'Margarine', sans-serif;
+    font-weight: 400;
+}
+
+.page-background {
+    background-image: url(images/bg-repeat.jpg);
+    background-repeat: repeat-y;
+    background-size: 100%;
+    background-color: #c28f4e;
+    overflow: hidden;
+}
+.page-background-top {
+    background-image: url(images/bg-map.jpg);
+}
+.page-background-map {
+    background-image: url(images/bg-bottom.jpg);
+}
+
+.page-background-top {
+    aspect-ratio: 2500/3655;
+    background-position: center;
+    width: 100%;
+}
+
+header {
+    width: 100%;
+}
+header.large-wordmark {
+    aspect-ratio: 2/1;
+}

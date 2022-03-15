@@ -1,0 +1,65 @@
+<p>Solvers are presented with a number of CAPTCHAs, each with an audio "CAPTCHA", which they need to solve in order to proceed. Though some CAPTCHAs function correctly, solvers encounter a number of CAPTCHAs where attempting to select the named objects does not allow them to proceed.</p>
+
+<p>To solve the puzzle, solvers need to figure out that some CAPTCHAs are "broken" in a specific way, and then in those cases select images matching the alternate rule.</p>
+
+<table>
+<thead><td>Prompt</td><td>Rule (if broken)</td><td>Actual prompt (if broken)</td><td>Audio</td></thead>
+<tbody>
+<tr><td>LAKE</td><td></td><td></td><td>Sierra</td></tr>
+<tr><td>ISLAND</td><td></td><td></td><td>Quebec</td></tr>
+<tr><td>BECUNA</td><td>ROT13</td><td>ORPHAN</td><td>Uniform</td></tr>
+<tr><td>SHELL</td><td></td><td></td><td>Alfa</td></tr>
+<tr><td>BEZOAR</td><td>Change all vowels to A</td><td>BAZAAR</td><td>Romeo</td></tr>
+<tr><td>TABLE</td><td></td><td></td><td>Echo</td></tr>
+<tr><td>EGG</td><td></td><td></td><td>Mike</td></tr>
+<tr><td>AGLET</td><td>Prepend E</td><td>EAGLET</td><td>Echo</td></tr>
+<tr><td>NOTEBOOK</td><td></td><td></td><td>Tango</td></tr>
+<tr><td>TRAP</td><td></td><td></td><td>Romeo</td></tr>
+<tr><td>IRONSAND</td><td>move last three letters to the front</td><td>ANDIRONS</td><td>Oscar</td></tr>
+<tr><td>WOLF</td><td>reverse order of letters</td><td>FLOW</td><td>November</td></tr>
+<tr><td>ORGAN</td><td></td><td></td><td>Bravo</td></tr>
+<tr><td>BONE</td><td></td><td></td><td>Alfa</td></tr>
+<tr><td>PAN</td><td>Spanish to English</td><td>BREAD</td><td>Yankee</td></tr>
+<tr><td>RABBIT</td><td></td><td></td><td>Alfa</td></tr>
+<tr><td>RANGE</td><td>Prepend O</td><td>ORANGE</td><td>November</td></tr>
+<tr><td>SWORD</td><td>Replace a sword with a pen</td><td>PEN</td><td>Charlie</td></tr>
+<tr><td>OCTOPUS</td><td></td><td></td><td>Alfa</td></tr>
+<tr><td>FIRE</td><td>Replace words with opposites</td><td>ICE</td><td>Foxtrot</td></tr>
+<tr><td>KNIFE</td><td></td><td></td><td>Echo</td></tr>
+<tr><td>ENVELOPE</td><td></td><td></td><td>Charlie</td></tr>
+<tr><td>RUT</td><td>UT to OOT</td><td>ROOT</td><td>Lima</td></tr>
+<tr><td>WORMWOOD</td><td>Swap first and second half of word</td><td>WOODWORM</td><td>India</td></tr>
+<tr><td>NEEDLE</td><td></td><td></td><td>Mike</td></tr>
+<tr><td>WRITING</td><td>Partial replacement with Greek</td><td>GRAPHING</td><td>Bravo</td></tr>
+<tr><td>SCREW</td><td></td><td></td><td>Sierra</td></tr>
+</tbody></table>
+
+<p>The first letters of the "working" CAPTCHAs spell <strong>LISTENTOBROKENS</strong>. The letters spelled by the broken CAPTCHA audio gives the seemingly nonsensical string <strong>UREONYNCFLIB</strong>, which needs to be transformed using each of the broken steps again.</p>
+
+<table class='table'>
+<thead><td>Captcha #</td><td>Rule</td><td>Resulting string</td></thead>
+<tbody>
+<tr><td></td><td></td><td>UREONYNCFLIB</td></tr>
+<tr><td>ORPHAN</td><td>ROT13</td><td>HERBALAPSYVO</td></tr>
+<tr><td>BAZAAR</td><td>Change all vowels to A</td><td>HARBALAPSYVA</td></tr>
+<tr><td>EAGLET</td><td>Prepend E</td><td>EHARBALAPSYVA</td></tr>
+<tr><td>ANDIRONS</td><td>move last three letters to the front</td><td>YVAEHARBALAPS</td></tr>
+<tr><td>FLOW</td><td>reverse order of letters</td><td>SPALABRAHEAVY</td></tr>
+<tr><td>BREAD</td><td>SPANISH > ENGLISH</td><td>SWORDHEAVY</td></tr>
+<tr><td>ORANGE</td><td>Prepend O</td><td>OSWORDHEAVY</td></tr>
+<tr><td>PEN</td><td>Replace SWORD with PEN</td><td>OPENHEAVY</td></tr>
+<tr><td>ICE</td><td>Replace words with opposites</td><td>SHUTLIGHT</td></tr>
+<tr><td>ROOT</td><td>Replace UT with OOT</td><td>SHOOTLIGHT</td></tr>
+<tr><td>WOODWORM</td><td>Swap first and second half of word</td><td>LIGHTSHOOT</td></tr>
+<tr><td>GRAPHING</td><td>Partial replacement with Greek</td><td>PHOTOSHOOT</td></tr>
+</tbody>
+</table>
+
+<p>Applying the rules in order as shown above, yields the answer <span class='answer'>PHOTOSHOOT</span>.</p>
+
+<div class='author-note'>
+    <h2>Author’s Notes</h2>
+    <p>Doesn’t everyone love CAPTCHAs? No? Well, me neither.</p>
+    <p>However, this still seemed like a fun idea for a different puzzle, and it started off being much more straightforward and without the audio component &mdash; the ROT13 prompt was also just NAG/ANT, which was much easier.</p>
+    <p>In deploying this to production, we identified a number of bugs and potential enhancements which maybe remediated and implemented in PPYAHv2 (rePPYAH).</p>
+</div>

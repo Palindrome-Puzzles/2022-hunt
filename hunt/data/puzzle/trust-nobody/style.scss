@@ -1,0 +1,235 @@
+.container {
+    aspect-ratio: 5 / 3;
+    background-color: #111;
+    color: #fff;
+    font-family: Ubuntu Condensed;
+    font-size: 2em;
+    position: relative;
+    max-width: 1000px;
+}
+
+@media only screen and (max-width: 1000px) {
+    .container {
+        // TODO(sahil): Update when we change root font size.
+        /* Use 2em font-size when the viewport is 1000px, where 1em is about 16px. */
+        font-size: 3.2vw;
+    }
+}
+
+.line {
+    display: inline-block;
+}
+
+.highlighted {
+    color: #0f0;
+}
+
+.intro,
+.correct-area,
+.incorrect-area,
+.win-area {
+    cursor: pointer;
+
+    button {
+        cursor: pointer;
+    }
+}
+
+.waiting {
+    text-align: center;
+}
+
+.waiting,
+.intro,
+.game-area,
+.correct-area,
+.incorrect-area,
+.win-area {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+
+    // Make a stacking context.
+    position: relative;
+    z-index: 0;
+}
+
+.intro,
+.correct-area,
+.incorrect-area,
+.win-area {
+    text-align: center;
+
+    p {
+        margin: 1em auto;
+        max-width: 800px;
+    }
+
+    img {
+        left: 50%;
+        margin-left: -15%;
+        opacity: .5;
+        position: absolute;
+        width: 30%;
+        z-index: -1;
+    }
+
+    button {
+        font-family: Ubuntu Condensed;
+        font-size: 1.5rem;
+        margin: 1em auto;
+        width: 30%;
+    }
+}
+
+.game-area {
+    justify-content: space-between;
+    padding: 6%;
+
+    .question-wrapper {
+        display: flex;
+        height: 2.5em;
+        margin-bottom: 1em;
+
+        .question-number {
+            flex-shrink: 0;
+            width: 8%;
+
+            &::after {
+                content: '.';
+            }
+        }
+
+        .question {
+            margin: 0;
+        }
+    }
+
+    .question-content {
+        align-items: center;
+        display: flex;
+        height: 60%;
+        padding-left: 8%;
+        justify-content: space-between;
+
+        img {
+            height: 100%;
+        }
+
+        ol {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin: .8em 0;
+        }
+
+        button {
+            background: none;
+            border: none;
+            color: #fff;
+            cursor: pointer;
+            font-family: Ubuntu Condensed;
+            font-size: 1em;
+            padding: 0;
+            white-space: nowrap;
+
+            &.correct {
+                font-weight: bold;
+                text-transform: uppercase;
+            }
+
+            .gem {
+                // Based on https://codepen.io/desandro/pen/KqQbaq.
+                background-color: #1a5f15;
+                background-image: linear-gradient(
+                    #0f0f,
+                    #0f00 50%,
+                    #0004 50%,
+                    #0f03);
+                box-shadow:
+                    // Top light.
+                    inset 0 -5px 20px #0007,
+                    // Bottom shadow.
+                    inset 0 5px 20px #0f07,
+                    // Drop shadow 1.
+                    -8px 8px 5px #0002,
+                    // Drop shadow 2.
+                    5px 18px 10px #0003;
+                display: inline-block;
+                height: 1em;
+                line-height: 1em;
+                margin-right: .5em;
+                opacity: .7;
+                position: relative;
+                transition: opacity .2s;
+                width: 1em;
+
+                &::before {
+                  background: radial-gradient(#fff2, #fff0);
+                  content: '';
+                  display: block;
+                  border-radius: 50%;
+
+                  position: absolute;
+                  left: 25%;
+                  right: 25%;
+                  top: 10%;
+                  bottom: 60%;
+                }
+            }
+
+            &:not([disabled]):hover,
+            &:not([disabled]):focus,
+            &.correct {
+                .gem {
+                    background-color: #14bf07;
+                    opacity: 1;
+                }
+            }
+
+            &[disabled] {
+                cursor: initial;
+                user-select: text;
+            }
+        }
+    }
+
+    .browse-buttons {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 1em;
+
+        button:not([disabled]) {
+            cursor: pointer;
+        }
+    }
+}
+
+.correct-area,
+.win-area {
+    background-color: #4aff4a;
+    color: #000;
+}
+.incorrect-area {
+    background-color: #ff4a4a;
+    color: #000;
+}
+
+.results-area {
+    background-color: black;
+    color: #fff;
+    font-family: Ubuntu Condensed;
+    font-size: 1.2em;
+    padding: 1em;
+    margin-top: 1em;
+}
+
+.browse-toggle {
+    background-color: #085108;
+    color: #fff;
+}

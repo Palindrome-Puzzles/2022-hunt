@@ -1,0 +1,28 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, user-scalable=yes">
+  <title>{% block title %}MIT Mystery Hunt 2022{% endblock %}</title>
+  <link rel="manifest" href="{% static 'site.webmanifest' %}">
+  <link rel="icon" href="{% static 'favicon-16x16.png' %}" type="image/png" sizes="16x16">
+  <link rel="icon" href="{% static 'favicon-32x32.png' %}" type="image/png" sizes="32x32">
+  <link rel="icon" href="{% static 'favicon.ico' %}" type="image/x-icon" sizes="any">
+  <link rel="apple-touch-icon" href="{% static 'apple-touch-icon.png' %}" sizes="180x180">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Open+Sans:wght@400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="{% static 'stylesheets/base.css' %}?v=2">
+  {% block stylesheets %}{% endblock %}
+  {% block head_scripts %}{% endblock %}
+  {# TODO(sahil): Remove jquery by default, and add it to puzzles that need it. #}
+  <script src="{% static 'lib/jquery.min.js' %}"></script>
+</head>
+
+<body>
+  {% block content %}{% endblock %}
+  {% block scripts %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,32 @@
+.clued-item-container img {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  display: block;
+}
+
+.clues {
+  margin-top: 30px;
+  border-spacing: 40px 20px;
+  border-collapse: separate;
+}
+
+.clues td {
+  padding: 20px;
+}
+.numbers-container {
+  text-align: center;
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 20px;
+}
+
+.numbers-container img {
+  display: inline-block;
+}
+
+@media print {
+  body {
+    zoom: 0.7;
+  }
+}

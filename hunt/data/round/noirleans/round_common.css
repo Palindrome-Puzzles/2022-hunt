@@ -1,0 +1,26 @@
+h1,
+.round-map {
+    font-family: 'Special Elite', sans-serif;
+    font-weight: 400;
+}
+
+.page-background {
+    background-image: url(images/bg-repeat.jpg);
+    background-size: 300px;
+    background-color: #030303;
+}
+.page-background-top {
+    background-image: url(images/bg-top.jpg);
+}
+
+header,
+.page-background-top {
+    background-size: contain;
+    max-height: 500px;
+    min-width: 100%;
+}
+
+header.large-wordmark,
+.page-background-top {
+    aspect-ratio: 2500/849;
+}

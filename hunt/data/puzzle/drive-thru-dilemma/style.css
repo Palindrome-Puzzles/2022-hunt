@@ -1,0 +1,7 @@
+.audios div {
+    padding: 10px 0px;
+}
+
+audio {
+    min-width: 600px;
+}

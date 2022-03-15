@@ -1,0 +1,266 @@
+.puzzle-status.banner {
+    background-color: #e2f2b5;
+}
+
+.pick-level,
+.select-cards,
+.play-cards {
+    align-items: center;
+    background-color: #e6f4e0;
+    display: flex;
+    padding: 1em;
+    min-height: 490px;
+}
+
+.pick-level button,
+.actions button {
+    background-color: #364131;
+    border: 1px solid #000;
+    border-radius: 4px;
+    box-shadow: 4px 4px 4px #0004;
+    color: #fff;
+    font-size: large;
+    padding: 1em;
+    margin: .5em 0 .5em 1em;
+
+    &:not([disabled]) {
+        cursor: pointer;
+    }
+    &[disabled] {
+        background-color: #36413199;
+    }
+
+    &:not([disabled]):hover {
+        box-shadow: 4px 4px 4px #000a;
+    }
+
+    &:focus {
+        outline: 4px solid #e5c30d;
+    }
+}
+
+.pick-level {
+    justify-content: center;
+
+    .waiting {
+        font-size: 4em;
+    }
+
+    button {
+        display: flex;
+        flex-direction: column;
+        height: 150px;
+        margin: 2em;
+        justify-content: space-around;
+
+        .level-target {
+            font-size: smaller;
+        }
+        .complete {
+            background-color: #e6f4e0;
+            border-radius: 4px;
+            color: #364131;
+            font-size: small;
+            padding: 0.3em;
+        }
+    }
+}
+
+.select-cards,
+.play-cards {
+    flex-direction: column;
+
+    .actions {
+        align-items: center;
+        box-sizing: border-box;
+        display: flex;
+        justify-content: space-between;
+        padding: 0 2em;
+        width: 100%;
+    }
+
+    .level-target {
+        font-size: larger;
+        font-weight: bold;
+    }
+}
+
+.select-cards {
+    .card {
+        filter: brightness(70%);
+        opacity: .7;
+
+        &.selected {
+            filter: brightness(100%);
+            opacity: 1;
+        }
+        &:focus-within,
+        &:hover {
+            box-shadow: 4px 4px 4px #000a;
+            opacity: 1;
+        }
+    }
+
+    .cards {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .card {
+        margin: 10px;
+    }
+}
+
+.play-cards {
+    .cards {
+        display: flex;
+        justify-content: space-between;
+        margin: 2em 0;
+        width: 100%;
+
+        .card + .card {
+            margin-left: -52px;
+        }
+    }
+
+    .future,
+    .passed {
+        display: flex;
+        width: 42%;
+    }
+
+    .future {
+        justify-content: flex-end;
+    }
+    .passed {
+        justify-content: flex-start;
+
+        @for $i from 1 through 10 {
+           .card:nth-child(#{$i}) {
+             z-index: #{10 - $i};
+           }
+        }
+    }
+
+    .card.focused {
+        margin: 0 2em;
+    }
+    .card.ignored {
+        filter: brightness(70%);
+    }
+
+    .opened {
+        display: flex;
+
+        .empty {
+            box-sizing: border-box;
+            background-color: black;
+            height: 105px;
+            width: 70px;
+        }
+
+        .empty, .card {
+            margin: 0 .2em;
+        }
+    }
+
+    .equals {
+        font-size: 4em;
+        line-height: 105px;
+        margin: 0 .2em;
+    }
+}
+
+.card {
+    border: 2px solid #000;
+    box-sizing: border-box;
+    box-shadow: 4px 4px 4px #0004;
+    display: flex;
+    flex-direction: column;
+    font-size: larger;
+    height: 105px;
+    justify-content: space-around;
+    padding: 3px;
+    position: relative;
+    text-align: center;
+    width: 70px;
+
+    &:focus-within {
+        outline: 8px solid #e5c30d;
+
+        button {
+            outline: none;
+        }
+    }
+
+    button {
+        box-sizing: border-box;
+        cursor: pointer;
+        flex: 1;
+    }
+
+    // Fixes for safari for unknown reasons.
+    button,
+    button img {
+        height: 100%;
+    }
+
+    &.blue {
+        background: linear-gradient(#33f, #99f);
+    }
+    &.blue.flipped {
+        background: linear-gradient(#99f, #33f);
+    }
+    &.black {
+        background: linear-gradient(#111, #666);
+    }
+    &.black.flipped {
+        background: linear-gradient(#666, #111);
+    }
+    &.red {
+        background: linear-gradient(#f33, #f99);
+    }
+    &.red.flipped {
+        background: linear-gradient(#f99, #f33);
+    }
+
+    &.flipped.reversed img {
+        transform: rotateZ(180deg);
+    }
+
+    .value {
+        background: #fff;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        justify-content: center;
+    }
+    &.focused {
+        outline: 8px solid #4aa122;
+    }
+
+    .flip {
+        border: 1px solid #000;
+        background-color: #364131;
+        color: #fff;
+        opacity: .7;
+
+        position: absolute;
+        top: 3px;
+        right: 3px;
+        width: 1.5em;
+        height: 1.5em;
+
+        &:not([disabled]):hover {
+            opacity: 1;
+        }
+        &:focus {
+            outline: 2px solid #e5c30d;
+        }
+    }
+
+    &.flipped .flip {
+        background-color: #4aa122;
+    }
+}

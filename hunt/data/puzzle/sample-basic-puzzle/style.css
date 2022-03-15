@@ -1,0 +1,8 @@
+.content {
+    background-image: url("images/puzzle-subimage-bird.jpg");
+    background-repeat: no-repeat;
+}
+
+.letter {
+    margin: auto;
+}

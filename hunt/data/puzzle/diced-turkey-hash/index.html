@@ -1,0 +1,75 @@
+<div class="flavor">
+    <p>Your guide to Reference Point seems a little unusual face-to-face.</p>
+    <p class="notice">This puzzle utilizes the box your team was mailed with the <strong>pink sticker</strong>. The teammate(s) with this item should now open it.</p>
+</div>
+
+{% load puzzles %}
+{% if puzzle_info|has_been_available_for_minutes:180 %}
+<p class="no-copy"><em>This puzzle included four custom d20s with the following layout of sides:</em><br>
+<a href="images/die1.png" target="_blank"><img src="images/die1.png" width="1000"></a><br>
+<a href="images/die2.png" target="_blank"><img src="images/die2.png" width="1000"></a><br>
+<a href="images/die3.png" target="_blank"><img src="images/die3.png" width="1000"></a><br>
+<a href="images/die4.png" target="_blank"><img src="images/die4.png" width="1000"></a></p>
+{% else %}
+<p class= "notice">For those without the physical item, the virtual version of this puzzle will unlock in  {{ puzzle_info|until_available_for_minutes:180 }} minutes.</p>
+{% endif %}
+
+<p>I met a fool sitting in a director's chair; he was passing the time by rolling dice. “Do you wish to take a journey?” he asked. “These dice have twenty faces, but it all boils down to a binary question.”</p>
+
+<p>He rolled two dice. “After you say yes, head east and pass through long stretches of lies and make-believe. Your quest will lead you through eleven blocks of an insane city: you will meet nine blind men and then brawl with seven British sailors. Persist in the face of diminishing odds, but halt before things go haywire. When you enter the land of the feathered serpent, you will immerse yourself in an ocean of blue.”</p>
+
+<p>He produced two more dice from his sleeve. “Then follow my path by traveling south. Be a walker, not a rider—but do not wait. Stride through the prime of your life: resist the temptations of ten succubi, take shelter in a castle with nine turrets, and get autographs from eight celebrities—stopping before you reach the end of the world. You will enter the land of the thunder dragon and reimagine your existence like a peeled orange.”</p>
+
+<p>He stuffed all the dice in his mouth. “A grand tour has meaning only when you visit its waystations in the correct sequence,” he mumbled. “After you travel south and east, you will be prepared for anything, even an earthquake that reorders the terrain and reveals your true path as you walk in the same directions.”</p>
+
+<p>What did this trek require?</p>
+
+<div class="cts-box">
+<pre>14C30<br>
+6G5H<br>
+10B20<br>
+G92E<br>
+39HJ6<br>
+G92E<br>
+39HJ6<br>
+GI84<br>
+14BF9<br>
+GA8C<br>
+39HJ6<br>
+GBDI<br>
+6J1I<br>
+G92F<br>
+4FG30<br>
+0<br>
+47HE<br>
+6G5H<br>
+47HE<br>
+1GIFC</pre>
+{% include "round_files/endgame/book.tmpl" with book="cts-degreesof" %}
+
+</div>
+
+<table class="grid crossword">
+
+    <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+</table>
+<button id="clipboard-button"></button>

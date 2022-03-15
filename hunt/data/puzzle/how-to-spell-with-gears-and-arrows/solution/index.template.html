@@ -1,0 +1,43 @@
+{{gen:gen-stop-def}}
+
+<p>The clues identify answer words in alphabetical order. Those answer words (in order) are:</p>
+
+{{gen:gen-clues-solution}}
+
+<p>There are many ways through the logic chain to place all the letters of the answer words, but the one below is among the most efficient, starting with noticing that <span class="monospace">BAES</span> and <span class="monospace">CENA</span> already have 3 of their 4 letters pre-placed on the gears. It is sometimes, but not always, possible to place a {{gen:gen-stop}} uniquely at the same time a letter is placed, but it is fine to wait until the end to place any ambiguous {{gen:gen-stop}} symbols (and leftover {{gen:gen-stop}} symbols) in the unused spaces -- their positions do not affect the logic of placing the letters.</p>
+
+<ol>
+    <li><span class="monospace">BAES</span> (BAE on gears) places the S</li>
+    <li><span class="monospace">CENA</span> (CEA on gears) places the N</li>
+    <li><span class="monospace">MANCY</span> (ANC on gears) places the Y, narrows the M</li>
+    <li><span class="monospace">ARMY</span> (AY, partial M on gears) places the M, narrows the R</li>
+    <li><span class="monospace">ZARDS</span> (ADS partial R on gears) places the R, Z</li>
+    <li><span class="monospace">BOXES</span> (BES on gears) narrows the O, X</li>
+    <li><span class="monospace">KNOX</span> (N, partial OX on gears) places the O, X, narrows the K</li>
+    <li><span class="monospace">QAX</span> (AX on gears) places the Q</li>
+    <li><span class="monospace">TENS</span> (ENS on gears) narrows the T</li>
+    <li><span class="monospace">ZPAD</span> (ZAD on gears) narrows the P</li>
+    <li><span class="monospace">THARP</span> (AR, partial TP on gears) places the T, H, P</li>
+    <li><span class="monospace">PARK</span> (PAR, partial K on gears) places the K</li>
+    <li><span class="monospace">AQUI</span> and HING (AQHN on gears) place the I, U, G</li>
+    <li><span class="monospace">WIRE</span> (IRE on gears) places the W</li>
+    <li><span class="monospace">VATU</span> and TVPG (ATUPG on gears) place the V</li>
+    <li><span class="monospace">FLIT</span> and FILE (ITE on gears) place the F, L</li>
+    <li><span class="monospace">JAWS</span> (AWS on gears) places the J</li>
+</ol>
+
+<p><span class="monospace">JARS</span>, <span class="monospace">KATH</span>, <span class="monospace">WIG</span> are already placed by other words (though might be used by solvers taking a different path through the logic). The gears look like this after the letter placements (blank spaces are to be filled with the remaining {{gen:gen-stop}} symbols):</p>
+
+<div class="controls hidden-until-interactive">
+    <button type="button" class="toggle-engaged"></button>
+</div>
+
+{{gen:gen-solution}}
+
+<p>Once the letters are placed on the gears, spell each word followed by landing on a {{gen:gen-stop}}. After each spelling, examine the gear indicated to the right of the clue, and take the letter in the circled space on that gear as it is oriented at the end of the spelling. Those letters, in order, spell: <span class="monospace">THE WORD AFTER WIZARDS STOP</span></p>
+
+<p>Set the gears up to spell <span class="monospace">WIZARDS</span>, immedately followed by a {{gen:gen-stop}}. As you continue to turn the gears they will next spell <span class="answer">FLETCHING</span> (immediately followed by a {{gen:gen-stop}}), which is the answer to the puzzle and, per the flavortext, a real feather in your cap in this puzzle involving arrows.</p>
+
+The answer to the puzzle is <span class="answer">FLETCHING</span>.
+
+<script src="main.ts" type="module"></script>

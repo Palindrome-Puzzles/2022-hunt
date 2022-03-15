@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 26.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1"
+	 id="svg8" inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)" sodipodi:docname="pentominos-1.svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:svg="http://www.w3.org/2000/svg"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 57.26 57.26"
+	 style="enable-background:new 0 0 57.26 57.26;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:none;stroke:#000000;stroke-width:0.75;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:11.3386;}
+	.st1{fill:none;stroke:#000000;stroke-width:0.3543;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:11.3386;}
+	.st2{fill:none;stroke:#FF6D01;stroke-width:0.75;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:11.3386;}
+	.st3{font-family:'Helvetica';}
+	.st4{font-size:8px;}
+</style>
+<sodipodi:namedview  bordercolor="#666666" borderopacity="1.0" fit-margin-bottom="0" fit-margin-left="0" fit-margin-right="0" fit-margin-top="0" id="base" inkscape:current-layer="layer1" inkscape:cx="27.2166" inkscape:cy="52.581827" inkscape:document-units="mm" inkscape:guide-bbox="true" inkscape:pageopacity="0.0" inkscape:pageshadow="2" inkscape:window-height="979" inkscape:window-maximized="1" inkscape:window-width="1920" inkscape:window-x="0" inkscape:window-y="36" inkscape:zoom="5.6" pagecolor="#ffffff" scale-x="1" showgrid="true" showguides="true" units="mm" viewbox-x="0">
+	<inkscape:grid  id="grid815" originx="-21.032493" originy="-140.09498" type="xygrid"></inkscape:grid>
+</sodipodi:namedview>
+<g id="layer1" transform="translate(-21.032491,-136.70506)" inkscape:groupmode="layer" inkscape:label="Layer 1">
+	<path id="path819" inkscape:connector-curvature="0" class="st0" d="M32.79,154.08h11.25"/>
+	<path id="path819-89" inkscape:connector-curvature="0" class="st0" d="M44.04,154.08h11.25"/>
+	<path id="path819-6" inkscape:connector-curvature="0" class="st0" d="M55.29,154.08h11.25"/>
+	<path id="path819-5-9-7-1-4" inkscape:connector-curvature="0" class="st1" d="M44.04,154.08v11.25"/>
+	<path id="path819-5-9-7-1-4-3" inkscape:connector-curvature="0" class="st1" d="M55.29,154.08v11.25"/>
+	<path id="path819-53-3" inkscape:connector-curvature="0" class="st0" d="M32.79,154.08v11.25"/>
+	<path id="path819-8-8-4" inkscape:connector-curvature="0" class="st2" d="M32.79,165.33v11.25"/>
+	<path id="path819-5-9-7-1-4-6-8" inkscape:connector-curvature="0" class="st1" d="M44.04,165.33H32.79"/>
+	<path id="path819-5-9-7-1-4-6-88" inkscape:connector-curvature="0" class="st1" d="M55.29,165.33H44.04"/>
+	<path id="path819-8-8-9" inkscape:connector-curvature="0" class="st2" d="M66.54,154.08v11.25"/>
+	<path id="path819-8-7" inkscape:connector-curvature="0" class="st2" d="M55.29,165.33h11.25"/>
+	<path id="path819-8-76" inkscape:connector-curvature="0" class="st2" d="M32.79,176.58h11.25"/>
+	<path id="path819-8-4" inkscape:connector-curvature="0" class="st2" d="M44.04,176.58h11.25"/>
+	<path id="path819-8-8-3" inkscape:connector-curvature="0" class="st2" d="M55.29,165.33v11.25"/>
+	<path id="path819-5-9-7-1-4-3-0" inkscape:connector-curvature="0" class="st1" d="M44.04,165.33v11.25"/>
+	<text transform="matrix(1 0 0 1 36.3089 162.6211)" class="st3 st4">3</text>
+	<text transform="matrix(1 0 0 1 47.5008 162.6211)" class="st3 st4">5</text>
+	<text transform="matrix(1 0 0 1 58.8089 162.6211)" class="st3 st4">8</text>
+	<text transform="matrix(1 0 0 1 35.7561 173.8711)" class="st3 st4">C</text>
+	<text transform="matrix(1 0 0 1 47.5008 173.8711)" class="st3 st4">1</text>
+	<g id="flowRoot3053">
+	</g>
+</g>
+</svg>

@@ -1,0 +1,33 @@
+.green{
+  background-color: #6aaa64;
+}
+.yellow{
+  background-color: #b59f3b;
+}
+.black{
+  background-color: #212121;
+}
+
+.wrapper {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+table.custom td {
+  border: 2px solid white;
+  padding: 0;
+  font-size: 30pt;
+  line-height: 30pt;
+}
+
+#main-content li {
+  padding: .5em;
+  margin: 0 .5em;
+}
+
+.table {
+  border-collapse: separate;
+}

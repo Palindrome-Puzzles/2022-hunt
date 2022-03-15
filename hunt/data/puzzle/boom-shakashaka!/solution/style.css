@@ -1,0 +1,58 @@
+img {
+  display: block;
+  margin: auto;
+}
+
+table.shaka {
+  border-collapse: collapse
+}
+table.shaka td {
+  border: 1px solid black;
+  height: 30px;
+  width: 30px;
+  padding:0px;
+  margin:0;
+}
+table.shaka td.black {
+  background-color: black;
+}
+table.shaka .lowerleft {
+	padding:0;
+	margin:0;
+	width:0;
+	height:0;
+	border-left: 15px solid black;
+	border-right: 15px solid transparent;
+	border-bottom: 15px solid black;
+	border-top: 15px solid transparent;
+}
+table.shaka .lowerright {
+	padding:0;
+	margin:0;
+	width:0;
+	height:0;
+	border-right: 15px solid black;
+	border-left: 15px solid transparent;
+	border-bottom: 15px solid black;
+	border-top: 15px solid transparent;
+}
+table.shaka .upperleft {
+	padding:0;
+	margin:0;
+	width:0;
+	height:0;
+	border-left: 15px solid black;
+	border-right: 15px solid transparent;
+	border-top: 15px solid black;
+	border-bottom: 15px solid transparent;
+}
+table.shaka .upperright {
+	padding:0;
+	margin:0;
+	width:0;
+	height:0;
+	border-right: 15px solid black;
+	border-left: 15px solid transparent;
+	border-top: 15px solid black;
+	border-bottom: 15px solid transparent;
+}

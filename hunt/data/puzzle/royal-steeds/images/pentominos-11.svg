@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 26.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1"
+	 id="svg8" inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)" sodipodi:docname="pentominos-11.svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:svg="http://www.w3.org/2000/svg"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 57.26 57.26"
+	 style="enable-background:new 0 0 57.26 57.26;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:none;stroke:#0000B8;stroke-width:0.75;stroke-linecap:round;stroke-miterlimit:11.3386;}
+	.st1{fill:none;stroke:#57E6FF;stroke-width:0.75;stroke-linecap:round;stroke-miterlimit:11.3386;stroke-opacity:0.9412;}
+	.st2{fill:none;stroke:#FF00FF;stroke-width:0.75;stroke-linecap:round;stroke-miterlimit:11.3386;}
+	.st3{fill:none;stroke:#FF6D01;stroke-width:0.75;stroke-linecap:round;stroke-miterlimit:11.3386;}
+	.st4{fill:none;stroke:#000000;stroke-width:0.75;stroke-linecap:round;stroke-miterlimit:11.3386;}
+	.st5{fill:none;stroke:#000000;stroke-width:0.3543;stroke-linecap:round;stroke-miterlimit:11.3386;}
+	.st6{font-family:'Helvetica';}
+	.st7{font-size:8px;}
+</style>
+<sodipodi:namedview  bordercolor="#666666" borderopacity="1.0" fit-margin-bottom="0" fit-margin-left="0" fit-margin-right="0" fit-margin-top="0" id="base" inkscape:current-layer="layer1" inkscape:cx="-95.977375" inkscape:cy="6.8016173" inkscape:document-units="mm" inkscape:guide-bbox="true" inkscape:pageopacity="0.0" inkscape:pageshadow="2" inkscape:window-height="979" inkscape:window-maximized="1" inkscape:window-width="1920" inkscape:window-x="0" inkscape:window-y="36" inkscape:zoom="1.979899" pagecolor="#ffffff" showgrid="true" showguides="true">
+	<inkscape:grid  id="grid815" originx="-54.105407" originy="-100.40749" type="xygrid"></inkscape:grid>
+</sodipodi:namedview>
+<g id="layer1" transform="translate(-54.105407,-176.3925)" inkscape:groupmode="layer" inkscape:label="Layer 1">
+	<g id="flowRoot3053">
+	</g>
+	<path id="path819-5-9-48" inkscape:connector-curvature="0" class="st0" d="M93.99,193.77h11.25"/>
+	<path id="path819-5-8-16" inkscape:connector-curvature="0" class="st1" d="M93.99,193.77v11.25"/>
+	<path id="path819-5-8-8" inkscape:connector-curvature="0" class="st1" d="M105.24,193.77v11.25"/>
+	<path id="path819-5-9-3-5" inkscape:connector-curvature="0" class="st0" d="M105.24,205.02v11.25"/>
+	<path id="path819-5-9-7-21" inkscape:connector-curvature="0" class="st2" d="M93.99,216.27h11.25"/>
+	<path id="path819-5-9-996" inkscape:connector-curvature="0" class="st0" d="M82.74,216.27h11.25"/>
+	<path id="path819-8-06" inkscape:connector-curvature="0" class="st3" d="M71.49,216.27h11.25"/>
+	<path id="path819-5-9-49" inkscape:connector-curvature="0" class="st0" d="M60.24,216.27h11.25"/>
+	<path id="path819-53-908" inkscape:connector-curvature="0" class="st4" d="M60.24,205.02v11.25"/>
+	<path id="path819-5-93" inkscape:connector-curvature="0" class="st1" d="M60.24,205.02h11.25"/>
+	<path id="path819-5-9-14" inkscape:connector-curvature="0" class="st0" d="M71.49,205.02h11.25"/>
+	<path id="path819-8-89" inkscape:connector-curvature="0" class="st3" d="M82.74,205.02h11.25"/>
+	<path id="path819-5-9-7-1-4-38-67" inkscape:connector-curvature="0" class="st5" d="M71.49,205.02v11.25"/>
+	<path id="path819-5-9-7-1-4-38-73" inkscape:connector-curvature="0" class="st5" d="M82.74,205.02v11.25"/>
+	<path id="path819-5-9-7-1-4-38-712" inkscape:connector-curvature="0" class="st5" d="M93.99,205.02v11.25"/>
+	<path id="path819-5-9-7-1-4-6-21" inkscape:connector-curvature="0" class="st5" d="M105.24,205.02H93.99"/>
+	<text transform="matrix(1 0 0 1 63.7568 213.5605)" class="st6 st7">7</text>
+	<text transform="matrix(1 0 0 1 73.926 213.5605)" class="st6 st7">Q</text>
+	<text transform="matrix(1 0 0 1 86.2568 213.5605)" class="st6 st7">3</text>
+	<text transform="matrix(1 0 0 1 96.7031 213.5605)" class="st6 st7">C</text>
+	<text transform="matrix(1 0 0 1 97.5068 202.3105)" class="st6 st7">L</text>
+</g>
+</svg>

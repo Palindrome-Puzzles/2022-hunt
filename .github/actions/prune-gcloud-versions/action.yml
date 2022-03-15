@@ -1,0 +1,31 @@
+name: Prune Google Cloud versions
+
+inputs:
+  limit:
+    description: How many older versions to keep
+    required: true
+    default: 1
+    type: number
+
+  service_name:
+    description: Which service to prune
+    required: true
+
+  gcloud_project_id:
+    description: The project ID of the Google Cloud project
+    required: true
+
+  gcloud_credentials:
+    description: Credentials to authenticate with Google Cloud
+    required: true
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Remove older versions from App Engine
+      uses: Reviewable/appengine-remove-action@v2.1.2
+      with:
+        limit: ${{ inputs.limit }}
+        project_id: ${{ inputs.gcloud_project_id }}
+        service_name: ${{ inputs.service_name }}
+        credentials: ${{ inputs.gcloud_credentials }}

@@ -1,0 +1,19 @@
+{% extends "hunt/layout.tmpl" %}
+
+{% block title %}Postprodded Puzzles | {{ block.super }}{% endblock %}
+
+{% block content %}
+<main>
+  <header>
+    <h1>Postprodded Puzzles</h1>
+  </header>
+
+  <section id="main-content" class="content">
+    <ul>
+      {% for puzzle in puzzles %}
+      <li><a href="{% url 'puzzle' puzzle.url %}">{{ puzzle.title }}</a></li>
+      {% endfor %}
+    </ul>
+  </section>
+</main>
+{% endblock content %}

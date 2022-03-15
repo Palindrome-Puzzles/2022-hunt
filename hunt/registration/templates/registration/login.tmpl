@@ -1,0 +1,57 @@
+{% extends "registration/base.tmpl" %}
+{% load static %}
+
+{% block notifications %}
+{% if error == 'no-user' %}
+<p class="notification error" tabindex="0">Unknown team</p>
+{% elif error == 'inactive' %}
+<p class="notification error" tabindex="0">This team is inactive.</p>
+{% elif error == 'disabled' %}
+<p class="notification error" tabindex="0">This team has been disabled as the hunt is over.</p>
+{% endif %}
+{% endblock notifications %}
+
+{% block content %}
+<main id="main-content">
+  <h2 id="login-section">Login</h2>
+  <p class="registration-links menu-links">
+    <a href="{% url 'register_team' %}?next={% filter urlencode %}{{ next }}{% endfilter %}{% if sso %}&auth=1{% endif %}">Register a new team</a>
+  </p>
+
+  {% if public_enabled %}
+  <form method="POST">
+    <input type="submit" name="public" value="Public Access">
+    {% csrf_token %}
+    {% if next %}<input id="next" type="hidden" name="next" value="{{ next }}">{% endif %}
+  </form>
+  <hr>
+  {% endif %}
+
+  <form method="POST">
+    {% if next and user.is_authenticated %}
+    <p class="form-notice">Your account doesn't have access to this page. To proceed, please login with an account that has access.</p>
+    {% endif %}
+
+    <fieldset>
+      <legend>Team Login</legend>
+
+      <ul>
+        <li>
+          <label for="team-username-id">Username</label>
+          <input id="team-username-id" type="text" name="username" maxlength="50" required autofocus>
+        </li>
+        <li>
+          <label for="current-password-id">Password</label>
+          <input id="current-password-id" type="password" name="password" maxlength="50" required autocomplete="current-password">
+        </li>
+      </ul>
+    </fieldset>
+
+    <input type="submit" value="Login">
+
+    {% csrf_token %}
+    {% if next %}<input id="next" type="hidden" name="next" value="{{ next }}">{% endif %}
+    {% if sso %}<input id="sso" type="hidden" name="sso" value="{{ sso }}">{% endif %}
+  </form>
+</main>
+{% endblock content %}

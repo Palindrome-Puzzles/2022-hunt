@@ -1,0 +1,24 @@
+.center-img {
+  text-align:center;
+}
+
+table, th, tr, td {
+  border: none;
+}
+
+th[scope="column"] {
+  border-bottom:  1px solid black;
+}
+
+th[scope="row"] {
+  border-right:  1px solid black;
+}
+
+th[scope="row column"] {
+  border-bottom:  1px solid black;
+  border-right:  1px solid black;
+}
+
+td b {
+  color: red;
+}

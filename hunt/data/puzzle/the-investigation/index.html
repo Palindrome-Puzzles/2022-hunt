@@ -1,0 +1,133 @@
+{% load puzzles %}
+
+<div class="flavor">
+    <p>As you approach the void (while maintaining a safe distance), you see several pages of a book called The Story So Far swirling around it, some with single words, some with images. Armed with only your wits and what seems to be a diagram that the book, now on the floor, has fallen open to, you decide to figure out what's going on here.</p>
+    <p class="notice">For new Hunters: This is a metapuzzle. It requires answers from other puzzles in the round (called feeder puzzles) in order to solve it. You can start looking at it whenever you'd like, but you will need most or all of the feeder answers in order to solve it, so focus on those first.</p>
+</div>
+
+<div>
+<details class="long-alt">
+<summary style="text-align:center;"><img width="890" src="images/01.png" alt="Metapuzzle image" /></summary>
+<p>An image of an open book. On the book's left page are four rows of blank page icons typeset as an equation; each page icon is outlined in a different color, with rows organized as follows:</p>
+<ol>
+<li>Green page + green page - black page + green page + green page -</li>
+<li>Black page - black page + magenta page + magenta page + magenta page -</li>
+<li>Black page - black page - black page + yellow page + yellow page -</li>
+<li>Black page - black page + cyan page - black page</li>
+</ol>
+<p>On the right page is the following text: "One page at a time. Always append to the end. Always remove letters in order, but do not remove a word at a time when there is a different way of removing it that would leave a different leftover string."</p>
+</details>
+</div>
+
+<div style="border: 3px solid black;padding:1rem;" class="copy-only">
+<table id="diagram">
+<tr><td class="border-color-1"><span class="copy-only">green border</span></td><td class="no-border">(+)</td><td class="border-color-1"><span class="copy-only">green border</span></td><td class="no-border">(-)</td><td class="border-color-black"></td><td class="no-border">(+)</td><td class="border-color-1"><span class="copy-only">green border</span></td><td class="no-border">(+)</td><td class="border-color-1"><span class="copy-only">green border</span></td><td class="no-border">(-)</td></tr>
+<tr><td class="border-color-black"></td><td class="no-border">(-)</td><td class="border-color-black"></td><td class="no-border">(+)</td><td class="border-color-2"><span class="copy-only">purple border</span></td><td class="no-border">(+)</td><td class="border-color-2"><span class="copy-only">purple border</span></td><td class="no-border">(+)</td><td class="border-color-2"><span class="copy-only">purple border</span></td><td class="no-border">(-)</td></tr>
+<tr><td class="border-color-black"></td><td class="no-border">(-)</td><td class="border-color-black"></td><td class="no-border">(-)</td><td class="border-color-black"></td><td class="no-border">(+)</td><td class="border-color-3"><span class="copy-only">yellow border</span></td><td class="no-border">(+)</td><td class="border-color-3"><span class="copy-only">yellow border</span></td><td class="no-border">(-)</td></tr>
+<tr><td class="border-color-black"></td><td class="no-border">(-)</td><td class="border-color-black"></td><td class="no-border">(+)</td><td class="border-color-4"><span class="copy-only">blue border</span></td><td class="no-border">(-)</td><td class="border-color-black"></td><td></td><td></td><td></td></tr>
+</table>
+
+<p style="margin-left:1rem;"><strong>One page at a time. Always append to the end. Always remove letters in order, but do not remove a word at a time when there is a different way of removing it that would leave a different leftover string.</strong></p>
+</div>
+
+<div id="meta">
+    <div class="sticker">
+        <a href="images/02.png" target="_blank"><img src="images/02.png" alt="" aria-hidden="true" /></a>
+    </div>
+    <div class="sticker">
+        {% if round_info.puzzles|is_puzzle_solved:295 %}
+        <a href="{% url 'puzzle_view' 'ada-twist-scientist' %}" target="_blank"><img src="images/03-a2hab92ua9.png" alt="" aria-hidden="true" /></a>
+        {% elif round_info.puzzles|is_puzzle_available:295 %}
+        <a href="{% url 'puzzle_view' 'ada-twist-scientist' %}" target="_blank"><img src="images/03-unsolved-1es9es5i1d.png" alt="" aria-hidden="true" /></a>
+        {% endif %}
+    </div>
+    <div class="sticker">
+        <a href="images/04.png" target="_blank"><img src="images/04.png" alt="" aria-hidden="true" /></a>
+    </div>
+    <div class="sticker">
+        <a href="images/05.png" target="_blank"><img src="images/05.png" alt="" aria-hidden="true" /></a>
+    </div>
+    <div class="sticker">
+        {% if round_info.puzzles|is_puzzle_solved:207 %}
+        <a href="{% url 'puzzle_view' 'peter-pan' %}" target="_blank"><img src="images/06-ftbgd0560e.png" alt="" aria-hidden="true" /></a>
+        {% elif round_info.puzzles|is_puzzle_available:207 %}
+        <a href="{% url 'puzzle_view' 'peter-pan' %}" target="_blank"><img src="images/06-unsolved-b1utanqufj.png" alt="" aria-hidden="true" /></a>
+        {% endif %}
+    </div>
+    <div class="sticker">
+        <a href="images/07.png" target="_blank"><img src="images/07.png" alt="" aria-hidden="true" /></a>
+    </div>
+    <div class="sticker">
+        <a href="images/08.png" target="_blank"><img src="images/08.png" alt="" aria-hidden="true" /></a>
+    </div>
+    <div class="sticker">
+        {% if round_info.puzzles|is_puzzle_solved:261 %}
+        <a href="{% url 'puzzle_view' 'the-missing-piece' %}" target="_blank"><img src="images/09-z8adbbb7or.png" alt="" aria-hidden="true" /></a>
+        {% elif round_info.puzzles|is_puzzle_available:261 %}
+        <a href="{% url 'puzzle_view' 'the-missing-piece' %}" target="_blank"><img src="images/09-unsolved-2x1ht826g9.png" alt="" aria-hidden="true" /></a>
+        {% endif %}
+    </div>
+    <div class="sticker">
+        {% if round_info.puzzles|is_puzzle_solved:476 %}
+        <a href="{% url 'puzzle_view' 'my-first-abc' %}" target="_blank"><img src="images/10-iml4t6g5go.png" alt="" aria-hidden="true" /></a>
+        {% elif round_info.puzzles|is_puzzle_available:476 %}
+        <a href="{% url 'puzzle_view' 'my-first-abc' %}" target="_blank"><img src="images/10-unsolved-iixl2fio6c.png" alt="" aria-hidden="true" /></a>
+        {% endif %}
+    </div>
+    <div class="sticker">
+        {% if round_info.puzzles|is_puzzle_solved:347 %}
+        <a href="{% url 'puzzle_view' 'too-many-toys' %}" target="_blank"><img src="images/12-swkarbbcmf.png" alt="" aria-hidden="true" /></a>
+        {% elif round_info.puzzles|is_puzzle_available:347 %}
+        <a href="{% url 'puzzle_view' 'too-many-toys' %}" target="_blank"><img src="images/12-unsolved-letnhi6kgk.png" alt="" aria-hidden="true" /></a>
+        {% endif %}
+    </div>
+    <div class="sticker">
+        {% if round_info.puzzles|is_puzzle_solved:210 %}
+        <a href="{% url 'puzzle_view' 'the-neverending-story' %}" target="_blank"><img src="images/13-ol5cexl5pp.png" alt="" aria-hidden="true" /></a>
+        {% elif round_info.puzzles|is_puzzle_available:210 %}
+        <a href="{% url 'puzzle_view' 'the-neverending-story' %}" target="_blank"><img src="images/13-unsolved-ikml538xs5.png" alt="" aria-hidden="true" /></a>
+        {% endif %}
+    </div>
+    <div class="sticker">
+        <a href="images/14.png" target="_blank"><img src="images/14.png" alt="" aria-hidden="true" /></a>
+    </div>
+    <div class="sticker">
+        {% if round_info.puzzles|is_puzzle_solved:14 %}
+        <a href="{% url 'puzzle_view' 'where-the-wild-things-are' %}" target="_blank"><img src="images/15-xmg5dd20pc.png" alt="" aria-hidden="true" /></a>
+        {% elif round_info.puzzles|is_puzzle_available:14 %}
+        <a href="{% url 'puzzle_view' 'where-the-wild-things-are' %}" target="_blank"><img src="images/15-unsolved-2osbxexkxt.png" alt="" aria-hidden="true" /></a>
+        {% endif %}
+    </div>
+    <div class="sticker">
+        <a href="images/16.png" target="_blank"><img src="images/16.png" alt="" aria-hidden="true" /></a>
+    </div>
+    <div class="sticker">
+        <a href="images/17.png" target="_blank"><img src="images/17.png" alt="" aria-hidden="true" /></a>
+    </div>
+    <div class="sticker">
+        <a href="images/18.png" target="_blank"><img src="images/18.png" alt="" aria-hidden="true" /></a>
+    </div>
+    <div class="sticker">
+        {% if round_info.puzzles|is_puzzle_solved:318 %}
+        <a href="{% url 'puzzle_view' 'the-messy-room' %}" target="_blank"><img src="images/19-l3i9q6ws6k.png" alt="" aria-hidden="true" /></a>
+        {% elif round_info.puzzles|is_puzzle_available:318 %}
+        <a href="{% url 'puzzle_view' 'the-messy-room' %}" target="_blank"><img src="images/19-unsolved-7xnb54f1sq.png" alt="" aria-hidden="true" /></a>
+        {% endif %}
+    </div>
+    <div class="sticker">
+        {% if round_info.puzzles|is_puzzle_solved:204 %}
+        <a href="{% url 'puzzle_view' 'the-wonderful-wizard-of-oz' %}" target="_blank"><img src="images/20-ilwac071mb.png" alt="" aria-hidden="true" /></a>
+        {% elif round_info.puzzles|is_puzzle_available:204 %}
+        <a href="{% url 'puzzle_view' 'the-wonderful-wizard-of-oz' %}" target="_blank"><img src="images/20-unsolved-hu2ilxqi3e.png" alt="" aria-hidden="true" /></a>
+        {% endif %}
+    </div>
+    <div class="sticker">
+        {% if round_info.puzzles|is_puzzle_solved:330 %}
+        <a href="{% url 'puzzle_view' 'teach-us-amelia-bedelia' %}" target="_blank"><img src="images/21-j5c0mxauwa.png" alt="" aria-hidden="true" /></a>
+        {% elif round_info.puzzles|is_puzzle_available:330 %}
+        <a href="{% url 'puzzle_view' 'teach-us-amelia-bedelia' %}" target="_blank"><img src="images/21-unsolved-jq88isk4tq.png" alt="" aria-hidden="true" /></a>
+        {% endif %}
+    </div>
+</div>
+
+<button id="clipboard-button"></button>

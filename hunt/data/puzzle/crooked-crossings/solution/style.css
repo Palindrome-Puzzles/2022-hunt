@@ -1,0 +1,16 @@
+table.arrows {
+  text-align: center;
+}
+
+.clue-phrase td {
+  font-size: 30px;
+  font-weight: bold;
+  padding: 0;
+}
+
+img {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  display: block;
+}

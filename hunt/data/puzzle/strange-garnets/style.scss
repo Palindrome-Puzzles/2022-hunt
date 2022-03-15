@@ -1,0 +1,228 @@
+.game6 {
+    @import 'game6/game.scss';
+}
+.game8 {
+    @import 'game8/game.scss';
+}
+
+img.garnet {
+    display: block;
+    margin: auto;
+    width: 300px;
+}
+
+.puzzle .flavor.minipuzzle {
+    border-bottom: None;
+    border-top: None;    
+    padding-bottom: 0px;
+    margin-bottom: 20px;
+    padding-top: 0px;
+    margin-top: 20px;
+}
+
+.enumeration {
+    font-weight: bold;
+    text-align: center;
+}
+
+.game2{
+    .round {
+        display: flex; 
+        flex-wrap: wrap;
+        margin-left:auto;
+        margin-right:auto;
+        margin-bottom:30px;
+        width:950px;
+    }
+      
+    .roundheader {
+        padding-left: 10px;
+        width: 100%;
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+
+
+    .roundtext {
+        max-width: 750px;
+        p {
+            margin-top: 4px;
+        }
+    }
+      
+    img.meter1 {
+        width: 60px;
+        height: 149px;
+        margin-left: 10px;
+        margin-right: 20px;
+    }
+      
+    img.meter2 {
+        width: 60px;
+        height: 149px;
+        margin-left: auto;
+        margin-right: 10px;
+    }            
+}
+
+.game3 {
+    .shapesgrid {
+      display: flex;  
+      flex-wrap: wrap;
+      margin-left: 80px;
+      margin-right: 80px;
+      margin-bottom: 40px;
+      justify-content: center;
+    }    
+    img.shapes {    
+      width: 190px;
+      margin: 10px;
+    }    
+    img.shapesrow {    
+      width: 700px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: 40px;
+    }
+}
+
+.game4 {
+    .player {
+        float: left;
+        width: 25%;
+    }
+    .community {
+        float: left;
+        width: 50%;
+    }
+    img.cards {
+        margin: auto;
+        padding: 12px;
+        width: 100px;
+        height: 156px;
+    }
+    .header {
+        display: flex; /* or inline-flex */
+        text-align: center;
+        margin: auto;
+        padding-left: 10px;
+        padding-right: 10px;
+        max-width: 600px;
+        padding-bottom: 5px;
+    }  
+    .round {
+        display: flex; /* or inline-flex */
+        text-align: center;
+        margin: auto;
+        max-width: 600px;
+        margin-bottom: 12px;
+        background-color: #e2f2b5;
+    }  
+    .player1 {
+        float: left;
+        margin-right: auto;
+    }
+    .player2 {
+        float: left;
+    }
+    .community1 {
+        float: left;
+    }
+    .community2 {
+        float: left;
+        margin-right: auto;
+    }
+    .header-left {
+        padding-left:25px;
+    }
+    .header-right {
+        padding-right:25px;
+    }
+}
+
+
+.game5 {
+    .player {
+        float: left;
+        width: 25%;
+    }
+    .community {
+        float: left;
+        width: 50%;
+    }
+    .wrapper {
+        width: 1000px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }    
+    .tracklayoutleft {    
+        display:grid;
+        grid-template-columns: 62px 62px 62px 62px 62px 62px;
+        grid-template-rows: 20px 62px 62px 62px 62px 62px;
+        row-gap: 1px;
+        column-gap: 1px;
+        border-right: 1px solid black;
+        justify-content: center;
+        width: 49%;
+    }
+    .tracklayoutright {    
+        display:grid;
+        grid-template-columns: 62px 62px 62px 62px 62px 62px 62px;
+        grid-template-rows: 20px 62px 62px 62px 62px 62px;
+        row-gap: 1px;
+        column-gap: 1px;
+        margin-bottom:30px;
+        justify-content: center;
+        width: 49%;
+    }    
+    img.trackimg {
+        width: 100%;
+        height: 100%;
+    }    
+    .station {
+        grid-column: span 2;
+    }    
+    .orange {
+        background-color: #ff9900;
+    }    
+    .yellow {
+        background-color: #ffff00;
+    }
+}
+
+.game7 {
+    .speaker {
+        margin-right: 1rem;
+
+        p {
+            margin-bottom: 0;
+        }
+    }
+
+    .speaker-1 {
+        color: #970000;
+    }
+
+    .speaker-2 {
+        color: #0000CC;
+    }
+
+    .quote-container {
+        display: flex;
+    }
+
+    .question-left {
+        margin-right: 40%;
+        margin-bottom: 10px;
+    }
+    .question-right {
+        margin-left: 40%;
+        margin-bottom: 10px;
+    }
+
+    .quote p:last-child {
+        margin-bottom: 0;
+    }
+}

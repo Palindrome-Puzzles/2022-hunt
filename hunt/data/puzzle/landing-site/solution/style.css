@@ -1,0 +1,36 @@
+.center-image{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.grids {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+}
+
+.left-grid {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 700px;
+}
+
+.right-grid {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 300px;
+}
+
+.grid-of-grids {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 299px;
+  height: 200px;
+}

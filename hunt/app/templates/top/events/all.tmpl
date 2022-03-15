@@ -1,0 +1,159 @@
+{% extends "hunt/site_layout.tmpl" %}
+{% load assets humanize static %}
+
+{% block title %}Events | {{ block.super }}{% endblock %}
+
+{% block site_stylesheets %}
+<style type="text/css">
+
+.event-section {
+  margin-bottom:40px; 
+}
+.event-section h2 {
+  margin-bottom:0
+}
+
+.event h3 {
+  margin-bottom: 0;
+}
+
+.time {
+  font-style:italic;
+  font-size: 1.125em;
+  margin-bottom: 20px;
+}
+.event-registration {
+  margin-top: 20px;
+}
+
+
+.event-registration a {
+  display:inline-block;
+  margin-top: 20px;
+}
+
+.event {
+  border: 1px solid #999;
+  border-radius: 5px; 
+  padding: 1em;
+  margin: 1em 0;
+  background-color: #f8f8ff;
+
+}
+.event h3 {
+  margin-top: 0;
+  margin-bottom: .5em;
+}
+.row strong {
+  display: inline-block;
+  margin: .25em 0;
+  width: 200px;
+}
+.instructions {
+  display: block;
+}
+.category-value {
+  text-transform: uppercase;
+  background-color: #00a400;
+  color: #fff;
+  display: inline-block;
+  padding: .5em;
+  margin: .5em 0;
+}
+.event-winner {
+  background-color: #385938;
+  color: #fff;
+  margin-bottom: 1em;
+}
+</style>
+{% endblock site_stylesheets %}
+
+{% block site_content %}
+<main>
+  <header>
+    <h1>Events</h1>
+  </header>
+
+  <div class="paper-edge top"></div>
+  <section id="main-content" class="content">
+    <section class="event-section">
+      <h2>Event Registration and Technology</h2>
+      <p>
+        Teams must register for events in order to attend. Registration for an event closes 2
+        hours before the start of the event. Registered team members will be emailed information on how to join approximately 1 hour before the start of the event. 
+      </p>
+      <p>
+        Events will take place over Discord and in some cases, use Jamboard. Please watch the
+        videos below for an introduction to these services if you are unfamilar with them:
+      </p>
+      <ul>
+        <li><a href="https://www.youtube.com/watch?v=FW1uChz8ni4" target="_blank">Intro to Discord</a></li>
+        <li><a href="https://www.youtube.com/watch?v=InUEnrSxpsk" target="_blank">Jamboard Demo</a></li>
+      </ul>
+    </section>
+    <section class="event-section">
+      <h2>Event Rewards</h2>
+      <p>
+        Participation in events earns you Manuscrip. You can trade in a full piece of scrip for a puzzle answer of your choice (no, not for meta puzzles). Simply go to the Rewards Drawer in your top menu bar to use the scrip you have amassed.
+      </p>
+    </section>
+
+
+    {% for event in events %}
+      <div class="event">
+        {% if event.url == 'cryptic-dixit' %}
+        <div class="banner event-winner">
+        Congratulations to Projectyl 👑 from UNICODE EQUIVALENCE, the winner of the Cryptic Clue Bee!</div>
+        {% endif %}
+        <h3>Event {{ event.ordinal }}: {{ event.name }}</h3>
+        <div class="row"><strong>When:</strong> {{ event.expected_start_time }} (<span title="{{ event.expected_start_time }}">{{ event.expected_start_time|naturaltime }}</span>)</div>
+        <div class="row"><strong>Allowed Participants:</strong> {{ event.max_participants }}</div>
+        {% if event.ordinal == 1 or event.ordinal == 2 %}
+        <div class="row"><strong>Reward:</strong> 0.5 Manuscrip</div>
+        {% else %}     
+        <div class="row"><strong>Reward:</strong> 1 Manuscrip</div>
+        {% endif %}
+        {% if event.dixit_categories.0 %}
+          <div class="row">
+            <strong>Your category:</strong> <span class="category-value">{{ event.dixit_categories.0 }}</span>
+          </div>
+          <div class="row"><strong>Instructions:</strong> <em class="instructions">Please prepare 5 (not-too-easy, not-too-difficult) cryptic clues for this category! See the registration page for more resources.</em></div>
+        {% endif %}
+        <div class="event-registration">
+        {% if event.ordinal == 1 %}
+        <p class="event-description"><strong>Description: </strong> Please send 2 people who are good at chaotic, fast puzzle solving. Knowledge of Pathfinder is helpful but not required.</p>
+        {% elif event.ordinal == 2 %}     
+        <p class="event-description"><strong>Description: </strong> Please send 1 person who is good at writing collaboratively.</p>
+        {% elif event.ordinal == 3 %}  
+        <p class="event-description"><strong>Description: </strong> Please send 1 person who loves cryptic crosswords.</p>
+        {% else %}  
+        <p class="event-description"><strong>Description: </strong> It's Game Night! Please send 2 people who love to draw.</p>
+        {% endif %}
+        
+        <div class="{{ event.status }} open">
+          {% if event.status == 'open' %}
+            {% if event.participant_count %}
+            <p>You've registered {{ event.participant_count }} participant{{ event.participant_count|pluralize }}.</p>
+            <p><a href="{% url 'events_register' event.url %}">Update your registration</a></p>
+            {% else %}
+            <p><a href="{% url 'events_register' event.url %}">Register</a></p>
+            {% endif %}
+          {% elif event.status == 'closed' %}
+            <p>Registration is now closed!</p>
+            {% if event.participant_count %}
+            <p><a href="{% url 'events_register' event.url %}?index={{ i }}">View your registration</a></p>
+            {% endif %}
+          {% elif not team.is_public %}
+            <p>The event is over. If you participated, enter your answer phrase.</p>
+            <iframe class="submit-iframe {{ event.puzzle_url }}-answers" src="{% url 'puzzle_submit_embed' event.puzzle_url %}"></iframe>
+          {% endif %}
+        </div>
+        </div>
+      </div>
+    {% empty %}
+      <p>Events are not available yet!</p>
+    {% endfor %}
+  </section>
+  <div class="paper-edge bottom"></div>
+</main>
+{% endblock site_content %}

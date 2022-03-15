@@ -1,0 +1,103 @@
+#main-content * {
+  box-sizing: border-box;
+}
+#main-content img {
+  max-width: 100%;
+}
+#main-content h2 {
+  font-size: 1.5rem;
+  padding-top: 2rem;
+}
+#main-content table {
+  width: 100%;
+}
+#main-content th {
+  text-align: left;
+  vertical-align: bottom;
+  background: #eee;
+  border-bottom: 1px solid #ccc;
+}
+#main-content td {
+  font-size: 0.9rem;
+  padding: 0.7em 0.5em;
+}
+#main-content th {
+  font-size: 1rem;
+  padding: 0.4em 0.5em;
+}
+#main-content th:first-child, #main-content td:first-child {
+  padding-left: 0.5em;
+}
+#main-content .books {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 20%);
+}
+#main-content .books .book {
+  padding: 1rem;
+}
+#main-content .books .book img {
+  width: 100%;
+}
+#main-content .directors {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 20%);
+}
+#main-content .directors .dir {
+  padding: 1rem;
+}
+#main-content .directors .dir img {
+  width: 100%;
+}
+#main-content .settings {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 25%);
+}
+#main-content .settings .setting {
+  padding: 1rem;
+}
+#main-content .settings .setting img {
+  width: 100%;
+}
+#main-content .genres {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 25%);
+}
+#main-content .genres .genre {
+  padding: 1rem;
+}
+#main-content .genres .genre img {
+  width: 100%;
+}
+#main-content td {
+  vertical-align: top;
+}
+#main-content .dir-detail, #main-content .book-detail {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+}
+#main-content .dir-detail .detail-pic, #main-content .book-detail .detail-pic {
+  flex: 1;
+}
+#main-content .dir-detail .detail, #main-content .book-detail .detail {
+  flex: 5;
+  padding: 0 0 0 2em;
+}
+#main-content .dir-detail .detail p:first-child, #main-content .book-detail .detail p:first-child {
+  margin-top: 0;
+}
+#main-content .styleof {
+  font-style: italic;
+}
+#main-content iframe {
+  margin: 0;
+}
+#main-content #booksindetail, #main-content #directorsindetail, #main-content #settingsindetail, #main-content #genresindetail {
+  border-top: 1px dashed #666;
+}
+#main-content em.req {
+  font-style: normal;
+  text-decoration: underline;
+  background-color: rgba(255, 255, 0, 0.5);
+}

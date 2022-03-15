@@ -1,0 +1,21 @@
+name: 'Prod: Import to GAE'
+
+# Can only be run manually from the Actions tab, as this is a destructive task
+# that resets team info.
+on: workflow_dispatch
+
+concurrency:
+  group: import-to-app-engine-prod
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    uses: 'Palindrome-Puzzles/2022-hunt/.github/workflows/import-to-app-engine.yml@main'
+    with:
+      client_django_env: 'prod_db_only_gcloud'
+      server_django_env: 'prod_gcloud'
+      requirements_file: 'db_only_gcloud.txt'
+      launch_hunt: false
+    secrets:
+      GCLOUD_CREDENTIALS: ${{ secrets.GOOGLE_APPLICATIONS_CREDENTIAL }}
+      GCLOUD_PROJECT_ID: ${{ secrets.GCLOUD_PROJECT_ID }}

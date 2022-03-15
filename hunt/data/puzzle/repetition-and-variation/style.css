@@ -1,0 +1,82 @@
+#notebook {
+/*	background-image: url(images/tile4.png);
+	background-repeat: repeat-y; */
+	background-color: #ECF9FE;
+	padding: 1.5rem;
+	border: 2px solid #5bc8f3;
+}
+
+.tu {
+    background-color: #999933;
+}
+.ts {
+    background-color: #ddcc77;
+}
+.tp {
+    background-color: lightgray;
+}
+.mu {
+    background-color: #117733;
+    color:white;
+}
+.ms {
+    background-color: #44aa99;
+}
+.mp {
+    background-color: #88ccee;
+}
+.nu {
+    background-color: #cc6677;
+}
+.ns {
+    background-color: #aa4499;
+    color: white;
+}
+.np {
+    background-color: #332288;
+    color: white;
+}
+
+table {
+    text-align: center;
+}
+
+table + table {
+    margin-top: 1em;
+}
+
+td {
+    min-width: 2em;
+    height: 1em;
+}
+
+table .tab-container { /* TODO: fix? */
+    border: 2px black solid !important;
+    font-weight: bold;
+}
+
+table.punnett tr:nth-child(1) td:nth-child(1) {
+    border-top: 0px;
+    border-left: 0px;
+    min-width: 3em;
+    border-bottom: 2px black solid ;
+    border-right: 2px black solid ;
+}
+
+table.punnett tr + tr > td:nth-child(1) {
+    border-left: 2px black solid ;
+    border-right: 2px black solid ;
+}
+
+table.punnett tr:nth-child(1) td+td {
+    border-top: 2px black solid ;
+    border-bottom: 2px black solid ;
+}
+
+table.punnett tr:nth-last-child(1) td{
+    border-bottom: 2px black solid ;
+}
+
+table.punnett tr td:nth-last-child(1) {
+    border-right: 2px black solid ;
+}

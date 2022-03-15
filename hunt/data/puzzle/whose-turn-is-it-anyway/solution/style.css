@@ -1,0 +1,16 @@
+.emphasis {
+  font-weight: bold;
+  font-style: italic;
+}
+
+table td {
+  min-width: 100px;
+}
+
+ol.instructions li {
+  padding-left: 2em;
+}
+
+ol.instructions li:not(:last-child) {
+  margin-bottom: 2em;
+}

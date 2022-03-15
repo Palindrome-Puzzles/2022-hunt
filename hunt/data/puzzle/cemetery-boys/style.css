@@ -1,0 +1,15 @@
+.pictures {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 0 auto;
+}
+
+.pictures a {
+  min-width: 250px;
+  width: 50%;
+}
+
+.pictures img {
+  width: 100%;
+}

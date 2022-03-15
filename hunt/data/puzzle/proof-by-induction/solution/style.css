@@ -1,0 +1,92 @@
+.puzzle code {
+  font-family: "Source Code Pro", monospace; /* specifically use a font meant for code */
+  font-size: 16px;
+}
+
+.puzzle > section {
+  border-top: 1px solid #888;
+  margin-top: 36px;
+}
+
+h2, h3 {
+  margin-top: 36px;
+}
+
+p code, li code {
+  white-space: nowrap;
+}
+
+.side-by-side {
+  display: flex;
+  margin-left: 2%;
+  margin-right: 2%;
+}
+
+.side-by-side pre {
+  margin: 0;
+  overflow: auto;
+}
+
+code .blank {
+  text-decoration: underline;
+}
+code .answer {
+  text-transform: none;
+}
+
+.side-by-side .rockstar {
+  flex: 0 0 55%;
+  width: 55%;
+  padding-right: 30px;
+}
+.side-by-side .rockstar::before {
+  content: "Rockstar";
+}
+
+.side-by-side .pseudo-code {
+  flex: 0 0 40%;
+  width: 40%
+}
+.side-by-side .pseudo-code::before {
+  content: "Pseudo-code";
+}
+
+.side-by-side .rockstar::before,
+.side-by-side .pseudo-code::before {
+  font-weight: bold;
+  color: #336699;
+}
+
+.centered {
+  text-align: center;
+}
+
+#finale span.answer {
+  display: block;
+  margin-top: 9px;
+}
+
+.side-by-side code mark {
+  text-decoration: dotted underline;
+  background-color: #FFECC3;
+}
+
+.side-by-side code .comment {
+  color: #999;
+}
+
+.side-by-side code mark:hover {
+  cursor: help;
+}
+
+.author-note h2 {
+  margin-top: 0px;
+}
+
+.author-note p:last-child {
+  margin-bottom: 0px;
+}
+
+.author-note .horns {
+  font-size: 42px;
+}

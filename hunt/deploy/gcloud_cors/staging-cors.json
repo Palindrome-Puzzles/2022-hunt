@@ -1,0 +1,11 @@
+[
+    {
+      "origin": [
+        "https://staging.starrats.org",
+        "https://staging.bookspace.world",
+      ],
+      "method": ["GET"],
+      "responseHeader": [],
+      "maxAgeSeconds": 3600
+    }
+]

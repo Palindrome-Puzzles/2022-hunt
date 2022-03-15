@@ -1,0 +1,165 @@
+table {
+	border-collapse: separate;
+}
+
+table#diagram {
+	border-spacing: 1rem;
+	background-color: #FFFFFF;
+}
+
+#diagram td {
+	width: 4rem;
+	text-align: center;
+}
+
+#diagram td.border-color-1 {
+	border: 3px solid #0EA028;
+}
+
+#diagram td.border-color-2 {
+	border: 3px solid #C30AEF;
+}
+
+#diagram td.border-color-3 {
+	border: 3px solid #F7CD00;
+}
+
+#diagram td.border-color-4 {
+	border: 3px solid #1FCFE2; 
+}
+
+#diagram td.border-color-black {
+	border: 3px solid #000000;
+}
+
+#meta {
+	background-image: url(images/11-sm.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+	max-width: 850px;
+	min-height: 1260px;
+	position: relative;
+	margin: 2rem auto 6rem auto;
+}
+
+#meta .sticker {
+	position: absolute;
+}
+#meta .sticker img {
+	width: 100%;
+}
+
+#meta .sticker:nth-of-type(1) {
+	left: 2%;
+	top: 7%;
+	width: 22%;
+}
+
+#meta .sticker:nth-of-type(2) {
+	left: 27%;
+	top: 3%;
+	width: 26%;
+}
+
+#meta .sticker:nth-of-type(3) {
+	left: 55%;
+	top: 7%;
+	width: 20%;
+}
+
+#meta .sticker:nth-of-type(4) {
+	left: 78%;
+	top: 0%;
+	width: 18%;
+}
+
+#meta .sticker:nth-of-type(5) {
+	left: -1%;
+	top: 23%;
+	width: 27%;
+}
+
+#meta .sticker:nth-of-type(6) {
+	left: 26%;
+	top: 20%;
+	width: 20%;
+}
+
+#meta .sticker:nth-of-type(7) {
+	left: 50%;
+	top: 23%;
+	width: 25%;
+}
+
+#meta .sticker:nth-of-type(8) {
+	left: 78%;
+	top: 20%;
+	width: 22%;
+}
+
+#meta .sticker:nth-of-type(9) {
+	left: 2%;
+	top: 38%;
+	width: 25%;
+}
+
+#meta .sticker:nth-of-type(10) {
+	left: 66%;
+	top: 39%;
+	width: 22%;
+}
+
+#meta .sticker:nth-of-type(11) {
+	left: 39%;
+	top: 60%;
+	width: 19%;
+}
+
+#meta .sticker:nth-of-type(12) {
+	left: 10%;
+	top: 52%;
+	width: 23%;
+}
+
+#meta .sticker:nth-of-type(13) {
+	left: 65%;
+	top: 61%;
+	width: 29%;
+}
+
+#meta .sticker:nth-of-type(14) {
+	left: 10%;
+	top: 67%;
+	width: 18%;
+}
+
+#meta .sticker:nth-of-type(15) {
+	left: 34%;
+	top: 77%;
+	width: 20%;
+}
+
+#meta .sticker:nth-of-type(16) {
+	left: 66%;
+	top: 76%;
+	width: 15%;
+}
+
+#meta .sticker:nth-of-type(17) {
+	left: 8%;
+	top: 91%;
+	width: 30%;
+}
+
+#meta .sticker:nth-of-type(18) {
+	left: 41%;
+	top: 90%;
+	width: 20%;
+}
+
+#meta .sticker:nth-of-type(19) {
+	left: 66%;
+	top: 90%;
+	width: 17%;
+}
+

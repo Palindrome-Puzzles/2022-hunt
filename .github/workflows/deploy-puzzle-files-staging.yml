@@ -1,0 +1,23 @@
+name: 'Staging: Deploy puzzle files'
+
+on:
+  # push:
+  #   branches:
+  #     - main
+
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-puzzle-files-staging
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    uses: 'Palindrome-Puzzles/2022-hunt/.github/workflows/deploy-puzzle-files.yml@main'
+    with:
+      django_env: 'staging_deploy'
+      gzip_files: false
+      gcloud_bucket: mitmh2022-staging
+    secrets:
+      GCLOUD_CREDENTIALS: ${{ secrets.GOOGLE_APPLICATIONS_CREDENTIAL }}
+      GCLOUD_PROJECT_ID: ${{ secrets.GCLOUD_PROJECT_ID }}

@@ -1,0 +1,115 @@
+.round-map .sticker:not(.inactive) img {
+    filter: drop-shadow(0 0 20px #fff3);
+}
+.round-map .sticker:not(.inactive) :focus img {
+    filter: drop-shadow(0 0 20px #EE5200);
+}
+.round-map .sticker:not(.inactive):hover img  {
+    filter: drop-shadow(0 0 20px #EE5200);
+}
+
+
+/* Exit sign special cases */
+.round-map.line .sticker:nth-of-type(12) img {
+    filter: brightness(0.9);
+}
+
+.round-map.line .sticker:nth-of-type(12):hover img {
+	filter: brightness(1);
+    filter: drop-shadow(0 0 20px #FFFA);
+}
+
+.page-background {
+    background-image: url(images/bg-repeat.jpg);
+    background-size: auto auto;
+    background-repeat: repeat;
+}
+.page-background-map {
+    background-image: url(images/bg.png);
+    background-size: 100%;
+}
+
+header {
+    aspect-ratio: 2500/900;
+}
+
+.round-map .map {
+    aspect-ratio: 3/5;
+    width: 50%;
+}
+
+.round-map.list .map {
+    aspect-ratio: 7/10;
+    margin-top: 60px;
+    padding: 2%;
+
+    background-color: #1c1c1c;
+    display: flex;
+    flex-direction: column;
+}
+
+.round-map.list .title {
+    margin: 2% 0;
+    width: 29.92%;
+}
+.round-map.list .sticker {
+    border-bottom: 1px solid #fff;
+    display: flex;
+    padding: 1% 0;
+}
+.round-map.list .sticker:first-of-type {
+    border-top: 1px solid #fff;
+}
+.round-map.list .sticker-content {
+    margin: 1% 0;
+    width: 100%;
+}
+.round-map.list .sticker img {
+    margin: 0 auto 0 0;
+    max-height: 92px;
+    height: 3.7vw;
+}
+
+@media only screen and (max-width: 1666.6px) {
+    header {
+        aspect-ratio: unset;
+        height: 600px;
+    }
+    .page-background-map {
+        background-size: 1666.6px;
+    }
+    .round-map .map {
+        width: 833.3px;
+    }
+
+    .round-map.list .sticker img {
+        height: 62px;
+    }
+}
+@media only screen and (max-width: 999.9px) {
+    header {
+        aspect-ratio: 5/3;
+        height: unset;
+    }
+    .page-background-map {
+        background-size: 166.66%;
+    }
+    .round-map .map {
+        width: 83.33%;
+    }
+
+    .round-map.list .sticker img {
+        height: 6.2vw;
+    }
+}
+
+.round-map.line .sticker img {
+    width: 100%;
+}
+.junction {
+    left: 40.18%;
+    position: absolute;
+    top: 47.04%;
+    width: 5.44%;
+    z-index: 5;
+}

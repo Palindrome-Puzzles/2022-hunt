@@ -1,0 +1,38 @@
+{% load assets %}
+
+<p>It was <span class="answer">SHAGGY</span>.</p>
+
+<table>
+  <thead>
+    <tr>
+      <td>Source</td>
+      <td>Image</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Puzzle directory</td>
+      <td><img src="../puzzle-mountain.jpg" height="100"></td>
+    </tr>
+    <tr>
+      <td>Puzzle sub-directory</td>
+      <td><img src="../images/puzzle-subimage-bird.jpg" height="100"></td>
+    </tr>
+    <tr>
+      <td>Solution directory</td>
+      <td><img src="solution-house.jpg" height="100"></td>
+    </tr>
+    <tr>
+      <td>Posthunt directory</td>
+      <td><img src="../posthunt/posthunt-boat.jpg" height="100"></td>
+    </tr>
+    <tr>
+      <td>Round directory</td>
+      <td><img src="{% rd 'round-pumpkin.jpg' %}" height="100"></td>
+    </tr>
+    <tr>
+      <td>Round directory</td>
+      <td><img src="{% rd 'round-solution-tomato.jpg' solution=True %}" height="100"></td>
+    </tr>
+  </tbody>
+</table>

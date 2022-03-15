@@ -1,0 +1,62 @@
+{% extends "hunt/site_layout.tmpl" %}
+{% load static styles %}
+
+{% block title %}{{ puzzle_info.puzzle.name|safe }} | {{ block.super }}{% endblock %}
+
+{% block site_stylesheets %}
+{{ round_common_style|wrap_styles|safe }}
+{{ puzzle_style|wrap_styles|safe }}
+{% block extra_stylesheets %}{% endblock %}
+{% endblock site_stylesheets %}
+
+{% block site_scripts %}
+<script src="{% static 'core/puzzle.js' %}" type="module"></script>
+<script src="{% static 'core/copyjack.js' %}" type="module"></script>
+{% block extra_scripts %}{% endblock %}
+{% endblock site_scripts %}
+
+{% block site_content %}
+<main{% if team.is_public %} class="public-access"{% endif %}>
+  <header>
+    <h1>{{ puzzle_info.puzzle.name }}</h1>
+    {% block wordmark %}{% endblock %}
+  </header>
+
+  <div class="paper-edge top"></div>
+  <div class="puzzle-actions">
+    {% if not no_puzzle_actions or show_solutions %}
+    <ul>
+      {% if not no_puzzle_actions %}
+      <li><a href="{% url 'puzzle_hints' puzzle_info.puzzle.url %}" data-embed-href="{% url 'puzzle_hints_embed' puzzle_info.puzzle.url %}" {% if hint_submission_exists %}data-starts-open="true"{% endif %} target="_blank">Hints</a></li>
+      {% endif %}
+      {% if show_solutions %}
+      <li><strong><a class="subtitle" href="{% url 'puzzle_solution' puzzle_info.puzzle.url %}">Solution</a></strong></li>
+      {% endif %}
+    </ul>
+    {% endif %}
+
+    <iframe class="submit-iframe {{ puzzle_info.puzzle.url }}-answers" src="{% url 'puzzle_submit_embed' puzzle_info.puzzle.url %}"></iframe>
+  </div>
+  <div class="paper-edge bottom"></div>
+
+  <section class="puzzle-action-embed-wrapper closed">
+    <div class="paper-edge top"></div>
+    <div class="puzzle-action-embed">
+      <iframe></iframe>
+      <button type="button">Close</button>
+    </div>
+    <div class="paper-edge bottom"></div>
+  </section>
+
+  {% block bonus_puzzle %}{% endblock %}
+
+  <div class="paper-edge top"></div>
+  <section id="main-content" class="content puzzle">
+    <div class="reward-container">{% block puzzle_rewards %}{% endblock %}</div>
+    <!-- Puzzle content begins here -->
+    {{ puzzle_html|safe }}
+    <!-- Puzzle content ends here -->
+  </section>
+  <div class="paper-edge bottom"></div>
+</main>
+{% endblock site_content %}

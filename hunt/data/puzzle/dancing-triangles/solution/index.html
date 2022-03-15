@@ -1,0 +1,225 @@
+<p>
+  The first step is to solve each of the triangular logic puzzles. The blue diamond icons and brown words can be ignored while solving the puzzles. 
+</p>
+<p>
+  Note: In the solutions below, diamonds whose binary assertions are true are colored blue, and false ones are colored red.
+</p>
+
+<table>
+  <tr>
+    <th>Puzzle</th>
+    <th>Solution</th>
+    <th>Author</th>
+  </tr>
+  <tr>
+    <td>Balance Loop</td>
+    <td>
+      <a href="images/BL.png" target="_blank">
+        <img src="images/BL.png" class="img-xs" alt="Balance Loop Solution" />
+      </a>
+    </td>
+    <td>Shai Nir Hana</td>
+  </tr>
+  <tr>
+    <td>Corral</td>
+    <td>
+      <a href="images/C.png" target="_blank">
+        <img src="images/C.png" class="img-xs" alt="Corral Solution" />
+      </a>
+    </td>
+    <td>Shai Nir Hana</td>
+  </tr>
+  <tr>
+    <td>Filliamond</td>
+    <td>
+      <a href="images/F.png" target="_blank">
+        <img src="images/F.png" class="img-xs" alt="Filliamond Solution" />
+      </a>
+    </td>
+    <td>Shai Nir Hana</td>
+  </tr>
+  <tr>
+    <td>Heyawake</td>
+    <td>
+      <a href="images/Hey.png" target="_blank">
+        <img src="images/Hey.png" class="img-xs" alt="Heyawake Solution" />
+      </a>
+    </td>
+    <td>Matthew Schulz</td>
+  </tr>
+  <tr>
+    <td>Hidato</td>
+    <td>
+      <a href="images/Hid.png" target="_blank">
+        <img src="images/Hid.png" class="img-xs" alt="Hidato Solution" />
+      </a>
+    </td>
+    <td>Shai Nir Hana</td>
+  </tr>
+  <tr>
+    <td>LI</td>
+    <td>
+      <a href="images/LI.png" target="_blank">
+        <img src="images/LI.png" class="img-xs" alt="LI Solution" />
+      </a>
+    </td>
+    <td>Shai Nir Hana</td>
+  </tr>
+  <tr>
+    <td>Loop and Block</td>
+    <td>
+      <a href="images/LnB.png" target="_blank">
+        <img src="images/LnB.png" class="img-xs" alt="Loop and Block Solution" />
+      </a>
+    </td>
+    <td>Daniel Hunt</td>
+  </tr>
+  <tr>
+    <td>Moon-or-Sun</td>
+    <td>
+      <a href="images/MoS.png" target="_blank">
+        <img src="images/MoS.png" class="img-xs" alt="Moon-or-Sun Solution" />
+      </a>
+    </td>
+    <td>Celestine Lau</td>
+  </tr>
+  <tr>
+    <td>Nonogram</td>
+    <td>
+      <a href="images/N.png" target="_blank">
+        <img src="images/N.png" class="img-xs" alt="Nonogram Solution" />
+      </a>
+    </td>
+    <td>Shai Nir Hana</td>
+  </tr>
+  <tr>
+    <td>Pentiamondous</td>
+    <td>
+      <a href="images/P.png" target="_blank">
+        <img src="images/P.png" class="img-xs" alt="Pentiamondous Solution" />
+      </a>
+    </td>
+    <td>Shai Nir Hana</td>
+  </tr>
+  <tr>
+    <td>Slitherlink</td>
+    <td>
+      <a href="images/Sl.png" target="_blank">
+        <img src="images/Sl.png" class="img-xs" alt="Slitherlink Solution" />
+      </a>
+    </td>
+    <td>Kah Kien Ong</td>
+  </tr>
+  <tr>
+    <td>Snake</td>
+    <td>
+      <a href="images/Sn.png" target="_blank">
+        <img src="images/Sn.png" class="img-xs" alt="Snake Solution" />
+      </a>
+    </td>
+    <td>Daniel Hunt</td>
+  </tr>
+  <tr>
+    <td>Statue Park</td>
+    <td>
+      <a href="images/SP.png" target="_blank">
+        <img src="images/SP.png" class="img-xs" alt="Statue Park Solution" />
+      </a>
+    </td>
+    <td>Shai Nir Hana</td>
+  </tr>
+</table>
+
+<p>
+  Note the first image in the key on the last page: It’s a shape with 13 triangles. We’re going to be assembling the 13 puzzles into one big grid with that shape, and orienting it such that the direction indicated by the arrow (only present on Filliamond, the center triangle) is pointing up.
+</p>
+
+<p>
+  The presence of binary statements, as well as the flavor text (“bit by bit by bit by bit by bit”), suggests we should try to read data as binary. There are a couple of 5-length segments of diamonds in the puzzle, and every other row of diamonds is shorter and hits the edge of its grid. We can assemble all of the grids together such that every diamond is part of a 5-length segment, which we can then read according to the order specified in the image on the second row of the key (with 1a, 1b, and 2):
+</p>
+
+<div style="text-align: center">
+  <a href="images/Fully-assembled.png" target="_blank">
+    <img src="images/Fully-assembled.png" class="img-l" alt="Diagram showing all 13 sub-puzzles assembled together" />
+  </a>
+</div>
+
+<p>
+  With our heads turned for each direction, reading from top to bottom, the letters read:
+</p>
+
+<table>
+  <tr>
+    <td>1a</td>
+    <td>ALLVOWELS</td>
+  </tr>
+  <tr>
+    <td>1b</td>
+    <td>AREFLAT</td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td>LASTNAME</td>
+  </tr>
+</table>
+
+<p>
+  Finally, the only part of the puzzle we haven’t yet used are the brown questions that are on 3 cells in each puzzle, and the similarly colored diagrams at the bottom of the key. The diagram indicates how we can order the binary answers on the cells to get 3-digit binary numbers. Those can only represent the letters A through G, which is all we need, because we are going to interpret them as musical notes (clued by “flat” in the extracted phrase and by “music” in the flavor text). In particular, As and Es are all flat (musically inclined solvers may notice that, as long as there are no Bs — which is the case in this puzzle — this can represent a valid musical key). When extracted from the fully assembled diagram, preserving the rotation of each grid from the previous step, we get the following notes:
+</p>
+
+<div style="text-align: center">
+  <img src="images/Notes.png" class="img-xs" alt="Diagram showing extracted musical notes." /><br>
+  <code>G E♭ D C C D E♭ C E♭ G A♭ G F</code>
+</div>
+
+<p>
+  You might play this and recognize the tune, or input the notes into a music search engine like Musipedia. The famous musical piece that has this phrase is “Waltz No. 2,” and its composer’s name is Dmitri <span class="answer">SHOSTAKOVICH</span>, which is the answer.
+</p>
+
+<div class="author-note">
+  <h2>Author’s Notes</h2>
+  <p>
+    Waltz No. 2 is one of Shostakovich’s most famous works, and the whole idea for this puzzle came from the concept of a waltz: Taking something that’s usually in 4-count, and doing it in 3-count instead. I considered using ternary code for maximum 3 theming, but binary felt like a more elegant representation for the letters A through G, and — most importantly — made it really easy to put any binary condition on any cell or edge. This allowed the extraction piece to be written completely independently of the puzzle logic, which could then be distributed among multiple authors with minimal fuss.
+  </p>
+  <p>
+    Some puzzle types translated readily to triangle forms. Others took some trial and error to figure out the exact translation of the rules (for example, what the triangular equivalent of the “no 2x2” rule from LITS was going to be). I spent far too many hours of my life trying to get Skyscrapers to work in triangular form, but it ended up being exceedingly difficult.
+  </p>
+  <p>
+    Shout-out to the <a href="https://puzzling.stackexchange.com/questions/86563/1-of-11-numberlink-what-is-pyramid-cults-favorite-activity" target="_blank" rel="noopener nofollow noreferrer">Pyramid Cult's Favorites</a> puzzle series, which provided some of the few examples of how triangular versions of puzzles might work.
+  </p>
+  <p>
+    There was a Spiral Galaxies puzzle kept around as a backup in case something went terribly wrong with one of the mini-puzzles during playtesting. It was never needed, but you can try it <a href="images/Spiral.png" target="_blank">here</a> (standard Spiral Galaxies rules; galaxies may have either 180-degree or 120-degree rotational symmetry).
+  </p>
+  <p>
+    Notes for individual mini-puzzles:
+  </p>
+  <ul>
+    <li>
+      Balance Loop: The instructions for this could have been just “standard Balance Loop rules” except for how unintuitive it is to think about turns in the triangular world.
+    </li>
+    <li>
+      Filliamond (and Pentiamondous): Polyforms made of triangles are called “polyiamonds” and so I couldn’t get myself to call these “Fillomino” and “Pentominous,” even if it would have made them easier to pronounce.
+    </li>
+    <li>
+      Heyawake: There is apparently a split in the Heyawake fandom over whether the precise rule is that a line of white cells can include at most two regions or at most one border.
+    </li>
+    <li>
+      Hidato: As an Israeli, I felt like I had to at least try to include my native country’s contribution to the canon of logic puzzles. I settled on this adjacency rule after trying “must share a vertex,” which was too loose to allow for satisfying logic, and “must share an edge or be opposite on a vertex,” which was too restrictive.
+    </li>
+    <li>
+      LI: This one could probably have been interpreted a few different ways. I could imagine rule sets that use the A tetriamond either as an allowed shape along with L and I, or as a forbidden shape analogous to the O tetromino in LITS. I think the minimalistic LI rules lent themselves to a nice, approachable puzzle, though.
+    </li>
+    <li>
+      Loop and Block: Daniel submitted this when we already had 13 puzzles, but I liked the logic so much that I put it in and relegated Spiral Galaxies to a backup.
+    </li>
+    <li>
+      Nonogram: The working title for this one was “Monogram.” The reflect-off-the-wall mechanic was an attempt to counter the fact that some rows in a triangle have very few cells, meaning that clues along those rows would be less interesting. I drew the little dancing character just to play around and get a feel for how a one-sided Nonogram might behave, but the solve path turned out to be interesting enough that I decided to keep the image with no modification.
+    </li>
+    <li>
+      Pentiamondous: Placing pentiamonds in a triangle can actually be very restrictive. An earlier version had a unique solution with one fewer clue, but it needed so much branching logic to get the solution that the test solvers mutinied.
+    </li>
+    <li>
+      Slitherlink: The symmetrical solution is an abstract shape resembling a tri-legged brand logo (from the maker of a <a href="https://en.wikipedia.org/wiki/Three_Legs_Cooling_Water" target="_blank" rel="noopener nofollow noreferrer">popular medicinal drink</a> in South-East Asia).
+    </li>
+  </ul>
+</div>

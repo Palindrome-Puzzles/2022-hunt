@@ -1,0 +1,50 @@
+<p>Each of the 9 feeder answers must be converted to its alphabetically-ordered numbering (i.e., the letter of the answer that occurs first alphabetically is assigned the digit 1, the letter that occurs second alphabetically is assigned the digit 2, and so on up to 9).</p>
+
+<p>The nine 9-digit strings thus formed will be (in alphabetical order):</p>
+
+<pre><code>1	2	6	8	9	3	4	5	7		DIRTY MOPS
+
+3	7	2	9	1	5	6	8	4		FLETCHING
+
+2	6	9	7	8	4	3	1	5		FOURTH GEN
+
+4	1	5	3	2	6	9	7	8		HALF-COURT
+
+6	5	7	4	3	8	2	9	1		KING COBRA
+
+7	9	8	5	4	2	1	3	6		LURED BACK
+
+5	3	4	1	6	7	8	2	9		MEGASTUDY
+
+8	4	1	2	7	9	5	6	3		SHADOWING
+
+9	8	3	6	5	1	7	4	2		ZYGOMATIC
+</code></pre>
+
+<p>These 9-digit strings must be entered into the rows of a KenKen or calcudoku grid that is gradually revealed to solvers as they gather more feeder answers. Some of the cages in the grid contain the target number and the operator, but some are missing the target number.</p>
+
+<p>Solvers must calculate the target number of each cage where one is not provided, then use that number as an alphabet index, reading through the grid in row-major order, leading to the final answer: <span class="answer">STEP BY STEP LADDER</span>.</p>
+
+<figure>
+<img src="solvedgrid.png" alt="" />
+<figcaption></figcaption>
+</figure>
+
+<div class='author-note'>
+<h2>Authors' Notes</h2>
+
+<p>
+	When I first posted about the letters-to-numbers conversion method at the heart of this puzzle, I noted that “surprisingly I’ve never seen it in a Hunt-style puzzle” and the comment came back that it was “rather amazing that it hasn’t found its way into a Hunt puzzle yet”.  Well, now it has, and I hope to see it used regularly in the future.
+</p>
+
+<p>This method of enumerating words is rather common in the <a href="https://www.cryptogram.org">American Cryptogram Association</a>.  In ACA usage, these are called “hats” because they are placed atop a grid for a columnar transposition or a keyed alphabet and the columns are extracted in numerical order.  (See, for example, <a href="https://www.cryptogram.org/downloads/aca.info/ciphers/Headlines.pdf">Headlines</a> and <a href="https://www.cryptogram.org/downloads/aca.info/ciphers/PeriodicGromark.pdf">Periodic Gromark</a>)</p>
+
+<p>Forming a Latin square of words and phrases enumerated in this way was not easy.  It was certainly beyond my technical capabilities, but Wayne Zhao came through with a solution.  Thanks Wayne!</p>
+
+<p>
+	Next-level challenge: Create a sudoku where every row, every column and every 3x3 subsection is a word or phrase converted to this enumeration.
+
+</p>
+
+</div>
+

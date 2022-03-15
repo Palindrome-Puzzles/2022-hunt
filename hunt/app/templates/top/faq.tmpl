@@ -1,0 +1,46 @@
+{% extends "hunt/site_layout.tmpl" %}
+{% load hosts static %}
+
+{% block title %}Frequently Asked Questions | {{ block.super }}{% endblock %}
+
+{% block site_content %}
+<main class="faq">
+  <header>
+    <h1>Frequently Asked Questions</h1>
+  </header>
+
+  <div class="paper-edge top"></div>
+  <section id="main-content" class="content">
+    <h2>Is anything in this FAQ a puzzle?</h2>
+    <p>No.</p>
+
+    <h2>What do we need to know about these puzzles?</h2>
+    <p>A few things of key importance:</p>
+    <ul>
+      <li><em>Copy to Clipboard</em>: Most of the puzzles have a “Copy to Clipboard” button, which you will find works best with Google Sheets. This copies over most information, though on some puzzles it may not copy everything. <u>We highly recommend that you use the puzzle’s web page as the definitive source for that puzzle’s content.</u></li>
+      <li><em>You can guess, but don’t go wild</em>: If you guess five wrong answers on a puzzle in a fairly short time frame, you will not be allowed to guess further answers for five minutes.</li>
+      <li>Hints will be available on puzzles either after many teams have solved it, or a long time has passed with no correct solutions. To request a hint, simply click the Hints button on the puzzle in question, and ask your question. Give us some idea of where you’re having trouble and what you’ve tried so far -- the more detail, the better -- and our highly trained hint givers will respond as soon as possible. <em>Please note that a team can have only one hint out across all puzzles at a time.</em></li>
+      <li>Accessibility: We have worked to make our puzzles as accessible as possible. On a given puzzle you might find alt-text, long description text, and/or video captions. While wider accessibility is the main reason for these features, even solvers who do not require them may find some puzzle information is presented more clearly in these formats.</li>
+    </ul>
+
+    <h2>How do I contact the team running the Hunt?</h2>
+    <p>Click on your team name in the upper menu of the Hunt website -- you will find a <a href="{% url 'contact' %}">Contact HQ</a> button in the drop-down menu.</p>
+
+    <h2>When should I contact the team running the Hunt?</h2>
+    <p>Sometimes a puzzle will ask you to do so. Aside from that, if you spot something in a puzzle that you think is wrong, please let us know. Also if you are having technical problems with the Hunt website. In addition, if you’re not having fun, please contact us and we’ll see what we can do to rectify the situation.</p>
+
+    <h2>How does unlocking work?</h2>
+    <p>Every time you solve a feeder (non-meta) puzzle, you unlock another puzzle (as long as there are further puzzles to unlock, anyway). If you have solved enough puzzles to unlock a new round, then it will unlock that round and two feeder puzzles in it. Otherwise, it will unlock a puzzle in your current round. If there are no more puzzles in that round to unlock, then it will unlock a puzzle in the earliest unlocked round that still has puzzles left to unlock.</p>
+    <p>This means a couple things:</p>
+    <ul>
+      <li>Solving open puzzles in solved metas still progresses you in the hunt. Backsolving is encouraged!</li>
+      <li>It is possible, if you have lots of puzzles still open in solved rounds, that you may end up with a round that has no open puzzles but still has puzzles to unlock. This is different from previous years, and while it is unlikely, you may want to take this into consideration when prioritizing puzzles.</li>
+    </ul>
+    <p>Note that the above rules do not apply to metapuzzles. Solving those does other things.</p>
+
+    <h2>What is Manuscrip?</h2>
+    <p>Manuscrip is earned by participating in the Hunt’s four events--a half a scrip for the first two events, and a full piece of script for each of the second two events. You can trade in a full piece of scrip for a puzzle answer of your choice (no, not for meta puzzles). Simply go to the Rewards Drawer in your top menu bar to use the scrip you have amassed.</p>
+  </section>
+  <div class="paper-edge bottom"></div>
+</main>
+{% endblock site_content %}

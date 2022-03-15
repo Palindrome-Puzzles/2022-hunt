@@ -1,0 +1,14 @@
+.center-image{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.red-text {
+  color: red;
+  font-weight: bold;
+}
+
+.center-text{
+  text-align: center;
+}

@@ -1,0 +1,43 @@
+{% extends "hunt/layout.tmpl" %}
+{% load static styles %}
+
+{% block title %}{{ puzzle_title }} (Posthunt) | {{ block.super }}{% endblock %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{% static 'stylesheets/site.css' %}">
+<link rel="stylesheet" href="{% static 'stylesheets/puzzleviewer.css' %}">
+{{ puzzle_style|wrap_styles|safe }}
+{% endblock stylesheets %}
+
+{% block head_scripts %}
+<script type="text/javascript">
+window.puzzleAuthToken = '{{ auth|escapejs }}';
+window.puzzleStaticDirectory = '{{ puzzle_info.static_directory|escapejs }}';
+window.puzzleUrl = '{{ puzzle_info.full_path|escapejs }}';
+</script>
+{% endblock head_scripts %}
+
+{% block scripts %}
+<script src="{% static 'core/puzzle.js' %}" type="module"></script>
+{% endblock scripts %}
+
+{% block content %}
+<main>
+  <header>
+    <h1>
+      {{ puzzle_title }} (Posthunt)
+      <a class="subtitle" href="{% url 'puzzle_list' %}">Back to Puzzle List</a>
+    </h1>
+  </header>
+
+  <div class="puzzle-actions">
+    <a href="{% url 'puzzle' puzzle_url %}">View hunt version</a>
+  </div>
+
+  <section id="main-content" class="content puzzle">
+    <!-- Puzzle content begins here -->
+    {{ index_html|safe }}
+    <!-- Puzzle content ends here -->
+  </section>
+</main>
+{% endblock content %}

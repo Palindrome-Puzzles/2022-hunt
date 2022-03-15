@@ -1,0 +1,10 @@
+.top_grid td {
+  background-color: rgb(202, 219, 223);
+  font-weight: bold;
+  text-align: center;
+}
+
+table.grid td {
+  height: 2em;
+  width: 2em;
+}

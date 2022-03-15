@@ -1,0 +1,18 @@
+.poem {
+	text-align: center;
+}
+
+.grids {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+}
+
+.grid-structure {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 50px;
+  width: 333px;
+}

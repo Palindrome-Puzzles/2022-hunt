@@ -1,0 +1,72 @@
+{% extends "hunt/site_layout.tmpl" %}
+{% load assets hosts %}
+
+{% block site_stylesheets %}
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="{% aux 'prologue' 'prologue_top.css' %}">
+{% endblock site_stylesheets %}
+
+{% block site_content %}
+<main class="prologue">
+  <header class="large-wordmark">
+    <h1>
+      <a class="wordmark-link" href="{% url 'index' %}">
+        <img src="{% aux 'prologue' 'wordmark.png' %}" alt="Star Rats">
+      </a>
+    </h1>
+    <img src="{% aux 'prologue' 'subtitle.png' %}" class="subtitle" alt="The 2022 MIT Mystery Hunt Prologue">
+  </header>
+
+  <div class="paper-edge top"></div>
+  <section id="main-content" class="content">
+    <img class="headline" src="{% aux 'prologue' 'headline.png' %}" alt="Star Rats! Mutant Rodents with Unimaginable Powers!">
+
+    <hr>
+
+    <p>Where did they come from? What do they want? What has drawn them to the campus of MIT? Heaven knows the rats are genius-level smart, and that MIT has lots of attractive technology lying around—technology that can be put to all kinds of mischievous use, if it fell into the wrong pair of hands. Or, rather, the wrong set of scrabbly little claws.</p>
+
+    <p>Obviously, something needs to be done. We need to round up these Star Rats before they get themselves, and all of us, into a whole lot of trouble. So gather up some nets and some non-lethal mousetraps (we don’t want to hurt them, after all, we just want them gone), and let’s get in there and round those critters up!</p>
+
+    <hr class="rat-divider">
+
+    <p>Uh, where did they go? They were here a moment ago. Oh, heck. They must have sensed our counterassault and have taken cover somewhere on campus. Okay, new plan. Let’s interview a few of our rodent buddies and see if they can’t help us figure out where those mutant Star Rats are holing up. THEN we’ll come at them with everything we’ve got!</p>
+
+    <div class="prologue-notice-bar no-copy">
+      <span class="alert"></span>
+      <div class="text">
+        <p>This puzzle set is an <strong>OPTIONAL</strong> prologue to the 2022 Mystery Hunt. Teams that solve it will have no advantage when the hunt begins on January 14, and teams that choose not to solve it will suffer no disadvantage.</p>
+        {% if team %}
+        <p>You can keep an eye on the page for <a href="{% host_url 'registration_index' host 'registration' %}#updates-section" target="_blank">updates</a> and to <a href="{% host_url 'registration_index' host 'registration' %}#teams-section" target="_blank">see which other teams have registered</a>.</p>
+        {% else %}
+        <p>Not registered yet for the 2022 Mystery Hunt? <a href="{% host_url 'register_team' host 'registration' %}" target="_blank">Register now</a>, and keep an eye on the page for <a href="{% host_url 'registration_index' host 'registration' %}#updates-section" target="_blank">updates</a> and to <a href="{% host_url 'registration_index' host 'registration' %}#teams-section" target="_blank">see which other teams have registered</a>.</p>
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="prefer-2-col puzzles">
+      <div class="rats">
+        <table class="custom">
+          <tr>
+            <th>Rats of Interest</th>
+          </tr>
+          {% for puzzle in puzzles %}
+          <tr>
+            <td>
+              <a href="{% url 'puzzle_view' puzzle.url %}"{% if puzzle.is_meta %} class="meta"{% endif %}>{{ puzzle.name }}</a>
+            </td>
+          </tr>
+          {% endfor %}
+        </table>
+      </div>
+
+      <div class="pdf">
+        <a href="{% rd 'StarRats.pdf' %}" target="_blank">
+          <img src="{% aux 'prologue' 'cover.jpg' %}" alt="" aria-hidden="true">
+          <span>Download .pdf version</span>
+        </a>
+      </div>
+    </div>
+  </section>
+  <div class="paper-edge bottom"></div>
+</main>
+{% endblock site_content %}

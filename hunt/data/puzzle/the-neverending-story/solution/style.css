@@ -1,0 +1,21 @@
+.left {
+	display: inline-block;
+	width: 400px;
+	margin-right: 1rem;
+	text-align: bottom;
+}
+
+.parent {
+	min-width:921px;
+}
+
+.paddingTop {
+	padding-top: 2rem;
+	display: inline-block;
+}
+
+.right {
+	display: inline;
+	text-align: right;
+}
+

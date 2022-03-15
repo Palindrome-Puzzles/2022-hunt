@@ -1,0 +1,200 @@
+<p>
+  The 21x21 QR code in the puzzle yields <code>noticable.html</code>. Going to the URL that results from appending this filename to the string shown gives a page indicating that the URL must be corrected. Correcting the spelling to <code>notic<u>e</u>able.html</code> gives a page with another 21x21 QR code labeled with a cardinal direction, and a 15x15 pattern of black and white squares which is not a valid QR code. This 21x21 QR code again gives an html filename that must have its spelling corrected to lead to another page with another 21x21 QR code labeled with a direction, and another 15x15 pattern. Eventually, the pages are found to form a 3x3 array:
+</p>
+
+<table class="grid">
+  <tr>
+    <td><code>appo[g]giatura.html</code></td>
+    <td><code>bouga[i]nvillea.html</code></td>
+    <td><code>dip[h]thongal.html</code></td>
+  </tr>
+  <tr>
+    <td><code>gran[d]daughter.html</code></td>
+    <td><code>notic[e]able.html</code></td>
+    <td><code>opales[c]ent.html</code></td>
+  </tr>
+  <tr>
+    <td><code>sa[f]flower.html</code></td>
+    <td><code>shi[b]boleth.html</code></td>
+    <td><code>skatebo[a]rder.html</code></td>
+  </tr>
+</table>
+
+<p>
+  Putting the 15x15 patterns together in this arrangement yields a 45x45 QR code which yields the following text:
+</p>
+<blockquote>
+	For each 21x21 QR code, instead of just scanning it, directly decode the text encoded by its data-encoding region (ignoring all error correction).
+</blockquote>
+
+<p>
+  The steps involved in directly examining the data-encoding portions of each 21x21 QR code (which will <i>not</i> just silently correct errors as an ordinary QR reader will) are as follows:
+</p>
+
+<ol>
+  <li>
+    <p>
+      Look at the format info to determine the "mask", which all the data-encoding portions must be xored with. In fact, all these 21x21 QR codes have the same format info, and use the same mask, which is alternating rows of 1s and 0s.
+    </p>
+  </li>
+  <li>
+    <p>
+      Check the "Coding Method" box (xored with the mask) to verify that this uses "bytes" encoding (bytes of UTF-8 text). (Which can probably be guessed, since the file names consist of lowercase letters.)
+    </p>
+  </li>
+  <li>
+    <p>
+      With "bytes" encoding, the data-encoding portions are laid out as follows:
+    </p>
+
+    <img src="images/QR_diagram.png" alt="Diagram showing where bytes of data are layed out in these QR codes" />
+
+    <p>
+      with the bits of each byte (labeled by power of two) being as follows:
+    </p>
+
+    <table class="wide">
+      <tr>
+        <th>Byte 1, 6, 7, 12, 13, 14, 15</th>
+        <th>Byte 2, 8</th>
+        <th>Byte 3, 4, 9, 10</th>
+        <th>Byte 5, 11</th>
+      </tr>
+      <tr>
+        <td>
+          <table class="grid">
+            <tr>
+              <td>0</td>
+              <td>1</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>3</td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td>5</td>
+            </tr>
+            <tr>
+              <td>6</td>
+              <td>7</td>
+            </tr>
+          </table>
+        </td>
+        <td>
+          <table class="grid">
+            <tr>
+              <td>2</td>
+              <td>3</td>
+              <td>4</td>
+              <td>5</td>
+            </tr>
+            <tr>
+              <td>0</td>
+              <td>1</td>
+              <td>6</td>
+              <td>7</td>
+            </tr>
+          </table>
+        </td>
+        <td>
+          <table class="grid">
+            <tr>
+              <td>6</td>
+              <td>7</td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td>5</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>3</td>
+            </tr>
+            <tr>
+              <td>0</td>
+              <td>1</td>
+            </tr>
+          </table>
+        </td>
+        <td>
+          <table class="grid">
+            <tr>
+              <td>0</td>
+              <td>1</td>
+              <td>6</td>
+              <td>7</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>3</td>
+              <td>4</td>
+              <td>5</td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </li>
+</ol>
+
+<p>
+  So each byte (after xoring with the mask) can just be read out directly. Doing this shows that the texts encoded are (in order of the letter missing in the original misspelling):
+</p>
+
+<table>
+  <tr>
+    <th>Encoded</th>
+    <th>Letter missing</th>
+    <th>Letter replaced by underscore</th>
+  </tr>
+  <tr>
+    <td><code>_kateborder.html</code></td>
+    <td>A</td>
+    <td>S</td>
+  </tr>
+  <tr>
+    <td><code>shibolet_.html</code></td>
+    <td>B</td>
+    <td>H</td>
+  </tr>
+  <tr>
+    <td><code>op_lesent.html</code></td>
+    <td>C</td>
+    <td>A</td>
+  </tr>
+  <tr>
+    <td><code>gran_aughter.html</code></td>
+    <td>D</td>
+    <td>D</td>
+  </tr>
+  <tr>
+    <td><code>n_ticable.html</code></td>
+    <td>E</td>
+    <td>O</td>
+  </tr>
+  <tr>
+    <td><code>saflo_er.html</code></td>
+    <td>F</td>
+    <td>W</td>
+  </tr>
+  <tr>
+    <td><code>appog_atura.html</code></td>
+    <td>G</td>
+    <td>I</td>
+  </tr>
+  <tr>
+    <td><code>diptho_gal.html</code></td>
+    <td>H</td>
+    <td>N</td>
+  </tr>
+  <tr>
+    <td><code>bou_anvillea.html</code></td>
+    <td>I</td>
+    <td>G</td>
+  </tr>
+</table>
+
+<p>
+  and the letters replaced by underscore in this order spell the answer, <span class="answer">SHADOWING</span>.
+</p>

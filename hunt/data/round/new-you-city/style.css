@@ -1,0 +1,44 @@
+.round-map .caption {
+    background-color: #2D3D6D;
+    color: #fff;
+}
+.round-map a:hover .caption {
+	background-color: #95917A;
+    filter: brightness(1) !important;
+}
+
+.round-map .sticker img {
+    filter: drop-shadow(0 0 20px #fffa);
+}
+.round-map .sticker :focus img {
+    filter: drop-shadow(0 0 20px #0A5D6B);
+}
+.round-map .sticker:hover img {
+    filter: drop-shadow(0 0 20px #0A5D6B);
+}
+
+header {
+    aspect-ratio: auto;
+    height: 500px;
+    width: 100%;
+}
+
+.round-map {
+    min-width: 1080px;
+    padding-bottom: 40px;
+}
+.round-map .map {
+    background-image: url('images/bg-map.png');
+    background-size: cover;
+    /* NB: Safari doesn't do aspect ratios quite right, no idea why. Set an explicit height instead. */
+    height: 1555px;
+    width: 1000px;
+}
+
+.round-map .sticker .caption {
+    margin-top: -20px;
+}
+
+.sticker img {
+    width: 100%;
+}

@@ -1,0 +1,701 @@
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'lib/katex/katex.min.css' %}">
+<script defer src="{% static 'lib/katex/katex.min.js' %}"></script>
+<script defer src="{% static 'lib/katex/auto-render.min.js' %}"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        renderMathInElement(document.getElementById("a-number-of-games-solution-root"), {
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '$', right: '$', display: false},
+            ],
+            throwOnError: false
+        });
+    });
+</script>
+
+<div id="a-number-of-games-solution-root">
+    <p>The games and theories described in this puzzle are not unique to the puzzle. They are taken from combinatorial
+        game theory, specifically from the seminal and enjoyable <u>Winning Ways for Your Mathematical Plays</u>, hinted
+        in the flavortext. Most of the game positions that the puzzle uses can be found directly in that book, which
+        can be found online in PDF form. It is not necessary to find the book itself, or even the specific values of
+        the game positions. If you have the values it can make comparisons easier, but the comparisons can always be
+        done using the $G_1+ (-G_2)$ method described in the puzzle.</p>
+    <p>The following chart shows the values of each game in the puzzle, and where in the book their diagrams and values
+        can be found. Games used as coordinates are listed clockwise from the lower left. In the case of Toad-and-Frog puzzles, the images have been taken directly from the book as well.</p>
+
+    <table>
+        <tr>
+            <th>Game in puzzle</th>
+            <th>Game type</th>
+            <th>Description</th>
+            <th>Value</th>
+            <th>Can be found in Winning Ways on page</th>
+        </tr>
+        <tr>
+            <td>coordinate 1</td>
+            <td>Toads and Frogs</td>
+            <td>T _ _ F</td>
+            <td>$0$</td>
+            <td>13</td>
+        </tr>
+        <tr>
+            <td>coordinate 2</td>
+            <td>Hackenbush</td>
+            <td>RBR</td>
+            <td>$-\frac{3}{4}$</td>
+            <td>17</td>
+        </tr>
+        <tr>
+            <td>coordinate 3</td>
+            <td>Col</td>
+            <td>_ R _</td>
+            <td>$2$</td>
+            <td>made for puzzle</td>
+        </tr>
+        <tr>
+            <td>coordinate 4</td>
+            <td>Hackenbush</td>
+            <td>BBBRR</td>
+            <td>$\frac{9}{4}$</td>
+            <td>23</td>
+        </tr>
+        <tr>
+            <td>coordinate 5</td>
+            <td>Domineering</td>
+            <td>2x2</td>
+            <td>$\{1|-1\}$ aka $\pm 1$</td>
+            <td>121</td>
+        </tr>
+        <tr>
+            <td>coordinate 6</td>
+            <td>Domineering</td>
+            <td>Y-shape</td>
+            <td>$2*$</td>
+            <td>140</td>
+        </tr>
+        <tr>
+            <td>coordinate 7</td>
+            <td>Hackenbush</td>
+            <td>BBBRB</td>
+            <td>$\frac{11}{4}$</td>
+            <td>23</td>
+        </tr>
+        <tr>
+            <td>coordinate 8</td>
+            <td>Hackenbush</td>
+            <td>BB</td>
+            <td>$2$</td>
+            <td>17</td>
+        </tr>
+        <tr>
+            <td>coordinate 9</td>
+            <td>Hackenbush</td>
+            <td>RRB</td>
+            <td>$-\frac{3}{2}$</td>
+            <td>17</td>
+        </tr>
+        <tr>
+            <td>coordinate 10</td>
+            <td>Domineering</td>
+            <td>4x1</td>
+            <td>$2$</td>
+            <td>120</td>
+        </tr>
+        <tr>
+            <td>coordinate 11</td>
+            <td>Col</td>
+            <td>_ R B _</td>
+            <td>$-1$</td>
+            <td>39</td>
+        </tr>
+        <tr>
+            <td>coordinate 12</td>
+            <td>Domineering</td>
+            <td>2x3</td>
+            <td>$\{2|-\frac{1}{2}\}$ aka $\frac{3}{4} \pm \frac{5}{4}$</td>
+            <td>121</td>
+        </tr>
+        <tr>
+            <td>coordinate 13</td>
+            <td>Toads and Frogs</td>
+            <td>T _ T F F</td>
+            <td>$\uparrow$</td>
+            <td>64 (in symbolic form)</td>
+        </tr>
+        <tr>
+            <td>coordinate 14</td>
+            <td>Col</td>
+            <td>Venn (red)</td>
+            <td>$3$</td>
+            <td>made for puzzle</td>
+        </tr>
+        <tr>
+            <td>shelf 1</td>
+            <td>Hackenbush</td>
+            <td>RBB</td>
+            <td>$-\frac{1}{4}$</td>
+            <td>17</td>
+        </tr>
+        <tr>
+            <td>shelf 2</td>
+            <td>Col</td>
+            <td>R _ _</td>
+            <td>$\frac{1}{2}$</td>
+            <td>37-8</td>
+        </tr>
+        <tr>
+            <td>shelf 3</td>
+            <td>Hackenbush</td>
+            <td>B RRR</td>
+            <td>$\frac{1}{8}$</td>
+            <td>17</td>
+        </tr>
+        <tr>
+            <td>shelf 4</td>
+            <td>Toads and Frogs</td>
+            <td>T T _ F F</td>
+            <td>$*$</td>
+            <td>63-4</td>
+        </tr>
+        <tr>
+            <td>shelf 5</td>
+            <td>Domineering</td>
+            <td>U pentomino</td>
+            <td>$0$</td>
+            <td>120</td>
+        </tr>
+        <tr>
+            <td>shelf 6</td>
+            <td>Col</td>
+            <td>Venn (blue)</td>
+            <td>$-3$</td>
+            <td>made for puzzle</td>
+        </tr>
+        <tr>
+            <td>shelf 7</td>
+            <td>Domineering</td>
+            <td>6-omino</td>
+            <td>$\uparrow$</td>
+            <td>139</td>
+        </tr>
+        <tr>
+            <td>shelf 8</td>
+            <td>Hackenbush</td>
+            <td>BBRR</td>
+            <td>$\frac{5}{4}$</td>
+            <td>23</td>
+        </tr>
+        <tr>
+            <td>shelf 9</td>
+            <td>Domineering</td>
+            <td>4x2</td>
+            <td>$+_2$</td>
+            <td>125</td>
+        </tr>
+        <tr>
+            <td>shelf 10</td>
+            <td>Toads and Frogs</td>
+            <td>T _ T F T F F</td>
+            <td>$\Uparrow *$</td>
+            <td>70-71</td>
+        </tr>
+    </table>
+
+    <p>The route through the maze starts at the base of the arrow, moves in the direction indicated, and then the first
+        comparison is in cell (5,8). The table below gives the result of each comparison along the route. That
+        comparison gives the result R (since $2 > \pm 1$), and so the path turns right, and moves to (6,8). The
+        comparison there gives a "fuzzy" (not comparable) result, and the maze rules say that we don't move when we get
+        this result. So our next comparison is still in cell (6,8), but since we have done a comparison with those
+        coordinate games before, we take the first game from the shelf and add it to the left side for the new
+        comparison. And so on through this table and the grid. The rightmost column also marks when we turn 120&deg;,
+        because of a wall in the 60&deg; direction. </p>
+
+    <table>
+        <tr>
+            <th>Left Coord</th>
+            <th>Right Coord</th>
+            <th>Compare Special?</th>
+            <th>Left Game</th>
+            <th>Right Game</th>
+            <th>Left Value</th>
+            <th>Add to Left</th>
+            <th>Right value</th>
+            <th>Game Added</th>
+            <th>Verdict / Turn</th>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>8</td>
+            <td></td>
+            <td>Dom (2x2)</td>
+            <td>Hac (BB)</td>
+            <td>$\{1|-1\}$ aka $\pm 1$</td>
+            <td></td>
+            <td>$2$</td>
+            <td></td>
+            <td>R</td>
+        </tr>
+        <tr>
+            <td>6</td>
+            <td>8</td>
+            <td></td>
+            <td>Dom (Y-shape)</td>
+            <td>Hac (BB)</td>
+            <td>$2*$</td>
+            <td></td>
+            <td>$2$</td>
+            <td></td>
+            <td>NC</td>
+        </tr>
+        <tr>
+            <td>6</td>
+            <td>8</td>
+            <td>Repeat! Add to left from shelf</td>
+            <td>Dom (Y-shape)</td>
+            <td>Hac (BB)</td>
+            <td>$2*$</td>
+            <td>$-\frac{1}{4}$</td>
+            <td>$2$</td>
+            <td>Hac (RBB)</td>
+            <td>R</td>
+        </tr>
+        <tr>
+            <td>6</td>
+            <td>9</td>
+            <td></td>
+            <td>Dom (Y-shape)</td>
+            <td>Hac (RRB)</td>
+            <td>$2*$</td>
+            <td></td>
+            <td>$-\frac{3}{2}$</td>
+            <td></td>
+            <td>L</td>
+        </tr>
+        <tr>
+            <td>7</td>
+            <td>9</td>
+            <td></td>
+            <td>Hac (BBBRB)</td>
+            <td>Hac (RRB)</td>
+            <td>$\frac{11}{4}$</td>
+            <td></td>
+            <td>$-\frac{3}{2}$</td>
+            <td></td>
+            <td>L (120)</td>
+        </tr>
+        <tr>
+            <td>7</td>
+            <td>8</td>
+            <td></td>
+            <td>Hac (BBBRB)</td>
+            <td>Hac (BB)</td>
+            <td>$\frac{11}{4}$</td>
+            <td></td>
+            <td>$2$</td>
+            <td></td>
+            <td>L</td>
+        </tr>
+        <tr>
+            <td>6</td>
+            <td>8</td>
+            <td>Repeat! Add to left from shelf</td>
+            <td>Dom (Y-shape)</td>
+            <td>Hac (BB)</td>
+            <td>$2*$</td>
+            <td>$\frac{1}{2}$</td>
+            <td>$2$</td>
+            <td>Col (R _ _)</td>
+            <td>L</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>9</td>
+            <td></td>
+            <td>Dom (2x2)</td>
+            <td>Hac (RRB)</td>
+            <td>$\{1|-1\}$ aka $\pm 1$</td>
+            <td></td>
+            <td>$-\frac{3}{2}$</td>
+            <td></td>
+            <td>L</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>10</td>
+            <td>One exit. No compare.</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>6</td>
+            <td>10</td>
+            <td></td>
+            <td>Dom (Y-shape)</td>
+            <td>Dom (4x1)</td>
+            <td>$2*$</td>
+            <td></td>
+            <td>$2$</td>
+            <td></td>
+            <td>NC</td>
+        </tr>
+        <tr>
+            <td>6</td>
+            <td>10</td>
+            <td>Repeat! Add to left from shelf</td>
+            <td>Dom (Y-shape)</td>
+            <td>Dom (4x1)</td>
+            <td>$2*$</td>
+            <td>$\frac{1}{8}$</td>
+            <td>$2$</td>
+            <td>Hac (B RRR)</td>
+            <td>L (120)</td>
+        </tr>
+        <tr>
+            <td>6</td>
+            <td>9</td>
+            <td>Repeat! Add to left from shelf</td>
+            <td>Dom (Y-shape)</td>
+            <td>Hac (RRB)</td>
+            <td>$2*$</td>
+            <td>$*$</td>
+            <td>$-\frac{3}{2}$</td>
+            <td>Toa (T T _ F F)</td>
+            <td>L</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>9</td>
+            <td>Repeat! Add to left from shelf</td>
+            <td>Dom (2x2)</td>
+            <td>Hac (RRB)</td>
+            <td>$\{1|-1\}$ aka $\pm 1$</td>
+            <td>$0$</td>
+            <td>$-\frac{3}{2}$</td>
+            <td>Dom (U pentomino)</td>
+            <td>L</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>10</td>
+            <td></td>
+            <td>Hac (BBBRR)</td>
+            <td>Dom (4x1)</td>
+            <td>$\frac{9}{4}$</td>
+            <td></td>
+            <td>$2$</td>
+            <td></td>
+            <td>L</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>11</td>
+            <td></td>
+            <td>Hac (BBBRR)</td>
+            <td>Col (_ R B _)</td>
+            <td>$\frac{9}{4}$</td>
+            <td></td>
+            <td>$-1$</td>
+            <td></td>
+            <td>L</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>11</td>
+            <td></td>
+            <td>Dom (2x2)</td>
+            <td>Col (_ R B _)</td>
+            <td>$\{1|-1\}$ aka $\pm 1$</td>
+            <td></td>
+            <td>$-1$</td>
+            <td></td>
+            <td>NC</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>11</td>
+            <td>Repeat! Add to left from shelf</td>
+            <td>Dom (2x2)</td>
+            <td>Col (_ R B _)</td>
+            <td>$\{1|-1\}$ aka $\pm 1$</td>
+            <td>$-3$</td>
+            <td>$-1$</td>
+            <td>Col (Venn (blue))</td>
+            <td>R</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>12</td>
+            <td>One exit. No compare.</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>6</td>
+            <td>12</td>
+            <td>One exit. No compare.</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>6</td>
+            <td>11</td>
+            <td></td>
+            <td>Dom (Y-shape)</td>
+            <td>Col (_ R B _)</td>
+            <td>$2*$</td>
+            <td></td>
+            <td>$-1$</td>
+            <td></td>
+            <td>L</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>11</td>
+            <td>Repeat! Add to left from shelf</td>
+            <td>Dom (2x2)</td>
+            <td>Col (_ R B _)</td>
+            <td>$\{1|-1\}$ aka $\pm 1$</td>
+            <td>$\uparrow$</td>
+            <td>$-1$</td>
+            <td>Dom (6-omino)</td>
+            <td>L</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>12</td>
+            <td></td>
+            <td>Hac (BBBRR)</td>
+            <td>Dom (2x3)</td>
+            <td>$\frac{9}{4}$</td>
+            <td></td>
+            <td>$\{2|-\frac{1}{2}\}$ aka $\frac{3}{4} \pm \frac{5}{4}$</td>
+            <td></td>
+            <td>L</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>13</td>
+            <td></td>
+            <td>Hac (BBBRR)</td>
+            <td>Toa (T _ T F F)</td>
+            <td>$\frac{9}{4}$</td>
+            <td></td>
+            <td>$\uparrow$</td>
+            <td></td>
+            <td>L</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>13</td>
+            <td></td>
+            <td>Dom (2x2)</td>
+            <td>Toa (T _ T F F)</td>
+            <td>$\{1|-1\}$ aka $\pm 1$</td>
+            <td></td>
+            <td>$\uparrow$</td>
+            <td></td>
+            <td>NC</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>13</td>
+            <td>Repeat! Add to left from shelf</td>
+            <td>Dom (2x2)</td>
+            <td>Toa (T _ T F F)</td>
+            <td>$\{1|-1\}$ aka $\pm 1$</td>
+            <td>$\frac{5}{4}$</td>
+            <td>$\uparrow$</td>
+            <td>Hac (BBRR)</td>
+            <td>L (120)</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>12</td>
+            <td>One exit. No compare.</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>12</td>
+            <td>Repeat! Add to left from shelf</td>
+            <td>Hac (BBBRR)</td>
+            <td>Dom (2x3)</td>
+            <td>$\frac{9}{4}$</td>
+            <td>$+_2$</td>
+            <td>$\{2|-\frac{1}{2}\}$ aka $\frac{3}{4} \pm \frac{5}{4}$</td>
+            <td></td>
+            <td>L</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>13</td>
+            <td></td>
+            <td>Col (_ R _)</td>
+            <td>Toa (T _ T F F)</td>
+            <td>$2$</td>
+            <td></td>
+            <td>$\uparrow$</td>
+            <td></td>
+            <td>L</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>14</td>
+            <td></td>
+            <td>Col (_ R _)</td>
+            <td>Col (Venn (red))</td>
+            <td>$2$</td>
+            <td></td>
+            <td>$3$</td>
+            <td></td>
+            <td>R (120)</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>14</td>
+            <td></td>
+            <td>Hac (RBR)</td>
+            <td>Col (Venn (red))</td>
+            <td>$-\frac{3}{4}$</td>
+            <td></td>
+            <td>$3$</td>
+            <td></td>
+            <td>R</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>13</td>
+            <td></td>
+            <td>Hac (RBR)</td>
+            <td>Toa (T _ T F F)</td>
+            <td>$-\frac{3}{4}$</td>
+            <td></td>
+            <td>$\uparrow$</td>
+            <td></td>
+            <td>R</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>12</td>
+            <td></td>
+            <td>Col (_ R _)</td>
+            <td>Dom (2x3)</td>
+            <td>$2$</td>
+            <td></td>
+            <td>$\{2|-\frac{1}{2}\}$ aka $\frac{3}{4} \pm \frac{5}{4}$</td>
+            <td></td>
+            <td>NC</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>12</td>
+            <td>Repeat! Add to left from shelf</td>
+            <td>Col (_ R _)</td>
+            <td>Dom (2x3)</td>
+            <td>$2$</td>
+            <td>$\Uparrow *$</td>
+            <td>$\{2|-\frac{1}{2}\}$ aka $\frac{3}{4} \pm \frac{5}{4}$</td>
+            <td>Toa (T _ T F T F F)</td>
+            <td>L</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>11</td>
+            <td></td>
+            <td>Col (_ R _)</td>
+            <td>Col (_ R B _)</td>
+            <td>$2$</td>
+            <td></td>
+            <td>$-1$</td>
+            <td></td>
+            <td>L</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>11</td>
+            <td></td>
+            <td>Hac (RBR)</td>
+            <td>Col (_ R B _)</td>
+            <td>$-\frac{3}{4}$</td>
+            <td></td>
+            <td>$-1$</td>
+            <td></td>
+            <td>L (120)</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>12</td>
+            <td></td>
+            <td>Hac (RBR)</td>
+            <td>Dom (2x3)</td>
+            <td>$-\frac{3}{4}$</td>
+            <td></td>
+            <td>$\{2|-\frac{1}{2}\}$ aka $\frac{3}{4} \pm \frac{5}{4}$</td>
+            <td></td>
+            <td>R</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>13</td>
+            <td></td>
+            <td>Toa (T _ _ F)</td>
+            <td>Toa (T _ T F F)</td>
+            <td>$0$</td>
+            <td></td>
+            <td>$\uparrow$</td>
+            <td></td>
+            <td>R (120)</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>12</td>
+            <td></td>
+            <td>Toa (T _ _ F)</td>
+            <td>Dom (2x3)</td>
+            <td>$0$</td>
+            <td></td>
+            <td>$\{2|-\frac{1}{2}\}$ aka $\frac{3}{4} \pm \frac{5}{4}$</td>
+            <td></td>
+            <td>NC</td>
+        </tr>
+    </table>
+
+    <p>Here is the path through the grid, with a color change every time we pause at a "not comparable" result. What
+        colors you change to does not matter. The maze ends at the dead end in the lower left, and ends with a "not
+        comparable" result but no more games on the shelf.</p>
+    <img src="images/number-of-games-sol.png" class="img-l"
+         alt="a hexagonal maze, with various games corresponding to each row of the grid. The solution path is given">
+    <p>Each time we pause at a "fuzzy" (not comparable) result, we "change to a different pen color". (We also take from
+        the shelf a game that has a box around it, to set these off from the others as a confirmation.) The shapes we
+        trace with each different pen form lowercase letters, which spell out the answer "RECESS" (clued by the
+        introductory "It's playtime").</p>
+
+</div>
+
+<div class="author-note">
+    <h2>Author's Note</h2>
+    <p>One of my two STEM-oriented puzzles in this year's Hunt, this time honoring my undergraduate research in Game Theory with the legendary John Conway.</p>
+</div>

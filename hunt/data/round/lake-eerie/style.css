@@ -1,0 +1,45 @@
+.round-map .caption {
+    background-color: #FF46AE;
+    color: #fff;
+	font-size: 20px !important;
+	line-height: 24px !important;
+}
+
+.round-map a:hover .caption {
+	background-color: #42156E;
+    filter: brightness(1) !important;
+}
+
+.round-map .sticker img {
+    filter: drop-shadow(0 0 20px #fffa);
+}
+.round-map .sticker :focus img {
+    filter: drop-shadow(0 0 20px #FF46AE);
+}
+.round-map .sticker:hover img {
+    filter: drop-shadow(0 0 20px #FF46AE);
+}
+
+.page-background-top,
+.page-background-map {
+    background-size: 2500px;
+}
+
+.round-map {
+    min-width: 1000px;
+}
+.round-map .map {
+    aspect-ratio: 1400/1960;
+    background-image: url('images/bg-map.jpg');
+    background-size: cover;
+    max-width: 1400px;
+    width: 100%;
+}
+
+.round-map .sticker .caption {
+    margin-top: -20px;
+}
+
+.sticker img {
+    width: 100%;
+}

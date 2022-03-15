@@ -1,0 +1,94 @@
+<p>Every task that's completed reveals more and more of the introspection message. The message is programmatically generated, and is different for each team solving the puzzle (for reasons described below). As tasks are completed, characters are revealed in order of increasing frequency, and if a team has accomplished all 13 tasks, spaces are added to the message as well.</p>
+<p>Most of the message is an alphabetically sorted sequence of items, each taken from a different canonical list of items. The number of the item within its list is between 1 and 26 inclusive, and therefore corresponds to a letter. For example the message might include <span class="monospace">IRON MAN</span>, the first MCU movie, which corresponds with <span class="monospace">A</span>; or <span class="monospace">THE ENEMY WITHIN</span>, the fifth Star Trek episode, which corresponds with <span class="monospace">E</span>.</p>
+<p>Since the items are alphabetical within the message, it makes sense to reorder them. Each of the lists of items can be associated with one of the numbered tasks, which provides an ordering.</p>
+<table>
+    <thead>
+            <th width="35%">List</th>
+            <th width="30%">Arbitrary example</th>
+            <th width="35%">Associated task</th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Causes of death from <i>The Gashlycrumb Tinies</i></td>
+            <td><span class="monospace">HEAD WAS KNOCKED IN</span></td>
+            <td><span class="monospace">WRITE STORY OF A GASHLYCRUMB TINY</span></td>
+        </tr>
+        <tr>
+            <td>Academy Award for Best Picture winners</td>
+            <td><span class="monospace">MRS. MINIVER</span></td>
+            <td><span class="monospace">ADAPT A BOOK INTO A BEST PICTURE WINNING MOVIE</span></td>
+        </tr>
+        <tr>
+            <td>2021 Eurovision finalist songs, in order of finish</td>
+            <td><span class="monospace">KARMA BY ANXHELA PERISTERI</span></td>
+            <td><span class="monospace">PERFORM A EUROVISION SONG PASTICHE</span></td>
+        </tr>
+        <tr>
+            <td>Self-help books listed in the scavenger hunt puzzle "Book Reports" (the puzzle that leads to this task)</td>
+            <td><span class="monospace">59 SECONDS: THINK A LITTLE, CHANGE A LOT BY RICHARD WISEMAN</span></td>
+            <td><span class="monospace">COME UP WITH ANOTHER ITEM FOR THIS YEAR'S SCAVENGER HUNT LIST</span></td>
+        </tr>
+        <tr>
+            <td>Pokémon in National Pokédex order</td>
+            <td><span class="monospace">PIDGEOT</span></td>
+            <td><span class="monospace">CATCH ONE OF YOUR TEAM MEMBERS IN A POKEBALL</span></td>
+        </tr>
+        <tr>
+            <td>Episodes of <i>Star Trek: The Original Series</i></td>
+            <td><span class="monospace">THE ENEMY WITHIN</span></td>
+            <td><span class="monospace">MAKE A STAR TREK EPISODE ABOUT HUNT</span></td>
+        </tr>
+        <tr>
+            <td>Things listed in Billy Joel's "We Didn't Start the Fire"</td>
+            <td><span class="monospace">HARRY TRUMAN</span></td>
+            <td><span class="monospace">CREATE THE 2021 VERSE FOR WE DIDN'T START THE FIRE</span></td>
+        </tr>
+        <tr>
+            <td>Spaces on the classic Monopoly board.</td>
+            <td><span class="monospace">INDIANA AVENUE</span></td>
+            <td><span class="monospace">CREATE YOUR TEAM'S MONOPOLY BOARD</span></td>
+        </tr>
+        <tr>
+            <td>Nobel laureates in literature</td>
+            <td><span class="monospace">HENRYK SIENKIEWICZ</span></td>
+            <td><span class="monospace">DECLINE A NOBEL PRIZE FOR LITERATURE</span></td>
+        </tr>
+        <tr>
+            <td>Marvel Cinematic Universe movie titles</td>
+            <td><span class="monospace">AVENGERS: INFINITY WAR</span></td>
+            <td><span class="monospace">CAMEO IN AN MCU MOVIE</span></td>
+        </tr>
+        <tr>
+            <td>1 across entries from 2021's <a href="https://www.7xwords.com/index.html" target="_blank">7xword Project</a></td>
+            <td><span class="monospace">ONE ACROSS IS RUN</span></td>
+            <td><span class="monospace">MAKE A NEW 7X WITH MIT AT ONE ACROSS</span></td>
+        </tr>
+        <tr>
+            <td>Nancy Drew novel titles</td>
+            <td><span class="monospace">THE MYSTERY OF THE IVORY CHARM</span></td>
+            <td><span class="monospace">WRITE NANCY DREW SOLVES A PUZZLE</span></td>
+        </tr>
+        <tr>
+            <td>Morse code letters</td>
+            <td><span class="monospace">DOT</span></td>
+            <td><span class="monospace">SEND US A TELEGRAM</span></td>
+        </tr>
+    </tbody>
+</table>
+<br/>
+<p>The result is still encoded, differently for each team. For example, team Palindrome's message would be <span class="monospace">BOCIYHTCYTPSD</span>. The last part of the message, after the list items, are the words "<span class="monospace">AND NOW VIGENERE</span>". The Vigenère cipher can decode the result, but what key to use? As the flavor text indicates, <i>you are the key</i>. Each team must use its own username for the hunt site as its Vigenère key. Thus:<p>
+<table>
+    <tr>
+        <td style = "text-align: right">Ciphertext:</td>
+        <td><span class="monospace">BOCIYHTCYTPSD</span></td>
+    </tr>
+    <tr>
+        <td style = "text-align: right">Username as key:</td>
+        <td><span class="monospace">PALINDROMEPAL</span></td>
+    </tr>
+    <tr>
+        <td style = "text-align: right">Result:</td>
+        <td><span class="monospace">MORALECOMPASS</span></td>
+    </tr>
+</table>
+<p><p class="answer">MORALE COMPASS</p> is the puzzle's answer.</p>

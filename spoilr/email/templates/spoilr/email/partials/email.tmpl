@@ -1,0 +1,63 @@
+{% load bleach_tags humanize %}
+
+<div class="email {{ type }}">
+  <div class="email-content">
+    <div class="details">
+      <h3><a id='{{ type }}-{{ email.id }}'>{% if type == 'out' %}<em>(Sent)</em> {% endif %}{{ email.subject }}</a></h3>
+
+      {% if type == 'out' %}<div><em><strong>Handler (Discord)</strong>: {% if email.handler %}{{ email.handler.discord }}{% else %}Unknown{% endif %}</em></div>{% endif %}
+      <div><strong>From</strong>: {{ email.sender }} / <strong>To</strong>: {{ email.recipient }}</div>
+      {% if email.team or email.interaction %}
+      <div>
+        {% if email.team %}<strong>Team</strong>: <a href="{% url 'spoilr.progress:team' email.team.username %}" target="_blank">{{ email.team.name }}</a>{% endif %}
+        {% if email.team or email.interaction %}<br>{% endif %}
+        {% if email.interaction %}<strong>Interaction</strong>: <a href="{% url 'spoilr.interaction:interaction' email.interaction.url %}" target="_blank">{{ email.interaction.name }}</a>{% endif %}
+      </div>
+      {% endif %}
+
+      {% if not compact %}
+      <div>
+        {% if type == 'in' %}
+        <strong>Received</strong>: <span title="{{ email.received_time }}">{{ email.received_time|naturaltime }}</span>
+        {% else %}
+        <strong>Sent</strong>: <span title="{{ email.sent_time }}">{{ email.sent_time|naturaltime }}</span>
+        {% endif %}
+
+      </div>
+      {% endif %}
+    </div>
+
+    {% if not compact %}
+      <pre class="text">{{ email.body_text }}</pre>
+      {% if email.body_text == "" %}
+      <div class="html">{{ email.body_html|bleach }}</div>
+      {% else %}
+      <div class="html hidden" id="email-{{ email.id }}">{{ email.body_html|bleach }}</div>
+
+      <button class="show-html" data-id="{{ email.id }}">Show HTML version</button>
+      {% endif %}
+
+    {% endif %}
+  </div>
+
+  {% if not compact %}
+  {% for reply in email.outgoingmessage_set.all %}
+    {% include 'spoilr/email/partials/email.tmpl' with type='out' email=reply %}
+  {% endfor %}
+  {% endif %}
+</div>
+
+<style>
+.show-html {
+  font-size: 10px;
+}
+</style>
+<script>
+$(document).ready(function() {
+  $(".show-html").click(function() {
+    var id = $(this).data('id');
+    console.log(id);
+    $("#email-" + id).show();
+  });
+});
+</script>

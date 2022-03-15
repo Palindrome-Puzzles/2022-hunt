@@ -1,0 +1,583 @@
+<p>
+  Most sets of instructions can be resolved without much look-ahead, but there are 2 situations in which looking ahead to things that will happen in later Instructions will provide useful information that can help resolve situations occurring several Instructions earlier.
+</p>
+<p>
+  (LOOKAHEAD 1) Instruction 10B says that the car following this Instruction turns left <span class="emphasis">for the first time</span>. After completing Instruction 5, solvers know this must be the DODGE (because all other cars have turned left by then), so the DODGE cannot make any left turns during Instructions 6-9, and must perform 10B, which is useful in figuring out the proper paths without the need for brute force, especially during Instructions 7-9.
+</p>
+<p>
+  (LOOKAHEAD 2) Instruction 12 indicates that 3 of the scratchpads have at least 3 letters each, and the other has at least one letter. Since exactly 10 letters have been added up to that point, that means the scratchpads have EXACTLY 3-3-3-1 letters going into Instruction 12. That in turn means that the letter added in Instruction 11D – resulting in that scratchpad not having the same number of letters as any other – must have been the very first letter added to that pad. By the end of Instruction 4, we know that FORD, JEEP, and TESLA have all added letters to their scratchpads, so the car with the blank scratchpad until Instruction 11D must be the DODGE (which must perform Instruction 11D, and thus which cannot perform any “add a letter” instruction before 11D). This conclusion is also very useful in determining the proper paths without the need for brute force, especially during Instructions 7-9.
+</p>
+<p>
+  These conclusions, together with the following more localized logical conclusions, will see cars through the entire route without the need to brute force any significant strings of hypothetical paths.
+</p>
+
+<ol class="instructions">
+  <li>
+    <p>
+      Only JEEP can get to the third intersection, so must be D. Of the rest, only DODGE can get to the second intersection, so must be B. FORD can only go left at first Intersection, so must be A. That leaves D for TESLA.
+    </p>
+    <table>
+      <tr>
+        <th>Instruction</th>
+        <th>Car</th>
+        <th>Scratchpad</th>
+        <th>Street car is on</th>
+      </tr>
+      <tr>
+        <td>A</td>
+        <td>TESLA 4</td>
+        <td>blank</td>
+        <td>DUANESBURG</td>
+      </tr>
+      <tr>
+        <td>B</td>
+        <td>DODGE 1</td>
+        <td>blank</td>
+        <td>PENDLETON</td>
+      </tr>
+      <tr>
+        <td>C</td>
+        <td>FORD 2</td>
+        <td>blank</td>
+        <td>WALLIS</td>
+      </tr>
+      <tr>
+        <td>D</td>
+        <td>JEEP 3</td>
+        <td>blank</td>
+        <td>OLD MILL</td>
+      </tr>
+    </table>
+  </li>
+  <li>
+    <p>
+      X starts out as 4. DODGE and JEEP need X=4, FORD needs X=3; and JEEP turns X from 4 to 3, so the ordering is DODGE/JEEP/FORD, with TESLA (able to turn 3 or 4) added somewhere. (By examination, the only time X can change is when JEEP turns – then X=3.)
+    </p>
+    <p>
+      TESLA cannot be A else DODGE is 2 B’s in a row, and cannot be D else FORD is 2 Cs in a row. So DODGE is A, FORD is D, and JEEP/TESLA are B and C in some order.
+    </p>
+    <p>
+      Regardless of what happens here, JEEP must do Instruction 3C next time (see analysis in next cell), so cannot do Instruction 2C, so the order for 2 is: D/J/T/F.
+    </p>
+    <table>
+      <tr>
+        <th>Instruction</th>
+        <th>Car</th>
+        <th>Scratchpad</th>
+        <th>Street car is on</th>
+      </tr>
+      <tr>
+        <td>A</td>
+        <td>DODGE 1</td>
+        <td>blank</td>
+        <td>TURNER</td>
+      </tr>
+      <tr>
+        <td>B</td>
+        <td>JEEP 3</td>
+        <td>blank</td>
+        <td>ALEXANDRA</td>
+      </tr>
+      <tr>
+        <td>C</td>
+        <td>TESLA 4</td>
+        <td>blank</td>
+        <td>MCMAHON</td>
+      </tr>
+      <tr>
+        <td>D</td>
+        <td>FORD 2</td>
+        <td>blank</td>
+        <td>ROLLINGWOOD</td>
+      </tr>
+    </table>
+  </li>
+  <li>
+    <p>
+      DODGE is not allowed to do A, can’t R @1st to do C, and no car can get alphabetically after TURNER to enable DODGE to do D, so DODGE must be B.
+    </p>
+    <p>
+      JEEP cannot physically do D (since 2 cars cannot get earlier than ALEXANDRA to leave an “only” car alphabetically later), so must do A or C. If A, it ends on MESQUITE, and then no one can do D (TESLA would have 2 cars later than HORIZON or McMAHON – whichever it is on after doing 2B or 2C -- DODGE is B, and FORD did D last time). So JEEP must do C, landing on GOLDFINCH. (This means that JEEP cannot have done 2C, so JEEP did 2B and TESLA did 2C, fully resolving Instruction 2.)
+    </p>
+    <p>
+      FORD did D last time, so must do A now, leaving D for TESLA.
+    </p>
+    <table>
+      <tr>
+        <th>Instruction</th>
+        <th>Car</th>
+        <th>Scratchpad</th>
+        <th>Street car is on</th>
+      </tr>
+      <tr>
+        <td>A</td>
+        <td>FORD 1 (swapped # with DODGE)</td>
+        <td>blank</td>
+        <td>BRADY</td>
+      </tr>
+      <tr>
+        <td>B</td>
+        <td>DODGE 4 (swapped # with FORD and then with TESLA)</td>
+        <td>blank</td>
+        <td>TURNER</td>
+      </tr>
+      <tr>
+        <td>C</td>
+        <td>JEEP 3</td>
+        <td>blank</td>
+        <td>GOLDFINCH</td>
+      </tr>
+      <tr>
+        <td>D</td>
+        <td>TESLA 2 (swapped # with TESLA)</td>
+        <td>T</td>
+        <td>MCMAHON</td>
+      </tr>
+    </table>
+  </li>
+  <li>
+    <p>
+      Neither JEEP nor DODGE can physically do A, and FORD is not allowed, so A is TESLA.
+    </p>
+    <p>
+      The X in C will be 2, since that is TESLA’s number at the start of this round, and B swaps with it, and C uses B’s then-current number. But DODGE cannot turn right at 2d intersection (only left there), so DODGE cannot physically do C and is not allowed to do B, so must be D (at which time X is 3, after the swaps).
+    </p>
+    <p>
+      So only B and C are unaccounted, and since JEEP did C last time, it must do B this time, leaving C for FORD.
+    </p>
+    <p>
+      NOTE: TESLA (here) and FORD (in Instruction 1) have now each turned left (relevant to later Instruction 10B, where a car then turns left for the first time in the event) – see LOOKAHEAD 1, discussed above.
+    </p>
+    <table>
+      <tr>
+        <th>Instruction</th>
+        <th>Car</th>
+        <th>Scratchpad</th>
+        <th>Street car is on</th>
+      </tr>
+      <tr>
+        <td>A</td>
+        <td>TESLA 1 (swapped # with JEEP then with FORD)</td>
+        <td>T</td>
+        <td>CROCKER</td>
+      </tr>
+      <tr>
+        <td>B</td>
+        <td>JEEP 2 (swapped # with TESLA)</td>
+        <td>J</td>
+        <td>MESQUITE</td>
+      </tr>
+      <tr>
+        <td>C</td>
+        <td>FORD 3 (swapped # with TESLA)</td>
+        <td>F</td>
+        <td>RIDGEWOOD</td>
+      </tr>
+      <tr>
+        <td>D</td>
+        <td>DODGE 4</td>
+        <td>blank</td>
+        <td>LEE</td>
+      </tr>
+    </table>
+  </li>
+  <li>
+    <p>
+      According to LOOKAHEAD 2 (discussed in the preamble above), one car must add a letter to its scratchpad for the first time during Instruction 11D. By the end of Instruction 4, all cars except DODGE have added something to their scratchpad, so DODGE must remain blank until Instruction 11D. So DODGE cannot be B or C, and is not allowed to repeat D, so must be A.
+    </p>
+    <p>
+      FORD cannot do D (its first intersection is left), and is not allowed to repeat C, so must do B.
+    </p>
+    <p>
+      TESLA cannot physically do C, so must do D. Which leaves C for JEEP.
+    </p>
+    <p>
+      Now FORD, TESLA, and JEEP have all turned left in this event, so since Instruction 10B has a car turning left for the first time, that car must be DODGE, and DODGE cannot turn left prior to Instruction 10B (LOOKAHEAD 1, discussed in the preamble above).
+    </p>
+    <table>
+      <tr>
+        <th>Instruction</th>
+        <th>Car</th>
+        <th>Scratchpad</th>
+        <th>Street car is on</th>
+      </tr>
+      <tr>
+        <td>A</td>
+        <td>DODGE 4 </td>
+        <td>blank</td>
+        <td>ARDELLE</td>
+      </tr>
+      <tr>
+        <td>B</td>
+        <td>FORD 3</td>
+        <td>FC</td>
+        <td>TIMBERLINE</td>
+      </tr>
+      <tr>
+        <td>C</td>
+        <td>JEEP 2</td>
+        <td>JO</td>
+        <td>TIERRA BLANCO</td>
+      </tr>
+      <tr>
+        <td>D</td>
+        <td>TESLA 1</td>
+        <td>T</td>
+        <td>HORIZON</td>
+      </tr>
+    </table>
+  </li>
+  <li>
+    <p>
+      DODGE cannot do A or D (both have lefts), and cannot do B (its first turn must be at either Pendleton or George, but no P or G on a scratchpad); so must do C.
+    </p>
+    <p>
+      TESLA cannot do A (more than 15 intersections without turning, and even so the first left thereafter will reach a T too quickly); and is not allowed to do D, so must do B. J cannot turn left at a T (hits a dead end first) so must be D.
+    </p>
+    <p>
+      That leaves A for FORD.
+    </p>
+    <table>
+      <tr>
+        <th>Instruction</th>
+        <th>Car</th>
+        <th>Scratchpad</th>
+        <th>Street car is on</th>
+      </tr>
+      <tr>
+        <td>A</td>
+        <td>FORD 3</td>
+        <td>FC</td>
+        <td>RILEY</td>
+      </tr>
+      <tr>
+        <td>B</td>
+        <td>TESLA 1</td>
+        <td>T</td>
+        <td>JACKRABBIT</td>
+      </tr>
+      <tr>
+        <td>C</td>
+        <td>DODGE 4</td>
+        <td>blank</td>
+        <td>TURNER</td>
+      </tr>
+      <tr>
+        <td>D</td>
+        <td>JEEP 2</td>
+        <td>JOR</td>
+        <td>SUN CHASE</td>
+      </tr>
+    </table>
+  </li>
+  <li>
+    <p>
+      DODGE cannot be B (cannot add a letter, per LOOKAHEAD 2), C (did last time), or D (cannot turn left, per LOOKAHEAD 1), so must be A.
+    </p>
+    <p>
+      B cannot be JEEP (already has 3 letters on scratchpad, which from LOOKAHEAD 2 is the maximum a car can have), or TESLA (did B last time) so must be FORD.
+    </p>
+    <p>
+      D cannot be JEEP (did D last time), so must be TESLA, leaving C for JEEP.
+    </p>
+    <table>
+      <tr>
+        <th>Instruction</th>
+        <th>Car</th>
+        <th>Scratchpad</th>
+        <th>Street car is on</th>
+      </tr>
+      <tr>
+        <td>A</td>
+        <td>DODGE 4</td>
+        <td>blank</td>
+        <td>NOLAN RICHARDSON</td>
+      </tr>
+      <tr>
+        <td>B</td>
+        <td>FORD 3</td>
+        <td>FCP</td>
+        <td>RILEY</td>
+      </tr>
+      <tr>
+        <td>C</td>
+        <td>JEEP 2</td>
+        <td>JOR</td>
+        <td>SUN CHASE</td>
+      </tr>
+      <tr>
+        <td>D</td>
+        <td>TESLA 1</td>
+        <td>T</td>
+        <td>HORIZON</td>
+      </tr>
+    </table>
+  </li>
+  <li>
+    <p>
+      C must be TESLA, since that is the only car that can currently add a letter (per LOOKAHEAD 2).
+    </p>
+    <p>
+      FORD cannot physically do A, and did B last time, so must be D.
+    </p>
+    <p>
+      DODGE did A last time, so must be B. That leaves A for JEEP.
+    </p>
+    <table>
+      <tr>
+        <th>Instruction</th>
+        <th>Car</th>
+        <th>Scratchpad</th>
+        <th>Street car is on</th>
+      </tr>
+      <tr>
+        <td>A</td>
+        <td>JEEP 2</td>
+        <td>JOR</td>
+        <td>SUN CHASE</td>
+      </tr>
+      <tr>
+        <td>B</td>
+        <td>DODGE 4</td>
+        <td>blank</td>
+        <td>NOLAN RICHARDSON</td>
+      </tr>
+      <tr>
+        <td>C</td>
+        <td>TESLA 3 (swapped # with FORD)</td>
+        <td>TN</td>
+        <td>HORIZON</td>
+      </tr>
+      <tr>
+        <td>D</td>
+        <td>FORD 1 (swapped # with TESLA)</td>
+        <td>FCP</td>
+        <td>RILEY</td>
+      </tr>
+    </table>
+  </li>
+  <li>
+    <p>
+      D must be TESLA, since that is the only car that can currently add a letter (per LOOKAHEAD 2).
+    </p>
+    <p>
+      C must be DODGE, since DODGE cannot be A (left turn, per LOOKAHEAD 1) or B (did B last time).
+    </p>
+    <p>
+      That means JEEP must be B (since it did A last time), and FORD must be A.
+    </p>
+    <table>
+      <tr>
+        <th>Instruction</th>
+        <th>Car</th>
+        <th>Scratchpad</th>
+        <th>Street car is on</th>
+      </tr>
+      <tr>
+        <td>A</td>
+        <td>FORD 1</td>
+        <td>FCP</td>
+        <td>STRATFORD</td>
+      </tr>
+      <tr>
+        <td>B</td>
+        <td>JEEP 2</td>
+        <td>JOR</td>
+        <td>SUN CHASE</td>
+      </tr>
+      <tr>
+        <td>C</td>
+        <td>DODGE 4</td>
+        <td>blank</td>
+        <td>NOLAN RICHARDSON</td>
+      </tr>
+      <tr>
+        <td>D</td>
+        <td>TESLA 3</td>
+        <td>TNW (W from CACTUS VIEW)</td>
+        <td>RIFTON</td>
+      </tr>
+    </table>
+  </li>
+  <li>
+    <p>
+      The DODGE has never turned left until now, while all others cars have, so DODGE must be B (which has a car turning left for the first time in the event). TESLA cannot physically do A, and FORD did A last time, so JEEP must be A. Since TESLA did D last time, C/D must be TESLA/FORD.
+    </p>
+    <table>
+      <tr>
+        <th>Instruction</th>
+        <th>Car</th>
+        <th>Scratchpad</th>
+        <th>Street car is on</th>
+      </tr>
+      <tr>
+        <td>A</td>
+        <td>JEEP 2</td>
+        <td>JOR</td>
+        <td>AZALEA</td>
+      </tr>
+      <tr>
+        <td>B</td>
+        <td>DODGE 4</td>
+        <td>blank</td>
+        <td>YVONNE RICHARDSON</td>
+      </tr>
+      <tr>
+        <td>C</td>
+        <td>TESLA 3</td>
+        <td>TNW</td>
+        <td>SUMMIT BREEZE</td>
+      </tr>
+      <tr>
+        <td>D</td>
+        <td>FORD 1</td>
+        <td>FCP</td>
+        <td>REDBUD</td>
+      </tr>
+    </table>
+  </li>
+  <li>
+    <p>
+      By LOOKAHEAD 2, 11D must be a car adding a letter to its scratchpad for the first time to give the needed scratchpads of 3, 3, 3, 1 for Instruction 12. So, 11D must be the DODGE (since all other cars have added to their scratchpad, and if this addition was the third letter onto a scratchpad, its scratchpad length would match that of another car, contrary to the Instruction).
+    </p>
+    <p>
+      JEEP is the only car that can get to 2 traffic lights, so JEEP is C.
+    </p>
+    <p>
+      FORD cannot do B (there’s only a left at FORD’s first intersection), so A/B must be FORD/TESLA.
+    </p>
+    <table>
+      <tr>
+        <th>Instruction</th>
+        <th>Car</th>
+        <th>Scratchpad</th>
+        <th>Street car is on</th>
+      </tr>
+      <tr>
+        <td>A</td>
+        <td>FORD 1</td>
+        <td>FCP</td>
+        <td>REDBUD</td>
+      </tr>
+      <tr>
+        <td>B</td>
+        <td>TESLA 3</td>
+        <td>TNW</td>
+        <td>ANDERPONT</td>
+      </tr>
+      <tr>
+        <td>C</td>
+        <td>JEEP 2</td>
+        <td>JOR</td>
+        <td>SUN CHASE</td>
+      </tr>
+      <tr>
+        <td>D</td>
+        <td>DODGE 4</td>
+        <td>H (2d letter of 2d word in SUN CHASE)</td>
+        <td>YVONNE RICHARDSON</td>
+      </tr>
+    </table>
+  </li>
+  <li>
+    <p>
+      DODGE has to be C, since it must turn at the first intersection.
+    </p>
+    <p>
+      JEEP can only turn on P before hitting a T, so must do A.
+    </p>
+    <p>
+      TESLA cannot repeat B, so must do D, leaving FORD for B.
+    </p>
+    <table>
+      <tr>
+        <th>Instruction</th>
+        <th>Car</th>
+        <th>Scratchpad</th>
+        <th>Street car is on</th>
+      </tr>
+      <tr>
+        <td>A</td>
+        <td>JEEP 2</td>
+        <td>JOR</td>
+        <td>PAPER MOON</td>
+      </tr>
+      <tr>
+        <td>B</td>
+        <td>FORD 1</td>
+        <td>FCP</td>
+        <td>WESTLAKE</td>
+      </tr>
+      <tr>
+        <td>C</td>
+        <td>DODGE 4</td>
+        <td>H</td>
+        <td>ROYAL RUN</td>
+      </tr>
+      <tr>
+        <td>D</td>
+        <td>TESLA 3</td>
+        <td>TNW</td>
+        <td>HORIZON VISTA</td>
+      </tr>
+    </table>
+  </li>
+  <li>
+    <p>
+      JEEP and FORD cannot physically do D, and TESLA did D last time, so DODGE must be D.
+    </p>
+    <p>
+      FORD cannot physically do A and did B last time, so must do C.
+    </p>
+    <p>
+      JEEP did A last time, so must do B.
+    </p>
+    <p>
+      That leaves TESLA doing A.
+    </p>
+    <table>
+      <tr>
+        <th>Instruction</th>
+        <th>Car</th>
+        <th>Scratchpad</th>
+        <th>Street car is on</th>
+      </tr>
+      <tr>
+        <td>A</td>
+        <td>TESLA 3</td>
+        <td>TNW</td>
+        <td>RIFTON, park car at DUST DEVIL</td>
+      </tr>
+      <tr>
+        <td>B</td>
+        <td>JEEP 2</td>
+        <td>JOR</td>
+        <td>PAPER MOON, park car at STAR LIGHT</td>
+      </tr>
+      <tr>
+        <td>C</td>
+        <td>FORD 1</td>
+        <td>FCP</td>
+        <td>WESTLAKE, park car at THE HIGH ROAD</td>
+      </tr>
+      <tr>
+        <td>D</td>
+        <td>DODGE 4</td>
+        <td>H</td>
+        <td>TOWER GATE, park car at ROAD HOUSE</td>
+      </tr>
+    </table>
+  </li>
+</ol>
+<p>
+  After completing the bonus Instruction, the cars’ scratchpads read:
+</p>
+<ol>
+  <li>FORD – 1 THE</li>
+  <li>JEEP – 2 STAR</li>
+  <li>TESLA – 3 DUST</li>
+  <li>DODGE – 4 ROAD</li>
+</ol>
+<p>
+  Reading the words in 1234 order gives <span class="answer">THE STARDUST ROAD</span>, the answer to the puzzle.
+</p>

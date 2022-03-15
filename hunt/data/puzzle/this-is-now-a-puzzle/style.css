@@ -1,0 +1,15 @@
+.poster-top {
+  height: 375px;
+  width: 176px;
+  margin-bottom: 0px;
+}
+.poster-bottom {
+  height: 187px;
+  width: 264px;
+}
+
+.trying {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

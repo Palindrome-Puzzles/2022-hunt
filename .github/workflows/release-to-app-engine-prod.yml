@@ -1,0 +1,20 @@
+name: 'Prod: Release to GAE'
+
+on: workflow_dispatch
+
+# Note: Deliberately not using a concurrency setting, as app engine does allow
+# multiple simultaneous pushes, and this was, fixes can be pushed ASAP.
+
+jobs:
+  release:
+    uses: 'Palindrome-Puzzles/2022-hunt/.github/workflows/release-to-app-engine.yml@main'
+    with:
+      django_env: 'prod_db_only_gcloud'
+      redis_env: 'prod_gcloud'
+      site_service: 'default'
+      site_service_yaml: 'app-prod-site.yaml'
+      backend_service_yaml: 'app-prod-backend.yaml'
+      service_limit: 1
+    secrets:
+      GCLOUD_CREDENTIALS: ${{ secrets.GOOGLE_APPLICATIONS_CREDENTIAL }}
+      GCLOUD_PROJECT_ID: ${{ secrets.GCLOUD_PROJECT_ID }}

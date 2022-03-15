@@ -1,0 +1,65 @@
+{% extends "hq/layout.tmpl" %}
+{% load spacelesser static %}
+
+{% block heading %}Hint Log{% endblock %}
+
+{% block stylesheets %}
+<style>
+td, th {
+  font-size: 10px;
+}
+</style>
+{% endblock %}
+
+{% block breadcrumb %}{% endblock %}
+
+{% block content %}
+
+    Filter: <input id="filter">
+    {% if limit %}
+    <b>This is the short log</b>, for the full log see <a href="{% url 'hq_hintlog' %}">here</a>.<br>
+    {% endif %}
+    <script>
+const element = document.getElementById('filter');
+element.value = decodeURIComponent(location.hash.replace(/^#/, ''));
+    </script>
+    <table id="entries">
+      <thead>
+        <tr>
+          <th>Time</th>
+          <th>Team URL</th>
+          <th>Puzzle</th>
+          <th>Claimant</th>
+          <th>Claim Time</th>
+          <th>Question</th>
+          <th>Result</th>
+        </tr>
+      </thead>
+      {% for e in entries %}
+      <tr class="entry">
+<td>{{ e.entry.create_time|date:'D H:i:s' }}</td>
+<td>{{ e.entry.team.username }}</td>
+<td>{{ e.entry.puzzle.name|safe }}</td>
+<td>{{ e.task.handler }}</td>
+<td>{{ e.task.claim_time|date:'D H:i:s' }}</td>
+<td class="text">{{ e.entry.question }}</td>
+<td class="text">{{ e.entry.result }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+    <script>
+function applyFilter() {
+  const re = element.value && new RegExp(element.value, 'ims');
+  for (const row of document.getElementById('entries').tBodies[0].rows)
+    row.style.display = (!re || re.test(row.textContent)) ? '' : 'none';
+}
+element.addEventListener('input', () => {
+  history.replaceState(null, '', element.value ? '#' + element.value : '.');
+  applyFilter();
+});
+if (element.value) {
+  element.focus();
+  applyFilter();
+}
+    </script>
+{% endblock %}

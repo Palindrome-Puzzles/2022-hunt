@@ -1,0 +1,204 @@
+.very-top-image {
+    text-align: center;
+}
+
+.summary{
+    width: 800px;
+}
+
+.top-name {
+    width: 20%;
+    padding: 12px;
+}
+
+.top-answer {
+    width: 25%;
+    text-align: center;
+    font-family: monospace;
+}
+
+.top-empty {
+    width: 5%;
+}
+
+.top-image-cell {
+    width: 50%;
+}
+
+.top-image-cell-public {
+    width: 45%;
+}
+
+.top-checkbox-cell {
+    width: 5%;
+}
+
+.top-image {
+    min-height: 66px
+}
+
+.result {
+    display: block;
+    max-width: 400px;
+    max-height: 200px;
+    width: auto;
+    height: auto;
+}
+
+.minipuzzle {
+    break-inside: avoid-page;
+}
+
+.minipuzzle > .flavor{
+    border-style: none
+}
+
+.minipuzzle > hr {
+    margin-top: 54px;
+}
+
+.playplace-img {
+    display: block;
+    max-width: 800px;
+    width: auto;
+    height: auto;
+}
+
+.sunblock-table{
+    max-width: 800px;
+    background-color: aqua;
+}
+
+.sunblock-table img{
+    max-width:130px;
+    height:auto;
+    width: auto;
+}
+
+.mouse-taken{
+    border-style: solid;
+    border-width: 1px;
+    border-color: black;
+}
+
+.mt-corner {
+    color-adjust:exact;
+    -webkit-print-color-adjust: exact;
+    background-color: rgb(192, 248, 248);
+}
+
+.mt-v {
+    width: 20px;
+}
+.mt-v div {
+    min-height: 116px;
+}
+
+.mt-v span {
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 106px;
+    font-size: larger;
+}
+
+.mt-h {
+    width: 116px;
+    height: 20px;
+}
+.mt-hv {
+    width: 116px;
+    height: 116px;
+    padding: 2px;
+    color-adjust:exact;
+    -webkit-print-color-adjust: exact;
+    background-color: rgb(192, 248, 248);
+}
+.mt-hv img{
+    max-width: 100%;
+    width: auto;
+    height: auto;
+}
+.mt-b {
+    color-adjust:exact;
+    -webkit-print-color-adjust: exact;
+    background-color: black;
+    color: white;
+}
+.mt-g {
+    color-adjust:exact;
+    -webkit-print-color-adjust: exact;
+    background-color: gray;
+}
+.mt-o {
+    color-adjust:exact;
+    -webkit-print-color-adjust: exact;
+    background-color:orange;
+}
+.mt-w {
+    color-adjust:exact;
+    -webkit-print-color-adjust: exact;
+    background-color: white;
+}
+.mt-edge{
+    min-height: 136px;
+    font-size: large;
+    text-align: center;
+    align-self: center;
+    font-weight: bold;
+}
+.mt-box{
+    text-align: center;
+}
+
+.to-do-img {
+    display: block;
+    max-width: 775px;
+    width: auto;
+    height: auto;
+}
+
+.castle-grid {
+    text-align: center;
+    font-style: monospace;
+}
+
+.castle-img {
+    display: block;
+    max-width: 400px;
+    width: auto;
+    height: auto;
+}
+
+.crystal-box {
+    max-width: 800px;
+    max-height: 800px;
+    overflow: auto;
+}
+
+.crystal-img {
+    width: 1533px;
+    height: 1773px;
+}
+
+.crystal-img-print {
+    max-width: 900px;
+    width: auto;
+    height: auto;
+}
+
+.the-pitch {
+    text-align: center;
+}
+
+.us-highlight {
+    color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+    background-color: rgb(172, 252, 252);
+}
+
+@media print {
+table.us-grid td {
+        color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+    }
+}

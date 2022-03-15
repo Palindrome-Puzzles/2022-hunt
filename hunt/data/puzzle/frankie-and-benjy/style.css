@@ -1,0 +1,21 @@
+.pictures {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+}
+
+.captioned {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 10px;
+  width: 333px;
+}
+
+.puzzle img {
+  border: 1px solid black;
+  margin-bottom: 10px;
+  max-height: 280px;
+  max-width: 280px;
+}

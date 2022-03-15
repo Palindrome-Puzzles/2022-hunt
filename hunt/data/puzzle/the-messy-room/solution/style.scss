@@ -1,0 +1,33 @@
+@import '../common.scss';
+
+$colors: #f4cccc, #93c47d, #b4a7d6, #f1c232, #6d9eeb, #00ffff, #00ff00;
+$n: length($colors);
+
+@for $i from 1 through $n {
+    .grid[data-board="#{$i - 1}"] .letter.up {
+        background-color: nth($colors, $i);
+    }
+
+    .grid[data-board="#{$i - 1}"] .letter.down {
+        background-color: nth($colors, if($i == 1, -1, $i - 1));
+    }
+
+    .letters[data-board="#{$i - 1}"] .letter {
+        background-color: nth($colors, $i);
+    }
+}
+
+.letters {
+  td.letter {
+    border: 1px solid #000;
+  }
+}
+
+.toggle-interactive-wrapper {
+    margin-bottom: 1em;
+    text-align: center;
+}
+
+.extract {
+    font-weight: bold;
+}

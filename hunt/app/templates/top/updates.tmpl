@@ -1,0 +1,71 @@
+{% extends "hunt/site_layout.tmpl" %}
+{% load hosts humanize static %}
+
+{% block title %}Updates from HQ | {{ block.super }}{% endblock %}
+
+{% block site_stylesheets %}
+<style type="text/css">
+  .hqupdate {
+    margin: .5em 0;
+  }
+  .hqupdate a {
+    color: #000;
+  }
+
+  .notice {
+    font-style: normal;
+    margin-bottom: 0.5rem;
+    padding: 16px;
+    background-color: #DEF4FF;
+  }
+
+  h3 {
+    margin-bottom: .2em;
+  }
+
+  .timestamp {
+    font-size: .8em;
+    font-weight: normal;
+    color: #555;
+  }
+
+  .message {
+    padding-left: .8em;
+    border-left: 2px solid #ccc;
+  }
+</style>
+{% endblock %}
+
+{% block site_content %}
+<main class="faq">
+  <header>
+    <h1>Updates</h1>
+  </header>
+
+  <div class="paper-edge top"></div>
+  <section id="main-content" class="content">
+    <p class="notice">Errata, major news, etc will be posted here and sent to your team email. Nothing on this page is a puzzle.</p>
+
+    {% for update in updates %}
+    <div class="hqupdate">
+      <hr>
+      {% if update.hidden %}
+        <h3>Errata for Unknown Puzzle</h3>
+        <span class="timestamp" title="{{ update.timestamp }}">{{ update.timestamp|naturaltime }}</span>
+      {% else %}
+        {% if update.puzzle %}
+        <h3><a href="{% url 'puzzle_view' update.puzzle.url %}">{{ update.update.subject }}</a></h3>
+        {% else %}
+        <h3>{{ update.update.subject }}</h3>
+        {% endif %}
+        <span class="timestamp" title="{{ update.timestamp }}">{{ update.timestamp|naturaltime }}</span>
+        <div class="message">
+        {{ update.update.body|safe|linebreaks }}
+        </div>
+      {% endif %}
+    </div>
+    {% endfor %}
+  </section>
+  <div class="paper-edge bottom"></div>
+</main>
+{% endblock site_content %}

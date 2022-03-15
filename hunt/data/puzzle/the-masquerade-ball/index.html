@@ -1,0 +1,39 @@
+{% load assets romance %}
+
+<div class="flavor">
+Could the component you seek be found at Heartford's Masquerade Ball? Unmask the attendees to receive a note from each about their various assignations that should prove useful in your search.
+</div>
+
+{% if round_info.puzzles|length > 0 %}
+{% if team.is_public %}
+<p class="notice">The identity of each attendee is revealed as the answer to the corresponding puzzle in <a href="{% url 'round_view' round_info.round.url %}">Heartford</a>.</p>
+{% endif %}
+<div class="costumes" data-skip-inline-styles="true">
+{% for item in round_info.puzzles|romance_costumes %}
+<div class="costume" data-skip-inline-styles="true">
+	<img class="no-copy" src="{% rd item.costume_url %}" alt="">
+	<div class="name" data-skip-inline-styles="true">
+	{{ item.costume_name }}
+	{% if item.solved or team.is_public %}
+		<br class="no-copy">is<br class="no-copy">
+		{% if team.is_public %}<span class="spoiler answer">{% endif %}{{ item.puzzle.answer }}{% if team.is_public %}</span>{% endif %}
+	{% endif %}
+	</div>
+</div>
+{% endfor %}
+</div>
+{% endif %}
+
+{% if round_info.puzzles|length > 0 %}
+{% if team.is_public %}
+<p class="notice">The notes below were revealed as you solved the corresponding puzzle in <a href="{% url 'round_view' round_info.round.url %}">Heartford</a>.</p>
+{% endif %}
+<div class="notes">
+{% for note in round_info.puzzles|romance_notes:team.is_public %}
+	<div class="note{% if team.is_public %} spoiler-note{% endif %}"{% if team.is_public %} tabindex="0"{% endif %}><div data-skip-inline-styles="true">{{ note|safe }}</div></div>
+{% endfor %}
+</div>
+{% endif %}
+
+<button id="clipboard-button"></button>
+

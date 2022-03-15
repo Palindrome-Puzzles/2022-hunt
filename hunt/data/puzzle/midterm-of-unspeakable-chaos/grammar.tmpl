@@ -1,0 +1,145 @@
+{% extends 'round_files/'|add:round_info.round.url|add:'/subview.tmpl' %}
+{% load assets %}
+
+{% block subview_title %}Grammar of the Language of the Realm of Unspeakable Chaos (as Known at Time of Compilation){% endblock %}
+{% block subview_heading %}Grammar of the Language of the Realm of Unspeakable Chaos (as Known at Time of Compilation){% endblock %}
+
+{% block subview_content %}
+<p>(A compilation of the findings of Wald, K. [2001], Sturtevant, D. [2003], Wald, K. [2008], and Hesterberg, A. [2013], with a small amount of added material, based on the original texts, included where needed for the sake of clarity.) </p>
+
+<h3>1. Nouns</h3>
+<dl>
+<dt>i) Gender</dt>
+<dd><p>There are three grammatical genders in this language, which we shall designate arbitrarily by 1, 2, and 3.</p>
+<p>If a noun has gender n, then so must any modifier (adjective, number, or possessive) modifying it.</p>
+<p>The gender of a word is marked on the last vowel of the word. Specifically, with each gender there are associated two vowels, one "back" (formed with the tongue towards the back of the mouth) and one "front." The assignments are:</p>
+<table>
+<tr><th scope="col">Gender</th><th scope="col">Back</th><th scope="col">Front</th></tr>
+<tr><td>1</td><td>a</td><td>e</td></tr>
+<tr><td>2</td><td>o</td><td>i</td></tr>
+<tr><td>3</td><td>u</td><td>y</td></tr>
+</table>
+<p>The last vowel of a noun, adjective, or determiner of a given gender will be one of the two vowels associated with that gender. (Which vowel is used depends on various considerations discussed below.)</p>
+</dd>
+<dt>ii) Derivation</dt>
+<dd><p>There are numerous unanalyzable simple nouns in this language, such as <u>fogu</u> ("ring") and <u>woda</u> ("star").</p>
+<p>All such nouns end in a back vowel in the singular. There are also ways of deriving other nouns from these:</p>
+<ol type="a">
+<li>Diminutives
+	<ul class="no-bullets">
+	<li>The diminutive of a noun is formed by adding the suffix <u>-l</u> to the noun, and making its last vowel a front vowel.<br /><br />
+For example, from <u>fogu</u> ("ring") we can derive <u>fogyl</u> ("small ring").</li>
+	</ul>
+</li>
+<li>Inversives
+	<ul class="no-bullets">
+	<li>The inversive of a noun (that is, a noun describing a shape just like the original, except flipped vertically) is formed by making its first vowel a front vowel, and prepending a copy of the <u>original</u> (unmodified) first vowel to the beginning of the word. <br /><br />
+For example, from <u>mala</u> ("/-shape") we can derive <u>amela</u> ("\-shape"), and
+from <u>uta</u> ("upward-pointing triangle") we can derive <u>uyta</u> ("downward-pointing triangle").</li>
+</ul>
+</li>
+<li>Reflectives
+	<ul class="no-bullets">
+	<li>The reflective of a noun (that is, a noun describing a shape just like the original, except flipped horizontally) is formed by making its first vowel a front vowel, and prepending a copy of this <u>modified</u> first vowel to the beginning of the word.<br /><br />
+For example, from <u>pratu</u> ("rightward-pointing arrow") we can derive <u>epretu</u> ("leftward-pointing arrow").<br /><br />
+If the inverse of a shape is the same as the reflection of the shape, then the inversive form of the noun is used.</li>
+</ul>
+</li>
+</ol>
+</dd>
+<dt>iii) Inflection</dt>
+<dd><p>Nouns inflect for number. The plural form of a noun is derived from its singular form by infixing <u>-n-</u> after its first vowel, and making its last vowel a front vowel (if it is not a front vowel already). Thus, the plural of <u>olo</u> ("Y-shape") is <u>onli</u> ("Y-shapes"), the plural of <u>amela</u> ("\-shape") is <u>anmele</u> ("\-shapes"), and the plural of <u>malel</u> ("small /-shape") is <u>manlel</u> ("small /-shapes").</p>
+</dd>
+</dl>
+<h3>2. Modifiers</h3>
+<p>The vowel in a determiner (that is, a number or possessive) modifying a noun is the back vowel associated with that noun's gender.</p>
+<p>The last vowel in an adjective directly modifying a noun (that is, preceding the noun as part of a noun phrase) is the front vowel associated with that noun's gender. Any adjective not directly modifying a noun has <u>a</u> as its last vowel; such adjectives include:</p>
+<ol type="a">
+<li>a color word in a <u>-re</u> construction in a flag or road sign description (see the Appendix below).</li>
+<li>an adjective used as a modifying element in a compound word (see "Compound formation" below).</li>
+<li>a predicate adjective &mdash; that is, one used with a form of <u>na</u> ("is/am/are").</li>
+</ol>
+<h3>3. Verbs</h3>
+<dl>
+<dt>i) Derivation</dt>
+<dd><p>There are numerous unanalyzable simple verbs in this language, such as <u>wum</u> ("wear") and <u>mylop</u> ("see").</p>
+<p>There are also ways of deriving verbs from other words:</p>
+<ol type="a">
+<li>Negatives
+	<ul class="no-bullets">
+	<li>To derive the negative of a verb, add <u>r</u> after the last vowel;<br />
+for example, from <u>wum</u> ("wear") we derive <u>wurm</u> ("does not wear").</li>
+	</ul>
+</li>
+<li>Denominals
+	<ul class="no-bullets">
+		<li>In the grammars and texts we can see two methods of deriving a verb from an associated noun:
+			<ul class="no-bullets">
+				<li>Make the last vowel front and append <u>z_t</u>, where _ is a copy of the original <u>last</u> vowel.</li>
+				<li>Leave the last vowel unchanged and append <u>z_t</u>, where _ is a copy of the original <u>next-to-last</u> vowel. (Attested for nouns ending in <u>-la</u>.) </li>
+			</ul>
+		</li>
+		<li>For example, from <u>tulola</u> ("lover") the former would give a verb <u>tulolezat</u> while the latter would give a different verb <u>tulolazot</u>.</li>
+	</ul>
+</li>
+</ol>
+</dd>
+<dt>ii) Inflection</dt>
+<dd>
+<p>Verbs inflect only for tense. The present tense is unmarked; other tenses are formed as follows:</p>
+<ol type="a">
+<li>To form the past tense, make the last vowel a front vowel, and append a copy of the <u>original</u> last vowel to the <u>end</u> of the word.<br /><br />
+For example, from <u>na</u> ("is/am/are") we get <u>nea</u> ("was/were") and from <u>plagurz</u> ("do/does not mean") we get <u>plagyrzu</u> ("did not mean").</li>
+<li style="padding-top:1rem;">To form the future/imperative tense, make the last vowel a front vowel, and prepend a copy of the <u>original</u> last vowel to the <u>front</u> of the word.<br /><br />
+For example, from <u>wanub</u> (help) we get <u>uwanyb</u> ("will help" or "help!").</li>
+</ol>
+</dd>
+</dl>
+<h3>4. Compound formation</h3>
+<p>The elements of a (noncoordinative) compound are ordered with the modifying element following the modified element.</p>
+<p>Note that title + name combinations are treated as compounds, and the title comes second.</p>
+<p>Compounds can combine in arbitrarily long complexes. For instance, in <u>zopa-wudo-moldan-sulda</u> ("red-green colorblind")</p>
+<ol type="a">
+<li><u>zopa-wudo</u> ("colorblind") has <u>wudo</u> ("color") modifying <u>zopa</u> ("blind"),</li>
+<li><u>moldan-sulda</u> is a coordinative compound of <u>moldan</u> ("green") and <u>sulda</u> ("red"), and then</li>
+<li><u>moldan-sulda</u> modifies <u>zopa-wudo</u>.</li>
+</ol>
+<h3>5. Syntax</h3>
+<dl>
+<dt>i) Noun phrases</dt>
+<dd><p>In a noun phrase, adjectives precede the noun, and determiners follow it. Thus, "6 white Y-shapes" is <u>nasti onli dor</u> ("white" "Y-shapes" "6").</p></dd>
+<dt>ii) <u>-re</u></dt>
+<dd><p>The suffix <u>-re</u> is a clitic postposition &mdash; that is, it serves the same purpose a preposition does, but is attached directly to the end of a word or phrase.</p>
+
+<p>It has various uses which may be translated as "on," "in," "in the context of," and the like; for example, <u>"Batugu-Woda"re</u> ("on 'Star Trek'"), <u><i>Khaotika</i>re</u> ("in the Chaotic language"), and <u>fire</u> ("as far as he/she/it is/was concerned").</p>
+
+<p>There are also specialized uses of <u>-re</u> in flag and road sign descriptions, for which see the Appendix below.</p>
+</dd>
+<dt>iii) Simple and complex sentences</dt>
+<dd><p>In a simple sentence, Verb, Subject, and (if present) Object occur in that order. This order is the same in declarative or interrogative sentences.</p>
+
+<p>Simple sentences can then be joined with conjunctions into complex sentences.</p>
+</dd>
+</dl>
+
+<h3>Appendix: Flag and Road Sign Descriptions</h3>
+<p>Much discussion of the Realm of Unspeakable Chaos has focused on their visual arts; a discussion of the specific linguistic conventions of descriptions of flags and road signs must therefore be included for completeness.</p>
+<p>(The below covers linguistic matters; much additional material concerning the legal requirements for road signs can be found in Sturtevant, D. [2003].)</p>
+
+<p>The complete description of a flag or sign consists of a <u>-re</u> phrase describing its background, followed by noun phrases (separated by <u>py</u> or <u>pe</u>) describing the shapes on it.</p>
+
+<p>When a background consists of a single color, it is described with a phrase consisting of the color word, with <u>a</u> as its last vowel, with the clitic <u>-re</u> attached.
+Thus, "With a yellow background" is <u>magare</u>.</p>
+
+<p>When a background consists of multiple colors divided by lines in a given shape (this only happens for flags, not signs) then it is described by the noun for that shape
+with the clitic <u>-re</u> attached, preceded by the words for the colors (in the same gender as the noun) separated by <u>py</u> ("and").</p>
+
+<p>Thus, "with a background of white, yellow and blue separated by lines in an inverted T-shape" is <u>nasty py magy py blyg durure</u>.</p>
+
+<p>In the list of shapes on the background, a flag description will use <u>py</u> throughout.</p>
+
+<p>In contrast, sign descriptions categorize the shapes they use into category 1 (T-, X-, or Y-shape, or arrow), category 2 (ring, triangle, diamond), or category 3 (diagonal line); <u>py</u> is used to separate shapes within a category, while <u>pe</u> is used to separate shapes between categories, with the lower category always coming first.</p>
+
+<p>In addition, in a flag description every shape in the list must have a number, while in a sign description a category 1 shape must have a number while a category 2 or 3 shape must omit the number. Thus, "on a yellow background, two white leftward-pointing arrows in a black diamond" would be <u>magare nasty enprety um py dril babo ot</u> in a flag description but <u>magare nasty enprety um pe dril babo</u> in a sign description.</p>
+
+{% endblock %}

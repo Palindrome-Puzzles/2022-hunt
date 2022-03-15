@@ -1,0 +1,89 @@
+/* Use color-text styles for blank cells of color that include the name of the color */
+/* Always put them in the order color-bg color-text so that color-text overrides the bg color setting */
+/* otherwise, bg color settings are accessible combos that should be used when there's text in a colored cell */
+
+.blue-bg {
+	color: #FFFFFF;
+	background-color: #332288;
+}
+
+.blue-text {
+	color: #332288;
+}
+
+.fuchsia-bg {
+	color: #FFFFFF;
+	background-color: #AB4398;
+}
+
+.fuchsia-text {
+	color: #AB4398;
+}
+
+.gold-bg {
+	color: #000000;
+	background-color: #DECB76;
+}
+
+.gold-text {
+	color: #DECB76;
+}
+
+.gray-bg {
+	color: #000000;
+	background-color: #BBBBBB;
+}
+
+.gray-text {
+	color: #BBBBBB;
+}
+
+.green-bg {
+	color: #FFFFFF;
+	background-color: #137633;
+}
+
+.green-text {
+	color: #137633;
+}
+
+.olive-bg {
+	color: #000000;
+	background-color: #9A9832;
+}
+
+.olive-text {
+	color: #9A9832;
+}
+
+.red-bg {
+	color: #000000;
+	background-color: #CD6576;
+}
+
+.red-border /* for table cell highlight */ {
+	border: 2px solid red !important;
+}
+
+.red-text {
+	color: #CD6576;
+}
+
+.skyblue-bg {
+	color: #000000;
+	background-color: #89CBED;
+}
+
+.skyblue-text {
+	color: #89CBED;
+}
+
+.teal-bg {
+	color: #000000;
+	background-color: #46AA98;
+}
+
+.teal-text {
+	color: #46AA98;
+}
+

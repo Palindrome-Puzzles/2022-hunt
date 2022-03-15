@@ -1,0 +1,2 @@
+# Google App Engine (standard) will use this requirements file.
+-r requirements/release_gcloud.txt

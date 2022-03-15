@@ -1,0 +1,66 @@
+{% load static %}
+
+<div class="flavor">
+    <p>Who knows the biggest number?</p>
+</div>
+
+<p>Note: this is a really simplified version of <a href="https://perpendicular.institute/puzzle/so-you-think-you-can-count/" target="_blank" rel="noopener nofollow noreferrer">Galactic's 2020 So You Think You Can Count</a> puzzle</p>
+
+<div class="chat"></div>
+
+<div class="no-copy">
+    <input class="input" type="text" disabled>
+    <button class="send" type="button" disabled>Send</button>
+</div>
+
+<script type="module">
+import Cookies from "{% static 'lib/js-cookie.module.min.js' %}";
+
+// Export globally so the auto onload handler can find this.
+window.puzzleOnLoad = puzzleOnLoad;
+
+function puzzleOnLoad() {
+    const input = document.querySelector('.input');
+    const send = document.querySelector('.send');
+    let cooldown = null;
+
+    const socket = new RobustWebSocket(
+      (location.protocol === "https:" ? "wss://" : "ws://") +
+        `${window.location.host}/ws/puzzle/counting`);
+
+    socket.onmessage = (e) => {
+        const data = JSON.parse(e.data);
+        if (data.type !== 'message') {
+            return;
+        }
+        const row = document.createElement('div');
+        row.innerHTML = data.message;
+        document.querySelector('.chat').appendChild(row);
+    };
+
+    socket.onopen = () => {
+        input.disabled = false;
+        socket.send(JSON.stringify({ type: 'AUTH', data: "{{auth|escapejs}}" }));
+    };
+
+    input.addEventListener('input', () => {
+        send.disabled = !input.value || cooldown;
+    });
+
+    send.addEventListener('click', () => {
+        socket.send(JSON.stringify({type: 'message', message: input.value}));
+        input.value = '';
+        input.disabled = true;
+        send.disabled = true;
+        cooldown = true;
+
+        setTimeout(() => {
+            input.disabled = false;
+            send.disabled = !input.value;
+            cooldown = false;
+        }, 2000)
+    });
+}
+</script>
+
+<button id="clipboard-button"></button>

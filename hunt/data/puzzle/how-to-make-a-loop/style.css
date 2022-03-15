@@ -1,0 +1,5 @@
+@media print {
+  .loop_puzzle {
+    page-break-after: always;
+  }
+}

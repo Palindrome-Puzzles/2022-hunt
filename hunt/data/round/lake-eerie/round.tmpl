@@ -1,0 +1,18 @@
+{% extends "round_files/generic_round.tmpl" %}
+{% load static %}
+
+{% block extra_stylesheets %}
+<link href="https://fonts.googleapis.com/css2?family=Jolly+Lodger:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="{% static 'stylesheets/map.css' %}">
+{% include 'round_files/generic_map_stylesheet.tmpl' with sticker_info=sticker_info %}
+{% endblock extra_stylesheets %}
+
+{% block wordmark %}
+{% include 'round_files/generic_wordmark.tmpl' with round_info=round_info %}
+{% endblock wordmark %}
+
+{% block round_map %}
+<section class="round-map fixed">
+	{% include 'round_files/generic_map.tmpl' with sticker_info=sticker_info %}
+</section>
+{% endblock round_map %}

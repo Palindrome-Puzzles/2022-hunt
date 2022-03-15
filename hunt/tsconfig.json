@@ -1,0 +1,14 @@
+{
+  "extends": "@tsconfig/recommended/tsconfig.json",
+  "compilerOptions": {
+    "allowJs": true,
+    "baseUrl": "./",
+    "moduleResolution": "node",
+    "paths": {
+      "@common/*": ["app/scripts/*"]
+    },
+    "isolatedModules": true,
+    "outDir": "./out-tsc/"
+  },
+  "include": ["**/*.ts"]
+}

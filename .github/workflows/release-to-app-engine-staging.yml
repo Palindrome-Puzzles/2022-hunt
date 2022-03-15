@@ -1,0 +1,21 @@
+name: 'Staging: Release to GAE'
+
+on: workflow_dispatch
+
+concurrency:
+  group: release-to-app-engine-staging
+  cancel-in-progress: true
+
+jobs:
+  release:
+    uses: 'Palindrome-Puzzles/2022-hunt/.github/workflows/release-to-app-engine.yml@main'
+    with:
+      django_env: 'staging_db_only_gcloud'
+      redis_env: 'staging_gcloud'
+      site_service: 'staging-site'
+      site_service_yaml: 'app-staging-site.yaml'
+      backend_service_yaml: 'app-staging-backend.yaml'
+      service_limit: 1
+    secrets:
+      GCLOUD_CREDENTIALS: ${{ secrets.GOOGLE_APPLICATIONS_CREDENTIAL }}
+      GCLOUD_PROJECT_ID: ${{ secrets.GCLOUD_PROJECT_ID }}

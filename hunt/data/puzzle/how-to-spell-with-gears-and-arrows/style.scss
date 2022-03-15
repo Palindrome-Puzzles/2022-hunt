@@ -1,0 +1,141 @@
+@import 'common.scss';
+
+.puzzle.interactive {
+  .gear-rotate .gear-body {
+    cursor: move;
+  }
+
+  .tooth:not(.fixed) {
+    cursor: pointer;
+  }
+
+  .available-letters,
+  .available-stops {
+    display: none;
+  }
+}
+
+.letter-menu {
+  background-color: #fff;
+  border: 1px solid #000;
+  border-radius: 4px;
+  padding: 8px;
+  position: absolute;
+  text-align: center;
+  // Chosen by experiment to wrap nicely.
+  width: 290px;
+
+  .letters {
+    button {
+      border-radius: 50%;
+      line-height: 16px;
+      font-weight: bold;
+      height: 24px;
+      width: 24px;
+
+      &[disabled] {
+        background-color: #dadada;
+      }
+
+      &:not([disabled]) {
+        // Keep in the following order, due to overriding.
+        &.used {
+          background-color: #7c7c7c99;
+        }
+        &.used:hover {
+          background-color: #7c7c7ccc;
+        }
+        &.selected {
+          background-color: #A3F47599;
+        }
+        &.selected:hover {
+          background-color: #A3F475cc;
+        }
+      }
+    }
+  }
+
+  .stops {
+    button {
+      line-height: 24px;
+
+      &[disabled] {
+        background-color: #dadada;
+      }
+
+      &.selected {
+        background-color: #A3F47599;
+      }
+      &.selected:hover {
+        background-color: #A3F475cc;
+      }
+    }
+  }
+
+  button {
+    background-color: #fff;
+    border: 1px outset #989898;
+    margin: 2px;
+    padding: 4px;
+
+    &:not([disabled]) {
+      cursor: pointer;
+    }
+
+    &:not([disabled]):hover {
+      background-color: #eee;
+    }
+    &:focus {
+      outline: 2px solid #24b7e3;
+    }
+  }
+
+  svg {
+    height: 24px;
+    width: 24px;
+    vertical-align: middle;
+  }
+}
+
+.available-letters,
+.available-stops {
+  display: flex;
+  justify-content: center;
+}
+.available-letter {
+  background-color: #fff;
+  border: 1px outset #989898;
+  border-radius: 50%;
+  box-sizing: border-box;
+  padding: 4px;
+  font-weight: bold;
+  margin: 1px;
+  width: 24px;
+  height: 24px;
+  line-height: 16px;
+  text-align: center;
+
+  &.fixed {
+    background-color: #dadada;
+  }
+}
+.available-stops svg {
+  height: 26px;
+  width: 26px;
+}
+
+.gear-icon {
+  height: 80px;
+  width: 80px;
+}
+.gear-icon-symbol text {
+  font-weight: bold;
+}
+
+.notice {
+  margin-bottom: 2em;
+  .instructions {
+    font-size: .9em;
+    margin-bottom: .5em;
+  }
+}

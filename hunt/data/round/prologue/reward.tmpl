@@ -1,0 +1,27 @@
+<link rel="stylesheet" href="{{ reward.rd_root }}rewards-izsh99117/style.css">
+{% if not showing_all %}
+<div>
+  <img src="{{ reward.rd_root }}rewards-izsh99117/to-be-continued.png" class="img-s"><br>
+  <a href="https://www.timeanddate.com/worldclock/fixedtime.html?msg=MIT+Mystery+Hunt+2022&iso=20220114T12&p1=43" rel="nofollow noopener noreferrer" target="_blank">12:00 PM TIMEMIT (Eastern), January 14-17, 2022</a>
+</div>
+{% endif %}
+<div class="star-rats reward-wrapper can-reduce-animation">
+  {% if not showing_all %}<div class="not-a-puzzle-badge">Not a puzzle</div>{% endif %}
+  <p class="info">{% if not showing_all %}Congratulations! {% endif %}You solved a certain rat problem!</p>
+  {% if showing_all %}
+  <p class="caption">Here are some profile pictures you can use on social media.</p>
+  {% else %}
+  <p class="caption">As a reward, here are some profile pictures you can use on social media. You can also find your rewards in <a href="{% url 'rewards_drawer' %}">your team's Rewards Drawer!</a></p>
+  {% endif %}
+  <div class="reward">
+    <a href="{{ reward.rd_root }}rewards-izsh99117/reward1.jpg" target="_blank">
+      <img src="{{ reward.rd_root }}rewards-izsh99117/reward1.jpg" alt="Star Rats Profile Pic 1">
+    </a>
+    <a href="{{ reward.rd_root }}rewards-izsh99117/reward2.jpg" target="_blank">
+      <img src="{{ reward.rd_root }}rewards-izsh99117/reward2.jpg" alt="Star Rats Profile Pic 2">
+    </a>
+    <a href="{{ reward.rd_root }}rewards-izsh99117/reward3.jpg" target="_blank">
+      <img src="{{ reward.rd_root }}rewards-izsh99117/reward3.jpg" alt="Star Rats Profile Pic 3">
+    </a>
+  </div>
+</div>

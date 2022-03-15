@@ -1,0 +1,46 @@
+h1,
+.round-map {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 600;
+}
+
+.page-background {
+    background: none;
+    background-color: #4200a0;
+}
+.page-background-top {
+    background-image: url(images/bg-top.jpg);
+    max-width: 2500px;
+}
+.page-background-map {
+    background-image: url(images/bg.jpg);
+    background-size: 2500px;
+}
+
+header,
+.page-background-top {
+    max-height: 500px;
+    min-width: 100%;
+}
+header.large-wordmark,
+.page-background-top {
+    aspect-ratio: 25/11;
+}
+@media only screen and (min-width: 1136px) {
+    /* 500 * 25/11 = 1136 */
+    .page-background-top {
+        background-size: cover;
+    }
+}
+@media only screen and (min-width: 1550px) {
+    /* Start stretching the bg instead of cropping. */
+    .page-background-top {
+        /* 1550 * 11/25 = 682 */
+        background-size: 100% 682px;
+    }
+}
+@media only screen and (min-width: 2500px) {
+    .page-background-top {
+        background-size: 2500px 682px;
+    }
+}

@@ -1,0 +1,51 @@
+.puzzle code {
+  font-family: "Source Code Pro", monospace /* specifically use a font meant for code */
+}
+
+.puzzle section {
+  text-align: center;
+
+  margin-top: 36px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #888;
+}
+
+.puzzle section.last {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.puzzle div.scrollable-content {
+  overflow: auto;
+}
+
+.puzzle pre {
+  font-size: 16px;
+  background: black;
+  color: #EEE;
+  display: inline-block;
+  margin: 0;
+  padding: 1rem;
+  text-align: left;
+}
+
+.puzzle code .blank {
+  text-decoration: underline;
+}
+.puzzle code .blank::before {
+  content: "          ";
+}
+
+.puzzle code .blank-with-leading-parenthetical,
+.puzzle code .blank-with-trailing-parenthetical {
+  text-decoration: underline;
+}
+.puzzle code .blank-with-leading-parenthetical::after,
+.puzzle code .blank-with-trailing-parenthetical::before {
+  content: "           ";
+}
+
+.puzzle ul {
+  list-style-type: none;
+  padding: 0;
+}

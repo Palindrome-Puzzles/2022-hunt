@@ -1,0 +1,69 @@
+figure.piece {
+  display: inline-block;
+}
+
+figure.piece img {
+  height: 200px;
+}
+
+figure img {
+  max-width: 100%;
+}
+
+figure {
+  text-align: center;
+}
+
+.piece figcaption .img-source {
+  display: block
+}
+
+.board figcaption {
+  font-weight: bold;
+}
+
+#tsume-shogi-solution tr {
+  vertical-align: bottom;
+}
+
+#tsume-shogi-solution th.black,
+#tsume-shogi-solution th.white {
+  text-align: left;
+}
+
+#tsume-shogi-solution th span.red  { color: red }
+#tsume-shogi-solution th span.blue { color: blue }
+
+#tsume-shogi-solution th.num-squares,
+#tsume-shogi-solution th.indexing {
+  max-width:  150px;
+}
+
+td.move-num,
+#tsume-shogi-solution td.num-squares,
+#tsume-shogi-solution td.indexing {
+  text-align: center;
+}
+
+table.alternatives {
+  margin-top: 36px;
+  width: 60%;
+}
+
+table.alternatives caption {
+  font-weight: bold;
+  font-variant: small-caps;
+}
+
+table.alternatives col.move-num { width: 20%; }
+table.alternatives col.black    { width: 40%; }
+table.alternatives col.white    { width: 40%; }
+
+table.alternatives th.black,
+table.alternatives th.white {
+  text-align: left;
+}
+
+table.alternatives td:empty {
+  height: 18px;
+}

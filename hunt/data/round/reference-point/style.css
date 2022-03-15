@@ -1,0 +1,38 @@
+.round-map .caption {
+    background-color: #EE5200;
+    color: #fff;
+}
+.round-map a:hover .caption {
+	background-color: #74994A;
+    filter: brightness(1) !important;
+}
+.round-map .sticker img {
+    filter: drop-shadow(0 0 20px #111111);
+}
+.round-map .sticker :focus img {
+    filter: drop-shadow(0 0 20px #EE5200);
+}
+.round-map .sticker:hover img {
+    filter: drop-shadow(0 0 20px #EE5200);
+}
+
+.round-map {
+    margin-top: -200px !important;
+    padding-top: 200px;
+}
+
+.round-map .map {
+    aspect-ratio: 1399/2265;
+    background-image: url('images/bg-map.png');
+    background-size: cover;
+    max-width: 1500px;
+    width: 100%;
+}
+
+.round-map .sticker img {
+    width: 100%;
+}
+
+.round-map .caption {
+    position: relative;
+}

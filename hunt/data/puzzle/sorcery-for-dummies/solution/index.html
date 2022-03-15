@@ -1,0 +1,389 @@
+<p>This is a blackbox puzzle with a just a few given rules. By experimenting with the box and comparing inputs and outputs, a few more rules become immediately apparent:</p>
+
+<ol>
+<li>All inputted words must be 3 letters or longer.</li>
+<li>All words must be words or names. (We're told they must be &quot;found in the dictionary&quot; but not exactly which dictionary.)</li>
+<li>A spell must be 2 words or longer.</li>
+</ol>
+
+<p>With some more experimenting, we can find a few more rules:</p>
+
+<ol>
+<li>Each word affects the word that follows it.</li>
+<li>The rule for how two words interact is based on the first letter of the first word. (That is, the <code>F</code> in <code>FAR OUT</code> sets the rules for how <code>FAR OUT</code> gets transformed.)</li>
+<li>The words are parsed in reverse order, so the last two words get converted to an output, and then fed to the previous word, which gets converted to an output, and so on.</li>
+</ol>
+
+<p>The easiest way to think about it is that each word is a function, and the inputs for that function is the function word itself, and all the words after it. So for example, typing</p>
+
+<p><code>BIG SMELLY YELLOW TAXI</code></p>
+
+<p>… could be reformatted as <code>b(big, s(smelly, y(yellow, taxi)))</code>. In this case, the system would apply the <code>Y</code> function on <code>YELLOW</code> and <code>TAXI</code>, and then feed that output to the S function, and then feed that output to the B function. </p>
+
+<p>So the logical next step is to suss out the 26 rules. This can be done through some systematic testing, but given that some manipulations are affected by the function word itself, it's important to test our presumptions about rules with lots of different variables. Here is the full list of rules. I'm using <code>OPER</code> to mean the operator word and <code>INPUT</code> as the input word.</p>
+
+<table>
+
+<thead>
+<tr>
+	<th>Letter</th>
+	<th>Rule</th>
+	<th style="text-align:left;">Example Input</th>
+	<th style="text-align:left;">Output</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>A</td>
+	<td>Flip every bigram of INPUT</td>
+	<td style="text-align:left;">ANY APPLE</td>
+	<td style="text-align:left;">PALPE</td>
+</tr>
+<tr>
+	<td>B</td>
+	<td>Remove last letter of INPUT and prepend middle letter(s) of INPUT</td>
+	<td style="text-align:left;">BUTTERED APPLE</td>
+	<td style="text-align:left;">PPAPPL</td>
+</tr>
+<tr>
+	<td>C</td>
+	<td>Replace middle letter(s) of INPUT with two letters that are alphabetically 3 earlier and later, respectively.</td>
+	<td style="text-align:left;">CANDY APPLE</td>
+	<td style="text-align:left;">APMSLE</td>
+</tr>
+<tr>
+	<td>D</td>
+	<td>Return the alphabetized letter bank of INPUT.</td>
+	<td style="text-align:left;">DECENT APPLE</td>
+	<td style="text-align:left;">AELP</td>
+</tr>
+<tr>
+	<td>E</td>
+	<td>Replace last letter of INPUT with the letter representing the Scrabble score of INPUT.</td>
+	<td style="text-align:left;">ERUPT APPLE</td>
+	<td style="text-align:left;">APPLG</td>
+</tr>
+<tr>
+	<td>F</td>
+	<td>Return X + first half of INPUT + Y + last half of INPUT, where X &amp; Y are alphabetically <em>after</em> and <em>before</em> last letter of OPER</td>
+	<td style="text-align:left;">FACE APPLE</td>
+	<td style="text-align:left;">DAPPFLE</td>
+</tr>
+<tr>
+	<td>G</td>
+	<td>Reverse last N letters of INPUT where N is (alphabetical position of first letter of INPUT + 2)</td>
+	<td style="text-align:left;">GRANNY APPLE</td>
+	<td style="text-align:left;">ELP</td>
+</tr>
+<tr>
+	<td>H</td>
+	<td>Put penultimate letter of OPER in position 2 of INPUT, and put ultimate letter of OPER in penultimate position of INPUT.</td>
+	<td style="text-align:left;">HAVE APPLE</td>
+	<td style="text-align:left;">AEPVE</td>
+</tr>
+<tr>
+	<td>I</td>
+	<td>Return length of OPER + INPUT as month of year, with first letter of INPUT appended.</td>
+	<td style="text-align:left;">INSERT APPLE</td>
+	<td style="text-align:left;">NOVEMBERA</td>
+</tr>
+<tr>
+	<td>J</td>
+	<td>Wrap solfege note in position (OPER length % 7) around INPUT</td>
+	<td style="text-align:left;">JUMP APPLE</td>
+	<td style="text-align:left;">FAPPLEA</td>
+</tr>
+<tr>
+	<td>K</td>
+	<td>INPUT + metric prefix in position (OPER length - INPUT length)</td>
+	<td style="text-align:left;">KISS APPLE</td>
+	<td style="text-align:left;">APPLEMILLI</td>
+</tr>
+<tr>
+	<td>L</td>
+	<td>Advance last letter of INPUT by 1, then append <em>atbash</em> of this the new last letter</td>
+	<td style="text-align:left;">LICK APPLE</td>
+	<td style="text-align:left;">APPLFU</td>
+</tr>
+<tr>
+	<td>M</td>
+	<td>INPUT's second letter + INPUT first letter + all but first letter of OPER + INPUT's last letter + INPUT's penultimate letter</td>
+	<td style="text-align:left;">MIKE APPLE</td>
+	<td style="text-align:left;">ZAIKEEF</td>
+</tr>
+<tr>
+	<td>N</td>
+	<td>Replace INPUT's2nd letter with OPER's 2nd, then replace remainder of word with INPUT's 1st.</td>
+	<td style="text-align:left;">NEON APPLE</td>
+	<td style="text-align:left;">AEAA</td>
+</tr>
+<tr>
+	<td>O</td>
+	<td>INPUT's 2nd shifted back by 1 + INPUT's 1st + INPUT's last + INPUTS penultimate shifted forward by 1</td>
+	<td style="text-align:left;">ORANGE APPLE</td>
+	<td style="text-align:left;">OAEM</td>
+</tr>
+<tr>
+	<td>P</td>
+	<td>Prepend postal code of Nth US state, where N is alphabetic position of WORD's last letter, and where postal code list is alphabetized.</td>
+	<td style="text-align:left;">PUMA APPLE</td>
+	<td style="text-align:left;">AKAPPLE</td>
+</tr>
+<tr>
+	<td>Q</td>
+	<td>Nth letter of alphabet, where N is length of INPUT + last 3 letters of INPUT.</td>
+	<td style="text-align:left;">QUICK APPLE</td>
+	<td style="text-align:left;">EPLE</td>
+</tr>
+<tr>
+	<td>R</td>
+	<td>Change first letter of INPUT to Greek letter in same position of alphabet.</td>
+	<td style="text-align:left;">RANCID APPLE</td>
+	<td style="text-align:left;">ALPHAPPLE</td>
+</tr>
+<tr>
+	<td>S</td>
+	<td>Roman numeral of (OPER length * INPUT length * alphabetic position of OPER's last letter) + last 3 letters of INPUT</td>
+	<td style="text-align:left;">STAB APPLE</td>
+	<td style="text-align:left;">XLPLE</td>
+</tr>
+<tr>
+	<td>T</td>
+	<td>Prepend &quot;A&quot; and append letter of alphabet at position (len of INPUT + 2</td>
+	<td style="text-align:left;">TRY APPLE</td>
+	<td style="text-align:left;">AAPPLEG</td>
+</tr>
+<tr>
+	<td>U</td>
+	<td>Prepend Roman numeral representing length of INPUT, and <em>twice</em> append Nth letter of alphabet, where N is length of INPUT in alpha.</td>
+	<td style="text-align:left;">UNINSPIRING APPLE</td>
+	<td style="text-align:left;">VAPPLEEE</td>
+</tr>
+<tr>
+	<td>V</td>
+	<td>INPUT's 1st and 2nd letters + length of OPER spelled out + INPUT's 1st</td>
+	<td style="text-align:left;">VERY APPLE</td>
+	<td style="text-align:left;">APNINEP</td>
+</tr>
+<tr>
+	<td>W</td>
+	<td>Reverse INPUT and replace all but outer 4 letters with Nth letter of alphabet where N is OPER length.</td>
+	<td style="text-align:left;">WHEN APPLE</td>
+	<td style="text-align:left;">ELDPA</td>
+</tr>
+<tr>
+	<td>X</td>
+	<td>Chemical symbols for elements with atomic numbers represented by alphabetic positions of INPUT's 1st and last letters.</td>
+	<td style="text-align:left;">XRAY APPLE</td>
+	<td style="text-align:left;">HB</td>
+</tr>
+<tr>
+	<td>Y</td>
+	<td>INPUT's last, twice + INPUT's middle letter(s)</td>
+	<td style="text-align:left;">YOUR APPLE</td>
+	<td style="text-align:left;">EEP</td>
+</tr>
+<tr>
+	<td>Z</td>
+	<td>Prepend rot-13 of all but first and last letters of INPUT.</td>
+	<td style="text-align:left;">ZANY APPLE</td>
+	<td style="text-align:left;">CCYAPPLE</td>
+</tr>
+</tbody>
+</table>
+
+<p>With these rules in place, we can start to combine them, along with one of our desginated INPUT words, to create the names of these eight monsters. (These names aren't given, but they're not meant to be tricky. They are shown in alphabetical order: CYCLOPS, DRAGON, GHOST, KRAKEN, MUMMY, ORC, SKELETON, and ZOMBIE.)</p>
+
+<p>The best path for doing this is to start with the monsters that require only 3 words — CYCLOPS, ORC, and MUMMY. ORC is meant to be the easiest. One possible spell is <code>GROOVY KIND ACUMEN</code>, which works like this:</p>
+
+<ul>
+<li>KIND ACUMEN &rarr; ACUMENMICRO</li>
+<li>GROOVY KIND ACUMEN &rarr; ORC</li>
+</ul>
+
+<p>After defeating the ORC, if you try to use any K or G word in a spell, it will warn you that such a word has lost its magic, indicating that every letter is only used once. </p>
+
+<p>As we eliminate letters, the other spells get easier. Here's a full set of possible spells:</p>
+
+<table>
+
+<thead>
+<tr>
+	<th>Length</th>
+	<th>Possible spell</th>
+	<th>Step 1</th>
+	<th>Step 2</th>
+	<th>Step 3</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>3</td>
+	<td>HAPPY SWING GELATINOUS</td>
+	<td>CCCLOUS</td>
+	<td class="monster">CYCLOPS</td>
+	<td></td>
+</tr>
+<tr>
+	<td>4</td>
+	<td>CRAZY WILD INANE DIMWIT</td>
+	<td>NOVEMBERD</td>
+	<td>DRDON</td>
+	<td class="monster">DRAGON</td>
+</tr>
+<tr>
+	<td>4</td>
+	<td>DAMN MOST XRAY VOWEL</td>
+	<td>TIMG</td>
+	<td>STOSTGH</td>
+	<td class="monster">GHOST</td>
+</tr>
+<tr>
+	<td>4</td>
+	<td>BATHTUB ZERO QUEEN OBSOLESCENT</td>
+	<td>KENT</td>
+	<td>RAKENT</td>
+	<td class="monster">KRAKEN</td>
+</tr>
+<tr>
+	<td>3</td>
+	<td>EQUIVOCATES NUTTY MIRACLE</td>
+	<td>MUMMM</td>
+	<td class="monster">MUMMY</td>
+	<td></td>
+</tr>
+<tr>
+	<td>3</td>
+	<td>GROOVY KIND ACUMEN</td>
+	<td>ACUMENMICRO</td>
+	<td class="monster">ORC</td>
+	<td></td>
+</tr>
+<tr>
+	<td>4</td>
+	<td>ALBATROSS PREP VAN LEOPARD</td>
+	<td>LETENO</td>
+	<td>KSLETENO</td>
+	<tD class="monster">SKELETON</td>
+</tr>
+<tr>
+	<td>4</td>
+	<td>FLEA OVER JAR PROFOUND</td>
+	<td>MPROFOUNDI</td>
+	<td>OMIE</td>
+	<td class="monster">ZOMBIE</td>
+</tr>
+</tbody>
+</table>
+
+<p>That uses 21 of 26 letters. The five remaining letters are L, R, T, U, Y. There's only one common word that uses those letters, which is <code>TRULY</code>. Given you've used the previous 21 letters in spells, it only makes sense to use these last ones as well. But you need a final word as well, to feed into the T. R. U. L. Y. functions. To get that, we have to notice that the eight starting words of our 8 spells start with the letters A-H. That gives us an order. By using the spell length on the final word of each spell, we get one more word, <code>POWERFUL</code>, which pairs nicely with <code>TRULY</code>.</p>
+
+<table>
+<thead>
+<tr>
+	<th>Monster</th>
+	<th>N</th>
+	<th>Possible starting word</th>
+	<th>Input word</th>
+	<th>Nth letter</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>SKELETON</td>
+	<td>4</td>
+	<td>ALBATROSS</td>
+	<td>LEOPARD</td>
+	<td>P</td>
+</tr>
+<tr>
+	<td>KRAKEN</td>
+	<td>4</td>
+	<td>BATHTUB</td>
+	<td>OBSOLESCENT</td>
+	<td>O</td>
+</tr>
+<tr>
+	<td>DRAGON</td>
+	<td>4</td>
+	<td>CRAZY</td>
+	<td>DIMWIT</td>
+	<td>W</td>
+</tr>
+<tr>
+	<td>GHOST</td>
+	<td>4</td>
+	<td>DAMN</td>
+	<td>VOWEL</td>
+	<td>E</td>
+</tr>
+<tr>
+	<td>MUMMY</td>
+	<td>3</td>
+	<td>EQUIVOCATES</td>
+	<td>MIRACLE</td>
+	<td>R</td>
+</tr>
+<tr>
+	<td>ZOMBIE</td>
+	<td>4</td>
+	<td>FLEA</td>
+	<td>PROFOUND</td>
+	<td>F</td>
+</tr>
+<tr>
+	<td>ORC</td>
+	<td>3</td>
+	<td>GROOVY</td>
+	<td>ACUMEN</td>
+	<td>U</td>
+</tr>
+<tr>
+	<td>CYCLOPS</td>
+	<td>3</td>
+	<td>HAPPY</td>
+	<td>GELATINOUS</td>
+	<td>L</td>
+</tr>
+</tbody>
+</table>
+
+<p>All the T.R.U.L.Y. functions are deterministic; that is, the function word doesn't affect the output. By using any T.R.U.L.Y. words, followed by POWERFUL, we get our final phrase. For example: <strong><code>TIME REMAINS UNEQUIVOCALLY LITHE YET POWERFUL</code></strong>.</p>
+
+<table>
+
+<thead>
+<tr>
+	<th>Formula</th>
+	<th>Result</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>YET POWERFUL</td>
+	<td>LLER</td>
+</tr>
+<tr>
+	<td>LITHE YET POWERFUL</td>
+	<td>LLESH</td>
+</tr>
+<tr>
+	<td>UNEQUIVOCALLY LITHE YET POWERFUL</td>
+	<td>VLLESHEE</td>
+</tr>
+<tr>
+	<td>REMAINS UNEQUIVOCALLY LITHE YET POWERFUL</td>
+	<td>CHILLESHEE</td>
+</tr>
+<tr>
+	<td>TIME REMAINS UNEQUIVOCALLY LITHE YET POWERFUL</td>
+	<td>ACHILLESHEEL</td>
+</tr>
+</tbody>
+</table>
+
+<p>And that's our answer: <span class="answer">ACHILLES HEEL</span></p>

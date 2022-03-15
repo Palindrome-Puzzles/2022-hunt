@@ -1,0 +1,72 @@
+form input {
+  box-sizing: border-box;
+  height: 30px;
+}
+form input[type="text"] {
+  flex: 1;
+  max-width: 250px;
+  margin-right: 1em;
+}
+
+.answer .progress {
+  text-align: center;
+}
+
+table.past_answers {
+  text-align: left;
+  width: 100%;
+}
+table.past_answers .correct {
+  color: green;
+  font-weight: bold;
+}
+table.past_answers .partial {
+  color: green;
+}
+
+table.past_answers .answer {
+  font-weight: bold;
+}
+
+.response {
+  font-weight: bold;
+  color: red;
+  padding: 1em;
+}
+.response .instructions {
+  color: black;
+}
+.response .correct {
+  color: green;
+}
+
+.answer form {
+  display: flex;
+  justify-content: center;
+}
+.answer form label span {
+  flex: .2;
+  height: 30px;
+  align-items: center;
+  justify-content: right;
+  padding-right: .5em;
+}
+.answer main {
+  text-align: center;
+}
+
+.hints form textarea {
+  height: 60px;
+  width: 95%;
+}
+.hints table {
+  border: 1px solid black;
+  text-align: left;
+  width: 100%;
+}
+.hints label {
+  display: block;
+}
+.hints form .form-row {
+  margin: 1em 0;
+}

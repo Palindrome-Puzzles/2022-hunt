@@ -1,0 +1,25 @@
+.grids {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+}
+
+.grid-structure {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 50px;
+  width: 333px;
+}
+
+.teal { background-color: #A2C4C9;}
+.purple { background-color: #C27BA1;}
+.red { background-color: #DD7E6B;}
+.sky { background-color: #C8DAF9;}
+.melon { background-color: #D8EAD3;}
+.yellow { background-color: #FFE599;}
+.pink { background-color: #F4CCCC;}
+
+.yule-lad { background-color: #000000; color: #ffffff;}
+.leftover-letters {background-color: #ffffff; color: #ff0000; style: bold}

@@ -1,0 +1,6 @@
+ol.lettered { list-style-type:upper-alpha; }
+
+table.grid td.right-sword { border-right-color: red;}
+table.grid td.bottom-sword { border-bottom-color: red;}
+.hilt { background-color: #F7DC6F; }
+.h-m { font-weight: bold; }

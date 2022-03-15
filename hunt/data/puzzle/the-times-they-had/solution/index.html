@@ -1,0 +1,676 @@
+<p>This puzzle presents you with short epitaphs for eight folks who lived interesting lives. They are presented in alphabetical order, by last name. Some lines are pink, some are light blue, and one is dark red. One line has a star. Each epitaph has a score — some of them in the hundreds of thousands!</p>
+
+<p>The first thing to notice is that each epitaph is a pangram, and each is exactly 100 letters long. And the letter frequencies of each paragraph, while not equivalent, are very similar.</p>
+
+<p>These clues should all combine to remind you of the game Scrabble, which uses those colors, and which comes with 100 tiles, 98 of which are letters according to a very precise letter distribution, along with 2 blanks.</p>
+
+<p>The first step is to determine which two letters are outliers in each epitaph — that is, which letters are represented by blanks. By comparing the letter frequencies with the official Scrabble tile counts, you can determine that the 16 blanks represent the letters A through P, uniquely.</p>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>Person</th>
+	<th>Blank 1</th>
+	<th>Blank 2</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>BILLIE CARVAR</td>
+	<td>C</td>
+	<td>M</td>
+</tr>
+<tr>
+	<td>KEBE FIGG</td>
+	<td>I</td>
+	<td>L</td>
+</tr>
+<tr>
+	<td>RAJ X. GONZAGA</td>
+	<td>D</td>
+	<td>J</td>
+</tr>
+<tr>
+	<td>HAKAM LAMB</td>
+	<td>B</td>
+	<td>F</td>
+</tr>
+<tr>
+	<td>MAV ROSA</td>
+	<td>E</td>
+	<td>G</td>
+</tr>
+<tr>
+	<td>MAX A. SKINNER</td>
+	<td>A</td>
+	<td>N</td>
+</tr>
+<tr>
+	<td>W. DASH VEEK</td>
+	<td>H</td>
+	<td>P</td>
+</tr>
+<tr>
+	<td>EVA ZOKA</td>
+	<td>K</td>
+	<td>O</td>
+</tr>
+</tbody>
+</table>
+
+
+<p>The next step is to figure out how each epitaph earns its score. It helps to consider how to use those background colors and that star. On a Scrabble board, light pink means DOUBLE WORD SCORE, and in particular, a Scrabble game starts with the DWS square with a ★, in the center of the board. But how to map these paragraphs to Scrabble plays?</p>
+
+<p>The key is in noticing that each epitaph is eight lines long — except for the one for <strong>Max A. Skinner</strong>, which is seven. Skinner's epitaph also has the ★. In a Scrabble game, the first play can be anywhere from 1-7 letters long. The best possible play (a bingo) would use 7 letters. In any subsequent play, the best word would be (very likely) 8 letters long — using one tile from the board and the 7 from your rack. This maps nicely to our list of epitaphs. One is 7 lines and the rest are 8.</p>
+
+<p>So each line gets mashed into a single Scrabble square — but how? The flavor tells us that these lives were the &quot;product of circumstances&quot;. The title uses the word &quot;Times&quot;. The answer is to <em>multiply</em>. To find the score for Max A. Skinner:</p>
+
+<ol>
+<li>Assign each letter a value based on its Scrabble tile.</li>
+<li>Find the product of the values on each line.</li>
+<li>For the light blue line, double it. (Because it sits on a DOUBLE LETTER SCORE.)</li>
+<li>Sum all lines.</li>
+<li>Double the result. (Because the word includes on a DOUBLE WORD SCORE.)</li>
+</ol>
+
+<p>But this gets us 4,472, not 3,656! And that's because we forgot about the two blanks. Blanks in Scrabble are worth 0. So if a line has a blank in it, the calculation will include a 0, and the resulting product will be 0. To make the math work out, we have to figure out which lines have the blanks. It's a quick calculation to determine which two lines add up to the point differential of 816. In this case it's <code>PAL OF DJIBOUTI</code> and <code>QUITE AN IDIOT ARCHER</code>, and without them, we can get the proper score of 3,656.</p>
+
+<p>We also know exactly <em>where on the board</em> we should put Max: center row, with the second line of the epitaph stacked up on the middle square.</p>
+
+<p>Every other epitaph works the same way as Max's, with a few other considerations:</p>
+
+<ul>
+<li>First determine where to put it. Where one epitaph intersects with another, the letters in the intersecting square/line is a <em>complete anagram</em> of the same letters in the square/line that was already on the board.</li>
+<li>If the intersecting square has a color, don't apply it again. (Per Scrabble rules, premium squares are only used once.)</li>
+<li>If the word hits a red TRIPLE WORD SCORE, triple the score.</li>
+</ul>
+
+<p>A good second step is to find any anagrams of lines from the SKINNER epitaph. There are three. One is YOUNG TWISTY, which is an anagram of TWO TINY GUYS. That tells us where to lay the epitaph for Eva Zoka. And the rest fall into place after that. The full breakdown of scores:</p>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>Line</th>
+	<th>Multiplier</th>
+	<th>Value</th>
+	<th>Blank</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>SLEEP, HEROIC</td>
+	<td>1</td>
+	<td colspan="2">36</td>
+</tr>
+<tr>
+	<td>MAX A. SKINNER, WANTED</td>
+	<td>1</td>
+	<td colspan="2">960</td>
+</tr>
+<tr>
+	<td>PaL OF DJIBOUTI</td>
+	<td>1</td>
+	<td>0</td>
+	<td>A</td>
+</tr>
+<tr>
+	<td>(VENEZUELA BEFORE),</td>
+	<td>1</td>
+	<td colspan="2">480</td>
+</tr>
+<tr>
+	<td>QUITE An IDIOT ARCHER,</td>
+	<td>1</td>
+	<td>0</td>
+	<td>N</td>
+</tr>
+<tr>
+	<td>YOUNG, TWISTY,</td>
+	<td>2</td>
+	<td colspan="2">256</td>
+</tr>
+<tr>
+	<td>A GOD AMONG RIVALS.</td>
+	<td>1</td>
+	<td colspan="2">96</td>
+</tr>
+<tr class="subtotal-row">
+	<td colspan="2"><strong>Subtotal</strong></td>
+	<td colspan="2">1,828</td>
+</tr>
+<tr>
+	<td colspan="2"><strong>Multiplier</strong></td>
+	<td colspan="2">2</td>
+</tr>
+<tr class="total-row">
+	<td colspan="2"><strong>Total</strong></td>
+	<td colspan="2">3,656</td>
+</tr>
+<tr>
+	<td colspan="4"></td>
+</tr>
+<tr>
+	<td>OLD, AGING MAV ROSA</td>
+	<td>1</td>
+	<td colspan="2">96</td>
+</tr>
+<tr>
+	<td>JOINED CREEKAW,</td>
+	<td>2</td>
+	<td colspan="2">1920</td>
+</tr>
+<tr>
+	<td>THE SUPER</td>
+	<td>1</td>
+	<td colspan="2">12</td>
+</tr>
+<tr>
+	<td>RASCALLY FOX UP IN</td>
+	<td>1</td>
+	<td colspan="2">1152</td>
+</tr>
+<tr>
+	<td>FORT WAYNe, INDIANA</td>
+	<td>1</td>
+	<td>0</td>
+	<td>E</td>
+</tr>
+<tr>
+	<td>TO GET THE</td>
+	<td>1</td>
+	<td colspan="2">8</td>
+</tr>
+<tr>
+	<td>ROgUE ZOMBIE SQUID.</td>
+	<td>1</td>
+	<td>0</td>
+	<td>G</td>
+</tr>
+<tr>
+	<td>BELIEVE IT!</td>
+	<td>1</td>
+	<td colspan="2">12</td>
+</tr>
+<tr class="subtotal-row">
+	<td colspan="2"><strong>Subtotal</strong></td>
+	<td colspan="2">3,200</td>
+</tr>
+<tr>
+	<td colspan="2"><strong>Multiplier</strong></td>
+	<td colspan="2">2</td>
+</tr>
+<tr class="total-row">
+	<td colspan="2"><strong>Total</strong></td>
+	<td colspan="2">6,400</td>
+</tr>
+<tr>
+	<td colspan="4"></td>
+</tr>
+<tr>
+	<td>KEBE FiGG</td>
+	<td>1</td>
+	<td>0</td>
+	<td>I</td>
+</tr>
+<tr>
+	<td>WHO REMODELED</td>
+	<td>1</td>
+	<td colspan="2">192</td>
+</tr>
+<tr>
+	<td>IBERIAN MIlITIA</td>
+	<td>1</td>
+	<td>0</td>
+	<td>L</td>
+</tr>
+<tr>
+	<td>ORGANIZATIONS,</td>
+	<td>1</td>
+	<td colspan="2">20</td>
+</tr>
+<tr>
+	<td>UNDERCUT A QUEEN TO</td>
+	<td>1</td>
+	<td colspan="2">60</td>
+</tr>
+<tr>
+	<td>FIX UP ROYAL CLANS</td>
+	<td>1</td>
+	<td colspan="2">1152</td>
+</tr>
+<tr>
+	<td>WITH A SAVVY</td>
+	<td>1</td>
+	<td colspan="2">1024</td>
+</tr>
+<tr>
+	<td>JESTER POODLE.</td>
+	<td>1</td>
+	<td colspan="2">48</td>
+</tr>
+<tr class="subtotal-row">
+	<td colspan="2"><strong>Subtotal</strong></td>
+	<td colspan="2">2,496</td>
+</tr>
+<tr>
+	<td colspan="2"><strong>Multiplier</strong></td>
+	<td colspan="2">2</td>
+</tr>
+<tr class="total-row">
+	<td colspan="2"><strong>Total</strong></td>
+	<td colspan="2">4,992</td>
+</tr>
+<tr>
+	<td colspan="4"></td>
+</tr>
+<tr>
+	<td>RAj X. GONZAGA,</td>
+	<td>1</td>
+	<td>0</td>
+	<td>J</td>
+</tr>
+<tr>
+	<td>QUASI-FAMOUS</td>
+	<td>1</td>
+	<td colspan="2">120</td>
+</tr>
+<tr>
+	<td>CFL YOdELER,</td>
+	<td>2</td>
+	<td>0</td>
+	<td>D</td>
+</tr>
+<tr>
+	<td>VITAL WIKIPEDIA WRITER,</td>
+	<td>1</td>
+	<td colspan="2">1920</td>
+</tr>
+<tr>
+	<td>ENJOYED INVENTING</td>
+	<td>1</td>
+	<td colspan="2">512</td>
+</tr>
+<tr>
+	<td>BAD THEOREMS</td>
+	<td>1</td>
+	<td colspan="2">72</td>
+</tr>
+<tr>
+	<td>ABOUT DONUT</td>
+	<td>2</td>
+	<td colspan="2">12</td>
+</tr>
+<tr>
+	<td>HOLE RECIPES.</td>
+	<td>1</td>
+	<td colspan="2">36</td>
+</tr>
+<tr class="total-row">
+	<td colspan="2"><strong>Total</strong></td>
+	<td colspan="2">2,672</td>
+</tr>
+<tr>
+	<td colspan="4"></td>
+</tr>
+<tr>
+	<td>LIBERAL VICAR</td>
+	<td>1</td>
+	<td colspan="2">36</td>
+</tr>
+<tr>
+	<td>HAKAM LAMb</td>
+	<td>1</td>
+	<td>0</td>
+	<td>B</td>
+</tr>
+<tr>
+	<td>PRIED HOT, FOREIGN</td>
+	<td>1</td>
+	<td colspan="2">192</td>
+</tr>
+<tr>
+	<td>TEQUILA OFf A SUS</td>
+	<td>1</td>
+	<td>0</td>
+	<td>F</td>
+</tr>
+<tr>
+	<td>WIZARD, YET GOT</td>
+	<td>1</td>
+	<td colspan="2">640</td>
+</tr>
+<tr>
+	<td>EXPOSURE</td>
+	<td>1</td>
+	<td colspan="2">24</td>
+</tr>
+<tr>
+	<td>ENJOINING NEEDY TV</td>
+	<td>1</td>
+	<td colspan="2">512</td>
+</tr>
+<tr>
+	<td>AUDIENCES TO BOW.</td>
+	<td>1</td>
+	<td colspan="2">72</td>
+</tr>
+<tr class="subtotal-row">
+	<td colspan="2"><strong>Subtotal</strong></td>
+	<td colspan="2">1,476</td>
+</tr>
+<tr>
+	<td colspan="2"><strong>Multiplier</strong></td>
+	<td colspan="2">2</td>
+</tr>
+<tr class="total-row">
+	<td colspan="2"><strong>Total</strong></td>
+	<td colspan="2">2,952</td>
+</tr>
+<tr>
+	<td colspan="4"></td>
+</tr>
+<tr>
+	<td>W. DASh VEEK</td>
+	<td>1</td>
+	<td>0</td>
+	<td>H</td>
+</tr>
+<tr>
+	<td>OWED GRITTY 'ZA</td>
+	<td>1</td>
+	<td colspan="2">640</td>
+</tr>
+<tr>
+	<td>(ELEVEN JILLION PIECES);</td>
+	<td>1</td>
+	<td colspan="2">288</td>
+</tr>
+<tr>
+	<td>BOMBED THRU GALAXY</td>
+	<td>1</td>
+	<td colspan="2">13824</td>
+</tr>
+<tr>
+	<td>CON FUEGO</td>
+	<td>1</td>
+	<td colspan="2">24</td>
+</tr>
+<tr>
+	<td>IN HIp QUEST</td>
+	<td>1</td>
+	<td>0</td>
+	<td>P</td>
+</tr>
+<tr>
+	<td>FOR UTOPIAN</td>
+	<td>1</td>
+	<td colspan="2">12</td>
+</tr>
+<tr>
+	<td>MARINARA ASTEROID.</td>
+	<td>1</td>
+	<td colspan="2">6</td>
+</tr>
+<tr class="subtotal-row">
+	<td colspan="2"><strong>Subtotal</strong></td>
+	<td colspan="2">14,794</td>
+</tr>
+<tr>
+	<td colspan="2"><strong>Multiplier</strong></td>
+	<td colspan="2">2</td>
+</tr>
+<tr class="total-row">
+	<td colspan="2"><strong>Total</strong></td>
+	<td colspan="2">29,588</td>
+</tr>
+<tr>
+	<td colspan="4"></td>
+</tr>
+<tr>
+	<td>BILLIE CARVAR,</td>
+	<td>1</td>
+	<td colspan="2">36</td>
+</tr>
+<tr>
+	<td>THE INFAMOUS COWBOY KID!</td>
+	<td>1</td>
+	<td colspan="2">69120</td>
+</tr>
+<tr>
+	<td>HER QUIET DEVOTIONS</td>
+	<td>1</td>
+	<td colspan="2">320</td>
+</tr>
+<tr>
+	<td>TO JUGGLING FOUR</td>
+	<td>1</td>
+	<td colspan="2">256</td>
+</tr>
+<tr>
+	<td>ATOMIc LYNXES</td>
+	<td>1</td>
+	<td>0</td>
+	<td>C</td>
+</tr>
+<tr>
+	<td>EARNED</td>
+	<td>1</td>
+	<td colspan="2">2</td>
+</tr>
+<tr>
+	<td>A SWEET</td>
+	<td>1</td>
+	<td colspan="2">4</td>
+</tr>
+<tr>
+	<td>EmPANADA PRIZE.</td>
+	<td>2</td>
+	<td>0</td>
+	<td>M</td>
+</tr>
+<tr class="subtotal-row">
+	<td colspan="2"><strong>Subtotal</strong></td>
+	<td colspan="2">69,738</td>
+</tr>
+<tr>
+	<td colspan="2"><strong>Multiplier</strong></td>
+	<td colspan="2">3</td>
+</tr>
+<tr class="total-row">
+	<td colspan="2"><strong>Total</strong></td>
+	<td colspan="2">209,214</td>
+</tr>
+<tr>
+	<td colspan="4"></td>
+</tr>
+<tr>
+	<td>EX-MAJOR EVA ZOKA</td>
+	<td>2</td>
+	<td colspan="2">76800</td>
+</tr>
+<tr>
+	<td>HEAD-BUTTED</td>
+	<td>1</td>
+	<td colspan="2">48</td>
+</tr>
+<tr>
+	<td>PALE, VICIOUS</td>
+	<td>1</td>
+	<td colspan="2">36</td>
+</tr>
+<tr>
+	<td>PIGS (OINk!);</td>
+	<td>1</td>
+	<td>0</td>
+	<td>K</td>
+</tr>
+<tr>
+	<td>CoNQUERED A</td>
+	<td>1</td>
+	<td>0</td>
+	<td>O</td>
+</tr>
+<tr>
+	<td>NORWEGIAN AIRFIELD (NOT</td>
+	<td>1</td>
+	<td colspan="2">64</td>
+</tr>
+<tr>
+	<td>LISTABLE HERE) FROM</td>
+	<td>1</td>
+	<td colspan="2">144</td>
+</tr>
+<tr>
+	<td>TWO TINY GUYS.</td>
+	<td>1</td>
+	<td colspan="2">128</td>
+</tr>
+<tr class="subtotal-row">
+	<td colspan="2"><strong>Subtotal</strong></td>
+	<td colspan="2">77,220</td>
+</tr>
+<tr>
+	<td colspan="2"><strong>Multiplier</strong></td>
+	<td colspan="2">2</td>
+</tr>
+<tr class="total-row">
+	<td colspan="2"><strong>Total</strong></td>
+	<td colspan="2">154,440</td>
+</tr>
+</tbody>
+</table>
+
+
+<p>Once we've placed all the epitaphs across our board, we can look back at those 16 blanks. We know exactly where they live in each epitaph. (Except for the double FF in OFF, but that won't make a difference for the next step.) By listing out the words they're in, ordering by A-P, and reading the first letters of the words, we get our next instruction, <strong>PLAY WORD FROM EACH</strong>.</p>
+
+<table>
+<colgroup>
+<col/>
+<col/>
+<col/>
+</colgroup>
+
+<thead>
+<tr>
+	<th>Black</th>
+	<th>Word</th>
+	<th>First letter</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>A</td>
+	<td>PAL</td>
+	<td>P</td>
+</tr>
+<tr>
+	<td>B</td>
+	<td>LAMB</td>
+	<td>L</td>
+</tr>
+<tr>
+	<td>C</td>
+	<td>ATOMIC</td>
+	<td>A</td>
+</tr>
+<tr>
+	<td>D</td>
+	<td>YODELER</td>
+	<td>Y</td>
+</tr>
+<tr>
+	<td>E</td>
+	<td>WAYNE</td>
+	<td>W</td>
+</tr>
+<tr>
+	<td>F</td>
+	<td>OFF</td>
+	<td>O</td>
+</tr>
+<tr>
+	<td>G</td>
+	<td>ROGUE</td>
+	<td>R</td>
+</tr>
+<tr>
+	<td>H</td>
+	<td>DASH</td>
+	<td>D</td>
+</tr>
+<tr>
+	<td>I</td>
+	<td>FIGG</td>
+	<td>F</td>
+</tr>
+<tr>
+	<td>J</td>
+	<td>RAJ</td>
+	<td>R</td>
+</tr>
+<tr>
+	<td>K</td>
+	<td>OINK</td>
+	<td>O</td>
+</tr>
+<tr>
+	<td>L</td>
+	<td>MILITIA</td>
+	<td>M</td>
+</tr>
+<tr>
+	<td>M</td>
+	<td>EMPANADA</td>
+	<td>E</td>
+</tr>
+<tr>
+	<td>N</td>
+	<td>AN</td>
+	<td>A</td>
+</tr>
+<tr>
+	<td>O</td>
+	<td>CONQUERED</td>
+	<td>C</td>
+</tr>
+<tr>
+	<td>P</td>
+	<td>HIP</td>
+	<td>H</td>
+</tr>
+</tbody>
+</table>
+
+<p>Looking back at the epitaphs, there is only one word in each one that matches the length of the placement on the board. That is, there is one 7-letter word in Max A. Skinner's epitaph (SKINNER), and there is one 8-letter word in each of the others. Placing them on the board in the same position as the stacked epitaphs yields this arrangement:</p>
+
+<p><img src="images/board.png"></p>
+
+<p>With this bingo-ful game in place, we can now find our final answer. Reading just the letters that appear in premium squares, left-to-right, top-to-bottom, we get the answer: <span class="answer">LETS MAKE A DEAL</span>.</p>
+
+<div class="author-note">
+    <h2>Author's Notes</h2>
+
+	<p>The inspiration from this puzzle came from <a href="https://beyondwordplay.com/scrabblegrams-never-be-bored-at-the-board-dc142f68ae07">Eric Chaikin's article about Scrabblegrams</a>, which are paragraphs that use all 100 tiles in a Scrabble board. My pitch was basically &quot;Scrabblegrams, but nonsense&quot; because I was under no illusion that I would be able to make stories as elegant as the ones in that article. But then as I got into it, and I wrote my first story (in the form of epitaphs, since this is the Biography round), I found the challenge to be <em>just</em> this side of possible, so I committed to it.</p>
+
+	<p><img src="images/discord.png"></p>
+
+	<p>They got easier the more I wrote, and the more work I put into my Sheets formulae that told me what letters I had left. (At one point I had to rewrite most of them because a central mechanic of the puzzle shifted, but I didn't mind at all.) </p>
+
+	<p>Eric says in the article, &quot;at best, a Scrabblegram should slide by the reader like natural prose&quot;, and I feel like the best puzzles work the same way: they look like nothing weird, and only by picking them apart do you find the patterns hidden within. I'm not sure I would call these epitaphs <em>natural</em>, but they're goofy, and in the end, they hit just the tone I was looking for.</p>
+</div>

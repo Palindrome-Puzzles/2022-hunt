@@ -1,0 +1,244 @@
+path_code,prefix_text,species_name,suffix_text,image_code
+11111,"Ah, this plant is:",Coffea arabica,,22
+11112,"Ah, this plant is:",Ilex paraguariensis,Isn’t it lovely?,1
+11113,"Ah, this plant is:",Camellia sinensis,,11
+11121,"Oh, yes, this is:",Zingiber officinale,Very warming.,23
+11122,"Ah, this plant is:",Hemidesmus indicus,,22
+11123,"Ah, this plant is:",Curcuma Longa,Lovely color.,33
+11131,"Ah, this plant is:",Cinnamomum verum,,3
+11132,"Ah, this plant is:",Theobroma cacao,,13
+11133,"Ah, this plant is:",Citrus australasica,"Not very common, yet.",31
+11211,"Ah, this plant is:",Malus domestica ‘Crimson King’,,33
+11212,"Ah, this plant is:",Malus domestica ‘Slack-ma-Girdle’,,32
+11213,"Ah, this plant is:",Malus domestica ‘Foxwhelp’,,3
+11221,This plant is:,Prunus avium ‘Rainier’,,32
+11222,This plant is:,Prunus domestica subsp. domestica,,21
+11223,This plant is:,Prunus persica,,12
+11231,This plant is:,Pyrus communis ‘D’Anjou’,,33
+11232,This plant is:,Pyrus communis ‘Bosc’,,23
+11233,This plant is:,Pyrus communis ‘Red Bartlett’,,1
+11311,This plant is:,Citrus x paradisi,,32
+11312,This plant is:,Citrus x limon,,21
+11313,This plant is:,Citrus x sinensis,,12
+11321,This plant is:,Psidium guajava,,32
+11322,This plant is:,Psidium cattleyanum,,21
+11323,This plant is:,Feijoa sellowiana,,3
+11331,This plant is:,Punica granatum,,22
+11332,This plant is:,Vaccinium macrocarpon,,13
+11333,This plant is:,Mangifera indica,,12
+12111,This plant is:,Salvia officinalis,,2
+12112,This plant is:,Salvia fruticosa,,11
+12113,This plant is:,Salvia hispanica,,13
+12121,This plant is:,Ocimum basilicum,,23
+12122,This plant is:,Ocimum x africanum,,3
+12123,This plant is:,Ocimum basilicum ‘Purpurascens’,,2
+12131,This plant is:,Thymus citriodorus,,33
+12132,This plant is:,Thymus vulgaris,,11
+12133,This plant is:,Thymus herba-barona,,3
+12211,This plant is:,Persea americana ‘Hass’,,2
+12212,This plant is:,Persea americana ‘Zutano’,,12
+12213,This plant is:,Persea americana ‘Fuerte’,,31
+12221,This plant is:,Corylus avellana,,13
+12222,This plant is:,Macadamia integrifolia,,31
+12223,This plant is:,Castanea sativa,,21
+12231,This plant is:,Prunus amygdalus,,3
+12232,This plant is:,Bertholletia excelsa,,22
+12233,This plant is:,Anacardium occidentale,,23
+12311,This plant is:,Capsicum chinense ‘Habanero’,,13
+12312,This plant is:,Capsicum frutescens ‘Tabasco’,,12
+12313,This plant is:,Capsicum annuum ‘Jalapeno’,,1
+12321,This plant is:,Mentha spicata,,11
+12322,This plant is:,Mentha x piperita,,33
+12323,This plant is:,Gaultheria procumbens,,2
+12331,This plant is:,Cydonia oblonga,,32
+12332,This plant is:,Diospyros kaki ‘Hachiya’,,21
+12333,This plant is:,Synsepalum dulcificum,,2
+13111,This plant is:,Salix babylonica,,33
+13112,This plant is:,Salix alba,,31
+13113,This plant is:,Salix matsudana,,13
+13121,This plant is:,Cornus florida,,1
+13122,This plant is:,Cornus nuttallii,,2
+13123,This plant is:,Cornus kousa,,13
+13131,This plant is:,Magnolia grandiflora,,2
+13132,This plant is:,Magnolia virginiana,,32
+13133,This plant is:,Magnolia liliifera,,21
+13211,This plant is:,Syringa emodi,,22
+13212,This plant is:,Syringa komarowii,,13
+13213,This plant is:,Syringa vulgaris,,3
+13221,This plant is:,Hydrangea involucrata,,33
+13222,This plant is:,Hydrangea macrophylla,,32
+13223,This plant is:,Hydrangea paniculata,,12
+13231,This plant is:,Camellia japonica,,2
+13232,This plant is:,Camellia cuspidata,,1
+13233,This plant is:,Camellia amplexicaulis,,21
+13311,This plant is:,Convallaria majalis,,3
+13312,This plant is:,Digitalis lanata,,31
+13313,This plant is:,Daphne mezereum,,22
+13321,This plant is:,Rudbeckia hirta,,11
+13322,This plant is:,Rudbeckia texana,,2
+13323,This plant is:,Rudbeckia fulgida,,23
+13331,This plant is:,Vinca minor,,22
+13332,This plant is:,Veronica gentianoides,,31
+13333,This plant is:,Lantana montevidensis,,33
+21111,This plant is:,Allium sativum spp. ophioscorodon,,23
+21112,This plant is:,Allium sativum spp. sativum,,13
+21113,This plant is:,Allium ampeloprasum var ampeloprasum,,12
+21121,This plant is:,Allium cepa ‘Red Mountain’,,32
+21122,This plant is:,Allium cepa ‘Copra’,,21
+21123,This plant is:,Allium cepa ‘Walla walla’,,1
+21131,This plant is:,Allium fistulosum,,31
+21132,This plant is:,Allium monanthum,,2
+21133,This plant is:,Allium schoenoprasum,,13
+21211,This plant is:,Anethum graveolens,,23
+21212,This plant is:,Foeniculum vulgare,,1
+21213,This plant is:,Pimpinella anisum,,11
+21221,This plant is:,Petroselinum crispum,,33
+21222,This plant is:,Anthriscus cerefolium,,11
+21223,This plant is:,Coriandrum sativum,,13
+21231,This plant is:,Tagetes tenuifolia,,13
+21232,This plant is:,Achillea millefolium,,3
+21233,This plant is:,Chamaemelum nobile,,32
+21311,This plant is:,Artemisia dracunculus,,12
+21312,This plant is:,Salvia rosmarinus,,1
+21313,This plant is:,Lavandula angustifolia,,31
+21321,This plant is:,Abies balsamea,,32
+21322,This plant is:,Hesperocyparis macrocarpa,,11
+21323,This plant is:,Juniperus scopulorum,,3
+21331,This plant is:,Tropaeolum majus,,11
+21332,This plant is:,Cymbopogon citratus,,3
+21333,This plant is:,Nasturtium officinale,,22
+22111,This plant is:,Lithops salicola,,21
+22112,This plant is:,Lithops aucampiae,,13
+22113,This plant is:,Lithops optica ‘Rubra’,,3
+22121,This plant is:,Haworthia cooperi,,3
+22122,This plant is:,Haworthia bayeri,,23
+22123,This plant is:,Haworthia emelyae var major,,31
+22131,This plant is:,Fenestraria rhopalophylla,,23
+22132,This plant is:,Peperomia columella,,22
+22133,This plant is:,Haworthia truncata,,11
+22211,This plant is:,Cereus hildmannianus,,32
+22212,This plant is:,Cereus repandus,,1
+22213,This plant is:,Carnegiea gigantea,,22
+22221,This plant is:,Mammillaria bocasana,,23
+22222,This plant is:,Echinocactus grusonii,,12
+22223,This plant is:,Ferocactus emoryi,,1
+22231,This plant is:,Opuntia polyacantha,,1
+22232,This plant is:,Opuntia engelmannii,,12
+22233,This plant is:,Opuntia stricta,,22
+22311,This plant is:,Echeveria laui,,32
+22312,This plant is:,Sempervivum arachnoideum,,33
+22313,This plant is:,Aeonium arboreum,,21
+22321,This plant is:,Curio x peregrinus,,11
+22322,This plant is:,Curio rowleyanus,,21
+22323,This plant is:,Curio radicans,,13
+22331,This plant is:,Gasteria pillansii,,3
+22332,This plant is:,Crassula perfoliata var minor,,22
+22333,This plant is:,Kalanchoe thyrsiflora,,13
+23111,This plant is:,Saccharina latissima,,31
+23112,This plant is:,Palmaria palmata,,11
+23113,This plant is:,Macrocystis pyrifera,,2
+23121,This plant is:,Nelumbo nucifera,,31
+23122,This plant is:,Victoria amazonica,,2
+23123,This plant is:,Myriophyllum aquaticum,,1
+23131,This plant is:,Sarracenia leucophylla,,3
+23132,This plant is:,Drosera anglica,,23
+23133,This plant is:,Dionaea muscipula,,31
+23211,This plant is:,Polystichum aculeatum,,23
+23212,This plant is:,Woodwardia radicans,,33
+23213,This plant is:,Hymenophyllum wilsonii,,3
+23221,This plant is:,Polystichum californicum,,12
+23222,This plant is:,Woodsia obtusa,,2
+23223,This plant is:,Vandenboschia boschiana,,31
+23231,This plant is:,Phegopteris decursive-pinnata,,22
+23232,This plant is:,Adiantum caudatum,,21
+23233,This plant is:,Lygodium japonicum,,32
+23311,This plant is:,Zea mays var saccharata,,11
+23312,This plant is:,Zea mays var indentata,,13
+23313,This plant is:,Zea mays var everta,,1
+23321,This plant is:,Oryza rufipogon,,33
+23322,This plant is:,Oryza sativa,,2
+23323,This plant is:,Zizania palustris,,21
+23331,This plant is:,Triticum aestivum,,1
+23332,This plant is:,Hordeum vulgare,,12
+23333,This plant is:,Secale cereale,,23
+31111,This plant is:,Solanum lycopersicum ‘Yellow Pear’,,31
+31112,This plant is:,Solanum lycopersicum ‘Mortgage Lifter’,,33
+31113,This plant is:,Solanum lycopersicum ‘San Marzano’,,2
+31121,This plant is:,Solanum tuberosum ‘Yukon gold’,,3
+31122,This plant is:,Solanum tuberosum ‘Purple majesty’,,13
+31123,This plant is:,Solanum tuberosum ‘Red thumb’,,33
+31131,This plant is:,Solanum melongena ‘Ping Tung Long’,,22
+31132,This plant is:,Solanum melongena ‘Rosa bianca’,,32
+31133,This plant is:,Solanum melongena ‘Black beauty’,,11
+31211,This plant is:,Raphanus sativus ‘French breakfast’,,3
+31212,This plant is:,Raphanus sativus ‘Nero tondo’,,1
+31213,This plant is:,Raphanus sativus ‘Nile’,,2
+31221,This plant is:,Brassica rapa ‘Purple top white globe’,,23
+31222,This plant is:,Brassica rapa ‘Golden ball’,,2
+31223,This plant is:,Brassica rapa ‘Hakurei’,,31
+31231,This plant is:,Brassica napus ‘Laurentian’,,12
+31232,This plant is:,Brassica napus ‘Helenor’,,21
+31233,This plant is:,Brassica napus ‘Nadmorska’,,1
+31311,This plant is:,Cucumis lanatus var lanatus ‘Crimson Sweet’,,13
+31312,This plant is:,Cucumis lanatus var. lanatus ‘Sureness’,,22
+31313,This plant is:,Cucumis melo var. cantalupo,,1
+31321,This plant is:,Cucurbita moschata ‘Butternut’,,3
+31322,This plant is:,Cucurbita maxima ‘Blue Hubbard’,,22
+31323,This plant is:,Cucurbita pepo ‘Spaghetti’,,33
+31331,This plant is:,Cucurbita pepo ‘Yellow crookneck’,,12
+31332,This plant is:,Cucurbita pepo ‘Costata romanesco’,,13
+31333,This plant is:,Cucurbita pepo ‘Patty pan’,,32
+32111,This plant is:,Ficus carcia ‘Kadota’,,11
+32112,This plant is:,Ficus carica ‘Mission’,,32
+32113,This plant is:,Ficus carica ‘Blanche’,,23
+32121,This plant is:,Carya illinoinensis,,31
+32122,This plant is:,Juglans regia,,2
+32123,This plant is:,Aleurites moluccana,,12
+32131,This plant is:,Acer saccharum,,11
+32132,This plant is:,Acer rubrum,,3
+32133,This plant is:,Acer nigrum,,23
+32211,This plant is:,Rubus occidentalis,,21
+32212,This plant is:,Rubus hawaiensis,,2
+32213,This plant is:,Rubus idaeus,,31
+32221,This plant is:,Fragaria vesca,,22
+32222,This plant is:,Fragaria virginiana,,23
+32223,This plant is:,Fragaria moschata,,3
+32231,This plant is:,Ribes nigrum,,32
+32232,This plant is:,Rubus fruticosus,,11
+32233,This plant is:,Ribes uva-crispa,,3
+32311,This plant is:,Rosa virginiana,,12
+32312,This plant is:,Rosa rugosa,,33
+32313,This plant is:,Rosa woodsii,,31
+32321,This plant is:,Vitis rotundifolia,,1
+32322,This plant is:,Vitis labrusca,,13
+32323,This plant is:,Vitis vinifera,,11
+32331,This plant is:,Hibiscus sabdariffa,,13
+32332,This plant is:,Humulus lupulus,,21
+32333,This plant is:,Sassafras albidum,,2
+33111,This plant is:,Alocasia cucullata,,23
+33112,This plant is:,Alocasia odora,,22
+33113,This plant is:,Alocasia sanderiana,,13
+33121,This plant is:,Rhodochiton atrosanguineus,,11
+33122,This plant is:,Aristolochia acuminata,,21
+33123,This plant is:,Thunbergia alata,,31
+33131,This plant is:,Cercis siliquastrum,,1
+33132,This plant is:,Catalpa bignonioides,,3
+33133,This plant is:,Cercidiphyllum japonicum,,32
+33211,This plant is:,Quercus palustris,,1
+33212,This plant is:,Aesculus glabra,,2
+33213,This plant is:,Liriodendron tulipifera,,23
+33221,This plant is:,Sanguinaria canadensis,,33
+33222,This plant is:,Cymbalaria muralis,,22
+33223,This plant is:,Boykinia occidentalis,,21
+33231,This plant is:,Sidalcea malachroides,,31
+33232,This plant is:,Fatsia japonica,,13
+33233,This plant is:,Menispermum canadense,,2
+33311,This plant is:,Gleditsia triacanthos,,31
+33312,This plant is:,Phellodendron amurense,,22
+33313,This plant is:,Robinia pseudoacacia,,3
+33321,This plant is:,Amorpha nana,,11
+33322,This plant is:,Zamia furfuracea,,3
+33323,This plant is:,Actaea pachypoda,,32
+33331,This plant is:,Sanguisorba officinalis,,1
+33332,This plant is:,Securigera varia,,12
+33333,This plant is:,Helleborus orientalis,,13

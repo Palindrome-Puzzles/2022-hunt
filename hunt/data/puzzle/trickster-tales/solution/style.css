@@ -1,0 +1,91 @@
+.red-text{
+  color: red;
+  font-weight: bold;
+}
+
+.white-text{
+  color: white;
+}
+
+.shaded {
+  background-color: #D8EAD3;
+}
+
+table.till td,
+table.till th {
+  box-sizing: border-box;
+  height: 80px;
+  position: relative;
+  text-align: center;
+  width: 80px;
+  min-width: 80px;
+}
+
+.highlighted-cell {
+  background-color: #00FFFF;
+}
+
+.grids {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+}
+
+.left-grid {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+  margin-right: 20px;
+  width: 450px;
+}
+
+.right-grid {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+  width: 450px;
+}
+
+.teal {
+  background-color: #008080;
+  color: white;
+}
+.gold {
+  background-color: #D4AF37;
+}
+.orange {
+  background-color: #FF7F02;
+}
+.chocolate {
+  background-color: #7B3F01;
+  color: white;
+}
+.rose {
+  background-color: #ED7A9B;
+}
+.navy {
+  background-color: #000080;
+  color: white;
+}
+.lemon {
+  background-color: #FFF800;
+}
+.scarlet {
+  background-color: #FF2500;
+  color: white;
+}
+.gray {
+  background-color: #CCCCCC;
+}
+.purple {
+  background-color: #9F00C5;
+  color: white;
+}
+.emerald {
+  background-color: #4FC878;
+}
+.peach {
+  background-color: #FFCBA5;
+}

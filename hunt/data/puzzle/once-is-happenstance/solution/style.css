@@ -1,0 +1,29 @@
+.center {
+	text-align: center;
+}
+
+.cyan {
+	background-color: cyan;
+}
+
+.lavender {
+	background-color: #DAD1E8;
+}
+
+.tan {
+	background-color: #FFF2CB;
+	padding-right: 1rem;
+	padding-left: 1rem;
+}
+
+.yellow {
+	background-color: yellow;
+}
+
+/* force Chrome to print colors, dammit */
+
+@media print {
+table.grid th, table.grid td {
+    color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+    }

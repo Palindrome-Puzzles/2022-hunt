@@ -1,0 +1,88 @@
+img.medallion {
+  max-width: 100%;
+  max-width: 300px;
+  display: block;
+  margin: 0 auto 1rem;
+}
+
+summary {
+  font-weight: bold;
+}
+
+.glyph {
+  margin-bottom: 2em;
+  padding-left: 1.5em;
+}
+.glyph img {
+  max-width: 100%;
+}
+.glyph .puzzle-title {
+  font-size: 1.7rem;
+  font-weight: bold;
+  padding: 1em 0 0.2em;
+}
+.glyph .puzzle-author {
+  font-style: italic;
+  margin-bottom: 1em;
+}
+.glyph .glyph-sol-box {
+  display: flex;
+}
+.glyph .glyph-image {
+  flex: 4;
+  margin-right: 1.5em;
+}
+.glyph .glyph-solution {
+  flex: 6;
+}
+.glyph table {
+  border-collapse: collapse;
+  margin: 0;
+}
+.glyph table.square {
+  border: 2px solid black;
+}
+.glyph table.grid td {
+  height: 1em;
+  width: 1em;
+  text-align: center;
+}
+.glyph table td.topgs {
+  border-top: 2px solid #ccc;
+}
+.glyph table td.leftgs {
+  border-left: 2px solid #ccc;
+}
+.glyph table td.rightgs {
+  border-right: 2px solid #ccc;
+}
+.glyph table td.bottomgs {
+  border-bottom: 2px solid #ccc;
+}
+.glyph table td.topbs {
+  border-top: 2px solid black;
+}
+.glyph table td.leftbs {
+  border-left: 2px solid black;
+}
+.glyph table td.rightbs {
+  border-right: 2px solid black;
+}
+.glyph table td.rightbd {
+  border-right: 2px dashed black;
+}
+.glyph table td.bottombs {
+  border-bottom: 2px solid black;
+}
+.glyph table.square td {
+  border: 1px solid black;
+}
+.glyph table td.black {
+  background-color: black;
+}
+.glyph table td.grey {
+  background-color: #ccc;
+}
+.glyph table td.yellow {
+  background-color: #ff0;
+}

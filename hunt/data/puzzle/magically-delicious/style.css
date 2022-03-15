@@ -1,0 +1,7 @@
+ol li {
+	padding-bottom: 0.75rem;
+}
+
+li ol {
+	padding-top: 0.75rem;
+}

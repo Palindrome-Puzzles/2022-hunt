@@ -1,0 +1,64 @@
+#main-content * {
+  box-sizing: border-box;
+}
+
+.reports h2 {
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: 1.5rem;
+  line-height: 1.5;
+  padding-top: 1em;
+}
+
+.author {
+  font-size: 1rem;
+  color: #555;
+  padding-left: .8em;
+}
+
+.grids {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 20px auto;
+}
+
+.left-grid, .right-grid {
+  background: white;
+  border: 1px solid #aaa;
+  box-shadow: 0px 1px 4px #ccc;
+  flex-direction: column;
+  display: flex;
+  width: 450px;
+  position: relative;
+}
+
+.left-grid p, .right-grid p {
+  padding: 0 1rem;
+  margin-top: 0;
+}
+
+.section-title {
+  width: 100%;
+  padding: .5em 1rem;
+  background: #eee;
+  font-size: 1.2em;
+  font-weight: bold;
+  margin-bottom: 1em;
+}
+
+.middle-bit {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 50px;
+}
+
+.people {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 10px;
+  width: 130px;
+}

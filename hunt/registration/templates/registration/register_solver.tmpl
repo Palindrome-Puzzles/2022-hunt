@@ -1,0 +1,29 @@
+{% extends "registration/base.tmpl" %}
+{% load static %}
+
+{% block notifications %}
+{% if request.user.is_authenticated %}
+<p class="notification" tabindex="0">Heads-up - you're already part of a team!</p>
+{% elif form.errors %}
+<p class="notification error" tabindex="0">There was an error with your submission.</p>
+{% endif %}
+{% endblock notifications %}
+
+{% block content %}
+<main id="main-content">
+  <h2 id="register-section">Register as an unattached solver</h2>
+  <p class="registration-links menu-links">
+    {% if request.user.is_authenticated %}
+      <a href="{% url 'update_registration' %}">Update your team's registration</a>
+    {% else %}
+      <a href="{% url 'register_team' %}">Register a new team</a>
+    {% endif %}
+  </p>
+
+  {% if registration_closed %}
+  <p><em>Registration for the 2022 Mystery Hunt is now closed. If you have any questions about this, please contact <a href="hunt@mitmh2022.com" target="_blank">hunt@mitmh2022.com</a>.</em></p>
+  {% else %}
+  {% include 'registration/partials/registration-form.tmpl' %}
+  {% endif %}
+</main>
+{% endblock content %}

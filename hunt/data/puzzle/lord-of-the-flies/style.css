@@ -1,0 +1,22 @@
+.highlighted-square { background-color: #BFC9CA; 
+border: 1px solid black;}
+
+li {margin-bottom: 20px;}
+
+.numbered-blanks u {
+    margin-right: 10px;
+    margin-top:  40px;
+    width: 30px;
+}
+
+@media print {
+table.grid th, table.grid td {
+    color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+    page-break-before: always;
+    }
+}
+
+.blank-words {
+  font-size: 1em;
+}

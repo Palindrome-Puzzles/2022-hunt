@@ -1,0 +1,30 @@
+{% load puzzles %}
+{% load static %}
+
+<div class="flavor">
+    <p>Self-help looks different for different people, as we all need different things. But you can reach your own personal goal! After all, you have the credentials, and you are the key. What can New You City provide your team with?</p>
+
+    {% if team.is_public %}
+    <p class="notice">This puzzle is not yet available for public access.</p>
+    {% endif %}
+</div>
+
+<table id="tasks" class="task-table"></table>
+
+{% if round_info.puzzles|solve_count > 0 %}
+<div class="privacy">
+    Your submissions will only be seen by our team. If you're willing to let us feature them in our wrap-up, or in other public spaces, please say so in your email.
+</div>
+{% endif %}
+
+<br/>
+<div class="introspection-container">
+<h2>The results of your introspection:</h2>
+    <p class="introspection" id="introspection"></p>
+</div>
+
+<script type="module">
+    import Cookies from "{% static 'lib/js-cookie.module.min.js' %}";
+    window.getCookie = Cookies.get;
+</script>
+<script type="module" src="./introspection.js?v=1"></script>

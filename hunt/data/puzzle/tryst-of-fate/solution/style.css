@@ -1,0 +1,59 @@
+.filled:not(.provided) {
+  color: yellow;
+}
+
+.sum {
+  font-weight: bold;
+}
+
+table th {
+  background: white;
+  position: sticky;
+  top: 0;
+}
+
+table tr img {
+  position: relative;
+}
+
+.filled.upper-left,
+.filled.upper-right,
+.filled.lower-left,
+.filled.lower-right {
+  background-color: transparent;
+  font-size: 3em;
+  color: #fe3c72;
+}
+
+.filled.upper-left {
+  background-image: url('../hedge-black-upper-left.png');
+}
+
+.filled.upper-right {
+  background-image: url('../hedge-black-upper-right.png');
+}
+
+.filled.lower-left {
+  background-image: url('../hedge-black-upper-right.png');
+}
+
+.filled.lower-right {
+  background-image: url('../hedge-black-lower-right.png');
+}
+
+table .top-left-to-bottom-right,
+table .bottom-left-to-top-right {
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+table .top-left-to-bottom-right {
+  color: transparent;
+  background-image: url('./top-left-to-bottom-right.png');
+}
+
+table .bottom-left-to-top-right {
+  color: transparent;
+  background-image: url('./bottom-left-to-top-right.png');
+}

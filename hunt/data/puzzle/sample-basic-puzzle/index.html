@@ -1,0 +1,190 @@
+{% load assets %}
+
+<div class="flavor">
+  <p>A mysterious letter awaits you. Who could have sent it?</p>
+</div>
+
+<p class="letter">
+  It wasn't me.
+</p>
+
+<!-- Referring to images from the puzzle and round directories. -->
+<table>
+  <thead>
+    <tr>
+      <td>Source</td>
+      <td>Image</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Puzzle directory</td>
+      <td><img src="puzzle-mountain.jpg" height="100"></td>
+    </tr>
+    <tr>
+      <td>Puzzle sub-directory</td>
+      <td><img src="images/puzzle-subimage-bird.jpg" height="100"></td>
+    </tr>
+    <tr>
+      <td>Round directory</td>
+      <td><img src="{% rd 'round-pumpkin.jpg' %}" height="100"></td>
+    </tr>
+    <tr>
+      <td>External</td>
+      <td><img src="https://i.picsum.photos/id/724/200/300.jpg?hmac=MwcEnqDDOgKg6U3WYPytBPH_jurNEK2_2kcknpgP6wg" height="100"></td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- Top-level images. -->
+<img src="https://i.picsum.photos/id/167/100/100.jpg?hmac=YJ-1uFEDZQ1ybih-Fz5A4ROTGgCU1ceStENGE0RgBsM" alt="image 1">
+<img src="https://i.picsum.photos/id/1066/100/100.jpg?hmac=dtf6dI6uEvLW11u0uuHpuWl5v-ygfs_KCamXNKxtgbg" alt="image 2">
+<img src="https://i.picsum.photos/id/30/100/100.jpg?hmac=LkJFIyQi5G_0GfNEJzURRuwRnyg_iSSwcGmQ6K-t7L8" alt="image 3">
+
+<!-- Nested and linked images. -->
+<p>
+  <a href="https://www.google.com" target="_blank" rel="noopener nofollow noreferrer"><img src="https://i.picsum.photos/id/724/200/300.jpg?hmac=MwcEnqDDOgKg6U3WYPytBPH_jurNEK2_2kcknpgP6wg" alt="with a different link"></a>
+</p>
+
+<!-- Aria-hidden image example. -->
+<img src="https://i.picsum.photos/id/273/30/30.jpg?hmac=jjWKWoip3e9Yi1nyaCUk_uhjLUM2bHUHg-GNoO3HdEw" aria-hidden="true">
+
+<!-- Images in a table. -->
+<table>
+  <thead>
+    <tr>
+      <td>Left</td>
+      <td>Right</td>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- Directly in the table cell. -->
+    <tr>
+      <td><img src="https://i.picsum.photos/id/617/200/200.jpg?hmac=hA4FoiLXjwqHcRxZZSlEI_ruilvP8o_m7FsJ-JD4t4I" height="200"></td>
+      <td><img src="https://i.picsum.photos/id/478/200/200.jpg?hmac=YfKBYcZHT991lmrKfB0pYNaztmUvQecXbVrc5V4mj8E" height="200"></td>
+    </tr>
+    <!-- Nested with a wrapper for some reason. -->
+    <tr>
+      <td>
+        <p>
+          <img src="https://i.picsum.photos/id/142/200/200.jpg?hmac=L8yY8tFPavTj32ZpuPiqsLsfWgDvW1jvoJ0ETDOUMGg" height="200">
+        </p>
+      </td>
+      <td>
+        <p>
+          <img src="https://i.picsum.photos/id/823/200/200.jpg?hmac=zD0Ti1kYqMOUsfNVS7xtDou-2ECcI0RXYs18C54EdYo" height="200">
+        </p>
+      </td>
+    </tr>
+    <!-- With other content in the cell. This breaks in Sheets, as it tries to keep all rows together. -->
+    <tr>
+      <td>
+        <p><img src="https://i.picsum.photos/id/142/200/200.jpg?hmac=L8yY8tFPavTj32ZpuPiqsLsfWgDvW1jvoJ0ETDOUMGg" height="200"></p>
+        <p>this content should be preserved!</p>
+      </td>
+      <td>
+        <p><img src="https://i.picsum.photos/id/823/200/200.jpg?hmac=zD0Ti1kYqMOUsfNVS7xtDou-2ECcI0RXYs18C54EdYo" height="200"></p>
+        <p>this content should be preserved!</p>
+      </td>
+    </tr>
+    <!-- With links in the cell. -->
+    <tr>
+      <td><a href="https://example.com" target="_blank" rel="noopener nofollow noreferrer">link in cell</a></td>
+      <td>partial <a href="https://example.com" target="_blank" rel="noopener nofollow noreferrer">link</a> in cell</td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="grid">
+  <caption>Example grid</caption>
+  <tr>
+    <th scope="row">Apr</th>
+    <td>12</td>
+    <td>13</td>
+    <td class="filled"></td>
+  </tr>
+  <tr>
+    <th scope="row">Mar</th>
+    <td class="filled"></td>
+    <td>13</td>
+    <td>14</td>
+  </tr>
+  <tr>
+    <td class="no-border"></td>
+    <th scope="col">B</th>
+    <th scope="col">C</th>
+    <th scope="col"></th>
+  </tr>
+</table>
+
+<p><a href="https://example.com" target="_blank" rel="noopener nofollow noreferrer">Full <span class="italicized">links</span> work with <span class="italicized preserve-on-copy">preserved italics</span></a></p>
+
+<p>
+  Partial <a href="https://example.com" target="_blank" rel="noopener nofollow noreferrer">links</a> don't work very well.
+</p>
+
+<div class="no-copy">Secret info not for clipboard</div>
+
+<div class="blanks">_ _ _   _ _ _</div>
+
+<div class="blanks">_ _ _   _ <span class="boxed">_</span> _</div>
+
+<p>
+  <span class="blank-word"></span> of &ldquo;<span class="blank-word"></span>&rdquo;
+</p>
+
+<div>hello</div>
+<div style="font-size: 24px">hello</div>
+<pre>hello</pre>
+<div>bye</div>
+
+<div class="numbered-blanks">
+  <u></u><u></u><u>3</u><u></u>
+  <span class="word-break"></span>
+  <u></u><u></u><u></u>
+</div>
+
+<div class="numbered-blanks emphasized">
+  <u>2</u><u></u><u>3</u><u></u>:
+  <span class="word-break"></span>
+  <u></u><u></u>'<u></u>
+</div>
+
+<div class="clued-item-container">
+  <div class="clues prefer-2-col">
+    <div>
+      <h3>Across</h3>
+      <ol>
+        <li value="1">A big bird</li>
+        <li value="2">A small bird</li>
+      </ol>
+    </div>
+    <div>
+      <h3>Down</h3>
+      <ol>
+        <li value="1">Fish</li>
+        <li value="3">Chips</li>
+      </ol>
+    </div>
+  </div>
+
+<table class="grid crossword">
+  <tr>
+    <td><span class="clue">1</span>?</td>
+    <td><span class="clue">2</span></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td><span class="clue">3</span></td>
+    <td></td>
+    <td class="filled"></td>
+  </tr>
+</table>
+</div>
+
+<details class="long-alt">
+<summary><img src="http://placekitten.com/g/700/400" alt="it's a kitten"></summary>
+Lorem ipsum dolor sit amet, more stuff goes here, including <a href="http://placekitten.com/g/700/400" target="_blank" rel="noopener nofollow noreferrer">a link to the image at full size</a> la al al alalalalalalalala everyone loves kittens!!!!!
+</details>
+
+<button id="clipboard-button"></button>

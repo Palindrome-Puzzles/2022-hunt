@@ -1,0 +1,16 @@
+.clue-row {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-evenly;
+	align-items: baseline;
+	grid-template-columns: 1fr;
+	grid-template-rows: auto;
+	grid-gap: 2rem;
+	max-width: 1000px;
+	margin-top: 2rem;
+}
+
+.clue-row div {
+	width: 300px;
+	text-align: center;
+}

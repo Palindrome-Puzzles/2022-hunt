@@ -1,0 +1,63 @@
+table.crossword td {
+  height: 30px;
+  min-width: 30px;
+  width: 30px;
+}
+
+table.crossword.small td {
+  height: 20px;
+  min-width: 20px;
+  width: 20px;
+}
+
+table.crossword.small tr:last-of-type .no-border {
+  padding: 0;
+}
+
+table.grid.crossword {
+  border-collapse: separate;
+}
+.prefer-2-col > div:first-of-type {
+  flex-basis: 35%;
+}
+
+.prefer-2-col > div:last-of-type {
+  flex-basis: 55%;
+  margin-top: 18px;
+}
+
+.green {
+  background-color: #d9ead3;
+  -webkit-print-color-adjust: exact;
+  color-adjust: exact;
+}
+
+.yellow {
+  background-color: #fff2cc;
+  -webkit-print-color-adjust: exact;
+  color-adjust: exact;
+}
+
+@media (max-width: 50rem) {
+  .prefer-2-col:not(:last-of-type) {
+    padding-bottom: 30px;
+    border-bottom: 1px solid black;
+  }
+  .prefer-2-col > div:first-of-type,
+  .prefer-2-col > div:last-of-type {
+    flex-basis: 100%;
+  }
+}
+
+@media print {
+  table.grid.crossword td {
+    width: 40px;
+    height: 40px;
+  }
+
+  table.crossword.small td {
+    height: 30px;
+    min-width: 30px;
+    width: 30px;
+  }
+}

@@ -1,0 +1,2 @@
+# Heroku will use this requirements file.
+-r requirements/release_heroku.txt

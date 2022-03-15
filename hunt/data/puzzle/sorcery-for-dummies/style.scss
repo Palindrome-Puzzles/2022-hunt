@@ -1,0 +1,148 @@
+#main-content {
+    * {
+        box-sizing: border-box;
+    }
+
+    form {
+        margin-bottom: 1em;
+    }
+
+    p {
+        margin-bottom: 1em;
+    }
+
+    .sorcery-note {
+        text-align: left;
+	    background: #eee;
+	    padding: 1em;
+    }
+
+    input[name=spell] {
+        // height: 30px;
+        width: 100%;
+        font-size: 2rem;
+        padding: .4em .3em;
+        margin-bottom: .5em;
+        border: 1px solid #666;
+    }
+
+    .button-wrap {
+        text-align: center;
+        margin-bottom: 1em;
+    }
+
+    .note {
+        margin: 0 0 1em;
+        display: none;
+        text-align: center;
+        font-size: 1.5rem;
+        font-weight: bold;
+        background-color:#a6ec99;
+        padding: 1em;
+    }
+
+    button[type=submit] {
+        // height: 3rem;
+        font-size: 1.4rem;
+    }
+
+    .output-wrap {
+        background: black;
+        border: 1px solid #eee;
+        padding: .5em;
+        line-height: 1.2;
+        width: 100%;
+        color: lightgreen;
+        font-family: monospace;
+        font-size: 2.4rem;
+        min-height: 2em;
+        margin-bottom: .5em;
+        box-sizing: border-box;
+        text-align: center;
+    }
+
+    .loading-wrap {
+        display: none;
+        position: relative;
+        margin-left: -22px;
+    }
+
+    .loading {
+        display: inline-block;
+        position: absolute;
+        top: 0;
+        left: 50%;
+
+        div {
+            box-sizing: border-box;
+            display: block;
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            margin: 0;
+            border: 3px solid #fff;
+            border-radius: 50%;
+            animation: loading 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+            border-color: #fff transparent transparent transparent;
+            &:nth-child(1) {
+              animation-delay: -0.45s;
+            }
+            &:nth-child(2) {
+              animation-delay: -0.3s;
+            }
+            &:nth-child(3) {
+              animation-delay: -0.15s;
+            }
+        }
+    }
+
+    @keyframes loading {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    .monster-group {
+	    display: grid;
+	    grid-template-columns: repeat(auto-fit, 25%);
+        background: white;
+    }
+
+    .monster {
+        position: relative;
+        padding: 0 8%;
+
+        img {
+            width: 100%;
+        }
+
+        &.killed {
+            &:before {
+                position: absolute;
+                z-index: 100;
+                content: "";
+                width: 80%;
+                height: 80%;
+                top: 50%;
+                left: 50%;
+                margin: -40% 0 0 -40%;
+                background:url(images/x.png) no-repeat;
+                background-size: 100% auto;
+            }
+
+            img {
+                opacity: .5;
+            }
+        }
+    }
+
+    .len {
+        background: #eee;
+        padding: 4% 3%;
+        border-radius: 5px;
+    }
+}

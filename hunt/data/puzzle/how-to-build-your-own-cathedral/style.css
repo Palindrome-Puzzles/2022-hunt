@@ -1,0 +1,32 @@
+.pictures {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+}
+
+.captioned {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 20px;
+  width: 333px;
+}
+
+.poem {
+  text-align: center;
+  font-style: italic;
+  font-size: .8em;
+}
+
+.prefer-2-col {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  row-gap: 1em;
+  margin-bottom: 50px;
+}
+
+.blank-words {
+  font-size: 1em;
+}

@@ -1,0 +1,36 @@
+.columned-clues{ columns: 300px 3; 
+margin-top: 20px}
+
+table.crossword td,
+table.crossword th {
+  box-sizing: border-box;
+  height: 30px;
+  position: relative;
+  text-align: center;
+  width: 30px;
+  min-width: 30px;
+}
+
+ol {margin-top:0;
+break-after: page;}
+
+@media print {
+table.grid th, table.grid td {
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+    page-break-before: always;
+    }
+}
+
+@media print {
+.clues {
+    page-break-before: always;
+    }
+}
+
+.minipuzzle {
+    break-inside: avoid-page;
+}

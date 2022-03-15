@@ -1,0 +1,47 @@
+table {
+    width: 100%;
+}
+th {
+    padding: .5em 2em;
+    text-align: left;
+    background-color: white;
+    position: sticky;
+    top: 3.25rem; /* navbar height */
+}
+td {
+    padding: .5em;
+    vertical-align: top;
+    word-break: break-word;
+}
+td p {
+    margin-top: 0;
+    margin-bottom: .5em;
+}
+tr {
+    border-bottom: 1px solid #000;
+}
+tr.separator {
+    border-top-width: 2px;
+}
+tr:nth-of-type(even) {
+/*     background-color: #ddd; */
+}
+textarea {
+    display: block;
+    min-width: 300px;
+    height: 100px;
+    width: 100%;
+}
+textarea, input {
+    margin: .5em 0;
+}
+
+.email-and-response {
+    padding: 1em 0 1em 2em;
+}
+
+.email-response {
+    font-size: .8em;
+    background: #eee;
+    padding: 1em;
+}

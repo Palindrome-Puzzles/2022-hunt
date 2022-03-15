@@ -1,0 +1,146 @@
+{% extends "hunt/site_layout.tmpl" %}
+{% load hosts static %}
+
+{% block title %}Statistics | {{ block.super }}{% endblock %}
+
+{% block site_content %}
+<main class="stats">
+  <header>
+    <h1>Statistics</h1>
+  </header>
+
+  <div class="paper-edge top"></div>
+  <section id="main-content" class="content">
+    <h2>Star Rats</h2>
+    <p>On December 14, 2021, we released the prologue to the MIT Mystery Hunt, <em>Star Rats</em>. Intended as a introductory puzzle set for the Mystery Hunt proper, we were thrilled at the level of participation we saw.</p>
+
+    <p><em>Star Rats</em> was comprised of 13 puzzles and a metapuzzle.</p>
+
+    <ul>
+      <li>186 registered teams solved at least one puzzle.</li>
+      <li>Teams solved an average of <strong>9</strong> puzzles before solving the Star Rats metapuzzle.</li>
+      <li><strong>Algernon</strong> was the most-solved Star Rats puzzle.</p></li>
+    </ul>
+    <div class="flourish-embed flourish-chart" data-src="visualisation/8481196"><script src="https://public.flourish.studio/resources/embed.js"></script></div>
+    <div class="flourish-embed flourish-chart" data-src="visualisation/8480995"><script src="https://public.flourish.studio/resources/embed.js"></script></div>
+
+    <h2>MIT Mystery Hunt 2022</h2>
+    <p>The 2022 MIT Mystery Hunt kicked off at 12 noon TIMEMIT  on Friday January 14 2022. The first round of puzzles unlocked at 1 PM. The hunt remained open until wrap-up at 12 noon, Monday January 17 2022. All statistics below are confined to this timeframe.</p>
+
+    <ul>
+        <li><strong>393</strong> teams registered.</li>
+        <li><strong>303</strong> teams submitted an answer for at least one puzzle.</li>
+        <li><strong>279</strong> teams solved at least one puzzle.</li>
+        <li><strong>128</strong> teams solved <strong>The Investigation</strong> metapuzzle.</li>
+        <li><strong>66</strong> teams solved <strong>The Ministry</strong> metapuzzle.</li>
+        <li><strong>60</strong> teams solved <strong>Fruit Around</strong> and earned the New Berry pin.</li>
+        <li><strong>48</strong> teams solved at least one <strong>Bookspace</strong> metapuzzle.</li>
+        <li><strong>9</strong> teams completed the Hunt.</li>
+    </ul>
+    <p>Of the nine teams who completed the Hunt, these <strong>5</strong> completed it without any hints:</p>
+    <ul>
+      <li>✈️✈️✈️ Galactic Trendsetters ✈️✈️✈️</li>
+      <li>Left Out</li>
+      <li>teammate</li>
+      <li>Death and Mayhem</li>
+      <li>UNICODE EQUIVALENCE</li>
+    </ul>
+    <p>Below is an animation of the top teams' progress throughout the hunt. We also built an <a href="https://public.flourish.studio/visualisation/8489681/">animation of just the meta solves</a>, which is a slightly more accurate representation of rankings.</p>
+    <div class="flourish-embed flourish-bar-chart-race" data-src="visualisation/8486836"><script src="https://public.flourish.studio/resources/embed.js"></script></div>
+
+    <div class="flourish-embed flourish-table" data-src="visualisation/8490358"><script src="https://public.flourish.studio/resources/embed.js"></script></div>
+
+    <h3>Hints and emails</h3>
+
+    <p>We received and responded to <b>3,409</b> hints from kickoff to wrapup, with requests roughly following a regular pattern, increasing as teams unlocked more puzzles.</p>
+
+    <div class="flourish-embed flourish-chart" data-src="visualisation/8483180"><script src="https://public.flourish.studio/resources/embed.js"></script></div>
+
+    <p>We also observed a spike of requests occurring in the time leading up to ”HQ close“ at 6pm on Sunday.</p>
+
+    <div class="flourish-embed flourish-chart" data-src="visualisation/8483033"><script src="https://public.flourish.studio/resources/embed.js"></script></div>
+
+    <div class="flourish-embed flourish-chart" data-src="visualisation/8483336"><script src="https://public.flourish.studio/resources/embed.js"></script></div>
+
+    <p>Emails were in line with overall hint volume throughout the event, with us  receiving 1,487 emails and sending 743 (non-automated) emails, with a large number of emails from teams regarding  administrative issues in the opening hours of the Hunt. We also sent 3,713 automated emails.</p>
+
+    <div class="flourish-embed flourish-chart" data-src="visualisation/8492478"><script src="https://public.flourish.studio/resources/embed.js"></script></div>
+    <p>The Investigation generated remarkably few hints, amounting to approximately one hint for every ten teams that unlocked it.</p>
+
+    <h3>Answer submissions</h3>
+    <p>All answer submissions are available for download <a href='{% static 'submission_log.csv' %}'>here</a>, and all team unlocks and solve times are available for download <a href='{% static 'unlock_and_solve_log.csv' %}'>here</a>.</p>
+
+    <div style='background-color: #DEF4FF; padding-left: 1em; padding-right: 1em; padding-top: 0.5em; padding-bottom: 0.5em;'>
+      <p>
+        <strong>Notes on data files</strong>:
+      </p>
+      <ul>
+        <li>Although the <strong>unlock_and_solve_log.csv</strong> files shows earlier times for the initial puzzle unlocks, teams did not have access to them until 1pm.</li>
+        <li>Teams were able to submit multiple <em>correct</em> answers for a puzzle (provided they did so in close succession), so multiple correct submissions per puzzle may appear for a team in the <strong>submission_log.csv</strong> files.</li>
+      </ul>
+    </div>
+
+    <h4>By rounds and puzzles</h4>
+    <p>As expected, puzzles in the later rounds of the hunt were seen by, and solved by, fewer teams.</p>
+
+    <div class="flourish-embed flourish-chart" data-src="visualisation/8481395"><script src="https://public.flourish.studio/resources/embed.js"></script></div>
+
+    <h4>Manuscrip usage</h4>
+
+    <p>We saw teams redeeming manuscrip as soon as it became possible, after the second event. Again, as with hints and emails, we saw a increase in usage in the time leading up to 6pm Sunday.</p>
+    <div class="flourish-embed flourish-chart" data-src="visualisation/8496700"><script src="https://public.flourish.studio/resources/embed.js"></script></div>
+
+    <p>Unsurprisingly, manuscrip was used most often on puzzles in the first round, likely because teams who were stuck on those puzzles due to their difficulty would have instead had no difficulty attending an event to earn the manuscrip.</p>
+
+    <div class="flourish-embed flourish-chart" data-src="visualisation/8496541"><script src="https://public.flourish.studio/resources/embed.js"></script></div>
+
+    <h4>Notable incorrect answer submissions</h4>
+    <p>The Investigation had a <em>large</em> number of incorrect guesses, many them almost, but not <em>quite</em>, fitting into right pattern for the solution. Here are some of them:</p>
+
+    <p><b>IT'S A…</b></p>
+    <ul>
+        <li>A LARGE</li>
+        <li>A LIT</li>
+        <li>ALL ABOUT THAT</li>
+        <li>ALPHABETIC</li>
+        <li>BLACK</li>
+        <li>BLANK</li>
+        <li>BOOKWORM</li>
+        <li>BRAT</li>
+        <li>CLOTH</li>
+        <li>DONUT</li>
+        <li>GIANT THINK</li>
+        <li>LOOP</li>
+        <li>PEN</li>
+        <li>PERPLEXING</li>
+        <li>PETER RABBIT</li>
+        <li>PIGEON</li>
+        <li>PLANCK</li>
+        <li>PLANET</li>
+        <li>PORT</li>
+        <li>POT</li>
+        <li>RABBIT</li>
+        <li>RAT</li>
+        <li>WHITE</li>
+        <li>WORD</li>
+        <li>WORM</li>
+    </ul>
+    <p><b>… HOLE</b></p>
+
+    <h3>Interactions and submissions</h3>
+    <p>Most interactions involved a team being visited by Ministers from the Ministry of Intertextual Transportation. We also had visits from Self Help Vice Ministers, who graded <strong>Book Report</strong> submissions.</p>
+
+    <p>Our Book Reports submissions were incredible! We received 168 book reports from 96 teams, with the most popular being reports on <strong>59 seconds</strong> (stacking coins), followed by <strong>Digital Minimalism</strong> (recreating a piece of art in 1"x1" square) and <strong>Flow</strong> (throw something biodegradable into a body of water).</p>
+
+    <div class="flourish-embed flourish-chart" data-src="visualisation/8493567"><script src="https://public.flourish.studio/resources/embed.js"></script></div>
+
+    <p>Of the <strong>New You City</strong> submissions, by far the most submitted was the <em>Come up with another item for this year's scavenger hunt list</em>, likely because teams had access to that as soon as they turned in their book reports.</p>
+
+    <p>The next most common were <em>Write story of a Gashlycrumb Tiny</em> and <em>Cameo in an MCU movie</em>.</p>
+
+    <div class="flourish-embed flourish-chart" data-src="visualisation/8490866"><script src="https://public.flourish.studio/resources/embed.js"></script></div>
+
+    <div class="paper-edge bottom"></div>
+</section>
+</main>
+{% endblock site_content %}

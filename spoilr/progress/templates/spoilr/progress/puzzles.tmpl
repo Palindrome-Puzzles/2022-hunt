@@ -1,0 +1,92 @@
+{% extends "hq/layout.tmpl" %}
+{% load static %}
+
+{% block title %}Puzzles Dashboard | {{ block.super }}{% endblock %}
+{% block heading %}Puzzles Dashboard{% endblock %}
+
+{% block breadcrumb_items %}
+<li><a href="{% url 'spoilr.progress:puzzles' %}">Puzzles Dashboard</a></li>
+{% endblock breadcrumb_items %}
+
+{% block content %}
+<section class="content puzzles">
+<table>
+  <tr>
+    <td>{{ t_total }} teams, {{ p_total }} puzzles</td>
+    <td>Overall released:</td>
+    <td class="n">{{ p_released }}</td>
+    <td>/</td>
+    <td class="d">{{ p_total }}</td>
+    <td class="p">{{ p_releasedp }}</td>
+    <td colspan="7"><div class="gb" style="background-size: {{ p_releasedp }} 100%"></div></td>
+  </tr>
+  <tr>
+    <td>{{ m_total }} metas</td>
+    <td>Overall solved:</td>
+    <td class="n">{{ p_solved }}</td>
+    <td>/</td>
+    <td class="d">{{ p_total }}</td>
+    <td class="p">{{ p_solvedp }}</td>
+    <td colspan="7"><div class="gb" style="background-size: {{ p_solvedp }} 100%"></div></td>
+  </tr>
+</table>
+<table>
+  <tr>
+    <th></th>
+    <th></th>
+    <th>Name</th>
+    <th class="f">First Release</th>
+    <th colspan="5">Releases</th>
+    <th colspan="5">Solves</th>
+    <th>Surveys</th>
+  </tr>
+  {% for round in rounds %}
+    <tr class="h">
+      <td></td>
+      <td></td>
+      <td>
+        {% if 'round' in round %}
+        <a href="{% url 'round_view' round.round.url %}">{{ round.round.name }}</a>
+        {% else %}
+        {{ round.name }}
+        {% endif %}
+      </td>
+      <td colspan="12"></td>
+    </tr>
+    {% for puzzle in round.puzzles %}
+    <tr class={% if puzzle.released %}{% if puzzle.solvedp != '-' %}{% if puzzle.solvedp >= 20 %}p_good{% else %}p_meh{% endif %}{% else %}p_nodata{% endif %}{% else %}p_unreleased{% endif %}>
+      <td class="puzz">
+        <a class="a" href="{% url 'puzzle_view' puzzle.puzzle.url %}" target="_blank">🧩</a>
+      </td>
+      <td class="sol">
+        <a class="a" href="{% url 'puzzle_view' puzzle.puzzle.url %}solution" target="_blank">🔑</a>
+      </td>
+      <td>
+        <a class="a" href="{% url 'spoilr.progress:puzzle_view' puzzle.puzzle.external_id %}">{% if puzzle.puzzle.is_meta %}<b>{% endif %}{{ puzzle.puzzle.name|truncatechars:40 }}{% if puzzle.puzzle.is_meta %}</b>{% endif %}</a>
+      </td>
+      <td class="f">{{ puzzle.first|date:'D H:i' }}</td>
+      <td class="n">{{ puzzle.released }}</td>
+      <td>/</td>
+      <td class="d">{{ t_total }}</td>
+      <td class="p">{{ puzzle.releasedp }}</td>
+      <td class="g">{% if puzzle.releasedp != '-' %}<div class="gb" style="width: {{ puzzle.releasedp }}"></div>{% endif %}</td>
+      <td class="n">{{ puzzle.solved }}</td>
+      <td>/</td>
+      <td class="d">{{ puzzle.released }}</td>
+      <td class="p">{{ puzzle.solvedp }}</td>
+      <td class="g">{% if puzzle.solvedp != '-' %}<div class="gb" style="width: {{ puzzle.solvedp }}"></div>{% endif %}</td>
+      <td>{{ puzzle.surveys }}</td>
+    </tr>
+    {% endfor %}
+  {% endfor %}
+</table>
+</section>
+{% endblock content %}
+
+{% block stylesheets %}
+<link rel="stylesheet" type="text/css" href="{% static 'spoilr/progress/style.css' %}">
+{% endblock %}
+
+{% block scripts %}
+{% include 'hq/util/auto-reload-script.tmpl' %}
+{% endblock scripts %}

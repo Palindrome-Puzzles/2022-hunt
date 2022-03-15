@@ -1,0 +1,68 @@
+.introspection-container{
+  text-align: center;
+  padding: 24px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: black;
+}
+
+.introspection{
+  font-family: monospace;
+  word-break: break-all;
+  text-align: left;
+}
+
+.collapsible{
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+  background-color: #EFEFEF;
+}
+
+.description {
+  padding: 0px 16px;
+}
+
+.description-row > td{
+  padding: 0;
+}
+
+.task-row > td {
+  border-bottom-width: 0px;
+}
+
+.task-table {
+  min-width: 600px;
+  max-width: 600px;
+  margin-bottom: 1em;
+}
+
+.task-id {
+  min-width: 80px;
+}
+
+.task-text {
+  font-family: monospace;
+}
+
+.task-icon {
+  min-width: 20px;
+}
+
+.task-button {
+  min-width: 25px;
+}
+
+.task-button > button {
+  padding: 4px;
+}
+
+.privacy {
+  width: 600px;
+  margin: 0 auto;
+  font-style: italic;
+  font-size: .8em;
+  border-top: 1px dashed #ddd;
+  padding-top: 1em;
+  color: #555;
+}

@@ -1,0 +1,12 @@
+[
+    [
+        0.0,
+        ["start"],
+        "Maybe the letter contents will give some clue?"
+    ],
+    [
+        10.0,
+        ["extract", "other", "tags"],
+        "Maybe there's a famous song denying responsiblity?"
+    ]
+]

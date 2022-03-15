@@ -1,0 +1,91 @@
+<p>Each answer in this round is the name of a famous person. When a puzzle is solved, the person’s name is associated with a costume – for example, the first puzzle associates SWOOSIE KURTZ with the BASEBALL PLAYER. At the same time, a piece of a logic puzzle, based on the board game Love Letter, is revealed. One path to the solution to the logic puzzle – among many that all lead to the same place -- is as follows:</p>
+
+<table>
+<tr>
+	<td><p>(1) One complete Premium Edition game lasting some number of rounds was played by exactly 5 players, using the required deck (except that one or more cards had been lost). During the game, individual instances of attendees (not all different) were discarded exactly 93 times. From the information you will receive you will be able to determine how many times each particular attendee was discarded during the game. (The specific order of those discards is unrecoverable and irrelevant.)</td>
+	<td>A Google search on a few key words (such as “Premium Edition”, rounds, discards) will reveal that the game being played is the boardgame Love Letter. This given tells you your task is to determine which attendees were involved, and how many total times each was discarded during the game.</p>
+		<p>The rules for Love Letter, Premium Edition are available in several places online, <a href = "http://alderac.com/wp-content/uploads/2017/11/Love-Letter-Premium_Rulebook.pdf" target="_blank">including here</a>.</p></td></tr>
+<tr>
+	<td>(2) The player who won the game made the final discard of the game, having received no tokens that round until after making that discard. The only other round (call it Round X) in which that player received tokens was one in which that player discarded that same game-ending attendee as the final discard of Round X, similarly having received no tokens in Round X until after that attendee was discarded.</td>
+	<td>There's only one way to score 2 points upon or after the final discard of a round -- use the Bishop (strength 9) to guess the attendee of the final competitor, gaining a point both for the correct guess and for (independently) winning the round. Since the player scoring the points must have used this move earlier in the game to also gain 2 points (since they won the game with a required 4 points), the Bishop had to be discarded at least one other time.</td>
+</tr>
+<tr>
+	<td>(3) In at least 60 percent of the rounds, one attendee (not necessarily the same one each time) was discarded strictly more than – not tied with -- any other attendee in that round.</td>
+	<td><p>By #4, all discard numbers from 1 to some maximal N are represented, with no gaps. Then this #3 establishes there must be strictly more than 4 rounds. If exactly 4 rounds, and the top discard number in the 60% of rounds were 333 (75% of the rounds), which must be the Guard (the only card with more than 2 per round), we know it was also discarded as a singleton in a round (by #9), so that gets us to 10, and we could not fill the 9 slot (4x2 at most). And if it was always the Guard and 332, the singleton gets us to a total of 9, but then we could not fill the 8 slot (3x2 plus 1 at most, since one round then had to be less than 2). And if 332, where the 2 is a card OTHER than the Guard, we could have a 9 and an 8, BUT ... the maximum cards discarded in the games with a 3 are: 24 (32 minus, from #7, the two unused zero strengths, minus the unused 6 strength, minus the five unused Guards), and the max in the 2 game = 15 (2 + 1 each of the other 13 used strengths). That totals 63, and we cannot get to 93 discards with one more game (several Guards must always remain undiscarded, lest we have a gap in the 1-N set of discards). It’s worse if we go to 322 or 222, or if we play only 3 rounds.</p>
+		<p>The maximal discards here must be at least 333 in three of the rounds (or else we cannot get three 10’s otherwise, which are needed for #6), so must always be the Guard.</p></td></tr>
+<tr>
+	<td>(4) For every integer from 1 through N inclusive, where N is the maximum number of times any attendee was discarded over the course of the game, there was at least one attendee discarded that many times. Exactly two of those integers 1 through N are represented by discards of more than one attendee.</td>
+	<td>This will be useful in conjunction with #6.</td>
+</tr>
+<tr>
+	<td>(5) One particular player was the first player knocked out in every round, each time being knocked out on the turn of the same other particular player, with the player doing the knocking out discarding an attendee and selecting a player, but otherwise neither communicating anything or revealing their hand to anyone. As fate would have it, the player doing all of that knocking out ended the game with no tokens (as did one other player), whereas the always-knocked-out-first player ended up having two tokens at the end of the game.</td>
+	<td><p>The two cards referred to can only be the Prince (knocker-outer) and Princess (one who gets knocked out). 3 players did not score any points from winning a round (0, 0, and Princess who was always knocked out first). So, the first 5 rounds of the game had points going to 2 players. But one of those players only scored on one occasion before the final round (by #2). If the game lasted 6 rounds, the other scoring player would have scored 4 points by the end of Round 5, winning the game. So the game must have been shorter than 6 rounds.</p>
+		<p>And by #3 the game must have lasted more than 4 rounds. So, exactly 5 rounds.</p>
+		<p>Accordingly, the Princess was discarded exactly 5 times, and always by the same player.</p></td></tr>
+<tr>
+	<td>(6) Three particular attendees were discarded the same number of times – call it Y -- during the game (with no other attendee being discarded exactly Y times). The total number of these discards (thus, 3Y) was less than the total number of discards of all attendees discarded fewer than Y times, and also less than the total number of discards of all attendees discarded more than Y times.</td><td><p>Given exactly 5 rounds, we need a set of integers from 1 to N, with one of them represented exactly 3 times, one other of them also represented more than once (by #4), and the rest represented one time each:</p>
+
+<ul><li>Y can't be more than 9, because that requires more than 93 discards, contrary to #1.</li>
+<li>Y can’t be 8, because if a higher number were duplicated, the high sum would have to be 93-28-24 = 42, but we cannot get there with 9, 10, 11 (only one is duped). If a number lower than 8 is duped, then the higher discards would have to be exactly 9, 10, 11 (which is OK), but then the lower discards would have to sum to 93-30-24 = 39, and 1-7 = 28, but we can't get +11 (39-28) by duping a number from 1-7.</li>
+<li>Y can’t be 7. We'd need to dupe one below to get over 21, so above would be 8+9+10. Then, 1+2+3+4+5+6+21+27= 69, we would need to get 24 from having 4 different cards discarded 6 times, which would necessarily be a card which has 2 copies in the deck, but we do not have enough of those left. (The 2x cards are numbers 1, 6, 6, 7, 7, 8, 8, 9, but we’ve already accounted for most of those among the cards discarded 7,7,7,8,9,10 times.) Similarly, we don’t have enough different cards to discard a Value 4 six times, or a Value 3 eight times. So, Y cannot be 7. (Note that it cannot be 1 2 3 4 5 6 7 7 7 8 9 10 11 plus a dupe of one of the 1-6 numbers, since that sum is 80, and we cannot make up the additional 13 discards by duplicating a number less than 7.)</li>
+<li>Similar analyses show that Y cannot be less than 7.</li></ul>
+<br>
+<p>Thus, Y=9.</p>
+
+<p>So now #6 in combination with #3 and #4 means that the other duplicate number of discards must be 10, since the total has to be greater than 9 to exceed 9+9+9, and since only the Guard can exceed 10 the other duplicate cannot be greater than 10.</p>
+
+<p>Accordingly, since there are multiple discard counts of exactly 9 and 10, and total discards of 93, we know that the discard counts must be exactly 1 2 3 4 5 6 7 8 9 9 9 10 10 10 = 93.</td></tr>
+<tr>
+	<td>(7) At most 10 different attendees with a strength of 0, 1, 2, 3, 4, 5, or 6 were discarded during the game. The two attendees with strength 2 were discarded a different number of times.</td>
+	<td>In the full set, we have 9 cards with 2 or more copies, and we need all of them for the 9 attendees that are discarded more than 5 times (over 5 games) that we know from #6. So, all 9 attendees with strengths 1, 2, 3, 4, 5 are needed. That leaves room for only 1 more from among strengths of 0,0,6,6. We know by #11 that one of them must be a 6. So, there were no discards of any strength 0 card, and no discards of one of two the strength 6 cards.</td>
+</tr>
+<tr>
+	<td>(8) Exactly one attendee had a strength of exactly one less than the total number of times it was discarded during the game.</td>
+	<td>This can only be one of the strength 0's or 5's, since 1234 all have to be more than 5 because they are doubles. But by #7, no strength 0 was discarded, so this must be a strength 5 that was discarded 6 times.</td></tr>
+<tr>
+	<td>(9) At one point, a player held 2 attendees differing in strength by exactly 4 and discarded only the lower-strength one, knowing it would not and could not have any effect on the 2 other players remaining in the round, but recognizing that if they had instead discarded the higher-strength attendee, they would have been forced to immediately discard the lower-strength attendee anyway. This was the only time during that round that this lower-strength attendee was discarded.</td>
+	<td><ul><li>This describes a situation where the person is holding strength 1 (Guard) and 5 (Prince), and the other 2 players are protected by the Handmaid, so if the player discards the Prince, that forces the player to also discard the Guard.</li>
+	<li>Accordingly, the Handmaid has been played twice this round (this will be used later).</li>
+	<li>And accordingly, the Guard was discarded as a singleton in one round, so 10 times total (since 3 other times there were 3 discards of a particular card during a round, which could only be the Guard 1).</li></ul></td></tr>
+<tr>
+	<td>(10) At least three rounds involved the discard of a particular attendee with a strength less than 5 as a player’s (not necessarily always the same player) first discard of the round and with no other discard of that attendee during the round. These discards did not result in any further action by anyone or the identification of any player.</td>
+	<td>This can only describe the Handmaid. We know from #9 that the Handmaid was discarded twice in some round, so that gets total discards in the game up to 5, but 5 is taken by the Princess, and it was a strength 5 card that was discarded 6 times (by #8). So the Handmaid was discarded 7 (11122) times during the game.</td></tr>
+<tr>
+	<td>(11) An attendee that never has any effect when or after it is discarded was discarded exactly twice as many times as an attendee with a strength of exactly one more or one less.</td>
+	<td>The only attendee that never has any effect when or after it is discarded is Countess Wilhelmina, strength 7. So, she is discarded 2 or 4 times (as a singleton, she cannot be discarded 6 times), and a card of strength 6 must be discarded 1 or 2 times. (Cannot be the one card of strength 8, the Princess, which we know was discarded 5 times.)</td></tr>
+<tr>
+	<td>(12) One attendee, the discarding of which (as the discarder’s turn) always resulted in comparing the discarder’s hand with another, was discarded exactly twice as many times as a different attendee, the discarding of which (as the discarder’s turn) always resulted in comparing the discarder’s hand with another.</td>
+	<td>This can only be Baron (6, 8, or 10 discards) and Dowager Queen (1-5 discards), but the only available pairing is Baron 8 times and Dowager Queen 4 times. This uses up the 4 possibility in #11, making #11 give Countess Wilhelmina 2 discards, and the only strength 6 card (yet to be determined) 1 discard.</p>
+		<p>We now know which cards have been discarded 1, 2, 4, and 5 times, so the remaining singleton – the Bishop – must have been discarded 3 times.</p></td></tr>
+<tr>
+	<td>(13) At least 3 different players discarded an attendee of strength 5 at some point, which each time resulted in an immediate effect on another player.</td>
+	<td><p>This must be the Prince. We know one player used the Prince 5 times on the Princess, so this makes it at least 7 times. But 8 times is already taken, so the Prince was discarded 9 or 10 times.</p>
+		<p>And by #8 we know that a strength 5 cards was discarded exactly 6 times, and that must be the Count.</p></td></tr>
+<tr>
+	<td>(14) In one round, the very first attendee discarded allowed the discarder to look at two attendees the discarder had not yet seen; that discarded attendee was not discarded again during that round. A particular attendee with a strength of 2 was discarded more times during the game than was a particular attendee with a strength of 5, and coincidentally both of those attendees were discarded exactly the same number of times that they were discarded during a by-the-rules four-handed game that some of the players had played earlier that day, while waiting for the fifth player to arrive.</td>
+	<td><p>Since the strength 2 and 5 attendees in the second sentence are also used in a 4-handed game, they must be Priest and Prince. Since from #13 Prince was 9 or 10, this means Prince is 9 and Priest is 10. By #7, Priest and Cardinal were discarded a different number of times, which makes Cardinal 9.</p>
+		<p>We know from both #2 and #5 that there is a card in the game that gives a point other than the round-end point – this is only Bishop, Constable, or Jester. But since we know there are no 0’s in the game (by #7), this cannot be the Jester, and since we know from #4 that the first person knocked out in each round scored a point, that person cannot have scored with the Bishop (which would require knocking someone else out first), so must have scored with the Constable. Thus the King, along with the two 0’s, are the cards that were never discarded during the game. Solvers might also eventually come to understand this by noting that there is no King, Jester, or Assassin costume among the 14 attendees (though if a costume were interpreted as potentially one of these, the logic disambiguates).</p>
+		<p>First sentence – the attendee must be the Baroness (no other discard allows you to see two new cards). Since the Baroness was a singleton that round, she cannot have been a 10, which forces the unused 9 and 10 to be Baroness 9 and Sycophant 10 (never actually mentioned in the givens, but required to fill the last 10 slot).</p></td></tr>
+</table>
+
+<p>The logic puzzle associates each Role in the game with a particular number of discards made during the game, which is all the information needed.</p>
+
+<p>Then, the costumes can all be associated with Love Letter attendees – e.g., the baseball player is a CARDINAL. Indexing the appropriate number of discards (from the logic puzzle) into the solution name, in the order appearing on the meta page, gives the phrase: USE THE PARTNERS. A Google search on what the answers all have in common shows that they were all in the often-performed 2-person play <em>LOVE LETTERS</em>, by A.R. Gurney. Following the extracted instruction, take the partner of the answer celebrity, and now index the discard numbers into *those* names. This extracts the answer to the puzzle, which is <span class="answer">HEAVENLY BODICE</span>.</p>
+
+<table>
+<tr><th>COSTUME</th><th>GAME ROLE</th><th>DISCARDS</th><th>PUZZLE ANSWER</th><th>Letter Extracted</th><th>CELEBRITY PARTNER</th><th>Letter Extracted</th></tr>
+<tr><td>BASEBALL PLAYER</td><td>CARDINAL</td><td>9</td><td>SWOOSIE KURTZ</td><td>U</td><td>RICHARD THOMAS</td><td>H</td></tr>
+<tr><td>CERBERUS</td><td>GUARD</td><td>10</td><td>JASON JONES</td><td>S</td><td>SAMANTHA BEE</td><td>E</td></tr>
+<tr><td>HAMLET</td><td>PRINCE</td><td>9</td><td>COLLEEN DEWHURST</td><td>E</td><td>JASON ROBARDS</td><td>A</td></tr>
+<tr><td>ST. PATRICK</td><td>BISHOP</td><td>3</td><td>KATE NELLIGAN</td><td>T</td><td>DAVID DUKES</td><td>V</td></tr>
+<tr><td>IMHOTEP</td><td>PRIEST</td><td>10</td><td>NANCY MARCHAND</td><td>H</td><td>FRITZ WEAVER</td><td>E</td></tr>
+<tr><td>GRAND HIGH WITCH</td><td>BARONESS</td><td>9</td><td>JOANNA GLEASON</td><td>E</td><td>JOHN RUBINSTEIN</td><td>N</td></tr>
+<tr><td>DOGBERRY</td><td>CONSTABLE</td><td>1</td><td>PATRICK DUFFY</td><td>P</td><td>LINDA GRAY</td><td>L</td></tr>
+<tr><td>SMITHERS</td><td>SYCOPHANT</td><td>10</td><td>SHEILA MCCARTHY</td><td>A</td><td>DAVID FERRY</td><td>Y</td></tr>
+<tr><td>OFFRED</td><td>HANDMAID</td><td>7</td><td>STOCKARD CHANNING</td><td>R</td><td>JOHN RUBINSTEIN</td><td>B</td></tr>
+<tr><td>LANDO CALRISSIAN</td><td>BARON</td><td>8</td><td>ELIZABETH MONTGOMERY</td><td>T</td><td>ROBERT FOXWORTH</td><td>O</td></tr>
+<tr><td>DRACULA</td><td>COUNT</td><td>6</td><td>TAB HUNTER</td><td>N</td><td>JOYCE DEWITT</td><td>D</td></tr>
+<tr><td>LARA CROFT</td><td>COUNTESS</td><td>2</td><td>DESI ARNAZ JR</td><td>E</td><td>LIZA MINELLI</td><td>I</td></tr>
+<tr><td>MOANA</td><td>PRINCESS</td><td>5</td><td>LYNN REDGRAVE</td><td>R</td><td>JOHN CLARK</td><td>C</td></tr>
+<tr><td>CLEOPATRA</td><td>DOWAGER QUEEN</td><td>4</td><td>BETSY PALMER</td><td>S</td><td>ROBERT REED</td><td>E</td></tr>
+</table>

@@ -1,0 +1,52 @@
+{% load static %}
+{% comment %} TODO(sahil): We should probably include an apple touch icon. {% endcomment %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Mystery Hunt 2022 Registration</title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, user-scalable=yes">
+  <meta property="og:image" content="{% static 'registration/elzzupaton.png' %}">
+  <link rel="shortcut icon" href="{% static 'registration/favicon.ico' %}" type="image/x-icon" sizes="any">
+  <link rel="preconnect" href="https://use.typekit.net">
+  <link rel="stylesheet" href="https://use.typekit.net/xef3sni.css">
+  <link rel="stylesheet" type="text/css" href="{% static 'registration/style.css' %}?v=1">
+</head>
+<body>
+  {% block notifications %}{% endblock %}
+  <header>
+    <h1>
+      <a href="{% url 'registration_index' %}" class="branding">
+        <span class="row"><span>MIT</span> <span>Mystery</span></span>
+        <span class="row"><span>Hunt</span> <span>2022</span></span>
+      </a>
+    </h1>
+
+    <p>Begins January 14, 2022</p>
+    <p>
+      At
+      <a
+        href="https://www.timeanddate.com/worldclock/fixedtime.html?msg=MIT+Mystery+Hunt+2022&iso=20220114T12&p1=43"
+        rel="nofollow noopener noreferrer"
+        target="_blank"
+      >
+        noon
+        <span class="hover-swap" title="Eastern Standard Time">
+          <span>TIMEMIT</span>
+          <span>Eastern</span>
+        </span>
+      </a>
+    </p>
+  </header>
+
+  {% block content %}{% endblock content %}
+
+  <script type="text/javascript">
+  for (var notification of document.querySelectorAll('p.notification')) {
+    notification.addEventListener('click', function() {
+      notification.remove();
+    });
+  }
+  </script>
+</body>
+</html>

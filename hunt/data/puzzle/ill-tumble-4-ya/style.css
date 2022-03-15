@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative&display=swap');
+
+.fancy {
+	font-family: 'Cinzel Decorative', cursive;
+}
+
+.green {
+	background-color: #75D37B;
+}
+
+.red {
+	background-color: #FF3333;
+}
+
+.small {
+	font-size: 0.7rem;
+}
+
+table.grid td, table.grid th {
+	text-align: center;
+	width: 2rem;
+	height: 2rem;
+}
+
+@media print {
+table.grid th, table.grid td {
+	width: 35px;
+	height: 35px;
+	text-align: center;
+	color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+	}
+
+.notice {
+	display: none;
+}
+
+}
+

@@ -1,0 +1,15 @@
+.correct {
+  background-color: lightgreen;
+}
+
+.incorrect {
+  background-color: lightgray;
+}
+
+.fruit {
+  width: 50px;
+}
+
+#fruitgrid {
+  text-align: center;
+}

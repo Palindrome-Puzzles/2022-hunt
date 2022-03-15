@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with EazyDraw for Mac ( http://www.eazydraw.com/ ) -->
+
+<svg
+    version="1.1"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:svg="http://www.w3.org/2000/svg"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    xmlns="http://www.w3.org/2000/svg"
+    width="361.649933684"
+    height="470"
+    viewBox="0, 0, 361.649933684, 470"
+    preserveAspectRatio="none"
+    id="svg2">
+   <defs
+       id="defs_08F10907"/>
+   <metadata
+       id="metadata7">
+      <rdf:RDF>
+         <cc:Work
+             rdf:about="">
+            <dc:format>image/svg+xml</dc:format>
+            <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+            <dc:title></dc:title>
+         </cc:Work>
+      </rdf:RDF>
+   </metadata>
+   <g
+       id="layer_Paper"
+       style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-opacity:1;fill-rule:nonzero;stroke-linecap:square;stroke-linejoin:miter;stroke-width:5;stroke-miterlimit:10">
+      <line
+          style="fill:#FFFFFF;stroke-width:1"
+          id="16C81D3E"
+          x1="361"
+          y1="469"
+          x2="289"
+          y2="289"/>
+      <polygon
+          style="fill:#0000FF;stroke-linecap:round;stroke-linejoin:round;stroke-width:2"
+          id="7674103E"
+          points="1,1 1,289 217,469 217,181"/>
+      <line
+          style="fill:#FFFFFF;stroke-width:1"
+          id="43DCBB3E"
+          x1="1"
+          y1="289"
+          x2="73"
+          y2="469"/>
+      <line
+          style="fill:#FFFFFF;stroke-width:1"
+          id="20235C3E"
+          x1="73"
+          y1="469"
+          x2="361"
+          y2="469"/>
+      <polygon
+          style="fill:#0000FF;stroke-linecap:round;stroke-linejoin:round;stroke-width:2"
+          id="EC8E4A4E"
+          points="217,181 217,469 289,289 289,1"/>
+      <polygon
+          style="fill:#FFFFFF;stroke:none"
+          id="AD734F4E"
+          points="55,262 163,352 163,208 55,118"/>
+      <polygon
+          style="fill:#FFFFFF;stroke:none"
+          id="C2B0215E"
+          points="235,208 235,352 271,262 271,118"/>
+      <polygon
+          style="fill:#B3B3B3;stroke-linecap:round;stroke-linejoin:round;stroke-width:2"
+          id="415C1F9E"
+          points="1,1 217,181 289,1 271,1 208,159.4 19,1"/>
+      <line
+          style="fill:#B3B3B3;stroke-linecap:round;stroke-linejoin:round;stroke-width:2"
+          id="048FDFAE"
+          x1="208"
+          y1="159.4"
+          x2="217"
+          y2="181"/>
+   </g>
+</svg>

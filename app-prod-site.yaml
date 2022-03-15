@@ -1,0 +1,27 @@
+runtime: python39
+service: default
+entrypoint: gunicorn -b :$PORT hunt.deploy.wsgi:application
+
+instance_class: B2
+
+env_variables:
+  DJANGO_ENV: "prod_gcloud"
+
+handlers:
+- url: /static
+  static_dir: static/
+  secure: always
+
+- url: /.*
+  script: auto
+  secure: always
+
+basic_scaling:
+  max_instances: 4
+
+inbound_services:
+- warmup
+
+# Lets the site service talk to Redis.
+vpc_access_connector:
+  name: 'projects/mitmh-2022/locations/us-central1/connectors/redis-vpc-connector'

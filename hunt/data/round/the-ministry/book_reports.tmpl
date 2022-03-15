@@ -1,0 +1,525 @@
+{% extends "round_files/generic_round_subview.tmpl" %}
+{% load assets constants static %}
+
+{% block extra_stylesheets %}
+{{ block.super }}
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600&display=swap" rel="stylesheet">
+<link href="{% rd 'book_reports.css' %}" rel="stylesheet">
+{% endblock extra_stylesheets %}
+
+{% block wordmark %}
+{% include 'round_files/generic_wordmark.tmpl' with round_info=round_info %}
+{% endblock wordmark %}
+
+{% block subview_title %}Book Reports{% endblock %}
+{% block subview_heading %}Book Reports{% endblock %}
+
+{% block subview_content %}
+<h2>Introduction</h2>
+
+<p>Welcome to Bookspace! Everyone in Bookspace needs to do Book Reports to show how well they know the books that live here. For this weekend’s Book Reports, we are focusing on Self-Help Books. Please read 3-10 of the books listed here and complete reports on them.</p>
+
+<h2>Rules</h2>
+
+<p><strong>Length: </strong>You must complete enough reports to earn <strong>credits equal to your team size</strong>. (If your team size is greater than 100 solvers, you only need to earn 100 credits.)</p>
+
+<p><strong>One Option Per Book: </strong>You must choose to <em>either</em> create an <strong>essay</strong> OR a <strong>term paper</strong> for each book.</p>
+
+<p><strong>Scoring: </strong>Essays are worth <strong>5 credits</strong>.<br>
+Term papers are worth <strong>10 credits</strong>.</p>
+
+<p><strong>Contribution: </strong>As you are a <em>team</em>, we don’t want one person doing all the work. <strong>Each book report must be done by a different member of your team</strong>.</p>
+
+<p><strong>Proof: </strong>Each submission should depict the items in the requested format, along with a sign that says “BOOKSPACE 2022”.</p>
+
+<p><strong>Collection: </strong>Prepare a <strong>Google Drive</strong> or <strong>Dropbox link</strong> containing picture or video evidence of each of your items, as specified by the book report. Each file’s name should include the task number and your team name. <strong><u>Please name the folder ”Book Reports from {{ team }}”.</u></strong></p>
+
+<p><strong>Submission: </strong><strong>When your team has completed all of its book reports</strong>, send an email with the public link to your prepared reports to <a href="mailto:{% book_reports_email %}?subject=Book Reports from {{ team }}">{% book_reports_email %}</a> with the subject "Book Reports from {{ team }}" and we will schedule a Zoom call with you to validate how well you know these books.</p>
+
+<p>Please be prepared to discuss your analysis — we will be able to tell when you’ve just skimmed CliffsNotes.</p>
+
+<div class="notice">
+	<p><strong>Flexibility</strong></p>
+	<p>This is the obligatory MIT Mystery Hunt scavenger hunt. Some scavenger hunts lean toward strict interpretations, while others lean towards creative interpretations.  This is the latter — please be creative and please entertain us. While we will be checking your score against the details listed below, we’ll be lenient about accepting submissions as long as you’ve put effort toward satisfying the prompt and the rules.</p>
+</div>
+
+<p><strong>Good Luck!</strong></p>
+<hr>
+
+<div class="reports">
+
+<h2>1. <em>59 Seconds: Think a Little, Change a Lot</em><span class="author">by Richard Wiseman</span></h2>
+
+<p><strong>Form: </strong>Video</p>
+<section class="grids">
+	<div class="left-grid">
+		<div class="section-title">Essay</div>
+		<p>Vertically stack US $10 worth of coins into one stack in under 59 seconds. The coins must start out on the table, with none of them on top of each other.</p>
+	</div>
+	<div class="middle-bit">
+		<p><em>or</em></p>
+	</div>
+	<div class="right-grid">
+		<div class="section-title">Term Paper</div>
+		<p><strong>In addition to the essay task</strong>, while stacking the coins, every 5 seconds you must make a face at the camera. Each face must be displaying a different emotion. To complete this task, your tower must have at least 50 coins.</p>
+	</div>
+</section>
+
+<h2>2. <em>The Alchemist</em><span class="author">by Paolo Coelho</span></h2>
+
+<p><strong>Form: </strong>Series of Photos</p>
+<section class="grids">
+	<div class="left-grid">
+		<div class="section-title">Essay</div>
+		<p>Cut out the letters of the name of an object from paper, then recreate that object using only those letters. Your item must be recognizable enough that someone could identify the object just from viewing the photos.</p>
+	</div>
+	<div class="middle-bit">
+		<p><em>or</em></p>
+	</div>
+	<div class="right-grid">
+		<div class="section-title">Term Paper</div>
+		<p>Make a 3D recreation of <i>Alchemist</i> (optionally including the 2016 Mystery Hunt coin). It must be at least 6 inches in each dimension.</p>
+	</div>
+</section>
+
+<h2>3. <em>Atlas of the Heart</em><span class="author">by Brené Brown</span></h2>
+
+<p><strong>Form: </strong>Pictures</p>
+<section class="grids">
+	<div class="left-grid">
+		<div class="section-title">Essay</div>
+		<p>Create a map of your heart containing all the things you love. It should contain at least 10 items inside of it, in addition to a legend, a compass rose, and a scale.</p>
+	</div>
+	<div class="middle-bit">
+		<p><em>or</em></p>
+	</div>
+	<div class="right-grid">
+		<div class="section-title">Term Paper</div>
+		<p>Find a geocache and take a picture of you putting something heart-shaped (<strong>BUT NOT AN ACTUAL HEART</strong>) in it.</p>
+	</div>
+</section>
+
+<h2>4. <em>Atomic Habits</em><span class="author">by James Clear</span></h2>
+
+<p><strong>Form: </strong>Google Doc or PDF</p>
+<section class="grids">
+	<div class="left-grid">
+		<div class="section-title">Essay</div>
+		<p>Create the Periodic Table of Puzzles. Your table must include at least 20 puzzle types as elements and be organized visually in an interesting manner that you can explain to us.</p>
+	</div>
+	<div class="middle-bit">
+		<p><em>or</em></p>
+	</div>
+	<div class="right-grid">
+		<div class="section-title">Term Paper</div>
+		<p><strong>In addition to the essay task</strong>, classify each of the puzzles from the <a href="https://web.mit.edu/puzzle/www/2021/round/yew-labs/" target="_blank">Yew Labs</a> round from last year’s hunt as compounds in your Periodic Table of Puzzles.</p>
+	</div>
+</section>
+
+<h2>5. <em>Chicken Soup for the Soul</em><span class="author">by Jack Canfield and Mark Victor Hansen</span></h2>
+
+<p><strong>Form: </strong>Video</p>
+<section class="grids">
+	<div class="left-grid">
+		<div class="section-title">Essay</div>
+		<p>Send us a video under a minute in length of a team member making chicken soup from scratch.</p>
+	</div>
+	<div class="middle-bit">
+		<p><em>or</em></p>
+	</div>
+	<div class="right-grid">
+		<div class="section-title">Term Paper</div>
+		<p><strong>Perform the essay task, but in addition</strong>, the team member must be possessed by the ghost of a chicken the entire time.</p>
+	</div>
+</section>
+
+<h2>6. <em>Deep Work</em><span class="author">by Cal Newport</span></h2>
+
+<p><strong>Form: </strong>Series of Pictures</p>
+<section class="grids">
+	<div class="left-grid">
+		<div class="section-title">Essay</div>
+		<p>Complete enough of the scavenger hunt from the 1994 Mystery Hunt to get half of that Hunt’s Scavenger Hunt answer.</p>
+	</div>
+	<div class="middle-bit">
+		<p><em>or</em></p>
+	</div>
+	<div class="right-grid">
+		<div class="section-title">Term Paper</div>
+		<p><strong>In addition to the essay task</strong>, provide two of the items from the 1997 Bill & Ted Scavenger Hunt.</p>
+	</div>
+</section>
+
+<h2>7. <em>Digital Minimalism</em><span class="author">by Cal Newport</span></h2>
+
+<p><strong>Form: </strong>Picture</p>
+<section class="grids">
+	<div class="left-grid">
+		<div class="section-title">Essay</div>
+		<p>Recreate a work of art from somewhere at MIT by hand on a 1 in. by 1 in. piece of paper.</p>
+	</div>
+	<div class="middle-bit">
+		<p><em>or</em></p>
+	</div>
+	<div class="right-grid">
+		<div class="section-title">Term Paper</div>
+		<p>Recreate <a href="https://listart.mit.edu/public-art-map/bars-color-within-squares-mit" target="_blank"><em>Bars of Color Within Squares</em></a> in chalk by hand on a driveway, sidewalk, or other similar surface.</p>
+	</div>
+</section>
+
+<h2>8. <em>Eat, Pray, Love</em><span class="author">by Elizabeth Gilbert</span></h2>
+
+<p><strong>Form: </strong>Video (Essay), Photo Series (Term Paper)</p>
+<section class="grids">
+	<div class="left-grid">
+		<div class="section-title">Essay</div>
+		<p>Record yourself reciting a meditation using only one-syllable words. Your meditation should be at least 60 seconds long and contain exactly 20 unique words.</p>
+	</div>
+	<div class="middle-bit">
+		<p><em>or</em></p>
+	</div>
+	<div class="right-grid">
+		<div class="section-title">Term Paper</div>
+		<p>Bake something for a local organization (i.e. fire department). Make a 10-picture documentation of the process, up to and including the drop-off.</p>
+	</div>
+</section>
+
+<h2>9. <em>Fantastic Cities: A Coloring Book of Places Real and Imagined</em><span class="author">by Steve McDonald</span></h2>
+
+<p><strong>Form: </strong>Photo (Essay), Video (Term Paper)</p>
+<section class="grids">
+	<div class="left-grid">
+		<div class="section-title">Essay</div>
+		<p>Dress up as a major world capital city and send us a photo.  The world capital you are dressed as should be easily identifiable. (Please be sensitive to cultural differences.)</p>
+	</div>
+	<div class="middle-bit">
+		<p><em>or</em></p>
+	</div>
+	<div class="right-grid">
+		<div class="section-title">Term Paper</div>
+		<p>While dressed up as a major world city, lead a trivia quiz about that city. Your quiz must have at least 5 questions.</p>
+	</div>
+</section>
+
+<h2>10. <em>The Five Love Languages</em><span class="author">by Gary Chapman</span></h2>
+
+<p><strong>Form: </strong>Video</p>
+<section class="grids">
+	<div class="left-grid">
+		<div class="section-title">Essay</div>
+		<p>Make a recreation of <a href="https://bit.ly/BookReportVideo" target="_blank">this music video</a> that is at least 1 minute in length.</p>
+	</div>
+	<div class="middle-bit">
+		<p><em>or</em></p>
+	</div>
+	<div class="right-grid">
+		<div class="section-title">Term Paper</div>
+		<p>Make a recreation of <a href="https://bit.ly/BookReportVideo" target="_blank">this music video</a>, <em>translating the lyrics into a foreign language</em>, that is at least 1 minute in length.</p>
+	</div>
+</section>
+
+<h2>11. <em>Flow: The Psychology of Optimal Experience</em><span class="author">by Mihaly Csikszentmihalyi</span></h2>
+
+<p><strong>Form: </strong>Video</p>
+<section class="grids">
+	<div class="left-grid">
+		<div class="section-title">Essay</div>
+		<p>Throw something biodegradable into a natural flowing body of water. Take a video.</p>
+	</div>
+	<div class="middle-bit">
+		<p><em>or</em></p>
+	</div>
+	<div class="right-grid">
+		<div class="section-title">Term Paper</div>
+		<p>Take a video of yourself blowing out a candle from 2 smoots away.</p>
+	</div>
+</section>
+
+<h2>12. <em>Girl, Wash Your Face</em><span class="author">by Rachel Hollis</span></h2>
+
+<p><strong>Form: </strong>Video(s)</p>
+<section class="grids">
+	<div class="left-grid">
+		<div class="section-title">Essay</div>
+		<p>Create a YouTube-style beauty regimen tutorial themed around your team.</p>
+	</div>
+	<div class="middle-bit">
+		<p><em>or</em></p>
+	</div>
+	<div class="right-grid">
+		<div class="section-title">Term Paper</div>
+		<p>Create a YouTube-style beauty regimen tutorial AND create a reaction video reacting to the full beauty regimen tutorial.</p>
+	</div>
+</section>
+
+<h2>13. <em>How to Win Friends and Influence People</em><span class="author">by Dale Carnegie</span></h2>
+
+<p><strong>Form: </strong>Video</p>
+
+<section class="grids">
+	<div class="people">
+		<a href="{% rd 'images/book_reports/people1.jpeg' %}" target="_blank">
+			<img src="{% rd 'images/book_reports/people1.jpeg' %}" width="125px" alt="People magazine cover number 1">
+		</a>
+	</div>
+	<div class="people">
+		<a href="{% rd 'images/book_reports/people2.jpeg' %}" target="_blank">
+			<img src="{% rd 'images/book_reports/people2.jpeg' %}" width="125px" alt="People magazine cover number 2">
+		</a>
+	</div>
+	<div class="people">
+		<a href="{% rd 'images/book_reports/people3.jpeg' %}" target="_blank">
+			<img src="{% rd 'images/book_reports/people3.jpeg' %}" width="125px" alt="People magazine cover number 3">
+		</a>
+	</div>
+	<div class="people">
+		<a href="{% rd 'images/book_reports/people4.jpeg' %}" target="_blank">
+			<img src="{% rd 'images/book_reports/people4.jpeg' %}" width="125px" alt="People magazine cover number 4">
+		</a>
+	</div>
+	<div class="people">
+		<a href="{% rd 'images/book_reports/people5.jpeg' %}" target="_blank">
+			<img src="{% rd 'images/book_reports/people5.jpeg' %}" width="125px" alt="People magazine cover number 5">
+		</a>
+	</div>
+</section>
+
+<section class="grids">
+	<div class="left-grid">
+		<div class="section-title">Essay</div>
+		<p>Provide a video of your team “solving” the “puzzle” we have <em>definitely</em> planted on the covers of these five issues of People magazine to get the name of a secondary character from Friends.</p>
+	</div>
+	<div class="middle-bit">
+		<p><em>or</em></p>
+	</div>
+	<div class="right-grid">
+		<div class="section-title">Term Paper</div>
+		<p><strong>In addition to the essay task</strong>, everyone in the video must be in character as characters from Friends, solving the puzzle as part of the episode “The One About The MIT Mystery Hunt”.</p>
+	</div>
+</section>
+
+<h2>14. <em>The Life-Changing Magic of Tidying Up</em><span class="author">by Marie Kondo</span></h2>
+
+<p><strong>Form: </strong>Photos</p>
+<section class="grids">
+	<div class="left-grid">
+		<div class="section-title">Essay</div>
+		<p>Photograph yourself donating 2 books that no longer spark joy for you to a local Little Free Library.</p>
+	</div>
+	<div class="middle-bit">
+		<p><em>or</em></p>
+	</div>
+	<div class="right-grid">
+		<div class="section-title">Term Paper</div>
+		<p>Photograph yourself donating 5 books to a Free Little Library that meet the spirit of the <a href="https://littlefreelibrary.org/read-in-color/" target="_blank">Read in Color</a> initiative.</p>
+	</div>
+</section>
+
+<h2>15. <em>The Little Book of Hygge</em><span class="author">by Meik Wiking</span></h2>
+
+<p><strong>Form: </strong>Video (Essay), Fake Website (Google Doc/PDF/HTML file, Term Paper)</p>
+<section class="grids">
+	<div class="left-grid">
+		<div class="section-title">Essay</div>
+		<p>Create a blanket fort that is at least 10 feet by 10 feet wide which does not require human assistance to remain standing. Provide a video tour that is under a minute in length.</p>
+	</div>
+	<div class="middle-bit">
+		<p><em>or</em></p>
+	</div>
+	<div class="right-grid">
+		<div class="section-title">Term Paper</div>
+		<p><strong>In addition to the essay task</strong>, create a fake page in the style of AirBnB for your blanket fort. Your listing should: emphasize your fort’s comfiest amenities, list how many candles your fort contains, show off its amenities that you don’t have to leave the fort for, etc. Be specific!.</p>
+	</div>
+</section>
+
+<h2>16. <em>The Mountain is You</em><span class="author">by Brianna West</span></h2>
+
+<p><strong>Form: </strong>Videogame Level (Essay), Video (Term Paper)</p>
+<section class="grids">
+	<div class="left-grid">
+		<div class="section-title">Essay</div>
+		<p>Create a custom <em>Baba is You</em> level. Your team name must be present somewhere on the level. (Send the link to the level.)</p>
+	</div>
+	<div class="middle-bit">
+		<p><em>or</em></p>
+	</div>
+	<div class="right-grid">
+		<div class="section-title">Term Paper</div>
+		<p>Recreate one of the <em>Baba is You</em> levels from the Mountaintop in a physical medium. Take a video of someone trying to solve it.</p>
+	</div>
+</section>
+
+<h2>17. <em>Rich Dad, Poor Dad</em><span class="author">by Robert Kiosaki and Sharon Lechter</span></h2>
+
+<p><strong>Form: </strong>Video</p>
+<section class="grids">
+	<div class="left-grid">
+		<div class="section-title">Essay</div>
+		<p>Write and perform a new dad joke about economic inequality. Send us a link to the video.</p>
+	</div>
+	<div class="middle-bit">
+		<p><em>or</em></p>
+	</div>
+	<div class="right-grid">
+		<div class="section-title">Term Paper</div>
+		<p>Have two members of your team write and perform a new dad joke about economic inequality to each other, while trying not to laugh at each other’s joke. Record this conversation (preferably over Zoom or another teleconference program).</p>
+	</div>
+</section>
+
+<h2>18. <em>The Subtle Art of Not Giving a F*ck</em><span class="author">by Mark Manson</span></h2>
+
+<p><strong>Form: </strong>Google Doc (Essay), Video (Term Paper)</p>
+<section class="grids">
+	<div class="left-grid">
+		<div class="section-title">Essay</div>
+		<p>Rewrite a recent post from James Fell's <a href="https://jamesfell.substack.com/" target="_blank">Sweary History</a> blog,  rewriting to remove all obscenity; please copy the original post to a Google Doc, turn on Track Changes, and rewrite your bowdlerized version.</p>
+	</div>
+	<div class="middle-bit">
+		<p><em>or</em></p>
+	</div>
+	<div class="right-grid">
+		<div class="section-title">Term Paper</div>
+		<p>Create a "television redub" version of a scene or monologue from a movie; the original must contain a minimum of 3 obscenities, each of which must be replaced with a different censor-friendly piece of dialogue.</p>
+	</div>
+</section>
+
+<h2>19. <em>Think Like a Monk</em><span class="author">by Jay Shetty</span></h2>
+
+<p><strong>Form: </strong>Photo (Essay), Video (Term Paper)</p>
+<section class="grids">
+	<div class="left-grid">
+		<div class="section-title">Essay</div>
+		<p>Take a photo proving you have gathered the permitted items for a Benedictine Monk: cowl, tunic, sandals, shoes, girdle, knife, pen, needle, handkerchief, writing-tablet.</p>
+	</div>
+	<div class="middle-bit">
+		<p><em>or</em></p>
+	</div>
+	<div class="right-grid">
+		<div class="section-title">Term Paper</div>
+		<p><strong>In addition to the essay task</strong>, write and perform a 30-second gregorian chant about a Mystery Hunt puzzle. You cannot use the title of the puzzle in the chant.  A person familiar with the Hunt should be able to identify the puzzle the chant is about.</p>
+	</div>
+</section>
+
+<h2>20. <em>The Tipping Point</em><span class="author">by Malcolm Gladwell</span></h2>
+
+<p><strong>Form: </strong>Video</p>
+<section class="grids">
+	<div class="left-grid">
+		<div class="section-title">Essay</div>
+		<p>Create a 40 piece domino effect using anything but dominoes. Each of the 40 objects must be different sizes. Take a video.</p>
+	</div>
+	<div class="middle-bit">
+		<p><em>or</em></p>
+	</div>
+	<div class="right-grid">
+		<div class="section-title">Term Paper</div>
+		<p>Balance 20 objects bigger than 1 cubic inch in your hand at the same time.  Each of the 20 objects must be different sizes. Take a video.</p>
+	</div>
+</section>
+
+<h2>21. <em>Tools of Titans</em><span class="author">by Tim Ferriss</span></h2>
+
+<p><strong>Form: </strong>Drawing/blueprints (Essay), Video (Term Paper)</p>
+<section class="grids">
+	<div class="left-grid">
+		<div class="section-title">Essay</div>
+		<p>Design a tool that will fulfill a need for one of the Greek Titans. Explain this need, how this tool will fulfill this need, and instructions for how to create it.</p>
+	</div>
+	<div class="middle-bit">
+		<p><em>or</em></p>
+	</div>
+	<div class="right-grid">
+		<div class="section-title">Term Paper</div>
+		<p><strong>In addition to the essay task</strong>, build that tool to scale. Demonstrate it in use.</p>
+	</div>
+</section>
+
+<h2>22. <em>What Color is Your Parachute?</em><span class="author">by Richard Nelson Bolles</span></h2>
+
+<p><strong>Form: </strong>Video</p>
+<section class="grids">
+	<div class="left-grid">
+		<div class="section-title">Essay</div>
+		<p>Create a parachute for an item. The item’s name must be encoded in the parachute in a different way than the <a href="https://www.theguardian.com/science/2021/feb/23/dare-mighty-things-hidden-message-found-on-nasa-mars-rover-parachute" target="_blank">Perseverance parachute</a>. Drop the item wearing that parachute, demonstrating that it works.</p>
+	</div>
+	<div class="middle-bit">
+		<p><em>or</em></p>
+	</div>
+	<div class="right-grid">
+		<div class="section-title">Term Paper</div>
+		<p><strong>Perform the Essay task</strong>, but the item <strong><em>must</em></strong> be a raw egg, the drop must be at least 10 feet, and the egg must not break. At the end of the video, crack the egg open to show that it was raw.</p>
+	</div>
+</section>
+
+<h2>23. <em>What They Don't Teach You At Harvard Business School</em><span class="author">by Mark McCormack</span></h2>
+
+<p><strong>Form: </strong>PDF/Google Doc (Essay), Video (Term Paper)</p>
+<section class="grids">
+	<div class="left-grid">
+		<div class="section-title">Essay</div>
+		<p>Create a degree program that they do not teach at Harvard Business School (or any currently accredited institution that you are aware of). Come up with six required classes and 20 electives, and create a 1-2 sentence course description for each.</p>
+	</div>
+	<div class="middle-bit">
+		<p><em>or</em></p>
+	</div>
+	<div class="right-grid">
+		<div class="section-title">Term Paper</div>
+		<p><strong>In addition to the essay task</strong>, create a 30 to 60-second video advertising this program. Include a current faculty member, two current students, and their testimonials.</p>
+	</div>
+</section>
+
+<h2>24. <em>Who Moved My Cheese?</em><span class="author">by Spencer Johnson</span></h2>
+
+<p><strong>Form: </strong>Video(s)</p>
+<section class="grids">
+	<div class="left-grid">
+		<div class="section-title">Essay</div>
+		<p>Move a piece of cheese X/10 miles, where X is the number of members on your team. Create a time-lapse video of the entire cheese-moving trip.</p>
+	</div>
+	<div class="middle-bit">
+		<p><em>or</em></p>
+	</div>
+	<div class="right-grid">
+		<div class="section-title">Term Paper</div>
+		<p><strong>In addition to the essay task</strong>, create two ADDITIONAL time-lapse cheese journeys. Each of your three journeys must feature <em>a different kind of cheese</em>, travel <em>a different path</em> (of equivalent length), and use <em>a different means of conveyance</em> (e.g. walking, biking, riding a scooter, driving a car, taking a train, etc.).</p>
+	</div>
+</section>
+
+<h2>25. <em>Wintering: The Power of Rest and Retreat in Difficult Times</em><span class="author">by Katherine May</span></h2>
+
+<p><strong>Form: </strong>Picture (Essay), Video (Term Paper)</p>
+<section class="grids">
+	<div class="left-grid">
+		<div class="section-title">Essay</div>
+		<p>Make us a Snow Angel. Take a picture.</p>
+	</div>
+	<div class="middle-bit">
+		<p><em>or</em></p>
+	</div>
+	<div class="right-grid">
+		<div class="section-title">Term Paper</div>
+		<p>Make us a Snow Angel that moves. Take a video.</p>
+	</div>
+</section>
+
+<h2>26. <em>Workin’ It! RuPaul’s Guide to Life, Liberty, and the Pursuit of Style</em><span class="author">by RuPaul</span></h2>
+
+<p><strong>Form: </strong>Video</p>
+<section class="grids">
+	<div class="left-grid">
+		<div class="section-title">Essay</div>
+		<p>Record and perform a lip sync performance that makes use of a reveal.</p>
+		<p>A reveal is an unexpected mid-performance transformation, such as a change of outfit components or wig, often during the key moment of a song for dramatic effect, like the ones seen here:</p>
+		<p><a href="https://www.youtube.com/watch?v=PgAw66DZ54E" target="_blank">one</a>  <a href="https://www.reddit.com/r/rupaulsdragrace/comments/8tdsby/its_been_one_year_since_this_underrated_lipsync/" target="_blank">two</a>  <a href="https://www.youtube.com/watch?v=fVAN95f1ywg" target="_blank">three</a></p>
+	</div>
+	<div class="middle-bit">
+		<p><em>or</em></p>
+	</div>
+	<div class="right-grid">
+		<div class="section-title">Term Paper</div>
+		<p>Record and perform a lip sync battle with at least two contestants that makes use of a reveal. Include judges, their reactions, their deliberations, and announce a winner.</p>
+	</div>
+</section>
+
+</div>
+{% endblock %}

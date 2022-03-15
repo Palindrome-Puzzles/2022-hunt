@@ -1,0 +1,33 @@
+h1,
+.round-map {
+    font-family: 'Red Hat Mono', monospace;
+    font-weight: 400;
+}
+
+.page-background {
+	background-image: none;
+/*    background-image: url(images/bg-repeat.jpg); */
+    background-color: #edd275;
+}
+.page-background-map {
+    background-image: url(images/bg.jpg);
+    background-size: 100%;
+}
+
+header.large-wordmark {
+    aspect-ratio: 2500/700;
+}
+header {
+    min-width: 100%;
+}
+
+@media only screen and (max-width: 715px) {
+    /* 715 = 200 * 2500/700 */
+    header:not(.large-wordmark) {
+        aspect-ratio: unset;
+        height: 200px;
+    }
+    header h1 {
+        white-space: nowrap;
+    }
+}

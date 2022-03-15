@@ -1,0 +1,87 @@
+.round-map .caption {
+    background-color: #FF00C9;
+    color: #fff;
+}
+
+/* Make it full width, FF makes it awkward. */
+body {
+    overflow-x: hidden;
+}
+.round-map:not(.full-width) {
+    width: 100vw !important;
+}
+
+.round-map a:hover .caption {
+	background-color: #924EFF;
+    filter: brightness(1) !important;
+}
+
+.round-map .sticker.special img {
+    width: 100%;
+}
+.round-map .sticker.door img {
+	width: 38%;
+}
+.round-map .sticker.scav img {
+	width: 45%;
+}
+
+.round-map .sticker img {
+    filter: drop-shadow(0 0 20px #FF00C9);
+}
+.round-map .sticker :focus img {
+    filter: drop-shadow(0 0 20px #FFA700);
+}
+.round-map .sticker:hover img {
+    filter: drop-shadow(0 0 20px #fffa);
+}
+
+.round-map .map {
+    background-image: url('images/bg-map.png');
+    background-size: cover;
+    /* NB: Safari doesn't do aspect ratios quite right, no idea why. Set an explicit height instead. */
+    height: 1616px;
+    width: 2500px;
+}
+
+.round-map .sticker:not(.special) {
+    width: 10%;
+}
+.round-map .sticker:not(.special) img {
+    width: 18.8%;
+}
+
+.round-map .sticker .caption {
+    margin-top: -10px;
+}
+.round-map .sticker.door .caption {
+    margin-top: -27px;
+}
+.round-map .sticker.ministry .caption {
+    margin-top: 5px;
+}
+
+#list-fruit-around {
+    font-weight: bold;
+}
+
+.drag-me {
+    position: absolute;
+    border: 1px solid white;
+    color: white;
+    padding: 1.2em 1em;
+    left: 50%;
+    margin-left: -200px;
+    bottom: 12px;
+    width: 400px;
+    font-size: 16px;
+}
+
+.drag-me {
+    filter: drop-shadow(0 0 10px #ff00c8);
+}
+
+tr.book-reports-row td:nth-of-type(1) {
+    border-top-width: 2px solid #666;
+    text-align: center;
+}

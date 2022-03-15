@@ -1,0 +1,23 @@
+.equation-container img {
+    width: 100%;
+}
+
+.species {
+    font-size: xx-large;
+    font-style: italic;
+}
+
+.main-button {
+    font-size: x-large;
+}
+
+.buttons-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.back-buttons-separator {
+    width: 25%;
+    border-style: dashed;
+}

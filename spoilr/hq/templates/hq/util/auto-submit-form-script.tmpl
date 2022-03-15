@@ -1,0 +1,12 @@
+<script type="module">
+for (const form of document.querySelectorAll('{{ selector }}')) {
+  if (!form.tagName.toLowerCase() === 'form') {
+    throw Error('Can only be used for forms');
+  }
+  for (const field of form.querySelectorAll('input, select')) {
+    field.addEventListener('change', () => {
+      form.submit();
+    });
+  }
+}
+</script>

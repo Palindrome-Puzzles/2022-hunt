@@ -1,0 +1,54 @@
+{% load humanize %}
+
+{# Preconditions: there is a handler. #}
+
+<h3>Answer actions</h3>
+<p>Manuscrip (net / all): {{ manuscrip_info.net_manuscrip }} / {{ manuscrip_info.manuscrip }}</p>
+
+<table class="sortable">
+	<tr>
+		<th>Puzzle</th>
+		<th>Status</th>
+		<th>Created</th>
+		<th>Updated</th>
+		<th colspan="2">Actions</th>
+	</tr>
+	{% for unlock in manuscrip_info.all_unlocks %}
+	<tr>
+		<td><a href="{% url 'puzzle_view' unlock.puzzle.url %}" target="_blank">{{ unlock.puzzle.name }}</a></td>
+		<td>{{ unlock.status }}</td>
+		<td><span title="{{ unlock.create_time }}">{{ unlock.create_time|naturaltime }}</span></td>
+		<td><span title="{{ unlock.update_time }}">{{ unlock.update_time|naturaltime }}</span></td>
+		<td>
+			{% if unlock.status == 'new' %}
+			<form method="post" action="{% url 'spoilr.interaction:resolve_answer' %}">
+				{% csrf_token %}
+				<div>
+					<label for="id_confirm_answer_solve_{{ forloop.counter }}">Enter "SOLVE" to confirm</label>
+					<input type="text" name="confirm" id="id_confirm_answer_solve_{{ forloop.counter }}" required>
+				</div>
+				<input type="hidden" name="unlock_id" value="{{ unlock.id }}">
+				<input type="hidden" name="task_id" value="{{ task.id }}">
+				<input type="hidden" name="action" value="solve">
+				<input type="submit" value="Solve">
+			</form>
+			{% endif %}
+		</td>
+		<td>
+			{% if unlock.status == 'new' %}
+			<form method="post" action="{% url 'spoilr.interaction:resolve_answer' %}">
+				{% csrf_token %}
+				<div>
+					<label for="id_confirm_answer_solve_{{ forloop.counter }}">Enter "CANCEL" to confirm</label>
+					<input type="text" name="confirm" id="id_confirm_answer_solve_{{ forloop.counter }}" required>
+				</div>
+				<input type="hidden" name="unlock_id" value="{{ unlock.id }}">
+				<input type="hidden" name="task_id" value="{{ task.id }}">
+				<input type="hidden" name="action" value="cancel">
+				<input type="submit" value="Cancel">
+			</form>
+			{% endif %}
+		</td>
+	</tr>
+	{% endfor %}
+</table>

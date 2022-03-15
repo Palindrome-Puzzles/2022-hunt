@@ -1,0 +1,9 @@
+.decrypto_game { break-inside: avoid-page; display: block; border: 3pt solid black; min-width: 376px; max-width: 376px; min-height: 536px; max-height: 536px; margin-bottom: 30px; background-image: url('decrypto.png'); background-size: cover; background-color: #C9C9C9; }
+.decrypto_rounds { display: grid; grid-template-columns: 2; gap: 5px; margin-left: 10px; margin-right: 10px; top: 28px; position: relative; }
+.decrypto_round14 { grid-column: 1; width: 155px;}
+.decrypto_round58 { grid-column: 2; width: 155px;}
+.guess { height: 15px; width: 140px; font-family: "Permanent Marker", cursive; font-size: 14px; line-height: 15px; padding: 0px; }
+.code { height: 15px; width: 12px; text-align: right; font-family: "Permanent Marker", cursive; font-size: 14px; line-height: 22.5px; padding: 0px; }
+.decrypto_round { min-height: 70px; max-height: 70px; border: 0px; margin-bottom: 11.5px; border-spacing: 0px; }
+.decrypto_players { width: inherit; top: 12px; position: relative; text-indent: 52%; text-align: left; font-family: "Permanent Marker", cursive; font-size: 14px; line-height: 15px;}
+.decrypto_time { position: relative; margin-top: 150px; margin-right: 20px; left: 0px; width: inherit; text-align: right; font-family: "Permanent Marker", cursive; font-size: 18px; }

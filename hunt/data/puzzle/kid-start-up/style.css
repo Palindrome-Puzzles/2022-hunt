@@ -1,0 +1,15 @@
+.pictures {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+}
+
+.captioned {
+  align-items: center;
+  display: flex;
+  max-width: 33%;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 10px;
+  width: 333px;
+}

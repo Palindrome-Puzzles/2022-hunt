@@ -1,0 +1,4 @@
+.bordered_cell { text-align: center; border: 1pt solid black; }
+.highlight_cell { text-align: center; background: #C9C9C9; border: 1pt solid black;}
+.bordered_end_cell { text-align: center; background: #000000; }
+.exterior { text-align: center; border: 0px; min-width: 15px; max-width: 15px; min-height: 15px;; max-height: 15px; }

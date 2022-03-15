@@ -1,0 +1,12 @@
+.poem {
+  text-align: center;
+}
+.poem p {
+  line-height: 150%;
+}
+
+.center-image{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}

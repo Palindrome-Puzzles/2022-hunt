@@ -1,0 +1,74 @@
+name: 'Template: Import to GAE'
+
+on:
+  workflow_call:
+    inputs:
+      client_django_env:
+        description: 'Django environment to use when calling commands from github'
+        required: true
+        type: string
+
+      server_django_env:
+        description: 'Django environment to use when calling commands from the server'
+        required: true
+        type: string
+
+      requirements_file:
+        description: 'Which requirements file to use for pip (relative to the requirements sub-directory)'
+        required: true
+        type: string
+
+      launch_hunt:
+        description: 'Whether to launch the hunt after importing data'
+        required: true
+        type: boolean
+
+    secrets:
+      GCLOUD_CREDENTIALS:
+        description: 'The project ID of the Google Cloud project'
+        required: true
+
+      GCLOUD_PROJECT_ID:
+        description: 'Credentials to authenticate with Google Cloud'
+        required: true
+
+jobs:
+  deploy:
+    name: Import to App Engine
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - uses: ./.github/actions/setup-django-manage
+      with:
+        # Note: we need DB access and some channel layer to be available.
+        # But we can't use the real redis channel layer as we're running on
+        # github right now.
+        requirements_file: ${{ inputs.requirements_file }}
+    - uses: ./.github/actions/setup-gcloud
+      id: setup
+      with:
+        gcloud_credentials: ${{ secrets.GCLOUD_CREDENTIALS }}
+        gcloud_project_id: ${{ secrets.GCLOUD_PROJECT_ID }}
+        token_format: 'id_token'
+        id_token_audience: 'https://us-central1-mitmh-2022.cloudfunctions.net/nuke_cache'
+    - uses: ./.github/actions/setup-gcloud-sql
+      with:
+        gcloud_credentials: ${{ secrets.GCLOUD_CREDENTIALS }}
+
+    - name: Import puzzles and teams
+      env:
+        DJANGO_ENV: ${{ inputs.client_django_env }}
+      run: ./bin/import-all.sh
+      shell: bash
+
+    - name: Nuke cache
+      run: 'curl -H "Authorization: bearer ${{ steps.setup.outputs.id_token }}" "https://us-central1-mitmh-2022.cloudfunctions.net/nuke_cache?env=${{ inputs.server_django_env }}"'
+      shell: bash
+
+    - name: Launch hunt
+      env:
+        DJANGO_ENV: ${{ inputs.client_django_env }}
+      if: ${{ inputs.launch_hunt }}
+      run: ./bin/launch-hunt.sh
+      shell: bash

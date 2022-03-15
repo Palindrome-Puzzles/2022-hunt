@@ -1,0 +1,153 @@
+{% extends "hq/layout.tmpl" %}
+{% load humanize static timedelta %}
+
+{% block title %}Contact request queue | {{ block.super }}{% endblock %}
+{% block heading %}Contact request queue{% endblock %}
+
+{% block breadcrumb_items %}
+<li><a href="{% url 'spoilr.contact:dashboard' %}">Contact request queue</a></li>
+{% endblock breadcrumb_items %}
+
+{% block content %}
+<section>
+    <form method="get" class="filters">
+    <nav class="level">
+      <div class="level-left">
+        <div class="level-item">
+          Filter
+        </div>
+        </div>
+        <div class="level-item">
+          <div class="select is-small">
+          <select name="team" id="id_team">
+            <option value=""{% if not team %} selected{% endif %}>All teams</option>
+            {% for team_username in teams %}
+            <option value="{{ team_username }}"{% if team == team_username %} selected{% endif %}>{{ team_username }}</option>
+            {% endfor %}
+          </select>
+          </div>
+        </div>
+        <div class="level-item">
+          <div class="select is-small">
+          <select name="open" id="id_open">
+            <option value="1"{% if open_only %} selected{% endif %}>Open contact requests</option>
+            <option value="0"{% if not open_only %} selected{% endif %}>All contact requests</option>
+          </select>
+          </div>
+        </div>
+        <div class="level-item">
+          <div class="select is-small">
+          <select name="limit" id="id_limit">
+            <option value="10"{% if limit == 10 %} selected{% endif %}>10 items</option>
+            <option value="50"{% if limit == 50 %} selected{% endif %}>50</option>
+            <option value="100"{% if limit == 100 %} selected{% endif %}>100</option>
+            <option value="200"{% if limit == 200 %} selected{% endif %}>200</option>
+          </select>
+          </div>
+        </div>
+        <div class="level-item">
+            <input type="submit" class="button is-small is-info" value="Filter">
+
+        </div>
+      </div>
+    </nav>
+    </form>
+
+  {% if contact_requests|length %}
+  <table>
+    <tr>
+      <th>Info</th>
+      <th width="70%">Their Email & Our Response</th>
+    </tr>
+    {% for contact_request_info in contact_requests %}
+    <tr>
+      <td>
+        <a href="{% url 'spoilr.progress:team' contact_request_info.contact_request.team.username %}" target="_blank">{{ contact_request_info.contact_request.team.name|truncatechars:40 }}</a><br>
+        <div class="sub-filter">
+        <a href="?team={{ contact_request_info.contact_request.team.username }}">filter by 👩‍👩‍👧‍👦</a>
+        </div>
+      </td>
+      <td rowspan="3" class="email-and-response">
+        {{ contact_request_info.contact_request.comment|linebreaks }}
+
+        <div class="email-response">
+
+      {% if contact_request_info.contact_request.resolved_time %}
+      {{ contact_request_info.contact_request.result|linebreaks }}
+      {% elif contact_request_info.task.handler and contact_request_info.task.handler == request.handler and request.handler.sign_in_time %}
+      <form action="{% url 'spoilr.contact:respond' %}" method="POST">
+        {% csrf_token %}
+        <textarea name="response" id="id_response" placeholder="Enter your response here" required></textarea>
+        <p>This will resolve the contact request and email the team - be careful!</p>
+
+        <div>
+          <label for="id_confirm_contact_response">Enter "RESPOND" to confirm</label>
+          <input type="text" name="confirm" id="id_confirm_contact_response" required>
+        </div>
+
+        <input type="hidden" name="id" value="{{ contact_request_info.contact_request.id }}">
+        <input type="submit" value="Reply">
+        <input type="reset" value="Cancel">
+      </form>
+      {% else %}
+      <em>No response yet</em>
+      {% endif %}
+        </div>
+      </td>
+    </tr>
+    <tr class="separator">
+      <td>
+        <div class="asked-answered">
+        <b>Asked:</b> <span title="{{ contact_request_info.contact_request.create_time }}">{{ contact_request_info.contact_request.create_time|naturaltime }}</span>
+        {% if contact_request_info.contact_request.resolved_time %}
+        <br>
+        <b>Answered:</b> <span title="{{ contact_request_info.contact_request.resolved_time }}">{{ contact_request_info.contact_request.resolved_time|naturaltime }}</span>
+        {% endif %}
+        {% if contact_request_info.contact_request.email %}
+          <br>
+          <span class="contact-email">{{ contact_request_info.contact_request.email }}</span>
+        {% endif %}
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        {% if contact_request_info.contact_request.resolved_time or contact_request_info.task.handler and contact_request_info.task.handler != request.handler %}
+        {{ contact_request_info.task.handler }}<br>
+        <em title="{{ contact_request_info.task.claim_time }}">{{ contact_request_info.task.claim_time|naturaltime }}</em>
+        {% elif contact_request_info.task.handler %}
+        <form method="POST" action="{% url 'spoilr.hq:task_unclaim' %}">
+          {% csrf_token %}
+          <input type="hidden" name="task_id" value="{{ contact_request_info.task.id }}">
+          <input type="submit" value="Unclaim">
+        </form>
+        {% elif request.handler and request.handler.sign_in_time %}
+        <form method="POST" action="{% url 'spoilr.hq:task_claim' %}">
+          {% csrf_token %}
+          <input type="hidden" name="task_id" value="{{ contact_request_info.task.id }}">
+          <input type="submit" value="Claim">
+        </form>
+        {% else %}
+        <em>Sign in to reply to contact requests</em>
+        {% endif %}
+      </td>
+
+    </tr>
+    {% endfor %}
+  </table>
+  {% else %}
+  <p>No contact requests currently in the queue! Check back later.</p>
+  {% endif %}
+</div>
+
+</section>
+{% endblock content %}
+
+{% block stylesheets %}
+<link rel="stylesheet" type="text/css" href="{% static 'spoilr/contact/style.css' %}">
+{% endblock %}
+
+{% block scripts %}
+{% include 'hq/util/auto-reload-script.tmpl' %}
+{% include 'hq/util/auto-submit-form-script.tmpl' with selector='.filters' %}
+{% endblock scripts %}

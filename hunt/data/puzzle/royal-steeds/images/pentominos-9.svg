@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 26.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1"
+	 id="svg8" inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)" sodipodi:docname="pentominos-9.svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:svg="http://www.w3.org/2000/svg"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 57.26 57.26"
+	 style="enable-background:new 0 0 57.26 57.26;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:none;stroke:#000000;stroke-width:0.75;stroke-linecap:round;stroke-miterlimit:11.3386;}
+	.st1{fill:none;stroke:#FF6D01;stroke-width:0.75;stroke-linecap:round;stroke-miterlimit:11.3386;}
+	.st2{fill:none;stroke:#FF00FF;stroke-width:0.75;stroke-linecap:round;stroke-miterlimit:11.3386;}
+	.st3{fill:none;stroke:#0000B8;stroke-width:0.75;stroke-linecap:round;stroke-miterlimit:11.3386;}
+	.st4{fill:none;stroke:#57E6FF;stroke-width:0.75;stroke-linecap:round;stroke-miterlimit:11.3386;stroke-opacity:0.9412;}
+	.st5{fill:none;stroke:#000000;stroke-width:0.3543;stroke-linecap:round;stroke-miterlimit:11.3386;}
+	.st6{font-family:'Helvetica';}
+	.st7{font-size:8px;}
+	.st8{enable-background:new    ;}
+	.st9{fill:none;}
+</style>
+<sodipodi:namedview  bordercolor="#666666" borderopacity="1.0" fit-margin-bottom="0" fit-margin-left="0" fit-margin-right="0" fit-margin-top="0" id="base" inkscape:current-layer="layer1" inkscape:cx="653.63582" inkscape:cy="128.63807" inkscape:document-units="mm" inkscape:guide-bbox="true" inkscape:pageopacity="0.0" inkscape:pageshadow="2" inkscape:window-height="979" inkscape:window-maximized="1" inkscape:window-width="1920" inkscape:window-x="0" inkscape:window-y="36" inkscape:zoom="0.49497475" pagecolor="#ffffff" showgrid="true" showguides="true">
+	<inkscape:grid  id="grid815" originx="-56.751246" originy="-110.99083" type="xygrid"></inkscape:grid>
+</sodipodi:namedview>
+<g id="flowRoot3053">
+</g>
+<path id="path819-6-0-65" inkscape:connector-curvature="0" class="st0" d="M11.75,11.75H23"/>
+<path id="path819-53-9" inkscape:connector-curvature="0" class="st0" d="M11.75,11.75V23"/>
+<path id="path819-53-90" inkscape:connector-curvature="0" class="st0" d="M11.75,23v11.25"/>
+<path id="path819-8-8-7" inkscape:connector-curvature="0" class="st1" d="M23,11.75V23"/>
+<path id="path819-8-63" inkscape:connector-curvature="0" class="st1" d="M23,23h11.25"/>
+<path id="path819-8-761" inkscape:connector-curvature="0" class="st1" d="M34.25,23H45.5"/>
+<path id="path819-5-9-7-1-50" inkscape:connector-curvature="0" class="st2" d="M45.5,23v11.25"/>
+<path id="path819-5-9-7-65" inkscape:connector-curvature="0" class="st2" d="M34.25,34.25H45.5"/>
+<path id="path819-5-9-7-0" inkscape:connector-curvature="0" class="st2" d="M11.75,34.25H23"/>
+<path id="path819-8-8-81" inkscape:connector-curvature="0" class="st1" d="M23,34.25V45.5"/>
+<path id="path819-5-9-3-22" inkscape:connector-curvature="0" class="st3" d="M34.25,34.25V45.5"/>
+<path id="path819-5-69" inkscape:connector-curvature="0" class="st4" d="M23,45.5h11.25"/>
+<path id="path819-5-9-7-1-4-38-1" inkscape:connector-curvature="0" class="st5" d="M23,23v11.25"/>
+<path id="path819-5-9-7-1-4-38-04" inkscape:connector-curvature="0" class="st5" d="M34.25,23v11.25"/>
+<path id="path819-5-9-7-1-4-6-274" inkscape:connector-curvature="0" class="st5" d="M34.25,34.25H23"/>
+<path id="path819-5-9-7-1-4-6-03" inkscape:connector-curvature="0" class="st5" d="M23,23H11.75"/>
+<text transform="matrix(1 0 0 1 14.8606 20.291)" class="st6 st7">4</text>
+<text transform="matrix(1 0 0 1 25.9443 31.541)" class="st6 st7">N</text>
+<text transform="matrix(1 0 0 1 37.1113 31.541)" class="st6 st7">U</text>
+<text transform="matrix(1 0 0 1 25.5288 42.791)" class="st6 st7">O</text>
+<g>
+	<g class="st8">
+		<path d="M19.26,28.57c0,1.89-0.7,2.93-1.93,2.93c-1.08,0-1.82-1.02-1.84-2.85c0-1.86,0.8-2.89,1.93-2.89
+			C18.6,25.76,19.26,26.8,19.26,28.57z M18.15,26.78c-0.17-0.27-0.43-0.44-0.77-0.44c-0.7,0-1.15,0.9-1.16,2.26
+			c0,0.54,0.07,1,0.21,1.37L18.15,26.78z M16.63,30.5c0.19,0.27,0.44,0.42,0.73,0.42c0.78,0,1.17-0.9,1.17-2.32
+			c0-0.5-0.06-0.94-0.18-1.31L16.63,30.5z"/>
+	</g>
+	<rect x="11.75" y="23" class="st9" width="11.25" height="11.25"/>
+</g>
+</svg>

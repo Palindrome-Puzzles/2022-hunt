@@ -1,0 +1,114 @@
+body {
+    font-family: "DM Sans", sans-serif;
+}
+
+.navbar {
+  background: #eee;
+}
+
+.container {
+  padding-top: 70px;
+}
+
+button, input[type="submit"], input[type="reset"] {
+  font-family: "DM Sans", sans-serif;
+  padding: 4px 12px;
+}
+
+.hidden {
+    display: none;
+}
+
+.banner {
+    align-items: center;
+    background-color: #ccf;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    padding: 1em;
+    margin-bottom: .5em;
+}
+.banner.error {
+    background-color: #f99;
+}
+
+.header {
+    align-items: flex-start;
+    border-bottom: 1px solid #000;
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 1em;
+    margin-bottom: 1em;
+}
+
+.header fieldset {
+    padding: .5em;
+}
+.header fieldset p {
+    font-weight: 500;
+    margin: .5em 0;
+    text-align: center;
+}
+.header fieldset .form-row {
+    display: flex;
+    margin: .5em 0;
+    justify-content: center;
+}
+.header fieldset :first-child {
+    margin-top: 0;
+}
+.header fieldset :last-child {
+    margin-bottom: 0;
+}
+.header fieldset .form-row label {
+    margin-right: .5em;
+    text-align: right;
+    width: 150px;
+}
+
+.header h1 {
+    margin: 0;
+}
+.header h2 {
+    margin: .25em 0 .5em;
+}
+
+.header ul {
+    display: flex;
+    font-size: 18px;
+    list-style-type: none;
+    padding: 0;
+}
+.header li.website::after {
+    content: '|';
+    padding: 0 1em
+}
+.header li:not(.website):not(:last-child)::after {
+    content: '>';
+    padding: 0 .5em
+}
+.header li:last-of-type a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.hints-box {
+}
+
+.hints-box iframe {
+  height: 800px;
+  width: 100%;
+}
+
+.puzzle-link {
+  font-weight: bold;
+}
+
+.sub-filter {
+  font-size: .8em;
+}
+
+.asked-answered {
+  padding-top: .5em;
+  font-size: .8em;
+}

@@ -1,0 +1,41 @@
+h1,
+.round-map {
+    font-family: 'Fasthand', sans-serif;
+    font-weight: 400;
+}
+
+.page-background {
+    background-image: none;
+    background-color: #d29af5;
+    overflow: hidden;
+}
+.page-background-top {
+    background-image: url(images/bg.jpg);
+    background-position: top center;
+}
+.page-background-map {
+/*    background-image: url(images/bg-repeat.jpg);
+    background-repeat: repeat-y; */
+}
+
+.page-background-top {
+    aspect-ratio: 2500/4288;
+}
+
+header {
+    min-width: 100%;
+}
+header.large-wordmark {
+    aspect-ratio: 3/1;
+}
+
+@media only screen and (max-width: 600px) {
+    /* 600 = 200 * 3/1 */
+    header:not(.large-wordmark) {
+        aspect-ratio: unset;
+        height: 200px;
+    }
+    header h1 {
+        white-space: nowrap;
+    }
+}

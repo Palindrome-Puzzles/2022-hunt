@@ -1,0 +1,19 @@
+.images {
+  text-align: center;
+}
+
+.no-border {
+  border: none;
+}
+
+#puzzle-table td.double {
+  border: double;
+}
+
+td.triangle {
+  background-color: gray;
+}
+
+#puzzle-table {
+  border-collapse: separate;
+}

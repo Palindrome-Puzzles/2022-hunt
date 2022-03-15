@@ -1,0 +1,50 @@
+.highlighted-square { background-color: #F7DC6F;}
+
+.grids {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+}
+
+.left-grid {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+  margin-right: 20px;
+  width: 770px;
+}
+
+.right-grid {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+  width: 200px;
+}
+
+.lublin { background-color: #E6B8AF; }
+.pacific-jade { background-color: #F4CCCC; }
+.hersbrucker { background-color: #FCE5CD; }
+.sladek { background-color: #D8EAD3; }
+.harmonie { background-color: #D0E0E3; }
+.admiral { background-color: #C8DAF9; }
+.glacier { background-color: #D9D2E9; }
+.opal { background-color: #EAD1DC; }
+.palisade { background-color: #DD7E6B; }
+.cluster { background-color: #F9CB9C; }
+.bohemie { background-color: #FFE599; }
+.premiant { background-color: #B7D7A8; }
+.newport { background-color: #A2C4C9 ; }
+.green-bullet { background-color: #A4C2F4; }
+.crystal { background-color: #B4A7D6; }
+.tomahawk { background-color: #D5A6BD; }
+.cascade { background-color: #CC4124; color: white; }
+.goldings { background-color: #FFD965; }
+.eroica { background-color: #92C47C; }
+.tettnang { background-color: #6D9EEB; }
+.galaxy { background-color: #76A5AF; }
+.sterling { background-color: #674EA7; color: white; }
+.ahtanum { background-color: #A64D79; color: white; }
+.first-gold { background-color: #BF9001; }
+.strisselspalt { background-color: #990000; color: white; }

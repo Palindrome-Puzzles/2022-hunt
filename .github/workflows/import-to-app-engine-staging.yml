@@ -1,0 +1,23 @@
+name: 'Staging: Import to GAE'
+
+# Can only be run manually from the Actions tab, as this is a destructive task
+# that resets team info.
+on: workflow_dispatch
+
+concurrency:
+  group: import-to-app-engine-staging
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    uses: 'Palindrome-Puzzles/2022-hunt/.github/workflows/import-to-app-engine.yml@main'
+    with:
+      client_django_env: 'staging_db_only_gcloud'
+      server_django_env: 'staging_gcloud'
+      requirements_file: 'db_only_gcloud.txt'
+      # Don't do this for the real hunt of course, but we can keep the staging
+      # hunt always launched for now.
+      launch_hunt: true
+    secrets:
+      GCLOUD_CREDENTIALS: ${{ secrets.GOOGLE_APPLICATIONS_CREDENTIAL }}
+      GCLOUD_PROJECT_ID: ${{ secrets.GCLOUD_PROJECT_ID }}

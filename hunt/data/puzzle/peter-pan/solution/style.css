@@ -1,0 +1,10 @@
+.highlight {
+	background-color: lightsteelblue;
+}
+.added {
+	color: red;
+	font-weight: bold;
+}
+.cw.hide {
+	empty-cells: hide;
+}
