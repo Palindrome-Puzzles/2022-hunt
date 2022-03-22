@@ -24,7 +24,7 @@ Each host config rule requires a unique name. The following host config names ha
  - `registration`: The domain to use when redirecting to the registration site.
  - `default`: The domain to assume we're on if we can't recognize the current domain per this config.
 
-(Any other names for host config rules are arbitrary.)
+All of the above names **must** be present in your hosts config file. Any other names for host config rules are arbitrary and optional.
 
 The second argument for each host config rule refers to a module with a Django URL configuration. These probably don't need to be changed - you just need to pick the right one when writing a host config rule.
  - [`hunt.deploy.urls.unified`](/hunt/deploy/urls/unified.py): Serve all URLs at this domain. (Registration URLs are prefixed with a `/registration/` path.)
@@ -57,16 +57,21 @@ The following instructions assume you're starting afresh with none of the 2022 p
 If this is not true, tweak the instructions as described in the [appendix at the end of these steps](#appendix-exceeding-herokus-slug-size).
 
  1. Sign up for a free Heroku account, and provision an app and a Postgres database. [The quickstart guide](https://devcenter.heroku.com/articles/getting-started-with-python) will be helpful.
- 1. Fork this repo, and either make it public or generate a [Personal Access Token](https://github.com/settings/tokens) for the repo.
+ 1. Make your own copy of this repo. Either:
+     - Make a public fork (and don't use LFS),
+     - Make a public copy that isn't a fork (if you want use LFS),
+     - Make a private fork and generate a [Personal Access Token](https://github.com/settings/tokens) for the repo.
  1. Tweak [`_prod.py`](/hunt/deploy/settings/_prod.py) to set up the hunt as you'd like it. For example, you probably want to:
      - Open registration (`HUNT_REGISTRATION_CLOSED`)
      - Allow login (`HUNT_LOGIN_ALLOWED`)
      - Disable serving assets from a CDN (`HUNT_ASSETS_SERVE_STATICALLY`) for a simpler deployment and set `STATIC_URL = '/static/'`
+     - Make puzzle files available for static serving - set `STATICFILES_DIRS = [HUNT_ASSETS_TEMP_FOLDER + 'not-gzip/']`
  1. Tweak [`prod_heroku.py`](/hunt/deploy/settings/prod_heroku.py) settings:
      - Change `ALLOWED_HOSTS` and `ALLOWED_REDIRECTS`. These control which domains the app can serve on, and can redirect to during [SSO authentication](features.md#authentication). Replace `palindrome-hunt-prod.herokuapp.com` with the app URL you created in the first step.
      - Optionally delete the "real domains" used during the 2022 hunt.
      - Delete the `ANYMAIL` and `EMAIL_BACKEND` settings (unless you set up a mailgun API key and [add it as an environment variable](https://devcenter.heroku.com/articles/getting-started-with-python?singlepage=true#define-config-vars) to Heroku).
- 1. Tweak [`prod_heroku.py`](/hunt/deploy/hosts/prod_heroku.py) hosts. Similar to above, delete the "real domains" and update `palindrome-hunt-prod.herokuapp.com` with the app URL you created in the first step.
+ 1. Tweak [`prod_heroku.py`](/hunt/deploy/hosts/prod_heroku.py) hosts. Copy the contents of [`staging_heroku.py`](/hunt/deploy/settings/staging_heroku.py) into your `prod_heroku.py` file, and update `palindrome-hunt-staging.herokuapp.com` with the app URL you created in the first step.
+     - > **Tip**: If you're using your own non-Heroku domain, then keep [`prod_heroku.py`](/hunt/deploy/settings/prod_heroku.py) as a starting point.
  1. (If using Git LFS) Add the [Git LFS buildpack](https://elements.heroku.com/buildpacks/raxod502/heroku-buildpack-git-lfs) so LFS content can be loaded by heroku.
     ```
     heroku buildpacks:add https://github.com/raxod502/heroku-buildpack-git-lfs
@@ -87,7 +92,7 @@ If this is not true, tweak the instructions as described in the [appendix at the
 
     MANAGE_FILE=$(find . -maxdepth 3 -type f -name 'manage.py' | head -1)
     MANAGE_FILE=${MANAGE_FILE:2}
-    python $MANAGE_FILE collectpuzzlefiles --noinput --gzip_files=false
+    python $MANAGE_FILE collectpuzzlefiles --noinput --gzip-files=false
     ```
  1. In Heroku, set the following config vars.
      - `DJANGO_ENV` to `prod_heroku`
@@ -124,12 +129,13 @@ If you exceed Heroku's slug size, then the easiest solution is to host your stat
  - Sign up for Google Cloud and optionally set up billing.
  - Set up the Google Cloud `gsutil` command line utility.
  - Create a new Google Cloud Storage bucket, or choose the default bucket with a free tier. Ensure files are all [publicly accessible in the bucket](https://cloud.google.com/storage/docs/access-control/making-data-public#buckets) (and use the `roles/storage.legacyObjectReader` role to avoid users being able to browse files).
- - Locally, run `DJANGO_ENV=prod_heroku python manage.py collectpuzzlefiles --gzip_files=false` to gather all puzzle files in the `/static_temp/` sub-directory.
+ - Locally, run `DJANGO_ENV=prod_heroku python manage.py collectpuzzlefiles --gzip-files=false` to gather all puzzle files in the `/static_temp/` sub-directory.
  - Run the following command to deploy all your assets to Google Cloud Storage `gsutil -m rsync -c -d -R static_temp/not-gzip/ gs://CLOUD_BUCKET_NAME/static/` (after replacing the `CLOUD_BUCKET_NAME`).
  - Delete the `bin/post_compile` file added above, as it is no longer needed.
  - Set the following settings:
     - `STATIC_URL = 'https://storage.googleapis.com/CLOUD_BUCKET_NAME/static/'`
     - `HUNT_ASSETS_SERVE_STATICALLY = True`
+    - `STATICFILES_DIRS = []`
  - Re-deploy to heroku.
 
 Then you also need to setup CORS for the Google Cloud bucket, so that scripts can be loaded from the Google Cloud domain, and run as part of your hunt website. To do this:

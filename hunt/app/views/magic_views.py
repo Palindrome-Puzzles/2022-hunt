@@ -9,7 +9,7 @@ from django.shortcuts import redirect, reverse
 from spoilr.core.api.decorators import inject_team, inject_interaction, require_safe_referrer
 from spoilr.core.api.events import dispatch, HuntEvent
 from spoilr.core.api.hunt import release_interaction, release_round, release_puzzles
-from spoilr.core.models import Puzzle, PuzzleAccess, Round, Team
+from spoilr.core.models import Puzzle, PuzzleAccess, Round, Team, TeamType
 
 from hunt.app.core.constants import ROUND_RD1_URL, ROUND_RD2_URL, ROUND_RD3_META_URL, ROUND_RD3_URLS
 from hunt.app.core.interactions import on_interaction_email_received
@@ -41,7 +41,7 @@ INCREASE_RADIUS_AMOUNT_1 = 3
 def release_act1_view(request):
     context = get_shared_context(request.team)
     act2_unlocked = any(round_info['round'].url == ROUND_RD2_URL for round_info in context['rounds'])
-    if act2_unlocked:
+    if act2_unlocked or request.team.is_public:
         return redirect(reverse('index'))
 
     with transaction.atomic():
@@ -96,7 +96,7 @@ def increase_radius_view(request):
     context = get_shared_context(request.team)
     rd2 = next((round_info for round_info in context['rounds'] if round_info['round'].url == ROUND_RD2_URL), None)
     rd2_meta_solved = any(puzzle_info['solved'] for puzzle_info in rd2['puzzles'] if puzzle_info['puzzle'].is_meta) if rd2 else None
-    if not rd2 or rd2_meta_solved:
+    if not rd2 or rd2_meta_solved or request.team.is_public:
         return redirect(reverse('index'))
 
     already_used_act2_release = request.team.teamdata.act2_puzzle_radius_increased
@@ -122,7 +122,7 @@ def unlock_pen_station_view(request):
     context = get_shared_context(request.team)
     rd2 = next((round_info for round_info in context['rounds'] if round_info['round'].url == ROUND_RD2_URL), None)
     rd3_1 = next((round_info for round_info in context['rounds'] if round_info['round'].url == ROUND_RD3_URLS[0]), None)
-    if not rd2 or rd3_1 or request.team.teamdata.act3_release:
+    if not rd2 or rd3_1 or request.team.teamdata.act3_release or request.team.is_public:
         return redirect(reverse('index'))
 
     rd3_1 = Round.objects.get(url=ROUND_RD3_URLS[0])
@@ -144,7 +144,7 @@ def unlock_pen_station_view(request):
 @inject_team()
 @verify_team_accessible()
 def unlock_more_1_view(request):
-    if request.team.teamdata.act3_release_1:
+    if request.team.teamdata.act3_release_1 or request.team.is_public:
         return redirect(reverse('index'))
 
     context = get_shared_context(request.team)
@@ -170,7 +170,7 @@ def unlock_more_1_view(request):
 @inject_team()
 @verify_team_accessible()
 def unlock_more_2_view(request):
-    if request.team.teamdata.act3_release_2:
+    if request.team.teamdata.act3_release_2 or request.team.is_public:
         return redirect(reverse('index'))
 
     context = get_shared_context(request.team)
@@ -200,6 +200,9 @@ def unlock_more_2_view(request):
 @verify_team_accessible()
 def unlock_more_3_view(request):
     context = get_shared_context(request.team)
+    if request.team.is_public:
+        return redirect(reverse('index'))
+
     rd3_10 = next((round_info for round_info in context['rounds'] if round_info['round'].url == ROUND_RD3_URLS[9]), None)
 
     if not rd3_10:
@@ -415,7 +418,7 @@ Team Palindrome</p>
 @inject_team(require_admin=True)
 def email_to_unlock_more_view(request):
     emailed = []
-    for team in Team.objects.all():
+    for team in Team.objects.exclude(type=TeamType.PUBLIC):
         context = get_shared_context(team)
         unlocked_round_urls = set(round_info['round'].url for round_info in context['rounds'])
 

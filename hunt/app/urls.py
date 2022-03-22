@@ -41,7 +41,6 @@ urlpatterns += [
     path('release/pen-station/next', magic_views.unlock_more_3_view),
 
     path('admin/email-unlocks', magic_views.email_to_unlock_more_view),
-    path('admin/email-fantasy-unlock', magic_views.email_to_unlock_more_view),
 ]
 
 # Dynamic loaders for puzzles and rounds assets.
