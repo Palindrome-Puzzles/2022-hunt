@@ -2,7 +2,6 @@ import hashlib, urllib.parse
 
 from django.conf import settings
 from django.core.exceptions import ImproperlyConfigured
-from django.templatetags.static import static
 from django.urls import reverse
 
 def get_puzzle_static_path(puzzle_url, variant):
@@ -42,7 +41,7 @@ def get_auxiliary_static_path(bucket):
         asset_type='auxiliary', asset_view='auxiliary_asset', url=bucket)
 
 def _static_path(*, asset_type, asset_view, url, variant=None):
-    if not settings.DEBUG and not settings.HUNT_ASSETS_SERVE_STATICALLY:
+    if not settings.DEBUG and not settings.HUNT_ASSETS_SERVE_STATICALLY and not settings.HUNT_ARCHIVE_MODE:
         raise ImproperlyConfigured('HUNT_ASSETS_SERVE_STATICALLY must be True when not in debug mode')
 
     if settings.HUNT_ASSETS_SERVE_STATICALLY:

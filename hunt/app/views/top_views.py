@@ -169,6 +169,9 @@ def sponsor_details_view(request, sponsor_name):
     context = get_shared_context(request.team)
     return render(request, f'top/sponsors/{sponsor_name}.sponsor.tmpl', context)
 
+def archive_pages_view(request):
+    return render(request, f'top/archive-pages.tmpl')
+
 @require_hunt_launch()
 @inject_team(redirect_if_missing=False)
 @verify_team_accessible()

@@ -146,6 +146,8 @@
           {% elif not team.is_public %}
             <p>The event is over. If you participated, enter your answer phrase.</p>
             <iframe class="submit-iframe {{ event.puzzle_url }}-answers" src="{% url 'puzzle_submit_embed' event.puzzle_url %}"></iframe>
+          {% else %}
+            <p><em>The event is over.</em></p>
           {% endif %}
         </div>
         </div>

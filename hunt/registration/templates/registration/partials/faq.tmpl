@@ -15,8 +15,10 @@
   <h3>Is there a deadline to register?</h3>
   <p>We ask that teams register by December 20. The final deadline to register is Monday, January 10, but teams registering that late will not have time to receive the physical components that will accompany certain Hunt puzzles.</p>
 
+  {% if not is_archive %}
   <h3>Can you help me find a team to join?</h3>
   <p>We would be happy to. Please fill out <a href="{% url 'register_solver' %}">this form</a> and we will try to help you find a team.</p>
+  {% endif %}
 
   <h3>If Mystery Hunt is virtual, does that mean we shouldn’t come to the MIT campus?</h3>
   <p>Right. Those who are not already a part of the MIT community should experience the hunt from home. We recommend as well that people on campus not gather in large numbers. You will be able to fully enjoy the Hunt from any location with Internet access.</p>

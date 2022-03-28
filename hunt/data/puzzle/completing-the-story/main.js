@@ -1,18 +1,28 @@
-const socket = new RobustWebSocket(
-  (location.protocol === "https:" ? "wss://" : "ws://") +
-    `${window.location.host}/ws/puzzle/completing-the-story`
-);
-socket.addEventListener('open', (event) => {
-  socket.send(
-    JSON.stringify({
-      type: "AUTH",
-      data: window.puzzleAuthToken,
-    })
-  );
-});
-socket.addEventListener('message', (event) => {
-  handleMessage(JSON.parse(event.data));
-});
+window.puzzleOnLoad = () => {
+  if (window.stubBooks) {
+    handleMessage({
+      type: 'progress',
+      progress: window.stubBooks(),
+    });
+  }
+  else {
+    const socket = new RobustWebSocket(
+      (location.protocol === "https:" ? "wss://" : "ws://") +
+        `${window.location.host}/ws/puzzle/completing-the-story`
+    );
+    socket.addEventListener('open', (event) => {
+      socket.send(
+        JSON.stringify({
+          type: "AUTH",
+          data: window.puzzleAuthToken,
+        })
+      );
+    });
+    socket.addEventListener('message', (event) => {
+      handleMessage(JSON.parse(event.data));
+    });
+  }
+};
 
 const found = document.querySelector('.found');
 const solved = document.querySelector('.solved');

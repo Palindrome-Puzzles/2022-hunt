@@ -1,0 +1,7 @@
+@font-face {
+  font-family: 'Red Hat Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(Red_Hat_Mono/static/RedHatMono-Regular.ttf) format('truetype');
+}

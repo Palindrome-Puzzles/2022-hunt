@@ -1,4 +1,4 @@
-{% load static %}
+{% load archive static %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -11,10 +11,17 @@
   <link rel="icon" href="{% static 'favicon-32x32.png' %}" type="image/png" sizes="32x32">
   <link rel="icon" href="{% static 'favicon.ico' %}" type="image/x-icon" sizes="any">
   <link rel="apple-touch-icon" href="{% static 'apple-touch-icon.png' %}" sizes="180x180">
+  {% is_non_archive as is_non_archive_flag %}
+  {% if is_non_archive_flag %}
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Open+Sans:wght@400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="{% static 'stylesheets/base.css' %}?v=2">
+  {% else %}
+  <link href="{% static 'fonts/DM_Sans.css' %}" rel="stylesheet">
+  <link href="{% static 'fonts/Open_Sans.css' %}" rel="stylesheet">
+  <link href="{% static 'fonts/Space_Mono.css' %}" rel="stylesheet">
+  {% endif %}
+  <link rel="stylesheet" type="text/css" href="{% static 'stylesheets/base.css' %}">
   {% block stylesheets %}{% endblock %}
   {% block head_scripts %}{% endblock %}
   {# TODO(sahil): Remove jquery by default, and add it to puzzles that need it. #}

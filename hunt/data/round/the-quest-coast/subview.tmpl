@@ -1,7 +1,8 @@
 {% extends "round_files/generic_puzzle_subview.tmpl" %}
+{% load archive %}
 
 {% block extra_stylesheets %}
-<link href="https://fonts.googleapis.com/css2?family=Jim+Nightshade:wght@400&display=swap" rel="stylesheet">
+<link href="{% archivable_font 'Jim+Nightshade:wght@400' 'Jim_Nightshade' %}" rel="stylesheet">
 {% endblock extra_stylesheets %}
 
 {% block wordmark %}

@@ -1,5 +1,7 @@
 import dataclasses
 import datetime
+import hashlib
+import json
 import typing
 
 from django.shortcuts import render, redirect
@@ -12,6 +14,7 @@ from spoilr.core.api.answer import (
     submit_puzzle_answer, submit_minipuzzle_answer, maybe_initialize_minipuzzle
 )
 from spoilr.core import models as m
+from spoilr.core.api.answer import canonicalize_puzzle_answer
 
 from hunt.app.core.rewards import get_bonus_content
 from hunt.app.core.assets.refs import get_round_static_path
@@ -100,6 +103,16 @@ def submit_puzzle_view(request):
         'allow_guessing': True,
         'time_left': lock_out_time,
         'response': None,
+        'answer_sha256': get_answer_sha256(puzzle.answer) if not puzzle.is_multi_answer else '',
+        'pseudo_sha256': json.dumps({
+            get_answer_sha256(answer): response.message for answer, response in pseudoanswers.items()
+        }),
+        'multi_answers_sha256': json.dumps(
+            list(
+                get_answer_sha256(answer) for answer in puzzle.all_answers
+            ) if puzzle.is_multi_answer else []
+        ),
+        'public_bonus_content': get_bonus_content(puzzle, maybe_team) if maybe_team and maybe_team.is_public else None,
     }
 
     if request.method == 'POST' and not lock_out_time and request.POST['answer']:
@@ -220,6 +233,9 @@ def minipuzzle_answers_view_factory(minipuzzle_answers_by_ref, message_list={}, 
             'message': message,
             'response': response,
             'label': label,
+            'answer_sha256': get_answer_sha256(correct_answer),
+            'pseudo_sha256': '{}',
+            'multi_answers_sha256': '[]',
         }
         return render(request, 'puzzle/submissions.tmpl', context)
     return minipuzzle_answers_view
@@ -247,3 +263,8 @@ def get_lock_out_time(*, solved, answers, lock_out_thresholds, get_timestamp):
             return None
         return timeout_end - now()
     return None
+
+def get_answer_sha256(answer):
+    answer_hasher = hashlib.sha256()
+    answer_hasher.update(canonicalize_puzzle_answer(answer).encode('utf-8'))
+    return answer_hasher.hexdigest()

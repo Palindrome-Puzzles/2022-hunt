@@ -55,12 +55,17 @@ urlpatterns += [
 # isn't working, so that puzzle/round authors notice and address the issue. That
 # way, no issues get accidentally masked and then bite us in our production
 # website.
-if settings.DEBUG:
+if settings.DEBUG or settings.HUNT_ARCHIVE_MODE:
     urlpatterns += [
         re_path('^puzzle/(?P<puzzle>[^/]+)/s__(?P<variant>[^/]+)/(?P<resource>.*)$', asset_views.puzzle_asset_view, name='puzzle_asset'),
         re_path('^round/(?P<round>[^/]+)/s__(?P<variant>[^/]+)/(?P<resource>.*)$', asset_views.round_asset_view, name='round_asset'),
         re_path('^chunks/(?P<resource>.*)$', asset_views.chunk_view, name='chunk'),
         re_path('^auxiliary/(?P<bucket>[^/]+)/(?P<resource>.*)$', asset_views.auxiliary_asset_view, name='auxiliary_asset'),
+    ]
+
+if settings.HUNT_ARCHIVE_MODE:
+    urlpatterns += [
+        path('archive-pages/', top_views.archive_pages_view),
     ]
 
 # Solver-accessible hunt website URLs.

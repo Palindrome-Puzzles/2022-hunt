@@ -1,8 +1,8 @@
 {% extends "round_files/generic_round.tmpl" %}
-{% load assets static %}
+{% load archive assets static %}
 
 {% block extra_stylesheets %}
-<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@1,400&display=swap" rel="stylesheet">
+<link href="{% archivable_font 'Libre+Baskerville:ital,wght@1,400' 'Libre_Baskerville' %}" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="{% static 'stylesheets/map.css' %}">
 {% include 'round_files/generic_map_stylesheet.tmpl' with sticker_info=sticker_info %}
 {% endblock extra_stylesheets %}

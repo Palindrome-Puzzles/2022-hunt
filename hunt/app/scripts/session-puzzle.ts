@@ -23,6 +23,14 @@ export interface SessionPuzzleResponseDisconnected<Type> {
 }
 export type SessionPuzzleResponse<Type> = SessionPuzzleResponseSuccess<Type> | SessionPuzzleResponseError | SessionPuzzleResponseDisconnected<Type>;
 
+declare global {
+  interface Window {
+    stubSend: <Body = unknown, Response = unknown>(
+      ...bodyArgs: void extends Body ? [Body?] : [Body]
+    ) => Promise<Response>;
+  }
+}
+
 /**
  * Helper to interact with a session puzzle. It takes care of initializing the
  * session, and sending updates to it. It also detects network outages, and
@@ -95,7 +103,8 @@ export class SessionPuzzle<InitialResponse, SendRequest, SendResponse> {
       __seq: this.seq,
     };
     this.pendingSend = true;
-    return fetchJson<ServerRequest & Request, ServerResponse & Response>(this.url, body)
+    const send = (url: string, body: ServerRequest & Request) => window.stubSend ? window.stubSend<ServerRequest & Request, ServerResponse & Response>(body) : fetchJson<ServerRequest & Request, ServerResponse & Response>(url, body);
+    return send(this.url, body)
       .then((response) => {
         const status = response["__status"];
         if (status === "complete") {

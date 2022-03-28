@@ -2,7 +2,7 @@
 function onExpand(number){
     var row = $(`#description-${number}`)
     row.removeClass("collapsed-description")
-    row.addClass("expanded-description")
+    row.css('display', 'block');
     row.css("maxHeight",row[0].scrollHeight)
     var button = $(`#button-${number}`)
     button.html("▲")
@@ -12,9 +12,18 @@ function onExpand(number){
 
 function onCollapse(number){
     var row = $(`#description-${number}`)
-    row.removeClass("expanded-description")
     row.addClass("collapsed-description")
-    row.css("maxHeight",0)
+    if (row.css("maxHeight") !== '0px') {
+        row.one('transitionend', () => {
+            if (row.hasClass('collapsed-description')) {
+                row.css('display', 'none');
+            }
+        });
+        row.css("maxHeight",0)
+    } else {
+        row.css('display', 'none');
+        row.css("maxHeight",0)
+    }
     var button = $(`#button-${number}`)
     button.html("▼")
     button.unbind("click")
@@ -123,20 +132,22 @@ const INTROSPECTION_TASKS = {
 // 0: hidden, 1: revealed but not completed, 2: completed
 function switchTaskStatus(taskNumber){
     var iconSpan = $(`#icon-${taskNumber}`);
+    var iconButton = $(`#icon-button-${taskNumber}`);
     var state = iconSpan.attr("data-state");
     switch(state){
         case '0':
             iconSpan.attr("data-state","1");
             iconSpan.html("📨");
-            iconSpan.attr("title","Click to accomplish the task.");
+            iconButton.attr("title","Click to accomplish the task.");
             $(`#task-${taskNumber}`).html(INTROSPECTION_TASKS[taskNumber].text);
             $(`#button-${taskNumber}`).prop('disabled', false);
             $(`#button-${taskNumber}`);
+            onCollapse(taskNumber);
             break;
         case '1':
             iconSpan.attr("data-state","2");
             iconSpan.html("🏆");
-            iconSpan.attr("title","Click to reset the task.");
+            iconButton.attr("title","Click to reset the task.");
             $(`#task-${taskNumber}`).html(INTROSPECTION_TASKS[taskNumber].text);
             $(`#button-${taskNumber}`).prop('disabled', false);
             recomputeIntrospection();
@@ -145,7 +156,7 @@ function switchTaskStatus(taskNumber){
         default:
             iconSpan.attr("data-state","0");
             iconSpan.html("👁️");
-            iconSpan.attr("title","Click to reveal the task.");
+            iconButton.attr("title","Click to reveal the task.");
             $(`#task-${taskNumber}`).html(answerWillAppear(INTROSPECTION_TASKS[taskNumber].puzzle));
             $(`#button-${taskNumber}`).prop('disabled', true);
             onCollapse(taskNumber);
@@ -163,7 +174,7 @@ function renderTask(number, task){
     var row1 = `<tr class="task-row">
         <td class="task-id no-border">Task #${number}:</td>
         <td id="task-${number}" class="task-text no-border" height="41px"></td>
-        <td class="task-icon no-border">${icon}</td>
+        <td class="no-border"><button id="icon-button-${number}">${icon}</button></td>
         <td class="task-button no-border"><button id="button-${number}" class="expand-button" title="See task description">▼</button></td>
     </tr>`
     var row2 = `<tr class="description-row">
@@ -184,7 +195,7 @@ function populate(){
     // Now bind onclicks for all the buttons and icons
     Object.entries(INTROSPECTION_TASKS).map(entry => {
         $(`#button-${entry[0]}`).click(function() {onExpand(entry[0])});
-        $(`#icon-${entry[0]}`).click(function() {switchTaskStatus(entry[0])});
+        $(`#icon-button-${entry[0]}`).click(function() {switchTaskStatus(entry[0])});
         switchTaskStatus(entry[0]);
     })
 }

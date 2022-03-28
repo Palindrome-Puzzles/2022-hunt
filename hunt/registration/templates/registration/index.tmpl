@@ -1,5 +1,5 @@
 {% extends "registration/base.tmpl" %}
-{% load hosts static %}
+{% load archive hosts static %}
 
 {% block notifications %}
 {% if status == 'updated' %}
@@ -15,7 +15,7 @@
 <div class="scroller">
   <p class="menu-links">
     {% if is_hunt_complete %}
-      {% if user.is_authenticated %}
+      {% if user.is_authenticated or is_archive %}
       <a href="{% host_url 'index' host 'site-1' %}">Go to Hunt</a>
       {% else %}
       <a href="{% url 'registration_login' %}">Login</a>
@@ -34,12 +34,19 @@
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 200" aria-hidden="true" alt="NO{% if has_this_is_now_a_puzzle_access %}W{% else %}T{% endif %} A PUZZLE">
     <defs>
       <style>
+        {% is_non_archive as is_non_archive_flag %}
+        {% if is_non_archive_flag %}
         @import url(https://use.typekit.net/xef3sni.css);
+        {% else %}
+        @import url({% static 'fonts/Roboto.css' %});
+        {% endif %}
         svg {
-          font-family: aktiv-grotesk, sans-serif;
+          font-family: aktiv-grotesk, Roboto, sans-serif;
           font-size: 23px;
           font-weight: bold;
-          {% if has_this_is_now_a_puzzle_access %}
+          {% if not is_non_archive_flag %}
+          letter-spacing: .002em;
+          {% elif has_this_is_now_a_puzzle_access %}
           letter-spacing: .048em;
           {% else %}
           letter-spacing: .012em;

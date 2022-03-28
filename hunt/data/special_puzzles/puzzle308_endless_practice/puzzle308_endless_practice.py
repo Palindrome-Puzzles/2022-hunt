@@ -74,7 +74,7 @@ def result(request, *args, **kwargs):
         team=request.team, puzzle=request.puzzle, ref=minipuzzle_ref)
 
     response = None
-    if minipuzzle.solved or request.team.is_public:
+    if minipuzzle.solved:
         response = HttpResponse(MINIPUZZLE_IMAGES[minipuzzle_ref], content_type="image/png")
         response['X-Image-Alt'] = MINIPUZZLE_ALTS[minipuzzle_ref]
     else:

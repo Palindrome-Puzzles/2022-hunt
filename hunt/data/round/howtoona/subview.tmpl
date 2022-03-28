@@ -1,7 +1,8 @@
 {% extends "round_files/generic_puzzle_subview.tmpl" %}
+{% load archive %}
 
 {% block extra_stylesheets %}
-<link href="https://fonts.googleapis.com/css2?family=Jost:wght@700&display=swap" rel="stylesheet">
+<link href="{% archivable_font 'Jost:wght@700' 'Jost' %}" rel="stylesheet">
 {% endblock extra_stylesheets %}
 
 {% block wordmark %}

@@ -4,7 +4,7 @@
 {% block title %}Submit Answer: {{ puzzle.name | safe }}{% endblock %}
 
 {% block stylesheets %}
-<link rel="stylesheet" type="text/css" href="{% static 'stylesheets/embed.css' %}?v=1">
+<link rel="stylesheet" type="text/css" href="{% static 'stylesheets/embed.css' %}">
 <link rel="stylesheet" type="text/css" href="{% static 'stylesheets/submit.css' %}">
 {% endblock stylesheets %}
 
@@ -12,8 +12,8 @@
 <main id="main-content" class="answer">
   {% if not solved and not time_left and allow_guessing %}
   <form method="POST">
-    {% csrf_token %}
-    <label >
+    {% if not team.is_public %}{% csrf_token %}{% endif %}
+    <label>
     {% if label %}
       <span>{{ label }}</span>
     {% endif %}
@@ -21,7 +21,7 @@
     </label>
     <input type="submit" value="Answer">
   </form>
-  {# Progress will only be set if the puzzle has multiple answers.#}
+  {# Progress will only be set if the puzzle has multiple answers. #}
   {% if progress and progress.0 > 0 %}
     <div class="progress">{{progress.0}}/{{progress.1}} answers found.</div>
   {% endif %}
@@ -97,15 +97,6 @@ function updateFrameSize() {
 }
 updateFrameSize();
 window.addEventListener('load', updateFrameSize);
-
-var form = document.querySelector('form');
-if (form) {
-  form.addEventListener('submit', function() {
-    var submit = document.querySelector('input[type="submit"]');
-    submit.disabled = true;
-    submit.value = 'Submitting…';
-  });
-}
 {% if solve_sound_url %}
 if (parent && parent.playSolveSound) {
   parent.playSolveSound('{{ solve_sound_url|escapejs }}');
@@ -117,5 +108,82 @@ if (parent && parent.document.querySelector) {
   bonusContentContainer.innerHTML = '{{ bonus_content.html|escapejs }}';
 }
 {% endif %}
+
+const answerForm = document.querySelector('.answer form');
+if (answerForm) {
+  {% if team.is_public %}
+  // Javascript version of the answer checker.
+  const answerInput = answerForm.querySelector('input[name=answer]');
+  let responsePanel, progressPanel;
+  let progressAnswers = new Set();
+
+  answerForm.addEventListener('submit', (event) => {
+    const correctAnswerHash = '{{ answer_sha256 }}';
+    const multiAnswersHash = {{ multi_answers_sha256|safe }};
+    const pseudoHashes = {{ pseudo_sha256|safe }};
+    const bonusContent = '{{ public_bonus_content.html|escapejs }}';
+
+    const answer = normalizePuzzleAnswer(answerInput.value);
+    const displayAnswer = normalizePuzzleAnswerDisplay(answerInput.value);
+    hashPuzzleAnswer(answer).then((answerHash) => {
+      if (!responsePanel) {
+        responsePanel = document.createElement('div');
+        responsePanel.classList.add('response');
+        answerForm.parentNode.insertBefore(responsePanel, answerForm.nextSibling);
+      }
+      if (answerHash === correctAnswerHash) {
+        responsePanel.innerHTML = `<span class="correct">${displayAnswer} is correct.</span>`;
+      } else if (pseudoHashes[answerHash]) {
+        responsePanel.innerHTML = `<span class="instructions">${pseudoHashes[answerHash]}</span>`;
+      } else if (multiAnswersHash.includes(answerHash)) {
+        responsePanel.innerHTML = `<span class="correct">${displayAnswer} is one answer to this puzzle.</span>`;
+      } else {
+        responsePanel.innerHTML = `<span class="incorrect">${displayAnswer} is incorrect.</span>`;
+      }
+
+      if (multiAnswersHash.includes(answerHash)) {
+        progressAnswers.add(answer);
+        if (!progressPanel) {
+          progressPanel = document.createElement('div');
+          progressPanel.classList.add('progress');
+          answerForm.parentNode.insertBefore(progressPanel, answerForm.nextSibling);
+        }
+        progressPanel.innerHTML = `${progressAnswers.size}/${multiAnswersHash.length} answers found: ${[...progressAnswers].join(', ')}`;
+      }
+
+      if (bonusContent) {
+        if (answerHash === correctAnswerHash ||
+            (multiAnswersHash.length && progressAnswers.size === multiAnswersHash.length)) {
+          const bonusContentContainer = parent.document.querySelector('.bonus-puzzle-container');
+          bonusContentContainer.innerHTML = bonusContent;
+        }
+      }
+
+      updateFrameSize();
+    });
+    event.preventDefault();
+  });
+
+  async function hashPuzzleAnswer(answer) {
+    const encodedAnswer = new TextEncoder().encode(answer);
+    const hashBuffer = await crypto.subtle.digest('SHA-256', encodedAnswer);
+    const hashArray = Array.from(new Uint8Array(hashBuffer));
+    return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+  }
+
+  function normalizePuzzleAnswer(answer) {
+    return answer.toUpperCase().replace(/[^A-Z0-9]/g, '')
+  }
+  function normalizePuzzleAnswerDisplay(answer) {
+    return answer.toUpperCase().replace(/[^'" \-A-Z0-9]/g, '')
+  }
+  {% else %}
+  answerForm.addEventListener('submit', function() {
+    var submit = document.querySelector('input[type="submit"]');
+    submit.disabled = true;
+    submit.value = 'Submitting…';
+  });
+  {% endif %}
+}
 </script>
 {% endblock scripts %}

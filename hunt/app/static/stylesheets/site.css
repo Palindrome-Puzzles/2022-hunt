@@ -110,7 +110,7 @@ header:not(.large-wordmark) .wordmark-link {
 }
 
 .page-background {
-  background-image: url(../bg.jpg);
+  background-image: url('../bg.jpg');
   display: flex;
   flex-direction: column;
   bottom: 0;
@@ -608,7 +608,7 @@ ul.top-breadcrumb li {
 
 /* Section: Common page styles. */
 .paper-edge {
-  background-image: url(../paper-edge-white.svg);
+  background-image: url('../paper-edge-white.svg');
   background-repeat: no-repeat;
   background-size: 1080px;
   background-position: center;

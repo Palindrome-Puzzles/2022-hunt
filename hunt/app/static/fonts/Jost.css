@@ -1,0 +1,7 @@
+@font-face {
+  font-family: 'Jost';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(Jost/static/Jost-Bold.ttf) format('truetype');
+}

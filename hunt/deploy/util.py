@@ -29,8 +29,9 @@ logger = logging.getLogger(__name__)
 # Orthogonally, you may want to tweak the following settings and constants:
 # - `settings.HUNT_LOGIN_ALLOWED`: To control whether (non-internal) teams can
 #   still log in and track their progress.
-# - `hunt.app.core.USE_POSTHUNT_ON_HUNT_COMPLETE`: To control which puzzles use
-#   their posthunt version, when the hunt has been marked complete.
+# - `hunt.app.core.USE_POSTHUNT_ON_HUNT_COMPLETE` and
+#   `hunt.app.core.USE_POSTHUNT_ON_PUBLIC_AND_HUNT_COMPLETE`: To control which
+#   puzzles use their posthunt version, when the hunt has been marked complete.
 
 # Stage 1: Release the registration site publicly, and allow teams to register.
 HUNT_REGISTRATION_SITE_REF = 'registration'

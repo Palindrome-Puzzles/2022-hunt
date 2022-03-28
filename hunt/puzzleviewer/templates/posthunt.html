@@ -13,6 +13,7 @@
 <script type="text/javascript">
 window.puzzleAuthToken = '{{ auth|escapejs }}';
 window.puzzleStaticDirectory = '{{ puzzle_info.static_directory|escapejs }}';
+window.puzzlePosthuntStaticDirectory = '{{ puzzle_info.posthunt_static_directory }}';
 window.puzzleUrl = '{{ puzzle_info.full_path|escapejs }}';
 </script>
 {% endblock head_scripts %}

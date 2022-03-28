@@ -129,10 +129,28 @@ EVENT_PUZZLE_MANUSCRIP = {
 
 
 USE_POSTHUNT_ON_HUNT_COMPLETE = set([
-    'crow-facts-3000',
-    'the-day-you-begin',
     'a-handful-of-dishes',
-    'introspection'
+    'crow-facts-3000',
+    'loves-labors-crossed',
+    'nowhere-to-hide',
+    'please-prove-you-are-human',
+    'replicator-droid',
+    'sorcery-for-dummies',
+    'strange-garnets',
+    'tech-support',
+    'the-day-you-begin',
+    'trust-nobody',
+    'word-search-of-babel',
+    'wooded-path',
+])
+# Same as above, but only shows posthunt version to public teams when the hunt
+# is complete, and continues showing original version to other teams. Use this
+# when the posthunt version degrades the experience in some way (as opposed to
+# just being spoilery).
+USE_POSTHUNT_ON_PUBLIC_AND_HUNT_COMPLETE = set([
+    'completing-the-story',
+    'endless-practice',
+    'introspection',
 ])
 
 SESSION_BOOK_DISCOVERED = 'hunt:book-discovered'

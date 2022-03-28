@@ -4,6 +4,12 @@ import { RetriableSessionPuzzle } from "@common/retriable-session-puzzle";
 import { assert, assertTruthy, Progress, hasSpecialKey } from "@common/helpers";
 import { pick } from "lodash-es";
 
+declare global {
+  interface Window {
+    onWin?: (cb: (summary: ReadonlyArray<QuestionSummary>) => void) => void;
+  }
+}
+
 interface HasQuestionResponse {
   readonly num: number;
   readonly q: string;
@@ -69,10 +75,6 @@ const retryButton = document.querySelector<HTMLButtonElement>(
 
 showScreen(intro, {forceFocus: true});
 
-const socket = new ManagedWebSocket<
-  void,
-  Progress<ReadonlyArray<QuestionSummary>>
->("/ws/puzzle/trust-nobody", window.puzzleAuthToken);
 const session = new SessionPuzzle<
   HasQuestionResponse,
   AnswerRequest,
@@ -171,15 +173,27 @@ prevButton.addEventListener("click", () => {
   moveQuestionSummary(-1);
 });
 
-// Can ignore status - this can be best-effort if we get disconnected.
-socket.addListener((summary) => {
-  if (summary.type === "progress" && summary.progress.length) {
-    state.summary = summary.progress;
-    browseToggleWrapper.classList.toggle("hidden", false);
+function onWinCallback(progress: ReadonlyArray<QuestionSummary>) {
+  state.summary = progress;
+  browseToggleWrapper.classList.toggle("hidden", false);
 
-    injectCopiableSummary(state.summary);
-  }
-});
+  injectCopiableSummary(state.summary);
+}
+
+if (window.onWin) {
+  window.onWin(onWinCallback);
+} else {
+  // Can ignore status - this can be best-effort if we get disconnected.
+  const socket = new ManagedWebSocket<
+    void,
+    Progress<ReadonlyArray<QuestionSummary>>
+  >("/ws/puzzle/trust-nobody", window.puzzleAuthToken);
+  socket.addListener((summary) => {
+    if (summary.type === "progress" && summary.progress.length) {
+      onWinCallback(summary.progress);
+    }
+  });
+}
 
 function displayReceivedQuestion(question: QuestionResponse) {
   waiting.classList.toggle("hidden", true);

@@ -85,7 +85,7 @@ def get_bonus_content(puzzle, team):
     if not puzzle.is_meta and puzzle.round.url in ROUND_URLS_WITH_BONUS_CONTENT:
         is_solved = (
             puzzle.puzzleaccess_set.filter(team=team, solved=True).exists() or
-            team.is_public)
+            team.is_public or team.is_admin)
         if is_solved:
             context = {
                 'puzzle_info': {

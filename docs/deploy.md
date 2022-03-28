@@ -36,6 +36,7 @@ The existing environments are:
  - `dev`: for development
  - `staging_gcloud` and `prod_gcloud`: for Google App Engine
  - `staging_heroku` and `prod_heroku`: for Heroku
+ - `archive`: for [archiving the hunt](archive.md)
 
 (The [tech stack](tech-stack.md) documentation talks about why we have both.)
 
@@ -119,7 +120,7 @@ If this is not true, tweak the instructions as described in the [appendix at the
     python manage.py launch hunt
     ```
 
-After this, you can follow the [management guide](manage.py) to administer the hunt. For Django commands, either run them in a [one-off dyno](https://devcenter.heroku.com/articles/one-off-dynos#an-example-one-off-dyno) as above, or set up a `.env` file in the root directory and set the following keys to the same values as the environment variables configured in Heroku. Then you'll be able to run commands in a local terminal using `DJANGO_ENV=prod_heroku python manage.py ...`.
+After this, you can follow the [management guide](manage.md) to administer the hunt. For Django commands, either run them in a [one-off dyno](https://devcenter.heroku.com/articles/one-off-dynos#an-example-one-off-dyno) as above, or set up a `.env` file in the root directory and set the following keys to the same values as the environment variables configured in Heroku. Then you'll be able to run commands in a local terminal using `DJANGO_ENV=prod_heroku python manage.py ...`.
  - `SECRET_KEY=...`
  - `DATABASE_URL=...`
 

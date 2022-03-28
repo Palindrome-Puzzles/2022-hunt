@@ -168,6 +168,7 @@ def p(word, input):
 
 def q(word, input):
     # length of input in letter form + middle letter or 2 + last letter of word
+    # ^ incorrect comment??
     return alphabet[len(input) - 1] + input[-3:]
 
 def r(word, input):

@@ -16,10 +16,12 @@
 
 {% block site_content %}
 <main>
+  {% block site_header_content %}
   <header>
     <h1>Solution to <a href="{% url 'puzzle_view' puzzle_info.puzzle.url %}">{{ puzzle_info.puzzle.name }}</a></h1>
     {% block wordmark %}{% endblock %}
   </header>
+  {% endblock site_header_content %}
 
   <div class="paper-edge top"></div>
   <div class="puzzle-actions">

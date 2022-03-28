@@ -1,6 +1,16 @@
 {% extends 'round_files/'|add:round_info.round.url|add:'/subview.tmpl' %}
 
+{% load static %}
+
+{% block subview_title %}Chat Bot{% endblock %}
+
 {% block subview_content %}
+<div class="flavor">
+    <p>
+        Looking for tech support? We usually have live support, but we’re a little busy at the moment, so chat with our bot, check out our <a href="{% url 'puzzle_tech_support_help' 'tech-support' %}">webpage</a>, or our <a href="{% url 'puzzle_view' 'tech-support' %}">email</a>, and I’m sure we can get you what you need.
+    </p>
+</div>
+
 <style>
 #chatcontainer {
     border: 2em black;
@@ -33,10 +43,10 @@ input[type=submit]{
 </style>
 
 <h2>Support chat</h2>
-<div class='form-group'>
+<div>
     <div class='chatarea' id='chatcontainer'>
         <table class='table table-bordered' id="chattable">
-            <tr class="support"><td class='text-capitalize'>
+            <tr class="support"><td>
                 support
             </td>
             <td>
@@ -44,23 +54,26 @@ input[type=submit]{
             </td></tr>
         </table>
     </div>
-    <form method="POST" id="chat">
-    {% csrf_token %}
-    <input class='form-control' type="text" name="question" id="question">
-    <input class='form-control' id="submit" type="submit" value="send">
+    <form id="chat">
+        <input type="text" name="question" id="question">
+        <input id="submit" type="submit" value="send">
     </form>
 </div>
 
-<script>
+{% if posthunt_enabled %}
+<script type="module" src="{{ puzzle_info.posthunt_static_directory }}stub-chat.js"></script>
+{% endif %}
+
+<script type="module">
+import Cookies from "{% static 'lib/js-cookie.module.min.js' %}";
 $(document).ready(initialisechat);
 
 function insertChatrow(speaker, message) {
-    $("#chattable tr:last").after(`<tr class="${speaker}"><td class='text-capitalize'>${speaker}</td><td>${message}</td></tr>`)
+    $("#chattable tr:last").after(`<tr class="${speaker}"><td>${speaker}</td><td>${message}</td></tr>`)
 }
 
 function handleResponse(data){
     insertChatrow("support", data['a']);
-    console.log(data);
     $("#submit").removeAttr("disabled");
     $("#question").removeAttr("disabled").val("").focus();
 }
@@ -75,16 +88,20 @@ function submitquestion(event){
 
     let formData = {
         q: $("#question").val(),
-        csrfmiddlewaretoken: $('input[name="csrfmiddlewaretoken"]').val()
     }
 
-    $.ajax({
-        type: "POST",
-        url: "{{ puzzle_info.full_path }}msg",
-        data: formData,
-        dataType: 'json',
-        encode: true,
-    }).done(handleResponse);
+    if (window.stubChat) {
+        handleResponse(window.stubChat(formData));
+    } else {
+        $.ajax({
+            type: "POST",
+            url: "{{ puzzle_info.full_path }}msg",
+            headers: {"X-CSRFToken": Cookies.get('csrftoken')},
+            data: formData,
+            dataType: 'json',
+            encode: true,
+        }).done(handleResponse);
+    }
 
     return false;
 }

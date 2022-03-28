@@ -1,6 +1,37 @@
 {% extends 'round_files/'|add:'new-you-city'|add:'/subview.tmpl' %}
 
+{% block subview_title %}Help Page{% endblock %}
+
+{# We can't use HTTP headers, so let's use the HTML element instead. #}
+{% block subview_header_content %}
+{% if posthunt_enabled %}
+<!-- FYI: In the real hunt, this information would have been hidden in HTTP headers. Using the HTML <header> element is our substitute for the archived version. -->
+<dl class="sr-only extra-header-info">
+    <dt class="monospace">x-elements</dt>
+    <dd>You got this message! How about you post, put, head and delete some elements to get the Really Full Convention document (DOC)?</dd>
+</dl>
+{% endif %}
+{% endblock %}
+
 {% block subview_content %}
+<div class="flavor">
+    <p>
+        Looking for tech support? We usually have live support, but we’re a little busy at the moment, so read our webpage, or check out our <a href="{% url 'puzzle_view' 'tech-support' %}">email</a>, and <a href="{% url 'puzzle_tech_support_chat' 'tech-support' 'chat' %}">chat bot</a>, and I’m sure we can get you what you need.
+    </p>
+</div>
+
+{% if posthunt_enabled %}
+<div class='notice'>
+    <p>This puzzle has changed so that it can be archived. You can't do what was intended during the real hunt, but maybe you could use the query string as another method? And you may need to inspect the puzzle carefully.</p>
+</div>
+<script type="module" src="{{ puzzle_info.posthunt_static_directory }}stub-help.js"></script>
+<style type="text/css">
+blockquote {
+    border-left: 3px solid #888;
+    padding-left: 1em;
+}
+</style>
+{% endif %}
 <p>Hello,</p>
 
 <p>Everything you load on a website is done through HTTP requests (well, a lot of the time) &mdash; some are for assets (like images, styles), but the key is the web page itself, being where the important information is.</p>
@@ -9,7 +40,7 @@
 
 <p>Don’t forget to inspect HTTP responses for what you need!</p>
 
-<p>Even if it seems incomplete, remember that we have webpage, <a href=".">email</a>, and <a href="./chat">chat support</a>.</p>
+<p>Even if it seems incomplete, remember that we have webpage, <a href="{% url 'puzzle_view' 'tech-support' %}">email</a>, and <a href="{% url 'puzzle_tech_support_chat' 'tech-support' 'chat' %}">chat bot</a>.</p>
 
 <p>Reach out to us on all our support channels - they don’t connect well to start with, but they come together in the end.</p>
 

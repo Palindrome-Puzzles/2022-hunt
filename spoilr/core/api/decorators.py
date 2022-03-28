@@ -18,7 +18,7 @@ from django.utils.http import url_has_allowed_host_and_scheme
 
 from spoilr.core.models import Interaction, InteractionAccess, Puzzle, PuzzleAccess, Round, RoundAccess, Team
 from .hunt import is_site_launched
-from .team import get_impersonated_team, get_team_by_id
+from .team import get_impersonated_team, get_team_by_id, get_public_user
 
 logger = logging.getLogger(__name__)
 
@@ -42,7 +42,11 @@ def inject_team(*, require_admin=False, require_internal=False, redirect_if_miss
     def decorator(view_func):
         @wraps(view_func)
         def wrapped(request, *args, **kwargs):
-            user = request.user if request.user.is_authenticated else None
+            if settings.HUNT_FORCE_PUBLIC_TEAM and settings.HUNT_PUBLIC_TEAM_NAME:
+                user = get_public_user()
+            else:
+                user = request.user if request.user.is_authenticated else None
+
             team = get_team_by_id(user.team_id) if user else None
 
             if user and user.is_staff:

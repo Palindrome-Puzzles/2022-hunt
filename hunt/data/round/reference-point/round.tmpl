@@ -1,8 +1,8 @@
 {% extends "round_files/generic_round.tmpl" %}
-{% load static %}
+{% load archive static %}
 
 {% block extra_stylesheets %}
-<link href="https://fonts.googleapis.com/css2?family=Montagu+Slab:wght@500&display=swap" rel="stylesheet">
+<link href="{% archivable_font 'Montagu+Slab:wght@500' 'Montagu_Slab' %}" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="{% static 'stylesheets/map.css' %}">
 {% include 'round_files/generic_map_stylesheet.tmpl' with sticker_info=sticker_info %}
 {% endblock extra_stylesheets %}

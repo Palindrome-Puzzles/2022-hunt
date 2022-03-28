@@ -1,7 +1,7 @@
 {% extends "hunt/site_layout.tmpl" %}
 {% load static styles %}
 
-{% block title %}{% block subview_title %}{% endblock %} | {{ puzzle_info.puzzle.name|safe }} | {{ block.super }}{% endblock %}
+{% block title %}{% block subview_title %}{% endblock %} | {{ block.super }}{% endblock %}
 
 {% block site_stylesheets %}
 {{ round_common_style|wrap_styles|safe }}

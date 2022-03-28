@@ -53,6 +53,7 @@ SPOILR_HINTS_FROM_EMAIL = 'hints@example.com'
 STORY_FROM_EMAIL = 'story@example.com'
 BOOK_REPORTS_EMAIL = 'bookreports@example.com'
 EMOJI_ART_EMAIL = 'emojiart@example.com'
+PUZZLE_TECH_SUPPORT_EMAIL = 'tech-support+no-reply@example.com'
 
 HUNT_SOLVES_BEFORE_HINTS_RELEASED = 3
 HUNT_RD3_SOLVES_BEFORE_HINTS_RELEASED = 1

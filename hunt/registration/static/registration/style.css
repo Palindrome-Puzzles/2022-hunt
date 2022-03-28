@@ -1,5 +1,5 @@
 body {
-  font-family: aktiv-grotesk, sans-serif;
+  font-family: aktiv-grotesk, Roboto, sans-serif;
   font-size: 24px;
   margin: 0;
   min-width: 100%;
@@ -16,7 +16,7 @@ body {
 
 input {
   border: 1px solid outset;
-  font-family: aktiv-grotesk, sans-serif;
+  font-family: aktiv-grotesk, Roboto, sans-serif;
 }
 
 /* Page content responsive widths. */

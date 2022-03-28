@@ -11,7 +11,7 @@ header:not(.large-wordmark) img {
 }
 
 .page-background {
-    background-image: url(bg.jpg);
+    background-image: url('bg.jpg');
     background-color: #747473;
     background-position: center;
     background-size: cover;
@@ -35,7 +35,7 @@ main.prologue header .subtitle {
 }
 
 hr.rat-divider {
-    background: url(rat-divider.svg) no-repeat top center;
+    background: url('rat-divider.svg') no-repeat top center;
     border: none;
     height: 18px;
 }
@@ -56,7 +56,7 @@ hr.rat-divider {
 }
 
 .paper-edge {
-    background-image: url(../paper-edge.svg);
+    background-image: url('paper-edge.svg');
     /* Calculated using https://codepen.io/sosuke/pen/Pjoqqp, and then manually tweaked. */
     filter: invert(88%) sepia(23%) saturate(212%) hue-rotate(51deg) brightness(102%) contrast(85%);
 }
@@ -126,7 +126,7 @@ hr.rat-divider {
   margin-top: 0;
 }
 .prologue-notice-bar .alert {
-    background-image: url(alert-icon.svg);
+    background-image: url('alert-icon.svg');
     background-size: cover;
     height: 40px;
     margin-right: 20px;

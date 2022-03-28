@@ -47,20 +47,22 @@
     <div id="submit">
       <button id="submit-btn" disabled type="button" onclick="submitCaptcha()">Submit</button>
       <span onclick="playAudio();">&#127911;</span>
-        <audio id="player" src="assets/audio/blank.wav" type="audio/wav" style='display:none;'></audio>
+        <audio id="player" type="audio/wav" style='display:none;'></audio>
     </div>
   </div>
 </div>
 <div class="row">
   <small><span id='msg-line'></span><a id='reset' onclick="getPuzzle('');">Start over</a></small>
 </div>
+{% if posthunt_enabled %}
+<script type="module" src="posthunt/stub-send.js"></script>
+{% endif %}
 <script type="module">
 import Cookies from "{% static 'lib/js-cookie.module.min.js' %}";
 
 var elements;
-const PUZZLE_ENDPOINT = "{{ puzzle_info.full_path }}state";
 const AUDIO_SUBDIR = "assets/audio/";
-const csrfToken = Cookies.get('csrftoken');
+const PUZZLE_ENDPOINT = window.puzzleUrl + "state";
 
 window.puzzleOnLoad = puzzleOnLoad;
 window.submitCaptcha = submitCaptcha;
@@ -79,15 +81,6 @@ function puzzleOnLoad () {
         $("#error-msg.error").removeClass("error").text("Click the button below when finished");
       }
     }
-    $.ajaxSetup(
-        {
-            'dataType': 'json',
-            'cache': false,
-            'headers': {
-              "X-CSRFToken": csrfToken
-            }
-        }
-    )
     if($("#images").length > 0){
         getPuzzle(getState());
     }
@@ -100,7 +93,7 @@ function updatePuzzle(payload) {
         payload[1].forEach(function(url, idx){
             $("#img-" + idx).attr('src', $("#img-" + idx).attr('src').replace(/\w+\.png/, url + ".png"));
         });
-        $("#player").attr('src', $("#player").attr('src').replace(/\w+\.wav/, payload[0].toLowerCase() + ".wav"));
+        $("#player").attr('src', window.puzzleStaticDirectory + `assets/audio/${payload[0].toLowerCase()}.wav`);
         setLoaded();
     } else {
         $("#msg-line").html("Congratulations!");
@@ -118,12 +111,10 @@ function setLoaded(){
 }
 
 function getPuzzle(key){
-    $.post(
-        PUZZLE_ENDPOINT,
+    send(
         {
             'op':1,
             'key':key,
-            'X-CSRFToken': csrfToken
         },
         function(data){
             return updatePuzzle(data);
@@ -153,21 +144,34 @@ function submitCaptcha() {
             return el.src.match(/(\w+)\.png/)[1];
         }
     ).join("|");
-    console.log(selected);
-    console.log(unselected);
-    $.post(
-        PUZZLE_ENDPOINT,
-        {
+    send({
             'op':2,
             'selected': selected,
             'unselected': unselected,
             'key': getState(),
-            'X-CSRFToken': csrfToken
         },
         function(data) {
             return checkSubmitImage(data);
         }
-    )
+    );
+}
+
+function send(payload, handler) {
+    (window.stubSend || actualSend)(payload, handler);
+}
+
+function actualSend(payload, handler) {
+    const csrfToken = Cookies.get('csrftoken');
+    $.post({
+        url: PUZZLE_ENDPOINT,
+        dataType: 'json',
+        cache: false,
+        headers: {
+          "X-CSRFToken": csrfToken
+        },
+        data: payload,
+        success: handler
+    })
 }
 
 function getState(){

@@ -3,7 +3,11 @@
 <div class="flavor">
     Mr. Cueball is excited to meet his new students. He wants to look them up in the database, but the school's website is comically bad.
 </div>
+{% if posthunt_enabled %}
+<!-- NOTE TO SOLVERS: Inspecting the code is not particularly needed to solve the puzzle, and some files may contain spoilers. -->
+{% else %}
 <!-- NOTE TO SOLVERS: You can feel free to root around this client code, but it's not particularly needed to solve the puzzle. -->
+{% endif %}
 <div>
     <label>
     Enter student first name: &nbsp;
@@ -23,6 +27,10 @@
     </table>
 </div>
 
+{% if posthunt_enabled %}
+<script src="posthunt/sql/sql-wasm.js"></script>
+<script type="module" src="posthunt/stub-perform-query.js"></script>
+{% endif %}
 <script type="module">
     import Cookies from "{% static 'lib/js-cookie.module.min.js' %}";
     window.getCookie = Cookies.get;

@@ -1,4 +1,5 @@
 from django import template
+from django.utils.timezone import now
 
 from hunt.app.core.assets.refs import get_round_static_path
 

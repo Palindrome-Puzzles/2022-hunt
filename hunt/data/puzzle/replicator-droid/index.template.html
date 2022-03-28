@@ -120,4 +120,8 @@
 
 <button id="clipboard-button" data-skip-inline-styles="true"></button>
 
+{% if posthunt_enabled %}
+<script type="module" src="posthunt/stub-send.js"></script>
+{% endif %}
+
 <script src="main.ts" type="module"></script>

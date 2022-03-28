@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative&display=swap');
+{% load archive %}
+@import url('{% archivable_font "Cinzel+Decorative" "Cinzel_Decorative" %}');
 
 .fancy {
 	font-family: 'Cinzel Decorative', cursive;

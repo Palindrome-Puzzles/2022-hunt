@@ -3,6 +3,7 @@ interface Window {
   puzzleOnCopy?: (copiedPuzzle: HTMLElement) => void;
   puzzleAuthToken?: string;
   puzzleStaticDirectory?: string;
+  puzzlePosthuntStaticDirectory?: string;
   puzzleUrl?: string;
   isPublicAccess?: boolean;
 

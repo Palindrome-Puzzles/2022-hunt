@@ -167,16 +167,15 @@
 
 </section>
 
+{% if posthunt_enabled %}
+<script type="module" src="posthunt/stub-perform-fetch.js"></script>
+{% endif %}
+
 <script type="module">
     import Cookies from "{% static 'lib/js-cookie.module.min.js' %}";
 
-    const staticDirectory = window.puzzleStaticDirectory;
-
-
     // Export globally so the auto onload handler can find this.
     window.puzzleOnLoad = () => fetchQuestion('');
-
-    const csrfToken = Cookies.get('csrftoken');
 
     const plantAltText = {
         '1': 'Two circles. A line going up and left connects the bottom circle, black, to the top circle, white',
@@ -194,17 +193,7 @@
     };
 
     function fetchQuestion(questionCode) {
-        fetch('{{ puzzle_info.full_path }}state', {
-            method: 'POST',
-            mode: 'same-origin',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-                'X-CSRFToken': csrfToken,
-            },
-            body: JSON.stringify({'question-code': questionCode}),
-        })
-            .then(response => response.json())
+        (window.stubPerformFetch || actualPerformFetch)(questionCode)
             .then((data) => {
                 $('.question-label').empty()
                 if (data.type === 'branch') {
@@ -230,7 +219,7 @@
                     $('.before').html(data.text_before).show();
                     $('.species').html(data.species_name + '.').show();
                     $('.after').html(data.text_after).show();
-                    $('.leaf-image').attr('src', staticDirectory + "media/plant" + data.image_code + ".png")
+                    $('.leaf-image').attr('src', window.puzzleStaticDirectory + "media/plant" + data.image_code + ".png")
                     $('.leaf-image').attr('alt', plantAltText[data.image_code])
                 }
                 $('.back-buttons').empty();
@@ -240,5 +229,20 @@
                     $('#back-button-' + codeLength).on('click', () => fetchQuestion(data.question_code.substring(0, codeLength)));
                 }
             })
+    }
+
+    function actualPerformFetch(questionCode) {
+        const csrfToken = Cookies.get('csrftoken');
+        return fetch('{{ puzzle_info.full_path }}state', {
+            method: 'POST',
+            mode: 'same-origin',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'X-CSRFToken': csrfToken,
+            },
+            body: JSON.stringify({'question-code': questionCode}),
+        })
+            .then(response => response.json());
     }
 </script>

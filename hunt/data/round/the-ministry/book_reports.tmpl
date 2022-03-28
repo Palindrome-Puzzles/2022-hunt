@@ -1,9 +1,9 @@
 {% extends "round_files/generic_round_subview.tmpl" %}
-{% load assets constants static %}
+{% load archive assets constants static %}
 
 {% block extra_stylesheets %}
 {{ block.super }}
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600&display=swap" rel="stylesheet">
+<link href="{% archivable_font 'Outfit:wght@600' 'Outfit' %}" rel="stylesheet">
 <link href="{% rd 'book_reports.css' %}" rel="stylesheet">
 {% endblock extra_stylesheets %}
 

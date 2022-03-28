@@ -34,4 +34,5 @@ def index_view(request):
             'has_this_is_now_a_puzzle_access': has_this_is_now_a_puzzle_access,
             'is_hunt_complete': is_hunt_complete(),
             'is_public': request.team and request.team.is_public,
+            'is_archive': settings.HUNT_ARCHIVE_MODE,
         })

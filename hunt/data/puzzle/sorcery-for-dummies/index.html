@@ -44,13 +44,15 @@
     </div>
 </section>
 
+{% if posthunt_enabled %}
+<script type="module" src="posthunt/stub-send.js"></script>
+{% endif %}
+
 <script type="module">
 import Cookies from "{% static 'lib/js-cookie.module.min.js' %}";
 
 var spells = {};
 $(document).ready(function() {
-    const csrfToken = Cookies.get("csrftoken");
-
     $('#spell-form').submit(function(event) {
         $('.note').html("").hide();
         $('.output').html("&nbsp;");
@@ -61,16 +63,7 @@ $(document).ready(function() {
             'spells' : spells,
         };
 
-        fetch(`${window.puzzleUrl}cast`, {
-            method: "POST",
-            mode: "same-origin",
-            headers: {
-              Accept: "application/json",
-              "Content-Type": "application/json",
-              "X-CSRFToken": csrfToken,
-            },
-            body: JSON.stringify(body),
-          }).then((response) => response.json())
+        (window.stubSend || actualSend)(body)
             .then(function(data) {
                 $('.loading-wrap').hide();
                 var status = data['status'];
@@ -100,5 +93,19 @@ $(document).ready(function() {
             });
         event.preventDefault();
     });
+
+    function actualSend(body) {
+        const csrfToken = Cookies.get("csrftoken");
+        return fetch(`${window.puzzleUrl}cast`, {
+            method: "POST",
+            mode: "same-origin",
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json",
+              "X-CSRFToken": csrfToken,
+            },
+            body: JSON.stringify(body),
+          }).then((response) => response.json());
+    }
 });
 </script>

@@ -6,7 +6,7 @@ function onError(error){
 function onExpand(number){
     var row = $(`#task-${number}`)
     row.removeClass("collapsed-description")
-    row.addClass("expanded-description")
+    row.css('display', 'block');
     row.css("maxHeight",row[0].scrollHeight)
     var button = $(`#button-${number}`)
     button.html("▲")
@@ -16,8 +16,12 @@ function onExpand(number){
 
 function onCollapse(number){
     var row = $(`#task-${number}`)
-    row.removeClass("expanded-description")
     row.addClass("collapsed-description")
+    row.one('transitionend', () => {
+        if (row.hasClass('collapsed-description')) {
+            row.css('display', 'none');
+        }
+    });
     row.css("maxHeight",0)
     var button = $(`#button-${number}`)
     button.html("▼")
@@ -44,7 +48,7 @@ function renderTask(number, task){
     </tr>`
     var row2 = `<tr class="description-row">
         <td colspan="4">
-            <div id="task-${number}" class="collapsible">
+            <div id="task-${number}" class="collapsible" style="display: none;">
                 <div class="description">
                     <div>${task.detailed_description}</div>
                     ${submission_div}

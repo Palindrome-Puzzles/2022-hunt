@@ -38,7 +38,7 @@ runs:
         id_token_audience: ${{ inputs.id_token_audience }}
 
     - name: Setup Google Cloud
-      uses: google-github-actions/setup-gcloud@master
+      uses: google-github-actions/setup-gcloud@v0
       with:
         version: '365.0.1'
         project_id: ${{ inputs.gcloud_project_id }}

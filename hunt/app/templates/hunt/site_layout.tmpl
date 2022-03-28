@@ -2,13 +2,13 @@
 {% load hosts static %}
 
 {% block stylesheets %}
-<link rel="stylesheet" type="text/css" href="{% static 'stylesheets/site.css' %}?v=4">
+<link rel="stylesheet" type="text/css" href="{% static 'stylesheets/site.css' %}">
 {% block site_stylesheets %}{% endblock %}
 {% endblock stylesheets %}
 
 {% block scripts %}
 <script src="{% static 'lib/robust-websocket.min.js' %}"></script>
-<script type="text/javascript" src="{% static 'core/site.js' %}?v=5"></script>
+<script type="text/javascript" src="{% static 'core/site.js' %}"></script>
 {% block site_scripts %}{% endblock %}
 {% if is_breakglass_access or has_posthunt_team_banner %}
 <style type="text/css">
@@ -36,6 +36,9 @@ window.puzzleAuthToken = '{{ auth|escapejs }}';
 window.isPublicAccess = {% if not team or team.is_public %}true{% else %}false{% endif %};
 {% if puzzle_info %}
 window.puzzleStaticDirectory = '{{ puzzle_info.static_directory }}';
+{% if posthunt_enabled %}
+window.puzzlePosthuntStaticDirectory = '{{ puzzle_info.posthunt_static_directory }}';
+{% endif %}
 window.puzzleUrl = '{{ puzzle_info.full_path }}';
 {% endif %}
 </script>
@@ -134,14 +137,20 @@ window.puzzleUrl = '{{ puzzle_info.full_path }}';
             <li><a href="{{ all_puzzles_url }}" {% if request.path == all_puzzles_url %}aria-current="page"{% endif %}>All Puzzles</a></li>
             <hr>
             <li><a href="{{ events_url }}" {% if request.path == events_url %}aria-current="page"{% endif %}>Events</a></li>
+            {% if team and not team.is_public %}
             <hr>
             <li><a href="{{ updates_url }}" {% if request.path == updates_url %}aria-current="page"{% endif %}>Updates from HQ</a></li>
+            {% endif %}
             <li><a href="{{ faq_url }}" {% if request.path == faq_url %}aria-current="page"{% endif %}>FAQ</a></li>
             <li><a href="{{ sponsors_url }}" {% if request.path == sponsors_url %}aria-current="page"{% endif %}>Sponsors</a></li>
             <li><a href="{{ credits_url }}" {% if request.path == credits_url %}aria-current="page"{% endif %}>Credits</a></li>
             <li><a href="{{ stats_url }}" {% if request.path == stats_url %}aria-current="page"{% endif %}>Statistics</a></li>
             <hr>
             <li><a href="{% host_url 'registration_index' host 'registration' %}" target="_blank">Registration Website</a></li>
+            {% if status == 'complete' %}
+            <hr>
+            <li><a href="https://github.com/Palindrome-Puzzles/2022-hunt" target="_blank">Code Repository</a></li>
+            {% endif %}
           </ul>
         </li>
       </ul>
@@ -149,6 +158,7 @@ window.puzzleUrl = '{{ puzzle_info.full_path }}';
     </nav>
 
     <div class="actions">
+      {% if not team or not team.is_public %}
       <div class="dropdown-wrapper volume-menu hidden-unless-js">
         <div class="menu-label show-sm">Volume</div>
         <button class="dropdown-trigger unstyled" aria-expanded="false" aria-controls="id-volume-control" aria-label="Volume">
@@ -160,6 +170,7 @@ window.puzzleUrl = '{{ puzzle_info.full_path }}';
           <p class="menu-info" tabindex="-1">Note: this has no effect on any audio puzzles.</p>
         </div>
       </div>
+      {% endif %}
 
       {% if request.user.is_staff and puzzle_info %}
       <div class="dropdown-wrapper shortcuts">

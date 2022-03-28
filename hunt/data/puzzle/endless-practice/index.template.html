@@ -10,118 +10,134 @@
 </div>
 <br/>
 {% if team.is_public %}
+{% if posthunt_enabled %}
 <div class="notice">
     <p>A logged-in team would see an image appear in this table for each mini-puzzle it solved. In public access mode, you can check the box in each row to see its image.</p>
 </div>
+{% else %}
+<div class="notice">
+    <p>Note: This puzzle is currently broken for public access. A logged-in team would see data appear in the table at the top of the puzzle for each mini-puzzle it has correctly solved. The public access version is not enabled yet.</p>
+</div>
+{% endif %}
 {% endif %}
 <table class="summary grid">
     <tr>
         <td class="top-name">Playplace</td>
-        <td class="top-answer" id="playplace-answer-top"></td>
+        {% if team.is_public and posthunt_enabled %}
         <td class="top-empty"></td>
-        {% if team.is_public %}
-        <td class="top-image-cell-public"><div class="top-image" id="playplace-image-top"></div></td>
+        <td class="top-image-cell"><div class="top-image" id="playplace-image-top"></div></td>
         <td class="top-checkbox-cell"><input class="top-checkbox" type="checkbox" id="playplace-checkbox-top"></input></td>
         {% else %}
+        <td class="top-answer" id="playplace-answer-top"></td>
+        <td class="top-empty"></td>
         <td class="top-image-cell"><div class="top-image" id="playplace-image-top"></div></td>
         {% endif %}
     </tr>
     <tr>
         <td class="top-name">Sunblock</td>
-        <td class="top-answer" id="sunblock-answer-top"></td>
+        {% if team.is_public and posthunt_enabled %}
         <td class="top-empty"></td>
-        {% if team.is_public %}
-        <td class="top-image-cell-public"><div class="top-image" id="sunblock-image-top"></div></td>
+        <td class="top-image-cell"><div class="top-image" id="sunblock-image-top"></div></td>
         <td class="top-checkbox-cell"><input class="top-checkbox" type="checkbox" id="sunblock-checkbox-top"></input></td>
         {% else %}
+        <td class="top-answer" id="sunblock-answer-top"></td>
+        <td class="top-empty"></td>
         <td class="top-image-cell"><div class="top-image" id="sunblock-image-top"></div></td>
         {% endif %}
     </tr>
     <tr>
         <td class="top-name">Mouse Taken</td>
-        <td class="top-answer" id="mouse-taken-answer-top"></td>
+        {% if team.is_public and posthunt_enabled %}
         <td class="top-empty"></td>
-        {% if team.is_public %}
-        <td class="top-image-cell-public"><div class="top-image" id="mouse-taken-image-top"></div></td>
+        <td class="top-image-cell"><div class="top-image" id="mouse-taken-image-top"></div></td>
         <td class="top-checkbox-cell"><input class="top-checkbox" type="checkbox" id="mouse-taken-checkbox-top"></input></td>
         {% else %}
+        <td class="top-answer" id="mouse-taken-answer-top"></td>
+        <td class="top-empty"></td>
         <td class="top-image-cell"><div class="top-image" id="mouse-taken-image-top"></div></td>
         {% endif %}
     </tr>
     <tr>
         <td class="top-name">To-Do</td>
-        <td class="top-answer" id="to-do-answer-top"></td>
+        {% if team.is_public and posthunt_enabled %}
         <td class="top-empty"></td>
-        {% if team.is_public %}
-        <td class="top-image-cell-public"><div class="top-image" id="to-do-image-top"></div></td>
+        <td class="top-image-cell"><div class="top-image" id="to-do-image-top"></div></td>
         <td class="top-checkbox-cell"><input class="top-checkbox" type="checkbox" id="to-do-checkbox-top"></input></td>
         {% else %}
+        <td class="top-answer" id="to-do-answer-top"></td>
+        <td class="top-empty"></td>
         <td class="top-image-cell"><div class="top-image" id="to-do-image-top"></div></td>
         {% endif %}
     </tr>
     <tr>
         <td class="top-name">Castle Crisis</td>
-        <td class="top-answer" id="castle-crisis-answer-top"></td>
+        {% if team.is_public and posthunt_enabled %}
         <td class="top-empty"></td>
-        {% if team.is_public %}
-        <td class="top-image-cell-public"><div class="top-image" id="castle-crisis-image-top"></div></td>
+        <td class="top-image-cell"><div class="top-image" id="castle-crisis-image-top"></div></td>
         <td class="top-checkbox-cell"><input class="top-checkbox" type="checkbox" id="castle-crisis-checkbox-top"></input></td>
         {% else %}
+        <td class="top-answer" id="castle-crisis-answer-top"></td>
+        <td class="top-empty"></td>
         <td class="top-image-cell"><div class="top-image" id="castle-crisis-image-top"></div></td>
         {% endif %}
     </tr>
     <tr>
         <td class="top-name">The Cracked Crystal</td>
-        <td class="top-answer" id="the-cracked-crystal-answer-top"></div></td>
+        {% if team.is_public and posthunt_enabled %}
         <td class="top-empty"></td>
-        {% if team.is_public %}
-        <td class="top-image-cell-public"><div class="top-image" id="the-cracked-crystal-image-top"></div></td>
+        <td class="top-image-cell"><div class="top-image" id="the-cracked-crystal-image-top"></div></td>
         <td class="top-checkbox-cell"><input class="top-checkbox" type="checkbox" id="the-cracked-crystal-checkbox-top"></input></td>
         {% else %}
+        <td class="top-answer" id="the-cracked-crystal-answer-top"></div></td>
+        <td class="top-empty"></td>
         <td class="top-image-cell"><div class="top-image" id="the-cracked-crystal-image-top"></div></td>
         {% endif %}
     </tr>
     <tr>
         <td class="top-name">The Pitch</td>
-        <td class="top-answer" id="the-pitch-answer-top"></td>
+        {% if team.is_public and posthunt_enabled %}
         <td class="top-empty"></td>
-        {% if team.is_public %}
-        <td class="top-image-cell-public"><div class="top-image" id="the-pitch-image-top"></div></td>
+        <td class="top-image-cell"><div class="top-image" id="the-pitch-image-top"></div></td>
         <td class="top-checkbox-cell"><input class="top-checkbox" type="checkbox" id="the-pitch-checkbox-top"></input></td>
         {% else %}
+        <td class="top-answer" id="the-pitch-answer-top"></td>
+        <td class="top-empty"></td>
         <td class="top-image-cell"><div class="top-image" id="the-pitch-image-top"></div></td>
         {% endif %}
     </tr>
     <tr>
         <td class="top-name">Off the Grid</td>
-        <td class="top-answer" id="off-the-grid-answer-top"></td>
+        {% if team.is_public and posthunt_enabled %}
         <td class="top-empty"></td>
-        {% if team.is_public %}
-        <td class="top-image-cell-public"><div class="top-image" id="off-the-grid-image-top"></div></td>
+        <td class="top-image-cell"><div class="top-image" id="off-the-grid-image-top"></div></td>
         <td class="top-checkbox-cell"><input class="top-checkbox" type="checkbox" id="off-the-grid-checkbox-top"></input></td>
         {% else %}
+        <td class="top-answer" id="off-the-grid-answer-top"></td>
+        <td class="top-empty"></td>
         <td class="top-image-cell"><div class="top-image" id="off-the-grid-image-top"></div></td>
         {% endif %}
     </tr>
     <tr>
         <td class="top-name">Historical Pictures</td>
-        <td class="top-answer" id="historical-pictures-answer-top"></td>
+        {% if team.is_public and posthunt_enabled %}
         <td class="top-empty"></td>
-        {% if team.is_public %}
-        <td class="top-image-cell-public"><div class="top-image" id="historical-pictures-image-top"></div></td>
+        <td class="top-image-cell"><div class="top-image" id="historical-pictures-image-top"></div></td>
         <td class="top-checkbox-cell"><input class="top-checkbox" type="checkbox" id="historical-pictures-checkbox-top"></input></td>
         {% else %}
+        <td class="top-answer" id="historical-pictures-answer-top"></td>
+        <td class="top-empty"></td>
         <td class="top-image-cell"><div class="top-image" id="historical-pictures-image-top"></div></td>
         {% endif %}
     </tr>
     <tr>
         <td class="top-name">Unfinished Symphonies</td>
-        <td class="top-answer" id="unfinished-symphonies-answer-top"></td>
+        {% if team.is_public and posthunt_enabled %}
         <td class="top-empty"></td>
-        {% if team.is_public %}
-        <td class="top-image-cell-public"><div class="top-image" id="unfinished-symphonies-image-top"></div></td>
+        <td class="top-image-cell"><div class="top-image" id="unfinished-symphonies-image-top"></div></td>
         <td class="top-checkbox-cell"><input class="top-checkbox" type="checkbox" id="unfinished-symphonies-checkbox-top"></input></td>
         {% else %}
+        <td class="top-answer" id="unfinished-symphonies-answer-top"></td>
+        <td class="top-empty"></td>
         <td class="top-image-cell"><div class="top-image" id="unfinished-symphonies-image-top"></div></td>
         {% endif %}
     </tr>
@@ -174,7 +190,7 @@
 <div class="flavor">As you assemble what you need for the beach, remember: Use sunscreen to block out the unnecessary rays right from the start of your trip.</div>
 <table class="sunblock-table custom">
     <tr>
-        <td><a href="./images/sunblock/1.png?v=1" target="_blank"><img src="./images/sunblock/1.png?v=1" target="_blank" alt="Sunblock bottle with SPF 33"></a></td>
+        <td><a href="./images/sunblock/1.png" target="_blank"><img src="./images/sunblock/1.png" target="_blank" alt="Sunblock bottle with SPF 33"></a></td>
         <td><a href="./images/sunblock/2.png" target="_blank"><img src="./images/sunblock/2.png" target="_blank" alt="Sunblock bottle with SPF 67"></a></td>
         <td><a href="./images/sunblock/3.png" target="_blank"><img src="./images/sunblock/3.png" target="_blank" alt="Sunblock bottle with SPF 25"></a></td>
         <td><a href="./images/sunblock/4.png" target="_blank"><img src="./images/sunblock/4.png" target="_blank" alt="Sunblock bottle with SPF 50"></a></td>
@@ -899,5 +915,9 @@
 </div>
 
 <button id="clipboard-button"></button>
+
+{% if team.is_public and posthunt_enabled %}
+<script src="posthunt/stub-checkboxes.js" type="module"></script>
+{% endif %}
 
 <script src="main.ts" type="module"></script>

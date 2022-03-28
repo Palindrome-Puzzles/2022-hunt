@@ -1,4 +1,7 @@
+import io
+
 from django.http import FileResponse, HttpResponse, HttpResponseForbidden
+from django.conf import settings
 from django.views.decorators.cache import cache_control
 
 from hunt.data_loader.auxiliary import get_auxiliary_data_file
@@ -58,6 +61,15 @@ def puzzle_asset_view(request, variant, resource):
     data = get_puzzle_data_file(puzzle.url, resource)
     if not data:
         return XHttpResponse('Unknown file "%s/%s"' % (puzzle.url, resource))
+
+    # Force relative references to chunks in archive mode, as HTTrack doesn't support it.
+    if settings.HUNT_ARCHIVE_MODE:
+        with data:
+            result = data.read()
+            # Link from /puzzle/<puzzle-name/s__puzzle/dist/ -> /chunks/
+            rewritten_result = result.replace(b'"/chunks/chunk-', b'"../../../../chunks/chunk-')
+            return FileResponse(io.BytesIO(rewritten_result), filename=resource)
+
     return FileResponse(data)
 
 @require_rd0_launch
@@ -65,6 +77,14 @@ def chunk_view(request, resource):
     data = get_chunk_file(resource)
     if not data:
         return XHttpResponse('Unknown chunk "%s"' % (resource))
+
+    # Force chunks to use relative paths in archive mode.
+    if settings.HUNT_ARCHIVE_MODE:
+        with data:
+            result = data.read()
+            rewritten_result = result.replace(b'"/chunks/chunk-', b'"./chunk-')
+            return FileResponse(io.BytesIO(rewritten_result), filename=resource)
+
     return FileResponse(data)
 
 @require_rd0_launch

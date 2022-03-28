@@ -8,6 +8,13 @@ const html = htm.bind(h);
 
 const MAX_MOVES = 4;
 
+declare global {
+  interface Window {
+    game8Initial?: () => Promise<InitialResponse>;
+    game8Check?: (request: CheckRequest) => Promise<CheckResponse>;
+  }
+}
+
 interface GameProps {}
 interface GameState {
   readonly playerTurn: GamePlayer | null;
@@ -53,7 +60,11 @@ export class Game extends Component<GameProps, GameState> {
     };
     this.setState(state);
 
-    const fetchInitialState = Game.cachedInitialState ? Promise.resolve(Game.cachedInitialState) : fetchJson<void, InitialResponse>(`${window.puzzleUrl}game8/board`);
+    const fetchInitialState = Game.cachedInitialState
+      ? Promise.resolve(Game.cachedInitialState)
+      : window.game8Initial
+        ? window.game8Initial()
+        : fetchJson<void, InitialResponse>(`${window.puzzleUrl}game8/board`);
     fetchInitialState
       .then(response => {
         Game.cachedInitialState = response;
@@ -109,7 +120,11 @@ export class Game extends Component<GameProps, GameState> {
           retryHandler: null,
         });
 
-        fetchJson<CheckRequest, CheckResponse>(`${window.puzzleUrl}game8/check`, this.gameManager.getMoves())
+        const check = window.game8Check
+          ? window.game8Check(this.gameManager.getMoves())
+          : fetchJson<CheckRequest, CheckResponse>(`${window.puzzleUrl}game8/check`, this.gameManager.getMoves());
+
+        check
           .then(({optimal}) => {
             this.setState({
               completeMessage: optimal

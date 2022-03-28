@@ -1,3 +1,5 @@
+import datetime
+
 from django.core.validators import validate_email
 from django.core.exceptions import ValidationError
 from django.db import models
@@ -11,7 +13,7 @@ from spoilr.events.models import EventParticipant, Event, EventStatus
 
 from hunt.app.core.cache import cache_page_by_team
 from hunt.app.core.hosts import use_site_2_if_unlocked
-from hunt.deploy.util import require_hunt_launch
+from hunt.deploy.util import require_hunt_launch, is_hunt_complete
 from .common import get_shared_context, verify_team_accessible
 
 EVENT_DIXIT_URL = 'cryptic-dixit'
@@ -24,14 +26,52 @@ EVENT_SESSION_MESSAGE_KEY = 'hunt:event:message'
 @verify_team_accessible()
 @use_site_2_if_unlocked
 def events_view(request):
-    events = (Event.objects
-        .prefetch_related(
-            models.Prefetch(
-                'participants',
-                queryset=EventParticipant.objects.filter(team=request.team)
-            ))
-        .exclude(status=EventStatus.UNAVAILABLE)
-        .order_by('expected_start_time'))
+    # Hardcode the events so it can be archived without worrying about hydrating the database.
+    if is_hunt_complete():
+        timezone_format = '%Y-%m-%d %H:%M:%S%z'
+        events = [
+            Event(
+                url='lets-play',
+                name="The Let's Play That Goes Wrong",
+                max_participants=2,
+                expected_start_time=datetime.datetime.strptime('2022-01-15 13:00:00+1100', timezone_format),
+                status=EventStatus.POST,
+                puzzle=Puzzle.objects.get(url='the-lets-play-that-goes-wrong')
+            ),
+            Event(
+                url='crisis-in-publishing',
+                name="Crisis in Publishing",
+                max_participants=1,
+                expected_start_time=datetime.datetime.strptime('2022-01-16 02:00:00+1100', timezone_format),
+                status=EventStatus.POST,
+                puzzle=Puzzle.objects.get(url='crisis-in-publishing!')
+            ),
+            Event(
+                url='cryptic-dixit',
+                name="Cryptic Dixit",
+                max_participants=1,
+                expected_start_time=datetime.datetime.strptime('2022-01-16 07:00:00+1100', timezone_format),
+                status=EventStatus.POST,
+                puzzle=Puzzle.objects.get(url='cryptic-dixit')
+            ),
+            Event(
+                url='picaboo',
+                name="Picaboo",
+                max_participants=2,
+                expected_start_time=datetime.datetime.strptime('2022-01-16 13:00:00+1100', timezone_format),
+                status=EventStatus.POST,
+                puzzle=Puzzle.objects.get(url='picaboo')
+            ),
+        ]
+    else:
+        events = (Event.objects
+            .prefetch_related(
+                models.Prefetch(
+                    'participants',
+                    queryset=EventParticipant.objects.filter(team=request.team)
+                ))
+            .exclude(status=EventStatus.UNAVAILABLE)
+            .order_by('expected_start_time'))
 
     context = get_shared_context(request.team)
     context['events'] = [

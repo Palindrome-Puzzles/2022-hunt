@@ -121,28 +121,30 @@
 
 <h2>String Checker</h2>
 
+{% if posthunt_enabled %}
+<p class="notice">Note that this checker was implemented server-side for Hunt, but is implemented in your web browser for this page. To have a similar experience to the solvers during the time of Hunt, please do not view the source code of this Javascript app.</p>
+{% endif %}
+
 <div class="prefer-2-col">
   <div id="checker">
     <form id="submissionForm">
       <textarea id="gridString" rows="66" cols="50">Use this checker to find any typos after doing the tedious step. Note that if you have more than 20 errors, then it will not work. If you have 20 or fewer errors, it will highlight them for you.</textarea><br>
-      <button type="button" onclick="checkString();">Submit</button>
+      <button type="button" onclick="submitString();">Submit</button>
     </form>
   </div>
-<div class="resultWordString" id="result">This is where the results will show up.</div>
+<div id="result">This is where the results will show up.</div>
 </div>
 
 <button id="clipboard-button"></button>
 
+{% if posthunt_enabled %}
+<script type="module" src="posthunt/stub-check-string.js"></script>
+{% endif %}
 <script type="module">
   import Cookies from "{% static 'lib/js-cookie.module.min.js' %}";
-
-  const staticDirectory = window.puzzleStaticDirectory;
-  const csrfToken = Cookies.get('csrftoken');
-  window.checkString = checkString;
-
-  function checkString() {
-    const inputString = document.getElementById("gridString").value;
-    fetch('{{ puzzle_info.full_path }}state', {
+  function actualCheckString(inputString) {
+    const csrfToken = Cookies.get('csrftoken');
+    return fetch('{{ puzzle_info.full_path }}state', {
       method: 'POST',
       mode: 'same-origin',
       headers: {
@@ -152,8 +154,13 @@
       },
       body: JSON.stringify({'input-string': inputString}),
     })
-      .then(response => response.json())
-      .then((data) => {
+      .then(response => response.json());
+  }
+
+  window.submitString = function() {
+    const inputString = document.getElementById("gridString").value;
+    const checkString = window.stubCheckString || actualCheckString;
+    checkString(inputString).then((data) => {
         document.getElementById("result").innerHTML = "<pre>" + data['output-string'] + "</pre>"
       })
   }

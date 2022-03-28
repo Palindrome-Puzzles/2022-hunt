@@ -21,7 +21,6 @@ ALL_PREHUNT_ROUND_URLS = [ROUND_SAMPLE_URL, ROUND_RD0_URL]
 # For example, if the event was a "tick", then we know it's because of time so
 # we can look at unlocks due to time only.
 
-
 def is_act3_unlocked(unlocked_round_urls):
     return any(round_url in unlocked_round_urls for round_url in ROUND_RD3_URLS)
 

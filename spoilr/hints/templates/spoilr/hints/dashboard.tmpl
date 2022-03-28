@@ -1,5 +1,5 @@
 {% extends "hq/layout.tmpl" %}
-{% load humanize static timedelta %}
+{% load archive humanize static timedelta %}
 
 {% block title %}Hint queue | {{ block.super }}{% endblock %}
 {% block heading %}Hint queue{% endblock %}
@@ -63,7 +63,7 @@
     </form>
   <div class="columns">
     <div class="column is-two-fifths hints-box">
-    <iframe name="canned_hints_frame" srcdoc='<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet"><h4 style="font-family: DM Sans">Canned hints will show up here</h4>'></iframe>
+    <iframe name="canned_hints_frame" srcdoc='<link href="{% archivable_font 'DM+Sans:wght@400;500;700' 'DM Sans' %}" rel="stylesheet"><h4 style="font-family: DM Sans">Canned hints will show up here</h4>'></iframe>
     </div>
     <div class="column">
 

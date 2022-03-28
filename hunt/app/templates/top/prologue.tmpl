@@ -1,8 +1,8 @@
 {% extends "hunt/site_layout.tmpl" %}
-{% load assets hosts %}
+{% load archive assets hosts %}
 
 {% block site_stylesheets %}
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="{% archivable_font 'Space+Grotesk:wght@400;500;700' 'Space_Grotesk' %}" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="{% aux 'prologue' 'prologue_top.css' %}">
 {% endblock site_stylesheets %}
 

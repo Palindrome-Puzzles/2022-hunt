@@ -9,7 +9,7 @@ from spoilr.core.models import PuzzleAccess
 from spoilr.hints.models import HintSubmission
 
 from hunt.app.core.assets.refs import get_round_static_path, get_puzzle_static_path
-from hunt.app.core.constants import ROUND_RD0_URL, PUZZLE_ENDGAME_URL, USE_POSTHUNT_ON_HUNT_COMPLETE, SESSION_BOOK_DISCOVERED
+from hunt.app.core.constants import ROUND_RD0_URL, PUZZLE_ENDGAME_URL, SESSION_BOOK_DISCOVERED
 from hunt.app.models import InteractionType
 from hunt.data_loader.puzzle import get_puzzle_data_text
 from hunt.data_loader.round import get_round_data_text
@@ -17,7 +17,7 @@ from hunt.deploy.util import require_rd0_launch
 
 from hunt.app.core.assets.resolvers import create_puzzle_url_resolver, create_round_url_resolver
 from hunt.app.core.assets.rewriter import rewrite_relative_paths
-from .common import require_puzzle_access, get_puzzle_context, get_round_accesses, get_puzzle_accesses, puzzle_access_to_puzzle_obj, puzzle_to_puzzle_obj, should_show_solutions, use_noop_puzzle_submission, get_puzzle_variant
+from .common import require_puzzle_access, get_puzzle_context, get_round_accesses, get_puzzle_accesses, puzzle_access_to_puzzle_obj, puzzle_to_puzzle_obj, should_show_solutions, use_noop_puzzle_submission, get_puzzle_variant, is_posthunt_enabled
 from .responses import XHttpResponse
 
 logger = logging.getLogger(__name__)
@@ -33,7 +33,9 @@ def puzzle_view(request):
     noop_submission = use_noop_puzzle_submission(request)
 
     # Show posthunt version of puzzle if it exists and the hunt is complete.
-    variant = get_puzzle_variant(puzzle.url)
+    is_public_team = maybe_team and maybe_team.is_public
+    variant = get_puzzle_variant(puzzle.url, is_public_team)
+    posthunt_enabled = is_posthunt_enabled(puzzle.url, is_public_team)
     if variant == 'puzzle':
         html = get_puzzle_data_text(puzzle.url, 'index.html')
         style = get_puzzle_data_text(puzzle.url, 'style.css')
@@ -60,11 +62,12 @@ def puzzle_view(request):
             del request.session[SESSION_BOOK_DISCOVERED]
             request.session.save()
 
-    puzzle_url_resolver = create_puzzle_url_resolver(puzzle.url, variant)
+    puzzle_url_resolver = create_puzzle_url_resolver(puzzle.url, variant, can_access_posthunt=posthunt_enabled)
     round_url_resolver = create_round_url_resolver(puzzle.round.url, 'round')
 
     context_obj = Context(context)
     context['no_puzzle_actions'] = noop_submission or puzzle.round.url == ROUND_RD0_URL or (request.team and request.team.is_public)
+    context['posthunt_enabled'] = posthunt_enabled
     context['puzzle_html'] = rewrite_relative_paths(
         Template(html).render(context_obj), puzzle_url_resolver)
     context['puzzle_style'] = rewrite_relative_paths(
@@ -115,7 +118,7 @@ def solution_view(request):
 
     context['rd_root'] = get_round_static_path(puzzle.round.url, variant='round')
 
-    puzzle_url_resolver = create_puzzle_url_resolver(puzzle.url, 'solution')
+    puzzle_url_resolver = create_puzzle_url_resolver(puzzle.url, 'solution', can_access_posthunt=True)
     round_url_resolver = create_round_url_resolver(puzzle.round.url, 'round')
 
     context_obj = Context(context)
@@ -140,11 +143,15 @@ def puzzle_subview(request, subview, variant, require_solved):
     if require_solved and not ((request.puzzle_access and request.puzzle_access.solved) or should_show_solutions(maybe_team)):
         return HttpResponseNotFound('Not found')
 
+    is_public_team = maybe_team and maybe_team.is_public
+    posthunt_enabled = is_posthunt_enabled(puzzle.url, is_public_team)
+
     common_style = get_round_data_text(puzzle.round.url, 'round_common.css')
 
     context = get_puzzle_context(maybe_team, puzzle)
     context['puzz_root'] = get_puzzle_static_path(puzzle.url, variant='puzzle')
     context['rd_root'] = get_round_static_path(puzzle.round.url, variant='round')
+    context['posthunt_enabled'] = posthunt_enabled
     if variant == 'posthunt' or variant == 'solution':
         context['spuzz_root'] = get_puzzle_static_path(puzzle.url, variant='solution')
 

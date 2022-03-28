@@ -77,6 +77,10 @@ HUNT_LOGIN_ALLOWED = False
 # access is allowed.
 HUNT_PUBLIC_TEAM_NAME = None
 
+# Whether to automatically log in as the public team with no redirects. Useful
+# for archiving the hunt mostly. Makes it hard to access HQ, etc.
+HUNT_FORCE_PUBLIC_TEAM = False
+
 # Whether to enable sample puzzles and rounds.
 HUNT_LOAD_SAMPLE_ROUND = False
 
@@ -116,6 +120,9 @@ HUNT_RD3_SOLVES_BEFORE_HINTS_RELEASED = 10
 HUNT_ROUND_BREAKGLASS_UNLOCKS_ENABLED = False
 
 HUNT_REGISTRATION_CLOSED = False
+
+# Whether the hunt is in archive mode, and certain guards can be relaxed.
+HUNT_ARCHIVE_MODE = False
 
 # Section 3: Application definition. This will be fixed across all environments.
 

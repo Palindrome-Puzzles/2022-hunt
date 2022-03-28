@@ -43,7 +43,7 @@ class Piece(str, Enum):
     MAN = 'man'
     FEUDAL_LORD = 'feudal-lord'
 
-# Moves are (type, from_rank, from_file, to_rank, to_file) tuplein
+# Moves are (type, from_rank, from_file, to_rank, to_file) tuples.
 OPTIMAL_MOVES = set([
     (
         (Piece.GENERAL, None, None, 3, 2),

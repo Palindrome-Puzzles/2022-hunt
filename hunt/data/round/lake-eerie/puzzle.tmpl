@@ -1,7 +1,8 @@
 {% extends "round_files/generic_puzzle.tmpl" %}
+{% load archive %}
 
 {% block extra_stylesheets %}
-<link href="https://fonts.googleapis.com/css2?family=Jolly+Lodger:wght@400&display=swap" rel="stylesheet">
+<link href="{% archivable_font 'Jolly+Lodger:wght@400' 'Jolly_Lodger' %}" rel="stylesheet">
 {% endblock extra_stylesheets %}
 
 {% block wordmark %}

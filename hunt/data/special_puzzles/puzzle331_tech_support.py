@@ -13,8 +13,8 @@ from django.template.loader import render_to_string
 from django.shortcuts import render
 from django.conf import settings
 
-from hunt.app.views.common import require_puzzle_access, get_puzzle_context, get_round_summary
-from hunt.app.core.assets.resolvers import create_puzzle_url_resolver, create_round_url_resolver
+from hunt.app.views.common import require_puzzle_access, get_puzzle_context, get_round_summary, is_posthunt_enabled
+from hunt.app.core.assets.resolvers import create_round_url_resolver
 from hunt.app.core.assets.rewriter import rewrite_relative_paths
 from hunt.app.core.assets.refs import get_round_static_path
 from hunt.data_loader.puzzle import get_puzzle_data_text
@@ -32,26 +32,6 @@ from spoilr.core.api.decorators import inject_team, inject_puzzle
 
 logger = logging.getLogger(__name__)
 
-@require_puzzle_access(allow_rd0_access=False)
-@inject_team(redirect_if_missing=True)
-def chat(request: HttpRequest, **kwargs) -> HttpResponse:
-    common_style = get_round_data_text(request.puzzle.round.url or 'new-you-city', 'round_common.css')
-    round_url_resolver = create_round_url_resolver(request.puzzle.round.url or 'new-you-city', 'round')
-
-    context = get_puzzle_context(request.team, request.puzzle)
-
-    context['round_info'] = get_round_summary(request.team, request.puzzle.round, None)
-    context['rd_root'] = get_round_static_path(request.puzzle.round.url or 'new-you-city', variant='round')
-    context['is_breakglass_access'] = False
-
-    context_obj= Context(context)
-
-    context['round_common_style'] = rewrite_relative_paths(
-        Template(common_style).render(context_obj), round_url_resolver) if common_style else None
-
-    page = render(request, 'puzzle_files/tech-support/chat.tmpl', context)
-    return page
-
 @require_http_methods(['GET','POST','PUT','HEAD','DELETE'])
 @require_hunt_launch()
 @csrf_exempt
@@ -66,6 +46,7 @@ def website_page(request: HttpRequest, **kwargs) -> HttpResponse:
     context['round_info'] = get_round_summary(request.team, request.puzzle.round, None)
     context['rd_root'] = get_round_static_path(request.puzzle.round.url or 'new-you-city', variant='round')
     context['is_breakglass_access'] = False
+    context['posthunt_enabled'] = is_posthunt_enabled(request.puzzle.url, request.team and request.team.is_public)
 
     context_obj= Context(context)
 
@@ -96,6 +77,8 @@ def website_page(request: HttpRequest, **kwargs) -> HttpResponse:
 @require_puzzle_access(allow_rd0_access=False)
 def password_reset(request: HttpRequest) -> JsonResponse:
     reset_email = settings.PUZZLE_TECH_SUPPORT_EMAIL
+    assert reset_email
+
     recipient = request.POST['email']
     at_part = re.match("^.+?\+(.+?)@.+$", recipient)
     replace = True
@@ -163,18 +146,17 @@ def password_reset(request: HttpRequest) -> JsonResponse:
     if replace:
         email_headers['x-message'] = "Please request again with your email alias + ans"
 
-    if reset_email:
-        mail = EmailMultiAlternatives(
-            subject=subject,
-            body=render_to_string("puzzle_files/tech-support/emails/txt.txt.tmpl", {}),
-            from_email=reset_email,
-            to=[recipient],
-            alternatives=[(render_to_string("puzzle_files/tech-support/emails/html.html.tmpl", {}), "text/html")],
-            reply_to=[reset_email],
-            headers=email_headers
-        )
-        mail.send(fail_silently=True)
-        return JsonResponse({'success':True})
+    mail = EmailMultiAlternatives(
+        subject=subject,
+        body=render_to_string("puzzle_files/tech-support/emails/txt.txt.tmpl", {}),
+        from_email=reset_email,
+        to=[recipient],
+        alternatives=[(render_to_string("puzzle_files/tech-support/emails/html.html.tmpl", {}), "text/html")],
+        reply_to=[reset_email],
+        headers=email_headers
+    )
+    mail.send(fail_silently=True)
+    return JsonResponse({'success':True})
 
 
 @require_POST
@@ -234,9 +216,6 @@ def chat_bot(request: HttpRequest) -> JsonResponse:
         if test_string[i] in "abcdefghijklmnopqrstuvwxyz":
             if test_string[i] not in target:
                 output[i] = incorrect
-
-    # if len(target) > len([ o for o in output if o.strip() ]):
-    #     output.append(padding*(len(target) - len([ o for o in output if o.strip() ])))
 
     output = "".join(output)
 

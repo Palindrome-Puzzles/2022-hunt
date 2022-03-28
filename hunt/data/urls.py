@@ -65,7 +65,6 @@ urlpatterns = [
      re_path('^puzzle/(?P<puzzle>endless-practice)/result/?$', puzzle308_endless_practice.result),
      re_path('^puzzle/(?P<puzzle>nowhere-to-hide)/answer/?$', puzzle223_wordtris.answers_view),
      re_path('^puzzle/(?P<puzzle>tech-support)/msg/?$', extra_ratelimit(puzzle331_tech_support.chat_bot), name='puzzle_tech_support_msg'),
-     re_path('^puzzle/(?P<puzzle>tech-support)/chat/?$', extra_ratelimit(puzzle331_tech_support.chat), name='puzzle_tech_support_chat'),
      re_path('^puzzle/(?P<puzzle>tech-support)/help/?$', puzzle331_tech_support.website_page, name='puzzle_tech_support_help'),
      re_path('^puzzle/(?P<puzzle>tech-support)/reset/?$', basic_ratelimit(puzzle331_tech_support.password_reset), name='puzzle_tech_support_reset'),
      re_path('^puzzle/(?P<puzzle>completing-the-story)/answer/?$', puzzle555_cts_checker.answers_view),
@@ -114,7 +113,7 @@ urlpatterns += [
 
 # Tech Support
 urlpatterns += [
-     re_path("^puzzle/(?P<puzzle>tech-support)/(?P<subview>chat)$", puzzle_subview, {'variant':'puzzle', 'require_solved': False})
+     re_path("^puzzle/(?P<puzzle>tech-support)/(?P<subview>chat)/?$", puzzle_subview, {'variant':'puzzle', 'require_solved': False}, name='puzzle_tech_support_chat')
 ]
 
 if settings.HUNT_LOAD_SAMPLE_ROUND:

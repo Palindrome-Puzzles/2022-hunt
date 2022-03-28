@@ -3,6 +3,10 @@ Minipuzzle answer checker for the puzzle "Once Upon A Time In The Quest".
 """
 from hunt.app.views.puzzle_submit_views import minipuzzle_answers_view_factory
 
+# TODO(sahil): These minipuzzles should include some (random) unpredictable
+# string in their ID, so teams can't access a minipuzzle glyph before solving
+# the relevant puzzle.
+
 MINIPUZZLE_ANSWERS = {
     'quest474b': "GUINEA-BISSAU", #magically delicious
     'quest474c': "PORTUGUESE", #magically delicious

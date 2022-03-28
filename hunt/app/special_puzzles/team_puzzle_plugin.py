@@ -38,6 +38,7 @@ class TeamPuzzlePlugin(Plugin):
             raise AccessDeniedException()
 
         self.puzzle = puzzle
+        self.has_puzzle_access = has_puzzle_access
 
 def get_team_puzzle_group_name(team, puzzle_external_id):
     """Returns the name used by the channel layer for team puzzle notifications."""

@@ -1,5 +1,7 @@
+{% load archive %}
+
 <!-- TODO(sahil): This needs to move to the document head. -->
-<link href="https://fonts.googleapis.com/css2?family=Ubuntu+Condensed&display=swap" rel="stylesheet">
+<link href="{% archivable_font 'Ubuntu+Condensed' 'Ubuntu_Condensed' %}" rel="stylesheet">
 
 <div class="browse-toggle puzzle-status banner no-copy hidden" role="status">
     Congratulations - your team has passed the test!
@@ -77,5 +79,9 @@
 </div>
 
 <button id="clipboard-button" data-skip-inline-styles="true"></button>
+
+{% if posthunt_enabled %}
+<script type="module" src="posthunt/stub-send.js"></script>
+{% endif %}
 
 <script src="main.ts" type="module"></script>

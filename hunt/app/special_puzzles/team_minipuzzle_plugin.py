@@ -56,6 +56,9 @@ class TeamMinipuzzlePlugin(Plugin):
 
     def hunt_team_minipuzzle(self, message):
         """Handler for the channel layer message with type `hunt.team.minipuzzle`."""
+        if not self.get_sibling_plugin('puzzle').has_puzzle_access:
+            return
+
         if (message['puzzle_external_id'] == self.get_sibling_plugin('puzzle').puzzle_external_id):
             self.send_minipuzzles(message['minipuzzle_ref'])
 

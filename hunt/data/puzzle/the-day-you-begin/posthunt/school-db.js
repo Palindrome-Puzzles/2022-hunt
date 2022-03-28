@@ -15,7 +15,7 @@
 //
 
 const initSqlJs = window.initSqlJs;
-const SQL = await initSqlJs({locateFile: file => window.puzzleStaticDirectory + "sql/sql-wasm.wasm"});
+const SQL = await initSqlJs({locateFile: file => window.puzzlePosthuntStaticDirectory + "sql/sql-wasm.wasm"});
 
 function initializeDb() {
     var createTable = "CREATE TABLE IF NOT EXISTS students (" +
@@ -95,10 +95,10 @@ function runQuery(query) {
     return result;
 }
 
-function findStudents(name) {
+async function findStudents(name) {
     const query = `select * from students where name = '${name}'`
     try{
-        return runQuery(query);
+        return {rows: runQuery(query)};
     } catch (error) {
         throw new Error(`SQLite error: Something went wrong with query ${query}: ${error.message}`)
     }

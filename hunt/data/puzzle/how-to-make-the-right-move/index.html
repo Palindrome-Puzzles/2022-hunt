@@ -1,3 +1,5 @@
+{% load static %}
+
 <div class="flavor">
   <p>Don't fall under the influence of your opponent's evil plans. Make a plan of your own to get out of this impossible position in a single move. You can do a million of these.</p>
 </div>
@@ -62,8 +64,7 @@
 
 <button id="clipboard-button"></button>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="chessboard.js"></script>
+<script src="{% static 'lib/chessboard.min.js' %}"></script>
 <script type="text/javascript">
   const staticDirectory = window.puzzleStaticDirectory;
 

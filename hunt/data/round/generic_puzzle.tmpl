@@ -16,7 +16,7 @@
 {% endblock site_scripts %}
 
 {% block site_content %}
-<main{% if team.is_public %} class="public-access"{% endif %}>
+<main{% if not team or team.is_public %} class="public-access"{% endif %}>
   <header>
     <h1>{{ puzzle_info.puzzle.name }}</h1>
     {% block wordmark %}{% endblock %}

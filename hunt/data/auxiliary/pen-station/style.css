@@ -20,12 +20,12 @@
 }
 
 .page-background {
-    background-image: url(images/bg-repeat.jpg);
+    background-image: url('images/bg-repeat.jpg');
     background-size: auto auto;
     background-repeat: repeat;
 }
 .page-background-map {
-    background-image: url(images/bg.png);
+    background-image: url('images/bg.png');
     background-size: 100%;
 }
 

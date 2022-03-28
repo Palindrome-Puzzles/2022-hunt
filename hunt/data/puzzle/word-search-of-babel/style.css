@@ -1,7 +1,7 @@
 #word-search td {
   width: 15px;
-  height: 15px;
   min-width: 15px;
+  height: 15px;
   font-size: 10px;
 }
 
@@ -30,10 +30,17 @@
   font-family: monospace;
 }
 
-.resultWordString {
+#result {
   font-family: monospace;
-  font-size: medium;
+  width: 450px;
+  overflow-wrap: break-word;
+  display: inline-block;
 }
+
+#result pre {
+  white-space: pre-wrap;
+  font-size: .75em;
+ }
 
 .wrong {
   background-color:#FF9999;

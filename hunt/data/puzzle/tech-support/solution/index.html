@@ -4,9 +4,11 @@
 
 <h2>Email</h2>
 
+<p class="notice">In the archived version of the hunt, we simulate sending emails and allow solvers to download the raw version of the simulated email, so that they can see the email headers.</p>
+
 <p>On entering their email and requesting support, solvers are sent an email.</p>
 
-<p>This part of the puzzle requires solvers to inspect the email headers, clued by the starts of each paragraph in the email body. Doing so reveals that there is an <code>x-message</code> header, that says: “Please request again with your email alias + ans“ and an <code>x-query</code> header containig a clue. Solvers should re-request a password reset with the answer to the clue appended to their email with the common <a href="https://en.wikipedia.org/wiki/Email_address#Local-part" target="_blank">+ syntax for aliasing</a>.</p>
+<p>This part of the puzzle requires solvers to inspect the email headers, clued by the starts of each paragraph in the email body. Doing so reveals that there is an <code>x-message</code> header, that says: “Please request again with your email alias + ans“ and an <code>x-query</code> header containing a clue. Solvers should re-request a password reset with the answer to the clue appended to their email with the common <a href="https://en.wikipedia.org/wiki/Email_address#Local-part" target="_blank">+ syntax for aliasing</a>.</p>
 <p>Upon requesting a password reset using an email address containing the required part, solvers will receive the next clue.</p>
 <table>
     <tr><th>Clue</th><th>Alias needed</th></tr>
@@ -22,6 +24,8 @@
 <p>The acrostic of the clues spell <span class="answer">ISO SUMS</span>. Each answer to the clues is an ISO 3166-1 alpha-3 code for a country, and this acrostic clues summing the <a href="https://en.wikipedia.org/wiki/ISO_3166-1#Current_codes" target="_blank">ISO 3166-1 numeric</a> representations of these countries and then converting back to the alpha-3 code. Requesting assistance using <code>+USA</code> as an alias will return an <code>x-message</code> that indicates that this minipuzzle is complete.</p>
 
 <h2>Web support</h2>
+<p class="notice">In the archived version of the hunt, we can't change the HTTP headers, or accept different HTTP methods. Instead, we store the message as an invisible element inside the HTML <code>&lt;header&gt;</code> element, and allow the method to be simulated by adding a query string such as <code>?method=DELETE</code>. These two changes are clued by the notice added to the archived version of the puzzle.</p>
+
 <p>Web support contains the same HEADERS acrostic, with a slightly different message.</p>
 <p>Submitting a <code>GET</code> request to the webpage results in the x-elements header containing the message “You got this message! How about you post, put, head and delete some elements to get the Really Full Convention document (DOC)?”</p>
 <p>This message hints that solvers need to request information using some other methods. Submitting a request to the same page (no payload is required or processed) results in the below messages in the <code>x-elements</code> header.</p>

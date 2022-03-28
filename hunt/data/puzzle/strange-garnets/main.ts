@@ -7,6 +7,13 @@ import { Game as Game8 } from './game8/game';
 import htm from 'htm';
 import { h, render } from 'preact';
 
+declare global {
+  interface Window {
+    onGame6Progress?: (cb: (progress: ProgressInfo['game6']) => void) => void;
+  }
+}
+
+
 const html = htm.bind(h);
 
 let answers: ReadonlyArray<string | null>;
@@ -21,23 +28,27 @@ interface ProgressInfo {
 renderGame6({levels: []});
 renderGame8();
 
-const socket = new ManagedWebSocket<
-  void,
-  Progress<ProgressInfo> | MinipuzzleProgress
->("/ws/puzzle/strange-garnets", window.puzzleAuthToken);
+if (window.onGame6Progress) {
+  window.onGame6Progress(renderGame6);
+} else {
+  const socket = new ManagedWebSocket<
+    void,
+    Progress<ProgressInfo> | MinipuzzleProgress
+  >("/ws/puzzle/strange-garnets", window.puzzleAuthToken);
 
-socket.addListener((message) => {
-  if (message.type === "progress") {
-    renderGame6(message.progress.game6);
-  } else if (message.type === 'minipuzzle') {
-    for (const update of message.updates) {
-      const iframe = document.querySelector<HTMLIFrameElement>(`.${update.ref}-answers`);
-      if (iframe) {
-        iframe.src = iframe.src;
+  socket.addListener((message) => {
+    if (message.type === "progress") {
+      renderGame6(message.progress.game6);
+    } else if (message.type === 'minipuzzle') {
+      for (const update of message.updates) {
+        const iframe = document.querySelector<HTMLIFrameElement>(`.${update.ref}-answers`);
+        if (iframe) {
+          iframe.src = iframe.src;
+        }
       }
     }
-  }
-});
+  });
+}
 
 function renderGame6(progress: ProgressInfo['game6']) {
   render(

@@ -59,6 +59,7 @@ def puzzle_view(request, puzzle_url):
         'answer_sha256': answer_sha256,
         'pseudo_sha256': json.dumps(pseudo_sha256),
         'has_posthunt': has_posthunt,
+        'posthunt_enabled': False,
         'rd_root': 'dummy/',
         'serve_css_from_file': settings.HUNT_SERVE_CSS_FROM_FILE
     }
@@ -84,12 +85,14 @@ def posthunt_view(request, puzzle_url):
             'unlock_time': now() - datetime.timedelta(minutes=60),
             'full_path': reverse('puzzle_view', args=(puzzle_url,)),
             'static_directory': get_puzzle_static_directory(puzzle_url),
+            'posthunt_static_directory': get_puzzle_posthunt_static_directory(puzzle_url),
         },
         'puzzle_external_id': metadata['puzzle_idea_id'],
         'puzzle_url': puzzle_url,
         'puzzle': {'full_path': reverse('puzzle_view', args=(puzzle_url,))},
         'puzzle_title': metadata['puzzle_title'],
         'rd_root': 'dummy/',
+        'posthunt_enabled': True,
     }
     context_obj = Context(context)
     context['index_html'] = rewrite_relative_paths(
@@ -159,7 +162,7 @@ def create_hybrid_url_resolver(puzzle_url, variant):
     # If static, use ordinary puzzle resolvers so that we use public keyed
     # assets, and copy+paste works in staging puzzleviewer.
     if settings.HUNT_ASSETS_SERVE_STATICALLY:
-        return create_puzzle_url_resolver(puzzle_url, variant)
+        return create_puzzle_url_resolver(puzzle_url, variant, can_access_posthunt=(variant != 'puzzle'))
 
     # Otherwise, for now use a fallback URL resolution that is handled by
     # asset_view above. Long-term, we need to have puzzleviewer use a special
@@ -178,3 +181,9 @@ def get_puzzle_static_directory(puzzle_url):
         return get_puzzle_static_path(puzzle_url, variant='puzzle')
     else:
         return reverse('asset', args=(puzzle_url, ''))
+
+def get_puzzle_posthunt_static_directory(puzzle_url):
+    if settings.HUNT_ASSETS_SERVE_STATICALLY:
+        return get_puzzle_static_path(puzzle_url, variant='posthunt')
+    else:
+        return reverse('asset', args=(puzzle_url, 'posthunt/'))

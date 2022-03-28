@@ -26,13 +26,14 @@ window.puzzleUrl = '{{ puzzle_info.full_path|escapejs }}';
 <script src="{% static 'core/puzzle.js' %}" type="module"></script>
 <script src="{% static 'core/copyjack.js' %}" type="module"></script>
 <script type="module">
+// TODO(sahil): Support multi answers.
 window.addEventListener('load', () => {
   const form = document.querySelector('.answer-form');
   const correctPanel = document.querySelector('.correct-panel');
   const incorrectPanel = document.querySelector('.incorrect-panel');
   const pseudoPanel = document.querySelector('.pseudo-panel');
 
-  form.addEventListener('submit', async (event) => {
+  form.addEventListener('submit', (event) => {
     const correctAnswerHash = '{{ answer_sha256 }}';
     const pseudoHashes = {{ pseudo_sha256|safe }};
     const answer = normalizePuzzleAnswer(document.querySelector('#answer').value);

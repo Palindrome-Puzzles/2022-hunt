@@ -1,4 +1,4 @@
-{% load static %}
+{% load archive static %}
 {% comment %} TODO(sahil): We should probably include an apple touch icon. {% endcomment %}
 <!DOCTYPE html>
 <html lang="en">
@@ -8,9 +8,14 @@
   <meta name="viewport" content="width=device-width, user-scalable=yes">
   <meta property="og:image" content="{% static 'registration/elzzupaton.png' %}">
   <link rel="shortcut icon" href="{% static 'registration/favicon.ico' %}" type="image/x-icon" sizes="any">
+  {% is_non_archive as is_non_archive_flag %}
+  {% if is_non_archive_flag %}
   <link rel="preconnect" href="https://use.typekit.net">
   <link rel="stylesheet" href="https://use.typekit.net/xef3sni.css">
-  <link rel="stylesheet" type="text/css" href="{% static 'registration/style.css' %}?v=1">
+  {% else %}
+  <link rel="stylesheet" href="{% static 'fonts/Roboto.css' %}">
+  {% endif %}
+  <link rel="stylesheet" type="text/css" href="{% static 'registration/style.css' %}">
 </head>
 <body>
   {% block notifications %}{% endblock %}

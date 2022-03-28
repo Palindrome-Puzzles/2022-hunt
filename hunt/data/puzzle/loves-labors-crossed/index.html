@@ -1,4 +1,14 @@
-<script src="word-square-client-side.js?v=1"></script>
+{% load static %}
+
+{% if posthunt_enabled %}
+<script src="posthunt/word-square-client-side.js"></script>
+{% else %}
+<script type="module">
+import Cookies from "{% static 'lib/js-cookie.module.min.js' %}";
+window.getCookie = Cookies.get;
+</script>
+<script src="word-square.js"></script>
+{% endif %}
 
 <div class="flavor">
 Sometimes your significant other asks you to perform an unexpected task as a way to profess your love.
@@ -19,7 +29,7 @@ and the 5-letter word resulting from the down words, together must contain 10 di
 <p>All words used in the task (the ten 5-letter grid words and the two 5-letter extra words) must
 appear in the Scrabble TWL06 wordlist freely available for download at
 <a href="https://www.wordgamedictionary.com/twl06/">https://www.wordgamedictionary.com/twl06/</a>
-and mirrored <a href="twl06.txt">here</a>.</p>
+and mirrored <a href="twl06.txt" target="_blank">here</a>.</p>
 
 <p>When you have successfully completed the task, profess your love by submitting a single string of
 the 25 letters of your grid, in order (left to right, top to bottom), with no spaces or punctuation,

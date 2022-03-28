@@ -27,7 +27,7 @@ def create_round_url_resolver(round_url, variant):
     }
     return asset_url_resolver(f'round {round_url}', 'round', variant, prefix_by_variant, protected_variants)
 
-def create_puzzle_url_resolver(puzzle_url, variant):
+def create_puzzle_url_resolver(puzzle_url, variant, *, can_access_posthunt):
     """
     Creates a resolver for URLs in puzzle static assets.
 
@@ -38,6 +38,10 @@ def create_puzzle_url_resolver(puzzle_url, variant):
     URL `/puzzle/<puzzle_url>/` instead of their true location in the
     puzzle-specific static directory. This returns a resolver that transforms
     any relative URLs so they still work.
+
+    `can_access_posthunt` indicates whether the current team can access posthunt
+    assets from the puzzle bundle. This should only be True for public teams or
+    access after the hunt is complete.
     """
     assert variant in ('puzzle', 'solution', 'posthunt')
 
@@ -51,9 +55,9 @@ def create_puzzle_url_resolver(puzzle_url, variant):
         'posthunt': posthunt_prefix,
         'solution': solution_prefix,
     }
-    return asset_url_resolver(f'puzzle {puzzle_url}', 'puzzle', variant, prefix_by_variant, protected_variants)
+    return asset_url_resolver(f'puzzle {puzzle_url}', 'puzzle', variant, prefix_by_variant, protected_variants, can_access_posthunt=can_access_posthunt)
 
-def asset_url_resolver(context, default_variant, variant, prefix_by_variant, protected_variants):
+def asset_url_resolver(context, default_variant, variant, prefix_by_variant, protected_variants, *, can_access_posthunt=False):
     """
     Helper that takes advantage of similarities between the directory structure
     of puzzle and round assets to share code.
@@ -66,7 +70,7 @@ def asset_url_resolver(context, default_variant, variant, prefix_by_variant, pro
         if variant in protected_variants:
             # Canonicalize references from one protected variant to another.
             chosen_variant = variant
-            if number_of_dotdots == 1 and any(resource_url.startswith(f'{variant}/') for variant in protected_variants):
+            if number_of_dotdots == 1 and any(resource_url.startswith(f'{protected_variant}/') for protected_variant in protected_variants):
                 slash_loc = resource_url.index('/')
                 chosen_variant = resource_url[:slash_loc]
                 resource_url = resource_url[slash_loc+1:]
@@ -78,11 +82,18 @@ def asset_url_resolver(context, default_variant, variant, prefix_by_variant, pro
             else:
                 prefix = prefix_by_variant[chosen_variant]
         else:
+            chosen_variant = variant
             if number_of_dotdots:
                 raise Exception(f'{context} ({variant}) has an invalid URL: `{resource_url}`')
-            if any(resource_url.startswith(f'{variant}/') for variant in protected_variants):
-                raise Exception(f'{context} ({variant}) is trying to access protected asset: `{resource_url}`')
-            prefix = prefix_by_variant[variant]
+            if any(resource_url.startswith(f'{protected_variant}/') for protected_variant in protected_variants):
+                # Special case to allow puzzles to access posthunt content.
+                if resource_url.startswith('posthunt/') and can_access_posthunt:
+                    slash_loc = resource_url.index('/')
+                    chosen_variant = resource_url[:slash_loc]
+                    resource_url = resource_url[slash_loc+1:]
+                else:
+                    raise Exception(f'{context} ({variant}) is trying to access protected asset: `{resource_url}`')
+            prefix = prefix_by_variant[chosen_variant]
         return urllib.parse.urljoin(prefix, resource_url)
     return url_resolver
 

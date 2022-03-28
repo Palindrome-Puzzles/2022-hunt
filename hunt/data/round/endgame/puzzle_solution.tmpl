@@ -1,7 +1,8 @@
 {% extends "round_files/generic_puzzle_solution.tmpl" %}
+{% load archive %}
 
 {% block extra_stylesheets %}
-<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap" rel="stylesheet">
+<link href="{% archivable_font 'Libre+Baskerville' 'Libre_Baskerville' %}" rel="stylesheet">
 {% endblock extra_stylesheets %}
 
 {% block puzzle_rewards %}
@@ -9,3 +10,13 @@
 {% include 'round_files/endgame/reward.tmpl' with reward=round_reward showing_all=False %}
 {% endif %}
 {% endblock puzzle_rewards %}
+
+{% block site_header_content %}
+<a href="{% url 'puzzle_view' puzzle_info.puzzle.url %}">
+	<header>
+		<h1>
+			{% block wordmark %}{% endblock %}
+		</h1>
+	</header>
+</a>
+{% endblock site_header_content %}

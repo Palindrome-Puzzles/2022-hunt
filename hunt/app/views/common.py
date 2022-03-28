@@ -12,7 +12,7 @@ from spoilr.core.api.shortcuts import get_shortcuts
 from spoilr.core.models import InteractionAccess, Puzzle
 
 from hunt.app.core.assets.refs import get_puzzle_static_path
-from hunt.app.core.constants import ROUND_RD0_URL, ROUND_ENDGAME_URL, PUZZLE_ENDGAME_URL, ROUND_EVENTS_URL, ROUND_SAMPLE_URL, SITE_1_ROUND_URLS, ROUND_RD2_URL, ROUND_RD3_URLS, ROUND_RD1_URL, ROUND_RD3_META_URL, USE_POSTHUNT_ON_HUNT_COMPLETE
+from hunt.app.core.constants import ROUND_RD0_URL, ROUND_ENDGAME_URL, PUZZLE_ENDGAME_URL, ROUND_EVENTS_URL, ROUND_SAMPLE_URL, SITE_1_ROUND_URLS, ROUND_RD2_URL, ROUND_RD3_URLS, ROUND_RD1_URL, ROUND_RD3_META_URL, USE_POSTHUNT_ON_HUNT_COMPLETE, USE_POSTHUNT_ON_PUBLIC_AND_HUNT_COMPLETE
 from hunt.app.core.cache import cache_page_by_puzzle, cache_shared_context, cache_page_by_round
 from hunt.app.core.hosts import use_site_1, use_site_2_if_unlocked
 from hunt.app.core.rewards import get_reward
@@ -253,7 +253,8 @@ def puzzle_access_to_puzzle_obj(puzzle_access):
         'unlock_time': puzzle_access.timestamp,
         'solved': puzzle_access.solved,
         'solved_time': puzzle_access.solved_time,
-        'static_directory': get_puzzle_static_path(puzzle_access.puzzle.url, get_puzzle_variant(puzzle_access.puzzle.url)),
+        'static_directory': get_puzzle_static_path(puzzle_access.puzzle.url, 'puzzle'),
+        'posthunt_static_directory': get_puzzle_static_path(puzzle_access.puzzle.url, 'posthunt'),
     }
 
 def puzzle_to_puzzle_obj(puzzle):
@@ -265,13 +266,19 @@ def puzzle_to_puzzle_obj(puzzle):
         'unlock_time': now() - datetime.timedelta(minutes=60),
         'solved': False,
         'solved_time': None,
-        'static_directory': get_puzzle_static_path(puzzle.url, get_puzzle_variant(puzzle.url)),
+        'static_directory': get_puzzle_static_path(puzzle.url, 'puzzle'),
+        'posthunt_static_directory': get_puzzle_static_path(puzzle.url, 'posthunt'),
     }
 
-def get_puzzle_variant(puzzle_url):
+def is_posthunt_enabled(puzzle_url, is_public_team):
+    complete = is_hunt_complete()
+    posthunt_on_complete = puzzle_url in USE_POSTHUNT_ON_HUNT_COMPLETE
+    posthunt_on_complete_public_only = is_public_team and puzzle_url in USE_POSTHUNT_ON_PUBLIC_AND_HUNT_COMPLETE
+    return complete and (posthunt_on_complete or posthunt_on_complete_public_only)
+
+def get_puzzle_variant(puzzle_url, is_public_team):
     posthunt_html = get_puzzle_data_text(puzzle_url, 'posthunt', 'index.html')
-    posthunt_enabled = is_hunt_complete() and puzzle_url in USE_POSTHUNT_ON_HUNT_COMPLETE
-    if posthunt_enabled and posthunt_html:
+    if is_posthunt_enabled(puzzle_url, is_public_team) and posthunt_html:
         return 'posthunt'
     return 'puzzle'
 

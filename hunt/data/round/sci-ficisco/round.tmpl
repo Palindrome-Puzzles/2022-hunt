@@ -1,8 +1,8 @@
 {% extends "round_files/generic_round.tmpl" %}
-{% load static %}
+{% load archive static %}
 
 {% block extra_stylesheets %}
-<link href="https://fonts.googleapis.com/css2?family=VT323:wght@400&display=swap" rel="stylesheet">
+<link href="{% archivable_font 'VT323:wght@400' 'VT323' %}" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="{% static 'stylesheets/map.css' %}">
 {% include 'round_files/generic_map_stylesheet.tmpl' with sticker_info=sticker_info %}
 {% endblock extra_stylesheets %}

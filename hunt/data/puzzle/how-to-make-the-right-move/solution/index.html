@@ -1,3 +1,5 @@
+{% load static %}
+
 <p>Hinted by &quot;evil / influence&quot;, these puzzles are not actually chess, but Masyu. But they are &quot;impossible positions&quot; as stated, in fact each has a relatively obvious obstruction. For example, the ninth one has a white in the lower corner, which cannot be done in Masyu. On each board, a single chess move (by white) must be performed to make a (uniquely) solvable Masyu puzzle.</p>
 
 <h2>Board 1</h2>
@@ -87,8 +89,7 @@
 
 </div>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="../chessboard.js"></script>
+<script src="{% static 'lib/chessboard.min.js' %}"></script>
 <script type="text/javascript">
   const staticDirectory = window.puzzleStaticDirectory;
 

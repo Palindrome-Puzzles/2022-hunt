@@ -96,6 +96,10 @@ Some puzzles in the hunt have a separate build process that compiles [Typescript
      - Run `npm run build` to build puzzle files.
      - Run `npm run watch` to continuously build puzzle files, and re-build them whenever they are changed. (This is useful when actively developing!)
 
+> Note: The script will automatically minify bundles and include sourcemaps if your `DJANGO_ENV` starts with `prod_`.
+
+> **Warning**: Running the build process on Windows can give a different output compared to non-Windows machines (say Github Actions or Heroku). This is because `esbuild` uses `\n` or `\r\n` depending on the environment, which changes content hashes and so filenames. This can be avoided if you minify bundles and skip sourcemaps.
+
 ### Running the server
 To run the server, use the following command.
 ```
@@ -130,6 +134,7 @@ Some modules have further documentation:
 The [`spoilr`](spoilr/) package is a hunt-agnostic Django project to manage hunt state, and provide an admin panel for managing a live hunt.
 
 There is also project-level documentation:
+ - [archiving](docs/archive.md) the hunt website
  - [deployment guide](docs/deploy.md) for how to run your own version of the 2022 hunt
  - [editor setup](docs/editor.md) for tips on setting up your editor
  - [features](docs/features.md) for a summary of new and enhanced features in the 2022 hunt. You may be interested if running your own hunt, as it provides ideas and code links
@@ -190,6 +195,8 @@ This project has different licenses for different sections of the codebase.
      - [The Times They Had](/hunt/data/puzzle/the-times-they-had)
 
  1. All images, sounds, and videos are licensed under the [Creative Commons Attribution Non-Commercial No-Derviatives license](LICENSE.cc-by-nc-nd.txt).
+
+ 1. All fonts are co-located with their own license.
 
  1. Anything else within the [`hunt/data`](hunt/data) folder is licensed under [Creative Commons Attribution Non-Commercial license](LICENSE.cc-by-nc.txt).
 

@@ -1,51 +1,114 @@
-{% load static %}
-<p class="errata">Errata as of Saturday, 12:30pm TIMEMIT: the "web" link sent via email should lead to <code>https://www.bookspace.world/puzzle/tech-support/help</code>, not <code>https://www.bookspace.world/puzzle/tech-support/web</code>. This has been corrected for emails sent after 12:30pm TIMEMIT.</p>
+{% load constants static %}
+<div class="flavor">
+    <p class="errata">Errata as of Saturday, 12:30pm TIMEMIT: the "web" link sent via email should lead to <code>https://www.bookspace.world/puzzle/tech-support/help</code>, not <code>https://www.bookspace.world/puzzle/tech-support/web</code>. This has been corrected for emails sent after 12:30pm TIMEMIT.</p>
+
+    <p>
+        Looking for tech support? We usually have live support, but we’re a little busy at the moment, so put your email address here, check out our <a href="{% url 'puzzle_tech_support_help' 'tech-support' %}">web page</a>, or our <a href="{% url 'puzzle_tech_support_chat' 'tech-support' 'chat' %}">chat bot</a>, and I’m sure we can get you what you need.
+    </p>
+</div>
+
+{% if not posthunt_enabled %}
 <div id="alert" class='notice alert alert-success hidden'>
-    Success! You should receive an email shortly. Please check your email inbox (and maybe your junk/spam for an email from &lt;no-reply+tech-support@mitmh2022.com&gt;).
+    Success! You should receive an email shortly. Please check your email inbox (and maybe your junk/spam for an email from &lt;{% tech_support_email %}&gt;).
 </div>
+{% endif %}
+
 <p>
-    Looking for tech support? We usually have live support, but we’re a little busy at the moment, so put your email address here, check out our <a href="{% url 'puzzle_tech_support_help' 'tech-support' %}">web page</a>, or our <a href="{% url 'puzzle_tech_support_chat' 'tech-support' %}">chat bot</a>, and I’m sure we can get you what you need.
+    <form>
+        <p><label for="email">Email: </label><input id='email' name='email' type="email" required></p>
+        <input type="submit" value="Request assistance">
+    </form>
 </p>
-<div class='form-group'>
-    <p><label for="email">Email: </label><input class='form-control' id='email' name='email' type="email" required></p>
-    <input id='reset' type="submit" onClick="reset();" value="Request assistance">
+
+{% if posthunt_enabled %}
+<div class='notice'>
+    This puzzle has changed so that it can be archived. During the hunt, you would have received a real email to the address you entered. Now, we simulate sending the email and display it below.
 </div>
+
+<div class="no-email">No email yet.</div>
+<div class="email hidden">
+    <p>
+        <strong>From</strong>: {% tech_support_email %}<br>
+        <strong>To</strong>: <span class="email-to"></span><br>
+        <strong>Subject</strong>: <span class="email-subject"></span><br>
+        <strong>Date</strong>: <span class="email-date"></span>
+    </p>
+    <div class="body">
+        <p>Hi,</p>
+        <p>Emails can contain useful information.</p>
+        <p>After reading it initially, you should probably look in the places indicated.</p>
+        <p>Don’t forget to inspect HTTP responses for them!</p>
+        <p>Even if you don’t get the whole answer at first, remember that we have <a href="{% url 'puzzle_tech_support_help' 'tech-support' %}">webpage</a>, email, and <a href="{% url 'puzzle_tech_support_chat' 'tech-support' 'chat' %}">chat support</a>.</p>
+        <p>Reach out to us on all our support channels - they don’t connect well to start with, but they come together in the end.</p>
+        <p>Sincerely, New You City Tech Support</p>
+    </div>
+    <button type="button" class="email-download">Download original</button>
+</div>
+<style type="text/css">
+.email {
+    border: 1px solid #888;
+    padding: 0 1em 1em;
+}
+.body {
+    border-left: 3px solid #888;
+    padding-left: 1em;
+}
+</style>
+
+<script type="module" src="posthunt/stub-email.js"></script>
+<script type="module">
+let lastDownloadBlob = null;
+document.querySelector('.puzzle form').addEventListener('submit', (event) => {
+    event.preventDefault();
+
+    const email = $('#email').val();
+    const dateStr = (new Date()).toString();
+    const {subject, downloadBlob} = window.stubEmail({to: email, from: '{% tech_support_email %}', date: dateStr, webpageUrl: "{% url 'puzzle_tech_support_help' 'tech-support' %}", chatUrl: "{% url 'puzzle_tech_support_chat' 'tech-support' 'chat' %}"});
+    $('.no-email').addClass('hidden');
+    $('.email').removeClass('hidden');
+    $('.email-to').text(email);
+    $('.email-subject').text(subject);
+    $('.email-date').text(dateStr);
+    lastDownloadBlob = downloadBlob;
+});
+document.querySelector('.email-download').addEventListener('click', () => {
+    if (!lastDownloadBlob) return;
+
+    const url = window.URL.createObjectURL(lastDownloadBlob);
+    const a = document.createElement('a');
+    a.style.display = 'none';
+    a.href = url;
+    a.download = 'email.txt';
+    document.body.appendChild(a);
+    a.click();
+    window.URL.revokeObjectURL(url);
+    a.remove();
+});
+</script>
+{% else %}
 <script type="module">
     import Cookies from "{% static 'lib/js-cookie.module.min.js' %}";
-    const CSRF_TOKEN = Cookies.get('csrftoken');
-    window.reset = reset;
-    window.puzzleOnLoad = puzzleOnLoad;
 
-    function puzzleOnLoad() {
-        $("#email").on('keyup', function(event){
-            if (event.keyCode === 13) {
-                event.preventDefault();
-                reset();
-            }
-        });
-    }
-
-    function handleresponse(data){
-        if (data.success) {
-            $("#reset").attr("disabled", false);
-            $("#alert").removeClass("hidden");
-        }
-    }
-
-    function reset(){
+    document.querySelector('.puzzle form').addEventListener('submit', (event) => {
         $("#alert").addClass("hidden");
         $("#reset").attr("disabled", true);
         $.ajax({
             type: "POST",
-            url:"./reset",
+            url: window.puzzleUrl + "reset",
             data:{
                 'email': $("#email").val()
             },
             headers:{
                 "X-CSRFToken": Cookies.get("csrftoken")
             },
-            success:handleresponse
+            success: (data) => {
+                if (data.success) {
+                    $("#reset").attr("disabled", false);
+                    $("#alert").removeClass("hidden");
+                }
+            },
         })
-        return false;
-    }
+        event.preventDefault();
+    });
 </script>
+{% endif %}

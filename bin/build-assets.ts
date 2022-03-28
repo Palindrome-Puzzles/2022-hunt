@@ -18,7 +18,7 @@ program.option("-w, --watch", "Watch for changes");
 program.parse();
 
 const { watch } = program.opts();
-const debug = process.env.DJANGO_ENV !== "production";
+const debug = !process.env.DJANGO_ENV || !process.env.DJANGO_ENV.startsWith('prod_');
 
 const huntDirectory = resolve(__dirname, "../hunt");
 const huntDataDirectory = join(huntDirectory, "data");
@@ -166,7 +166,7 @@ async function main() {
     // Both are a little brittle but seem to work.
     splitting: true,
     format: "esm",
-    sourcemap: "inline",
+    sourcemap: debug ? "inline" : false,
     minify: !debug,
     watch,
     incremental: watch,
