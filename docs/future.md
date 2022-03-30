@@ -1,3 +1,56 @@
 # Future work
 
-in-progress
+This page outlines some high-level items we wish we could have done before the 2022 hunt. For more, please check [the features guide](features.md) and search for "Future work", and check the [spoilr documentation](/spoilr/#future-work). You can also search for `TODO` in this codebase.
+
+In no particular order:
+ - Add linters, pretty printers, unused import checkers, and other developer tooling.
+ - Add Discord logging of hunt events (see [2021 Hunt's repo](https://github.com/YewLabs/silenda/blob/master/spoilr/log.py#L38)).
+ - Add Discord queue messages where pending HQ actions are added and deleted from a Discord channel automatically. See [2021 Hunt's repo](https://github.com/YewLabs/silenda/blob/master/spoilr/log.py#L61) and [queuebot](https://github.com/YewLabs/silenda/blob/master/queuebot/queuebot.py). This can integrate nicely with the 2022 `Task` abstraction in [spoilr](/spoilr/).
+ - Improve our email receiving so we don't have DMARC issues, and so we can keep attachments.
+ - Add a build process to minify shared CSS and JS files (not just puzzle bundle files).
+ - Add caching back to [spoilr](/spoilr/).
+ - Add and use [`django.template.loaders.cached.Loader`](https://docs.djangoproject.com/en/3.2/ref/templates/api/#loader-types) to cache templates automatically.
+ - Import canned hints into database, and read from there instead of the filesystem (for performance).
+ - Add team log page.
+ - Add ability to sort All Puzzles page by various criteria such as last updated, alphabetical, etc.
+ - Fix it so teams are notified when the hunt launched. (It's broken because the way we toggle huntsettings can't connect to redis, so it doesn't trigger the expected callbacks.)
+ - Fix errata flow.
+ - Fix mass emails (including for errata).
+ - Document errata fix process better. Do we edit puzzles in-place? Cachebreaking? [Hotswapping puzzles](https://github.com/YewLabs/2021-hunt/blob/master/hunt/management/commands/replace_puzzle.py)? Regrade previous submissions?
+ - Improve tools for events.
+ - Add (authenticated) cron job support for things like ticks.
+ - Use volume slider for all audio puzzles too.
+ - Add time control to puzzle solve graph in HQ.
+ - Re-add image support to copy-to-clipboard.
+ - Improve email submissions. Consider a new form instead of email. Auto-reply if we can't understand the subject, or surface the email better in HQ. Allow re-catgeorising of emails that had a bad subject line to indicate the right team/interaction.
+ - Handle hint requests for a puzzle that was later solved better.
+ - Solve graph: remember the number of min solves.
+ - Proper long-lived email task queue so we don't rely on GAE not timing out (for unlock emails, updates, etc)
+ - Automate permission gathering for submissions
+ - Add automated logging/auditing for special puzzle endpoints.
+ - Improve how we pick rates for rate limiting.
+ - Bring back bookmarks, puzzle feedback from 2021 hunt.
+ - "Sticker" renaming in rounds, to avoid leaking icons for each puzzle.
+ - Add JS to swag puzzles to auto-refresh the page when timer runs out
+ - Add more admin shortcuts: toggle hunt state (prelaunch, launch, etc), access to round
+ - Hints: notify when asked/resolved, show status by Hints link, refresh frame if hints  resolved while on page.
+ - Integrate django toolbar https://django-debug-toolbar.readthedocs.io/en/latest/
+ - Make usernames case-insensitive.
+ - Standardise error reporting on JSON endpoints, and handle rate limiter errors.
+ - Import Django commands should return a non-zero error code when they fail due to an error
+ - Fix room plugin for scrum puzzles.
+ - Allow attachments to be shown in our email system. Maybe auto-upload to Google Cloud Storage, and link?
+ - Import puzzles: warn if slug & name don't match.
+ - Add registration dashboard with ability to make notes for swag and team matching.
+ - Make Hints button smarter, such as summarising if hints are available, etc
+ - Rate limiting for websocket endpoints.
+ - Add readonly users to spoilr.
+ - Let teams reset their passwords
+ - Show minipuzzles in HQ progress dashboards.
+ - Fix long-alt class, slightly broken in FF.
+ - Automatically copy dates with a leading quote, to avoid Sheets freaking out.
+ - Can we log out from all sites at once.
+ - Aria notification that something changed when submitting answers?
+ - If puzzle released for a round and viewing the round page, refresh
+ - Minify SVGs, JS and CSS as we deploy them?
+ - Document in postprod doc: build systems, sorttable library + initial sort shim, barred grids, pseudo answers, reconnectingwebsocket, generating code, special puzzles, error handling patterns, etc.
