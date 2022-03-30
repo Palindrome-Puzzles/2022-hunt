@@ -176,7 +176,7 @@ function bootstrapClipoardButton(clipboardButton) {
         if (node.tagName.toLowerCase() === 'style') return false;
         if (node.tagName.toLowerCase() === 'link') return false;
         if (node.tagName.toLowerCase() === 'math') return false;
-        return !node.classList.contains('no-copy') && !node.classList.contains('hidden');
+        return !node.classList.contains('no-copy') && !node.classList.contains('hidden') && !node.classList.contains('errata');
       },
       node => {
         if (node.nodeType !== Node.ELEMENT_NODE) return;

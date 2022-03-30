@@ -43,6 +43,7 @@ We need to generate an entirely static version of the hunt for the [MIT Mystery 
         ```
         +*.png +*.svg +*.gif +*.jpg +*.jpeg +*.css +*.js
         --disable-security-limits
+        --utf8-conversion
         -*[file]wikimedia.org/*
         -*[file]ftw.usatoday.com/*
         -*[file]i.kinja-img.com/*
@@ -52,6 +53,12 @@ We need to generate an entirely static version of the hunt for the [MIT Mystery 
         -*[file]public.flourish.studio/*
         -*[file]unnamedtemporarysportsblog.com/*
         ```
+      - > **Note**: I tried wget with the following command `wget --recursive --level inf --convert-links --page-requisites http://127.0.0.1:8000/ http://127.0.0.1:8000/archive-pages/`, and ran into several issues:
+        >   - wget 1.11 doesn't support CSS URLs, so I needed an [unofficial build on Windows](https://opensourcepack.blogspot.com/2010/05/wget-112-for-windows.html)
+        >   - Later versions needed extra flags like `-x` and `-H` or it wouldn't fetch everything properly.
+        >   - It didn't seem to handle ES6 imports.
+        >
+        > In the end, using HTTrack was just easier to get mostly working.
 
  1. The other issue with HTTrack is it changes links from directories by suffixing `index.html`. This is mostly harmless, but it breaks some puzzles that use variables to dynamically build paths. For example, `puzzleStaticDirectory` is changed from `s__puzzle/` to `s__puzzle/index.html`. You can run the following PowerShell script to remove `index.html` relative links that end in `/index.html` in all HTML files.
       ```

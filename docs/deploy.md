@@ -105,7 +105,7 @@ If this is not true, tweak the instructions as described in the [appendix at the
     ```
     git push heroku main --no-verify
     ```
- 1. Import teams and puzzles, launch the hunt.
+ 1. Import teams and puzzles, launch the hunt, and optionally turn on autopilot. (Autopilot automatically resolves interactions that would normally require hunt HQ.)
     ```
     heroku run bash
     ```
@@ -118,6 +118,7 @@ If this is not true, tweak the instructions as described in the [appendix at the
     python manage.py launch rd0
     python manage.py launch rd0-released
     python manage.py launch hunt
+    python manage.py launch autopilot
     ```
 
 After this, you can follow the [management guide](manage.md) to administer the hunt. For Django commands, either run them in a [one-off dyno](https://devcenter.heroku.com/articles/one-off-dynos#an-example-one-off-dyno) as above, or set up a `.env` file in the root directory and set the following keys to the same values as the environment variables configured in Heroku. Then you'll be able to run commands in a local terminal using `DJANGO_ENV=prod_heroku python manage.py ...`.
@@ -130,6 +131,11 @@ If you exceed Heroku's slug size, then the easiest solution is to host your stat
  - Sign up for Google Cloud and optionally set up billing.
  - Set up the Google Cloud `gsutil` command line utility.
  - Create a new Google Cloud Storage bucket, or choose the default bucket with a free tier. Ensure files are all [publicly accessible in the bucket](https://cloud.google.com/storage/docs/access-control/making-data-public#buckets) (and use the `roles/storage.legacyObjectReader` role to avoid users being able to browse files).
+ - (Optional) Simplify the puzzle build process to disable chunking. This bypasses some esbuild non-determinism across platforms.
+    - In </bin/build-assets.ts>, make the following changes:
+       - Change `splitting: true,` to `splitting: false,`.
+       - Change `entryNames: "[dir]/dist/[name]-[hash]",` to `entryNames: "[dir]/dist/[name]",`.
+ - [Build puzzles locally](../#building-puzzles) using `npm run build`.
  - Locally, run `DJANGO_ENV=prod_heroku python manage.py collectpuzzlefiles --gzip-files=false` to gather all puzzle files in the `/static_temp/` sub-directory.
  - Run the following command to deploy all your assets to Google Cloud Storage `gsutil -m rsync -c -d -R static_temp/not-gzip/ gs://CLOUD_BUCKET_NAME/static/` (after replacing the `CLOUD_BUCKET_NAME`).
  - Delete the `bin/post_compile` file added above, as it is no longer needed.
@@ -140,7 +146,7 @@ If you exceed Heroku's slug size, then the easiest solution is to host your stat
  - Re-deploy to heroku.
 
 Then you also need to setup CORS for the Google Cloud bucket, so that scripts can be loaded from the Google Cloud domain, and run as part of your hunt website. To do this:
- 1. Modify the configs in [`/hunt/deploy/gcloud_cors/`](/hunt/deploy/gcloud_cors/) to use your domains.
+ 1. Modify the configs in [`/hunt/deploy/gcloud_cors/`](/hunt/deploy/gcloud_cors/) to use your domains. (Make sure to keep `https://` at the beginning of links!)
  1. Follow the instructions for [configuring CORS on a Google Cloud bucket](https://cloud.google.com/storage/docs/configuring-cors).
     ```
     gsutil cors get gs://CLOUD_BUCKET_NAME
