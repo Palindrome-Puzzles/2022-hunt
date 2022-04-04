@@ -11,7 +11,7 @@
 
 {% load puzzles %}
 {% if puzzle_info|has_been_available_for_minutes:180 %}
-<p class="no-copy"><em>The puzzle box contained multicolored packing filler. Download a digital version of the filler <a href="slices.zip" target="_blank">here</a>.</em>.
+<p class="no-copy"><em>The puzzle box contained multicolored packing filler. You can download a <a href="slices.zip" target="_blank">digital version of the filler</a>.</em>.
 {% else %}
 <p class= "notice">For those without the physical item, the virtual version of this puzzle will unlock in  {{ puzzle_info|until_available_for_minutes:180 }} minutes.</p>
 {% endif %}

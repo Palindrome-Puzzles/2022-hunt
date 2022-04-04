@@ -98,7 +98,7 @@
       </p>
     </section>
 
-
+    {% is_non_archive as is_non_archive_flag %}
     {% for event in events %}
       <div class="event">
         {% if event.url == 'cryptic-dixit' %}
@@ -106,7 +106,7 @@
         Congratulations to Projectyl 👑 from UNICODE EQUIVALENCE, the winner of the Cryptic Clue Bee!</div>
         {% endif %}
         <h3>Event {{ event.ordinal }}: {{ event.name }}</h3>
-        <div class="row"><strong>When:</strong> {{ event.expected_start_time }} (<span title="{{ event.expected_start_time }}">{{ event.expected_start_time|naturaltime }}</span>)</div>
+        <div class="row"><strong>When:</strong> {{ event.expected_start_time }} {% if is_non_archive_flag %}(<span title="{{ event.expected_start_time }}">{{ event.expected_start_time|naturaltime }}</span>){% endif %}</div>
         <div class="row"><strong>Allowed Participants:</strong> {{ event.max_participants }}</div>
         {% if event.ordinal == 1 or event.ordinal == 2 %}
         <div class="row"><strong>Reward:</strong> 0.5 Manuscrip</div>
