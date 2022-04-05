@@ -1,6 +1,10 @@
 {% extends "hunt/layout.tmpl" %}
 {% load hosts static %}
 
+{% block metas %}
+{% block site_metas %}{% endblock %}
+{% endblock metas %}
+
 {% block stylesheets %}
 <link rel="stylesheet" type="text/css" href="{% static 'stylesheets/site.css' %}">
 {% block site_stylesheets %}{% endblock %}

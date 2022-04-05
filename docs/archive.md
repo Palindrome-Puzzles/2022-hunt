@@ -60,6 +60,19 @@ We need to generate an entirely static version of the hunt for the [MIT Mystery 
         >
         > In the end, using HTTrack was just easier to get mostly working.
 
+ 1. An issue with HTTrack is it doesn't rewrite ES6 imports. Most of them are handled by rewriting assets in archive mode </hunt/app/views/asset_views.py> to use chunks properly. However, we also need to handle ES6 imports within puzzles. You can run the following PowerShell script to fix these.
+       ```
+       Get-ChildItem -r -include "*.html" |
+       ForEach-Object {
+         $path = $_.FullName;
+         ( Get-Content $path ) |
+         ForEach-Object {
+           $_ -replace '([''"])/static/lib/', '$1../../static/lib/'
+         } |
+         Set-Content $path
+       }
+      ```
+
  1. The other issue with HTTrack is it changes links from directories by suffixing `index.html`. This is mostly harmless, but it breaks some puzzles that use variables to dynamically build paths. For example, `puzzleStaticDirectory` is changed from `s__puzzle/` to `s__puzzle/index.html`. You can run the following PowerShell script to remove `index.html` relative links that end in `/index.html` in all HTML files.
       ```
        Get-ChildItem -r -include "*.html" |

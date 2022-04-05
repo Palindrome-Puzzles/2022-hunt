@@ -3,6 +3,10 @@
 
 {% block title %}Solution to {{ puzzle_info.puzzle.name|safe }} | {{ block.super }}{% endblock %}
 
+{% block site_metas %}
+<meta name="robots" content="nosnippet">
+{% endblock %}
+
 {% block site_stylesheets %}
 {{ round_common_style|wrap_styles|safe }}
 {{ puzzle_solution_style|wrap_styles|safe }}
