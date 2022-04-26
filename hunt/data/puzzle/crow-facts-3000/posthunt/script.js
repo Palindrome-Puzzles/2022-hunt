@@ -18,7 +18,7 @@ var steps = [
 
     [['You will continue to receive Crow Facts every &lt;hour&gt;. Welcome to Crow Facts!', 'Crow Fact #21: Crow is the third in a line of ferocious monsters, all of which provide horrible sights to their captives.'],
      'To continue, please describe what you would give to be ambidexterous.',
-     'righthand'],
+     'rightarm'],
 
     [['Thanks for texting Crow Facts! Remember, every time you text you will receive an instant Crow Fact!', 'Crow Fact #19: It takes one week for Crow to transform and rise out of the water.'],
      'To continue, reply with the name of the person who was really good in Mannequin.',
