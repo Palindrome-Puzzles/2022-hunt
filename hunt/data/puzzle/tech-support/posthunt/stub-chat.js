@@ -27,7 +27,7 @@ window.stubChat = ({q}) => {
       return {'a':error_response};
 
   const test_string = words.map(w => w[0]);
-  const target = target_string.split(' ');
+  const target = target_string.split('');
   const incorrect = "❌"
   const place = "🌚"
   const letter = "🌝"
@@ -48,7 +48,7 @@ window.stubChat = ({q}) => {
       // check for other matches
       if ("abcdefghijklmnopqrstuvwxyz".includes(test_string[i])) {
           if (target.includes(test_string[i])) {
-              target[target.index(test_string[i])] = letter;
+              target[target.indexOf(test_string[i])] = letter;
               test_string[i] = letter;
               output[i] = letter;
           }
